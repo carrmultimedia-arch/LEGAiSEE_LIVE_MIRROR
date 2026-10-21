@@ -1,0 +1,151 @@
+Starting a terminal session...
+carrmulti@s413:/home/carrmulti/www/www/legaisee-design-system-v2$ tree
+bash: tree: command not found
+carrmulti@s413:/home/carrmulti/www/www/legaisee-design-system-v2$ find . -type f | sort
+./assets/css/lvos-camera.css
+./assets/css/lvos-components.css
+./assets/css/lvos-core.css
+./assets/css/lvos-environment.css
+./assets/css/lvos-footer.css
+./assets/css/lvos-grid.css
+./assets/css/lvos-layout.css
+./assets/css/lvos-light-engine.css
+./assets/css/lvos-materials.css
+./assets/css/lvos-motion.css
+./assets/css/lvos-navigation.css
+./assets/css/lvos-objects.css
+./assets/css/lvos-reset.css
+./assets/css/lvos-spacing.css
+./assets/css/lvos-tokens.css
+./assets/css/lvos-type.css
+./assets/css/lvos-utilities.css
+./assets/js/lvos-camera.js
+./assets/js/lvos-engine.js
+./assets/js/lvos-light-engine.js
+./assets/js/lvos-loader.js
+./assets/js/lvos-material-engine.js
+./assets/js/lvos-motion.js
+./assets/js/lvos-navigation.js
+./assets/js/lvos-scroll.js
+./bible/project-bible.md
+./components/museum/museum-components.md
+./docs/build-order.md
+./docs/toc.md
+./filestructure.md
+./governance/project-rules.md
+./handoff/current-handoff.md
+./pages/prototypes/00_page-template.html
+./pages/prototypes/01_home.html
+./pages/prototypes/01-reset.html
+./pages/prototypes/02_archaeology.html
+./pages/prototypes/02-type.html
+./pages/prototypes/03_frameworks.html
+./pages/prototypes/03-grid.html
+./pages/prototypes/04-layout.html
+./pages/prototypes/04_who-we-serve.html
+./pages/prototypes/05_commissions.html
+./pages/prototypes/05-environment.html
+./pages/prototypes/06_architect.html
+./pages/prototypes/06-light-engine.html
+./pages/prototypes/07-materials.html
+./pages/prototypes/07_registry.html
+./pages/prototypes/08_contact.html
+./pages/prototypes/08-objects.html
+./pages/prototypes/09-motion.html
+./pages/prototypes/10-components.html
+./pages/prototypes/11-navigation.html
+./pages/prototypes/12-footer.html
+./pages/prototypes/13-complete-page.html
+./pages/prototypes/90_render-lab.html
+./pages/prototypes/91_material-lab.html
+./pages/prototypes/92_lighting-lab.html
+./pages/prototypes/93_component-lab.html
+./pages/prototypes/94_animation-lab.html
+./pages/prototypes/95_performance-lab.html
+./pages/prototypes/index.html
+carrmulti@s413:/home/carrmulti/www/www/legaisee-design-system-v2$ find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+.
+|____assets
+| |____images
+| |____icons
+| |____css
+| | |____lvos-reset.css
+| | |____lvos-spacing.css
+| | |____lvos-type.css
+| | |____lvos-layout.css
+| | |____lvos-motion.css
+| | |____lvos-light-engine.css
+| | |____lvos-components.css
+| | |____lvos-objects.css
+| | |____lvos-core.css
+| | |____lvos-tokens.css
+| | |____lvos-camera.css
+| | |____lvos-footer.css
+| | |____lvos-utilities.css
+| | |____lvos-grid.css
+| | |____lvos-environment.css
+| | |____lvos-navigation.css
+| | |____lvos-materials.css
+| |____textures
+| |____fonts
+| |____js
+| | |____lvos-material-engine.js
+| | |____lvos-loader.js
+| | |____lvos-scroll.js
+| | |____lvos-camera.js
+| | |____lvos-engine.js
+| | |____lvos-navigation.js
+| | |____lvos-light-engine.js
+| | |____lvos-motion.js
+|____pages
+| |____prototypes
+| | |____93_component-lab.html
+| | |____91_material-lab.html
+| | |____06_architect.html
+| | |____08_contact.html
+| | |____11-navigation.html
+| | |____01_home.html
+| | |____10-components.html
+| | |____04_who-we-serve.html
+| | |____04-layout.html
+| | |____01-reset.html
+| | |____index.html
+| | |____92_lighting-lab.html
+| | |____90_render-lab.html
+| | |____07_registry.html
+| | |____07-materials.html
+| | |____02_archaeology.html
+| | |____08-objects.html
+| | |____03-grid.html
+| | |____05-environment.html
+| | |____12-footer.html
+| | |____05_commissions.html
+| | |____94_animation-lab.html
+| | |____02-type.html
+| | |____00_page-template.html
+| | |____06-light-engine.html
+| | |____03_frameworks.html
+| | |____95_performance-lab.html
+| | |____09-motion.html
+| | |____13-complete-page.html
+| |____production
+| |____demos
+|____governance
+| |____project-rules.md
+|____bible
+| |____project-bible.md
+|____handoff
+| |____current-handoff.md
+|____components
+| |____museum
+| | |____museum-components.md
+|____docs
+| |____build-order.md
+| |____toc.md
+|____filestructure.md
+|____change log
+|____exports
+|____archive
+| |____lvos-v0
+| |____lvos-v1
+carrmulti@s413:/home/carrmulti/www/www/legaisee-design-system-v2$ 

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LVOS Material Lab</title>
+
+  <link rel="stylesheet" href="../../assets/css/lvos-core.css">
+  <link rel="stylesheet" href="../../assets/css/lvos-materials.css">
+</head>
+
+<body>
+
+<header class="system-header">
+  <div>MATERIAL LAB</div>
+  <div>LIGHT → SURFACE RESPONSE</div>
+</header>
+
+<section class="scene-container">
+
+  <div class="material-stage">
+    <div class="content-stack">
+
+      <div id="matA" class="material-box">Material A</div>
+      <div id="matB" class="material-box">Material B</div>
+      <div id="matC" class="material-box">Material C</div>
+
+    </div>
+  </div>
+
+</section>
+
+<script src="../../assets/js/lvos-light-engine.js"></script>
+<script src="../../assets/js/lvos-material-engine.js"></script>
+<script src="../../assets/js/lvos-loader.js"></script>
+
+<script>
+window.addEventListener("load", () => {
+
+  const mats = {
+    a: document.getElementById("matA"),
+    b: document.getElementById("matB"),
+    c: document.getElementById("matC")
+  };
+
+  setInterval(() => {
+    const light = LVOS?.Light?.state || {};
+
+    if (!light.key) return;
+
+    mats.a.style.opacity = 0.5 + light.key.intensity * 0.5;
+    mats.b.style.transform = `scale(${1 + light.fill.intensity * 0.2})`;
+    mats.c.style.filter = `brightness(${1 + light.ambient.intensity})`;
+
+  }, 50);
+});
+</script>
+
+</body>
+</html>

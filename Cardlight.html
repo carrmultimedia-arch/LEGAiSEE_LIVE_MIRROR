@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEGAiSEE — Lighting Test · Continuity + Card Materials</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital@1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="legaisee-master.cssw">
+
+<style>
+
+/* ==========================================================================
+LIGHTING TEST — isolated from the live site cascade, per the established
+workflow. Two problems being solved here:
+
+1. CONTINUITY: previously each section decorated its own top + bottom
+   glow independently. That reads as a row of separately-lit exhibits,
+   not one museum lamp traveling down a hallway. Fix: the glow at a
+   section boundary is now owned by ONE shared element (.light-seam)
+   sitting between sections, not by two unrelated pseudo-elements that
+   merely happen to line up. Same element, same gradient = guaranteed
+   continuity, and it is portable as a drop-in component for the live
+   cascade (just set –from / –to / data-seam per instance).
+1. CARD MATERIAL: text cards get frosted glass (transparency + blur).
+   Image cards get a scatter/grain texture with a light-catch highlight.
+   These are deliberately NOT combined on one card — see the brief.
+
+Toggle “Compare: independent glows” in the debug panel to see the old
+(pre-fix) behavior side by side with this one, using the same sections.
+========================================================================== */
+
+:root{
+/* –– Locked palette: only two permitted hue families ––
+Amber/gold/copper all live on ONE hue (–hue-amber). Gold and copper
+are the same hue at different saturation/lightness, not different
+hues — that’s what keeps the “only two hue families” rule intact
+while still giving dig-site pages a distinct material from museum
+pages. Pearl-white is the second, separate, near-neutral family. */
+–hue-amber: 33;
+
+–obsidian: #050505;
+–gold:     hsl(var(–hue-amber) 46% 62%);   /* ≈ #C9A961 */
+–copper:   hsl(var(–hue-amber) 58% 32%);   /* aged copper, same hue */
+–pearl:    hsl(42 18% 94%);
+
+–gold-glow:   hsl(var(–hue-amber) 46% 62% / 0.55);
+–copper-glow: hsl(var(–hue-amber) 58% 32% / 0.55);
+–pearl-glow:  hsl(42 18% 94% / 0.4);
+
+/* –– Global light source model ––
+One light, one horizontal position, shared by every seam, every
+card light-catch, and the debug guides. Move this slider and the
+whole page’s lighting shifts together — that’s the test. */
+–seam-x: 42%;
+–seam-intensity: 1;
+
+–font-display: ‘Cinzel’, serif;
+–font-body: ‘Inter’, system-ui, sans-serif;
+–font-caption: ‘Cormorant Garamond’, serif;
+}
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; background:var(–obsidian); color:var(–pearl); font-family:var(–font-body); }
+
+/* ===================== PAGE CHROME ===================== */
+
+.page-title{
+position:fixed; top:1.1rem; left:1.25rem; z-index:50;
+font-family:var(–font-display); font-size:0.72rem; letter-spacing:.14em;
+text-transform:uppercase; color:var(–gold); opacity:.85; pointer-events:none;
+}
+
+.debug-panel{
+position:fixed; right:1rem; bottom:1rem; z-index:100;
+width:240px; padding:1rem 1.1rem 1.05rem;
+background:rgba(5,5,5,0.82);
+border:1px solid hsl(var(–hue-amber) 40% 60% / 0.25);
+border-radius:4px;
+backdrop-filter:blur(10px);
+font-size:0.72rem;
+}
+.debug-panel h3{
+margin:0 0 .75rem; font-family:var(–font-display); font-size:0.68rem;
+letter-spacing:.08em; text-transform:uppercase; color:var(–gold); font-weight:600;
+}
+.debug-panel label{ display:block; margin-bottom:.65rem; color:hsl(42 18% 94% / .75); }
+.debug-panel input[type=range]{ width:100%; margin-top:.3rem; accent-color:var(–gold); }
+.debug-panel .row{ display:flex; align-items:center; gap:.5rem; margin-bottom:.55rem; }
+.debug-panel input[type=checkbox]{ accent-color:var(–gold); }
+.debug-panel .hint{ color:hsl(42 18% 94% / .45); font-size:.66rem; line-height:1.4; margin-top:.5rem; }
+
+/* ===================== SECTIONS (ambient zones) ===================== */
+
+main{ position:relative; }
+
+.zone{
+position:relative;
+isolation:isolate;          /* keep blend modes contained to this zone */
+padding:5rem 6vw 6rem;
+overflow:hidden;
+}
+
+/* Ambient family-tint wash — deliberately faint. This is NOT the light
+source, just enough to say “this section belongs to gold” or “this
+section belongs to copper.” The seams below carry the real hotspot. */
+.zone::before,
+.zone::after{
+content:””; position:absolute; left:0; right:0; height:55%;
+pointer-events:none; transition:opacity .25s ease, background .25s ease;
+}
+.zone::before{
+top:0;
+background:radial-gradient(ellipse 70% 100% at var(–seam-x), var(–section-tint) 0%, transparent 70%);
+opacity:.10;
+}
+.zone::after{
+bottom:0;
+background:radial-gradient(ellipse 70% 100% at var(–seam-x), var(–section-tint) 0%, transparent 70%);
+opacity:0; /* hidden in continuous mode — the seam owns this edge */
+}
+
+/* Debug compare mode: turn each section back into an independently-lit
+exhibit, using slightly mismatched x-positions per zone on purpose,
+so the seam between them visibly fails to line up — this is the
+“before” state the fix replaces. */
+body.debug-naive .light-seam{ opacity:0; }
+body.debug-naive .zone::before{
+background:radial-gradient(ellipse 70% 100% at var(–naive-x-top, var(–seam-x)), var(–section-tint) 0%, transparent 70%);
+opacity:.85;
+}
+body.debug-naive .zone::after{
+background:radial-gradient(ellipse 70% 100% at var(–naive-x-bottom, var(–seam-x)), var(–section-tint) 0%, transparent 70%);
+opacity:.85;
+}
+
+.zone-label{
+position:relative; z-index:2;
+font-family:var(–font-display); font-weight:600; font-size:1.1rem;
+letter-spacing:.06em; color:var(–pearl); margin:0 0 .35rem;
+}
+.zone-sub{
+position:relative; z-index:2;
+font-family:var(–font-caption); font-style:italic; font-size:0.95rem;
+color:hsl(42 18% 94% / .55); margin:0 0 2.25rem;
+}
+
+/* ===================== LIGHT SEAM (the actual fix) ===================== */
+
+/* One element, straddling the boundary between two sections. Color
+blends top→bottom from the section above’s tone to the section
+below’s tone; a mask shapes that blend into a soft vertical column
+centered on the single shared light position (–seam-x). Because
+it’s one gradient rather than two independently-drawn ones, there is
+no seam to misalign — the math guarantees the handoff. */
+.light-seam{
+position:relative;
+height:200px;
+background-image:linear-gradient(to bottom, var(–from), var(–to));
+-webkit-mask-image:radial-gradient(ellipse 48% 100% at var(–seam-x) 50%, #000 0%, transparent 72%);
+mask-image:radial-gradient(ellipse 48% 100% at var(–seam-x) 50%, #000 0%, transparent 72%);
+filter:blur(3px);
+opacity:var(–seam-intensity);
+pointer-events:none;
+transition:opacity .25s ease;
+}
+.light-seam–origin{ height:140px; background-image:linear-gradient(to bottom, transparent, var(–from)); }
+.light-seam–terminus{ height:160px; background-image:linear-gradient(to bottom, var(–from), transparent); }
+
+/* Debug guides: exact seam center line + label, for pixel-checking the
+handoff against the live site once this is ported over. */
+body.show-guides .light-seam{ outline:1px dashed hsl(42 18% 94% / .3); }
+body.show-guides .light-seam::before{
+content:””; position:absolute; left:0; right:0; top:50%; height:1px;
+background:hsl(42 18% 94% / .55); filter:none;
+}
+body.show-guides .light-seam::after{
+content:attr(data-seam); position:absolute; left:1rem; top:50%;
+transform:translateY(-50%); font:11px/1 var(–font-body); letter-spacing:.04em;
+color:hsl(42 18% 94% / .7); filter:none;
+}
+
+/* ===================== CARDS ===================== */
+
+.card-grid{
+position:relative; z-index:2;
+display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+gap:1.25rem;
+}
+
+.card{
+position:relative; isolation:isolate; overflow:hidden;
+border-radius:3px; padding:1.6rem 1.5rem; min-height:190px;
+display:flex; flex-direction:column; justify-content:space-between;
+}
+.card h4{ font-family:var(–font-display); font-size:.95rem; font-weight:600; margin:0 0 .4rem; color:var(–pearl); }
+.card p{ font-size:.82rem; line-height:1.5; color:hsl(42 18% 94% / .65); margin:0; }
+.card-tag{
+align-self:flex-start; font-family:var(–font-body); font-size:.62rem;
+letter-spacing:.1em; text-transform:uppercase; color:var(–gold);
+border:1px solid hsl(var(–hue-amber) 40% 60% / .35); border-radius:2px;
+padding:.2rem .5rem; margin-top:1rem;
+}
+
+/* –– Text card: frosted glass. Transparency + blur. No texture. –– */
+.card–text{
+background:rgba(5,5,5,.42);
+backdrop-filter:blur(16px) saturate(150%);
+-webkit-backdrop-filter:blur(16px) saturate(150%);
+border:1px solid hsl(var(–hue-amber) 40% 60% / .22);
+box-shadow:inset 0 1px 0 hsl(42 18% 94% / .07), 0 10px 26px rgba(0,0,0,.35);
+}
+.card–text::before{ /* faint glass sheen, restrained — no rainbow, no heavy gloss */
+content:””; position:absolute; inset:0;
+background:linear-gradient(135deg, hsl(42 18% 94% / .05), transparent 55%);
+pointer-events:none;
+}
+
+/* –– Image card: scatter texture. No blur, no transparency. –– */
+.card–image{
+background-size:cover; background-position:center;
+border:1px solid hsl(var(–hue-amber) 40% 60% / .18);
+}
+/* grain — generic SVG fractal-noise tile, tiled and screened in low */
+.card–image::after{
+content:””; position:absolute; inset:0;
+background-image:url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ width=‘120’ height=‘120’%3E%3Cfilter id=‘n’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.85’ numOctaves=‘2’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23n)’/%3E%3C/svg%3E”);
+opacity:.11; mix-blend-mode:overlay; pointer-events:none;
+}
+/* light-catch on the grain — tied to the SAME global light position as
+the seams, so the texture visibly brightens in the same column the
+museum lamp is “aimed” at. This is the detail that proves it’s one
+light system, not per-card decoration. */
+.card–image::before{
+content:””; position:absolute; inset:0;
+background:radial-gradient(circle at var(–seam-x) 0%, hsl(42 30% 92% / .4), transparent 62%);
+mix-blend-mode:soft-light; opacity:var(–seam-intensity); pointer-events:none;
+transition:opacity .25s ease;
+}
+.card–image h4, .card–image p{ position:relative; z-index:2; text-shadow:0 1px 6px rgba(0,0,0,.6); }
+.card–image .card-tag{ position:relative; z-index:2; }
+
+</style>
+</head>
+<body>
+
+<div class="page-title">Lighting Test — Continuity / Card Materials</div>
+
+<div class="debug-panel">
+  <h3>Light Continuity</h3>
+  <label>Light position (--seam-x)
+    <input type="range" id="lightX" min="10" max="90" value="42">
+  </label>
+  <label>Intensity
+    <input type="range" id="intensity" min="40" max="140" value="100">
+  </label>
+  <div class="row"><input type="checkbox" id="guides"><label for="guides" style="margin:0;">Show seam guides</label></div>
+  <div class="row"><input type="checkbox" id="naive"><label for="naive" style="margin:0;">Compare: independent glows (before)</label></div>
+  <div class="hint">Default = the fix: one shared seam element owns each handoff. Check the box to see the old per-section glow that didn't line up.</div>
+</div>
+
+<main>
+
+  <div class="light-seam light-seam--origin" data-seam="lamp ignites" style="--from:var(--gold-glow);"></div>
+
+  <!-- ===================== SECTION 01 — Museum / Authority ===================== -->
+
+  <section class="zone" style="--section-tint:var(--gold-glow); --naive-x-top:30%; --naive-x-bottom:64%;">
+    <h2 class="zone-label">Section 01 — Museum / Authority</h2>
+    <p class="zone-sub">Gloss obsidian + gold. Ambient wash only — the hotspot lives in the seam, not here.</p>
+    <div class="card-grid">
+      <article class="card card--text">
+        <div>
+          <h4>Provenance Note</h4>
+          <p>Frosted glass: translucent obsidian, backdrop blur, thin gold edge. No grain, no photo.</p>
+        </div>
+        <span class="card-tag">Frosted Glass</span>
+      </article>
+      <article class="card card--image" style="background-image:radial-gradient(circle at 30% 20%, #2b2b2b, #050505 72%);">
+        <div>
+          <h4>Exhibit Plate</h4>
+          <p>Scatter texture: subtle grain, light-catch tied to the global lamp position.</p>
+        </div>
+        <span class="card-tag">Scatter Texture</span>
+      </article>
+      <article class="card card--text">
+        <div>
+          <h4>Authority Clause</h4>
+          <p>Same frosted treatment — never combined with grain on this card type.</p>
+        </div>
+        <span class="card-tag">Frosted Glass</span>
+      </article>
+      <article class="card card--image" style="background-image:radial-gradient(circle at 65% 15%, #262422, #050505 70%);">
+        <div>
+          <h4>Material Study</h4>
+          <p>Placeholder gradient — swap for real photography on production pages.</p>
+        </div>
+        <span class="card-tag">Scatter Texture</span>
+      </article>
+    </div>
+  </section>
+
+  <div class="light-seam" data-seam="01 → 02" style="--from:var(--gold-glow); --to:var(--gold-glow);"></div>
+
+  <!-- ===================== SECTION 02 — Museum / Authority ===================== -->
+
+  <section class="zone" style="--section-tint:var(--gold-glow); --naive-x-top:58%; --naive-x-bottom:36%;">
+    <h2 class="zone-label">Section 02 — Museum / Authority</h2>
+    <p class="zone-sub">Same family as Section 01 — the seam above should read as one continuous lamp, not two.</p>
+    <div class="card-grid">
+      <article class="card card--image" style="background-image:radial-gradient(circle at 40% 25%, #2c2620, #050505 72%);">
+        <div>
+          <h4>Registry Mark</h4>
+          <p>Grain + light-catch only — no blur, no transparency on image cards.</p>
+        </div>
+        <span class="card-tag">Scatter Texture</span>
+      </article>
+      <article class="card card--text">
+        <div>
+          <h4>Confidentiality Cell</h4>
+          <p>Glass only — flat near-black interior, gold confined to the border.</p>
+        </div>
+        <span class="card-tag">Frosted Glass</span>
+      </article>
+      <article class="card card--image" style="background-image:radial-gradient(circle at 70% 30%, #292420, #050505 70%);">
+        <div>
+          <h4>Lindy Proof</h4>
+          <p>Texture brightens toward the lamp column as you move the slider.</p>
+        </div>
+        <span class="card-tag">Scatter Texture</span>
+      </article>
+      <article class="card card--text">
+        <div>
+          <h4>Pledge Clause</h4>
+          <p>No texture leaks into glass cards — the two systems stay separate.</p>
+        </div>
+        <span class="card-tag">Frosted Glass</span>
+      </article>
+    </div>
+  </section>
+
+  <div class="light-seam" data-seam="02 → 03 (gold → copper)" style="--from:var(--gold-glow); --to:var(--copper-glow);"></div>
+
+  <!-- ===================== SECTION 03 — Dig-site ===================== -->
+
+  <section class="zone" style="--section-tint:var(--copper-glow); --naive-x-top:50%; --naive-x-bottom:50%;">
+    <h2 class="zone-label">Section 03 — Dig-site</h2>
+    <p class="zone-sub">Aged copper + amber wood grain — same hue family as gold, lower lightness, higher saturation.</p>
+    <div class="card-grid">
+      <article class="card card--text">
+        <div>
+          <h4>Excavation Note</h4>
+          <p>Glass card on a copper section — border tint shifts with the section, structure doesn't.</p>
+        </div>
+        <span class="card-tag">Frosted Glass</span>
+      </article>
+      <article class="card card--image" style="background-image:radial-gradient(circle at 35% 25%, #3a2c1c, #050505 72%);">
+        <div>
+          <h4>Artifact Scan</h4>
+          <p>Warmer placeholder tone for the dig-site family, same grain mechanism.</p>
+        </div>
+        <span class="card-tag">Scatter Texture</span>
+      </article>
+    </div>
+  </section>
+
+  <div class="light-seam light-seam--terminus" data-seam="lamp dissipates" style="--from:var(--copper-glow);"></div>
+
+</main>
+
+<script>
+  const root = document.documentElement;
+  const lightX = document.getElementById('lightX');
+  const intensity = document.getElementById('intensity');
+  const guides = document.getElementById('guides');
+  const naive = document.getElementById('naive');
+
+  lightX.addEventListener('input', () => {
+    root.style.setProperty('--seam-x', lightX.value + '%');
+  });
+  intensity.addEventListener('input', () => {
+    root.style.setProperty('--seam-intensity', intensity.value / 100);
+  });
+  guides.addEventListener('change', () => {
+    document.body.classList.toggle('show-guides', guides.checked);
+  });
+  naive.addEventListener('change', () => {
+    document.body.classList.toggle('debug-naive', naive.checked);
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+/* ==========================================================
+   LVOS V2
+   MATERIALS SYSTEM
+========================================================== */
+
+/* BASE MATERIAL LAYER */
+
+.material{
+
+    position:relative;
+
+    background:var(--black-03);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-lg);
+
+    overflow:hidden;
+}
+
+/* GLASS MATERIAL */
+
+.material-glass{
+
+    background:var(--glass-02);
+
+    backdrop-filter:blur(14px);
+
+    border:1px solid var(--glass-04);
+}
+
+/* GOLD MATERIAL (LUXURY SURFACE) */
+
+.material-gold{
+
+    background:linear-gradient(
+        145deg,
+        var(--gold-01),
+        var(--gold-03),
+        var(--gold-05)
+    );
+
+    border:1px solid var(--border-strong);
+
+    color:var(--black);
+}
+
+/* DARK PREMIUM PANEL */
+
+.material-dark{
+
+    background:linear-gradient(
+        180deg,
+        var(--black-02),
+        var(--black-04)
+    );
+
+    border:1px solid var(--border);
+}
+
+/* HOVER RESPONSE */
+
+.material-hover{
+
+    transition:transform var(--motion-normal) var(--ease-out),
+               box-shadow var(--motion-normal) var(--ease-out);
+}
+
+.material-hover:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:var(--shadow-3);
+}
+
+/* INNER HIGHLIGHT EDGE */
+
+.material::before{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    pointer-events:none;
+
+    border-radius:inherit;
+
+    background:linear-gradient(
+        180deg,
+        rgba(255,255,255,.06),
+        transparent 40%,
+        rgba(0,0,0,.15)
+    );
+}

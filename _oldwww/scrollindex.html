@@ -1,0 +1,2964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEGAISEE — Business Archaeology & Authority Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   LEGAISEE — COMPLETE MASTER CSS
+   ============================================ */
+
+:root {
+  --black: #0a0a0a;
+  --black-pure: #000000;
+  --black-soft: #111111;
+  --black-gallery: #0d0d0d;
+  --violet: #07030cff;
+  --violet-deep: #08030eff;
+  --violet-glow: #160d27ff;
+  --gold: #c9a84c;
+  --gold-light: #d4b85a;
+  --gold-bright: #e8d070;
+  --gold-dark: #8b7340;
+  --gold-dim: #6b5a30;
+  --white: #f5f0e8;
+  --white-dim: #c8c0b0;
+  --white-faint: #8a8278;
+  --chrome: #c0c0c0;
+  --chrome-light: #e0e0e0;
+  --chrome-dark: #808080;
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+  --font-sans: 'Montserrat', sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background: var(--black);
+  color: var(--white);
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   PARTICLE DUST ATMOSPHERE
+   ============================================ */
+#dust-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.6;
+}
+
+/* ============================================
+   SPOTLIGHT CURSOR FOLLOW
+   ============================================ */
+#spotlight {
+  position: fixed;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, rgba(201,168,76,0.02) 40%, transparent 70%);
+  pointer-events: none;
+  z-index: 9997;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+  mix-blend-mode: screen;
+}
+
+/* ============================================
+   VAULT DOOR ANIMATION
+   ============================================ */
+@keyframes vaultOpen {
+  0% { transform: perspective(2000px) rotateY(0deg); opacity: 1; }
+  30% { transform: perspective(2000px) rotateY(-15deg); opacity: 1; }
+  100% { transform: perspective(2000px) rotateY(-95deg); opacity: 0; }
+}
+
+.vault-container {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vault-door {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 50%, #1a1a1a 100%);
+  border: 3px solid var(--gold-dim);
+  transform-origin: left center;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.vault-door::before {
+  content: '';
+  position: absolute;
+  width: 80%; height: 80%;
+  border: 2px solid var(--gold-dark);
+  border-radius: 4px;
+}
+
+.vault-wheel {
+  width: 120px; height: 120px;
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vault-wheel::before {
+  content: '';
+  position: absolute;
+  width: 80%; height: 80%;
+  border: 1px dashed var(--gold-dim);
+  border-radius: 50%;
+  animation: vaultSpin 8s linear infinite;
+}
+
+@keyframes vaultSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.vault-door.open {
+  animation: vaultOpen 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.vault-label {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-top: 30px;
+}
+
+.vault-content {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 1s ease 2s;
+}
+
+.vault-container.revealed .vault-content {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ============================================
+   GEMSTONE 3D RENDER SYSTEM (CSS PLACEHOLDERS)
+   3 views: 0° front, 45° left, 45° right
+   Inside chrome case with glass overlay
+   ============================================ */
+.gemstone-3d {
+  width: 280px; height: 360px;
+  position: relative;
+  perspective: 1200px;
+  margin: 0 auto;
+}
+
+.gemstone-inner {
+  width: 100%; height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: gemRotate 20s linear infinite;
+}
+
+@keyframes gemRotate {
+  0% { transform: rotateY(0deg) rotateX(5deg); }
+  25% { transform: rotateY(90deg) rotateX(10deg); }
+  50% { transform: rotateY(180deg) rotateX(5deg); }
+  75% { transform: rotateY(270deg) rotateX(10deg); }
+  100% { transform: rotateY(360deg) rotateX(5deg); }
+}
+
+.gem-face {
+  position: absolute;
+  width: 200px; height: 260px;
+  left: 50%; top: 50%;
+  margin-left: -100px; margin-top: -130px;
+  backface-visibility: visible;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(201,168,76,0.3), inset 0 0 30px rgba(201,168,76,0.1);
+  background: linear-gradient(135deg, #1a0a2e 0%, #2d1b4e 50%, #1a0a2e 100%);
+}
+
+/* Gemstone render placeholders */
+.gem-face::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: 
+    radial-gradient(ellipse at 30% 20%, rgba(201,168,76,0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(45,27,78,0.5) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(201,168,76,0.1) 0%, transparent 50%, rgba(201,168,76,0.15) 100%);
+  z-index: 1;
+}
+
+.gem-face .gem-render-label {
+  position: absolute;
+  bottom: 15px; left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-sans);
+  font-size: 0.55rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  z-index: 2;
+  white-space: nowrap;
+  background: rgba(0,0,0,0.6);
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+.gem-face img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 0;
+}
+
+.gem-face.front { transform: translateZ(60px); }
+.gem-face.back { transform: rotateY(180deg) translateZ(60px); }
+.gem-face.left { transform: rotateY(-90deg) translateZ(60px); width: 120px; margin-left: -60px; }
+.gem-face.right { transform: rotateY(90deg) translateZ(60px); width: 120px; margin-left: -60px; }
+
+/* Chrome case frame */
+.gem-case {
+  position: absolute;
+  width: 240px; height: 300px;
+  left: 50%; top: 50%;
+  margin-left: -120px; margin-top: -150px;
+  border: 4px solid var(--chrome);
+  border-radius: 12px;
+  box-shadow:
+    0 0 20px rgba(192,192,192,0.3),
+    inset 0 0 20px rgba(192,192,192,0.1),
+    0 20px 60px rgba(0,0,0,0.8);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.gem-case::before {
+  content: '';
+  position: absolute;
+  top: -8px; left: -8px; right: -8px; bottom: -8px;
+  border: 1px solid var(--gold-dim);
+  border-radius: 16px;
+  opacity: 0.5;
+}
+
+/* Glass reflection overlay */
+.gem-case::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 40%, rgba(255,255,255,0.02) 100%);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+/* ============================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-80px);
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(80px);
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-scale.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+.stagger-6 { transition-delay: 0.6s; }
+
+/* ============================================
+   TEXT REVEAL — CHARACTER BY CHARACTER
+   ============================================ */
+.text-reveal {
+  overflow: hidden;
+}
+
+.text-reveal span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.text-reveal.active span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   GOLD SHIMMER EFFECT
+   ============================================ */
+@keyframes goldShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.gold-shimmer {
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-bright) 25%, var(--gold-light) 50%, var(--gold-bright) 75%, var(--gold) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldShimmer 4s linear infinite;
+}
+
+/* ============================================
+   SECTION BASE STYLES
+   ============================================ */
+section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 120px 5%;
+}
+
+.section-inner {
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.bg-parallax {
+  position: absolute;
+  top: -10%; left: -10%;
+  width: 120%; height: 120%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.12;
+  transition: transform 0.1s linear;
+  filter: brightness(0.4) contrast(1.2);
+}
+
+.bg-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+nav {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  z-index: 10000;
+  padding: 20px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%);
+  transition: all 0.5s ease;
+}
+
+nav.scrolled {
+  background: rgba(10,10,10,0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 15px 5%;
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-logo img {
+  height: 40px;
+  width: auto;
+  filter: brightness(1.2);
+}
+
+.nav-logo span {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: var(--gold);
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  text-decoration: none;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -6px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width 0.4s ease;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 10001;
+}
+
+.nav-toggle span {
+  width: 28px; height: 2px;
+  background: var(--gold);
+  transition: all 0.3s ease;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+#hero {
+  min-height: 100vh;
+  background: var(--black-pure);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0;
+  position: relative;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 0 5%;
+}
+
+.hero-overline {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 30px;
+  display: block;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+}
+
+.hero-title .gold-accent {
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white-dim);
+  line-height: 1.8;
+  margin-bottom: 50px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px 50px;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.hero-cta:hover {
+  background: rgba(201,168,76,0.1);
+  box-shadow: 0 0 40px rgba(201,168,76,0.2);
+}
+
+.hero-cta:hover::before {
+  left: 100%;
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 2;
+}
+
+.hero-scroll-indicator span {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+.hero-scroll-indicator svg {
+  animation: scrollBounce 2s ease infinite;
+}
+
+.light-beam {
+  position: absolute;
+  top: -20%; left: 50%;
+  width: 3px; height: 140%;
+  background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.15), rgba(201,168,76,0.05), transparent);
+  transform: translateX(-50%) rotate(15deg);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.light-beam-2 {
+  left: 30%;
+  transform: translateX(-50%) rotate(-8deg);
+  opacity: 0.6;
+}
+
+.light-beam-3 {
+  left: 70%;
+  transform: translateX(-50%) rotate(5deg);
+  opacity: 0.4;
+}
+
+/* ============================================
+   SECTION: THE RESTORATION
+   ============================================ */
+#restoration {
+  background: linear-gradient(to bottom, var(--black-pure) 0%, var(--violet-deep) 100%);
+}
+
+#restoration .bg-overlay {
+  background: radial-gradient(ellipse at 30% 50%, rgba(45,27,78,0.3) 0%, transparent 60%);
+}
+
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 20px;
+  display: block;
+}
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--white);
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+}
+
+.section-heading .gold-line {
+  display: block;
+  width: 80px; height: 2px;
+  background: var(--gold);
+  margin-top: 25px;
+}
+
+.body-text {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--white-dim);
+  margin-bottom: 25px;
+}
+
+.body-text strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.body-text em {
+  color: var(--gold-light);
+  font-style: italic;
+}
+
+.quote-block {
+  border-left: 2px solid var(--gold);
+  padding-left: 30px;
+  margin: 40px 0;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.8;
+}
+
+/* ============================================
+   SECTION: THE ARCHITECT
+   ============================================ */
+#architect {
+  background: var(--violet-deep);
+  min-height: auto;
+  padding: 100px 5%;
+}
+
+#architect .bg-overlay {
+  background: radial-gradient(ellipse at 70% 50%, rgba(45,27,78,0.4) 0%, transparent 60%);
+}
+
+.architect-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.architect-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.architect-image .gemstone-3d {
+  width: 320px; height: 400px;
+}
+
+.architect-image .gem-face {
+  width: 240px; height: 300px;
+  margin-left: -120px; margin-top: -150px;
+}
+
+.architect-image .gem-case {
+  width: 280px; height: 340px;
+  margin-left: -140px; margin-top: -170px;
+}
+
+.architect-content {
+  padding-left: 20px;
+}
+
+.gem-render-caption {
+  text-align: center;
+  margin-top: 25px;
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  line-height: 1.8;
+}
+
+/* ============================================
+   SECTION: PHILOSOPHY
+   ============================================ */
+#philosophy {
+  background: linear-gradient(to bottom, var(--violet-deep) 0%, var(--black-pure) 100%);
+}
+
+#philosophy .bg-overlay {
+  background: radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.05) 0%, transparent 50%);
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.philosophy-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(201,168,76,0.1);
+  padding: 40px 30px;
+  text-align: center;
+  transition: all 0.6s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.philosophy-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  transform: scaleX(0);
+  transition: transform 0.6s ease;
+}
+
+.philosophy-card:hover {
+  border-color: rgba(201,168,76,0.3);
+  background: rgba(255,255,255,0.04);
+  transform: translateY(-5px);
+}
+
+.philosophy-card:hover::before {
+  transform: scaleX(1);
+}
+
+.philosophy-card-icon {
+  width: 50px; height: 50px;
+  margin: 0 auto 25px;
+  border: 1px solid var(--gold-dim);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--gold);
+}
+
+.philosophy-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.philosophy-card p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--white-dim);
+  line-height: 1.7;
+}
+
+/* ============================================
+   TIER SYSTEM
+   ============================================ */
+.tier-system {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.tier-card {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 30px;
+  align-items: start;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(201,168,76,0.08);
+  padding: 35px 40px;
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tier-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--gold);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.tier-card:hover {
+  border-color: rgba(201,168,76,0.2);
+  background: rgba(255,255,255,0.03);
+  transform: translateX(5px);
+}
+
+.tier-card:hover::before {
+  opacity: 1;
+}
+
+.tier-number {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--gold-dim);
+  line-height: 1;
+  opacity: 0.5;
+}
+
+.tier-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.tier-content p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--white-dim);
+  line-height: 1.8;
+}
+
+/* ============================================
+   TAXONOMY GRID
+   ============================================ */
+.taxonomy-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-top: 50px;
+}
+
+.taxonomy-item {
+  background: rgba(255,255,255,0.015);
+  border: 1px solid rgba(201,168,76,0.06);
+  padding: 30px 25px;
+  text-align: center;
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+.taxonomy-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  width: 0; height: 2px;
+  background: var(--gold);
+  transition: all 0.5s ease;
+  transform: translateX(-50%);
+}
+
+.taxonomy-item:hover {
+  border-color: rgba(201,168,76,0.2);
+  background: rgba(255,255,255,0.03);
+  transform: translateY(-3px);
+}
+
+.taxonomy-item:hover::after {
+  width: 60%;
+}
+
+.taxonomy-icon {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 15px;
+  display: block;
+}
+
+.taxonomy-item h4 {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+.taxonomy-item p {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--white-dim);
+  line-height: 1.6;
+}
+
+/* ============================================
+   INDUSTRY GRID
+   ============================================ */
+.industry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin-top: 50px;
+}
+
+.industry-card {
+  background: rgba(255,255,255,0.015);
+  border: 1px solid rgba(201,168,76,0.06);
+  padding: 35px 30px;
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+.industry-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.industry-card:hover {
+  border-color: rgba(201,168,76,0.15);
+  background: rgba(255,255,255,0.025);
+}
+
+.industry-card:hover::before {
+  opacity: 1;
+}
+
+.industry-card h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.industry-card p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--white-dim);
+  line-height: 1.7;
+}
+
+/* ============================================
+   VOICE DIMENSIONS
+   ============================================ */
+.voice-dimensions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.voice-dim {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 20px;
+  align-items: start;
+  background: rgba(255,255,255,0.015);
+  border: 1px solid rgba(201,168,76,0.06);
+  padding: 30px;
+  transition: all 0.5s ease;
+}
+
+.voice-dim:hover {
+  border-color: rgba(201,168,76,0.2);
+  background: rgba(255,255,255,0.03);
+}
+
+.dim-number {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold-dim);
+  line-height: 1;
+}
+
+.voice-dim h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.voice-dim p {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--white-dim);
+  line-height: 1.6;
+}
+
+/* ============================================
+   EXHIBITS
+   ============================================ */
+.exhibits-container {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  margin-top: 50px;
+}
+
+.exhibit-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 40px;
+  align-items: start;
+  background: rgba(255,255,255,0.015);
+  border: 1px solid rgba(201,168,76,0.08);
+  padding: 40px;
+  transition: all 0.6s ease;
+  position: relative;
+}
+
+.exhibit-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-dim), transparent);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.exhibit-item:hover {
+  border-color: rgba(201,168,76,0.2);
+  background: rgba(255,255,255,0.025);
+  transform: translateY(-3px);
+}
+
+.exhibit-item:hover::before {
+  opacity: 1;
+}
+
+.exhibit-phase {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  padding-top: 10px;
+}
+
+.exhibit-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.exhibit-sub {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white-dim);
+  display: block;
+  margin-bottom: 15px;
+}
+
+.exhibit-price {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.exhibit-content p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--white-dim);
+  line-height: 1.8;
+}
+
+.section-subheading {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+.private-commissions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.commission-card {
+  background: rgba(255,255,255,0.015);
+  border: 1px solid rgba(201,168,76,0.1);
+  padding: 35px 30px;
+  text-align: center;
+  transition: all 0.5s ease;
+}
+
+.commission-card:hover {
+  border-color: rgba(201,168,76,0.25);
+  background: rgba(255,255,255,0.03);
+  transform: translateY(-5px);
+}
+
+.commission-card h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+.commission-price {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 15px;
+}
+
+.commission-card p {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--white-dim);
+  line-height: 1.7;
+}
+
+/* ============================================
+   CASE STUDIES
+   ============================================ */
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.case-card {
+  background: rgba(255,255,255,0.015);
+  border: 1px solid rgba(201,168,76,0.08);
+  padding: 40px 35px;
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+.case-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--gold);
+  transition: width 0.5s ease;
+}
+
+.case-card:hover {
+  border-color: rgba(201,168,76,0.2);
+  background: rgba(255,255,255,0.025);
+}
+
+.case-card:hover::after {
+  width: 100%;
+}
+
+.case-number {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 15px;
+  display: block;
+}
+
+.case-card h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+.case-card p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--white-dim);
+  line-height: 1.8;
+}
+
+.metrics-section {
+  margin-top: 80px;
+  padding-top: 60px;
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+
+/* ============================================
+   FAQ / PRIVATE RECORD
+   ============================================ */
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  margin-top: 50px;
+}
+
+.faq-item {
+  background: rgba(255,255,255,0.015);
+  border-left: 2px solid var(--gold-dim);
+  padding: 30px 35px;
+  transition: all 0.5s ease;
+}
+
+.faq-item:hover {
+  border-left-color: var(--gold);
+  background: rgba(255,255,255,0.025);
+}
+
+.faq-item h4 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gold-light);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.faq-item p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--white-dim);
+  line-height: 1.8;
+}
+
+/* ============================================
+   EXPANDED GALLERY
+   ============================================ */
+.expanded-commissions {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.expanded-card {
+  background: rgba(255,255,255,0.015);
+  border: 1px solid rgba(201,168,76,0.08);
+  padding: 45px 40px;
+  transition: all 0.5s ease;
+}
+
+.expanded-card:hover {
+  border-color: rgba(201,168,76,0.2);
+  background: rgba(255,255,255,0.025);
+}
+
+.expanded-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.expanded-header h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 1px;
+}
+
+.expanded-price {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.expanded-card p {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--white-dim);
+  line-height: 1.8;
+}
+
+/* ============================================
+   SHALLOW DIG
+   ============================================ */
+.shallow-dig-price {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 30px 0;
+  letter-spacing: 2px;
+}
+
+/* ============================================
+   CONTACT / REGISTRY FORM
+   ============================================ */
+.contact-section {
+  background: linear-gradient(to bottom, var(--black-pure) 0%, #0a0a0a 100%);
+  padding: 100px 5%;
+  text-align: center;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 50px auto 0;
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.form-group label {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 18px 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 0;
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 300;
+  transition: all 0.4s ease;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--gold);
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 0 20px rgba(201,168,76,0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--white-faint);
+  font-style: italic;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.form-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 60px;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.form-submit::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.form-submit:hover {
+  background: rgba(201,168,76,0.1);
+  box-shadow: 0 0 40px rgba(201,168,76,0.2);
+}
+
+.form-submit:hover::before {
+  left: 100%;
+}
+
+.contact-email {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--gold-light);
+  margin-top: 30px;
+  display: block;
+}
+
+.contact-email a {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold-dim);
+  transition: all 0.3s ease;
+}
+
+.contact-email a:hover {
+  border-bottom-color: var(--gold);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  background: var(--black-pure);
+  padding: 80px 5% 50px;
+}
+
+.footer-logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.footer-logo img {
+  height: 50px;
+  filter: brightness(1.2);
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--white-dim);
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+
+.footer-links a:hover {
+  color: var(--gold);
+}
+
+.footer-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--gold-dim);
+  margin: 25px auto;
+}
+
+.footer-copyright {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--white-faint);
+  line-height: 1.8;
+  text-align: center;
+}
+
+/* ============================================
+   GOLD DIVIDER
+   ============================================ */
+.gold-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 0;
+  border: none;
+}
+
+/* ============================================
+   AMBIENT FLOATING
+   ============================================ */
+@keyframes floatAmbient {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ============================================
+   MOBILE MENU OVERLAY
+   ============================================ */
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.95);
+  z-index: 9999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.mobile-menu-overlay.open {
+  display: flex;
+}
+
+.mobile-menu-overlay a {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 3px;
+  transition: color 0.3s ease;
+}
+
+.mobile-menu-overlay a:hover {
+  color: var(--gold);
+}
+
+.mobile-menu-close {
+  position: absolute;
+  top: 30px; right: 30px;
+  font-size: 2rem;
+  color: var(--gold);
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+}
+
+/* ============================================
+   FULL RESPONSIVE — DESKTOP / TABLET / PHONE
+   ============================================ */
+
+/* TABLET (1024px and below) */
+@media (max-width: 1024px) {
+  .architect-layout {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  .architect-content { padding-left: 0; text-align: center; }
+  .architect-image { order: -1; }
+  .philosophy-grid { grid-template-columns: repeat(2, 1fr); }
+  .taxonomy-grid { grid-template-columns: repeat(2, 1fr); }
+  .voice-dimensions { grid-template-columns: 1fr; }
+  .exhibit-item { grid-template-columns: 1fr; gap: 20px; }
+  .exhibit-phase { writing-mode: horizontal-tb; text-orientation: mixed; padding-top: 0; }
+  .private-commissions { grid-template-columns: repeat(2, 1fr); }
+  .cases-grid { grid-template-columns: 1fr; }
+  .industry-grid { grid-template-columns: 1fr; }
+  .tier-card { grid-template-columns: 60px 1fr; gap: 20px; padding: 25px; }
+  .form-row { grid-template-columns: 1fr; }
+  .gemstone-3d { width: 240px; height: 300px; }
+  .gem-face { width: 180px; height: 220px; margin-left: -90px; margin-top: -110px; }
+  .gem-case { width: 220px; height: 260px; margin-left: -110px; margin-top: -130px; }
+  .vault-container { min-height: 450px; }
+}
+
+/* TABLET SMALL / LARGE PHONE (768px and below) */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  section { padding: 80px 5%; }
+  .hero-title { font-size: clamp(1.6rem, 8vw, 2.5rem); }
+  .hero-subtitle { font-size: 1rem; }
+  .philosophy-grid { grid-template-columns: 1fr; }
+  .taxonomy-grid { grid-template-columns: 1fr; }
+  .private-commissions { grid-template-columns: 1fr; }
+  .expanded-header { flex-direction: column; }
+  .tier-card { grid-template-columns: 1fr; }
+  .tier-number { font-size: 2rem; margin-bottom: 10px; }
+  .shallow-dig-price { font-size: 2.2rem; }
+  .gemstone-3d { width: 200px; height: 260px; }
+  .gem-face { width: 150px; height: 190px; margin-left: -75px; margin-top: -95px; }
+  .gem-case { width: 180px; height: 220px; margin-left: -90px; margin-top: -110px; }
+  .vault-container { min-height: 400px; }
+  .vault-wheel { width: 80px; height: 80px; }
+  .exhibit-item { padding: 25px; }
+  .exhibit-content h3 { font-size: 1.1rem; }
+  .exhibit-price { font-size: 1.2rem; }
+  .case-card { padding: 25px 20px; }
+  .commission-card { padding: 25px 20px; }
+  .expanded-card { padding: 30px 25px; }
+  .section-heading { font-size: clamp(1.5rem, 5vw, 2.2rem); }
+  .body-text { font-size: 1rem; }
+  .quote-block { font-size: 1.05rem; padding-left: 20px; }
+  .contact-form { padding: 0 10px; }
+  .form-group input, .form-group textarea { padding: 14px 16px; font-size: 1rem; }
+  #spotlight { display: none; }
+}
+
+/* SMALL PHONE (480px and below) */
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+  section { padding: 60px 4%; }
+  .hero-cta { padding: 14px 30px; font-size: 0.65rem; }
+  .hero-title { font-size: 1.5rem; letter-spacing: 1px; }
+  .hero-subtitle { font-size: 0.9rem; }
+  .nav-logo span { font-size: 0.9rem; letter-spacing: 2px; }
+  .nav-logo img { height: 32px; }
+  .philosophy-card { padding: 25px 20px; }
+  .philosophy-card-icon { width: 40px; height: 40px; font-size: 1rem; }
+  .tier-card { padding: 20px; }
+  .tier-number { font-size: 1.5rem; }
+  .tier-content h3 { font-size: 1.1rem; }
+  .taxonomy-item { padding: 20px 15px; }
+  .taxonomy-icon { font-size: 1.2rem; }
+  .taxonomy-item h4 { font-size: 0.8rem; }
+  .taxonomy-item p { font-size: 0.8rem; }
+  .industry-card { padding: 25px 20px; }
+  .industry-card h4 { font-size: 0.9rem; }
+  .voice-dim { padding: 20px; grid-template-columns: 45px 1fr; gap: 15px; }
+  .dim-number { font-size: 1.4rem; }
+  .voice-dim h4 { font-size: 0.9rem; }
+  .voice-dim p { font-size: 0.85rem; }
+  .exhibit-item { padding: 20px; gap: 15px; }
+  .exhibit-phase { font-size: 0.6rem; }
+  .exhibit-content h3 { font-size: 1rem; }
+  .exhibit-price { font-size: 1.1rem; }
+  .case-card { padding: 20px 15px; }
+  .case-card h4 { font-size: 1rem; }
+  .case-card p { font-size: 0.9rem; }
+  .commission-card { padding: 20px 15px; }
+  .commission-card h4 { font-size: 0.9rem; }
+  .commission-price { font-size: 1.1rem; }
+  .expanded-card { padding: 25px 20px; }
+  .expanded-header h3 { font-size: 1.1rem; }
+  .expanded-price { font-size: 1rem; }
+  .expanded-card p { font-size: 0.9rem; }
+  .faq-item { padding: 20px 20px; }
+  .faq-item h4 { font-size: 1rem; }
+  .faq-item p { font-size: 0.9rem; }
+  .shallow-dig-price { font-size: 1.8rem; }
+  .form-submit { padding: 16px 40px; font-size: 0.7rem; width: 100%; justify-content: center; }
+  .footer-links { gap: 20px; }
+  .footer-links a { font-size: 0.6rem; letter-spacing: 2px; }
+  .gemstone-3d { width: 160px; height: 200px; }
+  .gem-face { width: 120px; height: 150px; margin-left: -60px; margin-top: -75px; }
+  .gem-case { width: 140px; height: 170px; margin-left: -70px; margin-top: -85px; }
+  .gem-render-caption { font-size: 0.5rem; }
+}
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<!-- PARTICLE DUST CANVAS -->
+<canvas id="dust-canvas"></canvas>
+
+<!-- SPOTLIGHT CURSOR -->
+<div id="spotlight"></div>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="mobile-menu-overlay" id="mobile-menu">
+  <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+  <a href="#restoration" onclick="closeMobileMenu()">Philosophy</a>
+  <a href="#frameworks" onclick="closeMobileMenu()">Methodology</a>
+  <a href="#exhibits" onclick="closeMobileMenu()">Exhibits</a>
+  <a href="#evidence" onclick="closeMobileMenu()">Evidence</a>
+  <a href="#registry" onclick="closeMobileMenu()">Registry</a>
+</div>
+
+<!-- NAVIGATION -->
+<nav id="main-nav">
+  <div class="nav-logo">
+    <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAISEE">
+    <span>LEGAISEE</span>
+  </div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#restoration">Philosophy</a></li>
+    <li><a href="#frameworks">Methodology</a></li>
+    <li><a href="#exhibits">Exhibits</a></li>
+    <li><a href="#evidence">Evidence</a></li>
+    <li><a href="#registry">Registry</a></li>
+  </ul>
+  <div class="nav-toggle" id="nav-toggle" onclick="toggleMobileMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+
+<!-- ============================================
+     HERO SECTION
+     ============================================ -->
+<section id="hero">
+  <div class="bg-overlay" style="background: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.85) 70%, var(--black-pure) 100%);"></div>
+
+  <div class="light-beam"></div>
+  <div class="light-beam light-beam-2"></div>
+  <div class="light-beam light-beam-3"></div>
+
+  <div class="hero-content">
+    <span class="hero-overline reveal stagger-1">Business Archaeology &amp; Authority Systems</span>
+    <h1 class="hero-title reveal stagger-2">
+      The Restoration of<br><span class="gold-accent">Asymmetric Authority</span>
+    </h1>
+    <p class="hero-subtitle reveal stagger-3">
+      Sit down. Let the door close behind you. Pour a glass of something that took twenty years to reach its peak.
+    </p>
+    <a href="#restoration" class="hero-cta reveal stagger-4">
+      Enter the Gallery
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8l6 6 6-6" stroke="currentColor" stroke-width="1.5"/></svg>
+    </a>
+  </div>
+
+  <div class="hero-scroll-indicator">
+    <span>Descend</span>
+    <svg width="20" height="30" viewBox="0 0 20 30" fill="none">
+      <rect x="1" y="1" width="18" height="28" rx="9" stroke="var(--gold-dim)" stroke-width="1"/>
+      <circle cx="10" cy="10" r="2" fill="var(--gold-dim)"/>
+    </svg>
+  </div>
+</section>
+
+<hr class="gold-divider">
+
+
+<!-- ============================================
+     SECTION: THE RESTORATION OF ASYMMETRIC AUTHORITY
+     ============================================ -->
+<section id="restoration">
+  <img class="bg-parallax" src="/mnt/agents/upload/A513688D-315B-48DD-BB89-3E4EDC267CC2.jpg" alt="" loading="lazy">
+  <div class="bg-overlay"></div>
+
+  <div class="section-inner">
+    <span class="section-label reveal">The Opening Statement</span>
+    <h2 class="section-heading reveal stagger-1">
+      The Restoration of<br>Asymmetric Authority
+      <span class="gold-line"></span>
+    </h2>
+
+    <p class="body-text reveal stagger-2">
+      You and I are here because you have built an enterprise that has stood the test of time. You have scaled, you have survived, and you have led.
+    </p>
+    <p class="body-text reveal stagger-3">
+      Yet, there is a quiet, persistent recognition that the business no longer moves with the absolute clarity it once possessed. Decisions landed cleaner back then. Your market position was undisputed, and your name carried a specific, unreplicable weight that your competitors could not copy, no matter how closely they watched.
+    </p>
+    <p class="body-text reveal stagger-4">
+      That clarity wasn't the result of luck or temporary market conditions. It was the output of a precise strategic structure—a combination of messaging and positioning that worked predictably until it was quietly forgotten.
+    </p>
+
+    <div class="quote-block reveal stagger-5">
+      Most businesses of this scale do not decline because of a lack of talent; they drift. Over years of expansion, generational shifts, turnover, and the arrival of new decision-makers, the original "Golden Era" logic is replaced by reactive marketing and tactical noise.
+    </div>
+
+    <p class="body-text reveal stagger-6">
+      Legacy files disappear, and the high-leverage assets that built your empire are buried under layers of <em>"Narrative Drift."</em> For a Texas Sized Business, the cost of losing this institutional memory is catastrophic, resulting in structural blind spots that leak revenue and erode your pricing power.
+    </p>
+
+    <p class="body-text reveal">
+      We do not <strong>"create"</strong> marketing here. We practice <strong>Business Archaeology.</strong> We excavate the proven assets your business has already earned and install them as a permanent Authority System. Scaling an unstable narrative only accelerates failure; therefore, we must stabilize your institutional foundation before you invest another dollar in expansion or automation.
+    </p>
+  </div>
+</section>
+
+<hr class="gold-divider">
+
+<!-- ============================================
+     SECTION: THE ARCHITECT
+     ============================================ -->
+<section id="architect">
+  <div class="bg-overlay"></div>
+
+  <div class="section-inner architect-layout">
+    <div class="architect-image reveal-scale">
+      <div class="gemstone-3d">
+        <div class="gem-case"></div>
+        <div class="gemstone-inner">
+          <div class="gem-face front">
+            <img src="/mnt/agents/upload/5E7169A2-6D83-472D-8F7F-C2129C2D5E06.jpg" alt="Legaisee Collection">
+          </div>
+          <div class="gem-face back">
+            <img src="/mnt/agents/upload/A513688D-315B-48DD-BB89-3E4EDC267CC2.jpg" alt="Master Atelier">
+          </div>
+          <div class="gem-face left">
+            <img src="/mnt/agents/upload/EFCB73DF-D51C-4071-9296-7EBBCAAA94EC.jpg" alt="Gallery">
+          </div>
+          <div class="gem-face right">
+            <img src="/mnt/agents/upload/5E7169A2-6D83-472D-8F7F-C2129C2D5E06.jpg" alt="Collection">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="architect-content">
+      <span class="section-label reveal">The Founder</span>
+      <h2 class="section-heading reveal stagger-1">
+        The Architect
+        <span class="gold-line"></span>
+      </h2>
+
+      <p class="body-text reveal stagger-2">
+        Our founder spent three decades in the trenches of high-end broadcast, advertising, and technical production—mastering the <em>"Signal"</em> that commands attention.
+      </p>
+      <p class="body-text reveal stagger-3">
+        This methodology was born from years of working with consistent clients and noticing patterns that eventually arise over time. We combine the forensic discipline of an archivist with the DNA of a master broadcaster to ensure your business's recovered assets are displayed in a way the market can not ignore.
+      </p>
+      <p class="body-text reveal stagger-4">
+        We don't find your history; we turn it into <strong>Unavoidable Logic.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="gold-divider">
+
+<!-- ============================================
+     SECTION: THE PHILOSOPHY OF STRATEGIC CONTINUITY
+     ============================================ -->
+<section id="philosophy">
+  <img class="bg-parallax" src="/mnt/agents/upload/EFCB73DF-D51C-4071-9296-7EBBCAAA94EC.jpg" alt="" loading="lazy">
+  <div class="bg-overlay"></div>
+
+  <div class="section-inner">
+    <span class="section-label reveal">The Bedrock of Forensic Truth</span>
+    <h2 class="section-heading reveal stagger-1">
+      The Philosophy of<br>Strategic Continuity
+      <span class="gold-line"></span>
+    </h2>
+
+    <p class="body-text reveal stagger-2">
+      Traditional strategy is often built on interpretation—the subjective opinions of agencies guessing what might work next. Our discipline is built on <strong>forensic documentation.</strong>
+    </p>
+    <p class="body-text reveal stagger-3">
+      We treat your company's history as an archaeological dig worth millions, where the evidence of your greatest success is still present, waiting to be recovered.
+    </p>
+    <p class="body-text reveal stagger-4">
+      This approach is rooted in the principle of the <em>Lindy Effect:</em> the idea that the longer a strategic move has already worked, the longer it is likely to work in the future. We do not ask what the market wants today; we ask what your business has already proved it can deliver better than anyone else.
+    </p>
+
+    <div class="philosophy-grid">
+      <div class="philosophy-card reveal stagger-1">
+        <div class="philosophy-card-icon">I</div>
+        <h3>Forensic Documentation</h3>
+        <p>We treat your company's history as an archaeological dig worth millions, where evidence of your greatest success still waits to be recovered.</p>
+      </div>
+      <div class="philosophy-card reveal stagger-2">
+        <div class="philosophy-card-icon">II</div>
+        <h3>The Lindy Effect</h3>
+        <p>The longer a strategic move has already worked, the longer it is likely to work in the future. We build on proven patterns, not speculation.</p>
+      </div>
+      <div class="philosophy-card reveal stagger-3">
+        <div class="philosophy-card-icon">III</div>
+        <h3>Proven Over Predicted</h3>
+        <p>We do not ask what the market wants today. We ask what your business has already proved it can deliver better than anyone else.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="gold-divider">
+
+<section id="frameworks">
+  <div class="bg-overlay" style="background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.03) 0%, transparent 60%);"></div>
+
+  <div class="section-inner">
+    <span class="section-label reveal">The Methodology</span>
+    <h2 class="section-heading reveal stagger-1">
+      The Ten Interlocking<br>Frameworks of Reconstruction
+      <span class="gold-line"></span>
+    </h2>
+
+    <p class="body-text reveal stagger-2">
+      Our methodology is a disciplined, industry-agnostic reconstruction designed to transform scattered fragments of the past into a mechanized Authority System. It is governed by ten interlocking frameworks that ensure every strategic move is anchored in proof rather than speculation.
+    </p>
+    <p class="body-text reveal stagger-3">
+      The investigation begins with the <strong>40+ Channel Taxonomy.</strong> We reconstruct your narrative across every available signal—from early print and radio archives to modern digital footprints and internal financial filings—tracing your footprint from the 1890s to the present, examining eight major classes of data: Advertising and Marketing history, Financial Records and Public Filings, Operations and Infrastructure, Digital Presence, Brand Voice and Communications, Personnel and Leadership history, Customer and Market Data, and the Competitive Landscape.
+    </p>
+    <p class="body-text reveal stagger-4">
+      This ensures methodical coverage, mapping not just what was said, but how the market interpreted those signals across different cultural and media eras.
+    </p>
+
+    <div class="quote-block reveal stagger-5">
+      Accuracy is maintained through the 3-Source Rule: no significant strategic claim is authorized without two independent sources or one Tier 1 verified primary source from our Hierarchy of Truth.
+    </div>
+
+    <p class="body-text reveal stagger-6">
+      All information is graded via our <strong>Source Hierarchy,</strong> ranging from Tier 1 (Verified Primary Evidence) to Tier 4 (Uncertain or Speculative). When institutional memory inevitably conflicts—such as a legacy financial ledger contradicting a founder's recollection—we apply the <strong>Triangulation Protocol,</strong> where conflicting accounts are recorded verbatim and synthesized into a single, defensible record of truth.
+    </p>
+    <p class="body-text reveal">
+      We do not cherry-pick the cleanest story; we synthesize the version of truth that coexists logically across all validated signals to produce a single, defensible record for executive decision-making.
+    </p>
+  </div>
+</section>
+
+<hr class="gold-divider">
+
+<!-- ============================================
+     SECTION: THE HIERARCHY OF TRUTH
+     ============================================ -->
+<section id="hierarchy" style="background: linear-gradient(to bottom, var(--black-pure) 0%, #0f0a05 30%, #1a1408 70%, var(--black-pure) 100%);">
+  <div class="bg-overlay" style="background: radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.06) 0%, transparent 50%);"></div>
+
+  <div class="section-inner">
+    <span class="section-label reveal">The Grading System</span>
+    <h2 class="section-heading reveal stagger-1">
+      The Hierarchy of Truth:<br>Tiers 1 through 4
+      <span class="gold-line"></span>
+    </h2>
+
+    <p class="body-text reveal stagger-2">
+      In a high-stakes corporate environment, a million-dollar decision cannot be built on a hunch or a fuzzy memory. This is why we treat information with the same rigor as an intelligence brief.
+    </p>
+    <p class="body-text reveal stagger-3">
+      We don't just "find" information; <strong>we grade it!</strong> Every signal we exhumed is categorized on a four-tier scale to establish a measurable confidence level before it ever touches your strategy.
+    </p>
+
+    <div class="tier-system">
+      <div class="tier-card reveal-left stagger-1">
+        <div class="tier-number">01</div>
+        <div class="tier-content">
+          <h3>Tier 1: The Verified Primary</h3>
+          <p>This is the gold standard—irrefutable, documented evidence. Think of an original 1994 technical publication, a signed legal filing, or a physical 35mm master of a peak-era commercial. This is data that requires no interpretation because it exists as a primary artifact.</p>
+        </div>
+      </div>
+
+      <div class="tier-card reveal-right stagger-2">
+        <div class="tier-number">02</div>
+        <div class="tier-content">
+          <h3>Tier 2: The Probable</h3>
+          <p>These are highly credible secondary sources. This might be a detailed internal report from a former marketing director or a consistent pattern of press coverage from reputable trade journals during your "Golden Era." It is solid, reliable, and carries significant weight in our triangulation.</p>
+        </div>
+      </div>
+
+      <div class="tier-card reveal-left stagger-3">
+        <div class="tier-number">03</div>
+        <div class="tier-content">
+          <h3>Tier 3: The Plausible</h3>
+          <p>This represents reasonable assumptions supported by context. When we see your revenue spike alongside a specific cultural shift, and three different former employees vaguely recall a "handshake agreement" that changed your positioning, we have a plausible signal. It is a thread worth pulling, but it is not yet a foundation.</p>
+        </div>
+      </div>
+
+      <div class="tier-card reveal-right stagger-4">
+        <div class="tier-number">04</div>
+        <div class="tier-content">
+          <h3>Tier 4: The Uncertain</h3>
+          <p>This is the realm of the speculative or the conflicting. It might be a founder's memory that contradicts every financial ledger we've exhumed, or a "ghost page" on the deep web that suggests a direction you never actually took. We record these contradictions transparently rather than hiding them, because sometimes the friction between what was said and what happened is where the most valuable truth is buried.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="gold-divider">
+
+<!-- ============================================
+     SECTION: THE TAXONOMY OF THE UNSEEN
+     ============================================ -->
+<section id="taxonomy" style="background: linear-gradient(to bottom, var(--black-pure) 0%, var(--violet-deep) 100%);">
+  <img class="bg-parallax" src="/Images/placeholder-gallery-1.jpg" alt="" loading="lazy">
+  <div class="bg-overlay" style="background: radial-gradient(ellipse at 30% 50%, rgba(45,27,78,0.25) 0%, transparent 60%);"></div>
+
+  <div class="section-inner">
+    <span class="section-label reveal">The Eight Classes of Evidence</span>
+    <h2 class="section-heading reveal stagger-1">
+      The Taxonomy of the Unseen
+      <span class="gold-line"></span>
+    </h2>
+
+    <p class="body-text reveal stagger-2">
+      To find your "Golden Era" inflection point, we scan the horizon across eight major classes of data.
+    </p>
+
+    <div class="taxonomy-grid">
+      <div class="taxonomy-item reveal stagger-1">
+        <div class="taxonomy-icon">I</div>
+        <h4>Advertising &amp; Marketing History</h4>
+        <p>Searching for past professional investments like "Addy Awards" and press archives that prove you were once the premier educator in your field.</p>
+      </div>
+      <div class="taxonomy-item reveal stagger-2">
+        <div class="taxonomy-icon">II</div>
+        <h4>Financial Records &amp; Public Filings</h4>
+        <p>Searching for comparative budget lines that reveal exactly when high-leverage assets were abandoned.</p>
+      </div>
+      <div class="taxonomy-item reveal stagger-3">
+        <div class="taxonomy-icon">III</div>
+        <h4>Operations &amp; Infrastructure</h4>
+        <p>Examining historical architectural decisions and site locations that correlate with revenue peaks.</p>
+      </div>
+      <div class="taxonomy-item reveal stagger-4">
+        <div class="taxonomy-icon">IV</div>
+        <h4>Digital Presence</h4>
+        <p>Going deep to scrape "ghost" pages—abandoned URLs still indexed but forgotten by your current team.</p>
+      </div>
+      <div class="taxonomy-item reveal stagger-1">
+        <div class="taxonomy-icon">V</div>
+        <h4>Brand Voice &amp; Communications</h4>
+        <p>Modeling your Brand Voice through discontinued technical publications and deep-narrative catalogs.</p>
+      </div>
+      <div class="taxonomy-item reveal stagger-2">
+        <div class="taxonomy-icon">VI</div>
+        <h4>Personnel &amp; Leadership</h4>
+        <p>Utilizing "ghost employee" tracking to find former directors and reconstruct the strategies used during their tenures.</p>
+      </div>
+      <div class="taxonomy-item reveal stagger-3">
+        <div class="taxonomy-icon">VII</div>
+        <h4>Customer &amp; Market Data</h4>
+        <p>Scraping from unconventional sources to hear the authentic language of your market.</p>
+      </div>
+      <div class="taxonomy-item reveal stagger-4">
+        <div class="taxonomy-icon">VIII</div>
+        <h4>Competitive Landscape</h4>
+        <p>Monitoring which rivals occupied the "Competitive Gap" you left behind.</p>
+      </div>
+    </div>
+
+    <p class="body-text reveal" style="margin-top: 50px;">
+      Findings are treated as a <strong>Continuous Verification Model,</strong> a living system where reports are updated as new evidence of your company's excellence surfaces. Once recovered, your brand is modeled through the <strong>8-Dimension Voice Profile,</strong> mapping your unique communication DNA across vocabulary, sentence architecture, humor, perspective, transitions, calls-to-action, evidence style, and visual language.
+    </p>
+    <p class="body-text reveal">
+      We prioritize <strong>ROI Triggers,</strong> focusing on businesses with significant pre-2010 investments or those undergoing transitions. This results in <strong>Competitive Asymmetry:</strong> surfacing internal advantages your rivals cannot see and giving you an unavoidable market logic.
+    </p>
+  </div>
+</section>
+
+<hr class="gold-divider">
+
+<!-- ============================================
+     SECTION: INDUSTRY-SPECIFIC DIG SITES
+     ============================================ -->
+<section id="industries" style="background: var(--violet-deep);">
+  <div class="bg-overlay" style="background: radial-gradient(ellipse at 70% 50%, rgba(45,27,78,0.4) 0%, transparent 60%);"></div>
+
+  <div class="section-inner">
+    <span class="section-label reveal">Specialized Excavation</span>
+    <h2 class="section-heading reveal stagger-1">
+      Industry-Specific<br>Dig Sites
+      <span class="gold-line"></span>
+    </h2>
+
+    <p class="body-text reveal stagger-2">
+      While our protocols are rigid, our focus shifts to align with the unique value drivers of your industry.
+    </p>
+
+    <div class="industry-grid">
+      <div class="industry-card reveal stagger-1">
+        <h4>Manufacturing</h4>
+        <p>We focus on <strong>Technical Depth,</strong> reconstructing legacy technical publications to move you from a commodity provider to a premier educator.</p>
+      </div>
+      <div class="industry-card reveal stagger-2">
+        <h4>Professional Services</h4>
+        <p>We emphasize <strong>Institutional Reputation Recovery,</strong> ensuring modern AI-driven content carries the intellectual weight of your founding partners.</p>
+      </div>
+      <div class="industry-card reveal stagger-3">
+        <h4>Healthcare &amp; Med</h4>
+        <p>We focus on <strong>Institutional Trust,</strong> using our Source Hierarchy to build a narrative of reliability on defensible medical legacy.</p>
+      </div>
+      <div class="industry-card reveal stagger-4">
+        <h4>Energy &amp; Utilities</h4>
+        <p>We reconnect current growth plans with original pioneering logic, investigating pre-2010 communication to restore mission clarity.</p>
+      </div>
+      <div class="industry-card reveal stagger-1">
+        <h4>Financial Services</h4>
+        <p>We prioritize <strong>Source Triangulation</strong> to identify the "Golden Era" of client retention and reconstruct communication structures that lead through market cycles.</p>
+      </div>
+      <div class="industry-card reveal stagger-2">
+        <h4>Real Estate</h4>
+        <p>We focus on <strong>Provenance and Property Narrative,</strong> tracing development histories from the 1890s to justify premium pricing.</p>
+      </div>
+      <div class="industry-card reveal stagger-3">
+        <h4>B2B Technology &amp; Private Equity</h4>
+        <p>We function as a <strong>Revenue Leak Detection System,</strong> stabilizing the narrative before scaling to improve exit multiples and valuation.</p>
+      </div>
+      <div class="industry-card reveal stagger-4">
+        <h4>Luxury Goods</h4>
+        <p>Our methodology aligns with your brand's heritage, excavating authentic artifacts to justify extreme pricing power.</p>
+      </div>
+      <div class="industry-card reveal stagger-1">
+        <h4>Higher Education</h4>
+        <p>We leverage <strong>Long-form Authority,</strong> reframing the institution as a timeless authority to appeal to major donors.</p>
+      </div>
+      <div class="industry-card reveal stagger-2">
+        <h4>Hospitality</h4>
+        <p>We conduct forensic excavations into the "Peak Era" of guest experience to restore high-margin service standards.</p>
+      </div>
+    </div>
+
+    <p class="body-text reveal" style="margin-top: 50px;">
+      Our research depth is facilitated by the <strong>Private Archaeology Protocol,</strong> which accesses digital, physical, and human artifacts typically unavailable to standard marketers, such as non-public records, legacy databases, and firsthand oral histories. This is a <strong>Continuous Verification Model,</strong> where findings are treated as living documents, updated as new evidence of your company's excellence surfaces.
+    </p>
+  </div>
+</section>
+
+<hr class="gold-divider">
+
+<!-- ============================================
+     SECTION: THE 8-DIMENSION VOICE PROFILE
+     ============================================ -->
+<section id="voice-profile" style="background: linear-gradient(to bottom, var(--violet-deep) 0%, var(--black-pure) 100%);">
+  <div class="bg-overlay" style="background: radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.04) 0%, transparent 50%);"></div>
+
+  <div class="section-inner">
+    <span class="section-label reveal">The Linguistic Blueprint</span>
+    <h2 class="section-heading reveal stagger-1">
+      The 8-Dimension<br>Voice Profile
+      <span class="gold-line"></span>
+    </h2>
+
+    <p class="body-text reveal stagger-2">
+      <em>Authenticity cannot be faked; it must be modeled.</em>
+    </p>
+    <p class="body-text reveal stagger-3">
+      When we move from excavation to reconstruction, we use an 8-Dimension Voice Profile to ensure that any AI-driven system or new content behaves exactly like your Peak Era. We don't just give you a "brand guide"; we map your company's communication DNA across eight specific linguistic dimensions:
+    </p>
+
+    <div class="voice-dimensions">
+      <div class="voice-dim reveal-left stagger-1">
+        <span class="dim-number">01</span>
+        <div>
+          <h4>Vocabulary</h4>
+          <p>The specific lexicon unique to your brand's authority.</p>
+        </div>
+      </div>
+      <div class="voice-dim reveal-right stagger-2">
+        <span class="dim-number">02</span>
+        <div>
+          <h4>Sentence Architecture</h4>
+          <p>The structural patterns, rhythm, and complexity of your speech.</p>
+        </div>
+      </div>
+      <div class="voice-dim reveal-left stagger-3">
+        <span class="dim-number">03</span>
+        <div>
+          <h4>Humor and Tone</h4>
+          <p>The characteristic wit and emotional quality that defines your prestige.</p>
+        </div>
+      </div>
+      <div class="voice-dim reveal-right stagger-4">
+        <span class="dim-number">04</span>
+        <div>
+          <h4>Perspective</h4>
+          <p>The point of view from which your business communicates to the world.</p>
+        </div>
+      </div>
+      <div class="voice-dim reveal-left stagger-1">
+        <span class="dim-number">05</span>
+        <div>
+          <h4>Transitions and Flow</h4>
+          <p>How your ideas connect and the cadence of your delivery.</p>
+        </div>
+      </div>
+      <div class="voice-dim reveal-right stagger-2">
+        <span class="dim-number">06</span>
+        <div>
+          <h4>Calls-to-Action</h4>
+          <p>The specific, often subtle way your brand prompts its audience to move.</p>
+        </div>
+      </div>
+      <div class="voice-dim reveal-left stagger-3">
+        <span class="dim-number">07</span>
+        <div>
+          <h4>Evidence Style</h4>
+          <p>The manner in which you provide proof and establish your intellectual authority.</p>
+        </div>
+      </div>
+      <div class="voice-dim reveal-right stagger-4">
+        <span class="dim-number">08</span>
+        <div>
+          <h4>Visual Language</h4>
+          <p>The aesthetic cues and imagery that reinforce your spoken and written message.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="body-text reveal" style="margin-top: 50px;">
+      By mapping these dimensions, we ensure that the "Master Operations Doctrine" we build for you doesn't just sound like you—it <strong>acts like you,</strong> preserving your authority without requiring your constant presence. We prioritize ROI Triggers, focusing on businesses with significant pre-2010 investments or those undergoing founder transitions where the highest value is typically buried. The final result is Competitive Asymmetry, surfacing internal advantages your rivals cannot see and giving you an unavoidable market logic.
+    </p>
+  </div>
+</section>
+
+<hr class="gold-divider">
+
+<!-- ============================================
+     SECTION: THE EXHIBITS OF RESTORATION
+     ============================================ -->
+<section id="exhibits" style="background: linear-gradient(to bottom, var(--black-pure) 0%, #0f0a05 20%, #1a1408 60%, var(--black-pure) 100%);">
+  <div class="bg-overlay" style="background: radial-gradient(ellipse at 50% 40%, rgba(201,168,76,0.05) 0%, transparent 50%);"></div>
+
+  <div class="section-inner">
+    <span class="section-label reveal">The Gallery</span>
+    <h2 class="section-heading reveal stagger-1">
+      The Exhibits of Restoration
+      <span class="gold-line"></span>
+    </h2>
+
+    <p class="body-text reveal stagger-2">
+      The work unfolds in a natural order, for every attempt to shortcut this sequence leads to the same failure. We present our services as Exhibits in a private gallery, each producing the artifact required for the next.
+    </p>
+
+    <div class="exhibits-container">
+      <div class="exhibit-item reveal stagger-1">
+        <div class="exhibit-phase">Phase 0</div>
+        <div class="exhibit-content">
+          <h3>The Surface Survey</h3>
+          <div class="exhibit-price">$2,500</div>
+          <p>A complete mapping of surface signals to determine if recoverable authority exists.</p>
+        </div>
+      </div>
+
+      <div class="exhibit-item reveal stagger-2">
+        <div class="exhibit-phase">Exhibit A</div>
+        <div class="exhibit-content">
+          <h3>The Archaeological Excavation <span class="exhibit-sub">(Forensic Discovery)</span></h3>
+          <div class="exhibit-price">$5,000 – $7,500</div>
+          <p>This is a high-stakes investigation into your company's "Institutional Blind Spots". We extract signals from customer reviews, lost deal explanations, and legacy campaigns to find the "Raw Stone" in your archives. The deliverable is a <strong>Decision-Grade Executive Briefing</strong> (30–50 pages) structured for your Board of Directors. It identifies "Revenue Leaks" and immediately reactivates abandoned assets worth millions.</p>
+        </div>
+      </div>
+
+      <div class="exhibit-item reveal stagger-3">
+        <div class="exhibit-phase">Exhibit B</div>
+        <div class="exhibit-content">
+          <h3>The Lapidary <span class="exhibit-sub">(Strategic Refinement, The Authority System Build)</span></h3>
+          <div class="exhibit-price">$8,500 – $18,000</div>
+          <p>We take the proven voice of your peak era and rebuild it into a living, AI-driven Authority System. This is the move from understanding to implementation, creating a <strong>Master Operations Doctrine</strong> that ensures your messaging and publishing operate with rhythmic, mechanized precision.</p>
+        </div>
+      </div>
+
+      <div class="exhibit-item reveal stagger-4">
+        <div class="exhibit-phase">Exhibit C</div>
+        <div class="exhibit-content">
+          <h3>The Mounting <span class="exhibit-sub">(Prestige Authority, Strategic Partnership)</span></h3>
+          <div class="exhibit-price">Starting at $4,500 / Month</div>
+          <p>Ongoing course correction and preservation of your asymmetric advantage. We do not replace your internal teams; we provide the structure they have been missing. We integrate with your existing Legal, Finance, and PR departments to monitor market signals and ensure "Narrative Drift" never returns. This preserves your asymmetric advantage in real-time, providing the oversight and context needed to prevent the system from degrading over time.</p>
+        </div>
+      </div>
+
+      <div class="exhibit-item reveal stagger-1">
+        <div class="exhibit-phase">Exhibit D</div>
+        <div class="exhibit-content">
+          <h3>The CAMERA Authority Framework™ <span class="exhibit-sub">(Executive Signal)</span></h3>
+          <div class="exhibit-price">$6,500 – $7,500</div>
+          <p>Direct C-suite coaching to turn the executive into the market's primary signal. At the highest level of Texas business, the market responds to the signal of the leader. We leverage 30 years of broadcast and advertising judgment to turn the CEO into the market's primary signal through: <strong>Character Positioning, Audience Psychology, Monetization Alignment, Engagement Engineering, Repurposing Infrastructure,</strong> and <strong>AI Acceleration.</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="section-subheading reveal" style="margin-top: 80px;">Private Commissions</h3>
+
+    <div class="private-commissions">
+      <div class="commission-card reveal stagger-1">
+        <h4>Exhibit E: The Master Craftsman's Presence</h4>
+        <div class="commission-price">$18,000/mo</div>
+        <p>Provides personalization-set direction for high-stakes shoots, ensuring every frame serves the Authority Blueprint.</p>
+      </div>
+      <div class="commission-card reveal stagger-2">
+        <h4>Exhibit F: Estate &amp; Provenance Appraisal</h4>
+        <div class="commission-price">$25,000 – $50,000</div>
+        <p>For those preparing for a sale or succession, this documents your market authority as verifiable intellectual property, increasing <strong>Enterprise Value (EV)</strong> and exit multiples.</p>
+      </div>
+      <div class="commission-card reveal stagger-3">
+        <h4>Exhibit G: The Curator's Secret Intelligence</h4>
+        <div class="commission-price">$35,000/qtr</div>
+        <p>An invitation-only brief providing pattern recognition derived from our full collection of cross-client data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="gold-divider">
+
+<!-- ============================================
+     SECTION: THE EVIDENCE OF RESTORATION
+     ============================================ -->
+<section id="evidence" style="background: var(--black-pure);">
+  <img class="bg-parallax" src="/Images/placeholder-gallery-2.jpg" alt="" loading="lazy">
+  <div class="bg-overlay" style="background: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.5) 0%, var(--black-pure) 80%);"></div>
+
+  <div class="section-inner">
+    <span class="section-label reveal">The Proof</span>
+    <h2 class="section-heading reveal stagger-1">
+      The Evidence of Restoration
+      <span class="gold-line"></span>
+    </h2>
+
+    <p class="body-text reveal stagger-2">
+      These are not success stories; they are reconstructions of lost value.
+    </p>
+
+    <div class="cases-grid">
+      <div class="case-card reveal stagger-1">
+        <div class="case-number">Case I</div>
+        <h4>The Membership That Disappeared</h4>
+        <p>A $30M service company hit a growth plateau. Our audit found that ten years prior, they had a "Membership Mechanism" that drove 60% of revenue, but it was abandoned by a new hire for short-term discounts. We restored the structure, and recurring revenue reappeared within months.</p>
+      </div>
+      <div class="case-card reveal stagger-2">
+        <div class="case-number">Case II</div>
+        <h4>The Reputation No One Was Using</h4>
+        <p>A three-generation firm had reduced itself to competing on cost. Our excavation uncovered a discontinued technical publication from 1995 that established them as a premier educator. By reconstructing this voice through modern AI, we moved them from negotiating price to leading the conversation.</p>
+      </div>
+      <div class="case-card reveal stagger-3">
+        <div class="case-number">Case III</div>
+        <h4>The Authority That Was Replaced by Price</h4>
+        <p>A company reduced itself by shifting from expertise-based communication to price-based competition for convenience. We reframed their communication around knowledge, moving them back to a position where they no longer had to justify themselves through cost.</p>
+      </div>
+      <div class="case-card reveal stagger-4">
+        <div class="case-number">Case IV</div>
+        <h4>The Catalog That Outperformed the Website</h4>
+        <p>A brand lost $20M in LTV by "modernizing" to a speed-focused website, removing the deep-narrative catalogs that originally built their trust. We re-mounted these depth-heavy environments as a modern environment where customers could "imagine" rather than just "browse".</p>
+      </div>
+    </div>
+
+    <div class="metrics-section reveal">
+      <h3 class="section-subheading">How We Measure Success</h3>
+      <p class="body-text">
+        We measure success through <strong>Forensic CAC</strong>—the total capital allocated to recover your signal, including C-suite time and specialized internal teams. We do not sell deliverables; we install <strong>Institutional Infrastructure</strong> that increases Enterprise Value (EV) and Exit Multiples. Private Equity firms pay a premium for the stability and documented "Proven Success Patterns" we provide.
+      </p>
+      <p class="body-text">
+        Our <strong>Restoration ROI</strong> tracks the revenue generated from reactivating abandoned assets minus the archaeology costs. For the Texas giant, the goal is an <strong>LTV:CAC Authority Ratio</strong> of at least 3:1, ensuring your authority is a sustainable asset that decreases market friction over time.
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="gold-divider">
+
+<!-- ============================================
+     SECTION: THE PRIVATE RECORD (FAQ)
+     ============================================ -->
+<section id="private-record" style="background: linear-gradient(to bottom, var(--black-pure) 0%, var(--violet-deep) 100%);">
+  <div class="bg-overlay" style="background: radial-gradient(ellipse at 30% 50%, rgba(45,27,78,0.2) 0%, transparent 60%);"></div>
+
+  <div class="section-inner">
+    <span class="section-label reveal">Conversations Before Commitment</span>
+    <h2 class="section-heading reveal stagger-1">
+      The Private Record
+      <span class="gold-line"></span>
+    </h2>
+
+    <div class="faq-container">
+      <div class="faq-item reveal stagger-1">
+        <h4>How is this different from market research?</h4>
+        <p>Market research looks outward at trends; we look inward at your specific, proven "Golden Era" evidence. When we begin there, strategy stops being speculative and becomes reconstructive.</p>
+      </div>
+      <div class="faq-item reveal stagger-2">
+        <h4>What if we don't have archives?</h4>
+        <p>History doesn't disappear; it fragments. We triangulate signals from public records, digital archives, and institutional memory to reconstruct the pattern.</p>
+      </div>
+      <div class="faq-item reveal stagger-3">
+        <h4>Do we have to use AI?</h4>
+        <p>No one is handing control to a machine. We use AI for scale, allowing your specific voice and thinking to be expressed consistently without requiring your constant presence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="gold-divider">
+
+<!-- ============================================
+     SECTION: THE EXPANDED GALLERY
+     ============================================ -->
+<section id="expanded-gallery" style="background: var(--violet-deep);">
+  <div class="bg-overlay" style="background: radial-gradient(ellipse at 70% 50%, rgba(45,27,78,0.3) 0%, transparent 60%);"></div>
+
+  <div class="section-inner">
+    <span class="section-label reveal">Specialized Commissions</span>
+    <h2 class="section-heading reveal stagger-1">
+      The Expanded Gallery
+      <span class="gold-line"></span>
+    </h2>
+
+    <p class="body-text reveal stagger-2">
+      While our standard Exhibits—Excavation, Lapidary, Mounting, and CAMERA—form the backbone of our system, the true power of Business Archaeology is found in our Private Commissions. These are highly specialized services designed for the unique complexities of multi-million dollar transitions and the preservation of monumental legacy.
+    </p>
+
+    <div class="expanded-commissions">
+      <div class="expanded-card reveal stagger-1">
+        <div class="expanded-header">
+          <h3>The Master Craftsman's Presence</h3>
+          <div class="expanded-price">$18,000 / month</div>
+        </div>
+        <p>There are moments when the stakes of a production are too high to delegate to a standard crew. In this commission, the Architect personally directs the work. We aren't there to "haul gear" or run "cameras"; we are there to Produce, Direct, and ensure that every frame of a high-stakes shoot serves the Authority Blueprint. We oversee the production elite to ensure that the final cut reflects the precision of your restored voice.</p>
+      </div>
+
+      <div class="expanded-card reveal stagger-2">
+        <div class="expanded-header">
+          <h3>The Estate &amp; Provenance Appraisal</h3>
+          <div class="expanded-price">$25,000 – $50,000</div>
+        </div>
+        <p>This is a CFO-level conversation, not a marketing one. For the firm preparing for a sale, a generational transition, or a capital raise, we document your market authority as <strong>Verifiable Intellectual Property.</strong> We package your "Proven Success Patterns" and historical provenance into a dossier that reduces due diligence friction and significantly increases your Enterprise Value (EV) and exit multiples.</p>
+      </div>
+
+      <div class="expanded-card reveal stagger-3">
+        <div class="expanded-header">
+          <h3>The Curator's Secret Intelligence</h3>
+          <div class="expanded-price">$35,000 / quarter</div>
+        </div>
+        <p>This is our most exclusive tier, available by invitation only. Because we operate across multiple businesses, we see industry-wide authority shifts that no single business can detect. We provide an anonymized, high-level pattern recognition brief that highlights "Competitive Gaps" and early-warning signals, giving you a landscape view that preserves your asymmetric advantage in perpetuity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="gold-divider">
+
+<!-- ============================================
+     SECTION: THE SHALLOW DIG
+     ============================================ -->
+<section id="shallow-dig" style="background: linear-gradient(to bottom, var(--violet-deep) 0%, var(--black-pure) 40%, #0f0a05 100%);">
+  <div class="bg-overlay" style="background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.04) 0%, transparent 50%);"></div>
+
+  <div class="section-inner" style="text-align: center;">
+    <span class="section-label reveal">The Gatekeeper</span>
+    <h2 class="section-heading reveal stagger-1" style="max-width: 800px; margin-left: auto; margin-right: auto;">
+      The Shallow Dig:<br>Your Institutional Snapshot
+      <span class="gold-line" style="margin-left: auto; margin-right: auto;"></span>
+    </h2>
+
+    <div class="shallow-dig-price reveal stagger-2">$2,500</div>
+
+    <p class="body-text reveal stagger-3" style="max-width: 700px; margin-left: auto; margin-right: auto;">
+      Before we commit to a full excavation, we perform a surface-level mapping of your public footprint—reviewing competitive signals and legacy echo patterns. <strong>We do not dig where there is no stone.</strong> This report is the map that tells us where your buried authority is and if it is recoverable.
+    </p>
+
+    <div class="quote-block reveal stagger-4" style="max-width: 700px; margin-left: auto; margin-right: auto; text-align: left;">
+      There is a version of your business that worked better than this one, and we can surface the first signal of that version Today! This is not a "lead magnet"; it is a rapid, surface-level excavation across your digital footprint to identify your Estimated Golden Era, one Abandoned Asset, the Competitive Gap that your rivals filled when you drifted, and one undeniable inflection point worth your attention.
+    </div>
+
+    <a href="#registry" class="hero-cta reveal stagger-5" style="margin-top: 50px;">
+      Request Access to the Registry
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2h8v8M12 2L4 10" stroke="currentColor" stroke-width="1.5"/></svg>
+    </a>
+  </div>
+</section>
+
+<hr class="gold-divider">
+
+<!-- ============================================
+     VAULT DOOR SECTION — ENTRY TO REGISTRY
+     ============================================ -->
+<section id="vault-entry" style="background: var(--black-pure); padding: 0; min-height: 600px;">
+  <div class="bg-overlay" style="background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.03) 0%, transparent 60%);"></div>
+
+  <div class="vault-container" id="vault-container">
+    <div class="vault-door" id="vault-door">
+      <div class="vault-wheel"></div>
+      <div class="vault-label">The Registry Vault</div>
+    </div>
+    <div class="vault-content">
+      <span class="section-label" style="text-align:center; display:block;">Access Granted</span>
+      <h2 class="section-heading" style="text-align:center;">
+        The Private Registry
+        <span class="gold-line" style="margin: 25px auto 0;"></span>
+      </h2>
+      <p class="body-text" style="text-align:center; max-width: 600px; margin: 30px auto;">
+        You have reached the threshold. Complete the form below to request access to the Registry. Each submission is reviewed personally.
+      </p>
+      <a href="#contact-form" class="hero-cta" style="margin: 0 auto; display: inline-flex;">
+        Proceed to Registry
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2h8v8M12 2L4 10" stroke="currentColor" stroke-width="1.5"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<hr class="gold-divider">
+
+<!-- ============================================
+     CONTACT / REGISTRY FORM
+     ============================================ -->
+<section id="registry" class="contact-section">
+  <div class="section-inner" style="max-width: 700px;">
+    <span class="section-label reveal">Request Access</span>
+    <h2 class="section-heading reveal stagger-1" style="text-align: center;">
+      The Registry
+      <span class="gold-line" style="margin: 25px auto 0;"></span>
+    </h2>
+
+    <p class="body-text reveal stagger-2" style="text-align: center;">
+      Submit your inquiry. Each request is reviewed personally by the Architect.
+    </p>
+
+    <form class="contact-form reveal stagger-3" action="mailto:john@legaisee.com" method="post" enctype="text/plain">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@company.com" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company" placeholder="Company name">
+        </div>
+        <div class="form-group">
+          <label for="revenue">Annual Revenue</label>
+          <select id="revenue" name="revenue">
+            <option value="">Select range...</option>
+            <option value="5m-10m">$5M – $10M</option>
+            <option value="10m-25m">$10M – $25M</option>
+            <option value="25m-50m">$25M – $50M</option>
+            <option value="50m+">$50M+</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="years">Years in Operation</label>
+        <input type="number" id="years" name="years" placeholder="e.g., 25" min="1">
+      </div>
+
+      <div class="form-group">
+        <label for="message">Your Situation</label>
+        <textarea id="message" name="message" placeholder="Describe what you believe has been lost, and why now is the moment to recover it..."></textarea>
+      </div>
+
+      <div style="text-align: center;">
+        <button type="submit" class="form-submit">
+          Submit to the Registry
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2h8v8M12 2L4 10" stroke="currentColor" stroke-width="1.5"/></svg>
+        </button>
+      </div>
+    </form>
+
+    <div class="contact-email reveal">
+      Or reach directly:<br>
+      <a href="mailto:john@legaisee.com">john@legaisee.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer>
+  <div class="section-inner" style="text-align: center;">
+    <div class="footer-logo">
+      <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAISEE">
+    </div>
+    <h2 class="section-heading reveal" style="font-size: clamp(1.3rem, 3vw, 2rem);">
+      LEGAISEE
+    </h2>
+    <p class="body-text reveal" style="max-width: 500px; margin: 15px auto 30px; font-size: 1rem;">
+      Business Archaeology &amp; Authority Systems<br>
+      <span style="color: var(--gold-dim);">Texas · Nationally Relevant</span>
+    </p>
+
+    <div class="footer-links reveal">
+      <a href="#restoration">Philosophy</a>
+      <a href="#frameworks">Methodology</a>
+      <a href="#exhibits">Exhibits</a>
+      <a href="#evidence">Evidence</a>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <p class="footer-copyright">
+      © 2026 LEGAISEE. All rights reserved.<br>
+      <span style="color: var(--gold-dim); font-size: 0.8rem;">The Restoration of Asymmetric Authority</span>
+    </p>
+  </div>
+</footer>
+
+<!-- ============================================
+     JAVASCRIPT — ALL INTERACTIVE SYSTEMS
+     ============================================ -->
+<script>
+// ============================================
+// DUST PARTICLE ATMOSPHERE
+// ============================================
+const dustCanvas = document.getElementById('dust-canvas');
+const dustCtx = dustCanvas.getContext('2d');
+let dustParticles = [];
+const DUST_COUNT = 80;
+
+function resizeDustCanvas() {
+  dustCanvas.width = window.innerWidth;
+  dustCanvas.height = window.innerHeight;
+}
+resizeDustCanvas();
+window.addEventListener('resize', resizeDustCanvas);
+
+class DustParticle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random() * dustCanvas.width;
+    this.y = Math.random() * dustCanvas.height;
+    this.size = Math.random() * 2 + 0.5;
+    this.speedX = (Math.random() - 0.5) * 0.3;
+    this.speedY = (Math.random() - 0.5) * 0.2 - 0.1;
+    this.opacity = Math.random() * 0.4 + 0.1;
+    this.twinkle = Math.random() * Math.PI * 2;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.twinkle += 0.02;
+    if (this.x < -10 || this.x > dustCanvas.width + 10 || this.y < -10 || this.y > dustCanvas.height + 10) {
+      this.reset();
+    }
+  }
+  draw() {
+    const flicker = Math.sin(this.twinkle) * 0.15 + this.opacity;
+    dustCtx.beginPath();
+    dustCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    dustCtx.fillStyle = `rgba(201, 168, 76, ${flicker})`;
+    dustCtx.fill();
+  }
+}
+
+for (let i = 0; i < DUST_COUNT; i++) {
+  dustParticles.push(new DustParticle());
+}
+
+function animateDust() {
+  dustCtx.clearRect(0, 0, dustCanvas.width, dustCanvas.height);
+  dustParticles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animateDust);
+}
+animateDust();
+
+// ============================================
+// SPOTLIGHT CURSOR FOLLOW
+// ============================================
+const spotlight = document.getElementById('spotlight');
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+let spotlightX = mouseX;
+let spotlightY = mouseY;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animateSpotlight() {
+  spotlightX += (mouseX - spotlightX) * 0.08;
+  spotlightY += (mouseY - spotlightY) * 0.08;
+  spotlight.style.left = spotlightX + 'px';
+  spotlight.style.top = spotlightY + 'px';
+  requestAnimationFrame(animateSpotlight);
+}
+animateSpotlight();
+
+// ============================================
+// MOBILE MENU
+// ============================================
+function toggleMobileMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+function closeMobileMenu() {
+  document.getElementById('mobile-menu').classList.remove('open');
+}
+
+// ============================================
+// NAVIGATION SCROLL EFFECT
+// ============================================
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+// ============================================
+// SCROLL REVEAL OBSERVER
+// ============================================
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+  revealObserver.observe(el);
+});
+
+// ============================================
+// PARALLAX BACKGROUND SCROLL
+// ============================================
+const parallaxImages = document.querySelectorAll('.bg-parallax');
+window.addEventListener('scroll', () => {
+  parallaxImages.forEach(img => {
+    const rect = img.parentElement.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      const offset = (window.innerHeight - rect.top) * 0.03;
+      img.style.transform = `translateY(${offset}px)`;
+    }
+  });
+});
+
+// ============================================
+// SMOOTH SCROLL FOR ANCHOR LINKS
+// ============================================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// ============================================
+// VAULT DOOR REVEAL ON SCROLL
+// ============================================
+const vaultContainer = document.getElementById('vault-container');
+const vaultDoor = document.getElementById('vault-door');
+
+const vaultObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !vaultDoor.classList.contains('open')) {
+      setTimeout(() => {
+        vaultDoor.classList.add('open');
+        vaultContainer.classList.add('revealed');
+      }, 800);
+    }
+  });
+}, { threshold: 0.4 });
+
+if (vaultContainer) {
+  vaultObserver.observe(vaultContainer);
+}
+
+// ============================================
+// GEMSTONE MOUSE TILT (3D depth)
+// ============================================
+document.querySelectorAll('.gemstone-3d').forEach(gem => {
+  gem.addEventListener('mousemove', (e) => {
+    const rect = gem.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    const inner = gem.querySelector('.gemstone-inner');
+    if (inner) {
+      inner.style.animation = 'none';
+      inner.style.transform = `rotateY(${x * 30}deg) rotateX(${-y * 20}deg)`;
+    }
+  });
+  gem.addEventListener('mouseleave', () => {
+    const inner = gem.querySelector('.gemstone-inner');
+    if (inner) {
+      inner.style.animation = 'gemRotate 20s linear infinite';
+    }
+  });
+});
+
+// ============================================
+// TEXT CHARACTER REVEAL
+// ============================================
+function splitTextToChars(element) {
+  const text = element.textContent;
+  element.innerHTML = '';
+  text.split('').forEach((char, i) => {
+    const span = document.createElement('span');
+    span.textContent = char === ' ' ? ' ' : char;
+    span.style.transitionDelay = (i * 0.03) + 's';
+    element.appendChild(span);
+  });
+  element.classList.add('text-reveal');
+}
+
+document.querySelectorAll('.hero-title').forEach(el => splitTextToChars(el));
+
+const textRevealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.text-reveal').forEach(el => {
+  textRevealObserver.observe(el);
+});
+
+// ============================================
+// AMBIENT FLOATING FOR CARDS
+// ============================================
+document.querySelectorAll('.philosophy-card, .tier-card, .taxonomy-item, .industry-card, .case-card, .commission-card').forEach((card, i) => {
+  card.style.animation = `floatAmbient ${6 + Math.random() * 4}s ease-in-out infinite`;
+  card.style.animationDelay = `${i * 0.3}s`;
+});
+
+// ============================================
+// MAGNETIC BUTTON EFFECT
+// ============================================
+document.querySelectorAll('.hero-cta, .form-submit').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    btn.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = 'translate(0, 0)';
+  });
+});
+
+// ============================================
+// FORM SUBMIT HANDLER
+// ============================================
+document.querySelector('.contact-form').addEventListener('submit', function(e) {
+  const btn = this.querySelector('.form-submit');
+  btn.innerHTML = 'Submitted to Registry ✓';
+  btn.style.borderColor = 'var(--gold-bright)';
+  btn.style.color = 'var(--gold-bright)';
+});
+</script>
+
+</body>
+</html>

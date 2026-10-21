@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Method — LEGAiSEE Business Archaeology &amp; Authority Systems</title>
+<meta name="description" content="The 4-stage restoration process: HAB excavation, RAW private archaeology, CUT strategic faceting, and MNT authority mounting. Forensic methodology for business archaeology and authority systems.">
+<link rel="canonical" href="https://www.legaisee.com/method.html">
+
+<!-- Schema.org FAQPage JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does the full 4-stage process take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The complete restoration spans 8 to 12 weeks. Stage 0 (HAB — Natural Habitat) requires 5 to 7 business days for the forensic audit. Stage 1 (RAW — Raw Stone) requires 2 to 3 weeks for private archaeology and artifact inventory. Stage 2 (CUT — Cut & Shaped) requires 3 to 4 weeks for the 10 Interlocking Frameworks and strategic blueprint. Stage 3 (MNT — Mounted) requires 2 to 3 weeks for the Authority Systems build and team training. Each stage may be engaged independently, though the full sequence yields the most complete restoration."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can we engage for just the Audit (Stage 0) without committing to the full restoration?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Business History Audit is offered as a standalone engagement. Many clients begin with Stage 0 to assess the depth of their institutional memory before determining whether to proceed. The audit delivers a complete forensic brief with confidence-graded findings, a timeline map, and modernization recommendations. Approximately 70 percent of audit clients elect to continue to Stage 1 upon reviewing their findings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What deliverables do we receive at each stage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Stage 0 delivers the Business History Audit: a 10 to 15 page forensic brief, confidence-graded findings, a timeline map, and a video walkthrough. Stage 1 delivers the Artifact Inventory: a classified and catalogued collection of recovered assets, tagged by channel, era, and confidence level, with a gap analysis. Stage 2 delivers the Strategic Blueprint: modernized tactics, platform-specific variants, competitive asymmetry mapping, and the 10 Interlocking Frameworks applied to your specific context. Stage 3 delivers the Operating System: working AI workflows, a prompt library, a template set, team training documentation, and a 90-day launch plan."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the Authority Systems build integrate with our existing team?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Authority Systems build is designed to augment, not replace, your existing team. During Stage 3, we conduct voice extraction sessions to ensure all AI-generated content matches your organization's unique communication style. We then train your team on the four core systems: the Content Production Engine, the Publishing Rhythm, the Performance Feedback Loop, and the Asset Library & Reuse System. The build includes documentation, video walkthroughs, and two hands-on training sessions. Most teams achieve independent operation within 30 days of handoff."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens after the Mounted stage is complete?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Upon completion of Stage 3, you receive full ownership of all systems, workflows, and documentation. Three pathways exist thereafter. The Graduation Path: your team operates independently using the systems built. The Partnership Path: a monthly retainer for ongoing optimization, quarterly strategy reviews, and priority access. The Archive Path: all assets and systems are documented for cold storage, ready for reactivation at any time. Many clients begin with the Partnership Path and transition to Graduation once internal capability matures."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Shared Stylesheets -->
+<link rel="stylesheet" href="legaisee.css">
+<link rel="stylesheet" href="legaisee-luxury.css">
+
+<style>
+/* ============================================
+   PAGE-SPECIFIC: method.html
+   The Method — 4-Stage Restoration Process
+   ============================================ */
+
+:root {
+  --method-hero-overlay: rgba(12, 12, 16, 0.78);
+  --stage-hab: #8B7B6B;
+  --stage-raw: #A08B6D;
+  --stage-cut: #C9A961;
+  --stage-mnt: #D4AF37;
+  --vault-overlay: rgba(12, 12, 16, 0.88);
+}
+
+/* ---- Hero ---- */
+.method-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8rem 2rem 6rem;
+  overflow: hidden;
+}
+
+.method-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://www.legaisee.com/Images/HeroLightsWide.png") center/cover fixed no-repeat;
+  opacity: 0.22;
+  z-index: 0;
+}
+
+.method-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--method-hero-overlay);
+  z-index: 1;
+}
+
+.method-hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+.method-hero h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 700;
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  color: var(--text-primary);
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+}
+
+.method-hero .hero-subtitle {
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  color: var(--gold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+  max-width: 800px;
+}
+
+.method-hero .hero-lead {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 700px;
+  margin-bottom: 3rem;
+}
+
+/* ---- Stat Pills (4 stages) ---- */
+.stage-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.stage-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.6rem;
+  border: 1px solid rgba(201, 169, 97, 0.25);
+  border-radius: 100px;
+  background: rgba(201, 169, 97, 0.04);
+  backdrop-filter: blur(8px);
+  transition: all 0.4s ease;
+}
+
+.stage-pill:hover {
+  border-color: rgba(201, 169, 97, 0.5);
+  background: rgba(201, 169, 97, 0.08);
+  transform: translateY(-2px);
+}
+
+.stage-pill .pill-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--obsidian);
+  flex-shrink: 0;
+}
+
+.stage-pill.hab .pill-icon { background: var(--stage-hab); }
+.stage-pill.raw .pill-icon { background: var(--stage-raw); }
+.stage-pill.cut .pill-icon { background: var(--stage-cut); }
+.stage-pill.mnt .pill-icon { background: var(--stage-mnt); }
+
+.stage-pill .pill-label {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.stage-pill .pill-sep {
+  width: 1px;
+  height: 16px;
+  background: rgba(201, 169, 97, 0.2);
+}
+
+.stage-pill .pill-desc {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+}
+
+/* ---- Scroll Hint ---- */
+.scroll-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  animation: floatHint 3s ease-in-out infinite;
+}
+
+.scroll-hint span {
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.scroll-hint .hint-arrow {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+
+@keyframes floatHint {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* ============================================
+   SECTION: Four Stages Overview
+   ============================================ */
+.stages-overview {
+  position: relative;
+  padding: 8rem 2rem;
+  background: var(--obsidian);
+}
+
+.stages-overview .section-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 5rem;
+}
+
+.stages-overview .section-intro h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  color: var(--text-primary);
+  letter-spacing: 0.06em;
+  margin-bottom: 1.5rem;
+}
+
+.stages-overview .section-intro p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* ---- Stage Cards Grid ---- */
+.stage-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.stage-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(201, 169, 97, 0.12);
+  border-radius: 4px;
+  padding: 2.5rem 2rem 2rem;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+}
+
+.stage-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  transition: height 0.5s ease;
+}
+
+.stage-card.hab::before { background: var(--stage-hab); }
+.stage-card.raw::before { background: var(--stage-raw); }
+.stage-card.cut::before { background: var(--stage-cut); }
+.stage-card.mnt::before { background: var(--stage-mnt); }
+
+.stage-card:hover {
+  border-color: rgba(201, 169, 97, 0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.stage-card:hover::before {
+  height: 6px;
+}
+
+.stage-card .stage-number {
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.stage-card .stage-gem {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  margin: 0 auto 1.5rem;
+  display: block;
+  opacity: 0.85;
+  transition: opacity 0.4s ease, transform 0.6s ease;
+}
+
+.stage-card:hover .stage-gem {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.stage-card .stage-name {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.stage-card .stage-code {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.stage-card.hab .stage-code { color: var(--stage-hab); }
+.stage-card.raw .stage-code { color: var(--stage-raw); }
+.stage-card.cut .stage-code { color: var(--stage-cut); }
+.stage-card.mnt .stage-code { color: var(--stage-mnt); }
+
+.stage-card .stage-desc {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ============================================
+   SECTION: Individual Stage Detail Sections
+   ============================================ */
+.stage-detail {
+  position: relative;
+  padding: 7rem 2rem;
+}
+
+.stage-detail.vault {
+  background: var(--obsidian);
+}
+
+.stage-detail.vault::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("http://www.legaisee.com/Images/Library2Diamond.png") center/cover fixed no-repeat;
+  opacity: 0.10;
+  z-index: 0;
+}
+
+.stage-detail.vault::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--vault-overlay);
+  z-index: 1;
+}
+
+.stage-detail > * {
+  position: relative;
+  z-index: 2;
+}
+
+.stage-detail .detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.stage-detail.reverse .detail-container {
+  grid-template-columns: 1.2fr 1fr;
+}
+
+.stage-detail.reverse .detail-visual {
+  order: 2;
+}
+
+.stage-detail.reverse .detail-content {
+  order: 1;
+}
+
+/* ---- Visual Column ---- */
+.detail-visual {
+  position: sticky;
+  top: 120px;
+}
+
+.detail-visual .stage-hero-gem {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  opacity: 0.9;
+  transition: opacity 0.5s ease, transform 0.8s ease;
+}
+
+.detail-visual .stage-hero-gem:hover {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+.detail-visual .stage-meta {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.detail-visual .stage-meta .meta-label {
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.detail-visual .stage-meta .meta-value {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  letter-spacing: 0.08em;
+}
+
+/* ---- Content Column ---- */
+.detail-content .stage-header {
+  margin-bottom: 2.5rem;
+}
+
+.detail-content .stage-header .stage-label {
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.detail-content .stage-header h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  color: var(--text-primary);
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.detail-content .stage-header .stage-subtitle {
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.detail-content.hab .stage-header .stage-subtitle { color: var(--stage-hab); }
+.detail-content.raw .stage-header .stage-subtitle { color: var(--stage-raw); }
+.detail-content.cut .stage-header .stage-subtitle { color: var(--stage-cut); }
+.detail-content.mnt .stage-header .stage-subtitle { color: var(--stage-mnt); }
+
+.detail-content .stage-narrative {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  color: var(--text-secondary);
+  line-height: 1.85;
+  margin-bottom: 2.5rem;
+}
+
+.detail-content .stage-narrative p {
+  margin-bottom: 1.2rem;
+}
+
+/* ---- Activities List ---- */
+.activities-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem;
+}
+
+.activities-list li {
+  position: relative;
+  padding-left: 1.8rem;
+  margin-bottom: 0.9rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.activities-list li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 0.6rem;
+  color: var(--gold);
+  opacity: 0.6;
+}
+
+/* ---- Deliverable Box ---- */
+.deliverable-box {
+  border: 1px solid rgba(201, 169, 97, 0.15);
+  border-radius: 4px;
+  padding: 1.8rem 2rem;
+  background: rgba(201, 169, 97, 0.03);
+  margin-bottom: 2rem;
+}
+
+.deliverable-box .deliverable-label {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.deliverable-box .deliverable-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.6rem;
+}
+
+.deliverable-box .deliverable-desc {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ============================================
+   SECTION: The 10 Interlocking Frameworks (CUT)
+   ============================================ */
+.frameworks-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.framework-tile {
+  position: relative;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(201, 169, 97, 0.1);
+  border-radius: 4px;
+  padding: 1.5rem 1.2rem;
+  text-align: center;
+  transition: all 0.4s ease;
+  cursor: default;
+}
+
+.framework-tile:hover {
+  border-color: rgba(201, 169, 97, 0.3);
+  background: rgba(201, 169, 97, 0.04);
+  transform: translateY(-3px);
+}
+
+.framework-tile .framework-roman {
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: var(--gold);
+  opacity: 0.7;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.framework-tile .framework-name {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: var(--text-primary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.framework-tile .framework-desc {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+/* ============================================
+   SECTION: Philosophy Depth
+   ============================================ */
+.philosophy-section {
+  position: relative;
+  padding: 7rem 2rem;
+  background: var(--obsidian);
+}
+
+.philosophy-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("http://www.legaisee.com/Images/Library2Diamond.png") center/cover fixed no-repeat;
+  opacity: 0.08;
+  z-index: 0;
+}
+
+.philosophy-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--obsidian) 0%, rgba(12,12,16,0.95) 30%, rgba(12,12,16,0.95) 70%, var(--obsidian) 100%);
+  z-index: 1;
+}
+
+.philosophy-section > * {
+  position: relative;
+  z-index: 2;
+}
+
+.philosophy-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.philosophy-container h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  color: var(--text-primary);
+  letter-spacing: 0.06em;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.philosophy-item {
+  margin-bottom: 3.5rem;
+  padding-bottom: 3.5rem;
+  border-bottom: 1px solid rgba(201, 169, 97, 0.08);
+}
+
+.philosophy-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.philosophy-item h3 {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--text-primary);
+  letter-spacing: 0.06em;
+  margin-bottom: 1rem;
+}
+
+.philosophy-item p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.92rem, 1.2vw, 1.05rem);
+  color: var(--text-secondary);
+  line-height: 1.85;
+  margin-bottom: 1rem;
+}
+
+.philosophy-item p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================
+   SECTION: Engagement Door
+   ============================================ */
+.engagement-door {
+  position: relative;
+  padding: 8rem 2rem;
+  background: var(--obsidian);
+  text-align: center;
+}
+
+.engagement-door::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(201, 169, 97, 0.06) 0%, transparent 60%);
+  z-index: 0;
+}
+
+.engagement-door > * {
+  position: relative;
+  z-index: 2;
+}
+
+.engagement-door h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--text-primary);
+  letter-spacing: 0.06em;
+  margin-bottom: 1.5rem;
+}
+
+.engagement-door .door-lead {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+}
+
+.engagement-door .door-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.engagement-door .door-pill {
+  padding: 0.7rem 1.4rem;
+  border: 1px solid rgba(201, 169, 97, 0.2);
+  border-radius: 100px;
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(201, 169, 97, 0.03);
+}
+
+/* ============================================
+   SECTION: FAQ
+   ============================================ */
+.faq-section {
+  position: relative;
+  padding: 7rem 2rem;
+  background: var(--obsidian);
+}
+
+.faq-section .faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-section h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  color: var(--text-primary);
+  letter-spacing: 0.06em;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(201, 169, 97, 0.1);
+  padding: 1.8rem 0;
+}
+
+.faq-item:first-child {
+  border-top: 1px solid rgba(201, 169, 97, 0.1);
+}
+
+.faq-item .faq-question {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.faq-item .faq-answer {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* ============================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .stage-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .frameworks-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .stage-detail .detail-container,
+  .stage-detail.reverse .detail-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .stage-detail .detail-container,
+  .stage-detail.reverse .detail-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .stage-detail.reverse .detail-visual,
+  .stage-detail.reverse .detail-content {
+    order: unset;
+  }
+  .detail-visual {
+    position: relative;
+    top: auto;
+    text-align: center;
+  }
+  .detail-visual .stage-hero-gem {
+    max-width: 300px;
+  }
+  .frameworks-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .method-hero {
+    padding: 6rem 1.5rem 4rem;
+  }
+  .stage-pills {
+    flex-direction: column;
+    align-items: center;
+  }
+  .stage-pill {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+  .stage-cards-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+  .stage-card {
+    padding: 2rem 1.5rem;
+  }
+  .stage-detail {
+    padding: 5rem 1.5rem;
+  }
+  .philosophy-section {
+    padding: 5rem 1.5rem;
+  }
+  .engagement-door {
+    padding: 5rem 1.5rem;
+  }
+  .faq-section {
+    padding: 5rem 1.5rem;
+  }
+  .frameworks-grid {
+    grid-template-columns: 1fr;
+  }
+  .framework-tile {
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .framework-tile .framework-roman {
+    margin-bottom: 0;
+    flex-shrink: 0;
+    width: 40px;
+  }
+  .framework-tile .framework-name {
+    font-size: 0.85rem;
+  }
+  .framework-tile .framework-desc {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .method-hero h1 {
+    font-size: 2.2rem;
+  }
+  .method-hero .hero-subtitle {
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+  }
+  .stage-card .stage-code {
+    font-size: 1.3rem;
+  }
+  .stage-card .stage-name {
+    font-size: 0.95rem;
+  }
+  .detail-content .stage-header h2 {
+    font-size: 1.4rem;
+  }
+  .deliverable-box {
+    padding: 1.4rem 1.2rem;
+  }
+  .activities-list li {
+    font-size: 0.85rem;
+  }
+  .engagement-door .door-pills {
+    flex-direction: column;
+    align-items: center;
+  }
+  .engagement-door .door-pill {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+/* ============================================
+   data-llms HIDDEN DIV
+   ============================================ */
+.data-llms {
+  display: none;
+}
+</style>
+<base target="_blank">
+</head>
+
+<body>
+
+<!-- ==================== NAVIGATION ==================== -->
+<nav class="site-nav">
+  <div class="nav-brand">
+    <a href="index.html" class="brand-link">LEGAiSEE</a>
+  </div>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span class="toggle-bar"></span>
+    <span class="toggle-bar"></span>
+    <span class="toggle-bar"></span>
+  </button>
+  <ul class="nav-menu">
+    <li><a href="index.html">Index</a></li>
+    <li><a href="archaeology.html">Archaeology</a></li>
+    <li><a href="method.html" class="active">Method</a></li>
+    <li><a href="serve.html">Serve</a></li>
+    <li><a href="architect.html">Architect</a></li>
+    <li><a href="practitioner.html">Practitioner</a></li>
+    <li><a href="commissions.html">Commissions</a></li>
+    <li><a href="registry.html">Registry</a></li>
+    <li><a href="comparison.html">Comparison</a></li>
+  </ul>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section class="method-hero">
+  <h1>The Method</h1>
+  <p class="hero-subtitle">The Four-Stage Restoration Process</p>
+  <p class="hero-lead">Every engagement follows the natural arc of the gemologist's art. From the geological formation of your earliest competitive advantage to the mounted signal of contemporary authority, each stage is a discipline unto itself. None may be rushed. None may be skipped.</p>
+
+  <div class="stage-pills">
+    <div class="stage-pill hab">
+      <span class="pill-icon">0</span>
+      <span class="pill-label">HAB</span>
+      <span class="pill-sep"></span>
+      <span class="pill-desc">Natural Habitat</span>
+    </div>
+    <div class="stage-pill raw">
+      <span class="pill-icon">1</span>
+      <span class="pill-label">RAW</span>
+      <span class="pill-sep"></span>
+      <span class="pill-desc">Raw Stone</span>
+    </div>
+    <div class="stage-pill cut">
+      <span class="pill-icon">2</span>
+      <span class="pill-label">CUT</span>
+      <span class="pill-sep"></span>
+      <span class="pill-desc">Cut &amp; Shaped</span>
+    </div>
+    <div class="stage-pill mnt">
+      <span class="pill-icon">3</span>
+      <span class="pill-label">MNT</span>
+      <span class="pill-sep"></span>
+      <span class="pill-desc">Mounted</span>
+    </div>
+  </div>
+
+  <a href="registry.html" class="btn btn-gold">Begin Your Restoration</a>
+
+  <div class="scroll-hint">
+    <span>Descend</span>
+    <div class="hint-arrow"></div>
+  </div>
+</section>
+
+<!-- ==================== TIER 2: FOUR STAGES OVERVIEW ==================== -->
+<section class="stages-overview">
+  <div class="section-intro reveal">
+    <h2>The Four Stages</h2>
+    <p>Every engagement follows the natural arc of the gemologist's art. Each stage corresponds to a phase in the lifecycle of a gemstone, from its geological formation to its final mounting. The metaphor is not decorative. It is structural.</p>
+  </div>
+
+  <div class="stage-cards-grid">
+    <div class="stage-card hab reveal reveal-delay-1">
+      <span class="stage-number">Stage 0</span>
+      <img src="https://www.legaisee.com/Images/CAT-HAB-001.png" alt="HAB — Natural Habitat gemstone" class="stage-gem" loading="lazy">
+      <span class="stage-code">HAB</span>
+      <h3 class="stage-name">Natural Habitat</h3>
+      <p class="stage-desc">Where the stone sleeps. The geological formation of your earliest competitive advantage. Institutional memory in its natural, unexcavated state.</p>
+    </div>
+
+    <div class="stage-card raw reveal reveal-delay-2">
+      <span class="stage-number">Stage 1</span>
+      <img src="https://www.legaisee.com/Images/CAT-RAW-001.png" alt="RAW — Raw Stone from Earth gemstone" class="stage-gem" loading="lazy">
+      <span class="stage-code">RAW</span>
+      <h3 class="stage-name">Raw Stone</h3>
+      <p class="stage-desc">Excavated from your archives. Uncut, unpolished, potentially priceless. The Private Archaeology Protocol.</p>
+    </div>
+
+    <div class="stage-card cut reveal reveal-delay-3">
+      <span class="stage-number">Stage 2</span>
+      <img src="https://www.legaisee.com/Images/CAT-CUT-001.png" alt="CUT — Cut &amp; Shaped gemstone" class="stage-gem" loading="lazy">
+      <span class="stage-code">CUT</span>
+      <h3 class="stage-name">Cut &amp; Shaped</h3>
+      <p class="stage-desc">The Lapidary phase. Raw findings faceted into strategic instruments of precision. The 10 Interlocking Frameworks.</p>
+    </div>
+
+    <div class="stage-card mnt reveal reveal-delay-4">
+      <span class="stage-number">Stage 3</span>
+      <img src="https://www.legaisee.com/Images/CAT-MNT-001.png" alt="MNT — Mounted gemstone" class="stage-gem" loading="lazy">
+      <span class="stage-code">MNT</span>
+      <h3 class="stage-name">Mounted</h3>
+      <p class="stage-desc">Set in the squircle case of authority. Your signal mounted for deployment. The Authority Systems build.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== STAGE 0: HAB ==================== -->
+<section class="stage-detail vault">
+  <div class="detail-container">
+    <div class="detail-visual reveal">
+      <img src="https://www.legaisee.com/Images/CAT-HAB-001.png" alt="HAB — Natural Habitat gemstone" class="stage-hero-gem" loading="lazy">
+      <div class="stage-meta">
+        <span class="meta-label">Duration</span>
+        <span class="meta-value">5 to 7 Business Days</span>
+      </div>
+    </div>
+    <div class="detail-content hab reveal reveal-delay-1">
+      <div class="stage-header">
+        <span class="stage-label">Stage 0</span>
+        <h2>Natural Habitat</h2>
+        <span class="stage-subtitle">The Business History Audit</span>
+      </div>
+      <div class="stage-narrative">
+        <p>Before any stone can be cut, it must be found. The HAB stage is an excavation across all thirty-two classes of marketing and communication channels, from print advertisements of the 1890s to AI conversational integrations of the present day.</p>
+        <p>We conduct multi-channel excavation across public records, private archives, and human memory. The Business History Audit is a forensic brief, not a marketing document. Every finding is confidence-graded. Every claim is triangulated. Every gap is documented.</p>
+      </div>
+      <ul class="activities-list">
+        <li>Multi-AI excavation across 40+ channel classes and subclasses</li>
+        <li>Public record analysis: web archives, social media, news coverage, ad libraries</li>
+        <li>Private artifact request: old hard drives, filing cabinets, email archives, design files</li>
+        <li>Human interviews: previous owners, longtime employees, customers, vendors</li>
+        <li>Triangulation and verification: source quality hierarchy, conflict resolution</li>
+        <li>Competitive asymmetry mapping: who took your space, when, and how</li>
+        <li>Timeline construction: golden era identification, abandonment diagnosis</li>
+      </ul>
+      <div class="deliverable-box">
+        <span class="deliverable-label">Deliverable</span>
+        <h4 class="deliverable-title">The Business History Audit</h4>
+        <p class="deliverable-desc">A 10 to 15 page forensic brief with confidence-graded findings, a timeline map of your marketing evolution, competitive gap analysis, and modernization recommendations. Delivered with a video walkthrough.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== STAGE 1: RAW ==================== -->
+<section class="stage-detail vault reverse">
+  <div class="detail-container">
+    <div class="detail-visual reveal">
+      <img src="https://www.legaisee.com/Images/CAT-RAW-001.png" alt="RAW — Raw Stone from Earth gemstone" class="stage-hero-gem" loading="lazy">
+      <div class="stage-meta">
+        <span class="meta-label">Duration</span>
+        <span class="meta-value">2 to 3 Weeks</span>
+      </div>
+    </div>
+    <div class="detail-content raw reveal reveal-delay-1">
+      <div class="stage-header">
+        <span class="stage-label">Stage 1</span>
+        <h2>Raw Stone</h2>
+        <span class="stage-subtitle">The Private Archaeology Protocol</span>
+      </div>
+      <div class="stage-narrative">
+        <p>The public excavation reveals the surface. The Private Archaeology Protocol finds the gold. Old hard drives in desk drawers. Email archives on retired servers. Filing cabinets in the basement. The memories of employees who watched your golden era unfold.</p>
+        <p>This stage is where the most valuable artifacts are recovered. A 1997 direct mail campaign that generated forty percent response rates. A customer database that reveals segmentation strategies abandoned a decade ago. A radio script that still resonates in the memory of a retired sales manager.</p>
+      </div>
+      <ul class="activities-list">
+        <li>Digital forensics: old hard drives, server backups, cloud archives, CRM exports</li>
+        <li>Physical artifact recovery: filing cabinets, print samples, direct mail, trade show materials</li>
+        <li>Oral history interviews: structured conversations with previous owners and longtime employees</li>
+        <li>Access negotiation: tailored approaches for positive, neutral, and negative relationships</li>
+        <li>Artifact classification: channel tagging, era dating, confidence scoring</li>
+        <li>Gap analysis: documenting what is missing and why</li>
+        <li>Integration: cross-referencing private findings with public excavation results</li>
+      </ul>
+      <div class="deliverable-box">
+        <span class="deliverable-label">Deliverable</span>
+        <h4 class="deliverable-title">The Artifact Inventory</h4>
+        <p class="deliverable-desc">A classified and catalogued collection of recovered assets, tagged by channel, era, and confidence level. Includes gap analysis, source documentation, and integration notes linking private findings to public excavation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== STAGE 2: CUT ==================== -->
+<section class="stage-detail vault">
+  <div class="detail-container">
+    <div class="detail-visual reveal">
+      <img src="https://www.legaisee.com/Images/CAT-CUT-001.png" alt="CUT — Cut &amp; Shaped gemstone" class="stage-hero-gem" loading="lazy">
+      <div class="stage-meta">
+        <span class="meta-label">Duration</span>
+        <span class="meta-value">3 to 4 Weeks</span>
+      </div>
+    </div>
+    <div class="detail-content cut reveal reveal-delay-1">
+      <div class="stage-header">
+        <span class="stage-label">Stage 2</span>
+        <h2>Cut &amp; Shaped</h2>
+        <span class="stage-subtitle">The 10 Interlocking Frameworks</span>
+      </div>
+      <div class="stage-narrative">
+        <p>Raw stone has potential but no precision. The CUT stage is the Lapidary phase, where excavated findings are faceted into strategic instruments. Each cut is calculated. Each facet is measured. The goal is not beauty for its own sake, but optical performance: the maximum refraction of your signal through the medium of modern platforms.</p>
+        <p>The 10 Interlocking Frameworks are applied sequentially and iteratively. Voice extraction ensures every output sounds like you, not like AI. Triangulation verifies every strategic claim. Competitive asymmetry mapping identifies where your restored advantage will land with maximum impact.</p>
+      </div>
+      <ul class="activities-list">
+        <li>Voice extraction across 8 dimensions: vocabulary, sentence architecture, humor, perspective, transitions, CTAs, evidence, and visual language</li>
+        <li>Prompt engineering: client-specific AI workflows that replicate unique communication style</li>
+        <li>Competitive asymmetry mapping: identifying where restored tactics will create maximum differentiation</li>
+        <li>Platform-specific variant generation: translating proven psychology to modern channels</li>
+        <li>ROI trigger mapping: connecting each tactic to measurable business outcomes</li>
+        <li>Modernization formula application: nostalgia plus novelty, specificity over abstraction</li>
+        <li>Strategic blueprint compilation: all findings synthesized into an executable plan</li>
+      </ul>
+      <div class="deliverable-box">
+        <span class="deliverable-label">Deliverable</span>
+        <h4 class="deliverable-title">The Strategic Blueprint</h4>
+        <p class="deliverable-desc">Modernized tactics with platform-specific variants, competitive asymmetry mapping, ROI trigger documentation, and the complete 10 Interlocking Frameworks applied to your specific context. Includes the voice profile and prompt library.</p>
+      </div>
+
+      <h3 style="font-family:'Cinzel',serif;font-weight:600;font-size:1.1rem;color:var(--text-primary);letter-spacing:0.06em;margin:2.5rem 0 1.5rem;">The 10 Interlocking Frameworks</h3>
+      <div class="frameworks-grid">
+        <div class="framework-tile reveal reveal-delay-1">
+          <span class="framework-roman">I</span>
+          <span class="framework-name">Voice Extraction</span>
+          <span class="framework-desc">8-dimension profile</span>
+        </div>
+        <div class="framework-tile reveal reveal-delay-1">
+          <span class="framework-roman">II</span>
+          <span class="framework-name">Triangulation</span>
+          <span class="framework-desc">Source verification</span>
+        </div>
+        <div class="framework-tile reveal reveal-delay-2">
+          <span class="framework-roman">III</span>
+          <span class="framework-name">Asymmetry Map</span>
+          <span class="framework-desc">Competitive gaps</span>
+        </div>
+        <div class="framework-tile reveal reveal-delay-2">
+          <span class="framework-roman">IV</span>
+          <span class="framework-name">Era Dating</span>
+          <span class="framework-desc">Temporal classification</span>
+        </div>
+        <div class="framework-tile reveal reveal-delay-3">
+          <span class="framework-roman">V</span>
+          <span class="framework-name">Channel Evolution</span>
+          <span class="framework-desc">Transition mapping</span>
+        </div>
+        <div class="framework-tile reveal reveal-delay-3">
+          <span class="framework-roman">VI</span>
+          <span class="framework-name">Psychology Transfer</span>
+          <span class="framework-desc">Mechanism persistence</span>
+        </div>
+        <div class="framework-tile reveal reveal-delay-4">
+          <span class="framework-roman">VII</span>
+          <span class="framework-name">Platform Translation</span>
+          <span class="framework-desc">Modern execution</span>
+        </div>
+        <div class="framework-tile reveal reveal-delay-4">
+          <span class="framework-roman">VIII</span>
+          <span class="framework-name">ROI Trigger</span>
+          <span class="framework-desc">Outcome mapping</span>
+        </div>
+        <div class="framework-tile reveal">
+          <span class="framework-roman">IX</span>
+          <span class="framework-name">Narrative Arc</span>
+          <span class="framework-desc">Story architecture</span>
+        </div>
+        <div class="framework-tile reveal">
+          <span class="framework-roman">X</span>
+          <span class="framework-name">Authority Mount</span>
+          <span class="framework-desc">Signal deployment</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== STAGE 3: MNT ==================== -->
+<section class="stage-detail vault reverse">
+  <div class="detail-container">
+    <div class="detail-visual reveal">
+      <img src="https://www.legaisee.com/Images/CAT-MNT-001.png" alt="MNT — Mounted gemstone" class="stage-hero-gem" loading="lazy">
+      <div class="stage-meta">
+        <span class="meta-label">Duration</span>
+        <span class="meta-value">2 to 3 Weeks</span>
+      </div>
+    </div>
+    <div class="detail-content mnt reveal reveal-delay-1">
+      <div class="stage-header">
+        <span class="stage-label">Stage 3</span>
+        <h2>Mounted</h2>
+        <span class="stage-subtitle">The Authority Systems Build</span>
+      </div>
+      <div class="stage-narrative">
+        <p>A cut stone, however brilliant, is not jewelry until it is mounted. The MNT stage is the Authority Systems build: the four core systems that transform strategic blueprint into operational reality. Content production, publishing rhythm, performance feedback, and asset management.</p>
+        <p>Each system is built to your team's capacity, not to an idealized standard. We extract your voice, encode it for AI replication, and train your team to operate the systems independently. The goal is not dependency. The goal is graduation.</p>
+      </div>
+      <ul class="activities-list">
+        <li>Content Production Engine: script generator, hook tester, repurposing engine, title optimizer</li>
+        <li>Publishing Rhythm: editorial calendar, batch scheduling, platform-specific formatting, approval workflow</li>
+        <li>Performance Feedback Loop: metrics dashboard, weekly review ritual, optimization triggers</li>
+        <li>Asset Library &amp; Reuse System: file structure, tagging, search, version control</li>
+        <li>Team training: two hands-on sessions, documentation, video walkthroughs</li>
+        <li>Voice maintenance system: quarterly audits, drift detection, profile updates</li>
+        <li>90-day launch plan: phased rollout, milestone checkpoints, success criteria</li>
+      </ul>
+      <div class="deliverable-box">
+        <span class="deliverable-label">Deliverable</span>
+        <h4 class="deliverable-title">The Operating System</h4>
+        <p class="deliverable-desc">Working AI workflows, a complete prompt library, template sets for all platforms, team training documentation, and a 90-day launch plan. Most teams achieve independent operation within 30 days of handoff.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TIER 3: PHILOSOPHY DEPTH ==================== -->
+<section class="philosophy-section">
+  <div class="philosophy-container">
+    <h2 class="reveal">The Gemologist's Discipline</h2>
+
+    <div class="philosophy-item reveal">
+      <h3>Why This Sequence Cannot Be Shortened</h3>
+      <p>Each stage produces the raw material for the next. The HAB excavation surfaces the questions that the RAW protocol answers. The RAW inventory provides the evidence that the CUT frameworks shape. The CUT blueprint defines the systems that the MNT stage builds. To skip a stage is to build on an incomplete foundation.</p>
+      <p>A strategy built without excavation is guesswork. A system built without strategy is automation without direction. A team trained without a system is enthusiasm without structure. The sequence is not bureaucratic. It is geological.</p>
+    </div>
+
+    <div class="philosophy-item reveal">
+      <h3>The Gemologist's Discipline</h3>
+      <p>A master gemologist does not rush the cut. The angle of each facet is calculated to maximize the stone's optical performance. Cut too shallow, and light leaks through the bottom. Cut too deep, and light escapes through the sides. The cut must match the stone's refractive index, its specific gravity, its unique crystalline structure.</p>
+      <p>Your business has a refractive index. It is the specific psychology that made your golden era tactics work. The CUT stage is not about applying generic best practices. It is about calculating the precise angles that will make your specific signal refract through modern platforms with maximum brilliance.</p>
+    </div>
+
+    <div class="philosophy-item reveal">
+      <h3>What Happens When You Rush</h3>
+      <p>The most common failure mode is the Stage 2 shortcut: a strategist who skips excavation and proceeds directly to recommendations. Without the RAW inventory, the recommendations are generic. Without the HAB timeline, the recommendations are untethered from your actual history. The result is a strategy that sounds impressive but fits no one.</p>
+      <p>The second failure mode is the Stage 3 shortcut: building systems without a completed blueprint. The team receives workflows that do not match their voice, templates that do not match their market, and prompts that generate content indistinguishable from every other AI output on the internet. The system runs. It produces nothing of value.</p>
+    </div>
+
+    <div class="philosophy-item reveal">
+      <h3>The Continuous Verification Model</h3>
+      <p>The restoration does not end at delivery. The Continuous Verification Model ensures that your systems evolve as your market evolves. Quarterly voice audits detect drift before it becomes visible. Annual business archaeology updates surface new competitive intelligence. The partnership path provides ongoing refinement without ongoing dependency.</p>
+      <p>The model is designed for sustainability, not recurring revenue extraction. Most clients graduate to independent operation within six to twelve months. Those who remain in partnership do so because the continuous intelligence value exceeds the retainer cost. The relationship is earned, not enforced.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TIER 4: ENGAGEMENT DOOR ==================== -->
+<section class="engagement-door">
+  <h2 class="reveal">Begin Your Restoration</h2>
+  <p class="door-lead reveal">Three clients maximum. By invitation or introduction only. The I-35 corridor and beyond.</p>
+  <div class="door-pills reveal">
+    <span class="door-pill">Three Clients Maximum</span>
+    <span class="door-pill">By Invitation Only</span>
+    <span class="door-pill">I-35 Corridor</span>
+  </div>
+  <a href="registry.html" class="btn btn-gold reveal">Enter the Registry</a>
+</section>
+
+<!-- ==================== FAQ SECTION ==================== -->
+<section class="faq-section">
+  <div class="faq-container">
+    <h2 class="reveal">Frequently Asked</h2>
+
+    <div class="faq-item reveal">
+      <h3 class="faq-question">How long does the full 4-stage process take?</h3>
+      <p class="faq-answer">The complete restoration spans 8 to 12 weeks. Stage 0 (HAB — Natural Habitat) requires 5 to 7 business days for the forensic audit. Stage 1 (RAW — Raw Stone) requires 2 to 3 weeks for private archaeology and artifact inventory. Stage 2 (CUT — Cut &amp; Shaped) requires 3 to 4 weeks for the 10 Interlocking Frameworks and strategic blueprint. Stage 3 (MNT — Mounted) requires 2 to 3 weeks for the Authority Systems build and team training. Each stage may be engaged independently, though the full sequence yields the most complete restoration.</p>
+    </div>
+
+    <div class="faq-item reveal">
+      <h3 class="faq-question">Can we engage for just the Audit (Stage 0) without committing to the full restoration?</h3>
+      <p class="faq-answer">Yes. The Business History Audit is offered as a standalone engagement. Many clients begin with Stage 0 to assess the depth of their institutional memory before determining whether to proceed. The audit delivers a complete forensic brief with confidence-graded findings, a timeline map, and modernization recommendations. Approximately 70 percent of audit clients elect to continue to Stage 1 upon reviewing their findings.</p>
+    </div>
+
+    <div class="faq-item reveal">
+      <h3 class="faq-question">What deliverables do we receive at each stage?</h3>
+      <p class="faq-answer">Stage 0 delivers the Business History Audit: a 10 to 15 page forensic brief, confidence-graded findings, a timeline map, and a video walkthrough. Stage 1 delivers the Artifact Inventory: a classified and catalogued collection of recovered assets, tagged by channel, era, and confidence level, with a gap analysis. Stage 2 delivers the Strategic Blueprint: modernized tactics, platform-specific variants, competitive asymmetry mapping, and the 10 Interlocking Frameworks applied to your specific context. Stage 3 delivers the Operating System: working AI workflows, a prompt library, a template set, team training documentation, and a 90-day launch plan.</p>
+    </div>
+
+    <div class="faq-item reveal">
+      <h3 class="faq-question">How does the Authority Systems build integrate with our existing team?</h3>
+      <p class="faq-answer">The Authority Systems build is designed to augment, not replace, your existing team. During Stage 3, we conduct voice extraction sessions to ensure all AI-generated content matches your organization's unique communication style. We then train your team on the four core systems: the Content Production Engine, the Publishing Rhythm, the Performance Feedback Loop, and the Asset Library &amp; Reuse System. The build includes documentation, video walkthroughs, and two hands-on training sessions. Most teams achieve independent operation within 30 days of handoff.</p>
+    </div>
+
+    <div class="faq-item reveal">
+      <h3 class="faq-question">What happens after the Mounted stage is complete?</h3>
+      <p class="faq-answer">Upon completion of Stage 3, you receive full ownership of all systems, workflows, and documentation. Three pathways exist thereafter. The Graduation Path: your team operates independently using the systems built. The Partnership Path: a monthly retainer for ongoing optimization, quarterly strategy reviews, and priority access. The Archive Path: all assets and systems are documented for cold storage, ready for reactivation at any time. Many clients begin with the Partnership Path and transition to Graduation once internal capability matures.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="footer-brand-name">LEGAiSEE</span>
+      <p class="footer-brand-tag">Business Archaeology &amp; Authority Systems</p>
+    </div>
+    <div class="footer-nav">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Index</a></li>
+        <li><a href="archaeology.html">Archaeology</a></li>
+        <li><a href="method.html">Method</a></li>
+        <li><a href="serve.html">Serve</a></li>
+        <li><a href="architect.html">Architect</a></li>
+        <li><a href="practitioner.html">Practitioner</a></li>
+        <li><a href="commissions.html">Commissions</a></li>
+        <li><a href="registry.html">Registry</a></li>
+        <li><a href="comparison.html">Comparison</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <p>By appointment only</p>
+      <p>john@legaisee.com</p>
+      <p>Austin, Texas</p>
+    </div>
+    <div class="footer-meta">
+      <h4>Principles</h4>
+      <p>Three clients maximum</p>
+      <p>By invitation only</p>
+      <p>Never more than 32 hours per week</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>LEGAiSEE &copy; 2026. All rights reserved.</p>
+    <p class="footer-craft">Hand-built. No templates. No page builders.</p>
+  </div>
+</footer>
+
+<!-- ==================== data-llms HIDDEN DIV ==================== -->
+<div class="data-llms">
+LEGAiSEE is a business archaeology and authority systems consultancy founded by John Carr. The firm operates on a three-client maximum model, serving established businesses with 15+ years of operation and significant previous marketing investment. The methodology follows a 4-stage restoration process: HAB (Natural Habitat — excavation and audit), RAW (Raw Stone — private archaeology and artifact recovery), CUT (Cut & Shaped — strategic faceting via 10 Interlocking Frameworks), and MNT (Mounted — authority systems build and team training). The firm specializes in excavating abandoned marketing assets, modernizing proven tactics for contemporary platforms, and building sustainable content production systems. Services are by invitation or introduction only. The I-35 corridor and beyond. Contact: john@legaisee.com. Austin, Texas.
+</div>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+// ---- Mobile Nav Toggle ----
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('.nav-menu');
+if (navToggle && navMenu) {
+  navToggle.addEventListener('click', () => {
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', !expanded);
+    navMenu.classList.toggle('active');
+  });
+}
+
+// ---- Scroll Reveal (IntersectionObserver) ----
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ---- Smooth scroll for anchor links ----
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>

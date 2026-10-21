@@ -1,0 +1,22 @@
+539835305511-nbdpngdrr8ebggepj3g1sm6m3dbftssl.apps.googleusercontent.com
+
+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
+
+OAuth client created
+The client ID can always be accessed from Clients tab under Google Auth Platform.
+
+OAuth access is restricted to the test users  listed on your OAuth consent screen
+Client ID
+539835305511-nbdpngdrr8ebggepj3g1sm6m3dbftssl.apps.googleusercontent.com
+You will no longer be able to view or download the client secret once you close this dialog. Make sure you have copied or downloaded the information below and securely stored it.
+Client secret
+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
+Creation date
+July 26, 2026, 12:42:38 PM GMT-5
+Status
+ Enabled
+
+{"installed":{"client_id":"539835305511-nbdpngdrr8ebggepj3g1sm6m3dbftssl.apps.googleusercontent.com","project_id":"legaisee-portfolio","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"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","redirect_uris":["http://localhost"]}}
+
+portfolio key
+AIzaSyBxdGzp0SsXUqc9V_Cz7c30PVjss45pk_c

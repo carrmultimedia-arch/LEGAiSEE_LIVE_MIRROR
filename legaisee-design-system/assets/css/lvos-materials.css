@@ -1,0 +1,82 @@
+/* =========================================================
+   LVOS MATERIAL OUTPUT LAYER (CLEAN VISUAL CONTRACT)
+========================================================= */
+
+.render-object {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+
+    background: #050608;
+
+    --light-key: 0.5;
+    --light-fill: 0.5;
+    --light-rim: 0.5;
+}
+
+/* LIGHT VISUALIZATION */
+.render-object::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at calc(var(--light-key) * 100%)
+                        calc(var(--light-fill) * 100%),
+
+            rgba(255, 220, 140, 0.45),
+            transparent 60%
+        ),
+        radial-gradient(
+            circle at calc(var(--light-rim) * 100%)
+                        calc(var(--light-rim) * 100%),
+
+            rgba(120, 180, 255, 0.30),
+            transparent 70%
+        );
+
+    mix-blend-mode: screen;
+    opacity: 1;
+}
+
+/* ENSURE CONTENT ABOVE LIGHT */
+.card-panel {
+    position: relative;
+    z-index: 2;
+}
+
+.card {
+    background: transparent;
+}
+/* =========================================================
+   LVOS HARD VISUAL OVERRIDE (FOR DEBUG ONLY)
+   This forces ALL previous lighting systems off
+========================================================= */
+
+.render-object::before,
+.render-object::after {
+    content: none !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+
+/* Force single controlled render layer */
+.render-object {
+    background: #050608 !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* VISUAL CONFIRMATION LAYER (ONLY ONE SOURCE OF TRUTH) */
+.render-object {
+    background:
+        radial-gradient(
+            circle at calc(var(--light-key, 0.5) * 100%)
+                        calc(var(--light-fill, 0.5) * 100%),
+
+            rgba(255, 220, 140, 0.55),
+            transparent 60%
+        ) !important;
+}

@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEGAISEE — Request Entry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --violet-deep: #0A0310;
+  --violet-mid: #12081c;
+  --obsidian: #050505;
+  --obsidian-light: #080808;
+  --obsidian-mid: #0c0c0c;
+  --gold: #D4B06A;
+  --gold-light: #E0C888;
+  --gold-bright: #F0E0A8;
+  --gold-vivid: #F5D060;
+  --gold-dim: #A08050;
+  --gold-whisper: rgba(212,176,106,0.06);
+  --gold-glow: rgba(212,176,106,0.12);
+  --gold-border: rgba(212,176,106,0.20);
+  --gold-border-strong: rgba(212,176,106,0.40);
+  --platinum: #F0E8D8;
+  --silver: #C0B8B0;
+  --pewter: #8A8280;
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+  --font-ui: 'Inter', sans-serif;
+  --ease-silk: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-dramatic: cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+html { scroll-behavior: auto; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: var(--font-body); background: var(--obsidian); color: var(--platinum);
+  line-height: 1.7; font-size: 17px; font-weight: 400; overflow-x: clip; min-height: 100vh;
+}
+
+/* ═══ PROCEDURAL TEXTURE LAYERS ═══ */
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n2)' opacity='0.025'/%3E%3C/svg%3E");
+  background-size: 512px 512px, 256px 256px;
+  pointer-events: none; z-index: -2;
+}
+body::after {
+  content: ''; position: fixed; inset: 0;
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.018) 0.5px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none; z-index: 9999; opacity: 0.6;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; height: auto; }
+
+/* ═══ TYPOGRAPHY ═══ */
+.d-xl { font-family: var(--font-display); font-size: clamp(2.4rem, 4.5vw, 4rem); font-weight: 300; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.05; color: var(--platinum); }
+.d-lg { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.6rem); font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.12; color: var(--platinum); }
+.d-md { font-family: var(--font-display); font-size: clamp(1.1rem, 1.8vw, 1.5rem); font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.18; color: var(--platinum); }
+.b-xl { font-family: var(--font-body); font-size: 1.3rem; line-height: 1.85; color: var(--platinum); font-weight: 400; }
+.b-lg { font-family: var(--font-body); font-size: 1.12rem; line-height: 1.82; color: var(--silver); font-weight: 400; }
+.b-md { font-family: var(--font-body); font-size: 1rem; line-height: 1.8; color: var(--silver); font-weight: 400; }
+.b-sm { font-family: var(--font-ui); font-size: 0.78rem; line-height: 1.7; color: var(--pewter); font-weight: 300; }
+
+/* ═══ NAVIGATION — LOGO ONLY ═══ */
+.top-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  background: linear-gradient(to bottom, rgba(5,5,5,0.92), rgba(5,5,5,0.75), transparent);
+  border-bottom: 1px solid rgba(212,176,106,0.07);
+  padding: 14px 48px; display: flex; align-items: center; justify-content: space-between;
+  z-index: 9000; height: 72px;
+}
+.nav-brand { display: flex; align-items: center; gap: 14px; }
+.nav-brand img { width: 44px; height: 44px; object-fit: contain; }
+.nav-brand-text { display: none; }
+.nav-links { display: flex; gap: 8px; align-items: center; }
+.nav-links a {
+  font-family: var(--font-ui); font-size: 0.68rem; text-transform: uppercase;
+  letter-spacing: 0.18em; color: rgba(240,232,216,0.55); position: relative;
+  padding: 8px 18px; transition: color 0.3s ease;
+}
+.nav-links a:hover { color: var(--gold-light); }
+.nav-links a::after {
+  content: ''; position: absolute; left: 50%; bottom: 0;
+  width: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent);
+  transition: width 0.35s var(--ease-silk), left 0.35s var(--ease-silk);
+}
+.nav-links a:hover::after { width: 80%; left: 10%; }
+.nav-links a.active { color: var(--gold); }
+.nav-links a.active::after { width: 60%; left: 20%; }
+.nav-cta {
+  border: 1px solid var(--gold-border-strong) !important; padding: 10px 24px !important;
+  color: var(--gold) !important; transition: all 0.3s ease !important;
+  font-family: var(--font-display) !important; font-size: 0.62rem !important;
+  letter-spacing: 0.2em !important; border-radius: 999px; margin-left: 16px;
+}
+.nav-cta:hover { background: var(--gold) !important; color: var(--obsidian) !important; }
+
+/* ═══ SECTIONS WITH RADIAL SPOTLIGHTS ═══ */
+.section-obsidian {
+  background: var(--obsidian); position: relative;
+}
+.section-obsidian::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-border), transparent);
+}
+.section-obsidian-light {
+  background: var(--obsidian-light); position: relative;
+}
+.section-obsidian-light::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-border), transparent);
+}
+.section-violet {
+  background: var(--obsidian); position: relative; overflow: hidden;
+}
+.section-violet::before {
+  content: ''; position: absolute;
+  top: -40%; left: 50%; transform: translateX(-50%);
+  width: 160%; height: 110%;
+  background: radial-gradient(ellipse 55% 75% at 50% 0%, var(--violet-mid), var(--violet-deep) 55%, transparent 85%);
+  pointer-events: none; z-index: 0;
+}
+.section-violet::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(212,176,106,0.12), transparent);
+}
+.section-gold-spot {
+  background: var(--obsidian); position: relative; overflow: hidden;
+}
+.section-gold-spot::before {
+  content: ''; position: absolute;
+  bottom: -30%; left: 50%; transform: translateX(-50%);
+  width: 140%; height: 90%;
+  background: radial-gradient(ellipse 45% 65% at 50% 100%, rgba(212,176,106,0.05), transparent 75%);
+  pointer-events: none; z-index: 0;
+}
+.section-gold-spot::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-border), transparent);
+}
+
+.s-pad { padding: 120px 48px; }
+.s-pad-lg { padding: 160px 48px; }
+.s-pad-sm { padding: 80px 48px; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+.container-narrow { max-width: 720px; margin: 0 auto; padding: 0 48px; }
+.container-wide { max-width: 1400px; margin: 0 auto; padding: 0 48px; }
+
+/* ═══ PRESTIGE LABEL ═══ */
+.prestige-label {
+  display: inline-flex; align-items: center; gap: 16px;
+  font-family: var(--font-ui); font-size: 0.58rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.36em; color: var(--gold-dim); margin-bottom: 22px;
+}
+.prestige-label::before, .prestige-label::after {
+  content: ''; flex: 0 0 44px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold));
+}
+.prestige-label::after { background: linear-gradient(to left, transparent, var(--gold)); }
+
+/* ═══ GOLD DIVIDER ═══ */
+.gold-divider {
+  width: 60px; height: 2px;
+  background: linear-gradient(to right, var(--gold-dim), var(--gold), var(--gold-dim));
+  margin: 20px 0 32px 0;
+  border-radius: 1px;
+}
+.gold-divider.center { margin: 20px auto 32px auto; }
+
+/* ═══ GLASS CARDS ═══ */
+.glass-card {
+  background: linear-gradient(180deg, rgba(28,28,30,0.92), rgba(14,14,16,0.88));
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.06); border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.60), inset 0 1px 0 rgba(255,255,255,0.04);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  position: relative; overflow: hidden;
+}
+.glass-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at top left, rgba(244,225,133,0.06), transparent 60%);
+  pointer-events: none;
+}
+.glass-card:hover {
+  border-color: rgba(230,194,86,0.35);
+  transform: translateY(-6px);
+  box-shadow: 0 36px 80px rgba(0,0,0,0.75), 0 0 24px rgba(230,194,86,0.08);
+}
+
+/* ═══ ASYMMETRIC LAYOUTS ═══ */
+.asymmetric-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 80px;
+}
+.asymmetric-row:last-child { margin-bottom: 0; }
+.asymmetric-row.offset-left .card-wrap:first-child { transform: translateY(40px); }
+.asymmetric-row.offset-left .card-wrap:last-child { transform: translateY(-20px); }
+.asymmetric-row.offset-right .card-wrap:first-child { transform: translateY(-20px); }
+.asymmetric-row.offset-right .card-wrap:last-child { transform: translateY(40px); }
+
+.card-wrap { position: relative; }
+
+.card-content {
+  padding: 48px 44px;
+  text-align: left;
+}
+.card-content .b-xl,
+.card-content .b-lg,
+.card-content .b-md {
+  text-align: left;
+}
+.card-content p + p { margin-top: 20px; }
+
+.card-narrow { max-width: 520px; }
+.card-wide { max-width: 640px; }
+
+/* ═══ HERO — REQUEST ENTRY ═══ */
+.hero-access {
+  position: relative; min-height: 90vh; display: flex; align-items: center;
+  overflow: hidden; padding-top: 72px;
+}
+.hero-access::before {
+  content: ''; position: absolute; inset: 0;
+  background: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  background-size: 512px 512px;
+  pointer-events: none; z-index: 0;
+}
+.hero-access-content {
+  position: relative; z-index: 2;
+  max-width: 1200px; margin: 0 auto;
+  padding: 100px 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center;
+}
+.hero-access-left { text-align: left; }
+.hero-access-left .prestige-label { margin-bottom: 28px; }
+.hero-access-left .d-xl { margin-bottom: 24px; }
+.hero-access-left .gold-divider { margin: 0 0 32px 0; }
+.hero-access-left .b-lg {
+  max-width: 520px; color: var(--silver); text-align: left;
+}
+
+/* ═══ QUALIFICATION LIST ═══ */
+.qual-list {
+  list-style: none;
+  padding: 0;
+  margin: 32px 0 0 0;
+}
+.qual-list li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 16px;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--silver);
+}
+.qual-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 10px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px rgba(212,176,106,0.4);
+}
+
+/* ═══ FORM STYLES ═══ */
+.form-vault {
+  padding: 56px 48px;
+}
+.form-vault .form-group {
+  margin-bottom: 28px;
+}
+.form-vault label {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--gold-dim);
+  margin-bottom: 10px;
+}
+.form-vault input,
+.form-vault textarea,
+.form-vault select {
+  width: 100%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--platinum);
+  line-height: 1.6;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+}
+.form-vault input:focus,
+.form-vault textarea:focus,
+.form-vault select:focus {
+  border-color: var(--gold-border-strong);
+  box-shadow: 0 0 20px rgba(212,176,106,0.08);
+}
+.form-vault input::placeholder,
+.form-vault textarea::placeholder {
+  color: rgba(192,184,176,0.35);
+}
+.form-vault textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+.form-vault select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23A08050' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  cursor: pointer;
+}
+.form-vault select option {
+  background: var(--obsidian);
+  color: var(--platinum);
+}
+
+/* ═══ BUTTONS ═══ */
+.btn {
+  display: inline-flex; align-items: center; gap: 14px;
+  font-family: var(--font-display); font-size: 0.68rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.22em; padding: 18px 42px;
+  transition: all 0.38s var(--ease-silk); position: relative; overflow: hidden;
+  cursor: pointer; border: none; outline: none; white-space: nowrap;
+}
+.btn::before {
+  content: ''; position: absolute; top: 0; left: -60%;
+  width: 40%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transition: left 0.6s var(--ease-silk); pointer-events: none;
+}
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dim) 100%);
+  color: var(--obsidian); letter-spacing: 0.18em;
+}
+.btn-gold:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(212,176,106,0.3); }
+.btn-gold:hover::before { left: 130%; }
+.btn-outline-gold {
+  background: transparent; color: var(--gold); border: 1px solid var(--gold-border-strong);
+}
+.btn-outline-gold:hover {
+  background: rgba(212,176,106,0.06); border-color: var(--gold); transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(212,176,106,0.12);
+}
+.btn-full { width: 100%; justify-content: center; }
+
+/* ═══ GEMSTONE PLACEHOLDERS ═══ */
+.gem-placeholder {
+  position: relative; overflow: hidden;
+  background: linear-gradient(150deg, var(--obsidian-mid) 0%, var(--obsidian) 100%);
+  border: 1px solid var(--gold-border);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 40px 32px; min-height: 280px;
+}
+.gem-placeholder::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(212,176,106,0.08), transparent 60%);
+  pointer-events: none;
+}
+.gem-icon {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: conic-gradient(from 200deg, var(--gold-vivid), var(--gold-dim), var(--gold-bright), var(--gold), var(--gold-vivid));
+  box-shadow: 0 0 24px rgba(212,176,106,0.3), inset 0 0 8px rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.2); position: relative; flex-shrink: 0;
+  animation: orb-rotate 20s linear infinite; margin-bottom: 20px;
+}
+.gem-icon::after {
+  content: ''; position: absolute; top: 8px; left: 10px;
+  width: 20px; height: 12px; background: rgba(255,255,255,0.3); border-radius: 50%; filter: blur(3px);
+}
+.gem-label {
+  font-family: var(--font-display); font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light);
+  margin-bottom: 8px; position: relative; z-index: 1;
+}
+.gem-dim {
+  font-family: var(--font-ui); font-size: 0.64rem; color: var(--pewter);
+  letter-spacing: 0.1em; position: relative; z-index: 1;
+}
+@keyframes orb-rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* ═══ PROCESS STEPS ═══ */
+.step-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.step-card {
+  padding: 44px 36px;
+  text-align: left;
+}
+.step-card .step-num {
+  font-family: var(--font-display); font-size: 2.4rem; font-weight: 300;
+  color: rgba(212,176,106,0.15); line-height: 1; margin-bottom: 16px;
+}
+.step-card h3 {
+  font-family: var(--font-display); font-size: 0.9rem; font-weight: 400;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--platinum);
+  margin-bottom: 16px;
+}
+.step-card h3 span { color: var(--gold); }
+.step-card .gold-divider { width: 36px; margin: 0 0 20px 0; }
+.step-card p { text-align: left; }
+
+/* ═══ SCROLL REVEAL ═══ */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.9s var(--ease-silk), transform 0.9s var(--ease-silk);
+}
+.reveal.from-left { transform: translateX(-60px); }
+.reveal.from-right { transform: translateX(60px); }
+.reveal.from-bottom { transform: translateY(40px); }
+.reveal.from-scale { transform: scale(0.92); }
+.reveal.visible {
+  opacity: 1;
+  transform: translateX(0) translateY(0) scale(1);
+}
+.reveal.d1 { transition-delay: 0.1s; }
+.reveal.d2 { transition-delay: 0.2s; }
+.reveal.d3 { transition-delay: 0.3s; }
+.reveal.d4 { transition-delay: 0.4s; }
+
+/* ═══ FOOTER ═══ */
+.footer-prestige {
+  padding: 32px 48px; background: var(--obsidian-light);
+  border-top: 1px solid rgba(212,176,106,0.10);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 18px;
+}
+.footer-prestige-left { display: flex; align-items: center; gap: 14px; }
+.footer-prestige-brand {
+  font-family: var(--font-display); font-size: 0.72rem;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold);
+}
+.footer-prestige-tag {
+  font-family: var(--font-ui); font-size: 0.58rem; color: var(--pewter); letter-spacing: 0.12em;
+}
+.footer-prestige-right {
+  font-family: var(--font-ui); font-size: 0.58rem; color: var(--pewter); letter-spacing: 0.1em;
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 1024px) {
+  .container, .container-narrow, .container-wide { padding: 0 32px; }
+  .s-pad { padding: 80px 32px; }
+  .asymmetric-row { gap: 32px; margin-bottom: 60px; }
+  .hero-access-content { grid-template-columns: 1fr; gap: 48px; padding: 60px 32px; }
+  .step-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .top-nav { padding: 12px 24px; height: auto; flex-wrap: wrap; }
+  .nav-links { display: none; }
+  .container, .container-narrow, .container-wide { padding: 0 24px; }
+  .s-pad { padding: 64px 24px; }
+  .asymmetric-row { grid-template-columns: 1fr; gap: 24px; }
+  .asymmetric-row.offset-left .card-wrap:first-child,
+  .asymmetric-row.offset-left .card-wrap:last-child,
+  .asymmetric-row.offset-right .card-wrap:first-child,
+  .asymmetric-row.offset-right .card-wrap:last-child { transform: none; }
+  .card-content { padding: 36px 28px; }
+  .form-vault { padding: 36px 28px; }
+  .hero-access { min-height: auto; }
+  .d-xl { font-size: clamp(1.8rem, 7vw, 2.8rem); }
+  .footer-prestige { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════════════════════════════════ -->
+<nav class="top-nav">
+  <div class="nav-brand">
+    <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAISEE">
+    <span class="nav-brand-text">LEGAISEE</span>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">The Room</a>
+    <a href="philosophy.html">Doctrine</a>
+    <a href="services.html">Gallery</a>
+    <a href="results.html">Evidence</a>
+    <a href="access.html" class="nav-cta active">Request Entry</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     HERO — Request Entry
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="hero-access">
+  <div class="hero-access-content">
+    <div class="hero-access-left">
+      <span class="prestige-label">By Invitation Only</span>
+      <h1 class="d-xl" style="color: var(--gold);">Request<br>Entry</h1>
+      <div class="gold-divider"></div>
+      <p class="b-lg">
+        We do not accept every inquiry. We serve a maximum of three new clients per quarter, and we decline more engagements than we accept. This is not scarcity theater. It is the only way to maintain the depth of forensic attention your history deserves.
+      </p>
+      <p class="b-lg" style="margin-top: 20px;">
+        If your business meets the criteria below, complete the form. We review every submission personally and respond within 72 hours. If we are not the right fit, we will tell you directly — and we will recommend someone who is.
+      </p>
+    </div>
+    <div class="glass-card form-vault reveal from-right">
+      <form action="#" method="POST">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Full name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="you@company.com" required>
+        </div>
+        <div class="form-group">
+          <label for="company">Company Name</label>
+          <input type="text" id="company" name="company" placeholder="Your organization" required>
+        </div>
+        <div class="form-group">
+          <label for="years">Years in Operation</label>
+          <select id="years" name="years" required>
+            <option value="" disabled selected>Select range</option>
+            <option value="5-10">5 — 10 years</option>
+            <option value="10-20">10 — 20 years</option>
+            <option value="20-30">20 — 30 years</option>
+            <option value="30+">30+ years</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="revenue">Annual Revenue Range</label>
+          <select id="revenue" name="revenue" required>
+            <option value="" disabled selected>Select range</option>
+            <option value="1-5M">$1M — $5M</option>
+            <option value="5-15M">$5M — $15M</option>
+            <option value="15-50M">$15M — $50M</option>
+            <option value="50M+">$50M+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">What drew you here?</label>
+          <textarea id="message" name="message" placeholder="Describe your situation in a few sentences. What do you suspect has been lost? What are you hoping to recover?"></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold btn-full">Submit Request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 1 — Qualification (VIOLET RADIAL)
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="section-violet s-pad-lg">
+  <div class="container-wide" style="position: relative; z-index: 1;">
+
+    <div style="text-align: center; margin-bottom: 80px;">
+      <span class="prestige-label">Admission Criteria</span>
+      <h2 class="d-lg">Who We <span style="color:var(--gold);">Serve</span></h2>
+      <div class="gold-divider center"></div>
+    </div>
+
+    <div class="asymmetric-row offset-left">
+      <div class="card-wrap reveal from-left d1">
+        <div class="glass-card card-content card-wide">
+          <h3 class="d-md" style="margin-bottom: 20px;">The <span style="color:var(--gold);">Requirements</span></h3>
+          <div class="gold-divider" style="width: 40px; margin: 0 0 24px 0;"></div>
+          <ul class="qual-list">
+            <li>Minimum 5 years in continuous operation</li>
+            <li>Minimum $1M annual revenue</li>
+            <li>Previous investment in professional marketing or advertising</li>
+            <li>Decision-maker access (founder, owner, or C-suite)</li>
+            <li>Willingness to excavate uncomfortable truths about current strategy</li>
+            <li>Openness to AI-assisted workflows and modern tooling</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-wrap reveal from-right d2">
+        <div class="glass-card card-content card-wide">
+          <h3 class="d-md" style="margin-bottom: 20px;">The <span style="color:var(--gold);">Red Flags</span></h3>
+          <div class="gold-divider" style="width: 40px; margin: 0 0 24px 0;"></div>
+          <ul class="qual-list">
+            <li>"We just need more leads"</li>
+            <li>"Make us go viral"</li>
+            <li>"Manage our Instagram"</li>
+            <li>"We have never marketed before"</li>
+            <li>Committee-driven decision making with no single owner</li>
+            <li>Expecting results in under 90 days</li>
+          </ul>
+          <p class="b-md" style="margin-top: 24px; color: var(--pewter); font-style: italic;">
+            If any of these describe your situation, we are not the right partner. We will not waste your time or ours.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 2 — What Happens Next (OBSIDIAN)
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="section-obsidian s-pad-lg">
+  <div class="container-wide">
+
+    <div style="text-align: center; margin-bottom: 100px;">
+      <span class="prestige-label">The Protocol</span>
+      <h2 class="d-lg">What Happens <span style="color:var(--gold);">Next</span></h2>
+      <div class="gold-divider center"></div>
+      <p class="b-lg" style="max-width: 640px; margin: 0 auto; color: var(--silver);">
+        If your submission passes initial review, here is exactly what follows.
+      </p>
+    </div>
+
+    <div class="step-row">
+      <div class="glass-card step-card reveal from-bottom d1">
+        <div class="step-num">01</div>
+        <h3>The <span>Response</span></h3>
+        <div class="gold-divider"></div>
+        <p class="b-lg">
+          Within 72 hours, you will receive a personal response — not an autoresponder. If we see potential fit, we will propose a 20-minute conversation. If not, we will explain why and offer an alternative path.
+        </p>
+      </div>
+      <div class="glass-card step-card reveal from-bottom d2">
+        <div class="step-num">02</div>
+        <h3>The <span>Conversation</span></h3>
+        <div class="gold-divider"></div>
+        <p class="b-lg">
+          A focused 20-minute call to confirm fit, clarify scope, and answer your questions. We will share what we found in 20 minutes of preliminary research on your business. You will know immediately whether this is worth pursuing.
+        </p>
+      </div>
+      <div class="glass-card step-card reveal from-bottom d3">
+        <div class="step-num">03</div>
+        <h3>The <span>Decision</span></h3>
+        <div class="gold-divider"></div>
+        <p class="b-lg">
+          If we both agree to proceed, we issue a formal proposal with timeline, investment, and deliverables. You have 14 days to decide. No pressure, no follow-up bombardment. The opening waits for you or it goes to the next qualified inquiry.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 3 — The Guarantee (GOLD SPOTLIGHT)
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="section-gold-spot s-pad-lg">
+  <div class="container-narrow" style="position: relative; z-index: 1;">
+
+    <div class="glass-card manifesto-card reveal from-scale">
+      <span class="prestige-label" style="margin-bottom: 28px;">The Promise</span>
+      <h2 class="d-lg" style="margin-bottom: 20px;">What We <span style="color:var(--gold);">Guarantee</span></h2>
+      <div class="gold-divider" style="margin: 0 0 32px 0;"></div>
+      <p class="b-xl" style="margin-bottom: 28px;">
+        We guarantee clarity. You will know exactly what worked in your history, when it stopped working, and why. You will understand the mechanics of your Golden Era with forensic precision.
+      </p>
+      <p class="b-xl" style="margin-bottom: 28px;">
+        We guarantee operability. Your team will have working systems, documented workflows, and the training to execute without our daily involvement. If they cannot use it, we have failed.
+      </p>
+      <p class="b-xl" style="color: var(--gold-light); font-style: italic;">
+        We do not guarantee results we cannot control. We guarantee systems that make results inevitable.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 4 — Final CTA (OBSIDIAN LIGHT)
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="section-obsidian-light s-pad">
+  <div class="container" style="text-align: center;">
+    <span class="prestige-label">The Threshold</span>
+    <h2 class="d-lg" style="margin-bottom: 20px;">The Door Is <span style="color:var(--gold);">Open</span></h2>
+    <div class="gold-divider center"></div>
+    <p class="b-lg" style="max-width: 560px; margin: 0 auto 40px auto; color: var(--silver);">
+      Three openings per quarter. One decision. Your business has already earned the assets we excavate. The only question is whether you are ready to recover them.
+    </p>
+    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+      <a href="#" class="btn btn-gold" onclick="document.getElementById('name').focus(); return false;">Begin Your Request</a>
+      <a href="results.html" class="btn btn-outline-gold">Review Evidence</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════════════ -->
+<footer class="footer-prestige">
+  <div class="footer-prestige-left">
+    <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAISEE" style="width:20px;height:20px;object-fit:contain;">
+    <span class="footer-prestige-brand">LEGAISEE</span>
+    <span class="footer-prestige-tag">Business Archaeology &amp; Authority Systems</span>
+  </div>
+  <div class="footer-prestige-right">
+    &copy; MMXXVI &middot; Discreet &middot; Invitation-only &middot; Outcome-obsessed
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     LENIS + SCROLL REVEAL
+     ═══════════════════════════════════════════════════════════════════ -->
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<script>
+const lenis = new Lenis({
+  duration: 1.2,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  orientation: 'vertical',
+  gestureOrientation: 'vertical',
+  smoothWheel: true,
+  wheelMultiplier: 1,
+  touchMultiplier: 2,
+});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => {
+  revealObserver.observe(el);
+});
+</script>
+
+</body>
+</html>

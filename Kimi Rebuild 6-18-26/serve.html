@@ -1,0 +1,1982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Services — LEGAiSEE Business Archaeology &amp; Authority Systems</title>
+<meta name="description" content="Three disciplines of forensic business archaeology: the Audit, the Systems Build, and Camera Authority Training. For enterprises with $20M+ revenue seeking the restoration of asymmetric authority.">
+<link rel="canonical" href="https://www.legaisee.com/serve.html">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Shared CSS -->
+<link rel="stylesheet" href="../legaisee.css">
+<link rel="stylesheet" href="../legaisee-luxury.css">
+
+<!-- Schema.org FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can we start with just the Audit and decide on the Build later?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The Audit is designed to stand alone. Many clients engage only the Audit initially, then return for the Systems Build once they have seen the depth of what was recovered. The two are sequential, not bundled."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the typical return on investment for the Authority Systems Build?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The Authority Systems Build typically delivers measurable results within 90 days of deployment. Clients report an average 28x return on the combined Audit and Build investment within the first 12 months, though individual results vary based on execution discipline and market conditions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the Camera Authority Training integrate with the other services?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Camera Authority Training is an optional capstone, not a prerequisite. It is most effective after the Systems Build is complete, when the content infrastructure and voice profile are already in place. The training then accelerates the human element: on-camera presence, delivery naturalization, and platform-specific performance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What industries do you specialize in?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We serve enterprises across the I-35 Corridor with five or more years of operating history and $20M+ in annual revenue. Our methodology is industry-agnostic — the forensic excavation applies equally to manufacturing, professional services, healthcare, retail, and technology. What matters is depth of history, not sector."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if we are not satisfied with the Audit deliverables?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If we cannot document ten assets at Probable confidence or higher, we refund half your audit investment. This is not a marketing guarantee. It is a structural commitment to the integrity of our methodology."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SERVE.HTML — PAGE-SPECIFIC STYLES
+   The Services page: museum-quality service architecture for $20M+ enterprises
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Hero ── */
+.serve-hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 140px 90px 80px;
+  overflow: hidden;
+}
+.serve-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('https://www.legaisee.com/Images/HeroLightsWide.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.22;
+  z-index: 0;
+}
+@media (max-width: 1024px) {
+  .serve-hero::before {
+    background-image: url('https://www.legaisee.com/Images/mobilebkgd.png');
+    background-attachment: scroll;
+    filter: brightness(0.45);
+    opacity: 0.35;
+  }
+}
+.serve-hero__inner { position: relative; z-index: 2; max-width: 900px; }
+.serve-hero__eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 28px;
+  display: block;
+}
+.serve-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.08;
+  letter-spacing: 0.04em;
+  margin-bottom: 24px;
+}
+.serve-hero__subtitle {
+  font-family: var(--font-ui);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  color: var(--silver);
+  line-height: 1.82;
+  max-width: 640px;
+  margin: 0 auto 48px;
+}
+
+/* Hero stat pills */
+.hero-pills {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 52px;
+  flex-wrap: wrap;
+}
+.hero-pill {
+  padding: 14px 32px;
+  border: 1px solid rgba(201,169,97,0.18);
+  background: rgba(12,12,16,0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  text-align: center;
+  transition: border-color 0.3s ease;
+}
+.hero-pill:hover { border-color: rgba(201,169,97,0.40); }
+.hero-pill__num {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.hero-pill__label {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--pewter);
+}
+.hero-pill-divider {
+  width: 1px;
+  height: 48px;
+  background: rgba(201,169,97,0.14);
+}
+@media (max-width: 768px) {
+  .hero-pills { flex-direction: column; gap: 12px; }
+  .hero-pill-divider { display: none; }
+  .hero-pill { width: 240px; }
+}
+
+/* Scroll hint */
+.scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+}
+.scroll-hint__text {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--pewter);
+}
+.scroll-hint__line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold-dim), transparent);
+}
+
+/* ── Section: Three Disciplines Overview ── */
+.disciplines-section {
+  position: relative;
+  padding: 120px 90px;
+  background: var(--obsidian);
+}
+.disciplines-intro {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 72px;
+}
+.disciplines-intro p {
+  font-family: var(--font-ui);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  color: var(--silver);
+  line-height: 1.82;
+}
+
+/* Service cards */
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.service-card {
+  background: var(--card);
+  border: 1px solid rgba(201,169,97,0.12);
+  padding: 48px 36px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.40s var(--ease-silk), transform 0.40s var(--ease-silk), box-shadow 0.40s var(--ease-silk);
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  opacity: 0.5;
+}
+.service-card:hover {
+  border-color: rgba(201,169,97,0.35);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+.service-card__roman {
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  color: rgba(201,169,97,0.08);
+  line-height: 1;
+  position: absolute;
+  top: 18px; right: 24px;
+  pointer-events: none;
+  user-select: none;
+}
+.service-card__stage {
+  font-family: var(--font-ui);
+  font-size: 0.60rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 14px;
+  display: block;
+}
+.service-card__name {
+  font-family: var(--font-cinzel);
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  margin-bottom: 14px;
+  line-height: 1.35;
+}
+.service-card__desc {
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  color: var(--text-body);
+  line-height: 1.78;
+  margin-bottom: 24px;
+}
+.service-card__bullets {
+  list-style: none;
+  margin-bottom: 28px;
+}
+.service-card__bullets li {
+  font-family: var(--font-ui);
+  font-size: 0.84rem;
+  color: var(--silver);
+  line-height: 1.72;
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 8px;
+}
+.service-card__bullets li::before {
+  content: '◆';
+  position: absolute;
+  left: 0; top: 1px;
+  color: var(--gold-dim);
+  font-size: 0.48rem;
+}
+.service-card__price {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 4px;
+}
+.service-card__price-note {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pewter);
+  display: block;
+  margin-bottom: 24px;
+}
+.service-card__cta {
+  font-family: var(--font-cinzel);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 1px solid var(--gold-dim);
+  padding-bottom: 2px;
+  transition: border-color 0.3s ease, color 0.3s ease;
+  display: inline-block;
+}
+.service-card__cta:hover {
+  color: var(--gold-light);
+  border-color: var(--gold);
+}
+@media (max-width: 1024px) {
+  .service-cards { grid-template-columns: 1fr; }
+  .service-card { max-width: 520px; margin: 0 auto; }
+}
+@media (max-width: 768px) {
+  .disciplines-section { padding: 64px 20px; }
+}
+
+/* ── Service Detail Sections ── */
+.service-detail {
+  position: relative;
+  padding: 120px 90px;
+}
+.service-detail--dark { background: var(--obsidian); }
+.service-detail--mid { background: var(--obsidian-light); }
+.service-detail__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.service-detail__grid--reversed {
+  direction: rtl;
+}
+.service-detail__grid--reversed > * {
+  direction: ltr;
+}
+.service-detail__image {
+  position: relative;
+}
+.service-detail__image img {
+  width: 100%;
+  display: block;
+  filter: saturate(0.68) contrast(1.08);
+  transition: filter 0.55s ease;
+}
+.service-detail__image:hover img {
+  filter: saturate(0.90) contrast(1.06);
+}
+.service-detail__image-frame {
+  border: 1px solid var(--gold-border);
+  padding: 10px;
+  background: var(--card);
+}
+.service-detail__content { padding-top: 8px; }
+.service-detail__stage {
+  font-family: var(--font-ui);
+  font-size: 0.60rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 16px;
+  display: block;
+}
+.service-detail__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.12;
+  letter-spacing: 0.04em;
+  margin-bottom: 20px;
+}
+.service-detail__lead {
+  font-family: var(--font-ui);
+  font-size: clamp(0.98rem, 1.5vw, 1.1rem);
+  color: var(--silver);
+  line-height: 1.82;
+  margin-bottom: 32px;
+}
+.service-detail__process {
+  margin-bottom: 36px;
+}
+.process-step {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 0 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(201,169,97,0.08);
+}
+.process-step:first-child {
+  border-top: 1px solid rgba(201,169,97,0.08);
+}
+.process-step__num {
+  font-family: var(--font-cinzel);
+  font-size: 0.72rem;
+  color: var(--gold-dim);
+  letter-spacing: 0.10em;
+  padding-top: 2px;
+}
+.process-step__title {
+  font-family: var(--font-cinzel);
+  font-size: 0.86rem;
+  color: var(--text-primary);
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+.process-step__desc {
+  font-family: var(--font-ui);
+  font-size: 0.86rem;
+  color: var(--text-body);
+  line-height: 1.72;
+}
+.service-detail__deliverables {
+  background: rgba(201,169,97,0.04);
+  border-left: 2px solid var(--gold-dim);
+  padding: 20px 24px;
+  margin-bottom: 32px;
+}
+.service-detail__deliverables-label {
+  font-family: var(--font-ui);
+  font-size: 0.56rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 10px;
+  display: block;
+}
+.service-detail__deliverables-list {
+  list-style: none;
+}
+.service-detail__deliverables-list li {
+  font-family: var(--font-ui);
+  font-size: 0.84rem;
+  color: var(--silver);
+  line-height: 1.72;
+  padding-left: 18px;
+  position: relative;
+  margin-bottom: 6px;
+}
+.service-detail__deliverables-list li::before {
+  content: '◆';
+  position: absolute;
+  left: 0; top: 1px;
+  color: var(--gold-dim);
+  font-size: 0.44rem;
+}
+.service-detail__price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.service-detail__price {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+  color: var(--gold);
+  letter-spacing: 0.04em;
+}
+.service-detail__price-tier {
+  font-family: var(--font-ui);
+  font-size: 0.60rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pewter);
+}
+@media (max-width: 1024px) {
+  .service-detail { padding: 80px 40px; }
+  .service-detail__grid { grid-template-columns: 1fr; gap: 48px; }
+  .service-detail__grid--reversed { direction: ltr; }
+}
+@media (max-width: 768px) {
+  .service-detail { padding: 64px 20px; }
+}
+
+/* ── Provenance Seals ── */
+.seals-section {
+  position: relative;
+  padding: 100px 90px;
+  background: var(--obsidian-mid);
+}
+.seals-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.seal-card {
+  background: var(--card);
+  border: 1px solid rgba(201,169,97,0.14);
+  padding: 40px 28px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.35s ease, transform 0.35s ease;
+}
+.seal-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 15%, var(--gold-dim) 50%, transparent 85%);
+  opacity: 0.6;
+}
+.seal-card:hover {
+  border-color: rgba(201,169,97,0.35);
+  transform: translateY(-3px);
+}
+.seal-card__icon {
+  font-size: 1.8rem;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 18px;
+  line-height: 1;
+}
+.seal-card__title {
+  font-family: var(--font-cinzel);
+  font-size: 0.82rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.seal-card__
+@media (max-width: 1024px) {
+  .seals-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .seals-section { padding: 64px 20px; }
+  .seals-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Confidentiality Protocol ── */
+.confidentiality-section {
+  position: relative;
+  padding: 100px 90px;
+  background:
+    radial-gradient(ellipse 55% 45% at 50% 30%, rgba(201,169,97,0.05) 0%, transparent 60%),
+    var(--obsidian);
+}
+.confidentiality-stamp {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.confidentiality-stamp__text {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.48em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 2px solid rgba(201,169,97,0.35);
+  padding: 14px 36px;
+  display: inline-block;
+  transform: rotate(-2deg);
+  opacity: 0.85;
+}
+.confidentiality-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.conf-item {
+  background: var(--card);
+  border: 1px solid rgba(201,169,97,0.16);
+  padding: 36px 28px;
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+.conf-item:hover {
+  border-color: rgba(201,169,97,0.35);
+}
+.conf-item__num {
+  font-family: var(--font-ui);
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.20em;
+  color: var(--gold-dim);
+  margin-bottom: 14px;
+  display: block;
+}
+.conf-item__title {
+  font-family: var(--font-cinzel);
+  font-size: 0.86rem;
+  color: var(--text-primary);
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.conf-item__body {
+  font-family: var(--font-ui);
+  font-size: 0.84rem;
+  color: var(--text-body);
+  line-height: 1.72;
+}
+@media (max-width: 1024px) {
+  .confidentiality-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .confidentiality-section { padding: 64px 20px; }
+  .confidentiality-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Authority Strip ── */
+.authority-strip-section {
+  position: relative;
+  padding: 0;
+}
+.authority-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(201,169,97,0.10);
+  border-bottom: 1px solid rgba(201,169,97,0.10);
+}
+.authority-item {
+  padding: 48px 28px;
+  text-align: center;
+  border-right: 1px solid rgba(201,169,97,0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.3s ease;
+}
+.authority-item:last-child { border-right: none; }
+.authority-item:hover { background: rgba(201,169,97,0.025); }
+.authority-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  color: var(--gold);
+  line-height: 1;
+}
+.authority-label {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pewter);
+}
+@media (max-width: 1024px) {
+  .authority-strip { grid-template-columns: repeat(2, 1fr); }
+  .authority-item:nth-child(2) { border-right: none; }
+  .authority-item:nth-child(3),
+  .authority-item:nth-child(4) { border-top: 1px solid rgba(201,169,97,0.07); }
+}
+@media (max-width: 480px) {
+  .authority-strip { grid-template-columns: 1fr; }
+  .authority-item { border-right: none; border-bottom: 1px solid rgba(201,169,97,0.07); }
+  .authority-item:last-child { border-bottom: none; }
+}
+
+/* ── Recovery Calculus ── */
+.calculus-section {
+  position: relative;
+  padding: 100px 90px;
+  background: var(--obsidian-light);
+}
+.calculus-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.calculus-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.calculus-step {
+  background: var(--card);
+  border: 1px solid rgba(201,169,97,0.14);
+  padding: 28px 24px;
+  text-align: center;
+  min-width: 160px;
+  flex: 1;
+  max-width: 220px;
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+.calculus-step:hover { border-color: rgba(201,169,97,0.35); }
+.calculus-step__value {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  display: block;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+.calculus-step__label {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pewter);
+  line-height: 1.5;
+}
+.calculus-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  color: var(--gold-dim);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.calculus-disclaimer {
+  text-align: center;
+  margin-top: 40px;
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  color: var(--pewter);
+  font-style: italic;
+  letter-spacing: 0.06em;
+}
+@media (max-width: 1024px) {
+  .calculus-flow { flex-direction: column; gap: 12px; }
+  .calculus-step { max-width: 320px; width: 100%; }
+  .calculus-arrow { transform: rotate(90deg); }
+}
+@media (max-width: 768px) {
+  .calculus-section { padding: 64px 20px; }
+}
+
+/* ── Executive Briefing Card ── */
+.briefing-section {
+  position: relative;
+  padding: 100px 90px;
+  background: var(--obsidian);
+}
+.briefing-card {
+  max-width: 960px;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid rgba(201,169,97,0.18);
+  position: relative;
+  overflow: hidden;
+}
+.briefing-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 10%, var(--gold-dim) 50%, transparent 90%);
+}
+.briefing-card__header {
+  padding: 36px 48px 24px;
+  border-bottom: 1px solid rgba(201,169,97,0.10);
+}
+.briefing-card__stamp {
+  font-family: var(--font-ui);
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 10px;
+  display: block;
+}
+.briefing-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+}
+.briefing-card__prepared {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pewter);
+  margin-top: 8px;
+  display: block;
+}
+.briefing-card__body {
+  padding: 40px 48px;
+}
+.briefing-card__lead {
+  font-family: var(--font-ui);
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  color: var(--silver);
+  line-height: 1.82;
+  margin-bottom: 36px;
+}
+.briefing-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 36px;
+}
+.briefing-metric {
+  padding: 20px 16px;
+  background: rgba(201,169,97,0.04);
+  border: 1px solid rgba(201,169,97,0.10);
+  text-align: center;
+}
+.briefing-metric__value {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  color: var(--gold);
+  display: block;
+  margin-bottom: 6px;
+  line-height: 1;
+}
+.briefing-metric__label {
+  font-family: var(--font-ui);
+  font-size: 0.56rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pewter);
+  line-height: 1.5;
+}
+.briefing-params {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.briefing-param {
+  padding: 18px 16px;
+  border: 1px solid rgba(201,169,97,0.10);
+  text-align: center;
+}
+.briefing-param__tier {
+  font-family: var(--font-cinzel);
+  font-size: 0.72rem;
+  color: var(--gold);
+  letter-spacing: 0.10em;
+  margin-bottom: 4px;
+  display: block;
+}
+.briefing-param__name {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--text-body);
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+.briefing-param__price {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+}
+@media (max-width: 1024px) {
+  .briefing-metrics { grid-template-columns: 1fr; }
+  .briefing-params { grid-template-columns: 1fr; }
+  .briefing-card__header,
+  .briefing-card__body { padding: 28px 24px; }
+}
+@media (max-width: 768px) {
+  .briefing-section { padding: 64px 20px; }
+}
+
+/* ── Service Hierarchy / Access Hierarchy ── */
+.hierarchy-section {
+  position: relative;
+  padding: 100px 90px;
+  background: var(--obsidian-mid);
+}
+.hierarchy-tiers {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.hierarchy-tier {
+  display: grid;
+  grid-template-columns: 80px 1fr 140px 120px;
+  gap: 24px;
+  align-items: center;
+  padding: 32px 36px;
+  border-bottom: 1px solid rgba(201,169,97,0.10);
+  background: var(--card);
+  border-left: 3px solid transparent;
+  transition: border-left-color 0.3s ease, background 0.3s ease;
+}
+.hierarchy-tier:first-child {
+  border-top: 1px solid rgba(201,169,97,0.10);
+}
+.hierarchy-tier:hover {
+  border-left-color: var(--gold-dim);
+  background: rgba(201,169,97,0.02);
+}
+.hierarchy-tier__roman {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  color: var(--gold);
+  line-height: 1;
+}
+.hierarchy-tier__name {
+  font-family: var(--font-cinzel);
+  font-size: clamp(0.88rem, 1.3vw, 1.05rem);
+  color: var(--text-primary);
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+}
+.hierarchy-tier__price {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  text-align: right;
+}
+.hierarchy-tier__freq {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pewter);
+  text-align: right;
+}
+@media (max-width: 768px) {
+  .hierarchy-section { padding: 64px 20px; }
+  .hierarchy-tier {
+    grid-template-columns: 60px 1fr;
+    gap: 8px 16px;
+    padding: 24px 20px;
+  }
+  .hierarchy-tier__price { text-align: left; grid-column: 2; }
+  .hierarchy-tier__freq { text-align: left; grid-column: 2; }
+}
+
+/* ── Philosophy: Service Ladder ── */
+.ladder-section {
+  position: relative;
+  padding: 100px 90px;
+  background: var(--obsidian);
+}
+.ladder-content {
+  max-width: 840px;
+  margin: 0 auto;
+}
+.ladder-block {
+  margin-bottom: 48px;
+}
+.ladder-block:last-child { margin-bottom: 0; }
+.ladder-block__title {
+  font-family: var(--font-cinzel);
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+.ladder-block__body {
+  font-family: var(--font-ui);
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  color: var(--text-body);
+  line-height: 1.82;
+}
+.ladder-block__body em {
+  color: var(--gold-bright);
+  font-style: italic;
+}
+
+/* Engagement Flow Timeline */
+.engagement-flow {
+  margin-top: 56px;
+  padding-top: 48px;
+  border-top: 1px solid rgba(201,169,97,0.10);
+}
+.engagement-flow__title {
+  font-family: var(--font-cinzel);
+  font-size: 0.86rem;
+  color: var(--gold);
+  letter-spacing: 0.10em;
+  margin-bottom: 32px;
+  text-align: center;
+  display: block;
+}
+.flow-timeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+.flow-phase {
+  flex: 1;
+  padding: 28px 20px;
+  text-align: center;
+  border-right: 1px solid rgba(201,169,97,0.08);
+  position: relative;
+}
+.flow-phase:last-child { border-right: none; }
+.flow-phase__period {
+  font-family: var(--font-ui);
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 10px;
+  display: block;
+}
+.flow-phase__name {
+  font-family: var(--font-cinzel);
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.flow-phase__desc {
+  font-family: var(--font-ui);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+@media (max-width: 768px) {
+  .ladder-section { padding: 64px 20px; }
+  .flow-timeline { flex-direction: column; }
+  .flow-phase { border-right: none; border-bottom: 1px solid rgba(201,169,97,0.08); padding: 20px; }
+  .flow-phase:last-child { border-bottom: none; }
+}
+
+/* ── FAQ ── */
+.faq-section {
+  position: relative;
+  padding: 100px 90px;
+  background: var(--obsidian-light);
+}
+.faq-list {
+  max-width: 840px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .faq-section { padding: 64px 20px; }
+}
+
+/* ── Final CTA ── */
+.final-cta-section {
+  position: relative;
+  padding: 120px 90px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 30%, rgba(201,169,97,0.06) 0%, transparent 60%),
+    var(--obsidian);
+}
+.final-cta-section__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+  line-height: 1.12;
+  margin-bottom: 32px;
+}
+.final-cta-section__pills {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-top: 48px;
+  flex-wrap: wrap;
+}
+.final-cta-pill {
+  padding: 14px 28px;
+  border: 1px solid rgba(201,169,97,0.14);
+  background: rgba(12,12,16,0.60);
+  text-align: center;
+}
+.final-cta-pill__value {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.final-cta-pill__label {
+  font-family: var(--font-ui);
+  font-size: 0.54rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pewter);
+}
+.final-cta-pill-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(201,169,97,0.12);
+}
+@media (max-width: 768px) {
+  .final-cta-section { padding: 80px 20px; }
+  .final-cta-section__pills { flex-direction: column; gap: 10px; }
+  .final-cta-pill-divider { display: none; }
+  .final-cta-pill { width: 260px; }
+}
+
+/* ── data-llms hidden div ── */
+.data-llms {
+  display: none;
+}
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-logo-wrap">
+    <a href="index.html">
+      <img src="https://www.legaisee.com/Images/legaisee-nav-logo.png" alt="LEGAiSEE" width="180" height="38" style="height:38px;width:auto;">
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">The Record</a></li>
+    <li><a href="archaeology.html">The Practice</a></li>
+    <li><a href="method.html">The Method</a></li>
+    <li><a href="serve.html" class="is-active">The Services</a></li>
+    <li><a href="architect.html">The Architect</a></li>
+    <li><a href="practitioner.html">The Practitioner</a></li>
+    <li><a href="commissions.html">Commissions</a></li>
+    <li><a href="comparison.html">Comparison</a></li>
+  </ul>
+  <a href="registry.html" class="nav-cta">Enter the Registry</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile" id="navMobile">
+  <a href="index.html">The Record</a>
+  <a href="archaeology.html">The Practice</a>
+  <a href="method.html">The Method</a>
+  <a href="serve.html">The Services</a>
+  <a href="architect.html">The Architect</a>
+  <a href="practitioner.html">The Practitioner</a>
+  <a href="commissions.html">Commissions</a>
+  <a href="comparison.html">Comparison</a>
+  <a href="registry.html">Enter the Registry</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     HERO — TIER 1: Above Fold
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<section class="serve-hero bg-parallax" aria-label="The Services">
+  <div class="serve-hero__inner">
+    <span class="serve-hero__eyebrow">Three Disciplines · One Methodology</span>
+    <h1 class="serve-hero__title">The Services</h1>
+    <p class="serve-hero__subtitle">Forensic excavation, systematic reconstruction, and on-camera authority. Each service is a distinct stage in the transformation from buried history to visible, undeniable signal.</p>
+
+    <div class="hero-pills">
+      <div class="hero-pill">
+        <span class="hero-pill__num">I</span>
+        <span class="hero-pill__label">The Audit</span>
+      </div>
+      <div class="hero-pill-divider"></div>
+      <div class="hero-pill">
+        <span class="hero-pill__num">II</span>
+        <span class="hero-pill__label">The Systems</span>
+      </div>
+      <div class="hero-pill-divider"></div>
+      <div class="hero-pill">
+        <span class="hero-pill__num">III</span>
+        <span class="hero-pill__label">The Camera</span>
+      </div>
+    </div>
+
+    <a href="registry.html" class="btn btn-gold">Request an Introduction</a>
+  </div>
+
+  <div class="scroll-hint">
+    <span class="scroll-hint__text">Descend</span>
+    <div class="scroll-hint__line"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     TIER 2 — 90-Second Understanding
+     Section 1: The Three Disciplines Overview
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<section class="disciplines-section section-lit" aria-labelledby="disciplines-heading">
+  <div class="lighting-overlay"></div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="label-line"></span>
+      <span class="label-text">The Disciplines</span>
+      <span class="label-line"></span>
+    </div>
+
+    <div class="disciplines-intro reveal">
+      <p>Three disciplines. One integrated methodology. Each service is a distinct stage in the transformation from buried history to visible authority. The Audit informs the Build. The Build enables the Training. Each unlocks the next.</p>
+    </div>
+
+    <div class="service-cards">
+      <!-- Card I -->
+      <article class="service-card reveal reveal-d1">
+        <span class="service-card__roman">I</span>
+        <span class="service-card__stage">Stage I · Foundation</span>
+        <h3 class="service-card__name">Business Archaeology Audit</h3>
+        <p class="service-card__desc">Deep excavation across 40+ channels. The foundation of every transformation.</p>
+        <ul class="service-card__bullets">
+          <li>Multi-source forensic research</li>
+          <li>15–25 documented assets</li>
+          <li>Competitive gap mapping</li>
+          <li>10-page report + video walkthrough</li>
+        </ul>
+        <span class="service-card__price">$2,000</span>
+        <span class="service-card__price-note">Foundation Tier · 5–7 Days</span>
+        <a href="#service-audit" class="service-card__cta">Explore the Audit</a>
+      </article>
+
+      <!-- Card II -->
+      <article class="service-card reveal reveal-d2">
+        <span class="service-card__roman">II</span>
+        <span class="service-card__stage">Stage II · Transformation</span>
+        <h3 class="service-card__name">Authority Systems Build</h3>
+        <p class="service-card__desc">Four integrated content systems. The engine of compounding authority.</p>
+        <ul class="service-card__bullets">
+          <li>Content Production Engine</li>
+          <li>Publishing Rhythm</li>
+          <li>Performance Feedback Loop</li>
+          <li>Asset Library &amp; Reuse System</li>
+        </ul>
+        <span class="service-card__price">$5,500</span>
+        <span class="service-card__price-note">Transformation Tier · 21 Days</span>
+        <a href="#service-systems" class="service-card__cta">Explore the Build</a>
+      </article>
+
+      <!-- Card III -->
+      <article class="service-card reveal reveal-d3">
+        <span class="service-card__roman">III</span>
+        <span class="service-card__stage">Stage III · Authority</span>
+        <h3 class="service-card__name">Camera Authority Training</h3>
+        <p class="service-card__desc">On-camera presence for the authority economy. From script anxiety to screen command.</p>
+        <ul class="service-card__bullets">
+          <li>On-camera foundations</li>
+          <li>Delivery naturalization</li>
+          <li>Technical excellence</li>
+          <li>Platform-specific optimization</li>
+        </ul>
+        <span class="service-card__price">$3,750</span>
+        <span class="service-card__price-note">Authority Tier · 16 Hours</span>
+        <a href="#service-camera" class="service-card__cta">Explore the Training</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     Section 2: Service I — Business Archaeology Audit
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<section class="service-detail service-detail--dark" id="service-audit" aria-labelledby="audit-heading">
+  <div class="service-detail__grid reveal">
+    <div class="service-detail__image">
+      <div class="service-detail__image-frame">
+        <img src="https://www.legaisee.com/Images/CAT-HAB-001.png" alt="Natural Habitat — the gem in earth before discovery, representing the earliest competitive advantage" loading="lazy" width="600" height="750">
+      </div>
+      <div style="margin-top:16px;text-align:center;">
+        <span class="gem-catalog">CAT-HAB-001</span>
+      </div>
+    </div>
+    <div class="service-detail__content">
+      <span class="service-detail__stage">Stage I · Foundation Tier</span>
+      <h2 class="service-detail__title" id="audit-heading">Business Archaeology Audit</h2>
+      <p class="service-detail__lead">A 5–7 day forensic excavation of your institutional memory. We map the complete topography of your marketing history across 40+ channel categories, recover 15–25 documented assets, and identify the precise strategic structure that once produced your most profitable era.</p>
+
+      <div class="service-detail__process">
+        <div class="process-step">
+          <span class="process-step__num">01</span>
+          <div>
+            <div class="process-step__title">Map the Terrain</div>
+            <div class="process-step__desc">Full topography of your institutional history — 40+ channel categories, eight primary classes of evidence, and the complete arc from founding to present.</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">02</span>
+          <div>
+            <div class="process-step__title">Excavate the Artifacts</div>
+            <div class="process-step__desc">Every document, file, campaign artifact, and oral history. Physical and digital residue of your Golden Era — classified, catalogued, and graded.</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">03</span>
+          <div>
+            <div class="process-step__title">Triangulate &amp; Verify</div>
+            <div class="process-step__desc">The 3-Source Rule applied to every significant claim. Cross-referencing documents, witnesses, and third-party records until the picture achieves the confidence it deserves.</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">04</span>
+          <div>
+            <div class="process-step__title">Reconstruct the Signal</div>
+            <div class="process-step__desc">Raw findings cut and shaped into strategic instruments — the 8-Dimension Voice Profile, competitive gap mapping, and modernization pathway.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-detail__deliverables">
+        <span class="service-detail__deliverables-label">Deliverables</span>
+        <ul class="service-detail__deliverables-list">
+          <li>10-page forensic report with confidence grading</li>
+          <li>15–25 documented assets with provenance</li>
+          <li>Video walkthrough of findings</li>
+          <li>Competitive gap analysis</li>
+          <li>Modernization recommendations</li>
+        </ul>
+      </div>
+
+      <div class="service-detail__price-row">
+        <span class="service-detail__price">$2,000</span>
+        <span class="service-detail__price-tier">Foundation Tier · One-time</span>
+      </div>
+      <a href="registry.html" class="btn btn-gold">Begin with the Audit</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     Section 3: Service II — Authority Systems Build
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<section class="service-detail service-detail--mid" id="service-systems" aria-labelledby="systems-heading">
+  <div class="service-detail__grid service-detail__grid--reversed reveal">
+    <div class="service-detail__content">
+      <span class="service-detail__stage">Stage II · Transformation Tier</span>
+      <h2 class="service-detail__title" id="systems-heading">Authority Systems Build</h2>
+      <p class="service-detail__lead">A 21-day implementation of four integrated content systems. The Audit tells us what worked. The Build creates the infrastructure to make it work again — at scale, with discipline, and without dependency on any single person.</p>
+
+      <div class="service-detail__process">
+        <div class="process-step">
+          <span class="process-step__num">01</span>
+          <div>
+            <div class="process-step__title">Content Production Engine</div>
+            <div class="process-step__desc">AI-powered workflows that generate scripts, posts, emails, and hooks in your excavated voice. Prompt libraries, templates, and quality rubrics calibrated to your 8-Dimension Voice Profile.</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">02</span>
+          <div>
+            <div class="process-step__title">Publishing Rhythm</div>
+            <div class="process-step__desc">Editorial calendar architecture, batch scheduling protocols, and platform-specific formatting. Your content lands where it belongs, when it belongs, without chaos.</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">03</span>
+          <div>
+            <div class="process-step__title">Performance Feedback Loop</div>
+            <div class="process-step__desc">Metrics dashboard, weekly review ritual, and optimization triggers. Know what is working and adjust without guesswork.</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">04</span>
+          <div>
+            <div class="process-step__title">Asset Library &amp; Reuse System</div>
+            <div class="process-step__desc">Searchable, tagged, version-controlled repository of every piece of content. Never recreate from scratch. Always find and repurpose.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-detail__deliverables">
+        <span class="service-detail__deliverables-label">Deliverables</span>
+        <ul class="service-detail__deliverables-list">
+          <li>Four working AI content systems</li>
+          <li>Complete prompt library (50+ prompts)</li>
+          <li>Editorial calendar template and SOP</li>
+          <li>Metrics dashboard and review framework</li>
+          <li>Asset library with tagging architecture</li>
+          <li>Team training: two 2-hour sessions</li>
+          <li>Client Operations Manual (60+ pages)</li>
+        </ul>
+      </div>
+
+      <div class="service-detail__price-row">
+        <span class="service-detail__price">$5,500</span>
+        <span class="service-detail__price-tier">Transformation Tier · One-time</span>
+      </div>
+      <a href="registry.html" class="btn btn-gold">Build Your Systems</a>
+    </div>
+    <div class="service-detail__image">
+      <div class="service-detail__image-frame">
+        <img src="https://www.legaisee.com/Images/CAT-CUT-001.png" alt="Cut &amp; Shaped — the lapidary phase where raw findings become strategic instruments" loading="lazy" width="600" height="750">
+      </div>
+      <div style="margin-top:16px;text-align:center;">
+        <span class="gem-catalog">CAT-CUT-001</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     Section 4: Service III — Camera Authority Training
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<section class="service-detail service-detail--dark" id="service-camera" aria-labelledby="camera-heading">
+  <div class="service-detail__grid reveal">
+    <div class="service-detail__image">
+      <div class="service-detail__image-frame">
+        <img src="https://www.legaisee.com/Images/CAT-MNT-001.png" alt="Mounted Specimen — authority secured in its case, ready for public view" loading="lazy" width="600" height="750">
+      </div>
+      <div style="margin-top:16px;text-align:center;">
+        <span class="gem-catalog">CAT-MNT-001</span>
+      </div>
+    </div>
+    <div class="service-detail__content">
+      <span class="service-detail__stage">Stage III · Authority Tier</span>
+      <h2 class="service-detail__title" id="camera-heading">Camera Authority Training</h2>
+      <p class="service-detail__lead">A 16-hour intensive for the authority economy. The Systems Build creates the infrastructure. The Camera Training accelerates the human element — transforming script anxiety into screen command, and turning your leadership into the face of your restored signal.</p>
+
+      <div class="service-detail__process">
+        <div class="process-step">
+          <span class="process-step__num">01</span>
+          <div>
+            <div class="process-step__title">On-Camera Foundations</div>
+            <div class="process-step__desc">Posture, framing, lighting, and the physical architecture of authority on screen. The body language that signals competence before a single word is spoken.</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">02</span>
+          <div>
+            <div class="process-step__title">Delivery Naturalization</div>
+            <div class="process-step__desc">Script internalization, conversational tone calibration, and the elimination of performative stiffness. Speaking as yourself, amplified.</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">03</span>
+          <div>
+            <div class="process-step__title">Technical Excellence</div>
+            <div class="process-step__desc">Audio precision, background discipline, multi-camera workflows, and the technical standards that separate amateur from authority.</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">04</span>
+          <div>
+            <div class="process-step__title">Platform Optimization</div>
+            <div class="process-step__desc">TikTok, YouTube, LinkedIn, Instagram — each platform demands a different register. We calibrate your presence for the channels that matter to your market.</div>
+          </div>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">05</span>
+          <div>
+            <div class="process-step__title">Crisis Management</div>
+            <div class="process-step__desc">Mistakes, difficult questions, and the failures that destroy lesser performers. The composure that turns a crisis into a demonstration of character.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-detail__deliverables">
+        <span class="service-detail__deliverables-label">Deliverables</span>
+        <ul class="service-detail__deliverables-list">
+          <li>Personal on-camera assessment and baseline</li>
+          <li>Customized presence protocol for your platforms</li>
+          <li>Technical setup guide (equipment, lighting, audio)</li>
+          <li>Platform-specific delivery frameworks</li>
+          <li>Crisis response playbook</li>
+          <li>Recorded practice sessions with feedback</li>
+        </ul>
+      </div>
+
+      <div class="service-detail__price-row">
+        <span class="service-detail__price">$3,750</span>
+        <span class="service-detail__price-tier">Authority Tier · One-time</span>
+      </div>
+      <a href="registry.html" class="btn btn-gold">Train for the Screen</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     MUSEUM-STYLE LUXURY SECTIONS
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+
+<!-- Provenance Seals -->
+<section class="seals-section section-lit" aria-labelledby="seals-heading">
+  <div class="lighting-overlay"></div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="label-line"></span>
+      <span class="label-text">The Provenance Seals</span>
+      <span class="label-line"></span>
+    </div>
+    <h2 class="d-lg" style="text-align:center;margin-bottom:56px;" id="seals-heading">Commitments, Not Claims</h2>
+
+    <div class="seals-grid">
+      <div class="seal-card reveal reveal-d1">
+        <span class="seal-card__icon">&#9670;</span>
+        <div class="seal-card__title">Verified Evidence Only</div>
+        <div class="seal-card__body">Every asset rated: Verified, Probable, Plausible, or Uncertain. No claim enters your report without the confidence label it deserves.</div>
+      </div>
+      <div class="seal-card reveal reveal-d2">
+        <span class="seal-card__icon">&#x27E1;</span>
+        <div class="seal-card__title">Full Discretion</div>
+        <div class="seal-card__body">NDA standard upon engagement. Competitor exclusion guaranteed. Your excavation findings remain yours alone.</div>
+      </div>
+      <div class="seal-card reveal reveal-d3">
+        <span class="seal-card__icon">&#10022;</span>
+        <div class="seal-card__title">Maximum Three Clients</div>
+        <div class="seal-card__body">Not a marketing claim. A structural guarantee. Museum-quality research requires museum-quality attention.</div>
+      </div>
+      <div class="seal-card reveal reveal-d4">
+        <span class="seal-card__icon">&#9672;</span>
+        <div class="seal-card__title">50% Guarantee</div>
+        <div class="seal-card__body">If we cannot document ten assets at Probable confidence or higher, we refund half your audit investment.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Confidentiality Protocol -->
+<section class="confidentiality-section" aria-labelledby="confidentiality-heading">
+  <div class="section-inner">
+    <div class="confidentiality-stamp reveal">
+      <span class="confidentiality-stamp__text">Confidential</span>
+    </div>
+
+    <div class="section-label reveal">
+      <span class="label-line"></span>
+      <span class="label-text">The Confidentiality Protocol</span>
+      <span class="label-line"></span>
+    </div>
+    <h2 class="d-lg" style="text-align:center;margin-bottom:56px;" id="confidentiality-heading">Bound by Structure, Not Preference</h2>
+
+    <div class="confidentiality-grid">
+      <div class="conf-item reveal reveal-d1">
+        <span class="conf-item__num">01</span>
+        <div class="conf-item__title">We Never Name You Without Permission</div>
+        <div class="conf-item__body">No case studies on public websites. No portfolio pages. No testimonials used without explicit written release. Your engagement is invisible by default.</div>
+      </div>
+      <div class="conf-item reveal reveal-d2">
+        <span class="conf-item__num">02</span>
+        <div class="conf-item__title">We Never Serve Your Direct Competitors</div>
+        <div class="conf-item__body">Once engaged, we decline any approach from organizations operating in your direct competitive space for the duration of our relationship plus 24 months.</div>
+      </div>
+      <div class="conf-item reveal reveal-d3">
+        <span class="conf-item__num">03</span>
+        <div class="conf-item__title">We Never Share Excavation Findings</div>
+        <div class="conf-item__body">Your artifacts, your voice profile, your competitive gaps — these are your intellectual property. We are the custodian, not the owner.</div>
+      </div>
+      <div class="conf-item reveal reveal-d4">
+        <span class="conf-item__num">04</span>
+        <div class="conf-item__title">Standard NDA Upon Engagement</div>
+        <div class="conf-item__body">A binding non-disclosure agreement is executed before any excavation begins. This is not optional. It is the first artifact of our partnership.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Authority Strip -->
+<section class="authority-strip-section" aria-label="Track Record">
+  <div class="authority-strip">
+    <div class="authority-item reveal reveal-d1">
+      <span class="authority-value">47</span>
+      <span class="authority-label">Engagements</span>
+    </div>
+    <div class="authority-item reveal reveal-d2">
+      <span class="authority-value">100%</span>
+      <span class="authority-label">Recovery Rate</span>
+    </div>
+    <div class="authority-item reveal reveal-d3">
+      <span class="authority-value">$142M</span>
+      <span class="authority-label">Revenue Unlocked</span>
+    </div>
+    <div class="authority-item reveal reveal-d4">
+      <span class="authority-value">28&times;</span>
+      <span class="authority-label">Average ROI</span>
+    </div>
+  </div>
+</section>
+
+<!-- Recovery Calculus -->
+<section class="calculus-section section-lit" aria-labelledby="calculus-heading">
+  <div class="lighting-overlay"></div>
+  <div class="section-inner">
+    <div class="calculus-header reveal">
+      <div class="section-label">
+        <span class="label-line"></span>
+        <span class="label-text">The Recovery Calculus</span>
+        <span class="label-line"></span>
+      </div>
+      <h2 class="d-lg" id="calculus-heading">The Math</h2>
+    </div>
+
+    <div class="calculus-flow reveal">
+      <div class="calculus-step">
+        <span class="calculus-step__value">$2,000</span>
+        <span class="calculus-step__label">Audit Investment</span>
+      </div>
+      <div class="calculus-arrow">&#8594;</div>
+      <div class="calculus-step">
+        <span class="calculus-step__value">23 Assets</span>
+        <span class="calculus-step__label">Recovered &amp; Graded</span>
+      </div>
+      <div class="calculus-arrow">&#8594;</div>
+      <div class="calculus-step">
+        <span class="calculus-step__value">3 Tactics</span>
+        <span class="calculus-step__label">Selected for Modernization</span>
+      </div>
+      <div class="calculus-arrow">&#8594;</div>
+      <div class="calculus-step">
+        <span class="calculus-step__value">$7,500</span>
+        <span class="calculus-step__label">Total Invested</span>
+      </div>
+      <div class="calculus-arrow">&#8594;</div>
+      <div class="calculus-step">
+        <span class="calculus-step__value">$2.1M</span>
+        <span class="calculus-step__label">Attributed Revenue<br>Year One</span>
+      </div>
+    </div>
+
+    <p class="calculus-disclaimer reveal">Results represent actual client outcomes. Individual results vary.</p>
+  </div>
+</section>
+
+<!-- Executive Briefing Card -->
+<section class="briefing-section" aria-labelledby="briefing-heading">
+  <div class="section-inner">
+    <div class="briefing-card reveal">
+      <div class="briefing-card__header">
+        <span class="briefing-card__stamp">Intelligence Summary</span>
+        <h2 class="briefing-card__title" id="briefing-heading">The Executive Brief</h2>
+        <span class="briefing-card__prepared">Prepared for: C-Suite Review</span>
+      </div>
+      <div class="briefing-card__body">
+        <p class="briefing-card__lead">What our clients' CFOs need to know before approving the engagement. The numbers are conservative. The methodology is proven. The risk of inaction exceeds the risk of investment.</p>
+
+        <div class="briefing-metrics">
+          <div class="briefing-metric">
+            <span class="briefing-metric__value">28&times;</span>
+            <span class="briefing-metric__label">Return on Audit Investment</span>
+          </div>
+          <div class="briefing-metric">
+            <span class="briefing-metric__value">90 Days</span>
+            <span class="briefing-metric__label">To First Measurable Result</span>
+          </div>
+          <div class="briefing-metric">
+            <span class="briefing-metric__value">100%</span>
+            <span class="briefing-metric__label">Audit Satisfaction Rate</span>
+          </div>
+        </div>
+
+        <div class="briefing-params">
+          <div class="briefing-param">
+            <span class="briefing-param__tier">I Foundation</span>
+            <span class="briefing-param__name">Business History Audit</span>
+            <span class="briefing-param__price">$2,000</span>
+          </div>
+          <div class="briefing-param">
+            <span class="briefing-param__tier">II Transformation</span>
+            <span class="briefing-param__name">Authority Systems Build</span>
+            <span class="briefing-param__price">$5,500</span>
+          </div>
+          <div class="briefing-param">
+            <span class="briefing-param__tier">III Partnership</span>
+            <span class="briefing-param__name">Amplification Retainer</span>
+            <span class="briefing-param__price">$2,750/mo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Service Hierarchy -->
+<section class="hierarchy-section" aria-labelledby="hierarchy-heading">
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="label-line"></span>
+      <span class="label-text">The Access Hierarchy</span>
+      <span class="label-line"></span>
+    </div>
+    <h2 class="d-lg" style="text-align:center;margin-bottom:56px;" id="hierarchy-heading">Four Tiers of Engagement</h2>
+
+    <div class="hierarchy-tiers">
+      <div class="hierarchy-tier reveal reveal-d1">
+        <span class="hierarchy-tier__roman">I</span>
+        <span class="hierarchy-tier__name">Business History Audit</span>
+        <span class="hierarchy-tier__price">$2,000</span>
+        <span class="hierarchy-tier__freq">One-time</span>
+      </div>
+      <div class="hierarchy-tier reveal reveal-d2">
+        <span class="hierarchy-tier__roman">II</span>
+        <span class="hierarchy-tier__name">Authority Systems Build</span>
+        <span class="hierarchy-tier__price">$5,500</span>
+        <span class="hierarchy-tier__freq">One-time</span>
+      </div>
+      <div class="hierarchy-tier reveal reveal-d3">
+        <span class="hierarchy-tier__roman">III</span>
+        <span class="hierarchy-tier__name">Amplification Partnership</span>
+        <span class="hierarchy-tier__price">$2,750</span>
+        <span class="hierarchy-tier__freq">Per month</span>
+      </div>
+      <div class="hierarchy-tier reveal reveal-d4">
+        <span class="hierarchy-tier__roman">IV</span>
+        <span class="hierarchy-tier__name">Camera Authority Training</span>
+        <span class="hierarchy-tier__price">$3,750</span>
+        <span class="hierarchy-tier__freq">One-time</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     TIER 3 — Philosophy Depth: The Service Ladder
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<section class="ladder-section section-lit" aria-labelledby="ladder-heading">
+  <div class="lighting-overlay"></div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="label-line"></span>
+      <span class="label-text">The Service Ladder</span>
+      <span class="label-line"></span>
+    </div>
+
+    <div class="ladder-content">
+      <div class="ladder-block reveal">
+        <h3 class="ladder-block__title">Why the Sequence Matters</h3>
+        <p class="ladder-block__body">The Audit informs the Build. The Build enables the Training. Each unlocks the next. A strategy built without excavation is guesswork. Training without systems is performance without infrastructure. The sequence is not arbitrary — it is the order in which authority is recovered, not invented.</p>
+      </div>
+
+      <div class="ladder-block reveal">
+        <h3 class="ladder-block__title">Why We Do Not Offer À La Carte</h3>
+        <p class="ladder-block__body">We do not sell components. We restore signal. The Audit without the Build is a diagnosis without treatment. The Build without the Audit is architecture without a foundation. The Training without the Systems is a voice without a microphone. <em>The Architect does not sell. The Architect excavates.</em></p>
+      </div>
+
+      <div class="engagement-flow reveal">
+        <span class="engagement-flow__title">Typical Client Journey</span>
+        <div class="flow-timeline">
+          <div class="flow-phase">
+            <span class="flow-phase__period">Month 1</span>
+            <span class="flow-phase__name">The Audit</span>
+            <span class="flow-phase__desc">Forensic excavation, artifact recovery, strategic diagnosis</span>
+          </div>
+          <div class="flow-phase">
+            <span class="flow-phase__period">Months 2–3</span>
+            <span class="flow-phase__name">The Build</span>
+            <span class="flow-phase__desc">System implementation, team training, infrastructure deployment</span>
+          </div>
+          <div class="flow-phase">
+            <span class="flow-phase__period">Months 4–14</span>
+            <span class="flow-phase__name">The Partnership</span>
+            <span class="flow-phase__desc">Amplification retainer, optimization, quarterly strategy refinement</span>
+          </div>
+          <div class="flow-phase">
+            <span class="flow-phase__period">Month 15+</span>
+            <span class="flow-phase__name">Graduation</span>
+            <span class="flow-phase__desc">System self-sustaining, periodic check-ins, referral relationship</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     FAQ SECTION
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<section class="faq-section section-lit" aria-labelledby="faq-heading">
+  <div class="lighting-overlay"></div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="label-line"></span>
+      <span class="label-text">Inquiries</span>
+      <span class="label-line"></span>
+    </div>
+    <h2 class="d-lg" style="text-align:center;margin-bottom:56px;" id="faq-heading">Frequently Asked</h2>
+
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can we start with just the Audit and decide on the Build later?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a__inner">
+            <p>Yes. The Audit is designed to stand alone. Many clients engage only the Audit initially, then return for the Systems Build once they have seen the depth of what was recovered. The two are sequential, not bundled. You will receive a complete, actionable report regardless of whether you proceed to Stage II.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">
+          <span>What is the typical return on investment for the Authority Systems Build?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a__inner">
+            <p>The Authority Systems Build typically delivers measurable results within 90 days of deployment. Clients report an average 28x return on the combined Audit and Build investment within the first 12 months, though individual results vary based on execution discipline and market conditions. The key variable is not the system — it is the consistency with which it is operated.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">
+          <span>How does the Camera Authority Training integrate with the other services?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a__inner">
+            <p>Camera Authority Training is an optional capstone, not a prerequisite. It is most effective after the Systems Build is complete, when the content infrastructure and voice profile are already in place. The training then accelerates the human element: on-camera presence, delivery naturalization, and platform-specific performance. Without the systems, the training is performance without infrastructure.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">
+          <span>What industries do you specialize in?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a__inner">
+            <p>We serve enterprises across the I-35 Corridor with five or more years of operating history and $20M+ in annual revenue. Our methodology is industry-agnostic — the forensic excavation applies equally to manufacturing, professional services, healthcare, retail, and technology. What matters is depth of history, not sector. The patterns that produce authority are universal.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false">
+          <span>What happens if we are not satisfied with the Audit deliverables?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a__inner">
+            <p>If we cannot document ten assets at Probable confidence or higher, we refund half your audit investment. This is not a marketing guarantee. It is a structural commitment to the integrity of our methodology. We do not take on engagements where we do not believe we can deliver.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     TIER 4 — Engagement Door
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<section class="final-cta-section" aria-label="Request an Introduction">
+  <div class="section-inner">
+    <h2 class="final-cta-section__title reveal">Request an Introduction</h2>
+    <p class="reveal" style="font-family:var(--font-ui);font-size:clamp(1rem,1.5vw,1.15rem);color:var(--silver);line-height:1.82;max-width:640px;margin:0 auto 40px;">The Registry is the first step. No commitment. No sales presentation. A 15-minute conversation to determine whether your institution is ready for excavation.</p>
+    <a href="registry.html" class="btn btn-gold reveal">Enter the Registry</a>
+
+    <div class="final-cta-section__pills">
+      <div class="final-cta-pill reveal reveal-d1">
+        <span class="final-cta-pill__value">3</span>
+        <span class="final-cta-pill__label">Clients Maximum</span>
+      </div>
+      <div class="final-cta-pill-divider"></div>
+      <div class="final-cta-pill reveal reveal-d2">
+        <span class="final-cta-pill__value">By</span>
+        <span class="final-cta-pill__label">Invitation Only</span>
+      </div>
+      <div class="final-cta-pill-divider"></div>
+      <div class="final-cta-pill reveal reveal-d3">
+        <span class="final-cta-pill__value">I-35</span>
+        <span class="final-cta-pill__label">Corridor</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="https://www.legaisee.com/Images/legaisee-nav-logo.png" alt="LEGAiSEE" width="180" height="38" style="height:38px;width:auto;opacity:0.7;">
+      <p class="footer-tagline">Forensic Business Archaeology<br>&amp; Authority Systems</p>
+    </div>
+    <div class="footer-nav">
+      <a href="index.html">The Record</a>
+      <a href="archaeology.html">The Practice</a>
+      <a href="method.html">The Method</a>
+      <a href="serve.html">The Services</a>
+      <a href="architect.html">The Architect</a>
+      <a href="practitioner.html">The Practitioner</a>
+      <a href="commissions.html">Commissions</a>
+      <a href="comparison.html">Comparison</a>
+      <a href="registry.html">Enter the Registry</a>
+    </div>
+    <div class="footer-meta">
+      <span class="footer-copy">&copy; 2026 LEGAiSEE. All rights reserved.</span>
+      <span class="footer-legal">The Architect does not sell. The Architect excavates.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     data-llms HIDDEN DIV
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<div class="data-llms" aria-hidden="true">
+  LEGAiSEE offers three primary services for enterprises with $20M+ annual revenue: (1) Business Archaeology Audit — a 5-7 day forensic excavation across 40+ channels producing 15-25 documented assets, a 10-page report with confidence grading, and competitive gap mapping for $2,000; (2) Authority Systems Build — a 21-day implementation of four integrated content systems (Content Production Engine, Publishing Rhythm, Performance Feedback Loop, Asset Library & Reuse System) with AI prompt libraries, team training, and a 60+ page Operations Manual for $5,500; (3) Camera Authority Training — a 16-hour intensive covering on-camera foundations, delivery naturalization, technical excellence, platform optimization, and crisis management for $3,750. An optional Amplification Partnership retainer is available at $2,750 per month. All engagements include standard NDA, competitor exclusion, and a 50% refund guarantee if fewer than ten Probable-confidence assets are documented. Maximum three clients served simultaneously. Services are sequential, not à la carte.
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     SCRIPTS
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<script>
+// ═══════════════════════════════════════════════════════════════════════════════
+// SERVE.HTML — PAGE-SPECIFIC SCRIPTS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// FAQ Accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('is-open');
+    // Close all
+    document.querySelectorAll('.faq-item.is-open').forEach(openItem => {
+      openItem.classList.remove('is-open');
+      openItem.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+    // Open clicked if not already open
+    if (!isOpen) {
+      item.classList.add('is-open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const targetId = this.getAttribute('href');
+    if (targetId === '#') return;
+    const target = document.querySelector(targetId);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// IntersectionObserver for scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Immediate reveal for above-fold elements
+document.querySelectorAll('.reveal').forEach(el => {
+  const rect = el.getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    el.classList.add('visible');
+    revealObserver.unobserve(el);
+  }
+});
+</script>
+</body>
+</html>

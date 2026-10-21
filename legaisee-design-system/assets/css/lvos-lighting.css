@@ -1,0 +1,94 @@
+/* =========================================================
+   LVOS LIGHTING DEBUG SYSTEM
+   PURPOSE:
+   Verify direction, intensity, and CSS communication
+========================================================= */
+
+:root{
+    --room-bg:#06070a;
+}
+
+body{
+    background:var(--room-bg);
+}
+
+/* =========================================================
+   RENDER OBJECT BASE
+========================================================= */
+
+.render-object{
+    position:relative;
+    overflow:hidden;
+
+    --light-intensity:0.5;
+    --light-shift-x:0;
+    --light-shift-y:0;
+}
+
+/* =========================================================
+   DIRECTIONAL LIGHT VISUALIZER
+========================================================= */
+
+.render-object::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    border-radius:inherit;
+
+    background:
+    radial-gradient(
+        circle at
+        calc(50% + (var(--light-shift-x) * 50%))
+        calc(50% + (var(--light-shift-y) * 50%)),
+
+        rgba(255,255,255,0.90) 0%,
+        rgba(255,255,255,0.45) 15%,
+        rgba(255,255,255,0.15) 35%,
+        rgba(255,255,255,0.05) 55%,
+        rgba(255,255,255,0.00) 75%
+    );
+
+    opacity:var(--light-intensity);
+
+    mix-blend-mode:screen;
+}
+
+/* =========================================================
+   SHADOW LAYER
+========================================================= */
+
+.render-object::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    border-radius:inherit;
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(0,0,0,0.00),
+        rgba(0,0,0,0.15) 50%,
+        rgba(0,0,0,0.35) 100%
+    );
+}
+
+/* =========================================================
+   DEBUG VISUALIZATION
+========================================================= */
+
+/*
+TEMPORARY:
+
+Top-left cards should look different from
+top-right cards.
+
+Bottom-left cards should look different from
+bottom-right cards.
+
+If everything still looks identical after
+this file is installed:
+
+THE JS IS NOT PASSING VALUES.
+*/

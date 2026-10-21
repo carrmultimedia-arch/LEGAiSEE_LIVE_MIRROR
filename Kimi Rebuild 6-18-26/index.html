@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Business Archaeology for $20M+ enterprises. Forensic excavation of your most profitable era, reconstructed for today's market. San Antonio · Austin · I-35 Corridor. By invitation.">
+<meta name="keywords" content="business archaeology, legacy marketing, enterprise strategy, San Antonio, Austin, I-35 Corridor, generational business, forensic marketing audit">
+<meta name="author" content="LEGAiSEE">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="LEGAiSEE — Business Archaeology for $20M+ Enterprises">
+<meta property="og:description" content="Forensic excavation of your most profitable era, reconstructed for today's market. By invitation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.legaisee.com/">
+<meta property="og:image" content="https://www.legaisee.com/Images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<title>LEGAiSEE — Business Archaeology for $20M+ Enterprises</title>
+<link rel="canonical" href="https://www.legaisee.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="legaisee.css">
+<link rel="stylesheet" href="legaisee-luxury.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "LEGAiSEE",
+  "description": "Business Archaeology for $20M+ enterprises",
+  "url": "https://www.legaisee.com/",
+  "areaServed": {
+    "@type": "Place",
+    "name": "San Antonio · Austin · I-35 Corridor"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Business Archaeology?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Business Archaeology is the forensic excavation of your company's most profitable era. We identify what made you dominant, why it was abandoned, and reconstruct those proven assets for today's market."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who is LEGAiSEE for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LEGAiSEE serves enterprises with 20+ years of operation, $20M+ annual revenue, generational ownership, and headquarters along the I-35 Corridor between San Antonio and Austin."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the process work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The process follows four stages: HABITAT (forensic audit of your marketing history), RAW (excavation of proven assets), CUT (modernization and system architecture), and MOUNT (deployment and team training)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this service available to anyone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. LEGAiSEE operates by invitation only. Prospective clients must complete the Registry intake, after which we evaluate fit before extending an invitation to proceed."
+      }
+    }
+  ]
+}
+</script>
+<style>
+/* ============================================
+   LEGAiSEE REDESIGN — NEW CLASSES ONLY
+   Merges into existing legaisee.css + legaisee-luxury.css
+   No existing animations, parallax, Lenis, or nav broken.
+   ============================================ */
+
+/* ---- Tier 1: Hero Vault ---- */
+.tier-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  overflow: hidden;
+  background: #0C0C10;
+}
+
+.tier-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(201,169,97,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.tier-hero__eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(201,169,97,0.7);
+  margin-bottom: 28px;
+}
+
+.tier-hero__headline {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2.4rem, 6vw, 5.2rem);
+  font-weight: 700;
+  line-height: 1.08;
+  color: #E8E0D0;
+  max-width: 900px;
+  margin: 0 auto 20px;
+}
+
+.tier-hero__headline em {
+  font-style: normal;
+  color: #C9A961;
+}
+
+.tier-hero__subhead {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(232,224,208,0.6);
+  max-width: 640px;
+  margin: 0 auto 48px;
+}
+
+.tier-hero__pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 1px solid rgba(201,169,97,0.2);
+  border-radius: 100px;
+  background: rgba(201,169,97,0.04);
+  backdrop-filter: blur(8px);
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(232,224,208,0.7);
+}
+
+.stat-pill__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #C9A961;
+  box-shadow: 0 0 8px rgba(201,169,97,0.5);
+}
+
+.tier-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 40px;
+  border: 1px solid #C9A961;
+  border-radius: 2px;
+  background: transparent;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #C9A961;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+}
+
+.tier-hero__cta:hover {
+  background: rgba(201,169,97,0.1);
+  box-shadow: 0 0 30px rgba(201,169,97,0.15);
+  transform: translateY(-2px);
+}
+
+.tier-hero__scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.4;
+}
+
+.tier-hero__scroll-hint span {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(232,224,208,0.4);
+}
+
+.tier-hero__scroll-hint .scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(201,169,97,0.5), transparent);
+}
+
+/* ---- Tier 2: What We Do ---- */
+.tier-what {
+  position: relative;
+  padding: 120px 24px;
+  background: #0C0C10;
+}
+
+.tier-what::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,169,97,0.15), transparent);
+}
+
+.section-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(201,169,97,0.5);
+  margin-bottom: 16px;
+}
+
+.section-headline {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #E8E0D0;
+  margin-bottom: 32px;
+}
+
+.tier-what__body {
+  max-width: 720px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(232,224,208,0.55);
+}
+
+.tier-what__body p {
+  margin-bottom: 20px;
+}
+
+.tier-what__body strong {
+  color: rgba(232,224,208,0.85);
+  font-weight: 500;
+}
+
+/* ---- Gemstone Service Grid ---- */
+.tier-stages {
+  position: relative;
+  padding: 100px 24px 120px;
+  background: #0C0C10;
+}
+
+.tier-stages::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,169,97,0.1), transparent);
+}
+
+.stages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stage-card {
+  position: relative;
+  padding: 40px 32px 36px;
+  border: 1px solid rgba(201,169,97,0.1);
+  border-radius: 2px;
+  background: rgba(201,169,97,0.02);
+  backdrop-filter: blur(12px);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.stage-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--stage-color, #C9A961), transparent);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.stage-card:hover {
+  border-color: rgba(201,169,97,0.25);
+  background: rgba(201,169,97,0.05);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(201,169,97,0.05);
+}
+
+.stage-card:hover::before {
+  opacity: 1;
+}
+
+.stage-card__gem {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 24px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: rgba(201,169,97,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stage-card__gem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+}
+
+.stage-card__label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--stage-color, #C9A961);
+  margin-bottom: 8px;
+}
+
+.stage-card__title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #E8E0D0;
+  margin-bottom: 12px;
+}
+
+.stage-card__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(232,224,208,0.5);
+  margin-bottom: 20px;
+}
+
+.stage-card__meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(201,169,97,0.5);
+}
+
+.stage-card--hab { --stage-color: #8B7355; }
+.stage-card--raw { --stage-color: #B8860B; }
+.stage-card--cut { --stage-color: #C9A961; }
+.stage-card--mnt { --stage-color: #D4AF37; }
+
+/* ---- Tier 2: Who This Is For ---- */
+.tier-qualify {
+  position: relative;
+  padding: 100px 24px 120px;
+  background: #0C0C10;
+}
+
+.tier-qualify::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,169,97,0.1), transparent);
+}
+
+.qualify-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.qualify-card {
+  padding: 32px 28px;
+  border: 1px solid rgba(201,169,97,0.08);
+  border-radius: 2px;
+  background: rgba(201,169,97,0.015);
+  transition: all 0.4s ease;
+}
+
+.qualify-card:hover {
+  border-color: rgba(201,169,97,0.18);
+  background: rgba(201,169,97,0.04);
+}
+
+.qualify-card__icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(201,169,97,0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #C9A961;
+}
+
+.qualify-card__title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #E8E0D0;
+  margin-bottom: 10px;
+}
+
+.qualify-card__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(232,224,208,0.45);
+}
+
+/* ---- Tier 3: Philosophy (Optional Depth) ---- */
+.tier-philosophy {
+  position: relative;
+  padding: 120px 24px;
+  background: #0C0C10;
+}
+
+.tier-philosophy::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,169,97,0.08), transparent);
+}
+
+.philosophy-divider {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 60px;
+  max-width: 800px;
+}
+
+.philosophy-divider__line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(201,169,97,0.15), transparent);
+}
+
+.philosophy-divider__text {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(201,169,97,0.35);
+  white-space: nowrap;
+}
+
+.philosophy-section {
+  max-width: 800px;
+  margin: 0 auto 80px;
+}
+
+.philosophy-section:last-child {
+  margin-bottom: 0;
+}
+
+.philosophy-section__headline {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #E8E0D0;
+  margin-bottom: 20px;
+}
+
+.philosophy-section__headline span {
+  color: #C9A961;
+  font-size: 0.7em;
+  vertical-align: super;
+  margin-left: 8px;
+  opacity: 0.6;
+}
+
+.philosophy-section__body {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(232,224,208,0.5);
+}
+
+.philosophy-section__body p {
+  margin-bottom: 18px;
+}
+
+.philosophy-section__body strong {
+  color: rgba(232,224,208,0.75);
+  font-weight: 500;
+}
+
+/* ---- Tier 4: Engagement Door ---- */
+.tier-engage {
+  position: relative;
+  padding: 140px 24px 160px;
+  background: #0C0C10;
+  text-align: center;
+  overflow: hidden;
+}
+
+.tier-engage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(201,169,97,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.tier-engage::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,169,97,0.12), transparent);
+}
+
+.tier-engage__headline {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #E8E0D0;
+  max-width: 700px;
+  margin: 0 auto 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.tier-engage__subhead {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(232,224,208,0.5);
+  max-width: 520px;
+  margin: 0 auto 48px;
+  position: relative;
+  z-index: 1;
+}
+
+.tier-engage__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 48px;
+  border: 1px solid #C9A961;
+  border-radius: 2px;
+  background: rgba(201,169,97,0.06);
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #C9A961;
+  text-decoration: none;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.tier-engage__cta:hover {
+  background: rgba(201,169,97,0.12);
+  box-shadow: 0 0 50px rgba(201,169,97,0.12), inset 0 0 30px rgba(201,169,97,0.03);
+  transform: translateY(-2px);
+}
+
+.tier-engage__note {
+  margin-top: 32px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: rgba(232,224,208,0.25);
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Authority Strip (Preserved) ---- */
+.authority-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 48px;
+  padding: 48px 24px;
+  background: rgba(201,169,97,0.02);
+  border-top: 1px solid rgba(201,169,97,0.06);
+  border-bottom: 1px solid rgba(201,169,97,0.06);
+}
+
+.authority-stat {
+  text-align: center;
+}
+
+.authority-stat__number {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: #C9A961;
+  line-height: 1;
+}
+
+.authority-stat__label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(232,224,208,0.4);
+  margin-top: 8px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .tier-hero { padding: 100px 20px 60px; }
+  .tier-hero__pills { gap: 8px; }
+  .stat-pill { padding: 8px 14px; font-size: 10px; }
+  .stages-grid { grid-template-columns: 1fr; }
+  .qualify-grid { grid-template-columns: 1fr; }
+  .authority-strip { gap: 32px 24px; }
+}
+
+/* ---- Utility ---- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<!-- ============================================
+     NAVIGATION (Preserved from existing site)
+     ============================================ -->
+<nav class="main-nav" id="mainNav">
+  <div class="nav-brand">
+    <a href="index.html" class="nav-logo">LEGAiSEE</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="archaeology.html">Archaeology</a></li>
+    <li><a href="method.html">Method</a></li>
+    <li><a href="serve.html">Serve</a></li>
+    <li><a href="architect.html">Architect</a></li>
+    <li><a href="comparison.html">Discovery</a></li>
+    <li><a href="registry.html" class="nav-cta">Registry</a></li>
+  </ul>
+</nav>
+
+<!-- ============================================
+     TIER 1: HERO VAULT — 15-Second Scan
+     ============================================ -->
+<section class="tier-hero" id="hero" aria-label="Hero">
+  <p class="tier-hero__eyebrow">Business Archaeology — I-35 Corridor</p>
+  <h1 class="tier-hero__headline">Forensic Excavation of Your <em>Most Profitable Era</em></h1>
+  <p class="tier-hero__subhead">Reconstruct what made you dominant. Rebuild it for today's market. One enterprise at a time.</p>
+
+  <div class="tier-hero__pills">
+    <span class="stat-pill"><span class="stat-pill__dot"></span>20+ Years Operation</span>
+    <span class="stat-pill"><span class="stat-pill__dot"></span>$20M+ Annual Revenue</span>
+    <span class="stat-pill"><span class="stat-pill__dot"></span>Generational Ownership</span>
+    <span class="stat-pill"><span class="stat-pill__dot"></span>I-35 Corridor</span>
+  </div>
+
+  <a href="registry.html" class="tier-hero__cta">Request an Invitation <span aria-hidden="true">→</span></a>
+
+  <div class="tier-hero__scroll-hint" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ============================================
+     AUTHORITY STRIP (Preserved)
+     ============================================ -->
+<section class="authority-strip" aria-label="Firm statistics">
+  <div class="authority-stat">
+    <div class="authority-stat__number">32</div>
+    <div class="authority-stat__label">Channels Excavated</div>
+  </div>
+  <div class="authority-stat">
+    <div class="authority-stat__number">40+</div>
+    <div class="authority-stat__label">Years Max Span</div>
+  </div>
+  <div class="authority-stat">
+    <div class="authority-stat__number">4</div>
+    <div class="authority-stat__label">Transformation Stages</div>
+  </div>
+  <div class="authority-stat">
+    <div class="authority-stat__number">1</div>
+    <div class="authority-stat__label">Enterprise at a Time</div>
+  </div>
+</section>
+
+<!-- ============================================
+     TIER 2: WHAT WE DO — 90-Second Understanding
+     ============================================ -->
+<section class="tier-what" id="what-we-do" aria-labelledby="what-heading">
+  <div class="container">
+    <p class="section-eyebrow">What We Do</p>
+    <h2 class="section-headline" id="what-heading">We Excavate Provenance</h2>
+    <div class="tier-what__body">
+      <p>Every enterprise that has survived two decades carries buried assets — campaigns, positioning, and customer relationships that once built its dominance. Most have been abandoned not because they failed, but because <strong>technology changed and the strategy was never translated forward</strong>.</p>
+      <p>LEGAiSEE conducts forensic excavation across your marketing history. We identify your golden era, document what made it work, and reconstruct those proven mechanisms for contemporary platforms. The result is not nostalgia. It is <strong>strategic reconstruction</strong> — your own historical proof, modernized and systematized.</p>
+      <p>We serve one enterprise at a time. No retainers. No templates. Each engagement is a bespoke archaeological operation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     TIER 2: THE 4 STAGES — Gemstone Service Grid
+     ============================================ -->
+<section class="tier-stages" id="stages" aria-labelledby="stages-heading">
+  <div class="container">
+    <p class="section-eyebrow">The Process</p>
+    <h2 class="section-headline" id="stages-heading">From Raw Earth to Display</h2>
+
+    <div class="stages-grid">
+      <!-- HABITAT -->
+      <article class="stage-card stage-card--hab" onclick="location.href='method.html#habitat'" role="link" tabindex="0" aria-label="Habitat stage: Forensic Audit">
+        <div class="stage-card__gem">
+          <img src="https://www.legaisee.com/Images/CAT-HAB-001.jpg" alt="Habitat gemstone — raw earth stage" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <p class="stage-card__label">Stage I</p>
+        <h3 class="stage-card__title">Habitat</h3>
+        <p class="stage-card__desc">Forensic audit of your complete marketing history. Multi-source excavation across 32 channels. Documentation of golden era, abandonment timeline, and competitive displacement.</p>
+        <p class="stage-card__meta">5–7 Days · 10-Page Report</p>
+      </article>
+
+      <!-- RAW -->
+      <article class="stage-card stage-card--raw" onclick="location.href='method.html#raw'" role="link" tabindex="0" aria-label="Raw stage: Asset Excavation">
+        <div class="stage-card__gem">
+          <img src="https://www.legaisee.com/Images/CAT-RAW-001.jpg" alt="Raw gemstone — excavation stage" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <p class="stage-card__label">Stage II</p>
+        <h3 class="stage-card__title">Raw</h3>
+        <p class="stage-card__desc">Deep extraction of proven assets from private archives, public records, and human memory. Triangulation and verification of every finding. Uncertainty labeled, never hidden.</p>
+        <p class="stage-card__meta">10–14 Days · Asset Portfolio</p>
+      </article>
+
+      <!-- CUT -->
+      <article class="stage-card stage-card--cut" onclick="location.href='method.html#cut'" role="link" tabindex="0" aria-label="Cut stage: Modernization">
+        <div class="stage-card__gem">
+          <img src="https://www.legaisee.com/Images/CAT-CUT-001.jpg" alt="Cut gemstone — modernization stage" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <p class="stage-card__label">Stage III</p>
+        <h3 class="stage-card__title">Cut</h3>
+        <p class="stage-card__desc">Modernization of proven assets for contemporary platforms. AI-powered content systems built in your voice. Publishing rhythms, performance feedback loops, and asset libraries architected.</p>
+        <p class="stage-card__meta">21 Days · 4 Core Systems</p>
+      </article>
+
+      <!-- MOUNT -->
+      <article class="stage-card stage-card--mnt" onclick="location.href='method.html#mount'" role="link" tabindex="0" aria-label="Mount stage: Deployment">
+        <div class="stage-card__gem">
+          <img src="https://www.legaisee.com/Images/CAT-MNT-001.jpg" alt="Mount gemstone — deployment stage" loading="lazy" onerror="this.style.display='none'">
+        </div>
+        <p class="stage-card__label">Stage IV</p>
+        <h3 class="stage-card__title">Mount</h3>
+        <p class="stage-card__desc">Deployment with full team training. Hands-on sessions until your people can operate the system independently. Documentation, SOPs, and troubleshooting protocols delivered.</p>
+        <p class="stage-card__meta">7 Days · Team Certified</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     TIER 2: WHO THIS IS FOR — Qualification Filters
+     ============================================ -->
+<section class="tier-qualify" id="who-for" aria-labelledby="qualify-heading">
+  <div class="container">
+    <p class="section-eyebrow">Qualification</p>
+    <h2 class="section-headline" id="qualify-heading">Who This Is For</h2>
+
+    <div class="qualify-grid">
+      <div class="qualify-card">
+        <div class="qualify-card__icon">20+</div>
+        <h3 class="qualify-card__title">Two Decades Minimum</h3>
+        <p class="qualify-card__desc">You have operated long enough to have a genuine history — campaigns that worked, tactics that built your name, and a trajectory that can be excavated and studied.</p>
+      </div>
+
+      <div class="qualify-card">
+        <div class="qualify-card__icon">$20M</div>
+        <h3 class="qualify-card__title">$20M+ Annual Revenue</h3>
+        <p class="qualify-card__desc">The complexity of your marketing history and the stakes of reconstruction require enterprise-scale resources. This is not a service for startups or early-stage companies.</p>
+      </div>
+
+      <div class="qualify-card">
+        <div class="qualify-card__icon">G</div>
+        <h3 class="qualify-card__title">Generational Ownership</h3>
+        <p class="qualify-card__desc">Family businesses, founder-led enterprises, or organizations where institutional memory matters. You care about what was built before you and what will endure after.</p>
+      </div>
+
+      <div class="qualify-card">
+        <div class="qualify-card__icon">I-35</div>
+        <h3 class="qualify-card__title">I-35 Corridor</h3>
+        <p class="qualify-card__desc">San Antonio to Austin and the communities between. We work where we can sit across from you, walk your facility, and shake the hand of the person whose name is on the building.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============================================
+     TIER 3: PHILOSOPHY — Full Depth (Optional)
+     ============================================ -->
+<section class="tier-philosophy" id="philosophy" aria-labelledby="philosophy-heading">
+  <div class="container">
+    <div class="philosophy-divider">
+      <div class="philosophy-divider__line"></div>
+      <span class="philosophy-divider__text">Optional Depth</span>
+      <div class="philosophy-divider__line" style="background: linear-gradient(90deg, transparent, rgba(201,169,97,0.15));"></div>
+    </div>
+
+    <!-- The Condition -->
+    <article class="philosophy-section" id="the-condition">
+      <h3 class="philosophy-section__headline">The Condition<span>01</span></h3>
+      <div class="philosophy-section__body">
+        <p>There is a condition endemic to established enterprises. It is not failure. It is <strong>drift</strong> — the slow, imperceptible erosion of the very positioning and practices that built the company's dominance. Drift happens when leadership changes, when agencies rotate, when platforms shift, and when no one is left who remembers why the original strategy worked.</p>
+        <p>The symptoms are recognizable: declining customer quality, increasing acquisition costs, brand confusion, and a vague sense that "things used to be better." The cause is rarely market change. The cause is <strong>abandonment of proven mechanisms before their time</strong>.</p>
+        <p>Business Archaeology treats this condition at its source. We do not prescribe new tactics. We excavate what already worked — and reconstruct it.</p>
+      </div>
+    </article>
+
+    <!-- Narrative Drift -->
+    <article class="philosophy-section" id="narrative-drift">
+      <h3 class="philosophy-section__headline">Narrative Drift<span>02</span></h3>
+      <div class="philosophy-section__body">
+        <p>Every enterprise has a founding narrative — the story of why it exists, what problem it solved, and who it served. Over decades, this narrative drifts. New marketing directors rewrite it. Agencies impose their own language. Social media demands novelty. The result is a brand that no longer recognizes its own origin story.</p>
+        <p><strong>Narrative Drift</strong> is the divergence between what your company actually is and what it claims to be. Customers sense it before leadership does. The best employees feel it. And competitors exploit it.</p>
+        <p>Reconstruction begins with recovering the original narrative — the one that built your first thousand customers — and modernizing its expression without diluting its truth.</p>
+      </div>
+    </article>
+
+    <!-- The Lindy Effect -->
+    <article class="philosophy-section" id="lindy-effect">
+      <h3 class="philosophy-section__headline">The Lindy Effect<span>03</span></h3>
+      <div class="philosophy-section__body">
+        <p>The Lindy Effect states that the future life expectancy of a non-perishable entity is proportional to its current age. A marketing strategy that has survived twenty years is more likely to survive twenty more than a strategy invented last quarter.</p>
+        <p>Enterprises chase novelty because novelty feels like progress. But <strong>proven longevity is the rarest competitive advantage</strong>. The tactics that built your company did not work by accident. They worked because they matched a genuine customer need with a genuine organizational strength.</p>
+        <p>Our methodology applies the Lindy Effect to marketing archaeology: the older the proven asset, the higher its reconstruction priority. We do not modernize everything. We modernize what has already proven its durability.</p>
+      </div>
+    </article>
+
+    <!-- The Bedrock Pledge -->
+    <article class="philosophy-section" id="bedrock-pledge">
+      <h3 class="philosophy-section__headline">The Bedrock Pledge<span>04</span></h3>
+      <div class="philosophy-section__body">
+        <p>We do not sell marketing. We do not sell content. We do not sell visibility or engagement or impressions. We sell <strong>clarity</strong> — the forensic certainty of knowing what made you great, when you lost it, and how to reconstruct it.</p>
+        <p>Every finding in our reports is triangulated across multiple sources and labeled with a confidence grade: Verified, Probable, Plausible, or Uncertain. We do not hide uncertainty behind confident language. We do not fabricate findings to make a report more impressive.</p>
+        <p>If we cannot verify a claim, we say so. If we find nothing worth reconstructing, we say so. <strong>The Bedrock Pledge</strong> is our commitment to truth over theater — because the only thing worse than not knowing your history is believing a false one.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================
+     TIER 4: ENGAGEMENT DOOR
+     ============================================ -->
+<section class="tier-engage" id="engage" aria-label="Request an invitation">
+  <h2 class="tier-engage__headline">Request an Invitation</h2>
+  <p class="tier-engage__subhead">LEGAiSEE operates by invitation only. Complete the Registry intake. If your enterprise qualifies, you will receive a private consultation to discuss excavation scope and timeline.</p>
+  <a href="registry.html" class="tier-engage__cta">Enter the Registry <span aria-hidden="true">→</span></a>
+  <p class="tier-engage__note">San Antonio · Austin · I-35 Corridor</p>
+</section>
+
+<!-- ============================================
+     FAQ SCHEMA SECTION (Visible + Structured Data)
+     ============================================ -->
+<section class="tier-what" id="faq" aria-labelledby="faq-heading" style="padding-top: 80px; padding-bottom: 80px;">
+  <div class="container">
+    <p class="section-eyebrow">Common Questions</p>
+    <h2 class="section-headline" id="faq-heading">Frequently Asked</h2>
+
+    <div style="max-width: 800px; margin: 0 auto;">
+      <details style="margin-bottom: 16px; border: 1px solid rgba(201,169,97,0.08); border-radius: 2px; padding: 24px 28px; background: rgba(201,169,97,0.015);">
+        <summary style="font-family: 'Cinzel Decorative', serif; font-size: 1.05rem; font-weight: 700; color: #E8E0D0; cursor: pointer; list-style: none;">What is Business Archaeology?</summary>
+        <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 300; line-height: 1.7; color: rgba(232,224,208,0.5); margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(201,169,97,0.06);">Business Archaeology is the forensic excavation of your company's most profitable era. We identify what made you dominant, why it was abandoned, and reconstruct those proven assets for today's market.</p>
+      </details>
+
+      <details style="margin-bottom: 16px; border: 1px solid rgba(201,169,97,0.08); border-radius: 2px; padding: 24px 28px; background: rgba(201,169,97,0.015);">
+        <summary style="font-family: 'Cinzel Decorative', serif; font-size: 1.05rem; font-weight: 700; color: #E8E0D0; cursor: pointer; list-style: none;">Who is LEGAiSEE for?</summary>
+        <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 300; line-height: 1.7; color: rgba(232,224,208,0.5); margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(201,169,97,0.06);">LEGAiSEE serves enterprises with 20+ years of operation, $20M+ annual revenue, generational ownership, and headquarters along the I-35 Corridor between San Antonio and Austin.</p>
+      </details>
+
+      <details style="margin-bottom: 16px; border: 1px solid rgba(201,169,97,0.08); border-radius: 2px; padding: 24px 28px; background: rgba(201,169,97,0.015);">
+        <summary style="font-family: 'Cinzel Decorative', serif; font-size: 1.05rem; font-weight: 700; color: #E8E0D0; cursor: pointer; list-style: none;">How does the process work?</summary>
+        <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 300; line-height: 1.7; color: rgba(232,224,208,0.5); margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(201,169,97,0.06);">The process follows four stages: HABITAT (forensic audit of your marketing history), RAW (excavation of proven assets), CUT (modernization and system architecture), and MOUNT (deployment and team training).</p>
+      </details>
+
+      <details style="margin-bottom: 16px; border: 1px solid rgba(201,169,97,0.08); border-radius: 2px; padding: 24px 28px; background: rgba(201,169,97,0.015);">
+        <summary style="font-family: 'Cinzel Decorative', serif; font-size: 1.05rem; font-weight: 700; color: #E8E0D0; cursor: pointer; list-style: none;">Is this service available to anyone?</summary>
+        <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 300; line-height: 1.7; color: rgba(232,224,208,0.5); margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(201,169,97,0.06);">No. LEGAiSEE operates by invitation only. Prospective clients must complete the Registry intake, after which we evaluate fit before extending an invitation to proceed.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER (Preserved from existing site)
+     ============================================ -->
+<footer class="site-footer" id="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">LEGAiSEE</span>
+      <p class="footer-tagline">Business Archaeology for the I-35 Corridor</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="archaeology.html">Archaeology</a></li>
+          <li><a href="method.html">Method</a></li>
+          <li><a href="serve.html">Serve</a></li>
+          <li><a href="architect.html">Architect</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Discovery</h4>
+        <ul>
+          <li><a href="comparison.html">The Parallel</a></li>
+          <li><a href="registry.html">Registry</a></li>
+          <li><a href="practitioner.html">Practitioner</a></li>
+          <li><a href="commissions.html">Commissions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:registry@legaisee.com">registry@legaisee.com</a></li>
+          <li>San Antonio, Texas</li>
+          <li>I-35 Corridor</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 LEGAiSEE. All rights reserved. By invitation only.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================
+     llms.txt — Machine-readable site summary
+     (Invisible to humans, parsed by AI systems)
+     ============================================ -->
+<script type="text/plain" id="llms-txt" style="display:none;">
+# LEGAiSEE — Business Archaeology for $20M+ Enterprises
+
+## What We Do
+LEGAiSEE conducts forensic excavation of enterprise marketing history. We identify your most profitable era, document what made it work, and reconstruct those proven assets for contemporary platforms.
+
+## Who We Serve
+- 20+ years of operation
+- $20M+ annual revenue
+- Generational ownership
+- I-35 Corridor (San Antonio to Austin)
+
+## Our Process (4 Stages)
+1. HABITAT — Forensic audit across 32 channels
+2. RAW — Deep asset excavation and verification
+3. CUT — Modernization and AI system architecture
+4. MOUNT — Deployment and team certification
+
+## Philosophy
+- The Lindy Effect: Proven longevity is the rarest competitive advantage
+- Narrative Drift: The divergence between what you are and what you claim
+- The Bedrock Pledge: Truth over theater, always
+
+## Contact
+- Registry: https://www.legaisee.com/registry.html
+- Email: registry@legaisee.com
+- Location: San Antonio, Texas · I-35 Corridor
+</script>
+
+<!-- ============================================
+     SCRIPTS (Preserved from existing site)
+     ============================================ -->
+<script>
+// Mobile nav toggle
+document.getElementById('navToggle').addEventListener('click', function() {
+  const nav = document.getElementById('mainNav');
+  const links = document.getElementById('navLinks');
+  const expanded = this.getAttribute('aria-expanded') === 'true';
+  this.setAttribute('aria-expanded', !expanded);
+  nav.classList.toggle('nav-open');
+  links.classList.toggle('nav-links--open');
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Keyboard accessibility for stage cards
+document.querySelectorAll('.stage-card').forEach(card => {
+  card.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      this.click();
+    }
+  });
+});
+</script>
+
+</body>
+</html>

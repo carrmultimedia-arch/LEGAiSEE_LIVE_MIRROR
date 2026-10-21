@@ -1,0 +1,67 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LEGAiSEE — Prototype 11 / Temporal Rebuild</title>
+<style>
+:root{--bg:#050506;--fg:#eeeae0;--muted:#8e8a82;--gold:#d7c08a;--line:rgba(215,192,138,.24)}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--fg)}body{height:6000vh;overflow-x:hidden}
+#viewport{position:fixed;inset:0;overflow:hidden;background:#050506;perspective:1400px}
+#atmosphere{position:absolute;inset:-20%;background:radial-gradient(ellipse at 50% 48%,rgba(45,40,30,.34) 0%,rgba(13,13,14,.78) 42%,#050506 78%);pointer-events:none}
+#camera{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d;will-change:transform}
+#world{position:absolute;left:0;top:0;transform-style:preserve-3d}
+.stage{position:absolute;width:100vw;height:100vh;left:-50vw;top:-50vh;transform-style:preserve-3d;overflow:visible;opacity:0;pointer-events:none;will-change:opacity}
+/* World coordinates: Scene 1 at origin. Scene 2 is forward, then Scene 3 rises, then Scene 4 trucks right. */
+.s0{transform:translate3d(0,0,0)}
+.s1{transform:translate3d(0,0,-1800px)}
+.s2{transform:translate3d(0,-900px,-1800px)}
+.s3{transform:translate3d(-1500px,-900px,-1800px)}
+.content{position:absolute;inset:0;padding:10vh 10vw;display:flex;flex-direction:column;justify-content:center;transform-style:preserve-3d}
+.eyebrow{font:10px/1.4 monospace;letter-spacing:.22em;color:#8f8a7d;margin-bottom:28px}
+h1,h2{margin:0;font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:-.04em;line-height:1.08;text-shadow:0 8px 35px #000}h1{font-size:clamp(62px,9vw,145px)}h2{font-size:clamp(52px,7vw,112px)}
+.copy{max-width:560px;margin-top:34px;font:15px/1.9 Arial,sans-serif;color:#aaa69e}
+.scene-number{position:absolute;left:10vw;bottom:8vh;font:10px monospace;letter-spacing:.18em;color:#67635c}
+.drift-grid{position:absolute;left:12vw;right:12vw;top:61%;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);transform:translateZ(-80px);opacity:.7}
+.drift-title{position:absolute;right:11vw;top:22%;font:clamp(34px,5vw,78px)/.9 Georgia,serif;letter-spacing:.04em;color:rgba(238,234,224,.13);transform:translateZ(-220px);white-space:nowrap}
+/* Excavation is a contained object, not a scene-sized background. */
+.excavation{position:absolute;right:9vw;top:18%;width:min(390px,32vw);height:min(500px,64vh);transform-style:preserve-3d}
+.layer{position:absolute;left:0;right:0;height:70px;border:1px solid var(--line);background:rgba(255,255,255,.018);padding:25px 18px;font:10px monospace;letter-spacing:.14em;color:#99958c;box-shadow:0 18px 45px rgba(0,0,0,.22)}
+.l1{top:0;transform:translateZ(80px)}.l2{top:70px;transform:translateZ(30px)}.l3{top:140px;transform:translateZ(-20px)}.l4{top:210px;transform:translateZ(-70px)}.l5{top:280px;transform:translateZ(-120px);color:var(--gold)}
+.framework{position:absolute;left:12%;right:12%;top:15%;height:70%;transform-style:preserve-3d}
+.node{position:absolute;width:15px;height:15px;border:1px solid var(--gold);border-radius:50%;box-shadow:0 0 28px rgba(215,192,138,.35)}
+.n1{left:15%;top:25%;transform:translateZ(120px)}.n2{left:38%;top:15%;transform:translateZ(-30px)}.n3{left:67%;top:28%;transform:translateZ(90px)}.n4{left:28%;top:55%;transform:translateZ(160px)}.n5{left:54%;top:48%;transform:translateZ(-80px)}.n6{left:78%;top:65%;transform:translateZ(40px)}.n7{left:45%;top:78%;transform:translateZ(110px)}
+.link{position:absolute;height:1px;background:var(--line);transform-origin:left center}.a{left:16%;top:31%;width:25%;transform:rotate(-17deg) translateZ(30px)}.b{left:37%;top:20%;width:28%;transform:rotate(25deg) translateZ(-30px)}.c{left:54%;top:48%;width:25%;transform:rotate(-23deg) translateZ(60px)}.d{left:22%;top:67%;width:22%;transform:rotate(-42deg) translateZ(20px)}.e{left:41%;top:75%;width:39%;transform:rotate(-8deg) translateZ(-20px)}
+.specimen{position:absolute;left:50%;top:47%;width:min(560px,52vw);height:min(360px,48vh);transform:translate(-50%,-50%) translateZ(90px);border:1px solid rgba(238,234,224,.2);box-shadow:0 30px 80px rgba(0,0,0,.45);transform-style:preserve-3d}.specimen:before{content:"";position:absolute;inset:9%;border:1px solid rgba(238,234,224,.12);transform:translateZ(80px)}.specimen:after{content:"RESTORED SIGNAL";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateZ(110px);white-space:nowrap;color:var(--gold);font:11px monospace;letter-spacing:.3em}
+.hud{position:fixed;right:18px;top:18px;z-index:20;font:10px monospace;letter-spacing:.12em;color:#625e56}.progress{position:fixed;left:0;bottom:0;width:100%;height:2px;background:rgba(255,255,255,.06);z-index:20}.progress i{display:block;height:100%;width:100%;transform-origin:left;transform:scaleX(0);background:var(--gold)}
+@media(max-width:700px){.content{padding:9vh 8vw}.excavation{right:7vw;width:52vw}.copy{max-width:80vw}.drift-title{right:8vw;top:24%}}
+@media(prefers-reduced-motion:reduce){body{height:100vh;overflow:hidden}.stage{opacity:0}.s0{opacity:1}}
+</style></head><body>
+<div id="viewport"><div id="atmosphere"></div><div id="camera"><div id="world">
+<section class="stage s0"><div class="drift-grid"></div><div class="drift-title">ASYMMETRIC<br>AUTHORITY</div><div class="content"><div class="eyebrow">SCENE 04 · NARRATIVE DRIFT</div><h1>The signal<br>moves.</h1><div class="copy">Scene one is a physical place in the continuous world. The camera begins here and travels forward through depth.</div></div><div class="scene-number">01 / Z DOLLY</div></section>
+<section class="stage s1"><div class="content"><div class="eyebrow">SCENE 07 · EXCAVATION</div><h2>Below the<br>surface.</h2><div class="copy">The excavation reveals the layers beneath the public signal: perception, history, structure, evidence, and bedrock.</div></div><div class="excavation"><div class="layer l1">PUBLIC SIGNAL</div><div class="layer l2">MARKET PERCEPTION</div><div class="layer l3">HISTORICAL RECORD</div><div class="layer l4">OPERATING STRUCTURE</div><div class="layer l5">EVIDENCE / BEDROCK</div></div><div class="scene-number">02 / Y PEDESTAL</div></section>
+<section class="stage s2"><div class="framework"><i class="node n1"></i><i class="node n2"></i><i class="node n3"></i><i class="node n4"></i><i class="node n5"></i><i class="node n6"></i><i class="node n7"></i><i class="link a"></i><i class="link b"></i><i class="link c"></i><i class="link d"></i><i class="link e"></i></div><div class="content"><div class="eyebrow">SCENE 11 · TEN INTERLOCKING FRAMEWORKS</div><h2>Structure<br>resolves.</h2><div class="copy">Ten interlocking frameworks turn scattered evidence into a coherent authority system.</div></div><div class="scene-number">03 / X TRUCK</div></section>
+<section class="stage s3"><div class="specimen"></div><div class="content" style="justify-content:flex-end;padding-bottom:13%"><div class="eyebrow">SCENE 12 · MOUNTED SPECIMEN</div><h2>Signal,<br>restored.</h2><div class="copy">The restored signal is mounted, resolved, and presented as a private specimen.</div></div><div class="scene-number">04 / HOLD</div></section>
+</div></div><div class="hud">PLAYHEAD <span id="readout">0.000</span> · <span id="cam">X 0 · Y 0 · Z 0</span> · <span id="axis">Z DOLLY</span></div><div class="progress"><i id="bar"></i></div></div>
+<script>(()=>{
+const rig=document.getElementById('camera'),readout=document.getElementById('readout'),cam=document.getElementById('cam'),axis=document.getElementById('axis'),bar=document.getElementById('bar'),stages=[...document.querySelectorAll('.stage')];let target=0,playhead=0;
+function readInput(){const max=document.documentElement.scrollHeight-innerHeight;target=max>0?Math.max(0,Math.min(1,scrollY/max)):0}addEventListener('scroll',readInput,{passive:true});addEventListener('resize',readInput);readInput();
+function ease(v){v=Math.max(0,Math.min(1,v));return v*v*(3-2*v)}
+/* Each scene beat is deliberately long. The next scene is absent until the outgoing scene is already leaving. */
+function sceneState(t,i){
+ const start=i, end=i+1, enter=.13, exit=.13;
+ let opacity=0;
+ if(t>=start && t<start+enter) opacity=ease((t-start)/enter);
+ else if(t>=start+enter && t<end-exit) opacity=1;
+ else if(t>=end-exit && t<end) opacity=1-ease((t-(end-exit))/exit);
+ else if(t>=end) opacity=0;
+ return opacity;
+}
+function tick(){
+ playhead+=(target-playhead)*0.028;
+ const t=playhead*4;
+ let x=0,y=0,z=0,label='Z DOLLY';
+ /* Travel happens continuously but slowly. The camera spends most of each beat inside the scene. */
+ if(t<=1){z=1800*ease(t)}
+ else if(t<=2){z=1800;y=900*ease(t-1);label='Y PEDESTAL'}
+ else if(t<=3){z=1800;y=900;x=1500*ease(t-2);label='X TRUCK'}
+ else {z=1800;y=900;x=1500;label='HOLD'}
+ rig.style.transform=`translate3d(${-x}px,${y}px,${z}px)`;
+ for(let i=0;i<4;i++) stages[i].style.opacity=sceneState(t,i);
+ readout.textContent=playhead.toFixed(3);cam.textContent=`X ${Math.round(x)} · Y ${Math.round(y)} · Z ${Math.round(z)}`;axis.textContent=label;bar.style.transform=`scaleX(${playhead})`;requestAnimationFrame(tick)
+}tick();})();</script></body></html>

@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Practitioner — LEGAiSEE Business Archaeology & Authority Systems</title>
+<meta name="description" content="John Carr — Founder & Principal of LEGAiSEE. Thirty-three years of documented operational record: network broadcast, institutional production, and the forensic methodology that excavates institutional signal.">
+<link rel="canonical" href="https://www.legaisee.com/practitioner.html">
+<link rel="stylesheet" href="../legaisee.css">
+<link rel="stylesheet" href="../legaisee-luxury.css">
+<style>
+/* ═══════════════════════════════════════════════════════════════════════════════
+   PRACTITIONER PAGE — INLINE STYLES
+   Gold radial spotlight gradients: upper-left, upper-right, center, lower-left, lower-right
+   Museum track lighting effect on every section
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Museum Track Lighting System ── */
+/* 5 spotlight positions creating the museum display effect */
+.spotlight-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    /* Upper left spotlight */
+    radial-gradient(ellipse 45% 35% at 12% 18%, rgba(201,169,97,0.10) 0%, transparent 70%),
+    /* Upper right spotlight */
+    radial-gradient(ellipse 40% 30% at 88% 15%, rgba(201,169,97,0.08) 0%, transparent 65%),
+    /* Center spotlight (primary) */
+    radial-gradient(ellipse 55% 40% at 50% 35%, rgba(201,169,97,0.07) 0%, transparent 60%),
+    /* Lower left spotlight */
+    radial-gradient(ellipse 38% 32% at 18% 82%, rgba(201,169,97,0.06) 0%, transparent 60%),
+    /* Lower right spotlight */
+    radial-gradient(ellipse 42% 35% at 82% 78%, rgba(201,169,97,0.07) 0%, transparent 65%);
+}
+
+/* Variation: spotlight shifts for sections with different content density */
+.spotlight-overlay--left {
+  background:
+    radial-gradient(ellipse 50% 40% at 8% 25%, rgba(201,169,97,0.11) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 28% at 92% 12%, rgba(201,169,97,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 48% 38% at 45% 45%, rgba(201,169,97,0.06) 0%, transparent 58%),
+    radial-gradient(ellipse 40% 30% at 15% 85%, rgba(201,169,97,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 30% at 85% 75%, rgba(201,169,97,0.05) 0%, transparent 55%);
+}
+.spotlight-overlay--right {
+  background:
+    radial-gradient(ellipse 40% 30% at 10% 15%, rgba(201,169,97,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 90% 22%, rgba(201,169,97,0.10) 0%, transparent 65%),
+    radial-gradient(ellipse 48% 38% at 55% 40%, rgba(201,169,97,0.06) 0%, transparent 58%),
+    radial-gradient(ellipse 35% 28% at 12% 80%, rgba(201,169,97,0.05) 0%, transparent 55%),
+    radial-gradient(ellipse 42% 35% at 88% 82%, rgba(201,169,97,0.08) 0%, transparent 60%);
+}
+.spotlight-overlay--warm {
+  background:
+    radial-gradient(ellipse 45% 38% at 20% 20%, rgba(201,169,97,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 38% 32% at 80% 18%, rgba(201,169,97,0.08) 0%, transparent 58%),
+    radial-gradient(ellipse 52% 42% at 50% 50%, rgba(201,169,97,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 42% 35% at 25% 85%, rgba(201,169,97,0.07) 0%, transparent 58%),
+    radial-gradient(ellipse 38% 30% at 78% 80%, rgba(201,169,97,0.06) 0%, transparent 55%);
+}
+
+/* ── Hero ── */
+.practitioner-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 40px 100px;
+  overflow: hidden;
+  background:
+    var(--leather),
+    radial-gradient(ellipse 60% 55% at 50% 30%, rgba(201,169,97,0.09) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 35% at 15% 75%, rgba(201,169,97,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse 35% 30% at 85% 70%, rgba(201,169,97,0.04) 0%, transparent 50%),
+    #0C0C10;
+}
+.practitioner-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('https://www.legaisee.com/Images/HeroLightsWide.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.14;
+  z-index: 0;
+}
+@media (max-width: 1024px) {
+  .practitioner-hero::before {
+    background-image: url('https://www.legaisee.com/Images/mobilebkgd.png') !important;
+    filter: brightness(0.45) blur(2px);
+    opacity: 0.25;
+  }
+}
+.practitioner-hero__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+.practitioner-hero__catalog {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 32px;
+  display: block;
+}
+.practitioner-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  margin-bottom: 16px;
+}
+.practitioner-hero__name {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1.05;
+  letter-spacing: 0.06em;
+  margin-bottom: 20px;
+}
+.practitioner-hero__subtitle {
+  font-family: var(--font-ui);
+  font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+  font-weight: 400;
+  color: var(--silver);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 48px;
+}
+.practitioner-hero__statement {
+  font-family: var(--font-ui);
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  color: var(--text-body);
+  line-height: 1.82;
+  max-width: 720px;
+  margin: 0 auto 48px;
+}
+
+/* ── Credential Pills ── */
+.credential-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 48px;
+}
+.credential-pill {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid rgba(201,169,97,0.18);
+  padding: 6px 14px;
+  background: rgba(201,169,97,0.03);
+}
+
+/* ── Stats Strip ── */
+.practitioner-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--gold-dim);
+  border-bottom: 1px solid var(--gold-dim);
+  max-width: 900px;
+  margin: 0 auto;
+}
+.practitioner-stat {
+  padding: 2.2rem 1.2rem;
+  text-align: center;
+  border-right: 1px solid var(--gold-dim);
+}
+.practitioner-stat:last-child { border-right: none; }
+.practitioner-stat__figure {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  font-weight: 400;
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.practitioner-stat__label {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ── Era Sections ── */
+.era-section {
+  position: relative;
+  padding: 120px 90px;
+  overflow: hidden;
+  background: var(--obsidian);
+}
+.era-section--surface {
+  background: var(--obsidian-mid);
+}
+.era-header {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto 64px;
+}
+.era-body {
+  max-width: 780px;
+  margin: 0 auto;
+}
+.era-body p {
+  margin-bottom: 1.6rem;
+}
+.era-body p:last-child { margin-bottom: 0; }
+
+/* ── Record Cards Grid ── */
+.record-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 64px auto 0;
+}
+.record-card {
+  background: var(--card);
+  border: 1px solid rgba(201,169,97,0.10);
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.40s var(--ease-silk);
+}
+.record-card:hover {
+  border-color: var(--gold-border);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+}
+.record-card--accented {
+  border-top: 2px solid var(--gold);
+}
+.record-card__label {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 10px;
+  display: block;
+}
+.record-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(0.88rem, 1.4vw, 1.05rem);
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+.record-card__meta {
+  font-family: var(--font-ui);
+  font-size: 0.70rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  display: block;
+}
+.record-card__body {
+  font-family: var(--font-ui);
+  font-size: clamp(0.86rem, 1.3vw, 0.96rem);
+  color: var(--text-body);
+  line-height: 1.82;
+}
+
+/* ── Proof Block ── */
+.proof-block {
+  max-width: 780px;
+  margin: 48px auto 0;
+  border-left: 3px solid var(--gold);
+  padding: 28px 32px;
+  background: rgba(201,169,97,0.04);
+}
+.proof-block__label {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 8px;
+  display: block;
+}
+.proof-block__title {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+  font-weight: 400;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.proof-block__body {
+  font-family: var(--font-ui);
+  font-size: clamp(0.86rem, 1.3vw, 0.96rem);
+  color: var(--text-body);
+  line-height: 1.82;
+}
+
+/* ── Field Note ── */
+.field-note {
+  max-width: 780px;
+  margin: 48px auto 0;
+  background: rgba(201,169,97,0.03);
+  border: 1px solid rgba(201,169,97,0.12);
+  padding: 24px 28px;
+}
+.field-note__label {
+  font-family: var(--font-ui);
+  font-size: 0.56rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  display: block;
+}
+.field-note__body {
+  font-family: var(--font-ui);
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.7;
+}
+
+/* ── Timeline ── */
+.practitioner-timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 64px auto 0;
+  padding-left: 2rem;
+}
+.practitioner-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  bottom: 0;
+  width: 1px;
+  background: var(--gold-dim);
+}
+.timeline-entry {
+  position: relative;
+  padding-bottom: 2.5rem;
+}
+.timeline-entry:last-child { padding-bottom: 0; }
+.timeline-entry::before {
+  content: '';
+  position: absolute;
+  left: -2.3rem;
+  top: 0.5rem;
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.timeline-entry__year {
+  font-family: var(--font-ui);
+  font-size: 0.63rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  margin-bottom: 4px;
+  display: block;
+}
+.timeline-entry__org {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  display: block;
+}
+.timeline-entry__role {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--pewter);
+  margin-bottom: 8px;
+  display: block;
+}
+.timeline-entry__body {
+  font-family: var(--font-ui);
+  font-size: clamp(0.86rem, 1.3vw, 0.96rem);
+  color: var(--text-body);
+  line-height: 1.82;
+}
+
+/* ── Pull Quote ── */
+.practitioner-pull {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 64px 40px;
+}
+.practitioner-pull__mark {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  color: rgba(201,169,97,0.10);
+  line-height: 0.5;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+.practitioner-pull__text {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.3vw, 1.5rem);
+  font-weight: 400;
+  color: var(--text-primary);
+  line-height: 1.5;
+  font-style: italic;
+}
+.practitioner-pull__rule {
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  margin: 2rem auto 0;
+}
+
+/* ── Authority Strip (5-col) ── */
+.practitioner-authority {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background: var(--charcoal);
+  border-top: 1px solid rgba(201,169,97,0.10);
+  border-bottom: 1px solid rgba(201,169,97,0.10);
+  margin-top: 80px;
+}
+.practitioner-authority__cell {
+  padding: 38px 20px;
+  text-align: center;
+  border-right: 1px solid rgba(201,169,97,0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+}
+.practitioner-authority__cell:last-child { border-right: none; }
+.practitioner-authority__value {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+  color: var(--gold);
+  line-height: 1;
+}
+.practitioner-authority__label {
+  font-family: var(--font-ui);
+  font-size: 0.54rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pewter);
+}
+
+/* ── Ethics Section ── */
+.ethics-section {
+  position: relative;
+  padding: 120px 90px;
+  overflow: hidden;
+  background: var(--obsidian-mid);
+}
+.ethics-block {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 40px 36px;
+  border: 1px solid rgba(201,169,97,0.14);
+  background: rgba(201,169,97,0.02);
+}
+.ethics-block__label {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 16px;
+  display: block;
+}
+.ethics-block__body {
+  font-family: var(--font-ui);
+  font-size: clamp(0.88rem, 1.3vw, 0.98rem);
+  color: var(--text-body);
+  line-height: 1.82;
+}
+.ethics-block__body em {
+  color: var(--gold-bright);
+  font-style: italic;
+}
+
+/* ── Closing CTA ── */
+.closing-section {
+  position: relative;
+  padding: 120px 90px;
+  overflow: hidden;
+  background:
+    var(--leather),
+    radial-gradient(ellipse 60% 55% at 50% 30%, rgba(201,169,97,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 35% at 15% 75%, rgba(201,169,97,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse 35% 30% at 85% 70%, rgba(201,169,97,0.04) 0%, transparent 50%),
+    var(--obsidian);
+}
+.closing-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 48px;
+}
+.closing-cta-wrap {
+  text-align: center;
+}
+.closing-note {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--pewter);
+  margin-top: 24px;
+}
+
+/* ── Wayback Strip ── */
+.wayback-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 32px;
+  border: 1px solid rgba(201,169,97,0.14);
+  background: rgba(201,169,97,0.02);
+  max-width: 600px;
+  margin: 48px auto 0;
+}
+.wayback-strip__figure {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--gold);
+  line-height: 1;
+}
+.wayback-strip__label {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pewter);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 1200px) {
+  .era-section, .ethics-section, .closing-section {
+    padding: 100px 60px;
+  }
+  .practitioner-hero { padding: 100px 40px 80px; }
+  .practitioner-authority { grid-template-columns: repeat(3, 1fr); }
+  .practitioner-authority__cell:nth-child(3) { border-right: none; }
+  .practitioner-authority__cell:nth-child(4),
+  .practitioner-authority__cell:nth-child(5) { border-top: 1px solid rgba(201,169,97,0.07); }
+  .record-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 1024px) {
+  .era-section, .ethics-section, .closing-section {
+    padding: 80px 40px;
+  }
+  .practitioner-hero { padding: 80px 28px 60px; }
+  .practitioner-stats { grid-template-columns: repeat(2, 1fr); }
+  .practitioner-stat:nth-child(2) { border-right: none; }
+  .practitioner-stat:nth-child(3),
+  .practitioner-stat:nth-child(4) { border-top: 1px solid var(--gold-dim); }
+}
+@media (max-width: 768px) {
+  .era-section, .ethics-section, .closing-section {
+    padding: 64px 20px;
+  }
+  .practitioner-hero { padding: 64px 20px 48px; }
+  .practitioner-authority { grid-template-columns: repeat(2, 1fr); }
+  .practitioner-authority__cell:nth-child(2) { border-right: none; }
+  .practitioner-authority__cell:nth-child(3) { border-right: 1px solid rgba(201,169,97,0.07); border-top: 1px solid rgba(201,169,97,0.07); }
+  .practitioner-authority__cell:nth-child(4) { border-top: 1px solid rgba(201,169,97,0.07); }
+  .practitioner-authority__cell:nth-child(5) { grid-column: 1 / -1; border-top: 1px solid rgba(201,169,97,0.07); border-right: none; }
+  .practitioner-pull { padding: 40px 20px; }
+  .wayback-strip { flex-direction: column; gap: 16px; text-align: center; }
+  .ethics-block { padding: 28px 20px; }
+}
+@media (max-width: 480px) {
+  .practitioner-hero__name { font-size: clamp(1.8rem, 10vw, 2.8rem); }
+  .practitioner-stats { grid-template-columns: 1fr; }
+  .practitioner-stat { border-right: none; border-bottom: 1px solid var(--gold-dim); }
+  .practitioner-stat:last-child { border-bottom: none; }
+  .practitioner-authority { grid-template-columns: 1fr; }
+  .practitioner-authority__cell { border-right: none; border-bottom: 1px solid rgba(201,169,97,0.07); }
+  .practitioner-authority__cell:last-child { border-bottom: none; }
+}
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-logo-wrap">
+    <a href="../index.html"><img src="https://www.legaisee.com/Images/LegLogo.png" alt="LEGAiSEE"></a>
+    <span class="nav-logo-text">LEGAiSEE</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="../index.html">Index</a></li>
+    <li><a href="../archaeology.html">Archaeology</a></li>
+    <li><a href="../method.html">Method</a></li>
+    <li><a href="../serve.html">Serve</a></li>
+    <li><a href="../architect.html">Architect</a></li>
+    <li><a href="../practitioner.html" class="is-active">Practitioner</a></li>
+    <li><a href="../commissions.html">Commissions</a></li>
+    <li><a href="../comparison.html">Comparison</a></li>
+    <li><a href="../registry.html">Registry</a></li>
+  </ul>
+  <a href="../registry.html" class="nav-cta">Enter the Registry</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="../index.html">Index</a>
+  <a href="../archaeology.html">Archaeology</a>
+  <a href="../method.html">Method</a>
+  <a href="../serve.html">Serve</a>
+  <a href="../architect.html">Architect</a>
+  <a href="../practitioner.html">Practitioner</a>
+  <a href="../commissions.html">Commissions</a>
+  <a href="../comparison.html">Comparison</a>
+  <a href="../registry.html">Registry</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<section class="practitioner-hero">
+  <div class="practitioner-hero__inner">
+    <span class="practitioner-hero__catalog reveal">Institutional Record</span>
+    <h1 class="practitioner-hero__title reveal reveal-d1">The Practitioner</h1>
+    <div class="practitioner-hero__name reveal reveal-d2">John Carr</div>
+    <p class="practitioner-hero__subtitle reveal reveal-d3">Founder & Principal · LEGAiSEE</p>
+    <p class="practitioner-hero__statement reveal reveal-d4">The forensic discipline of an archivist with the DNA of a master broadcaster. Thirty-three years of documented operational record — network television, institutional clients, national production scope — applied to a single methodology: excavating what a business has already proved.</p>
+    <div class="credential-pills reveal reveal-d4">
+      <span class="credential-pill">Network Broadcast · 1992–2006</span>
+      <span class="credential-pill">FCC Compliance Certified</span>
+      <span class="credential-pill">Addy Award · AAF</span>
+      <span class="credential-pill">FAA Part 107 Certified</span>
+      <span class="credential-pill">33 Years Continuous Record</span>
+      <span class="credential-pill">22 Years Documented Web Presence</span>
+    </div>
+    <div class="practitioner-stats reveal reveal-d5">
+      <div class="practitioner-stat">
+        <span class="practitioner-stat__figure">33</span>
+        <span class="practitioner-stat__label">Years of Operational Record</span>
+      </div>
+      <div class="practitioner-stat">
+        <span class="practitioner-stat__figure">22</span>
+        <span class="practitioner-stat__label">Years Timestamped Web Presence</span>
+      </div>
+      <div class="practitioner-stat">
+        <span class="practitioner-stat__figure">52</span>
+        <span class="practitioner-stat__label">Wayback Machine Captures</span>
+      </div>
+      <div class="practitioner-stat">
+        <span class="practitioner-stat__figure">3</span>
+        <span class="practitioner-stat__label">Documented Business Identities</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     TICKER
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-dot"></span>Network Broadcast</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>FCC Regulated</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Addy Award</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Institutional Production</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>National Scope</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Multi-City Live</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Drone Operations</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Documented Record</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Business Archaeology</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Signal Craft</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>I-35 Corridor</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>San Antonio</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Austin</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Three Clients</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Principals Only</span>
+    <!-- duplicate -->
+    <span class="ticker-item"><span class="ticker-dot"></span>Network Broadcast</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>FCC Regulated</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Addy Award</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Institutional Production</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>National Scope</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Multi-City Live</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Drone Operations</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Documented Record</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Business Archaeology</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Signal Craft</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>I-35 Corridor</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>San Antonio</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Austin</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Three Clients</span>
+    <span class="ticker-item"><span class="ticker-dot"></span>Principals Only</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     THE BROADCAST ERA
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<section class="era-section section-lit">
+  <div class="spotlight-overlay"></div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="label-line"></span>
+      <span class="label-text">The Broadcast Era · 1992–2006</span>
+      <span class="label-line"></span>
+    </div>
+    <div class="era-header reveal">
+      <h2 class="d-lg">The Record Does Not Begin at a Freelance Gig</h2>
+      <p class="b-lg" style="margin-top:1.2rem;">It begins at a network television affiliate in 1992 — directing live broadcasts under FCC regulation, where what goes out over the air is permanent and there are no second takes.</p>
+    </div>
+    <div class="era-body reveal">
+      <p>Fourteen years across two stations. KPLC-TV, the NBC affiliate, from 1992 to 1998 — Director, Technical Director, Master Control Operator. Then KVHP-TV FOX 29 from 1998 to 2006 — Head Director, Producer, operations crew lead. Live newscasts, specialty programming, promos. Real-time decisions in regulated environments. The discipline required at that level does not come from a course. It is built under operational pressure, repeatedly, until it becomes instinct.</p>
+      <p>Carr Multimedia was founded in November 2000 — while still employed at KVHP. That is not incidental. The practice was built before leaving broadcast. The decision was deliberate.</p>
+    </div>
+    <div class="record-grid reveal">
+      <div class="record-card record-card--accented">
+        <span class="record-card__label">Sep 1992 – Aug 1998</span>
+        <h3 class="record-card__title">KPLC-TV · NBC Affiliate</h3>
+        <span class="record-card__meta">Lake Charles, Louisiana</span>
+        <p class="record-card__body">Director / Technical Director / Master Control Operator. Live broadcasts, FCC compliance, operations staff.</p>
+      </div>
+      <div class="record-card">
+        <span class="record-card__label">Nov 1998 – Jul 2006</span>
+        <h3 class="record-card__title">KVHP-TV · FOX 29</h3>
+        <span class="record-card__meta">Lake Charles, Louisiana</span>
+        <p class="record-card__body">Head Director / Producer / Technical Director. Live newscasts, specialty shows, promos, operations crew supervision.</p>
+      </div>
+      <div class="record-card">
+        <span class="record-card__label">Nov 2000</span>
+        <h3 class="record-card__title">Carr Multimedia Digital Creations — Founded</h3>
+        <span class="record-card__meta">Founded while still in broadcast</span>
+        <p class="record-card__body">Deliberate. Not reactive. The practice was built before leaving broadcast employment.</p>
+      </div>
+      <div class="record-card record-card--accented">
+        <span class="record-card__label">Pre-2006</span>
+        <h3 class="record-card__title">Addy Award</h3>
+        <span class="record-card__meta">American Advertising Federation</span>
+        <p class="record-card__body">Television: Local Self Promotion Campaign. Formally adjudicated. The only independently verified award in the practitioner's record. It predates LEGAiSEE by more than two decades.</p>
+      </div>
+    </div>
+    <div class="proof-block reveal">
+      <span class="proof-block__label">Adjudicated Excellence</span>
+      <h3 class="proof-block__title">Addy Award — Television: Local Self Promotion Campaign</h3>
+      <p class="proof-block__body">Awarded for the Sunny That Morning Show promotional campaign. Formally adjudicated by the American Advertising Federation. The only independently verified award in the practitioner's record. It predates LEGAiSEE by more than two decades. It remains on the record.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     THE INSTITUTIONAL ERA
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<section class="era-section era-section--surface section-lit">
+  <div class="spotlight-overlay spotlight-overlay--left"></div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="label-line"></span>
+      <span class="label-text">The Institutional Era · 2006–2020</span>
+      <span class="label-line"></span>
+    </div>
+    <div class="era-header reveal">
+      <h2 class="d-lg">Fourteen Years of Documented Client Work at Institutional Scale</h2>
+      <p class="b-lg" style="margin-top:1.2rem;">The methodology was not theorised during this era — it was applied, across industries, at scope, long before it had a name.</p>
+    </div>
+    <div class="era-body reveal">
+      <p>Fourteen years of documented client work at institutional scale. The methodology was not theorised during this era — it was applied, across industries, at scope, long before it had a name.</p>
+    </div>
+    <div class="record-grid reveal">
+      <div class="record-card">
+        <span class="record-card__label">Institutional Client</span>
+        <h3 class="record-card__title">Houston Methodist Hospital</h3>
+        <span class="record-card__meta">Houston, TX</span>
+        <p class="record-card__body">Live streams and cinematic brand video for one of the largest hospital systems in the United States. Institutional-tier production at institutional-tier standards.</p>
+      </div>
+      <div class="record-card record-card--accented">
+        <span class="record-card__label">Multi-City Live Production</span>
+        <h3 class="record-card__title">MyCare Medical</h3>
+        <span class="record-card__meta">Tampa · Houston · Rio Grande Valley</span>
+        <p class="record-card__body">Multi-location broadcast across three cities in a single production event. The operational complexity of that execution does not happen by accident. It is the result of broadcast-trained systems thinking applied to enterprise production.</p>
+      </div>
+      <div class="record-card">
+        <span class="record-card__label">National Production Scope</span>
+        <h3 class="record-card__title">Texas Flying Legends Museum</h3>
+        <span class="record-card__meta">Airshow Circuit · National</span>
+        <p class="record-card__body">Travelled the national airshow circuit with Texas Flying Legends, filming performances across the country. Documentary-grade coverage of a nationally touring operation.</p>
+      </div>
+      <div class="record-card">
+        <span class="record-card__label">Multi-Discipline National Production</span>
+        <h3 class="record-card__title">Music Doing Good</h3>
+        <span class="record-card__meta">Maine · Bahamas · Aspen</span>
+        <p class="record-card__body">Front-of-house live sound, multitrack recording, and video production across multiple national and international locations. Running FOH for a nonprofit at this level requires technical fluency across three disciplines simultaneously.</p>
+      </div>
+    </div>
+    <div class="practitioner-timeline reveal">
+      <div class="timeline-entry">
+        <span class="timeline-entry__year">2006–2011</span>
+        <span class="timeline-entry__org">Reel Connection Media</span>
+        <span class="timeline-entry__role">Spring, TX</span>
+        <p class="timeline-entry__body">Editor, Animator, Videographer, IT Technician. Corporate video, animation, graphics, network management. The technical scope expanded.</p>
+      </div>
+      <div class="timeline-entry">
+        <span class="timeline-entry__year">2011–2016</span>
+        <span class="timeline-entry__org">Capital Technologies Inc.</span>
+        <span class="timeline-entry__role">Houston, TX</span>
+        <p class="timeline-entry__body">Video Producer, Audio Engineer, Technical Coordinator. Pro audio and video for concerts, live events, studio productions, and institutional media.</p>
+      </div>
+      <div class="timeline-entry">
+        <span class="timeline-entry__year">2018–2020</span>
+        <span class="timeline-entry__org">DFS Marketing Inc.</span>
+        <span class="timeline-entry__role">Conroe, TX</span>
+        <p class="timeline-entry__body">Production Manager, Content Creator. Social media, SEO, website management, analytics, live sales events. In-office IT. The full-stack marketing practitioner role.</p>
+      </div>
+    </div>
+    <div class="proof-block reveal">
+      <span class="proof-block__label">Documented Early Adoption</span>
+      <h3 class="proof-block__title">Drone Operations · 2014</h3>
+      <p class="proof-block__body">Operational drone work began in 2014 — two full years before the FAA Part 107 regulation took effect in August 2016. FAA Part 107 certification was obtained immediately upon its availability in 2017. Currently operates a fleet of five DJI drones. Early adoption in regulated domains, documented and dated, is a pattern in this record. It is not coincidence.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     THE METHODOLOGY ERA
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<section class="era-section section-lit">
+  <div class="spotlight-overlay spotlight-overlay--right"></div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="label-line"></span>
+      <span class="label-text">The Methodology Era · 2020–Present</span>
+      <span class="label-line"></span>
+    </div>
+    <div class="era-header reveal">
+      <h2 class="d-lg">The Forensic Methodology Emerges</h2>
+      <p class="b-lg" style="margin-top:1.2rem;">Thirty-three years of operational pattern recognition converges into a single system: Business Archaeology. The excavation of institutional signal from the accumulated record of what an enterprise has already proved.</p>
+    </div>
+    <div class="era-body reveal">
+      <p>The shift from practitioner to architect was not a pivot. It was a recognition. Three decades of watching enterprises abandon what worked, replace it with what was fashionable, and wonder why their signal faded — the pattern was unmistakable. The methodology was not invented. It was extracted from observation, tested against real enterprise outcomes, and systematised into the four-stage process that now defines LEGAiSEE.</p>
+      <p>The practitioner does not sell marketing. The practitioner excavates institutional memory, classifies it, grades it against the Hierarchy of Truth, and reconstructs the signal that the enterprise has already earned. That signal is then mounted as authority — not fabricated, not invented, recovered.</p>
+    </div>
+    <div class="record-grid reveal">
+      <div class="record-card record-card--accented">
+        <span class="record-card__label">2020–Present</span>
+        <h3 class="record-card__title">LEGAiSEE · Business Archaeology & Authority Systems</h3>
+        <span class="record-card__meta">San Antonio, Texas · By Appointment</span>
+        <p class="record-card__body">Founder & Principal. The forensic methodology applied at institutional depth to three concurrent clients along the I-35 corridor. The excavation, classification, and reconstruction of institutional signal.</p>
+      </div>
+      <div class="record-card">
+        <span class="record-card__label">2020–Present</span>
+        <h3 class="record-card__title">Carr Media Group · Digital Strategy</h3>
+        <span class="record-card__meta">San Antonio, Texas</span>
+        <p class="record-card__body">Digital strategy, SEO, video production, drone operations. The technical infrastructure that supports the archaeological methodology. Drone fleet: five DJI aircraft.</p>
+      </div>
+    </div>
+    <div class="practitioner-pull reveal">
+      <span class="practitioner-pull__mark">"</span>
+      <p class="practitioner-pull__text">The practitioner does not sell marketing. The practitioner excavates institutional memory, classifies it, grades it against the Hierarchy of Truth, and reconstructs the signal that the enterprise has already earned.</p>
+      <div class="practitioner-pull__rule"></div>
+    </div>
+    <div class="practitioner-authority reveal">
+      <div class="practitioner-authority__cell">
+        <span class="practitioner-authority__value">1992</span>
+        <span class="practitioner-authority__label">First Network Broadcast</span>
+      </div>
+      <div class="practitioner-authority__cell">
+        <span class="practitioner-authority__value">2000</span>
+        <span class="practitioner-authority__label">Carr Multimedia Founded</span>
+      </div>
+      <div class="practitioner-authority__cell">
+        <span class="practitioner-authority__value">2004</span>
+        <span class="practitioner-authority__label">First Wayback Capture</span>
+      </div>
+      <div class="practitioner-authority__cell">
+        <span class="practitioner-authority__value">2014</span>
+        <span class="practitioner-authority__label">Drone Operations Begin</span>
+      </div>
+      <div class="practitioner-authority__cell">
+        <span class="practitioner-authority__value">2020</span>
+        <span class="practitioner-authority__label">LEGAiSEE Founded</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     THE DIGITAL RECORD
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<section class="era-section era-section--surface section-lit">
+  <div class="spotlight-overlay spotlight-overlay--warm"></div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="label-line"></span>
+      <span class="label-text">The Digital Record</span>
+      <span class="label-line"></span>
+    </div>
+    <div class="era-header reveal">
+      <h2 class="d-lg">The Wayback Machine Does Not Lie</h2>
+      <p class="b-lg" style="margin-top:1.2rem;">Fifty-two captures across three documented business identities. A continuous web presence since 2004. The digital record is not a claim — it is a timestamp.</p>
+    </div>
+    <div class="era-body reveal">
+      <p>The digital record is not curated for marketing purposes. It is the accidental archive of three decades of operational presence. The Wayback Machine captured Carr Multimedia Digital Creations as early as 2004 — the same year the business identity was established. The record shows evolution, not invention. It shows continuity, not reinvention. It shows a practitioner who has been doing this work since before most of the current marketing profession existed.</p>
+      <p>That record is available to any qualified principal who requests it. It is not a secret. It is the Bedrock.</p>
+    </div>
+    <div class="wayback-strip reveal">
+      <div>
+        <span class="wayback-strip__figure">52</span>
+        <span class="wayback-strip__label">Wayback Machine Captures</span>
+      </div>
+      <div style="width:1px;height:40px;background:rgba(201,169,97,0.20);"></div>
+      <div>
+        <span class="wayback-strip__figure">2004</span>
+        <span class="wayback-strip__label">First Capture Date</span>
+      </div>
+      <div style="width:1px;height:40px;background:rgba(201,169,97,0.20);"></div>
+      <div>
+        <span class="wayback-strip__figure">3</span>
+        <span class="wayback-strip__label">Documented Identities</span>
+      </div>
+    </div>
+    <div class="field-note reveal">
+      <span class="field-note__label">Field Note</span>
+      <p class="field-note__body">The Wayback Machine record is available to any qualified principal upon request. It is not a marketing asset. It is the Bedrock — the verified historical record from which all reconstruction proceeds.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     THE ETHICAL BOUNDARY
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<section class="ethics-section section-lit">
+  <div class="spotlight-overlay"></div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="label-line"></span>
+      <span class="label-text">The Ethical Boundary</span>
+      <span class="label-line"></span>
+    </div>
+    <div class="era-header reveal">
+      <h2 class="d-lg">What the Practitioner Does Not Do</h2>
+      <p class="b-lg" style="margin-top:1.2rem;">The boundary is as specific as the methodology. Clarity about what is excluded defines what is included.</p>
+    </div>
+    <div class="ethics-block reveal">
+      <span class="ethics-block__label">Non-Negotiable Exclusions</span>
+      <p class="ethics-block__body">The practitioner does not generate copy. The practitioner does not invent claims. The practitioner does not produce content that cannot be verified against the Bedrock. The practitioner does not work with enterprises that have no documented history to excavate. The practitioner does not scale beyond three concurrent engagements. The practitioner does not delegate the excavation to associates. The practitioner does not accept engagements where the principal is not the decision-maker. The practitioner does not work on speculation. The practitioner does not discount the methodology. The practitioner does not compromise the 3-Source Rule. <em>The Bedrock Pledge applies to every engagement without exception.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     CLOSING CTA
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<section class="closing-section section-lit">
+  <div class="spotlight-overlay spotlight-overlay--warm"></div>
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="label-line"></span>
+      <span class="label-text">A Private Conversation</span>
+      <span class="label-line"></span>
+    </div>
+    <div class="closing-header reveal">
+      <h2 class="d-lg">The Conversation Is How the Work Begins</h2>
+      <p class="b-lg" style="margin-top:1.2rem;">The practitioner does not pitch. The practitioner does not present a deck. The practitioner sits down with the leadership of an enterprise that qualifies — and listens.</p>
+    </div>
+    <div class="closing-cta-wrap reveal">
+      <a href="../registry.html" class="btn btn-gold">Enter the Registry</a>
+      <p class="closing-note">By invitation only · Three clients maximum · Principals only</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <a href="../index.html"><img src="https://www.legaisee.com/Images/LegLogo.png" alt="LEGAiSEE" class="footer-logo"></a>
+      <p class="footer-tagline">Business Archaeology & Authority Systems</p>
+      <p class="footer-address">San Antonio, Texas · By Appointment</p>
+    </div>
+    <div class="footer-center">
+      <div class="footer-nav">
+        <a href="../index.html">Index</a>
+        <a href="../archaeology.html">Archaeology</a>
+        <a href="../method.html">Method</a>
+        <a href="../serve.html">Serve</a>
+        <a href="../architect.html">Architect</a>
+        <a href="../practitioner.html">Practitioner</a>
+        <a href="../commissions.html">Commissions</a>
+        <a href="../comparison.html">Comparison</a>
+        <a href="../registry.html">Registry</a>
+      </div>
+    </div>
+    <div class="footer-right">
+      <p class="footer-legal">&copy; 2026 LEGAiSEE. All rights reserved.</p>
+      <p class="footer-legal">Business Archaeology & Authority Systems</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     SCHEMA — Person
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "John Carr",
+  "jobTitle": "Founder & Principal · LEGAiSEE Business Archaeology & Authority Systems",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "LEGAiSEE",
+    "url": "https://www.legaisee.com"
+  },
+  "url": "https://www.legaisee.com/practitioner.html",
+  "description": "Thirty-three years of documented operational record: network broadcast television (1992–2006), institutional production at national scope, and the forensic methodology of Business Archaeology. FAA Part 107 certified drone operator. Addy Award recipient.",
+  "knowsAbout": ["Business Archaeology", "Authority Systems", "Signal Craft", "Broadcast Television", "Institutional Production", "Drone Operations"],
+  "areaServed": {
+    "@type": "Place",
+    "name": "I-35 Corridor",
+    "containedInPlace": {
+      "@type": "State",
+      "name": "Texas"
+    }
+  },
+  "award": "Addy Award · American Advertising Federation · Television: Local Self Promotion Campaign",
+  "hasCredential": "FAA Part 107 Certified Remote Pilot"
+}
+</script>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     LLMS-FULL — hidden page summary for AI consumption
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<div data-llms="full" style="display:none;">
+The Practitioner page is the founder biography for LEGAiSEE Business Archaeology & Authority Systems, presenting John Carr — Founder & Principal. The page covers: The Broadcast Era (1992–2006) with KPLC-TV NBC affiliate and KVHP-TV FOX 29, including the Addy Award for Television Local Self Promotion Campaign; Carr Multimedia founded in 2000 while still in broadcast. The Institutional Era (2006–2020) with Reel Connection Media, Capital Technologies Inc., and DFS Marketing Inc., including clients Houston Methodist Hospital, MyCare Medical multi-city live production, Texas Flying Legends Museum national airshow circuit, and Music Doing Good national/international production. Drone operations began 2014, FAA Part 107 certified 2017. The Methodology Era (2020–Present) with LEGAiSEE and Carr Media Group. The Digital Record: 52 Wayback Machine captures since 2004 across 3 documented business identities. The Ethical Boundary: ten non-negotiable exclusions including no copy generation, no invented claims, no delegation, no speculation work. Tone: speakeasy millionaire, museum-quality, zero sales speak, zero exclamation points. Location: San Antonio, Texas. Maximum capacity: three concurrent clients. Principals only.
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+     INLINE JAVASCRIPT
+     ═══════════════════════════════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  /* ── IntersectionObserver reveal ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  if (revealEls.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+  }
+
+  function checkViewport() {
+    revealEls.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('visible');
+      }
+    });
+  }
+  checkViewport();
+  window.addEventListener('load', checkViewport);
+
+  /* ── Mobile nav toggle ── */
+  const hamburger = document.getElementById('navHamburger');
+  const mobileNav = document.getElementById('navMobile');
+  if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', () => {
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', !expanded);
+      mobileNav.classList.toggle('is-open');
+      document.body.classList.toggle('nav-open');
+    });
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileNav.classList.remove('is-open');
+        document.body.classList.remove('nav-open');
+      });
+    });
+  }
+
+  /* ── Nav scroll background ── */
+  const siteNav = document.getElementById('siteNav');
+  if (siteNav) {
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          siteNav.classList.toggle('is-scrolled', window.scrollY > 60);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  /* ── 3D card tilt (desktop only) ── */
+  if (!window.matchMedia('(pointer: coarse)').matches) {
+    document.querySelectorAll('.record-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `perspective(800px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-3px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
+
+  /* ── Smooth scroll for anchor links ── */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+{
+  "system": "LVOS V2",
+  "version": "2.0",
+  "mode": "canonical-registry",
+
+  "structure": {
+    "core": {
+      "css": {
+        "tokens": "assets/css/lvos-tokens.css",
+        "reset": "assets/css/lvos-reset.css",
+        "core": "assets/css/lvos-core.css",
+        "layout": "assets/css/lvos-layout.css",
+        "grid": "assets/css/lvos-grid.css",
+        "spacing": "assets/css/lvos-spacing.css",
+        "type": "assets/css/lvos-type.css",
+        "utilities": "assets/css/lvos-utilities.css",
+        "environment": "assets/css/lvos-environment.css",
+        "navigation": "assets/css/lvos-navigation.css",
+        "footer": "assets/css/lvos-footer.css",
+        "components": "assets/css/lvos-components.css",
+        "objects": "assets/css/lvos-objects.css",
+        "motion": "assets/css/lvos-motion.css",
+        "light": "assets/css/lvos-light-engine.css",
+        "materials": "assets/css/lvos-materials.css",
+        "camera": "assets/css/lvos-camera.css"
+      },
+
+      "js": {
+        "engine": "assets/js/lvos-engine.js",
+        "loader": "assets/js/lvos-loader.js",
+        "scroll": "assets/js/lvos-scroll.js",
+        "camera": "assets/js/lvos-camera.js",
+        "motion": "assets/js/lvos-motion.js",
+        "light": "assets/js/lvos-light-engine.js",
+        "materials": "assets/js/lvos-material-engine.js",
+        "navigation": "assets/js/lvos-navigation.js"
+      }
+    },
+
+    "pages": {
+      "prototypes": {
+        "01_home": "pages/prototypes/01_home.html",
+        "01_reset": "pages/prototypes/01-reset.html",
+        "02_type": "pages/prototypes/02-type.html",
+        "02_archaeology": "pages/prototypes/02_archaeology.html",
+        "03_grid": "pages/prototypes/03-grid.html",
+        "03_frameworks": "pages/prototypes/03_frameworks.html",
+        "04_layout": "pages/prototypes/04-layout.html",
+        "04_who_we_serve": "pages/prototypes/04_who-we-serve.html",
+        "05_environment": "pages/prototypes/05-environment.html",
+        "05_commissions": "pages/prototypes/05_commissions.html",
+        "06_light_engine": "pages/prototypes/06-light-engine.html",
+        "06_architect": "pages/prototypes/06_architect.html",
+        "07_materials": "pages/prototypes/07-materials.html",
+        "07_registry": "pages/prototypes/07_registry.html",
+        "08_objects": "pages/prototypes/08-objects.html",
+        "08_contact": "pages/prototypes/08_contact.html",
+        "09_motion": "pages/prototypes/09-motion.html",
+        "10_components": "pages/prototypes/10-components.html",
+        "11_navigation": "pages/prototypes/11-navigation.html",
+        "12_footer": "pages/prototypes/12-footer.html",
+        "13_complete": "pages/prototypes/13-complete-page.html"
+      },
+
+      "demos": {
+        "01_home": "pages/demos/01_home.html",
+        "02_archaeology": "pages/demos/02_archaeology.html",
+        "03_frameworks": "pages/demos/03_frameworks.html",
+        "04_who_we_serve": "pages/demos/04_who-we-serve.html",
+        "05_commissions": "pages/demos/05_commissions.html",
+        "06_architect": "pages/demos/06_architect.html",
+        "07_registry": "pages/demos/07_registry.html",
+        "08_contact": "pages/demos/08_contact.html"
+      },
+
+      "labs": {
+        "90_render": "pages/prototypes/90_render-lab.html",
+        "91_material": "pages/prototypes/91_material-lab.html",
+        "92_lighting": "pages/prototypes/92_lighting-lab.html",
+        "93_component": "pages/prototypes/93_component-lab.html",
+        "94_animation": "pages/prototypes/94_animation-lab.html",
+        "95_performance": "pages/prototypes/95_performance-lab.html"
+      }
+    },
+
+    "governance": {
+      "project_rules": "governance/project-rules.md",
+      "development_contract": "governance/development-contract.md",
+      "governance_update": "governance/governance_update_2026-06-26.md"
+    },
+
+    "documentation": {
+      "toc": "docs/toc.md",
+      "build_order": "docs/build-order.md",
+      "core_rules": "docs/corerules.md",
+      "schema_hardening": "docs/lvos/page-schema-hardening.md",
+      "page_registry": "docs/pageregistry.json"
+    },
+
+    "handoff": {
+      "current": "handoff/current-handoff.md",
+      "snapshot": "handoff/2026-06-26_LVOS-V2_HANDOFF.md"
+    }
+  },
+
+  "validation_rules": {
+    "no_orphan_files": true,
+    "all_pages_must_be_registered": true,
+    "no_unlisted_lab_pages": true,
+    "toc_must_match_registry": true,
+    "schema_enforcement_active": true
+  }
+}
+"system_rules": {
+  "registry_authority": "absolute",
+  "toc_authority": "human_reference_only",
+  "lab_policy": "registered_diagnostic_modules_only",
+  "file_creation_rule": "must_exist_in_registry_before_build",
+  "architecture_rule": "no_parallel_systems_allowed"
+}

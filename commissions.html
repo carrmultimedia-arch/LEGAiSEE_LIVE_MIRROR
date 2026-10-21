@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="LEGAiSEE Commissions — Business Archaeology engagements, Authority Systems, and the Private Archaeology Protocol. Three clients maximum.">
+  <title>Commissions — LEGAiSEE</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!--link rel="stylesheet" hrefs="https://unpkg.com/lenis@1.3.23/dist/lenis.css"-->
+    <!--<link rel="stylesheet" href="legaisee-master.css"-->
+    <link rel="stylesheet" href="https://www.legaisee.com/legaisee-design-system/assets/css/legaisee.css">
+    <link rel="stylesheet" href="https://www.legaisee.com/legaisee-design-system/assets/css/legaisee-luxury.css" />
+
+
+<style>
+    /* ── PAGE-SPECIFIC: INDEX.HTML ──────────────────────────────── */
+ /* ─── PAGE-LEVEL VARIABLES ─── */
+    :root {
+      --obsidian:    #0C0C10;
+      --surface:     #181818;
+      --card:        #141414;
+      --gold:        #C9A961;
+      --gold-dim:    rgba(201, 170, 97, 0.4);
+      --gold-low:    rgba(201,169,97,0.12);
+      --gold-glow:   rgba(201,169,97,0.08);
+      --text-primary: rgba(255,255,255,0.92);
+      --text-body:    rgba(255,255,255,0.72);
+      --text-muted:   rgba(255,255,255,0.62);
+      --nav-height:   72px;
+    }
+    /* PAGE HERO */
+    .commissions-hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      padding: 140px 90px 100px;
+      overflow: hidden;
+      background: var(--obsidian);
+    }
+    .commissions-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('http://www.legaisee.com/Images/PolishCaseMask.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; /* mobile: scroll via CSS */
+      opacity: 0.20;
+      z-index: 0;
+    }
+    .commissions-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to right, rgba(5,5,5,0.94) 0%, rgba(5,5,5,0.55) 60%, rgba(5,5,5,0.85) 100%),
+        linear-gradient(to bottom, rgba(5,5,5,0.65) 0%, transparent 30%, rgba(5,5,5,0.88) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .commissions-hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 88px;
+      align-items: center;
+      max-width: 1320px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* COMMISSION CARDS — the prestige tier system */
+    .commission-card {
+      background: var(--obsidian-light);
+      border: 1px solid rgba(201,169,97,0.12);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.5s var(--ease-silk);
+    }
+    .commission-card:hover {
+      border-color: rgba(201,169,97,0.28);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lift);
+    }
+    .commission-card.featured {
+      background: linear-gradient(160deg, var(--charcoal) 0%, var(--obsidian-mid) 100%);
+      border-color: rgba(201,169,97,0.30);
+    }
+    .commission-card.featured::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 10%, var(--gold) 50%, transparent 90%);
+    }
+    .commission-header {
+      padding: 48px 48px 36px;
+      border-bottom: 1px solid rgba(201,169,97,0.07);
+    }
+    .commission-roman {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      color: rgba(201,169,97,0.12);
+      line-height: 1;
+      margin-bottom: 20px;
+      display: block;
+      transition: color 0.4s ease;
+    }
+    .commission-card:hover .commission-roman,
+    .commission-card.featured .commission-roman { color: rgba(201,169,97,0.28); }
+    .commission-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2vw, 1.7rem);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--platinum);
+      margin-bottom: 14px;
+      line-height: 1.15;
+    }
+    .commission-card.featured .commission-name { color: var(--gold-bright); }
+    .commission-tagline {
+      font-family: var(--font-ui);
+      font-size: 1.02rem;
+      font-style: italic;
+      color: var(--pewter);
+      line-height: 1.68;
+    }
+    .commission-card.featured .commission-tagline { color: var(--silver); }
+    .commission-body {
+      padding: 36px 48px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .commission-desc {
+      font-family: var(--font-ui);
+      font-size: 1rem;
+      color: var(--silver);
+      line-height: 1.78;
+    }
+    .commission-deliverables {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid rgba(201,169,97,0.07);
+    }
+    .deliverable-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(201,169,97,0.05);
+      transition: background 0.3s ease;
+    }
+    .deliverable-row:last-child { border-bottom: none; }
+    .deliverable-row:hover { background: rgba(201,169,97,0.02); }
+    .deliverable-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--gold-dim);
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+    .commission-card.featured .deliverable-dot { background: var(--gold); }
+    .deliverable-text {
+      font-family: var(--font-ui);
+      font-size: 0.95rem;
+      color: var(--pewter);
+      line-height: 1.62;
+    }
+    .commission-card.featured .deliverable-text { color: var(--silver); }
+    .commission-footer {
+      padding: 28px 48px 40px;
+      border-top: 1px solid rgba(201,169,97,0.07);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .commission-investment {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+    }
+    .commission-card.featured .commission-investment { color: var(--gold); }
+    .commission-timeline {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--pewter);
+    }
+
+    /* PROCESS TIMELINE */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      border: 1px solid rgba(201,169,97,0.10);
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 56px; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+      z-index: 0;
+    }
+    .process-step {
+      padding: 36px 24px 40px;
+      text-align: center;
+      border-right: 1px solid rgba(201,169,97,0.07);
+      position: relative;
+      z-index: 1;
+      background: var(--obsidian-light);
+      transition: background 0.4s ease;
+    }
+    .process-step:last-child { border-right: none; }
+    .process-step:hover { background: var(--obsidian-mid); }
+    .process-node {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,169,97,0.28);
+      background: var(--obsidian);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-family: var(--font-display);
+      font-size: 0.80rem;
+      color: var(--gold-dim);
+      position: relative;
+      z-index: 2;
+      transition: all 0.4s ease;
+    }
+    .process-step:hover .process-node {
+      border-color: var(--gold);
+      background: rgba(201,169,97,0.06);
+      color: var(--gold);
+      box-shadow: 0 0 16px rgba(201,169,97,0.12);
+    }
+    .process-title {
+      font-family: var(--font-display);
+      font-size: clamp(0.85rem, 1.1vw, 1rem);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold-light);
+      margin-bottom: 10px;
+    }
+    .process-gem {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      opacity: 0.6;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .process-desc {
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+      color: var(--pewter);
+      line-height: 1.65;
+    }
+
+    /* BEDROCK PLEDGE — expanded full-page treatment */
+    .bedrock-section {
+      position: relative;
+      overflow: hidden;
+    }
+    .bedrock-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('http://www.legaisee.com/Images/CaseMask2.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; /* mobile: scroll via CSS */
+      opacity: 0.14;
+      z-index: 0;
+    }
+    .bedrock-section > * { position: relative; z-index: 1; }
+
+    /* PLEDGE CLAUSES */
+    .pledge-clauses {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid rgba(201,169,97,0.12);
+    }
+    .pledge-clause {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0;
+      border-bottom: 1px solid rgba(201,169,97,0.07);
+      transition: background 0.3s ease;
+    }
+    .pledge-clause:last-child { border-bottom: none; }
+    .pledge-clause:hover { background: rgba(201,169,97,0.02); }
+    .clause-num {
+      padding: 32px 20px;
+      background: rgba(201,169,97,0.04);
+      border-right: 1px solid rgba(201,169,97,0.08);
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--gold-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .clause-body {
+      padding: 32px 40px;
+    }
+    .clause-title {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--platinum);
+      margin-bottom: 10px;
+    }
+    .clause-text {
+      font-family: var(--font-ui);
+      font-size: 1rem;
+      color: var(--silver);
+      line-height: 1.75;
+    }
+
+    /* WHAT THIS IS NOT — contrast box */
+    .not-this-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .not-this-cell {
+      padding: 40px 36px;
+      background: var(--charcoal);
+    }
+    .not-this-cell.is-this {
+      background: var(--obsidian-light);
+      border: 1px solid rgba(201,169,97,0.12);
+    }
+    .not-cell-label {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .not-this-cell .not-cell-label { color: rgba(106,106,106,0.5); }
+    .not-this-cell.is-this .not-cell-label { color: var(--gold); }
+    .not-cell-title {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+    .not-this-cell .not-cell-title { color: rgba(106,106,106,0.4); }
+    .not-this-cell.is-this .not-cell-title { color: var(--platinum); }
+    .not-cell-desc {
+      font-family: var(--font-ui);
+      font-size: 0.96rem;
+      line-height: 1.72;
+    }
+
+     /* Mobile section background overrides for commissions.html */
+  @media (max-width: 1024px) {
+    .commissions-hero::before {
+      filter: brightness(0.42) blur(2px);
+      opacity: 0.22;
+    }
+    .bedrock-section::before {
+      filter: brightness(0.38) blur(3px);
+      opacity: 0.18;
+    }
+    /* Closing CTA inline bg div */
+    .lux-section [style*="Intake1"] {
+      filter: brightness(0.38) blur(2px) !important;
+    }
+  }
+  
+    .not-this-cell .not-cell-desc { color: rgba(106,106,106,0.4); }
+    .not-this-cell.is-this .not-cell-desc { color: var(--silver); }
+
+    @media (max-width: 1100px) {
+      .commissions-hero { padding: 140px 48px 80px; }
+      .commissions-hero-inner { grid-template-columns: 1fr; gap: 52px; }
+      .process-steps { grid-template-columns: repeat(3, 1fr); }
+      .process-step:nth-child(4) { border-top: 1px solid rgba(201,169,97,0.07); }
+      .not-this-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .commissions-hero { padding: 120px 28px 60px; min-height: auto; }
+      .commission-header, .commission-body, .commission-footer { padding-left: 28px; padding-right: 28px; }
+      .process-steps { grid-template-columns: 1fr; }
+      .process-steps::before { display: none; }
+      .process-step { border-right: none; border-bottom: 1px solid rgba(201,169,97,0.07); }
+      .pledge-clause { grid-template-columns: 56px 1fr; }
+      .clause-body { padding: 24px 24px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Desktop Links -->
+  <div class="nav-links" id="nav-links">
+    <a href="/index.html"        data-nav="home">Home</a>
+    <a href="/archaeology.html"  data-nav="archaeology">The Archaeology</a>
+    <a href="/method.html"       data-nav="method">The Method</a>
+    <a href="/serve.html"        data-nav="serve">Who We Serve</a>
+    <a href="/architect.html"    data-nav="architect">The Architect</a>
+    <a href="/practitioner.html" data-nav="practitioner">The Practitioner</a>
+    <a href="/career.html"       data-nav="career">Career</a>
+    <a href="/commissions.html"  data-nav="commissions"style="color: var(--gold)">Commissions</a>
+    <a href="/registry.html"     class="nav-cta" data-nav="home">Enter the Registry</a>
+  </div>
+ 
+  <!-- Hamburger — visible only on mobile -->
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+ 
+</nav>
+ 
+<!-- MOBILE DRAWER -->
+<div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+  <a href="/index.html"        data-nav="home">Home</a>
+  <a href="/archaeology.html"  data-nav="archaeology"style="color: var(--gold);">The Archaeology</a>
+  <a href="/method.html"       data-nav="method">The Method</a>
+  <a href="/serve.html"        data-nav="serve">Who We Serve</a>
+  <a href="/architect.html"    data-nav="architect">The Architect</a>
+  <a href="/practitioner.html" data-nav="practitioner">The Practitioner</a>
+  <a href="/career.html"       data-nav="career">Career</a>
+  <a href="/commissions.html"  data-nav="commissions">Commissions</a>
+  <a href="/registry.html"     data-nav="registry">Enter the Registry</a>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     PAGE HERO
+     Background: PolishCaseMask.png (parallax)
+     ═══════════════════════════════════════════════ -->
+<section class="commissions-hero">
+  <div class="commissions-hero-inner">
+
+    <!-- Left: Hero copy -->
+    <div>
+      <span class="eyebrow reveal">The Commissions · What Is Built</span>
+      <h1 class="d-xl reveal" style="margin-bottom: 40px; line-height: 1.05;">
+        The Work<br>Is Bespoke.<br>
+        <span class="text-gold">Always.</span>
+      </h1>
+      <p class="b-xl reveal reveal-d1" style="color: var(--platinum); margin-bottom: 28px;">
+        No two enterprises have accumulated the same history. No two dig sites yield the same
+        artifacts. No two authority systems are built from the same evidence.
+        Every commission is forensically unique.
+      </p>
+      <p class="b-lg reveal reveal-d2" style="margin-bottom: 48px;">
+        What follows are the four commissions available within the Private Registry —
+        each defined by scope, each priced by conversation, each bound by the same
+        non-negotiable standard: the Bedrock Pledge.
+      </p>
+      <div class="btn-group reveal reveal-d3">
+        <a href="registry.html" class="btn btn-gold">Enter the Registry</a>
+        <a href="#the-pledge" class="btn btn-outline-gold">The Bedrock Pledge</a>
+      </div>
+    </div>
+
+    <!-- Right: Mounted gem — the polished case -->
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+
+      <!-- GEMSTONE PLACEHOLDER: Polished Case — the final product -->
+      <div class="gem-frame reveal reveal-right" style="position: relative; aspect-ratio: 1; border-radius: 28px; overflow: hidden;">
+        <div class="gem-placeholder-box" style="min-height: 420px; border-radius: 28px; border: none; background: linear-gradient(135deg, #141208 0%, #050505 100%);">
+          <span class="gem-catalog">CAT-MNT-050</span>
+          <div class="gem-stage-name">Polished Case</div>
+          <div class="gem-stage-desc">The mounted specimen — authority secured in its setting, ready for the museum floor</div>
+        </div>
+        <div class="gem-caption-bar">
+          <div class="gem-caption-title">Stage 3 — The Setting</div>
+          <div class="gem-caption-sub">Bespoke · Forensic · Unreplicable</div>
+        </div>
+      </div>
+
+      <div class="speakeasy-frame reveal reveal-d2" style="padding: 28px 36px;">
+        <p style="font-family: var(--font-ui); font-size: 1.05rem; font-style: italic; color: var(--silver); line-height: 1.75; position: relative; z-index: 1;">
+          "Investment is discussed in the Registry conversation.
+          We do not publish pricing, because the scope of each engagement is determined by
+          what the archaeology reveals — not by what fits a price sheet."
+        </p>
+        <div class="micro-label" style="margin-top: 14px; position: relative; z-index: 1;">
+          The Architect · On Investment
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section><!-- /hero -->
+
+
+<!-- ═══════════════════════════════════════════════
+     AUTHORITY STRIP
+     ═══════════════════════════════════════════════ -->
+<div class="authority-strip">
+  <div class="authority-item"><div class="authority-value">4</div><div class="authority-label">Commission Types Available</div></div>
+  <div class="authority-item"><div class="authority-value">3</div><div class="authority-label">Active Engagements Maximum</div></div>
+  <div class="authority-item"><div class="authority-value">10</div><div class="authority-label">Frameworks Applied</div></div>
+  <div class="authority-item"><div class="authority-value">1</div><div class="authority-label">Standard — The Bedrock Pledge</div></div>
+  <div class="authority-item"><div class="authority-value">0</div><div class="authority-label">Guesswork. Claims. Shortcuts.</div></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 1: WHAT THIS IS NOT / WHAT THIS IS
+     Contrast positioning before the commissions
+     ═══════════════════════════════════════════════ -->
+<section class="lux-section" style="overflow: hidden; background: var(--obsidian); padding-top: 120px; padding-bottom: 80px;">
+  <div class="section-inner">
+
+    <div style="text-align: center; max-width: 820px; margin: 0 auto 72px;">
+      <div class="prestige-label reveal" style="justify-content: center;">Before We Begin</div>
+      <h2 class="d-lg reveal" style="margin-bottom: 24px;">What This Is Not —<br>And What It Is</h2>
+      <p class="b-lg reveal reveal-d1">
+        The distinction matters before the commission is chosen, because choosing the wrong
+        service for the wrong reason produces the wrong result.
+        The Architect is direct about this.
+      </p>
+    </div>
+
+    <div class="not-this-grid reveal reveal-d2" style="margin-bottom: 72px;">
+
+      <div class="not-this-cell">
+        <span class="not-cell-label">This Is Not</span>
+        <div class="not-cell-title">A Branding Exercise</div>
+        <div class="not-cell-desc">We do not create a new visual identity, a new name, or a new personality for your enterprise. If what you need is a fresh start, this is not your engagement.</div>
+      </div>
+      <div class="not-this-cell is-this">
+        <span class="not-cell-label">This Is</span>
+        <div class="not-cell-title">A Recovery Operation</div>
+        <div class="not-cell-desc">We recover the identity you already earned — the one that worked, that produced your best revenue, that the market responded to before the drift. We restore it, document it, and deploy it.</div>
+      </div>
+
+      <div class="not-this-cell">
+        <span class="not-cell-label">This Is Not</span>
+        <div class="not-cell-title">A Marketing Campaign</div>
+        <div class="not-cell-desc">We do not produce ads, social content, or creative executions. The output of an engagement is a strategic document system and authority architecture — not a campaign.</div>
+      </div>
+      <div class="not-this-cell is-this">
+        <span class="not-cell-label">This Is</span>
+        <div class="not-cell-title">A Strategic Doctrine</div>
+        <div class="not-cell-desc">The deliverable is a governing document — the forensic record of your institutional authority and the precise operational framework for deploying it. It informs every campaign that follows.</div>
+      </div>
+
+      <div class="not-this-cell">
+        <span class="not-cell-label">This Is Not</span>
+        <div class="not-cell-title">A Fast Process</div>
+        <div class="not-cell-desc">Forensic archaeology is not conducted in 30-day sprints. The depth required to produce a Tier 1 confidence finding does not compress without compromising what it finds.</div>
+      </div>
+      <div class="not-this-cell is-this">
+        <span class="not-cell-label">This Is</span>
+        <div class="not-cell-title">A Deliberate Excavation</div>
+        <div class="not-cell-desc">The timeline is determined by the depth of the dig site — by what the evidence demands. An enterprise with 40 years of history requires more excavation time than one with ten. This is the forensic reality.</div>
+      </div>
+
+    </div><!-- /not-this-grid -->
+
+  </div>
+</section><!-- /contrast -->
+
+
+<!--
+══════════════════════════════════════════════════════════════════
+  PATCH 1 — commissions.html
+  REPLACE: The four commission cards section
+  INSERT:  Full Exhibit system (Phase 0 → Exhibit G) + value metrics
+  DROP-IN: Paste this block in place of your existing .commissions-grid
+           or equivalent card container.
+══════════════════════════════════════════════════════════ -->
+
+<!-- ── EXHIBIT SYSTEM INTRO ─────────────────────────────────── -->
+<section class="section-block exhibits-intro">
+  <div class="container">
+    <div class="section-label">
+      <span class="label-line"></span>
+      <span class="label-text">The Engagement Structure</span>
+      <span class="label-line"></span>
+    </div>
+    <h2 class="section-title">The Exhibit System</h2>
+    <p class="section-lead">
+      Every commission begins with evidence. What follows is a structured excavation — 
+      each Exhibit calibrated to the depth of the record, the complexity of the signal, 
+      and the scale of what the business deserves to claim.
+    </p>
+    <div class="exhibit-metrics-bar">
+      <div class="metric-cell">
+        <span class="metric-label">Enterprise Value</span>
+        <span class="metric-desc">Documented history drives acquisition multiples that raw revenue cannot.</span>
+      </div>
+      <div class="metric-divider"></div>
+      <div class="metric-cell">
+        <span class="metric-label">Exit Multiples</span>
+        <span class="metric-desc">Buyers pay a premium for businesses with a provable, coherent origin story.</span>
+      </div>
+      <div class="metric-divider"></div>
+      <div class="metric-cell">
+        <span class="metric-label">Forensic CAC</span>
+        <span class="metric-desc">True cost of acquisition, surfaced and corrected — not estimated.</span>
+      </div>
+      <div class="metric-divider"></div>
+      <div class="metric-cell">
+        <span class="metric-label">LTV : CAC &nbsp;3 : 1</span>
+        <span class="metric-desc">The minimum ratio we engineer before any new acquisition spend is justified.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PHASE 0 ─────────────────────────────────────────────── -->
+<section class="section-block exhibit-tier tier-entry">
+  <div class="container">
+    <div class="exhibit-card exhibit-card--entry">
+      <div class="exhibit-card__header">
+        <div class="exhibit-phase-badge">Phase 0</div>
+        <div class="exhibit-title-block">
+          <h3 class="exhibit-name">The Shallow Dig</h3>
+          <p class="exhibit-tagline">The entry point. Before any commission is accepted, the record must be assessed.</p>
+        </div>
+        <div class="exhibit-price-block">
+          <span class="exhibit-price">$2,500</span>
+          <span class="exhibit-price-note">One-time · Non-refundable</span>
+        </div>
+      </div>
+      <div class="exhibit-card__body">
+        <p class="exhibit-desc">
+          A focused forensic pass across your business record. We surface your Estimated Golden Era, 
+          identify one Abandoned Asset, map the primary Competitive Gap, and locate one undeniable 
+          inflection point in your timeline. This is not a discovery call. It is the foundation 
+          every subsequent Exhibit is built upon.
+        </p>
+        <ul class="exhibit-deliverables">
+          <li>Estimated Golden Era identification</li>
+          <li>One Abandoned Asset surfaced</li>
+          <li>Competitive Gap mapping</li>
+          <li>One undeniable inflection point</li>
+          <li>Excavation brief for Exhibit selection</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXHIBITS A – D ──────────────────────────────────────── -->
+<section class="section-block exhibit-tier tier-core">
+  <div class="container">
+    <div class="exhibit-grid">
+
+      <!-- Exhibit A -->
+      <div class="exhibit-card">
+        <div class="exhibit-card__eyebrow">
+          <span class="exhibit-label">Exhibit A</span>
+          <span class="exhibit-price-inline">$5,000 – $7,500</span>
+        </div>
+        <h3 class="exhibit-name">Signal Excavation</h3>
+        <p class="exhibit-desc">
+          The complete audit of what your business has already proved — extracted, 
+          organised, and translated into a single authoritative signal. Your history 
+          becomes an asset. Your proof becomes the argument.
+        </p>
+        <ul class="exhibit-deliverables">
+          <li>Full historical record audit</li>
+          <li>Proof-point extraction and cataloguing</li>
+          <li>Primary signal architecture</li>
+          <li>Foundational positioning statement</li>
+        </ul>
+        <div class="exhibit-card__footer">
+          <span class="exhibit-scope">Project · 3–5 weeks</span>
+        </div>
+      </div>
+
+      <!-- Exhibit B -->
+      <div class="exhibit-card">
+        <div class="exhibit-card__eyebrow">
+          <span class="exhibit-label">Exhibit B</span>
+          <span class="exhibit-price-inline">$8,500 – $18,000</span>
+        </div>
+        <h3 class="exhibit-name">Full Institutional Record</h3>
+        <p class="exhibit-desc">
+          A comprehensive excavation and reconstruction of your institutional history. 
+          Every chapter retrieved, every abandoned asset restored, every competitive 
+          advantage brought into the permanent record. Built to stabilise the 
+          foundation before another dollar is invested.
+        </p>
+        <ul class="exhibit-deliverables">
+          <li>Complete institutional timeline</li>
+          <li>Abandoned asset recovery</li>
+          <li>Competitive intelligence integration</li>
+          <li>Revenue Leak Detection System review</li>
+          <li>Full positioning and narrative system</li>
+        </ul>
+        <div class="exhibit-card__footer">
+          <span class="exhibit-scope">Project · 6–10 weeks</span>
+        </div>
+      </div>
+
+      <!-- Exhibit C -->
+      <div class="exhibit-card exhibit-card--retainer">
+        <div class="exhibit-card__eyebrow">
+          <span class="exhibit-label">Exhibit C</span>
+          <span class="exhibit-price-inline">$4,500 / month</span>
+        </div>
+        <h3 class="exhibit-name">Institutional Signal Retainer</h3>
+        <p class="exhibit-desc">
+          Ongoing excavation, signal maintenance, and strategic positioning continuity. 
+          For organisations where the record is live — growing, shifting, requiring 
+          permanent forensic attention.
+        </p>
+        <ul class="exhibit-deliverables">
+          <li>Monthly signal audit and update</li>
+          <li>Competitive landscape monitoring</li>
+          <li>Proof-point library maintenance</li>
+          <li>Strategic positioning advisory</li>
+        </ul>
+        <div class="exhibit-card__footer">
+          <span class="exhibit-scope">Retainer · Month-to-month</span>
+        </div>
+      </div>
+
+      <!-- Exhibit D -->
+      <div class="exhibit-card">
+        <div class="exhibit-card__eyebrow">
+          <span class="exhibit-label">Exhibit D</span>
+          <span class="exhibit-price-inline">$6,500 – $7,500</span>
+        </div>
+        <h3 class="exhibit-name">Provenance and Property Narrative</h3>
+        <p class="exhibit-desc">
+          The record prepared for property, asset, or brand transactions. Built for 
+          environments where provenance determines price — where a coherent institutional 
+          story is the single most valuable document in the room.
+        </p>
+        <ul class="exhibit-deliverables">
+          <li>Provenance documentation package</li>
+          <li>Asset history and lineage record</li>
+          <li>Buyer-ready narrative system</li>
+          <li>Exit multiple positioning</li>
+        </ul>
+        <div class="exhibit-card__footer">
+          <span class="exhibit-scope">Project · 4–6 weeks</span>
+        </div>
+      </div>
+
+    </div><!-- /.exhibit-grid -->
+  </div>
+</section>
+
+<!-- ── EXHIBITS E – G ──────────────────────────────────────── -->
+<section class="section-block exhibit-tier tier-enterprise">
+  <div class="container">
+    <div class="exhibit-tier__header">
+      <div class="section-label">
+        <span class="label-line"></span>
+        <span class="label-text">Enterprise Commissions</span>
+        <span class="label-line"></span>
+      </div>
+      <p class="exhibit-tier__intro">
+        Reserved for organisations with significant institutional records and complex signal 
+        environments — where enterprise value, exit multiples, and mission-critical positioning 
+        are directly at stake.
+      </p>
+    </div>
+
+    <div class="exhibit-grid exhibit-grid--enterprise">
+
+      <!-- Exhibit E -->
+      <div class="exhibit-card exhibit-card--enterprise">
+        <div class="exhibit-card__eyebrow">
+          <span class="exhibit-label">Exhibit E</span>
+          <span class="exhibit-price-inline">$18,000 / month</span>
+        </div>
+        <h3 class="exhibit-name">Enterprise Signal Retainer</h3>
+        <p class="exhibit-desc">
+          Full-scale forensic signal management for complex organisations. Institutional 
+          reputation recovery, ongoing excavation, competitive forensics, and 
+          strategic positioning maintained at enterprise depth. The record never stops 
+          being built.
+        </p>
+        <ul class="exhibit-deliverables">
+          <li>Institutional Reputation Recovery protocol</li>
+          <li>Full competitive forensic monitoring</li>
+          <li>Enterprise positioning and messaging system</li>
+          <li>Mission clarity architecture</li>
+          <li>Monthly board-ready signal report</li>
+          <li>Forensic CAC and LTV:CAC 3:1 audit</li>
+        </ul>
+        <div class="exhibit-card__footer">
+          <span class="exhibit-scope">Retainer · Minimum 6 months</span>
+        </div>
+      </div>
+
+      <!-- Exhibit F -->
+      <div class="exhibit-card exhibit-card--enterprise">
+        <div class="exhibit-card__eyebrow">
+          <span class="exhibit-label">Exhibit F</span>
+          <span class="exhibit-price-inline">$25,000 – $50,000</span>
+        </div>
+        <h3 class="exhibit-name">Full Enterprise Excavation</h3>
+        <p class="exhibit-desc">
+          The complete institutional record — built from the ground up or reconstructed 
+          from fragmented history. Every asset catalogued. Every chapter recovered. 
+          Enterprise value maximised before any transaction, rebrand, or strategic 
+          repositioning proceeds.
+        </p>
+        <ul class="exhibit-deliverables">
+          <li>Complete institutional archaeology</li>
+          <li>Full abandoned asset recovery and valuation</li>
+          <li>Enterprise narrative and proof-point system</li>
+          <li>Competitive intelligence and exit positioning</li>
+          <li>Revenue Leak Detection System full audit</li>
+          <li>Enterprise value documentation package</li>
+        </ul>
+        <div class="exhibit-card__footer">
+          <span class="exhibit-scope">Project · 12–20 weeks</span>
+        </div>
+      </div>
+
+      <!-- Exhibit G -->
+      <div class="exhibit-card exhibit-card--enterprise exhibit-card--flagship">
+        <div class="exhibit-card__eyebrow">
+          <span class="exhibit-label">Exhibit G</span>
+          <span class="exhibit-price-inline">$35,000 / quarter</span>
+        </div>
+        <h3 class="exhibit-name">The Permanent Record</h3>
+        <p class="exhibit-desc">
+          Quarterly enterprise forensic retainer. The institution's record is 
+          permanently maintained, continuously excavated, and strategically positioned 
+          — every quarter, without interruption. Built for the business that understands 
+          the record is the most valuable asset in the portfolio.
+        </p>
+        <ul class="exhibit-deliverables">
+          <li>Quarterly full forensic audit</li>
+          <li>Permanent proof-point library</li>
+          <li>Continuous competitive and market monitoring</li>
+          <li>Enterprise signal architecture maintenance</li>
+          <li>Exit multiple and enterprise value tracking</li>
+          <li>Forensic CAC correction and LTV:CAC optimisation</li>
+          <li>Quarterly strategic positioning review</li>
+        </ul>
+        <div class="exhibit-card__footer">
+          <span class="exhibit-scope">Retainer · Annual commitment · Quarterly billing</span>
+        </div>
+      </div>
+
+    </div><!-- /.exhibit-grid--enterprise -->
+  </div>
+</section>
+
+<!-- ── VALUE METRICS CALLOUT ──────────────────────────────── -->
+<section class="section-block exhibit-value-block">
+  <div class="container">
+    <div class="value-block__inner">
+      <h3 class="value-block__title">What the record is worth.</h3>
+      <div class="value-block__grid">
+        <div class="value-item">
+          <span class="value-item__label">Enterprise Value</span>
+          <p class="value-item__body">
+            A documented institutional record changes what a business is worth at acquisition. 
+            Buyers do not pay multiples for potential — they pay for proof. We build the proof.
+          </p>
+        </div>
+        <div class="value-item">
+          <span class="value-item__label">Exit Multiples</span>
+          <p class="value-item__body">
+            Businesses with coherent, provable origin stories command measurably higher exit 
+            multiples. The record is not a marketing document. It is a valuation instrument.
+          </p>
+        </div>
+        <div class="value-item">
+          <span class="value-item__label">Forensic CAC</span>
+          <p class="value-item__body">
+            True customer acquisition cost — surfaced, not assumed. Most businesses are spending 
+            against a fiction. We replace the fiction with the forensic number.
+          </p>
+        </div>
+        <div class="value-item">
+          <span class="value-item__label">LTV : CAC &nbsp;3 : 1</span>
+          <p class="value-item__body">
+            The minimum ratio we engineer into every engagement. No new acquisition spend is 
+            justified until the existing record demonstrates a clear 3:1 return on every 
+            customer relationship.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--
+══════════════════════════════════════════════════════════════════
+  END PATCH 1
+  CSS NOTES (add to legaisee.css if not present):
+  ─────────────────────────────────────────────────────────────
+  All class names follow the existing BEM-adjacent pattern.
+  New classes needed:
+    .exhibits-intro, .exhibit-metrics-bar, .metric-cell,
+    .metric-divider, .metric-label, .metric-desc,
+    .exhibit-tier, .tier-entry, .tier-core, .tier-enterprise,
+    .exhibit-card, .exhibit-card--entry, .exhibit-card--retainer,
+    .exhibit-card--enterprise, .exhibit-card--flagship,
+    .exhibit-card__header, .exhibit-card__body, .exhibit-card__footer,
+    .exhibit-card__eyebrow, .exhibit-phase-badge, .exhibit-title-block,
+    .exhibit-name, .exhibit-tagline, .exhibit-price-block,
+    .exhibit-price, .exhibit-price-note, .exhibit-price-inline,
+    .exhibit-label, .exhibit-desc, .exhibit-deliverables,
+    .exhibit-scope, .exhibit-grid, .exhibit-grid--enterprise,
+    .exhibit-tier__header, .exhibit-tier__intro,
+    .exhibit-value-block, .value-block__inner, .value-block__title,
+    .value-block__grid, .value-item, .value-item__label,
+    .value-item__body
+  See PATCH CSS companion file or add inline to legaisee.css.
+══════════════════════════════════════════════════════════════════
+-->
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 3: THE ENGAGEMENT PROCESS
+     Five-step journey from first contact to delivery
+     ═══════════════════════════════════════════════ -->
+<section class="lux-section" style="overflow: hidden; background: var(--obsidian); padding-top: 120px; padding-bottom: 100px;">
+  <div class="section-inner">
+
+    <div style="text-align: center; max-width: 820px; margin: 0 auto 72px;">
+      <div class="prestige-label reveal" style="justify-content: center;">The Engagement Process</div>
+      <h2 class="d-lg reveal" style="margin-bottom: 24px;">From First Contact<br>to Delivered Doctrine</h2>
+      <p class="b-lg reveal reveal-d1">
+        The work unfolds in a natural order. Every attempt to shortcut this sequence leads
+        to the same failure. This is the sequence we follow — every time, without exception.
+      </p>
+    </div>
+
+    <div class="process-steps reveal reveal-d2" style="margin-bottom: 72px;">
+
+      <div class="process-step">
+        <div class="process-node">I</div>
+        <span class="process-gem">Stage 0 · Habitat</span>
+        <div class="process-title">The Registry Conversation</div>
+        <div class="process-desc">A private conversation to determine whether a dig site exists, whether the history is deep enough, and whether the access is available. No pitch. No deck. Just listening.</div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-node">II</div>
+        <span class="process-gem">Stage 1 · Raw Stone</span>
+        <div class="process-title">The Excavation Phase</div>
+        <div class="process-desc">The forensic dig begins. All 40+ channels examined. All eight evidence classes activated. Artifacts recovered, classified, and graded against the Hierarchy of Truth.</div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-node">III</div>
+        <span class="process-gem">Stage 2 · Cut &amp; Shaped</span>
+        <div class="process-title">The Lapidary Phase</div>
+        <div class="process-desc">Raw findings refined. The Voice Profile built. ROI Triggers mapped. Competitive Asymmetry gaps identified. The stone faceted into strategic instruments.</div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-node">IV</div>
+        <span class="process-gem">Stage 3 · Mounted</span>
+        <div class="process-title">The Doctrine Build</div>
+        <div class="process-desc">The Master Operations Doctrine constructed. The CAMERA Framework applied. The signal architecture built to survive succession and scale. Everything mounted in its case.</div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-node">V</div>
+        <span class="process-gem">Stage 4 · Museum Display</span>
+        <div class="process-title">Delivery &amp; Verification</div>
+        <div class="process-desc">Executive presentation. The Continuous Verification Model activated. Addenda as new evidence emerges. The signal deployed. The authority, restored.</div>
+      </div>
+
+    </div><!-- /process-steps -->
+
+  </div>
+</section><!-- /process -->
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 4: THE BEDROCK PLEDGE — Full Treatment
+     Background: CaseMask2.png (parallax)
+     ═══════════════════════════════════════════════ -->
+<section class="bedrock-section lux-section" id="the-pledge" style="overflow: hidden; background: var(--obsidian-mid); padding-top: 140px; padding-bottom: 140px;">
+  <div class="section-inner">
+
+    <div style="text-align: center; max-width: 820px; margin: 0 auto 80px;">
+      <div class="prestige-label reveal" style="justify-content: center;">The Governing Standard</div>
+      <h2 class="d-lg reveal" style="margin-bottom: 28px;">The Bedrock Pledge</h2>
+      <p class="b-xl reveal reveal-d1" style="color: var(--gold-bright); font-style: italic;">
+        "We do not build on sand. We bedrock."
+      </p>
+    </div>
+
+    <div class="two-col" style="align-items: start; gap: 80px; margin-bottom: 72px;">
+
+      <!-- Left: The pledge text -->
+      <div>
+        <p class="b-xl reveal" style="color: var(--platinum); margin-bottom: 28px;">
+          Every engagement is bound by the Bedrock Pledge — a non-negotiable set of operational
+          commitments that govern every finding, every claim, and every word of every deliverable
+          we produce.
+        </p>
+        <p class="b-lg reveal reveal-d1" style="margin-bottom: 24px;">
+          This is not a guarantee of outcomes. We cannot guarantee what the archaeology will find —
+          only that what it finds will be true. We cannot guarantee what the market will do
+          with your restored signal — only that the signal we restore will stand on verified ground.
+        </p>
+        <p class="b-lg reveal reveal-d2" style="margin-bottom: 44px;">
+          What the Bedrock Pledge guarantees is the standard of the work itself: the forensic
+          rigor, the evidence grading, the triangulation, the honest disclosure of uncertainty,
+          and the complete absence of invented claims.
+        </p>
+
+        <!-- GEMSTONE PLACEHOLDER: Mounted gem — the pledge as a foundation -->
+        <div class="gem-frame reveal reveal-d3" style="position: relative; aspect-ratio: 4/3;">
+          <div class="gem-placeholder-box" style="min-height: 260px; background: linear-gradient(135deg, #141008 0%, #050505 100%);">
+            <span class="gem-catalog">CAT-MNT-051</span>
+            <div class="gem-stage-name">The Foundation</div>
+            <div class="gem-stage-desc">The Bedrock — what every deliverable stands on. Verified evidence or nothing.</div>
+          </div>
+          <div class="gem-caption-bar">
+            <div class="gem-caption-title">The Bedrock Pledge</div>
+            <div class="gem-caption-sub">The only acceptable foundation · binding · always</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: The Pledge Clauses -->
+      <div>
+        <div class="micro-label reveal" style="margin-bottom: 20px;">The Seven Clauses · Binding on Every Engagement</div>
+        <div class="pledge-clauses reveal reveal-d1">
+
+          <div class="pledge-clause">
+            <div class="clause-num">I</div>
+            <div class="clause-body">
+              <div class="clause-title">No Invented Claims</div>
+              <div class="clause-text">Every claim in every deliverable is either excavated from your verified historical record or synthesized through the Triangulation Protocol from verified sources. Nothing is invented. Nothing is assumed.</div>
+            </div>
+          </div>
+
+          <div class="pledge-clause">
+            <div class="clause-num">II</div>
+            <div class="clause-body">
+              <div class="clause-title">The 3-Source Rule</div>
+              <div class="clause-text">No significant claim enters the final deliverable without two independent sources minimum — ideally three or more converging. Single-source findings are labeled as such and treated as Tier II at best.</div>
+            </div>
+          </div>
+
+          <div class="pledge-clause">
+            <div class="clause-num">III</div>
+            <div class="clause-body">
+              <div class="clause-title">Uncertainty Is Disclosed</div>
+              <div class="clause-text">Every finding carries its confidence tier — Verified Primary, Probable, Plausible, or Uncertain. We never present a Tier III finding with Tier I confidence. Speculation is labeled. Gaps are acknowledged.</div>
+            </div>
+          </div>
+
+          <div class="pledge-clause">
+            <div class="clause-num">IV</div>
+            <div class="clause-body">
+              <div class="clause-title">Contradiction Is Documented</div>
+              <div class="clause-text">When sources conflict, the conflict is mapped and documented — not hidden, not resolved by preference, not smoothed over to produce a cleaner narrative. Contradiction is data.</div>
+            </div>
+          </div>
+
+          <div class="pledge-clause">
+            <div class="clause-num">V</div>
+            <div class="clause-body">
+              <div class="clause-title">No Sand, No Exceptions</div>
+              <div class="clause-text">We do not build on conjecture, convenience, or the preferred version of history. Every strategic recommendation rests on verified Bedrock evidence — or we wait until it does.</div>
+            </div>
+          </div>
+
+          <div class="pledge-clause">
+            <div class="clause-num">VI</div>
+            <div class="clause-body">
+              <div class="clause-title">Errors Are Corrected</div>
+              <div class="clause-text">If a finding in our deliverable is later shown to be incorrect, we correct it — without defense, without politics, without charging for the addendum. Accuracy is the only client.</div>
+            </div>
+          </div>
+
+          <div class="pledge-clause">
+            <div class="clause-num">VII</div>
+            <div class="clause-body">
+              <div class="clause-title">The Work Is Yours</div>
+              <div class="clause-text">Every deliverable produced under a commission belongs entirely to the client. No proprietary lock-in. No ongoing licensing requirement. The doctrine is yours — to use, to deploy, to pass to your successors.</div>
+            </div>
+          </div>
+
+        </div><!-- /pledge-clauses -->
+      </div>
+
+    </div><!-- /two-col -->
+
+    <!-- The Pledge signature statement -->
+    <div class="pledge-box reveal" style="max-width: 900px; margin: 0 auto;">
+      <p class="pledge-text">
+        "We do not 'create' marketing here. We practice Business Archaeology — the forensic
+        excavation of what once worked, the disciplined documentation of why it worked, and the
+        precise reconstruction of that signal for the market that exists today.
+        Not the market you wish existed. The market that exists."
+      </p>
+      <div class="divider-gold short" style="margin: 0 auto 24px;"></div>
+      <div class="pledge-attribution">The Bedrock Pledge · Signed on Every Commission · Without Exception</div>
+    </div>
+
+  </div>
+</section><!-- /pledge -->
+
+
+<!-- ── PRIVATE RECORD / FAQ ────────────────────────────────── -->
+<section class="section-block private-record-section">
+  <div class="container">
+    <div class="section-label">
+      <span class="label-line"></span>
+      <span class="label-text">The Private Record</span>
+      <span class="label-line"></span>
+    </div>
+    <h2 class="section-title">What is asked before the commission begins.</h2>
+    <p class="section-lead">
+      These are the questions every serious principal asks before a commission is accepted. 
+      They deserve precise answers.
+    </p>
+ 
+    <div class="faq-grid">
+ 
+      <!-- Market Research -->
+      <div class="faq-item">
+        <div class="faq-item__marker"></div>
+        <div class="faq-item__content">
+          <h3 class="faq-question">Is this market research?</h3>
+          <p class="faq-answer">
+            No. Market research is the study of external opinion — surveys, sentiment, 
+            focus groups, consumer perception data. What we do is the opposite. We 
+            excavate what your business has already proved inside its own record. 
+            We do not ask the market what it thinks. We extract what your history documents. 
+            The distinction is not semantic — it determines what kind of evidence you end up with.
+          </p>
+        </div>
+      </div>
+ 
+      <!-- Archives -->
+      <div class="faq-item">
+        <div class="faq-item__marker"></div>
+        <div class="faq-item__content">
+          <h3 class="faq-question">Do you require access to our archives?</h3>
+          <p class="faq-answer">
+            We work with what exists — and we work forensically. Incomplete records 
+            are not a barrier; they are the condition under which most excavations begin. 
+            The absence of a clean archive is precisely why the forensic discipline matters. 
+            We do not cherry-pick the cleanest story. We recover what can be recovered 
+            and document what the evidence actually supports.
+          </p>
+        </div>
+      </div>
+ 
+      <!-- AI / Artificial Intelligence -->
+      <div class="faq-item">
+        <div class="faq-item__marker"></div>
+        <div class="faq-item__content">
+          <h3 class="faq-question">Is artificial intelligence involved in the excavation?</h3>
+          <p class="faq-answer">
+            AI tools are used as instruments — never as the authority. The forensic 
+            judgment, the excavation decisions, the signal architecture, and the final 
+            record are the product of human analysis. AI accelerates the processing of 
+            large institutional records; it does not determine what those records mean 
+            or what they prove. Every Exhibit is authored, reviewed, and delivered by a 
+            practitioner — not generated.
+          </p>
+        </div>
+      </div>
+ 
+      <!-- Confidentiality -->
+      <div class="faq-item">
+        <div class="faq-item__marker"></div>
+        <div class="faq-item__content">
+          <h3 class="faq-question">How is confidentiality maintained?</h3>
+          <p class="faq-answer">
+            Every commission operates under a mutual non-disclosure agreement executed 
+            before Phase 0 begins. Client records, institutional findings, and proprietary 
+            signal architecture are never disclosed, referenced in public work, or used 
+            in any capacity outside the commissioned engagement. The private record stays private.
+          </p>
+        </div>
+      </div>
+ 
+      <!-- Engagement Length -->
+      <div class="faq-item">
+        <div class="faq-item__marker"></div>
+        <div class="faq-item__content">
+          <h3 class="faq-question">How long does an engagement take?</h3>
+          <p class="faq-answer">
+            Project Exhibits run on fixed timelines established at commission acceptance — 
+            ranging from three weeks (Exhibit A) to twenty weeks (Exhibit F). Retainer 
+            Exhibits operate on monthly or quarterly cycles with no fixed end date. 
+            Phase 0 is always the first step, regardless of Exhibit selected. 
+            Timelines are not estimates — they are commitments.
+          </p>
+        </div>
+      </div>
+ 
+      <!-- Who we work with -->
+      <div class="faq-item">
+        <div class="faq-item__marker"></div>
+        <div class="faq-item__content">
+          <h3 class="faq-question">Who do you accept commissions from?</h3>
+          <p class="faq-answer">
+            Principals only — founders, owners, and executive leadership with the authority 
+            to act on what the record reveals. We do not work with intermediaries, resellers, 
+            or organisations that require committee approval before acting on forensic findings. 
+            The work requires access and authority in equal measure.
+          </p>
+        </div>
+      </div>
+ 
+    </div><!-- /.faq-grid -->
+ 
+    <div class="private-record-cta">
+      <p class="private-record-cta__text">
+        Questions not answered here belong in the Shallow Dig brief — 
+        where the record, not the FAQ, provides the answer.
+      </p>
+      <a href="registry.html" class="btn btn-primary">Begin Phase 0</a>
+    </div>
+ 
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     THE CAMERA AUTHORITY SYSTEM™ — ADD-ON COMMISSION
+     PLACEMENT: Paste this block between the FAQ section
+     (private-record-section) and the closing CTA section.
+     Requires legaisee-luxury.css to be linked on the page.
+     ═══════════════════════════════════════════════════════════ -->
+
+<section class="camera-section lux-section" id="camera-system">
+  <div class="section-inner">
+
+    <!-- Section Label -->
+    <div class="section-label reveal" style="justify-content: flex-start; margin-bottom: 0;">
+      <span class="label-line" style="max-width: 40px;"></span>
+      <span class="label-text">Framework X · Add-On Commission</span>
+    </div>
+
+    <!-- Header -->
+    <div style="max-width: 860px; margin-bottom: 52px; padding-top: 32px;">
+      <div class="camera-addon-badge reveal">
+        <span>◆</span>
+        Available as a standalone add-on or appended to any Exhibit
+      </div>
+      <h2 class="camera-title reveal">
+        The CAMERA Authority System<span class="camera-tm">™</span>
+      </h2>
+      <span class="camera-subtitle reveal">
+        On-Camera Presence &amp; Platform Authority Coaching
+      </span>
+      <p class="camera-lead reveal reveal-d1">
+        The tenth interlocking framework of the LEGAiSEE methodology is also its most visible.
+        Once the excavation is complete and the signal is restored, it must be transmitted —
+        through your voice, on camera, with the precision of a practitioner who has spent three
+        decades in broadcast. The CAMERA Authority System transforms the recovered institutional
+        signal into personal authority that your market can see, hear, and remember.
+      </p>
+    </div>
+
+    <!-- Acronym Breakdown -->
+    <div class="micro-label reveal" style="margin-bottom: 20px;">The Six-Dimension Framework</div>
+    <div class="camera-acronym reveal reveal-d1">
+
+      <div class="camera-row">
+        <div class="camera-letter">C</div>
+        <div class="camera-word">
+          <div class="camera-word-inner">Character<br>Positioning</div>
+        </div>
+        <div class="camera-definition">
+          Define the personality brand that only you can occupy. Not a persona —
+          a precise articulation of the distinctive professional character that your
+          history has already built. Who you are on camera must match who the archaeology proved you are.
+        </div>
+      </div>
+
+      <div class="camera-row">
+        <div class="camera-letter">A</div>
+        <div class="camera-word">
+          <div class="camera-word-inner">Audience<br>Targeting</div>
+        </div>
+        <div class="camera-definition">
+          Identify the psychology and intent segments of your specific market —
+          not demographics, but the internal states that drive decision-making at the
+          enterprise level. Your content speaks to the person your clients become
+          when they recognize authority.
+        </div>
+      </div>
+
+      <div class="camera-row">
+        <div class="camera-letter">M</div>
+        <div class="camera-word">
+          <div class="camera-word-inner">Monetization<br>Design</div>
+        </div>
+        <div class="camera-definition">
+          Align your content output with your actual offer architecture.
+          Authority content that does not connect to a clear acquisition pathway
+          builds reputation without revenue. We design the path from attention to transaction.
+        </div>
+      </div>
+
+      <div class="camera-row">
+        <div class="camera-letter">E</div>
+        <div class="camera-word">
+          <div class="camera-word-inner">Engagement<br>Engineering</div>
+        </div>
+        <div class="camera-definition">
+          Design hooks that stop the scroll, retention structures that hold attention
+          through the argument, and calls to action that do not feel like requests.
+          Engagement is not accidental in authority content — it is engineered from
+          the first frame.
+        </div>
+      </div>
+
+      <div class="camera-row">
+        <div class="camera-letter">R</div>
+        <div class="camera-word">
+          <div class="camera-word-inner">Repurposing<br>Infrastructure</div>
+        </div>
+        <div class="camera-definition">
+          One piece of content becomes a multi-platform publishing event.
+          The repurposing infrastructure is built before a single piece is produced —
+          so that every asset created works across YouTube, LinkedIn, Instagram,
+          and email without requiring additional creative effort each time.
+        </div>
+      </div>
+
+      <div class="camera-row">
+        <div class="camera-letter">A</div>
+        <div class="camera-word">
+          <div class="camera-word-inner">AI<br>Acceleration</div>
+        </div>
+        <div class="camera-definition">
+          AI tools trained on your Voice Profile — the 8-dimension linguistic fingerprint
+          extracted during the excavation — handle scripting, headline testing, and
+          iterative refinement at scale. The AI writes in your voice because we built
+          a record of what your voice actually is.
+        </div>
+      </div>
+
+    </div><!-- /camera-acronym -->
+
+    <!-- What's in each module -->
+    <div style="margin-bottom: 64px;">
+      <div class="micro-label reveal" style="margin-bottom: 24px;">The Five Modules</div>
+      <div class="three-col reveal reveal-d1" style="gap: 20px;">
+
+        <div class="exhibit-card">
+          <div class="exhibit-card__eyebrow">
+            <span class="exhibit-label">Module I</span>
+          </div>
+          <h3 class="exhibit-name" style="font-size: 0.92rem;">On-Camera Foundations</h3>
+          <ul class="exhibit-deliverables" style="margin-top: 12px;">
+            <li>Posture, framing, lighting setup — broadcast standard</li>
+            <li>Teleprompter vs. natural delivery calibration</li>
+            <li>Energy and presence on a fixed lens</li>
+            <li>Personal equipment configuration guide</li>
+          </ul>
+        </div>
+
+        <div class="exhibit-card">
+          <div class="exhibit-card__eyebrow">
+            <span class="exhibit-label">Module II</span>
+          </div>
+          <h3 class="exhibit-name" style="font-size: 0.92rem;">Delivery Naturalization</h3>
+          <ul class="exhibit-deliverables" style="margin-top: 12px;">
+            <li>Script internalization — knowing without memorizing</li>
+            <li>Conversational authority tone development</li>
+            <li>Handling corrections with composure</li>
+            <li>Rhythm and pacing for the argument</li>
+          </ul>
+        </div>
+
+        <div class="exhibit-card">
+          <div class="exhibit-card__eyebrow">
+            <span class="exhibit-label">Module III</span>
+          </div>
+          <h3 class="exhibit-name" style="font-size: 0.92rem;">Technical Excellence</h3>
+          <ul class="exhibit-deliverables" style="margin-top: 12px;">
+            <li>Audio quality — microphone technique, environment</li>
+            <li>Background design — intentional, not accidental</li>
+            <li>Multi-camera and B-roll integration</li>
+            <li>Broadcast-grade production from a single room</li>
+          </ul>
+        </div>
+
+        <div class="exhibit-card">
+          <div class="exhibit-card__eyebrow">
+            <span class="exhibit-label">Module IV</span>
+          </div>
+          <h3 class="exhibit-name" style="font-size: 0.92rem;">Platform Mastery</h3>
+          <ul class="exhibit-deliverables" style="margin-top: 12px;">
+            <li>YouTube — retention hooks, series architecture</li>
+            <li>LinkedIn — professional authority, newsletter</li>
+            <li>Instagram — Reels rhythm, DM conversion</li>
+            <li>TikTok — pattern interrupts, comment strategy</li>
+          </ul>
+        </div>
+
+        <div class="exhibit-card">
+          <div class="exhibit-card__eyebrow">
+            <span class="exhibit-label">Module V</span>
+          </div>
+          <h3 class="exhibit-name" style="font-size: 0.92rem;">Crisis &amp; Recovery</h3>
+          <ul class="exhibit-deliverables" style="margin-top: 12px;">
+            <li>Handling visible errors on camera with authority</li>
+            <li>Responding to difficult or hostile comments</li>
+            <li>Recovering market position after content failure</li>
+            <li>Protocols for reputation-sensitive topics</li>
+          </ul>
+        </div>
+
+        <div class="exhibit-card" style="background: rgba(201,169,97,0.03); border-color: rgba(201,169,97,0.20);">
+          <div class="exhibit-card__eyebrow">
+            <span class="exhibit-label">All Tiers Include</span>
+          </div>
+          <h3 class="exhibit-name" style="font-size: 0.92rem;">Core Deliverables</h3>
+          <ul class="exhibit-deliverables" style="margin-top: 12px;">
+            <li>Personal on-camera equipment configuration</li>
+            <li>Platform-specific content strategies</li>
+            <li>10 signature piece scripts — your authority anchors</li>
+            <li>Crisis response protocols</li>
+            <li>Async video review (duration by tier)</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Pricing Tiers -->
+    <div class="micro-label reveal" style="margin-bottom: 24px;">Investment — Three Tiers</div>
+    <div class="camera-tiers reveal reveal-d2">
+
+      <div class="camera-tier-card">
+        <span class="camera-tier-label">Foundation</span>
+        <span class="camera-tier-price">$3,750</span>
+        <p class="camera-tier-desc">
+          The complete CAMERA system over 16 hours across four weeks.
+          Modules I–IV. Personal equipment setup, 10 signature scripts,
+          and 30 days of async video feedback.
+        </p>
+        <ul class="camera-tier-features">
+          <li>16 hours · 4 weeks</li>
+          <li>Modules I – IV</li>
+          <li>2 platform deep-dives</li>
+          <li>10 signature piece scripts</li>
+          <li>30 days async video review</li>
+          <li>Personal equipment guide</li>
+        </ul>
+        <span class="camera-scope-note">Project engagement</span>
+      </div>
+
+      <div class="camera-tier-card featured">
+        <span class="camera-tier-label">Elevation</span>
+        <span class="camera-tier-price">$5,500</span>
+        <p class="camera-tier-desc">
+          All five modules including Crisis &amp; Recovery,
+          with deeper platform strategies across four channels
+          and extended feedback window.
+        </p>
+        <ul class="camera-tier-features">
+          <li>16 hours · 4 weeks</li>
+          <li>All 5 modules including Crisis</li>
+          <li>4 platform strategies</li>
+          <li>10 signature piece scripts</li>
+          <li>60 days async video review</li>
+          <li>Personal equipment guide</li>
+          <li>Voice Profile alignment review</li>
+        </ul>
+        <span class="camera-scope-note">Project engagement</span>
+      </div>
+
+      <div class="camera-tier-card">
+        <span class="camera-tier-label">Premium</span>
+        <span class="camera-tier-price">$7,500 – $12,000</span>
+        <p class="camera-tier-desc">
+          Intensive six-week engagement with all modules,
+          comprehensive platform mastery, and quarterly
+          refresher sessions over six months.
+        </p>
+        <ul class="camera-tier-features">
+          <li>24 hours · 6 weeks · intensive</li>
+          <li>All 5 modules · personalized</li>
+          <li>4+ platform mastery</li>
+          <li>10 signature piece scripts</li>
+          <li>90 days async video review</li>
+          <li>Quarterly refresher sessions (6 months)</li>
+          <li>Team members included (up to 3)</li>
+        </ul>
+        <span class="camera-scope-note">Project + quarterly retainer</span>
+      </div>
+
+    </div><!-- /camera-tiers -->
+
+    <!-- Signal block -->
+    <div class="signal-block reveal" style="max-width: 820px;">
+      <div class="signal-label">Why On-Camera Authority Matters to This Practice</div>
+      <p style="font-family: 'Inter', sans-serif; font-size: 1.05rem; color: rgba(220,210,190,0.80); line-height: 1.82; font-style: italic;">
+        "The Architect spent fourteen years in network broadcast before the methodology existed.
+        On-camera authority is not a skill set that can be faked with a ring light and a script generator.
+        The CAMERA System transfers thirty years of broadcast discipline to the principal — so that when
+        the signal is restored, the transmission is worthy of it."
+      </p>
+    </div>
+
+    <!-- CTA -->
+    <div class="btn-group reveal" style="margin-top: 52px;">
+      <a href="registry.html" class="btn btn-gold">Commission the CAMERA System</a>
+      <a href="commissions.html#the-pledge" class="btn btn-outline-gold">The Bedrock Pledge Applies</a>
+    </div>
+
+    <div class="gate-seal reveal reveal-d1" style="margin-top: 36px; display: inline-flex;">
+      <span class="seal-line">Available Standalone or Appended to Any Exhibit</span>
+      <span class="seal-line">By Conversation Only · Investment Confirmed in the Registry</span>
+    </div>
+
+  </div>
+</section><!-- /camera-system -->
+
+<!-- ═══════════════════════════════════════════════
+     CLOSING CTA
+     Background: Intake1.png (parallax — preview of registry)
+     ═══════════════════════════════════════════════ -->
+<section class="lux-section" style="padding-top: 160px; padding-bottom: 160px; text-align: center; position: relative; overflow: hidden; background: var(--obsidian);">
+  <div style="position: absolute; inset: 0; background-image: url('http://www.legaisee.com/Images/Intake1.png'); background-size: cover; background-position: center; background-attachment: fixed; /* mobile: scroll via CSS */ opacity: 0.13; z-index: 0;"></div>
+  <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 80% 80% at 50% 50%, transparent 0%, rgba(5,5,5,0.92) 100%); z-index: 1;"></div>
+
+  <div class="section-inner" style="position: relative; z-index: 2; max-width: 880px;">
+
+    <div class="prestige-label reveal" style="justify-content: center; margin-bottom: 48px;">The Only Next Step</div>
+
+    <h2 class="d-lg reveal" style="margin-bottom: 32px;">
+      The Registry Is<br>Where It Begins
+    </h2>
+
+    <p class="b-xl reveal reveal-d1" style="color: var(--platinum); max-width: 740px; margin: 0 auto 28px;">
+      Commission selection does not happen before the Registry conversation.
+      The conversation is how the scope is determined — by listening to your history,
+      by assessing the depth of the dig site, by understanding what the archaeology
+      is likely to find.
+    </p>
+
+    <p class="b-lg reveal reveal-d2" style="max-width: 700px; margin: 0 auto 60px;">
+      Investment is discussed there. Timeline is discussed there. The specific commission that
+      matches your enterprise's history and your leadership's appetite for the work is determined
+      there. The Registry is not a form. It is the first act of the excavation.
+    </p>
+
+    <div class="btn-group reveal reveal-d3" style="justify-content: center; margin-bottom: 48px;">
+      <a href="registry.html" class="btn btn-gold">Enter the Private Registry</a>
+      <a href="architect.html" class="btn btn-outline-gold">Meet the Architect</a>
+    </div>
+
+    <div class="gate-seal reveal reveal-d4" style="margin: 0 auto; display: inline-flex;">
+      <span class="seal-line">Three Clients Maximum</span>
+      <span class="seal-line">Investment by Conversation Only</span>
+      <span class="seal-line">The Bedrock Pledge · Always</span>
+    </div>
+
+  </div>
+</section><!-- /cta -->
+
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 4px;">
+        <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAiSEE" style="height: 32px; width: auto;">
+        <div style="font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold);">LEGAiSEE</div>
+      </div>
+      <p class="footer-brand-tagline">Business Archaeology &amp; Authority Systems.<br>We do not build on sand. We bedrock.</p>
+      <div class="micro-label">San Antonio · Austin · The I-35 Corridor</div>
+    </div>
+    <div>
+      <div class="footer-col-title">The Practice</div>
+      <ul class="footer-links">
+        <li><a href="archaeology.html">The Archaeology</a></li>
+        <li><a href="method.html">The Ten Frameworks</a></li>
+        <li><a href="serve.html">Who We Serve</a></li>
+        <li><a href="architect.html">The Architect</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Commissions</div>
+      <ul class="footer-links">
+        <li><a href="commissions.html">The Excavation</a></li>
+        <li><a href="commissions.html">The Reconstruction</a></li>
+        <li><a href="commissions.html">Private Archaeology Protocol</a></li>
+        <li><a href="commissions.html">Master Operations Doctrine</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">The Registry</div>
+      <ul class="footer-links">
+        <li><a href="registry.html">Request Entry</a></li>
+        <li><a href="registry.html">Current Availability</a></li>
+        <li><a href="registry.html">Confidentiality Protocol</a></li>
+      </ul>
+      <div class="gate-seal" style="display: inline-flex; margin-top: 28px; padding: 16px 24px;">
+        <span class="seal-line">By Invitation Only</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© LEGAiSEE · Business Archaeology &amp; Authority Systems · All Rights Reserved</div>
+    <div class="footer-seal">The Bedrock Pledge · Always</div>
+  </div>
+</footer>
+
+
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════════════════ -->
+<script>
+  /* ── Scroll reveal ─────────────────────────────── */
+  (function () {
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.10,
+      rootMargin: '0px 0px -44px 0px'
+    });
+
+    reveals.forEach(el => observer.observe(el));
+  })();
+
+  /* ── Mobile menu system ───────────────────────── */
+  (function () {
+    'use strict';
+
+    var hamburger  = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var header     = document.getElementById('site-header');
+
+    if (!hamburger || !mobileMenu) return;
+
+    /* Active nav */
+    var currentPage = document.body.getAttribute('data-page') || '';
+
+    document.querySelectorAll('[data-nav]').forEach(function (link) {
+      if (link.getAttribute('data-nav') === currentPage) {
+        link.classList.add('is-active');
+      }
+    });
+
+    function openMenu() {
+      mobileMenu.classList.add('is-open');
+      hamburger.classList.add('is-active');
+      hamburger.setAttribute('aria-expanded', 'true');
+      mobileMenu.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeMenu() {
+      mobileMenu.classList.remove('is-open');
+      hamburger.classList.remove('is-active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+    }
+
+    hamburger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      mobileMenu.classList.contains('is-open')
+        ? closeMenu()
+        : openMenu();
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('click', function (e) {
+      if (
+        mobileMenu.classList.contains('is-open') &&
+        !header.contains(e.target)
+      ) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+        closeMenu();
+        hamburger.focus();
+      }
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 1024) {
+        closeMenu();
+      }
+    });
+  })();
+
+  /* ── Gem hover tilt ───────────────────────────── */
+  if (window.innerWidth > 1024) {
+    document.querySelectorAll('.gem-frame, .museum-card').forEach(el => {
+
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+
+        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 6;
+        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 6;
+
+        el.style.transform =
+          `perspective(800px) rotateY(${x}deg) rotateX(${-y}deg) translateY(-6px)`;
+      });
+
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = '';
+      });
+
+    });
+  }
+</script>
+
+<!-- Lenis Smooth Scroll -->
+<script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
+
+<script>
+  new Lenis({
+    autoRaf: true,
+    autoToggle: true,
+    anchors: true,
+    allowNestedScroll: true,
+    naiveDimensions: true,
+    stopInertiaOnNavigate: true
+  });
+(function () {
+  'use strict';
+ 
+  var hamburger  = document.getElementById('nav-hamburger');
+  var mobileMenu = document.getElementById('nav-mobile');
+  var siteNav    = document.getElementById('site-nav');
+ 
+  if (!hamburger || !mobileMenu) return;
+ 
+  /* ── Active nav state ──────────────────────────────────────── */
+  var currentPage = document.body.getAttribute('data-page') || '';
+  document.querySelectorAll('[data-nav]').forEach(function (link) {
+    if (link.getAttribute('data-nav') === currentPage) {
+      link.classList.add('is-active');
+    }
+  });
+ 
+  /* ── Open / Close helpers ──────────────────────────────────── */
+  function openMenu() {
+    mobileMenu.classList.add('is-open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    hamburger.setAttribute('aria-label', 'Close navigation menu');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+  }
+ 
+  function closeMenu() {
+    mobileMenu.classList.remove('is-open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Open navigation menu');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+  }
+ 
+  /* ── Hamburger click ───────────────────────────────────────── */
+  hamburger.addEventListener('click', function (e) {
+    e.stopPropagation();
+    mobileMenu.classList.contains('is-open') ? closeMenu() : openMenu();
+  });
+ 
+  /* ── Close on any mobile link click ───────────────────────── */
+  mobileMenu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+ 
+  /* ── Close on outside click ────────────────────────────────── */
+  document.addEventListener('click', function (e) {
+    if (mobileMenu.classList.contains('is-open') &&
+        !siteNav.contains(e.target) &&
+        !mobileMenu.contains(e.target)) {
+      closeMenu();
+    }
+  });
+ 
+  /* ── Close on Escape ───────────────────────────────────────── */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+      closeMenu();
+      hamburger.focus();
+    }
+  });
+ 
+  /* ── Close on desktop resize ───────────────────────────────── */
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 1024) closeMenu();
+  });
+ 
+  /* ── Scrolled state for nav bg ─────────────────────────────── */
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 40) {
+      siteNav.classList.add('scrolled');
+    } else {
+      siteNav.classList.remove('scrolled');
+    }
+  }, { passive: true });
+ 
+})();
+
+</script>
+</body>
+</html>

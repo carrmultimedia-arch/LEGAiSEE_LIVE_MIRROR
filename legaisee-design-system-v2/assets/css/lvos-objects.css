@@ -1,0 +1,82 @@
+/* ==========================================================
+   LVOS V2
+   OBJECTS SYSTEM
+========================================================== */
+
+/* BASE RENDER OBJECT */
+
+.render-object{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:var(--radius-md);
+
+    background:var(--black-03);
+
+    transition:
+        transform var(--motion-normal) var(--ease-out),
+        opacity var(--motion-normal) var(--ease-out);
+}
+
+/* CARD SYSTEM */
+
+.card{
+
+    position:relative;
+
+    border-radius:var(--radius-md);
+
+    overflow:hidden;
+
+    background:var(--black-03);
+
+    border:1px solid var(--border);
+
+    min-height:260px;
+}
+
+/* CARD SIZES */
+
+.card-sm{min-height:180px;}
+.card-md{min-height:320px;}
+.card-lg{min-height:640px;}
+
+/* CARD CONTENT LAYER */
+
+.card-panel{
+
+    position:relative;
+
+    z-index:10;
+
+    padding:var(--space-6);
+}
+
+/* ARTIFACT SYSTEM (ASSET DISPLAY FORMATS) */
+
+.artifact-square{aspect-ratio:1;}
+.artifact-landscape{aspect-ratio:16/9;}
+.artifact-portrait{aspect-ratio:9/16;}
+.artifact-document{aspect-ratio:3/4;}
+
+/* MEDIA FIT */
+
+.artifact-fill{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+/* OBJECT HOVER RESPONSE */
+
+.render-object:hover,
+.card:hover{
+
+    transform:translateY(-6px);
+}

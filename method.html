@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="LEGAiSEE — The Ten Interlocking Frameworks of Reconstruction. The complete methodology behind Business Archaeology and Authority Systems.">
+  <title>The Method — LEGAiSEE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css">
+    <link rel="stylesheet" href="legaisee.css">
+        <!--<link rel="stylesheet" href="legaisee-master.css"-->
+    <link rel="stylesheet" href="legaisee.css">
+    <link rel="stylesheet" href="legaisee-luxury.css" />
+
+  <style>
+    /* ── PAGE-SPECIFIC: METHOD.HTML ──────────────────────────────── */
+ /* ─── PAGE-LEVEL VARIABLES ─── */
+    :root {
+      --obsidian:    #0C0C10;
+      --surface:     #181818;
+      --card:        #141414;
+      --gold:        #C9A961;
+      --gold-dim:    rgba(201, 170, 97, 0.4);
+      --gold-low:    rgba(201,169,97,0.12);
+      --gold-glow:   rgba(201,169,97,0.08);
+      --text-primary: rgba(255,255,255,0.92);
+      --text-body:    rgba(255,255,255,0.72);
+      --text-muted:   rgba(255,255,255,0.62);
+      --nav-height:   72px;
+    }
+    /* PAGE HERO */
+    .method-hero {
+      position: relative;
+      min-height: 86vh;
+      display: flex;
+      align-items: center;
+      padding: 140px 90px 100px;
+      overflow: hidden;
+      background: var(--obsidian);
+    }
+    .method-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('http://www.legaisee.com/Images/LapidaryVerticleBlue.png');
+      background-size: cover;
+      background-position: center 20%;
+      background-attachment: fixed; /* mobile: scroll via CSS */
+      opacity: 0.20;
+      z-index: 0;
+    }
+    .method-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to right, rgba(5,5,5,0.90) 0%, rgba(5,5,5,0.50) 55%, rgba(5,5,5,0.75) 100%),
+        linear-gradient(to bottom, rgba(5,5,5,0.60) 0%, transparent 30%, rgba(5,5,5,0.80) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .method-hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1320px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* FRAMEWORK NAVIGATOR — sticky top strip */
+    .framework-nav {
+      position: sticky;
+      top: 72px;
+      z-index: 200;
+      background: rgba(5,5,5,0.97);
+      border-bottom: 1px solid rgba(201,169,97,0.10);
+      padding: 0 90px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      backdrop-filter: blur(10px);
+    }
+    .framework-nav::-webkit-scrollbar { display: none; }
+    .framework-nav-inner {
+      display: flex;
+      gap: 0;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+    .fn-tab {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 22px;
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--pewter);
+      white-space: nowrap;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+    .fn-tab:hover { color: var(--gold-light); border-bottom-color: rgba(201,169,97,0.3); }
+    .fn-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .fn-roman {
+      font-family: var(--font-display);
+      font-size: 0.80rem;
+      color: var(--gold-dim);
+      flex-shrink: 0;
+    }
+
+    /* FRAMEWORK SECTIONS — anchored */
+    .fw-section {
+      scroll-margin-top: 120px;
+    }
+
+    /* TRUTH TIER ROWS — the Hierarchy of Truth visual */
+    .tier-stack { display: flex; flex-direction: column; gap: 16px; }
+    .tier-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 0;
+      border: 1px solid;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+    .tier-row:hover { transform: translateX(4px); }
+    .tier-row.t1 { border-color: rgba(201,169,97,0.35); }
+    .tier-row.t2 { border-color: rgba(168,168,168,0.20); }
+    .tier-row.t3 { border-color: rgba(106,106,106,0.15); }
+    .tier-row.t4 { border-color: rgba(106,106,106,0.08); }
+    .tier-badge-col {
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+    }
+    .tier-row.t1 .tier-badge-col { background: rgba(201,169,97,0.07); }
+    .tier-row.t2 .tier-badge-col { background: rgba(168,168,168,0.04); }
+    .tier-row.t3 .tier-badge-col { background: rgba(106,106,106,0.03); }
+    .tier-row.t4 .tier-badge-col { background: rgba(5,5,5,0.5); }
+    .tier-roman {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+    .tier-row.t1 .tier-roman { color: var(--gold); }
+    .tier-row.t2 .tier-roman { color: var(--silver); }
+    .tier-row.t3 .tier-roman { color: var(--pewter); }
+    .tier-row.t4 .tier-roman { color: rgba(106,106,106,0.5); }
+    .tier-name {
+      font-family: var(--font-ui);
+      font-size: 0.54rem;
+      font-weight: 600;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+    }
+    .tier-row.t1 .tier-name { color: var(--gold-dim); }
+    .tier-row.t2 .tier-name { color: var(--pewter); }
+    .tier-row.t3 .tier-name { color: rgba(106,106,106,0.7); }
+    .tier-row.t4 .tier-name { color: rgba(106,106,106,0.4); }
+    .tier-body {
+      padding: 28px 36px;
+      border-left: 1px solid rgba(255,255,255,0.04);
+    }
+    .tier-title {
+      font-family: var(--font-display);
+      font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .tier-row.t1 .tier-title { color: var(--platinum); }
+    .tier-row.t2 .tier-title { color: var(--silver); }
+    .tier-row.t3 .tier-title { color: var(--pewter); }
+    .tier-row.t4 .tier-title { color: rgba(106,106,106,0.6); }
+    .tier-desc {
+      font-family: var(--font-ui);
+      font-size: 0.95rem;
+      line-height: 1.72;
+    }
+    .tier-row.t1 .tier-desc { color: var(--silver); }
+    .tier-row.t2 .tier-desc { color: var(--pewter); }
+    .tier-row.t3 .tier-desc { color: rgba(168,168,168,0.5); }
+    .tier-row.t4 .tier-desc { color: rgba(106,106,106,0.5); }
+
+    /* CHANNEL GRID */
+    .channel-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(201,169,97,0.06);
+      border: 1px solid rgba(201,169,97,0.08);
+    }
+    .channel-cell {
+      background: var(--obsidian-light);
+      padding: 20px 22px;
+      transition: background 0.3s ease;
+      cursor: default;
+    }
+    .channel-cell:hover { background: var(--obsidian-mid); }
+    .channel-era {
+      font-family: var(--font-ui);
+      font-size: 0.52rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .channel-name {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      color: var(--silver);
+      line-height: 1.5;
+    }
+
+    /* VOICE DIMENSIONS GRID */
+    .voice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: rgba(201,169,97,0.05);
+      border: 1px solid rgba(201,169,97,0.10);
+    }
+    .voice-cell {
+      background: var(--obsidian-light);
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.4s ease;
+    }
+    .voice-cell:hover { background: var(--obsidian-mid); }
+    .voice-num {
+      position: absolute;
+      top: 10px; right: 16px;
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      color: rgba(201,169,97,0.06);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .voice-title {
+      font-family: var(--font-display);
+      font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .voice-desc {
+      font-family: var(--font-ui);
+      font-size: 0.95rem;
+      color: var(--silver);
+      line-height: 1.70;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* EVIDENCE CLASSES — Eight phase cards */
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    /* FRAMEWORKS V–X — Compact cards */
+    .compact-fw-card {
+      background: var(--obsidian-light);
+      border: 1px solid rgba(201,169,97,0.09);
+      padding: 40px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s var(--ease-silk);
+    }
+    .compact-fw-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .compact-fw-card:hover { border-color: rgba(201,169,97,0.22); transform: translateY(-4px); box-shadow: var(--shadow-card); }
+    .compact-fw-card:hover::before { opacity: 1; }
+    .cfw-roman {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      color: rgba(201,169,97,0.15);
+      line-height: 1;
+      margin-bottom: 16px;
+      display: block;
+      transition: color 0.4s ease;
+    }
+    .compact-fw-card:hover .cfw-roman { color: rgba(201,169,97,0.35); }
+
+    /* CONFLICT BOX — Triangulation example */
+    .conflict-box {
+      background: var(--charcoal);
+      border: 1px solid rgba(201,169,97,0.10);
+      border-left: 3px solid var(--gold-dim);
+      padding: 36px 40px;
+    }
+    .conflict-source {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .conflict-source:last-child { border-bottom: none; }
+    .conflict-badge {
+      font-family: var(--font-ui);
+      font-size: 0.54rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border: 1px solid;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .conflict-badge.says   { color: var(--silver); border-color: var(--graphite); }
+    .conflict-badge.contra { color: rgba(201,169,97,0.6); border-color: rgba(201,169,97,0.2); }
+    .conflict-badge.proof  { color: var(--gold); border-color: var(--gold-dim); }
+    .conflict-text {
+      font-family: var(--font-ui);
+      font-size: 1rem;
+      color: var(--silver);
+      font-style: italic;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 1024px) {
+      .method-hero { padding: 140px 48px 80px; }
+      .method-hero-inner { grid-template-columns: 1fr; gap: 52px; }
+      .framework-nav { padding: 0 40px; }
+      .channel-grid { grid-template-columns: repeat(2, 1fr); }
+      .voice-grid { grid-template-columns: 1fr; }
+      .evidence-grid { grid-template-columns: 1fr; }
+      .tier-row { grid-template-columns: 120px 1fr; }
+    }
+    @media (max-width: 768px) {
+      .method-hero { padding: 140px 28px 60px; min-height: auto; }
+      .framework-nav { padding: 0 20px; top: 64px; }
+      .channel-grid { grid-template-columns: 1fr 1fr; }
+      .tier-row { grid-template-columns: 100px 1fr; }
+      .tier-badge-col { padding: 20px 12px; }
+      .tier-body { padding: 20px 20px; }
+    }
+    @media (max-width: 480px) {
+      .channel-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- DESKTOP NAV -->
+<nav class="site-nav" id="site-nav">
+ 
+  <!-- Logo -->
+  <div class="nav-logo-wrap">
+    <a href="/index.html">
+      <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAiSEE" class="nav-logo-img">
+    </a>
+  </div>
+
+  <!-- Desktop Links -->
+  <div class="nav-links" id="nav-links">
+    <a href="/index.html"        data-nav="home">Home</a>
+    <a href="/archaeology.html"  data-nav="archaeology">The Archaeology</a>
+    <a href="/method.html"       data-nav="method"style="color: var(--gold);">The Method</a>
+    <a href="/serve.html"        data-nav="serve">Who We Serve</a>
+    <a href="/architect.html"    data-nav="architect">The Architect</a>
+    <a href="/practitioner.html" data-nav="practitioner">The Practitioner</a>
+    <a href="/commissions.html"  data-nav="commissions">Commissions</a>
+    <a href="/registry.html"     class="nav-cta" data-nav="home">Enter the Registry</a>
+  </div>
+ 
+  <!-- Hamburger — visible only on mobile -->
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+ 
+</nav>
+ 
+<!-- MOBILE DRAWER -->
+<div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+  <a href="/index.html"        data-nav="home">Home</a>
+  <a href="/archaeology.html"  data-nav="archaeology">The Archaeology</a>
+  <a href="/method.html"       data-nav="method"style="color: var(--gold);">The Method</a>
+  <a href="/serve.html"        data-nav="serve">Who We Serve</a>
+  <a href="/architect.html"    data-nav="architect">The Architect</a>
+  <a href="/practitioner.html" data-nav="practitioner">The Practitioner</a>
+  <a href="/commissions.html"  data-nav="commissions">Commissions</a>
+  <a href="/registry.html"     data-nav="registry">Enter the Registry</a>
+</div>
+
+
+
+<!-- ═══════════════════════════════════════════════
+     PAGE HERO
+     Background: LapidaryVerticleBlue.png (parallax)
+     ═══════════════════════════════════════════════ -->
+<section class="method-hero">
+  <div class="method-hero-inner">
+
+    <!-- Left: headline -->
+    <div>
+      <span class="eyebrow reveal">The Methodology · Ten Interlocking Frameworks</span>
+      <h1 class="d-xl reveal" style="margin-bottom: 36px; line-height: 1.05;">
+        No Single<br>Lens<br>
+        <span class="text-gold">Is Sufficient</span>
+      </h1>
+      <p class="b-xl reveal reveal-d1" style="margin-bottom: 48px;">
+        We deploy ten distinct frameworks, each examining your enterprise from a different angle,
+        each cross-referencing the others until the full picture emerges from the noise.
+      </p>
+      <div class="btn-group reveal reveal-d2">
+        <a href="#fw-01" class="btn btn-gold">Study the Frameworks</a>
+        <a href="registry.html" class="btn btn-outline-gold">Enter the Registry</a>
+      </div>
+    </div>
+
+    <!-- Right: gem stage + framework count -->
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+
+      <!-- GEMSTONE PLACEHOLDER: The Lapidary — Cut & Shaped -->
+      <div class="gem-frame reveal reveal-right" style="position: relative; aspect-ratio: 3/4;">
+        <div class="gem-placeholder-box" style="min-height: 380px; background: linear-gradient(135deg, #0a0a1a 0%, #050505 100%);">
+          <span class="gem-catalog">CAT-CUT-020</span>
+          <div class="gem-stage-name">The Lapidary</div>
+          <div class="gem-stage-desc">Ten lenses. Each refracts the light differently. Together — absolute clarity.</div>
+        </div>
+        <div class="gem-caption-bar">
+          <div class="gem-caption-title">Stage 2 — Cut &amp; Shaped</div>
+          <div class="gem-caption-sub">Faceted into strategic instruments of precision</div>
+        </div>
+      </div>
+
+      <div class="museum-card reveal reveal-d2" style="padding: 28px 32px; text-align: center;">
+        <div style="display: flex; justify-content: space-around; align-items: center;">
+          <div class="stat-item"><span class="stat-num" style="font-size: 2.4rem;">10</span><span class="stat-label">Frameworks</span></div>
+          <div style="width: 1px; height: 48px; background: rgba(201,169,97,0.15);"></div>
+          <div class="stat-item"><span class="stat-num" style="font-size: 2.4rem;">40+</span><span class="stat-label">Channels</span></div>
+          <div style="width: 1px; height: 48px; background: rgba(201,169,97,0.15);"></div>
+          <div class="stat-item"><span class="stat-num" style="font-size: 2.4rem;">8</span><span class="stat-label">Evidence Classes</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section><!-- /method-hero -->
+
+
+<!-- ═══════════════════════════════════════════════
+     FRAMEWORK NAVIGATOR — Sticky tab strip
+     ═══════════════════════════════════════════════ -->
+<div class="framework-nav" id="framework-nav">
+  <div class="framework-nav-inner">
+    <a class="fn-tab active" href="#fw-01"><span class="fn-roman">I</span>Channel Taxonomy</a>
+    <a class="fn-tab" href="#fw-02"><span class="fn-roman">II</span>Hierarchy of Truth</a>
+    <a class="fn-tab" href="#fw-03"><span class="fn-roman">III</span>Triangulation</a>
+    <a class="fn-tab" href="#fw-04"><span class="fn-roman">IV</span>Evidence Classes</a>
+    <a class="fn-tab" href="#fw-05"><span class="fn-roman">V</span>Voice Profile</a>
+    <a class="fn-tab" href="#fw-rest"><span class="fn-roman">VI–X</span>Advanced Systems</a>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     FRAMEWORK I — THE 40+ CHANNEL TAXONOMY
+     ═══════════════════════════════════════════════ -->
+<section class="fw-section lux-section" id="fw-01" style="background: var(--obsidian); padding-top: 120px; padding-bottom: 80px; position: relative; overflow: hidden;">
+  <div style="position: absolute; inset: 0; background-image: url('http://www.legaisee.com/Images/Library2Diamond.png'); background-size: cover; background-position: center; background-attachment: fixed; /* mobile: scroll via CSS */ opacity: 0.08; z-index: 0;"></div>
+
+  <div class="section-inner" style="position: relative; z-index: 1;">
+
+    <div class="asym-grid-a" style="align-items: start; gap: 72px; margin-bottom: 80px;">
+      <div>
+        <div class="prestige-label reveal" style="justify-content: flex-start;">Framework I</div>
+        <h2 class="d-lg reveal" style="margin-bottom: 32px;">The 40+ Channel<br>Taxonomy</h2>
+        <div class="divider-gold short reveal" style="margin-left: 0; margin-right: auto; margin-bottom: 40px;"></div>
+
+        <p class="b-xl reveal" style="color: var(--platinum); margin-bottom: 26px;">
+          We don't just "find" information; we grade it. Our forensic excavation spans eight primary
+          classes of evidence, covering every medium through which institutional authority has been
+          expressed — from the 1890s to the present.
+        </p>
+        <p class="b-lg reveal reveal-d1" style="margin-bottom: 26px;">
+          Within each class, we identify specific channels — 40+ in total — each with its own era
+          of dominance, its own abandonment pattern, and its own modernization pathway. The 40+ Channel
+          Taxonomy is not a checklist. It is a forensic grid through which we map the complete
+          topography of your institutional memory.
+        </p>
+        <p class="b-lg reveal reveal-d2">
+          Every channel your organization ever touched — every advertisement, every publication, every
+          broadcast, every digital footprint — holds a fragment of your authority.
+          Our job is to recover those fragments and reassemble them into a picture of your former greatness.
+        </p>
+      </div>
+
+      <!-- GEMSTONE PLACEHOLDER: Natural Habitat — where the stone sleeps -->
+      <div>
+        <div class="gem-frame reveal reveal-right" style="position: relative; aspect-ratio: 4/5;">
+          <div class="gem-placeholder-box" style="min-height: 400px; background: linear-gradient(180deg, #0d1f0d 0%, #050505 100%);">
+            <span class="gem-catalog">CAT-HAB-020</span>
+            <div class="gem-stage-name">Natural Habitat</div>
+            <div class="gem-stage-desc">Where the stone sleeps before discovery — the geological strata of institutional memory, 1890s to present</div>
+          </div>
+          <div class="gem-caption-bar">
+            <div class="gem-caption-title">Framework I — Channel Taxonomy</div>
+            <div class="gem-caption-sub">130+ years · 8 classes · 40+ channels</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Channel grid — eight primary classes -->
+    <div class="micro-label reveal" style="margin-bottom: 24px;">Eight Primary Classes · Partial Listing of Channels Within</div>
+    <div class="channel-grid reveal reveal-d1">
+      <div class="channel-cell"><span class="channel-era">1890s–Present</span><span class="channel-name">Print &amp; Direct Response — newspapers, magazines, direct mail, outdoor, point-of-sale, Yellow Pages</span></div>
+      <div class="channel-cell"><span class="channel-era">1920s–Present</span><span class="channel-name">Broadcast Radio — network, local, satellite, podcast, streaming, HD radio</span></div>
+      <div class="channel-cell"><span class="channel-era">1940s–Present</span><span class="channel-name">Broadcast Television — network, local, cable, satellite, public, in-flight</span></div>
+      <div class="channel-cell"><span class="channel-era">1900s–Present</span><span class="channel-name">Cinema &amp; Video — theater trailers, closed circuit, place-based, DVD &amp; Blu-ray</span></div>
+      <div class="channel-cell"><span class="channel-era">1990s–Present</span><span class="channel-name">Digital Web — display banners, search marketing, email, websites, forums, blogs</span></div>
+      <div class="channel-cell"><span class="channel-era">2000s–Present</span><span class="channel-name">Mobile &amp; App — SMS, in-app, mobile web, push notifications, location-based</span></div>
+      <div class="channel-cell"><span class="channel-era">2000s–Present</span><span class="channel-name">Social Media — Meta platforms, video platforms, professional networks, microblogging, visual &amp; ephemeral platforms</span></div>
+      <div class="channel-cell"><span class="channel-era">2010s–Present</span><span class="channel-name">Advanced Digital — CTV &amp; OTT, programmatic, audio streaming, gaming, DOOH, connected home, VR &amp; AR, AI &amp; conversational</span></div>
+    </div>
+
+    <div class="three-col" style="margin-top: 48px;">
+      <div class="stat-item reveal"><span class="stat-num">40+</span><span class="stat-label">Channels Excavated Per Engagement</span></div>
+      <div class="stat-item reveal reveal-d1"><span class="stat-num">8</span><span class="stat-label">Primary Evidence Classes</span></div>
+      <div class="stat-item reveal reveal-d2"><span class="stat-num">130+</span><span class="stat-label">Years of History Mapped</span></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- DIVIDER -->
+<div style="padding: 0 90px; background: var(--obsidian);"><div class="divider-subtle" style="max-width: 1320px; margin: 0 auto;"></div></div>
+
+
+<!-- ═══════════════════════════════════════════════
+     FRAMEWORK II — THE HIERARCHY OF TRUTH
+     ═══════════════════════════════════════════════ -->
+<section class="fw-section lux-section" id="fw-02" style="overflow: hidden; background: var(--obsidian); padding-top: 120px; padding-bottom: 100px;">
+  <div class="section-inner">
+
+    <div class="two-col" style="align-items: start; gap: 88px;">
+
+      <!-- Left: copy -->
+      <div>
+        <div class="prestige-label reveal" style="justify-content: flex-start;">Framework II</div>
+        <h2 class="d-lg reveal" style="margin-bottom: 32px;">The Hierarchy<br>of Truth</h2>
+        <div class="divider-gold short reveal" style="margin-left: 0; margin-right: auto; margin-bottom: 40px;"></div>
+
+        <p class="b-xl reveal" style="color: var(--platinum); margin-bottom: 26px;">
+          Not all evidence carries equal weight. We grade every finding according to a four-tier
+          system that separates verified fact from informed speculation — and we label
+          everything accordingly.
+        </p>
+        <p class="b-lg reveal reveal-d1" style="margin-bottom: 26px;">
+          The Hierarchy of Truth ensures that when we present a finding — whether it is the
+          identification of a golden era, the documentation of a revenue leak, or the reconstruction
+          of a competitive gap — you can trust its foundation.
+        </p>
+        <p class="b-lg reveal reveal-d2" style="margin-bottom: 40px;">
+          Every claim carries its confidence label. Every uncertainty is disclosed.
+          Every gap is acknowledged, not papered over.
+        </p>
+
+        <div class="signal-block reveal reveal-d3">
+          <div class="signal-label">The 3-Source Rule</div>
+          <p style="font-family: var(--font-ui); font-size: 1.05rem; color: var(--gold-bright); font-style: italic; line-height: 1.82;">
+            No significant claim enters your report without a minimum of two independent sources —
+            ideally three or more converging, or a single Tier 1 source standing alone.
+            This governs every conclusion we present to your leadership team.
+          </p>
+        </div>
+
+        <!-- GEMSTONE PLACEHOLDER: Raw Stone — evidence in its natural state -->
+        <div class="gem-frame reveal reveal-d4" style="position: relative; aspect-ratio: 16/9; margin-top: 28px;">
+          <div class="gem-placeholder-box" style="min-height: 200px; background: linear-gradient(135deg, #1a1510 0%, #050505 100%);">
+            <span class="gem-catalog">CAT-RAW-020</span>
+            <div class="gem-stage-name">Raw Stone from Earth</div>
+            <div class="gem-stage-desc">Evidence in its natural state — before verification and refinement</div>
+          </div>
+          <div class="gem-caption-bar">
+            <div class="gem-caption-title">Framework II — Hierarchy of Truth</div>
+            <div class="gem-caption-sub">Not all evidence is equal · we grade it · we label it</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Tier stack -->
+      <div class="reveal reveal-right">
+        <div class="micro-label" style="margin-bottom: 24px;">The Four-Tier Grading System</div>
+        <div class="tier-stack">
+
+          <div class="tier-row t1">
+            <div class="tier-badge-col">
+              <div class="tier-roman">I</div>
+              <div class="tier-name">Verified Primary</div>
+            </div>
+            <div class="tier-body">
+              <div class="tier-title">The Bedrock</div>
+              <div class="tier-desc">Contemporaneous documents with metadata. Financial records, invoices, actual spend. Third-party verification from industry publications, awards, news coverage. Multiple independent witnesses with matching stories. This is the foundation upon which all analysis rests.</div>
+            </div>
+          </div>
+
+          <div class="tier-row t2">
+            <div class="tier-badge-col">
+              <div class="tier-roman">II</div>
+              <div class="tier-name">The Probable</div>
+            </div>
+            <div class="tier-body">
+              <div class="tier-title">Highly Likely</div>
+              <div class="tier-desc">Single witness with specific details — dates, names, amounts. Physical artifacts with provenance. Dated materials and design files. Partial documents corroborated by other sources. Treated as highly likely, requiring additional confirmation before executive briefings.</div>
+            </div>
+          </div>
+
+          <div class="tier-row t3">
+            <div class="tier-badge-col">
+              <div class="tier-roman">III</div>
+              <div class="tier-name">The Plausible</div>
+            </div>
+            <div class="tier-body">
+              <div class="tier-title">Pursue Corroboration</div>
+              <div class="tier-desc">Single witness with vague recollections. Memory without documentation. Self-interested testimony promoting one's own role. These findings are noted, flagged, and pursued for corroboration. They may illuminate direction but cannot stand alone.</div>
+            </div>
+          </div>
+
+          <div class="tier-row t4">
+            <div class="tier-badge-col">
+              <div class="tier-roman">IV</div>
+              <div class="tier-name">The Uncertain</div>
+            </div>
+            <div class="tier-body">
+              <div class="tier-title">Cautionary Marker Only</div>
+              <div class="tier-desc">Hearsay. Suspected falsehoods contradicted by multiple Tier 1 sources. Agenda-driven claims with no corroboration. Documented for completeness but explicitly excluded from strategic recommendations. They serve as cautionary markers, not evidence.</div>
+            </div>
+          </div>
+
+        </div><!-- /tier-stack -->
+      </div>
+
+    </div><!-- /two-col -->
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     FRAMEWORK III — THE TRIANGULATION PROTOCOL
+     ═══════════════════════════════════════════════ -->
+<section class="fw-section lux-section" id="fw-03" style="background: var(--obsidian-light); padding-top: 120px; padding-bottom: 100px; position: relative; overflow: hidden;">
+  <div style="position: absolute; inset: 0; background-image: url('http://www.legaisee.com/Images/LapidaryVerticleBlue.png'); background-size: cover; background-position: center; background-attachment: fixed; /* mobile: scroll via CSS */ opacity: 0.09; z-index: 0;"></div>
+
+  <div class="section-inner" style="position: relative; z-index: 1;">
+
+    <div class="prestige-label reveal" style="justify-content: flex-start;">Framework III</div>
+    <h2 class="d-lg reveal" style="margin-bottom: 24px;">The Triangulation Protocol</h2>
+    <p class="b-xl reveal reveal-d1" style="max-width: 800px; color: var(--platinum); margin-bottom: 64px;">
+      When sources contradict — and they will — we do not choose sides.
+      We reconstruct truth through systematic cross-examination.
+      Contradiction is data, not failure.
+    </p>
+
+    <div class="two-col" style="align-items: start; gap: 72px;">
+
+      <!-- Left: The conflict example -->
+      <div>
+        <div class="micro-label reveal" style="margin-bottom: 20px;">A Real Conflict · How We Resolve It</div>
+        <div class="conflict-box reveal reveal-d1" style="margin-bottom: 32px;">
+          <div class="conflict-source">
+            <span class="conflict-badge says">Source A Says</span>
+            <div class="conflict-text">"We never ran television ads — too expensive for our budget in those years."</div>
+          </div>
+          <div class="conflict-source">
+            <span class="conflict-badge contra">Source B Contradicts</span>
+            <div class="conflict-text">"We ran television constantly, especially during football season — it was our biggest channel."</div>
+          </div>
+          <div class="conflict-source">
+            <span class="conflict-badge says">Archive Shows</span>
+            <div class="conflict-text">No TV mentioned on archived website 1998–2002. Wayback Machine records confirm.</div>
+          </div>
+          <div class="conflict-source">
+            <span class="conflict-badge proof">Proof Found</span>
+            <div class="conflict-text">Three television commercials uploaded by a random user on YouTube — dated 1999, 2001, and 2003. The ads existed.</div>
+          </div>
+        </div>
+
+        <div class="signal-block reveal reveal-d2">
+          <div class="signal-label">The Resolution</div>
+          <p style="font-family: var(--font-ui); font-size: 1.05rem; font-style: italic; color: var(--gold-bright); line-height: 1.8;">
+            "The Triangulation Protocol is not about being right. It is about being accurate.
+            Accuracy survives scrutiny. Righteousness does not."
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: Resolution framework -->
+      <div>
+        <div class="micro-label reveal" style="margin-bottom: 20px;">The Resolution Framework</div>
+        <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px;">
+          <div class="phase-card reveal">
+            <span class="phase-ghost" style="font-size: 3rem; top: 8px; right: 12px;">1</span>
+            <div class="eyebrow" style="font-size: 0.55rem; margin-bottom: 8px;">Principle One</div>
+            <p class="b-md">No single source is truth. Every source has bias — memory, perspective, agenda. Truth emerges from pattern across multiple sources.</p>
+          </div>
+          <div class="phase-card reveal reveal-d1">
+            <span class="phase-ghost" style="font-size: 3rem; top: 8px; right: 12px;">2</span>
+            <div class="eyebrow" style="font-size: 0.55rem; margin-bottom: 8px;">Principle Two</div>
+            <p class="b-md">Contradiction is data, not failure. We map each source's timeframe — conflicting accounts may both be partially true, separated by time or perspective.</p>
+          </div>
+          <div class="phase-card reveal reveal-d2">
+            <span class="phase-ghost" style="font-size: 3rem; top: 8px; right: 12px;">3</span>
+            <div class="eyebrow" style="font-size: 0.55rem; margin-bottom: 8px;">Principle Three</div>
+            <p class="b-md">We document the conflict, not hide it. Ghost pages, ghost employee tracking, and the Competitive Gap analysis capture what was abandoned and when.</p>
+          </div>
+        </div>
+
+        <!-- Continuous Verification Model -->
+        <div class="museum-card reveal reveal-d3">
+          <div class="micro-label" style="margin-bottom: 16px;">The Continuous Verification Model</div>
+          <p class="b-lg" style="color: var(--platinum); margin-bottom: 16px;">
+            New information emerges after delivery. A previous owner disputes a finding.
+            An employee comes forward with new testimony.
+          </p>
+          <p class="b-md">
+            Our Continuous Verification Model governs every post-delivery development. We review,
+            cross-reference, and issue addenda. We never defend errors, attack sources,
+            or ignore legitimate corrections. Accuracy is the only client.
+          </p>
+        </div>
+      </div>
+
+    </div><!-- /two-col -->
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     FRAMEWORK IV — EIGHT CLASSES OF EVIDENCE
+     ═══════════════════════════════════════════════ -->
+<section class="fw-section lux-section" id="fw-04" style="overflow: hidden; background: var(--obsidian); padding-top: 120px; padding-bottom: 100px;">
+  <div class="section-inner">
+
+    <div style="text-align: center; max-width: 820px; margin: 0 auto 72px;">
+      <div class="prestige-label reveal" style="justify-content: center;">Framework IV</div>
+      <h2 class="d-lg reveal" style="margin-bottom: 24px;">The Eight Classes<br>of Evidence</h2>
+      <p class="b-lg reveal reveal-d1" style="color: var(--platinum);">
+        The Taxonomy of the Unseen: a complete catalog of where institutional memory hides —
+        from public archives to private basements, from digital footprints to human recollection.
+        No single class tells the complete story.
+      </p>
+    </div>
+
+    <div class="evidence-grid">
+
+      <div class="phase-card reveal">
+        <span class="phase-ghost">I</span>
+        <div class="eyebrow" style="margin-bottom: 12px;">Class I</div>
+        <h4 style="font-family: var(--font-display); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-light); margin-bottom: 14px;">Public Digital Footprint</h4>
+        <p class="b-md">Web archives, social media histories, YouTube uploads, news articles, review sites, ad libraries, public records, and regulatory filings. The surface layer — visible to anyone with patience and skill.</p>
+      </div>
+
+      <div class="phase-card reveal reveal-d1">
+        <span class="phase-ghost">II</span>
+        <div class="eyebrow" style="margin-bottom: 12px;">Class II</div>
+        <h4 style="font-family: var(--font-display); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-light); margin-bottom: 14px;">Private Digital Archives</h4>
+        <p class="b-md">Old hard drives, email archives, CRM exports, cloud accounts, design files, video projects, server backups, and database dumps. The submerged layer — accessible only with permission and technical expertise.</p>
+      </div>
+
+      <div class="phase-card reveal reveal-d2">
+        <span class="phase-ghost">III</span>
+        <div class="eyebrow" style="margin-bottom: 12px;">Class III</div>
+        <h4 style="font-family: var(--font-display); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-light); margin-bottom: 14px;">Physical Artifacts</h4>
+        <p class="b-md">Filing cabinets, print samples, direct mail pieces, trade show materials, sales collateral, awards, correspondence, and internal newsletters. The analog layer — often the richest source of forgotten detail.</p>
+      </div>
+
+      <div class="phase-card reveal reveal-d3">
+        <span class="phase-ghost">IV</span>
+        <div class="eyebrow" style="margin-bottom: 12px;">Class IV</div>
+        <h4 style="font-family: var(--font-display); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-light); margin-bottom: 14px;">Human Memory &amp; Story</h4>
+        <p class="b-md">Previous owners, longtime employees, customers, vendors, competitors, and industry historians. The oral layer — fragile, biased, and irreplaceable. Captured through structured interview protocols.</p>
+      </div>
+
+      <div class="phase-card reveal">
+        <span class="phase-ghost">V</span>
+        <div class="eyebrow" style="margin-bottom: 12px;">Class V</div>
+        <h4 style="font-family: var(--font-display); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-light); margin-bottom: 14px;">Financial &amp; Operational Records</h4>
+        <p class="b-md">Budget documents, A/B test results, campaign calendars, ROI tracking, customer acquisition costs, and lifetime value calculations. The quantitative layer — where narrative meets numbers.</p>
+      </div>
+
+      <div class="phase-card reveal reveal-d1">
+        <span class="phase-ghost">VI</span>
+        <div class="eyebrow" style="margin-bottom: 12px;">Class VI</div>
+        <h4 style="font-family: var(--font-display); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-light); margin-bottom: 14px;">Competitive Intelligence</h4>
+        <p class="b-md">Competitor campaigns, market positioning shifts, industry publication analysis, and gap mapping. The comparative layer — understanding your absence in spaces you once dominated.</p>
+      </div>
+
+      <div class="phase-card reveal reveal-d2">
+        <span class="phase-ghost">VII</span>
+        <div class="eyebrow" style="margin-bottom: 12px;">Class VII</div>
+        <h4 style="font-family: var(--font-display); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-light); margin-bottom: 14px;">Regulatory &amp; Legal Documentation</h4>
+        <p class="b-md">Patent filings, trademark registrations, lawsuits, settlements, and compliance records. The official layer — institutional memory preserved by government requirement.</p>
+      </div>
+
+      <div class="phase-card reveal reveal-d3">
+        <span class="phase-ghost">VIII</span>
+        <div class="eyebrow" style="margin-bottom: 12px;">Class VIII</div>
+        <h4 style="font-family: var(--font-display); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-light); margin-bottom: 14px;">The Private Archaeology Protocol</h4>
+        <p class="b-md">Deep excavation into non-public sources: previous owner interviews, employee oral histories, customer testimonials, and proprietary research. The classified layer — accessible only through trust and negotiation.</p>
+      </div>
+
+    </div><!-- /evidence-grid -->
+
+    <!-- GEMSTONE PLACEHOLDER: Mounted — evidence secured in context -->
+    <div class="gem-frame reveal" style="max-width: 720px; margin: 60px auto 0; position: relative; aspect-ratio: 21/9;">
+      <div class="gem-placeholder-box" style="min-height: 200px; background: linear-gradient(135deg, #1a1200 0%, #050505 100%);">
+        <span class="gem-catalog">CAT-MNT-020</span>
+        <div class="gem-stage-name">Mounted in Precious Metal</div>
+        <div class="gem-stage-desc">Evidence secured in its proper context — ready for executive presentation</div>
+      </div>
+      <div class="gem-caption-bar">
+        <div class="gem-caption-title">Framework IV — Eight Classes of Evidence</div>
+        <div class="gem-caption-sub">The taxonomy of the unseen · classified · catalogued · graded</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     FRAMEWORK V — THE 8-DIMENSION VOICE PROFILE
+     ═══════════════════════════════════════════════ -->
+<section class="fw-section lux-section" id="fw-05" style="background: var(--obsidian-light); padding-top: 120px; padding-bottom: 100px; position: relative; overflow: hidden;">
+  <div style="position: absolute; inset: 0; background-image: url('http://www.legaisee.com/Images/LibraryMain.png'); background-size: cover; background-position: center; background-attachment: fixed; /* mobile: scroll via CSS */ opacity: 0.09; z-index: 0;"></div>
+
+  <div class="section-inner" style="position: relative; z-index: 1;">
+
+    <div style="text-align: center; max-width: 820px; margin: 0 auto 72px;">
+      <div class="prestige-label reveal" style="justify-content: center;">Framework V</div>
+      <h2 class="d-lg reveal" style="margin-bottom: 24px;">The 8-Dimension<br>Voice Profile</h2>
+      <p class="b-xl reveal reveal-d1" style="color: var(--platinum); margin-bottom: 16px;">
+        The Linguistic Blueprint: a forensic model of how your institution communicates.
+        Because authenticity cannot be faked; it must be modeled.
+      </p>
+      <p class="b-lg reveal reveal-d2">
+        Every institution has a voice — a pattern of vocabulary, rhythm, perspective, and proof
+        that distinguishes it from every competitor. Most organizations have lost awareness of their
+        own voice. We recover it, document it, and encode it for strategic deployment.
+      </p>
+    </div>
+
+    <div class="voice-grid reveal reveal-d2" style="margin-bottom: 64px;">
+
+      <div class="voice-cell">
+        <span class="voice-num">01</span>
+        <div class="voice-title">Vocabulary Register</div>
+        <div class="voice-desc">Technical versus accessible. Industry jargon density. Slang and colloquialism usage. Formality level on a calibrated scale. The specific words your institution reaches for when it speaks.</div>
+      </div>
+
+      <div class="voice-cell">
+        <span class="voice-num">02</span>
+        <div class="voice-title">Sentence Architecture</div>
+        <div class="voice-desc">Average sentence length. Complexity distribution — simple, compound, complex. Rhythm patterns and fragment usage frequency. The structural DNA of your communication.</div>
+      </div>
+
+      <div class="voice-cell">
+        <span class="voice-num">03</span>
+        <div class="voice-title">Humor &amp; Tone</div>
+        <div class="voice-desc">Humor type — witty, sarcastic, self-deprecating, observational, or absent. Enthusiasm calibration. Emotional openness. Conflict handling style. The personality that bleeds through every message.</div>
+      </div>
+
+      <div class="voice-cell">
+        <span class="voice-num">04</span>
+        <div class="voice-title">Perspective &amp; Stance</div>
+        <div class="voice-desc">Expert versus peer positioning. Teacher versus learner stance. Optimist, realist, or critic default. Insider versus outsider language. The relationship your institution assumes with its audience.</div>
+      </div>
+
+      <div class="voice-cell">
+        <span class="voice-num">05</span>
+        <div class="voice-title">Transitions &amp; Flow</div>
+        <div class="voice-desc">Logical connector preferences. Storytelling transition patterns. Question usage — rhetorical, direct, invitational. Pacing signals. The connective tissue that holds your narrative together.</div>
+      </div>
+
+      <div class="voice-cell">
+        <span class="voice-num">06</span>
+        <div class="voice-title">CTAs &amp; Directives</div>
+        <div class="voice-desc">Urgency level. Command strength. Benefit framing style. Risk addressing approach. How your institution asks for action — and whether anyone listens when it does.</div>
+      </div>
+
+      <div class="voice-cell">
+        <span class="voice-num">07</span>
+        <div class="voice-title">Evidence &amp; Proof</div>
+        <div class="voice-desc">Data usage frequency. Anecdote style — personal, observed, hypothetical. Social proof integration. Authority signaling. How your institution builds credibility without sounding desperate.</div>
+      </div>
+
+      <div class="voice-cell">
+        <span class="voice-num">08</span>
+        <div class="voice-title">Visual Language</div>
+        <div class="voice-desc">Metaphor frequency and type. Sensory detail dominance — visual, auditory, kinesthetic. Concrete versus abstract preference. Scene-setting frequency. The imagery that makes your message memorable.</div>
+      </div>
+
+    </div><!-- /voice-grid -->
+
+    <div class="pledge-box reveal" style="max-width: 900px; margin: 0 auto;">
+      <p class="pledge-text">
+        "Authenticity cannot be faked; it must be modeled. The 8-Dimension Voice Profile is the model.
+        Your institution's voice is the original. Our job is to ensure the model serves the original —
+        and never replaces it."
+      </p>
+      <div class="divider-gold short" style="margin: 0 auto 24px;"></div>
+      <div class="pledge-attribution">The Competitive Asymmetry Principle</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     FRAMEWORKS VI–X — Advanced Systems
+     ═══════════════════════════════════════════════ -->
+<section class="fw-section lux-section" id="fw-rest" style="overflow: hidden; background: var(--obsidian); padding-top: 120px; padding-bottom: 120px;">
+  <div class="section-inner">
+
+    <div style="text-align: center; max-width: 820px; margin: 0 auto 72px;">
+      <div class="prestige-label reveal" style="justify-content: center;">Frameworks VI through X</div>
+      <h2 class="d-lg reveal" style="margin-bottom: 24px;">The Advanced Systems</h2>
+      <p class="b-lg reveal reveal-d1">
+        The final five frameworks interlock with the first five to form a web of verification
+        so dense that by the time we present our findings, there is no room for doubt.
+        Only clarity. Only the signal, restored.
+      </p>
+    </div>
+
+    <div class="three-col" style="margin-bottom: 32px;">
+
+      <div class="compact-fw-card reveal">
+        <span class="cfw-roman">VI</span>
+        <div class="eyebrow" style="margin-bottom: 12px;">Framework VI</div>
+        <h4 class="d-sm" style="font-size: 1rem; color: var(--gold-light); margin-bottom: 16px;">ROI Trigger Mapping</h4>
+        <p class="b-md">
+          Specific linguistic patterns, channel combinations, and messaging structures that correlate
+          with measurable revenue response — identified through historical analysis of your financial
+          records and campaign calendars, then mapped to future deployment. Where your dollars
+          actually moved markets.
+        </p>
+      </div>
+
+      <div class="compact-fw-card reveal reveal-d1" style="margin-top: 36px;">
+        <span class="cfw-roman">VII</span>
+        <div class="eyebrow" style="margin-bottom: 12px;">Framework VII</div>
+        <h4 class="d-sm" style="font-size: 1rem; color: var(--gold-light); margin-bottom: 16px;">Competitive Asymmetry</h4>
+        <p class="b-md">
+          The strategic advantage of communicating in a voice your competitors cannot analyze,
+          replicate, or counter. Look through this lens and you will see not merely what your
+          competitors are doing — but what they have forgotten. The abandoned tactics that once
+          built their position, now dormant and available for reclamation.
+        </p>
+      </div>
+
+      <div class="compact-fw-card reveal reveal-d2">
+        <span class="cfw-roman">VIII</span>
+        <div class="eyebrow" style="margin-bottom: 12px;">Framework VIII</div>
+        <h4 class="d-sm" style="font-size: 1rem; color: var(--gold-light); margin-bottom: 16px;">Private Archaeology Protocol</h4>
+        <p class="b-md">
+          Deep excavation into non-public sources accessible only through trust and negotiation.
+          Previous owner interviews conducted under structured protocols. Employee oral histories
+          captured before they are permanently lost. Ghost pages and ghost employee tracking.
+          The classified layer of your institutional memory — irreplaceable, and ours to recover.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="two-col two-col-6040" style="gap: 32px; align-items: stretch;">
+
+      <div class="compact-fw-card reveal" style="display: flex; flex-direction: column;">
+        <span class="cfw-roman">IX</span>
+        <div class="eyebrow" style="margin-bottom: 12px;">Framework IX</div>
+        <h4 class="d-sm" style="font-size: 1rem; color: var(--gold-light); margin-bottom: 16px;">Master Operations Doctrine</h4>
+        <p class="b-md" style="flex: 1;">
+          The complete operational framework that governs how voice, content, and authority interlock
+          to produce measurable institutional results. Not a style guide. Not a brand manual.
+          A doctrine — the governing logic for every piece of content, every channel decision, every
+          positioning choice that follows from the excavation. This is the instrument your successors
+          will use to maintain the signal you worked three decades to build.
+        </p>
+      </div>
+
+      <div class="compact-fw-card reveal reveal-d2" style="display: flex; flex-direction: column; background: linear-gradient(135deg, var(--charcoal) 0%, var(--obsidian-mid) 100%); border-color: rgba(201,169,97,0.18);">
+        <span class="cfw-roman" style="color: rgba(201,169,97,0.30);">X</span>
+        <div class="eyebrow" style="margin-bottom: 12px;">Framework X</div>
+        <h4 class="d-sm" style="font-size: 1rem; color: var(--gold); margin-bottom: 16px;">The CAMERA Authority Framework</h4>
+        <p class="b-md" style="flex: 1;">
+          The capstone framework — the system by which excavated authority is structured, staged,
+          and presented to the market with the precision of a museum exhibition.
+          CAMERA governs the architecture of your public presence: what is revealed, when it is
+          revealed, at what level of detail, and through which channels. The gem, under museum light,
+          seen exactly as it deserves to be seen.
+        </p>
+        <div class="badge" style="margin-top: 20px; align-self: flex-start;">Proprietary · Confidential</div>
+      </div>
+
+    </div><!-- /two-col -->
+
+    <!-- Final gem — the museum display, the result of all ten frameworks -->
+    <div class="gem-frame reveal" style="max-width: 680px; margin: 72px auto 0; position: relative; aspect-ratio: 16/9; border-radius: 20px; overflow: hidden;">
+      <div class="gem-placeholder-box" style="min-height: 280px; border-radius: 20px; border: none; background: linear-gradient(135deg, #0a0a0a 0%, #141414 50%, #0a0a0a 100%);">
+        <span class="gem-catalog">CAT-DSP-020</span>
+        <div class="gem-stage-name">Prestige Museum Display</div>
+        <div class="gem-stage-desc">The final presentation of restored authority — illuminated, preserved, undeniable</div>
+      </div>
+      <div class="gem-caption-bar">
+        <div class="gem-caption-title">Stage 4 — The Exhibition</div>
+        <div class="gem-caption-sub">Ten frameworks · one truth · the signal restored</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     CLOSING CTA
+     Background: PolishCaseMask.png (parallax)
+     ═══════════════════════════════════════════════ -->
+<section class="lux-section" style="padding-top: 140px; padding-bottom: 140px; text-align: center; position: relative; overflow: hidden; background: var(--obsidian-mid);">
+  <div style="position: absolute; inset: 0; background-image: url('http://www.legaisee.com/Images/PolishCaseMask.png'); background-size: cover; background-position: center; background-attachment: fixed; /* mobile: scroll via CSS */ opacity: 0.13; z-index: 0;"></div>
+  <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 80% 80% at 50% 50%, transparent 0%, rgba(5,5,5,0.88) 100%); z-index: 1; pointer-events: none;"></div>
+
+  <div class="section-inner" style="position: relative; z-index: 2; max-width: 880px;">
+
+    <div class="prestige-label reveal" style="justify-content: center; margin-bottom: 48px;">The Only Conclusion</div>
+
+    <p style="font-family: var(--font-ui); font-size: clamp(1.3rem, 2.4vw, 1.9rem); font-style: italic; color: var(--gold-bright); max-width: 780px; margin: 0 auto 52px; line-height: 1.85;" class="reveal reveal-d1">
+      "There is a version of your business that worked better than this one.
+      It is not gone. It is buried. And we know exactly where to dig."
+    </p>
+
+    <p class="b-lg reveal reveal-d2" style="max-width: 680px; margin: 0 auto 52px;">
+      The ten frameworks do not operate in sequence. They interlock. They cross-reference. They create
+      a verification matrix so dense that by the time we present your findings, doubt has no
+      surface to stand on. Only clarity. Only the signal, restored.
+    </p>
+
+    <div class="btn-group reveal reveal-d3" style="justify-content: center; margin-bottom: 48px;">
+      <a href="commissions.html" class="btn btn-gold">View the Commissions</a>
+      <a href="registry.html" class="btn btn-outline-gold">Enter the Private Registry</a>
+    </div>
+
+    <div class="gate-seal reveal reveal-d4" style="margin: 0 auto; display: inline-flex;">
+      <span class="seal-line">Three Clients Maximum</span>
+      <span class="seal-line">No Public Registry</span>
+      <span class="seal-line">The Method Is the Moat</span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 4px;">
+        <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAiSEE" style="height: 32px; width: auto;">
+        <div style="font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold);">LEGAiSEE</div>
+      </div>
+      <p class="footer-brand-tagline">Business Archaeology &amp; Authority Systems.<br>We do not build on sand. We bedrock.</p>
+      <div class="micro-label">San Antonio · Austin · The I-35 Corridor</div>
+    </div>
+    <div>
+      <div class="footer-col-title">The Practice</div>
+      <ul class="footer-links">
+        <li><a href="archaeology.html">The Archaeology</a></li>
+        <li><a href="method.html">The Ten Frameworks</a></li>
+        <li><a href="serve.html">Who We Serve</a></li>
+        <li><a href="architect.html">The Architect</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Commissions</div>
+      <ul class="footer-links">
+        <li><a href="commissions.html">The Excavation</a></li>
+        <li><a href="commissions.html">Authority Systems</a></li>
+        <li><a href="commissions.html">The Bedrock Pledge</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">The Registry</div>
+      <ul class="footer-links">
+        <li><a href="registry.html">Request Entry</a></li>
+        <li><a href="registry.html">Current Availability</a></li>
+      </ul>
+      <div class="gate-seal" style="display: inline-flex; margin-top: 28px; padding: 16px 24px;">
+        <span class="seal-line">By Invitation Only</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© LEGAiSEE · Business Archaeology &amp; Authority Systems · All Rights Reserved</div>
+    <div class="footer-seal">The Method Is the Moat</div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════════════════ -->
+<script>
+  /* ── Scroll reveal ─────────────────────────────── */
+  (function () {
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.10,
+      rootMargin: '0px 0px -44px 0px'
+    });
+
+    reveals.forEach(el => observer.observe(el));
+  })();
+
+  /* ── Mobile menu system ───────────────────────── */
+  (function () {
+    'use strict';
+
+    var hamburger  = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var header     = document.getElementById('site-header');
+
+    if (!hamburger || !mobileMenu) return;
+
+    /* Active nav */
+    var currentPage = document.body.getAttribute('data-page') || '';
+
+    document.querySelectorAll('[data-nav]').forEach(function (link) {
+      if (link.getAttribute('data-nav') === currentPage) {
+        link.classList.add('is-active');
+      }
+    });
+
+    function openMenu() {
+      mobileMenu.classList.add('is-open');
+      hamburger.classList.add('is-active');
+      hamburger.setAttribute('aria-expanded', 'true');
+      mobileMenu.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeMenu() {
+      mobileMenu.classList.remove('is-open');
+      hamburger.classList.remove('is-active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+    }
+
+    hamburger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      mobileMenu.classList.contains('is-open')
+        ? closeMenu()
+        : openMenu();
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('click', function (e) {
+      if (
+        mobileMenu.classList.contains('is-open') &&
+        !header.contains(e.target)
+      ) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+        closeMenu();
+        hamburger.focus();
+      }
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 1024) {
+        closeMenu();
+      }
+    });
+  })();
+
+  /* ── Gem hover tilt ───────────────────────────── */
+  if (window.innerWidth > 1024) {
+    document.querySelectorAll('.gem-frame, .museum-card').forEach(el => {
+
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+
+        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 6;
+        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 6;
+
+        el.style.transform =
+          `perspective(800px) rotateY(${x}deg) rotateX(${-y}deg) translateY(-6px)`;
+      });
+
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = '';
+      });
+
+    });
+  }
+</script>
+
+<!-- Lenis Smooth Scroll -->
+<script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
+
+<script>
+  new Lenis({
+    autoRaf: true,
+    autoToggle: true,
+    anchors: true,
+    allowNestedScroll: true,
+    naiveDimensions: true,
+    stopInertiaOnNavigate: true
+  });
+
+(function () {
+  'use strict';
+ 
+  var hamburger  = document.getElementById('nav-hamburger');
+  var mobileMenu = document.getElementById('nav-mobile');
+  var siteNav    = document.getElementById('site-nav');
+ 
+  if (!hamburger || !mobileMenu) return;
+ 
+  /* ── Active nav state ──────────────────────────────────────── */
+  var currentPage = document.body.getAttribute('data-page') || '';
+  document.querySelectorAll('[data-nav]').forEach(function (link) {
+    if (link.getAttribute('data-nav') === currentPage) {
+      link.classList.add('is-active');
+    }
+  });
+ 
+  /* ── Open / Close helpers ──────────────────────────────────── */
+  function openMenu() {
+    mobileMenu.classList.add('is-open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    hamburger.setAttribute('aria-label', 'Close navigation menu');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+  }
+ 
+  function closeMenu() {
+    mobileMenu.classList.remove('is-open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Open navigation menu');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+  }
+ 
+  /* ── Hamburger click ───────────────────────────────────────── */
+  hamburger.addEventListener('click', function (e) {
+    e.stopPropagation();
+    mobileMenu.classList.contains('is-open') ? closeMenu() : openMenu();
+  });
+ 
+  /* ── Close on any mobile link click ───────────────────────── */
+  mobileMenu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+ 
+  /* ── Close on outside click ────────────────────────────────── */
+  document.addEventListener('click', function (e) {
+    if (mobileMenu.classList.contains('is-open') &&
+        !siteNav.contains(e.target) &&
+        !mobileMenu.contains(e.target)) {
+      closeMenu();
+    }
+  });
+ 
+  /* ── Close on Escape ───────────────────────────────────────── */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+      closeMenu();
+      hamburger.focus();
+    }
+  });
+ 
+  /* ── Close on desktop resize ───────────────────────────────── */
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 1024) closeMenu();
+  });
+ 
+  /* ── Scrolled state for nav bg ─────────────────────────────── */
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 40) {
+      siteNav.classList.add('scrolled');
+    } else {
+      siteNav.classList.remove('scrolled');
+    }
+  }, { passive: true });
+ 
+})();
+
+</script>
+</body>
+</html>

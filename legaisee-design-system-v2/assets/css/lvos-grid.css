@@ -1,0 +1,76 @@
+/* ==========================================================
+   LVOS V2
+   GRID SYSTEM
+========================================================== */
+
+/* BASE GRID */
+
+.grid{
+
+    display:grid;
+
+    gap:var(--space-6);
+}
+
+/* GRID VARIANTS */
+
+.grid-2{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+}
+
+.grid-3{
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+}
+
+.grid-4{
+    grid-template-columns:repeat(4, minmax(0, 1fr));
+}
+
+.grid-auto{
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* FLEX SYSTEM (deduplicated + standardized) */
+
+.flex{
+    display:flex;
+}
+
+.flex-center{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.flex-between{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.flex-column{
+    display:flex;
+    flex-direction:column;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+
+@media (max-width: 1100px){
+
+    .grid-4{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px){
+
+    .grid-2,
+    .grid-3,
+    .grid-4{
+        grid-template-columns:1fr;
+    }
+}

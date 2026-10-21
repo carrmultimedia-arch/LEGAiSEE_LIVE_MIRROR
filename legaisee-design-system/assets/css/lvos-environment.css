@@ -1,0 +1,97 @@
+/* =========================================================
+   LVOS ENVIRONMENT V1
+========================================================= */
+
+:root{
+
+    --env-black:#040506;
+    --env-shadow:#080a0d;
+    --env-mid:#0d1116;
+    --env-lift:#121820;
+}
+
+/* =========================================================
+   PAGE ENVIRONMENT
+========================================================= */
+
+html{
+    background:var(--env-black);
+}
+
+body{
+
+    position:relative;
+    min-height:100vh;
+    overflow-x:hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #050608 0%,
+            #07090c 35%,
+            #050608 100%
+        );
+}
+
+/* =========================================================
+   AMBIENT ROOM
+========================================================= */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+    z-index:-2;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 15%,
+            rgba(255,255,255,.025),
+            transparent 45%
+        ),
+
+        radial-gradient(
+            circle at 80% 25%,
+            rgba(255,255,255,.018),
+            transparent 50%
+        ),
+
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(255,255,255,.015),
+            transparent 60%
+        );
+}
+
+/* =========================================================
+   OBSIDIAN DEPTH
+========================================================= */
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+    z-index:-1;
+
+    background:
+
+        linear-gradient(
+            180deg,
+
+            rgba(255,255,255,.010) 0%,
+            rgba(255,255,255,.000) 18%,
+
+            rgba(255,255,255,.006) 52%,
+
+            rgba(255,255,255,.000) 100%
+        );
+}

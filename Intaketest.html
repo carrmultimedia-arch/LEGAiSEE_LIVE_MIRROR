@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LEGAiSEE — Forensic Intake</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─── */
+    :root {
+      --obsidian:   #181818;
+      --obsidian-2: #0a0a0a;
+      --obsidian-3: #111111;
+      --gold:       #C9A961;
+      --gold-dim:   rgba(201,169,97,0.18);
+      --gold-mid:   rgba(201,169,97,0.35);
+      --cream:      #f5f0e8;
+      --cream-dim:  rgba(245,240,232,0.45);
+      --cream-faint:rgba(245,240,232,0.08);
+      --err:        #c96161;
+    }
+
+    /* ─── RESET ─── */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html, body {
+      height: 100%;
+      background: var(--obsidian);
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      overflow: hidden;
+    }
+
+    /* ─── LAYOUT ─── */
+    #app {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── HEADER ─── */
+    #hdr {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 32px;
+      border-bottom: 1px solid var(--gold-dim);
+      background: var(--obsidian);
+      z-index: 10;
+    }
+    .wordmark {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .28em;
+      color: var(--gold);
+    }
+    .wordmark span { color: rgba(245,240,232,0.35); font-weight: 400; }
+    .hdr-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    #reset-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(201,169,97,0.4);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 8px;
+      transition: color .2s;
+      display: none;
+    }
+    #reset-btn:hover { color: var(--gold); }
+    .badge {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(201,169,97,0.08);
+      border: 1px solid var(--gold-mid);
+      padding: 4px 11px;
+      border-radius: 2px;
+    }
+
+    /* ─── MESSAGE AREA ─── */
+    #msgs {
+      flex: 1;
+      overflow-y: auto;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
+    #msgs::-webkit-scrollbar { width: 3px; }
+    #msgs::-webkit-scrollbar-thumb {
+      background: rgba(201,169,97,0.15);
+      border-radius: 2px;
+    }
+
+    /* ─── SPLASH ─── */
+    #splash {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 18px;
+      text-align: center;
+      padding: 48px;
+    }
+    .sigil {
+      font-size: 30px;
+      color: var(--gold);
+      opacity: .45;
+      animation: pulse 3s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:.35; }
+      50%      { opacity:.65; }
+    }
+    .splash-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .splash-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-style: italic;
+      color: var(--cream-dim);
+      max-width: 380px;
+      line-height: 1.8;
+    }
+    #start-btn {
+      margin-top: 8px;
+      background: transparent;
+      border: 1px solid var(--gold-mid);
+      color: var(--gold);
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      padding: 12px 30px;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all .25s;
+    }
+    #start-btn:hover {
+      background: rgba(201,169,97,0.07);
+      border-color: var(--gold);
+    }
+
+    /* ─── MESSAGE ROW ─── */
+    .msg {
+      display: flex;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--cream-faint);
+      animation: fadeUp .35s ease both;
+    }
+    .msg:last-child { border-bottom: none; }
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(7px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .msg-label {
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding-top: 4px;
+      flex-shrink: 0;
+      width: 78px;
+      text-align: right;
+    }
+    .msg.iv .msg-label { color: var(--gold); }
+    .msg.pr .msg-label { color: rgba(245,240,232,0.3); }
+    .msg.er .msg-label { color: var(--err); }
+
+    .msg-line {
+      width: 1px;
+      flex-shrink: 0;
+      align-self: stretch;
+    }
+    .msg.iv .msg-line { background: rgba(201,169,97,0.22); }
+    .msg.pr .msg-line { background: rgba(245,240,232,0.1); }
+    .msg.er .msg-line { background: rgba(201,97,97,0.3); }
+
+    .msg-text {
+      flex: 1;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.78;
+      color: var(--cream);
+    }
+    .msg.pr .msg-text {
+      color: rgba(245,240,232,0.5);
+      font-size: 17px;
+    }
+    .msg.er .msg-text {
+      color: #e08080;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* ─── THINKING INDICATOR ─── */
+    #thinking {
+      display: none;
+      gap: 20px;
+      align-items: center;
+      padding: 20px 0;
+      opacity: .55;
+    }
+    .thinking-label {
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      width: 78px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .thinking-line {
+      width: 1px;
+      background: rgba(201,169,97,0.2);
+      height: 22px;
+      flex-shrink: 0;
+    }
+    .dots { display:flex; gap:6px; align-items:center; }
+    .dot {
+      width: 4px; height: 4px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: dotPulse 1.4s ease-in-out infinite;
+    }
+    .dot:nth-child(2) { animation-delay: .2s; }
+    .dot:nth-child(3) { animation-delay: .4s; }
+    @keyframes dotPulse {
+      0%,80%,100% { opacity:.2; transform:scale(.8); }
+      40%          { opacity:1;  transform:scale(1); }
+    }
+
+    /* ─── BRIEF BLOCK ─── */
+    .brief-wrap {
+      padding: 20px 0;
+      animation: fadeUp .35s ease both;
+    }
+    .brief-hdr {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .brief-label {
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      width: 78px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .brief-line {
+      width: 1px;
+      background: rgba(201,169,97,0.22);
+      height: 22px;
+      flex-shrink: 0;
+    }
+    .brief-title {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .brief-content {
+      margin-left: 98px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11.5px;
+      font-weight: 400;
+      line-height: 1.85;
+      color: var(--cream);
+      background: #0d0d0d;
+      border: 1px solid var(--gold-dim);
+      border-left: 2px solid var(--gold);
+      padding: 22px 24px;
+      white-space: pre-wrap;
+    }
+
+    /* ─── FOOTER / INPUT ─── */
+    #ftr {
+      flex-shrink: 0;
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+      padding: 16px 32px;
+      border-top: 1px solid rgba(201,169,97,0.1);
+      background: var(--obsidian-2);
+    }
+    #input {
+      flex: 1;
+      background: var(--obsidian-3);
+      border: 1px solid var(--gold-dim);
+      border-radius: 2px;
+      padding: 13px 16px;
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.5;
+      resize: none;
+      outline: none;
+      min-height: 48px;
+      max-height: 140px;
+      overflow-y: auto;
+      transition: border-color .2s;
+    }
+    #input:focus { border-color: rgba(201,169,97,0.42); }
+    #input::placeholder { color: rgba(245,240,232,0.18); font-style: italic; }
+    #input:disabled { opacity: .3; cursor: not-allowed; }
+
+    #send-btn {
+      background: var(--gold);
+      border: none;
+      border-radius: 2px;
+      width: 48px;
+      height: 48px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background .2s, opacity .2s;
+    }
+    #send-btn:hover:not(:disabled) { background: #d4b570; }
+    #send-btn:disabled { opacity: .22; cursor: not-allowed; }
+
+    /* ─── API KEY NOTICE ─── */
+    #api-notice {
+      display: none;
+      margin-left: 98px;
+      margin-top: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: rgba(201,97,97,0.85);
+      letter-spacing: .03em;
+    }
+  </style>
+
+</head>
+<body>
+
+<div id="app">
+
+  <!-- HEADER -->
+
+  <div id="hdr">
+    <div class="wordmark">LEGAi<span>SEE</span></div>
+    <div class="hdr-right">
+      <button id="reset-btn" onclick="reset()">Reset</button>
+      <div class="badge" id="badge">Forensic Intake</div>
+    </div>
+  </div>
+
+  <!-- MESSAGE AREA -->
+
+  <div id="msgs">
+    <div id="splash">
+      <div class="sigil">◆</div>
+      <div class="splash-label">Phase 0 — Forensic Intake</div>
+      <div class="splash-sub">A structured excavation of your institution's record. Begin when ready.</div>
+      <button id="start-btn" onclick="start()">Begin Intake</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+
+  <div id="ftr">
+    <textarea id="input" placeholder="Respond here…" rows="1" disabled
+      oninput="autoResize(this)" onkeydown="handleKey(event)"></textarea>
+    <button id="send-btn" onclick="send()" disabled>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+           stroke="#050505" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="19" x2="12" y2="5"/>
+        <polyline points="5 12 12 5 19 12"/>
+      </svg>
+    </button>
+  </div>
+
+</div>
+
+<script>
+/* ════════════════════════════════════════════════════════
+   CONFIGURATION — DROP YOUR API KEY HERE WHEN READY
+   ════════════════════════════════════════════════════════ */
+const API_KEY="PROXY";
+
+/* ════════════════════════════════════════════════════════
+   SYSTEM PROMPT
+   ════════════════════════════════════════════════════════ */
+const SYSTEM_PROMPT = `You are the LEGAiSEE Forensic Intake Interviewer.
+
+You are not a chatbot. You are not an assistant. You are not here to be helpful in the general sense. You are a forensic interviewer conducting a structured excavation of an institution's record on behalf of John Carr, the founder of LEGAiSEE.
+
+Your singular purpose in this conversation is to surface four specific things from the principal's record:
+
+1. An Estimated Golden Era — the period when the business operated closest to its highest potential.
+2. One Abandoned Asset — a capability, position, method, or advantage the business once held and no longer exercises.
+3. The Competitive Gap — the distance between what this business has documented and what its competitors can prove.
+4. One Undeniable Inflection Point — a moment in the institutional timeline that changed the direction of the business and whose consequences are still present today.
+
+You will also assess which LEGAiSEE Exhibit is appropriate for this principal based on what the interview surfaces.
+
+When the interview is complete, you will produce a structured Phase 0 Pre-Brief for John Carr. The principal will not receive this brief. They will receive a confirmation that their submission has been received.
+
+-----
+
+## WHAT LEGAISEE IS
+
+LEGAiSEE is a forensic business archaeology practice. It excavates what institutions have already proved from their own operational record and organises that proof into a signal that commands attention.
+
+This is not market research. This is not strategy consulting. This is not content creation. LEGAiSEE produces the forensic foundation that content, positioning, and enterprise valuation should be built on.
+
+The methodology produces four outcomes for clients:
+
+- Enterprise Value documentation (for acquisition and exit)
+- Exit Multiple positioning (buyers pay for proof, not potential)
+- Forensic CAC correction (true cost of acquisition, not estimated)
+- LTV:CAC 3:1 architecture (minimum ratio before new spend is justified)
+
+-----
+
+## REFERENCE CASE
+
+INSTITUTION: Carr Multimedia (founded November 2000, Houston TX)
+PRACTITIONER: John M. Carr
+
+GOLDEN ERA IDENTIFIED: 1992-2006, Lake Charles Louisiana. The practitioner began at KPLC-TV NBC affiliate in 1992 directing live broadcasts under FCC regulation. Advanced to Head Director at KVHP FOX 29. This era produced the institution's only formally adjudicated award: an Addy Award from the American Advertising Federation. The practice was founded in November 2000 while still employed in broadcast, deliberately, before leaving.
+
+ABANDONED ASSET IDENTIFIED: Interactive Video vertical. Between approximately 2018-2021, Carr Multimedia built a complete demonstration library of interactive video content across seven industry verticals. The technology featured branching video paths, embedded lead capture forms, and embedded CTAs. Discontinued when the business pivoted toward content strategy. Likely recoverable.
+
+COMPETITIVE GAP IDENTIFIED: 33 years of documented operational record with 22 years of timestamped web presence (52 Wayback Machine captures). No competitor in the forensic positioning space possesses a comparable depth of documented institutional history combined with network broadcast credentials, a formally adjudicated advertising award, FAA drone certification predating regulation, and institutional clients at hospital system scale.
+
+UNDENIABLE INFLECTION POINT: The LinkedIn positioning shift. The moment the institutional copy changed from "we make videos for business" to "we use video as a tool to help people solve their business problems."
+
+EXHIBIT RECOMMENDED: Exhibit B (Full Institutional Record).
+
+-----
+
+## YOUR INTERVIEW PROTOCOL
+
+Wait for the principal to send their first message. Acknowledge briefly, one sentence, then move immediately to Question 1. Do not explain the process upfront. Do not list all the questions. The excavation should feel like a conversation, not a form.
+
+### The Seven Questions
+
+Ask these in order. Do not skip. Do not combine. One question at a time.
+
+QUESTION 1 - ORIENTATION
+"To begin: tell me the name of your business, what industry you operate in, and how long you have been operating."
+
+QUESTION 2 - CURRENT POSITION
+"What does your business do today that your competitors cannot replicate, not what you offer, but what you have that they don't?"
+Probe: "That describes what you do. I'm asking what you have, a relationship, a process, a history, a credential, a record, that a competitor could not simply copy by hiring someone or buying a tool."
+
+QUESTION 3 - THE GOLDEN ERA
+"Describe the period in your business's history when it performed closest to its highest potential. Not necessarily the highest revenue, the period when the business was most what it was built to be."
+Probe: "Most institutions have a chapter that represented their clearest expression of purpose. Does a specific period come to mind, even briefly?" Get the years. Get what made it distinct. Get why it ended.
+
+QUESTION 4 - THE ABANDONED ASSET
+"What capability, market position, client relationship, or method did your business once have that it no longer exercises, not because it failed, but because the business moved on?"
+Probe: "I'm asking about things that worked and were set aside anyway."
+
+QUESTION 5 - THE INFLECTION POINT
+"Tell me about the most significant moment, a decision, an event, a loss, a gain, a pivot, that changed the direction of your business. Not the founding. Something that happened after the business was already operating."
+Probe: Get the year. Get what changed. Get whether consequences are still present.
+
+QUESTION 6 - CLIENT PROOF
+"What have your best clients said about why they chose you, not what you told them, but what they told you, in their words?"
+Probe: "The phrase that surprised you the first time you heard it because it named something you hadn't named yourself."
+
+QUESTION 7 - THE INTENDED RECORD
+"What do you want this business to be documented as having proved, not what you want it to achieve, but what you want the record to show it has already done, ten years from now?"
+This is the final question. Signal it. Listen to the full answer.
+
+-----
+
+## HOW TO PROBE
+
+Probe once when an answer is vague, too brief, or generic. Do not probe the same question more than twice. Note gaps in the brief.
+
+-----
+
+## TONE AND VOICE
+
+Precise. Direct. Warm the way a skilled diagnostician is warm, focused, attentive, genuinely interested in what the record contains. Short to medium sentences. The principal should do most of the talking.
+
+Do NOT: compliment answers, use filler affirmations, rush, accept insufficient answers without probing, break the forensic frame.
+
+DO: acknowledge briefly before probing or moving on, reference earlier answers when relevant, note unexpected elements.
+
+-----
+
+## COMPLETING THE INTERVIEW
+
+After Question 7 is answered, say exactly:
+"That completes the intake. I'm preparing your pre-brief for John Carr now. You'll receive a confirmation once your submission has been logged. John will be in contact within 3 business days."
+
+Then on the very next response output the complete brief beginning with [BRIEF_COMPLETE] on its own line.
+
+-----
+
+## BRIEF OUTPUT FORMAT
+
+[BRIEF_COMPLETE]
+
+LEGAISEE - PHASE 0 PRE-BRIEF
+CONFIDENTIAL - FOR JOHN CARR ONLY
+
+SUBMISSION DATE: [today's date]
+
+INSTITUTION: [business name]
+INDUSTRY: [industry]
+YEARS OPERATING: [number]
+FOUNDED: [year if stated]
+PRINCIPAL: [name if given]
+CONTACT: [email/phone if given]
+
+EXCAVATION FINDINGS
+
+ESTIMATED GOLDEN ERA:
+[Period, years, what defined it, why it ended. Confidence: HIGH/MEDIUM/LOW]
+
+ONE ABANDONED ASSET:
+[What it was, when discontinued, why, whether recoverable. Confidence: HIGH/MEDIUM/LOW]
+
+THE COMPETITIVE GAP:
+[What this institution has that competitors cannot prove. Confidence: HIGH/MEDIUM/LOW]
+
+ONE UNDENIABLE INFLECTION POINT:
+[Moment/period, year, what changed, whether consequences persist. Confidence: HIGH/MEDIUM/LOW]
+
+PRELIMINARY SIGNAL ASSESSMENT
+
+[2-4 sentences. Strongest signal. Most significant gap. Whether foundation is stable enough for new positioning spend.]
+
+INTERVIEW QUALITY NOTES
+
+ENGAGEMENT LEVEL: [HIGH/MEDIUM/LOW]
+[One sentence on how forthcoming the principal was.]
+
+GAPS AND EVASIONS:
+[Questions where answers were insufficient after two probes.]
+
+UNEXPECTED FINDINGS:
+[Anything more significant than the principal appeared to recognise. Contradictions. Immediate follow-up items.]
+
+RECOMMENDED EXHIBIT
+
+PRIMARY RECOMMENDATION: [Exhibit letter and name]
+RATIONALE: [2-3 sentences.]
+
+ALTERNATIVE: [Second Exhibit if applicable, and under what condition.]
+
+NOT RECOMMENDED: [Exhibits clearly inappropriate at this stage, and why.]
+
+PHASE 0 PREPARATION NOTES
+
+[3-5 specific things John should investigate or verify in Phase 0.]
+
+END OF PRE-BRIEF`;
+
+/* ════════════════════════════════════════════════════════
+   STATE
+   ════════════════════════════════════════════════════════ */
+let history    = [];
+let started    = false;
+let isThinking = false;
+let isDone     = false;
+
+/* ════════════════════════════════════════════════════════
+   DOM HELPERS
+   ════════════════════════════════════════════════════════ */
+const $msgs     = document.getElementById('msgs');
+const $input    = document.getElementById('input');
+const $sendBtn  = document.getElementById('send-btn');
+const $badge    = document.getElementById('badge');
+const $resetBtn = document.getElementById('reset-btn');
+
+function setThinking(val) {
+  isThinking = val;
+  const existing = document.getElementById('thinking-row');
+  if (val && !existing) {
+    const el = document.createElement('div');
+    el.id = 'thinking-row';
+    el.style.cssText = 'display:flex;gap:20px;align-items:center;padding:20px 0;opacity:.55;';
+    el.innerHTML = `
+      <div style="font-family:'Cinzel',serif;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:#C9A961;width:78px;text-align:right;flex-shrink:0;">Interviewer</div>
+      <div style="width:1px;background:rgba(201,169,97,0.2);height:22px;flex-shrink:0;"></div>
+      <div style="display:flex;gap:6px;align-items:center;">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>`;
+    $msgs.appendChild(el);
+  } else if (!val && existing) {
+    existing.remove();
+  }
+  $input.disabled    = val || isDone || !started;
+  $sendBtn.disabled  = val || isDone || !started || !$input.value.trim();
+  scrollBottom();
+}
+
+function scrollBottom() {
+  setTimeout(() => { $msgs.scrollTop = $msgs.scrollHeight; }, 30);
+}
+
+function appendMsg(type, text) {
+  const label = type === 'iv' ? 'Interviewer' : type === 'pr' ? 'You' : 'Error';
+  const el = document.createElement('div');
+  el.className = `msg ${type}`;
+  el.innerHTML = `
+    <div class="msg-label">${label}</div>
+    <div class="msg-line"></div>
+    <div class="msg-text">${escHtml(text)}</div>`;
+  $msgs.appendChild(el);
+  scrollBottom();
+}
+
+function appendBrief(text) {
+  const el = document.createElement('div');
+  el.className = 'brief-wrap';
+  el.innerHTML = `
+    <div class="brief-hdr">
+      <div class="brief-label">System</div>
+      <div class="brief-line"></div>
+      <div class="brief-title">Pre-Brief — Confidential</div>
+    </div>
+    <div class="brief-content">${escHtml(text)}</div>`;
+  $msgs.appendChild(el);
+  scrollBottom();
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 140) + 'px';
+  $sendBtn.disabled = isThinking || isDone || !$input.value.trim();
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
+}
+
+/* ════════════════════════════════════════════════════════
+   API CALL
+   ════════════════════════════════════════════════════════ */
+async function callClaude(userMsg) {
+  setThinking(true);
+
+  const msgs = [...history, { role: 'user', content: userMsg }];
+  history = msgs;
+
+  try {
+    const res = await fetch('https://www.legaisee.com/anthropic-proxy.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model:      'claude-sonnet-4-6',
+        max_tokens: 1500,
+        system:     SYSTEM_PROMPT,
+        messages:   msgs
+      })
+    });
+
+    const raw = await res.text();
+    let data;
+    try { data = JSON.parse(raw); }
+    catch(e) { throw new Error('JSON parse failed: ' + raw.slice(0, 200)); }
+
+    if (!res.ok) {
+      throw new Error(`API ${res.status}: ${data?.error?.message || raw.slice(0, 200)}`);
+    }
+
+    const reply = (data.content || [])
+      .filter(b => b.type === 'text')
+      .map(b => b.text)
+      .join('') || 'No response.';
+
+    history = [...msgs, { role: 'assistant', content: reply }];
+    setThinking(false);
+
+    if (reply.includes('[BRIEF_COMPLETE]')) {
+  const brief = reply.split('[BRIEF_COMPLETE]')[1].trim();
+  appendBrief(brief);
+  isDone = true;
+  // Extract institution name from brief for filename
+  const instMatch = brief.match(/INSTITUTION:\s*(.+)/);
+  const institution = instMatch ? instMatch[1].trim() : 'Unknown';
+  saveBrief(brief, history, institution);
+
+  } catch(err) {
+    setThinking(false);
+    appendMsg('er', err.message);
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   CONTROLS
+   ════════════════════════════════════════════════════════ */
+async function start() {
+  // Guard: API key not configured
+  if (API_KEY === 'YOUR_API_KEY_HERE') {
+    document.getElementById('splash').innerHTML = `
+      <div class="sigil">◆</div>
+      <div class="splash-label">API Key Required</div>
+      <div class="splash-sub">Open <code style="font-style:normal;color:#C9A961;font-size:13px;">intake.html</code> and replace <code style="font-style:normal;color:#C9A961;font-size:13px;">YOUR_API_KEY_HERE</code> with your Anthropic API key. Save and reload.</div>`;
+    return;
+  }
+
+  history = [];
+  started = true;
+  isDone  = false;
+
+  // Clear splash, show reset
+  $msgs.innerHTML = '';
+  $resetBtn.style.display = 'block';
+
+  await callClaude('Hello, I am here for the forensic intake.');
+}
+
+async function send() {
+  const text = $input.value.trim();
+  if (!text || isThinking || isDone) return;
+  $input.value = '';
+  $input.style.height = 'auto';
+  $sendBtn.disabled = true;
+  appendMsg('pr', text);
+  await callClaude(text);
+}
+
+function reset() {
+  history  = [];
+  started  = false;
+  isDone   = false;
+  isThinking = false;
+
+  $msgs.innerHTML = `
+    <div id="splash">
+      <div class="sigil">◆</div>
+      <div class="splash-label">Phase 0 — Forensic Intake</div>
+      <div class="splash-sub">A structured excavation of your institution's record. Begin when ready.</div>
+      <button id="start-btn" onclick="start()">Begin Intake</button>
+    </div>`;
+
+  // Re-apply splash flex centering
+  document.getElementById('splash').style.cssText =
+    'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:18px;text-align:center;padding:48px;';
+
+  $input.disabled   = true;
+  $sendBtn.disabled = true;
+  $input.value      = '';
+  $input.style.height = 'auto';
+  $badge.textContent  = 'Forensic Intake';
+  $resetBtn.style.display = 'none';
+}
+
+/* ════════════════════════════════════════════════════════
+   INPUT LIVE ENABLE
+   ════════════════════════════════════════════════════════ */
+$input.addEventListener('input', () => {
+  if (!isThinking && !isDone && started) {
+    $sendBtn.disabled = !$input.value.trim();
+  }
+});
+/* ═══════════════════════════════════════════════════════════
+   LEGAISEE — BRIEF SENDER
+   Drop this function into BOTH Intaketest.html and registry.html
+   Call it immediately after iBrief() / appendBrief() fires.
+   ═══════════════════════════════════════════════════════════ */
+
+async function saveBrief(brief, conversationHistory, institution) {
+
+  /* Build readable transcript from history array */
+  const transcript = conversationHistory
+    .filter(m => m.role !== 'system')
+    .map(m => (m.role === 'user' ? 'PRINCIPAL' : 'INTERVIEWER') + ':\n' + m.content)
+    .join('\n\n' + '─'.repeat(40) + '\n\n');
+
+  try {
+    const res = await fetch('https://www.legaisee.com/save-brief.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        brief:        brief,
+        conversation: transcript,
+        institution:  institution || 'Unknown'
+      })
+    });
+    const result = await res.json();
+    console.log('Brief saved:', result);
+  } catch(err) {
+    console.error('Brief save failed:', err);
+    /* Silent fail — user experience unaffected */
+  }
+}
+</script>
+
+</body>
+</html>

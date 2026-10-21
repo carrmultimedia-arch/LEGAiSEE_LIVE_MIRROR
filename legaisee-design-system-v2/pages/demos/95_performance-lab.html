@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LVOS Performance Lab</title>
+
+  <link rel="stylesheet" href="../../assets/css/lvos-core.css">
+</head>
+
+<body>
+
+<header class="system-header">
+  <div>PERFORMANCE LAB</div>
+  <div>ENGINE LOAD + FRAME HEALTH</div>
+</header>
+
+<section class="scene-container">
+
+  <div class="material-stage">
+    <div class="content-stack">
+
+      <h1>ENGINE STRESS TEST</h1>
+
+      <p id="scroll">SCROLL: --</p>
+      <p id="fps">FPS: --</p>
+      <p id="tick">TICK: --</p>
+
+    </div>
+  </div>
+
+</section>
+
+<script src="../../assets/js/lvos-engine.js"></script>
+<script src="../../assets/js/lvos-loader.js"></script>
+
+<script>
+let tick = 0;
+
+setInterval(() => {
+  tick++;
+
+  const scroll = window.scrollY || 0;
+  const height = document.body.scrollHeight - window.innerHeight;
+  const r = height ? scroll / height : 0;
+
+  const fps = LVOS?.Engine?.state?.delta
+    ? Math.round(1000 / LVOS.Engine.state.delta)
+    : 0;
+
+  document.getElementById("scroll").textContent = "SCROLL: " + r.toFixed(3);
+  document.getElementById("fps").textContent = "FPS: " + fps;
+  document.getElementById("tick").textContent = "TICK: " + tick;
+
+}, 100);
+</script>
+
+</body>
+</html>

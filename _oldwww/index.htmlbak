@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Legaisee – Business Archaeology & Authority Systems</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #050509;
+      --black-soft: #0b0b12;
+      --gold: #f5c76a;
+      --gold-bright: #ffe4a1;
+      --gold-deep: #c89a3c;
+      --diamond: #f9f9ff;
+      --cosmic-violet: #3b2b5f;
+      --accent-gold: #ffe4a1;
+      --max-width: 1200px;
+      --gold-gradient: (to right, #EFAE27, #FEEC6C, #AD6C04);
+      --background-gold: (to right, #EFAE27, #FEEC6C, #AD6C04);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Montserrat', system-ui, sans-serif;
+      background: var(--black);
+      color: var(--diamond);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 90;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(5, 5, 9, 0.95), rgba(5, 5, 9, 0.75), transparent);
+      border-bottom: 1px solid rgba(245, 199, 106, 0.12);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      color: var(--gold);
+    }
+
+    .logo-mark {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: conic-gradient(from 210deg, var(--gold), var(--gold-deep), #fff7d6, var(--gold));
+      box-shadow: 0 0 18px rgba(245, 199, 106, 0.7), 0 0 40px rgba(0, 0, 0, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.2rem;
+      color: rgba(249, 249, 255, 0.78);
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), var(--accent-gold));
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      padding: 0.55rem 1.4rem;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 199, 106, 0.7);
+      background: radial-gradient(circle at top left, rgba(245, 199, 106, 0.25), transparent 55%);
+      box-shadow: 0 0 18px rgba(245, 199, 106, 0.35), 0 0 40px rgba(0, 0, 0, 0.9);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .nav-cta:hover {
+      background: radial-gradient(circle at top left, rgba(245, 199, 106, 0.4), transparent 55%);
+      box-shadow: 0 0 25px rgba(245, 199, 106, 0.5), 0 0 50px rgba(0, 0, 0, 0.9);
+      transform: translateY(-2px);
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 0 5rem;
+      overflow: hidden;
+      background: radial-gradient(circle at top, #141428 0, var(--black) 45%, #000 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -10%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(245, 199, 106, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(59, 43, 95, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(245, 199, 106, 0.03) 0%, transparent 60%);
+      opacity: 0.6;
+      z-index: 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .hero { padding-top: 6rem; min-height: auto; }
+    }
+
+    .hero-content {
+      max-width: 640px;
+    }
+
+    .hero-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      font-size: 0.7rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      line-height: 1.15;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      color: var(--diamond);
+    }
+
+    .hero h1 em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .hero-narrative {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: rgba(249, 249, 255, 0.75);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-narrative p {
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-narrative strong {
+      color: var(--diamond);
+      font-weight: 500;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary {
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+      color: #1a1305;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.75rem;
+      box-shadow: 0 0 20px rgba(245, 199, 106, 0.5), 0 0 40px rgba(0, 0, 0, 0.9);
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 30px rgba(245, 199, 106, 0.7), 0 0 60px rgba(0, 0, 0, 0.9);
+    }
+
+    .btn-ghost {
+      padding: 1rem 1.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(249, 249, 255, 0.3);
+      background: transparent;
+      color: rgba(249, 249, 255, 0.8);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(245, 199, 106, 0.05);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(249, 249, 255, 0.5);
+    }
+
+    .hero-meta span {
+      position: relative;
+      padding-left: 1.2rem;
+    }
+
+    .hero-meta span::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--gold);
+      transform: translateY(-50%);
+      box-shadow: 0 0 10px rgba(245, 199, 106, 0.8);
+    }
+
+    /* HERO SIDEBAR CARD */
+    .hero-sidebar {
+      position: relative;
+    }
+
+    .hero-card {
+      background: rgba(5, 5, 9, 0.6);
+      border-radius: 24px;
+      border: 1px solid rgba(245, 199, 106, 0.2);
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      transition: all 0.4s ease;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -30%;
+      width: 30%;
+      height: 100%;
+      background: radial-gradient(
+        ellipse 80% 100% at center,
+        rgba(255, 180, 100, 0.12) 0%,
+        rgba(255, 160, 80, 0.06) 40%,
+        transparent 70%
+      );
+      filter: blur(8px);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .hero-card:hover::before {
+      animation: spotlight-sweep 5s ease-in-out forwards;
+      animation-delay: 1s;
+      opacity: 1;
+    }
+
+    .hero-card:hover {
+      border-color: rgba(245, 199, 106, 0.35);
+      transform: translateY(-3px);
+    }
+
+    @keyframes spotlight-sweep {
+      0% { left: -30%; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { left: 130%; opacity: 0; }
+    }
+
+    .hero-card-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .hero-card-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.3;
+    }
+
+    .hero-card-title span { color: var(--gold); }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-stat {
+      padding: 1rem;
+      border-radius: 12px;
+      background: rgba(5, 5, 9, 0.8);
+      border: 1px solid rgba(249, 249, 255, 0.08);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-stat::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -30%;
+      width: 30%;
+      height: 100%;
+      background: radial-gradient(
+        ellipse 80% 100% at center,
+        rgba(255, 180, 100, 0.15) 0%,
+        rgba(255, 160, 80, 0.08) 40%,
+        transparent 70%
+      );
+      filter: blur(6px);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .hero-stat:hover::before {
+      animation: spotlight-sweep 5s ease-in-out forwards;
+      animation-delay: 1s;
+      opacity: 1;
+    }
+
+    .hero-stat:hover {
+      background: rgba(245, 199, 106, 0.08);
+      border-color: rgba(245, 199, 106, 0.2);
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: 0.3rem;
+      color: var(--diamond);
+      font-family: 'Cinzel', serif;
+    }
+
+    .hero-stat span {
+      font-size: 0.7rem;
+      color: rgba(249, 249, 255, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: rgba(249, 249, 255, 0.5);
+      padding-top: 1rem;
+      border-top: 1px solid rgba(249, 249, 255, 0.1);
+    }
+
+    .hero-card-tag {
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(245, 199, 106, 0.5);
+      background: rgba(5, 5, 9, 0.8);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 6rem 0;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .stage-heading {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      line-height: 1.2;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: rgba(249, 249, 255, 0.6);
+      line-height: 1.6;
+    }
+
+    /* SERVICES */
+    .services {
+      background: linear-gradient(to bottom, var(--black), rgba(59, 43, 95, 0.15), var(--black));
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+    .service-card {
+      background: rgba(5, 5, 9, 0.6);
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid rgba(245, 199, 106, 0.15);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(5px);
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -30%;
+      width: 30%;
+      height: 100%;
+      background: radial-gradient(
+        ellipse 80% 100% at center,
+        rgba(255, 180, 100, 0.1) 0%,
+        rgba(255, 160, 80, 0.05) 40%,
+        transparent 70%
+      );
+      filter: blur(8px);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .service-card:hover::before {
+      animation: spotlight-sweep 5s ease-in-out forwards;
+      animation-delay: 1s;
+      opacity: 1;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(245, 199, 106, 0.3);
+      background: rgba(5, 5, 9, 0.8);
+    }
+
+    .service-tag {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+      color: var(--diamond);
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      color: rgba(249, 249, 255, 0.65);
+      line-height: 1.7;
+    }
+
+    /* MANIFESTO SECTION */
+    .manifesto {
+      background: linear-gradient(to bottom, var(--black), rgba(245, 199, 106, 0.03), var(--black));
+      padding: 8rem 0;
+    }
+
+    .manifesto-content {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .manifesto-text {
+      font-size: 1.15rem;
+      line-height: 2.2;
+      color: rgba(249, 249, 255, 0.7);
+    }
+
+    .manifesto-text p {
+      margin-bottom: 2rem;
+    }
+
+    .manifesto-text strong {
+      color: var(--diamond);
+      font-weight: 500;
+    }
+
+    .manifesto-text em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .manifesto-divider {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 3rem auto;
+      opacity: 0.5;
+    }
+
+    /* PROCESS SECTION */
+    .process {
+      background: var(--black);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 900px) {
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .process-grid { grid-template-columns: 1fr; }
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      position: relative;
+    }
+
+    .process-step::after {
+      content: "";
+      position: absolute;
+      right: -0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 60%;
+      background: linear-gradient(to bottom, transparent, rgba(245, 199, 106, 0.3), transparent);
+    }
+
+    .process-step:last-child::after { display: none; }
+
+    @media (max-width: 900px) {
+      .process-step::after { display: none; }
+    }
+
+    .step-number {
+      font-family: 'Cinzel', serif;
+      font-size: 3rem;
+      color: rgba(245, 199, 106, 0.2);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .step-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .step-desc {
+      font-size: 0.9rem;
+      color: rgba(249, 249, 255, 0.6);
+      line-height: 1.6;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: linear-gradient(to bottom, var(--black), rgba(59, 43, 95, 0.2), var(--black));
+      padding: 8rem 0;
+      text-align: center;
+    }
+
+    .cta-section .stage-heading {
+      margin-bottom: 2rem;
+    }
+
+    .cta-text {
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      font-size: 1.1rem;
+      line-height: 1.9;
+      color: rgba(249, 249, 255, 0.7);
+    }
+
+    .cta-note {
+      font-size: 0.8rem;
+      color: rgba(249, 249, 255, 0.4);
+      margin-top: 2rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 3rem 0 2rem;
+      background: #020207;
+      border-top: 1px solid rgba(245, 199, 106, 0.15);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: rgba(249, 249, 255, 0.5);
+    }
+
+    .footer-inner span:first-child {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+    }
+
+    /* SMOOTH SCROLL */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* SELECTION */
+    ::selection {
+      background: rgba(245, 199, 106, 0.3);
+      color: var(--diamond);
+    }
+  </style>
+<base target="_blank">
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <div class="logo-mark"></div>
+        <span>LEGAISEE</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#method">Method</a>
+        <a href="#process">Process</a>
+        <a href="#survey">Survey</a>
+      </nav>
+      <a href="#survey" class="nav-cta">Begin Survey</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="hero-eyebrow">Business Archaeology & Authority Systems</span>
+          <h1>
+            Most businesses don't lose because they lack strategy.<br>
+            They lose because they <em>forget what already worked.</em>
+          </h1>
+
+          <div class="hero-narrative">
+            <p>Not all at once. It happens in pieces.</p>
+            <p>Something performs… and doesn't get followed up. A campaign works… and quietly disappears. A platform starts gaining traction… and then goes silent.</p>
+            <p>Nothing feels like a mistake when it happens. But over time, everything that once connected… doesn't anymore.</p>
+            <p>And eventually, you're left trying to build forward <strong>without anything behind you.</strong></p>
+          </div>
+
+          <div class="hero-cta-row">
+            <a href="#survey" class="btn-primary">Begin with a Site Survey</a>
+            <a href="#method" class="btn-ghost">Explore the Method</a>
+          </div>
+
+          <div class="hero-meta">
+            <span>Deep Historical Research</span>
+            <span>Sequence Reconstruction</span>
+            <span>Evidence-Based Restoration</span>
+          </div>
+        </div>
+
+        <div class="hero-sidebar">
+          <div class="hero-card">
+            <div class="hero-card-label">The Archaeology Process</div>
+            <div class="hero-card-title">
+              <span>Raw</span> → Cut → <span>Polished</span> → Displayed
+            </div>
+            <div class="hero-stats">
+              <div class="hero-stat">
+                <strong>40+</strong>
+                <span>Channels Excavated</span>
+              </div>
+              <div class="hero-stat">
+                <strong>15-25</strong>
+                <span>Assets Recovered</span>
+              </div>
+              <div class="hero-stat">
+                <strong>3</strong>
+                <span>Transformation Stages</span>
+              </div>
+              <div class="hero-stat">
+                <strong>1</strong>
+                <span>Authority System</span>
+              </div>
+            </div>
+            <div class="hero-card-footer">
+              <span>From buried history to visible authority</span>
+              <span class="hero-card-tag">By Application</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE PROBLEM / MANIFESTO -->
+    <section class="manifesto" id="method">
+      <div class="container">
+        <div class="manifesto-content">
+          <div class="stage-heading">The Pattern of Abandonment</div>
+
+          <div class="manifesto-text">
+            <p>That's usually where people decide they need <strong>more</strong> marketing. More content. More ideas. More effort.</p>
+
+            <p>But if you look closely, that's not the problem.</p>
+
+            <p>The problem is… <em>something valuable was already built and then abandoned.</em> Not intentionally. Just… never fully understood. Or never fully used. Or replaced before it had time to compound.</p>
+
+            <p>So instead of stacking progress, everything resets. Again and again.</p>
+
+            <div class="manifesto-divider"></div>
+
+            <p>If you've ever had the sense that your business should be further ahead than it is… or that you've already done work that should still be paying off… you're not imagining it.</p>
+
+            <p>You're just looking at the surface.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE SOLUTION -->
+    <section class="services">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="stage-heading">Business Archaeology</h2>
+          <p class="section-subtitle">Not as a metaphor. As a method. Because the process is the same every time.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-tag">Phase 01</div>
+            <h3>Survey</h3>
+            <p>You don't start by rebuilding. You start by surveying. Mapping what exists across 40+ channels—public records, private archives, employee memory.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-tag">Phase 02</div>
+            <h3>Excavate</h3>
+            <p>Then you dig. Carefully. Extracting assets that still carry signal—campaigns, sequences, decisions, moments where things shifted.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="service-tag">Phase 03</div>
+            <h3>Restore</h3>
+            <p>Only then do you restore. Reconstructing what worked, why it worked, and how it translates to today's platforms and psychology.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT GETS FOUND -->
+    <section class="manifesto" style="background: linear-gradient(to bottom, var(--black), rgba(245, 199, 106, 0.02), var(--black));">
+      <div class="container">
+        <div class="manifesto-content">
+          <div class="stage-heading">What Gets Reconstructed</div>
+
+          <div class="manifesto-text">
+            <p>Most of the time, what's buried isn't obvious. It's not sitting there labeled <em>"use this again."</em></p>
+
+            <p>It's scattered. Disconnected. Out of sequence.</p>
+
+            <p>But when it gets reconstructed properly, something strange happens. Things don't feel new. They feel like they <strong>finally make sense.</strong></p>
+
+            <div class="manifesto-divider"></div>
+
+            <p>That's usually the point where the conversation shifts.</p>
+
+            <p>From: <em>"What should we do next?"</em><br>
+            To: <em>"How did we not see this before?"</em></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE PROCESS -->
+    <section class="process" id="process">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="stage-heading">The Method</h2>
+          <p class="section-subtitle">What I do is simple to describe. Not simple to do.</p>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-step">
+            <div class="step-number">01</div>
+            <div class="step-title">Survey</div>
+            <div class="step-desc">Map 40+ channels across public, private, and human sources</div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">02</div>
+            <div class="step-title">Excavate</div>
+            <div class="step-desc">Extract assets, sequences, and decision points</div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">03</div>
+            <div class="step-title">Analyze</div>
+            <div class="step-desc">Determine what's intact, broken, or never fully uncovered</div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">04</div>
+            <div class="step-title">Restore</div>
+            <div class="step-desc">Transform proven tactics into modern authority systems</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE INVITATION -->
+    <section class="manifesto">
+      <div class="container">
+        <div class="manifesto-content">
+          <div class="stage-heading">The Invitation</div>
+
+          <div class="manifesto-text">
+            <p>If you're still reading this, you probably already feel it. That sense that there's <strong>more behind what you've done</strong> than what you're currently using.</p>
+
+            <p>You don't need to commit to anything to check that. You just need to look. Lightly at first. See where things are. What exists. What still has signal.</p>
+
+            <p><em>That's where this starts.</em></p>
+
+            <div class="manifesto-divider"></div>
+
+            <p>From there, it either stops… or it goes deeper.</p>
+
+            <p>Most people are surprised which direction they choose.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="cta-section" id="survey">
+      <div class="container">
+        <h2 class="stage-heading">There's already a version of your business<br>that worked better than what you're doing now.</h2>
+
+        <p class="cta-text">Most people never go back to find it.</p>
+
+        <a href="#" class="btn-primary" style="font-size: 0.85rem; padding: 1.2rem 2.5rem;">Begin with a Site Survey</a>
+
+        <p class="cta-note">Limited to 3 new engagements per quarter. Current wait: 6 weeks.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>LEGAISEE — Business Archaeology & Authority Systems</span>
+      <span>Discreet. Invitation‑only. Evidence‑based.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add loaded class to images when they intersect
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('loaded');
+        }
+      });
+    }, { threshold: 0.1 });
+  </script>
+</body>
+</html>

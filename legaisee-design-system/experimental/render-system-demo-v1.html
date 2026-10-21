@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEGAiSEE Render System Demo V1</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/legaisee-design-system/assets/css/lvos-core.css">
+<<link rel="stylesheet" href="/legaisee-design-system/assets/css/lvos-environment.css">
+<link rel="stylesheet" href="/legaisee-design-system/assets/css/lvos-materials.css">
+
+
+<section class="section space-2xl stack-lg">
+
+```
+<div class="museum-label">
+    LEGAiSEE RENDER SYSTEM
+</div>
+
+<h1 class="hero-title">
+    Materials Respond To Light
+</h1>
+
+<p class="body-copy">
+    Lighting is a coordinate system.
+    Materials interpret lighting.
+    Depth establishes hierarchy.
+    Importance determines attention.
+</p>
+```
+
+</section>
+
+<main class="stack-xl">
+
+```
+<section class="section space-xl">
+
+    <div class="gallery-header">
+
+        <div class="museum-label">
+            FOUNDATION
+        </div>
+
+        <h2 class="section-title">
+            Render Demonstrations
+        </h2>
+
+    </div>
+
+</section>
+```
+
+<!-- PART 4 STARTS BELOW THIS LINE -->
+
+<section class="section space-2xl gallery">
+
+
+<div class="gallery-header">
+
+    <div class="museum-label">
+        LIGHT POSITION SYSTEM
+    </div>
+
+    <h2 class="section-title">
+        Nine Lighting Coordinates
+    </h2>
+
+    <p class="body-copy">
+        Lighting is treated as a coordinate system rather than an effect.
+        Every material responds differently depending on light origin.
+    </p>
+
+</div>
+
+<div class="gallery-grid grid-3">
+
+    <div class="render-object material-lacquer light-tl depth-2 card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">LIGHT-TL</div>
+        </div>
+    </div>
+
+    <div class="render-object material-lacquer light-tc depth-2 card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">LIGHT-TC</div>
+        </div>
+    </div>
+
+    <div class="render-object material-lacquer light-tr depth-2 card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">LIGHT-TR</div>
+        </div>
+    </div>
+
+    <div class="render-object material-lacquer light-cl depth-2 card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">LIGHT-CL</div>
+        </div>
+    </div>
+
+    <div class="render-object material-lacquer light-cc depth-2 card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">LIGHT-CC</div>
+        </div>
+    </div>
+
+    <div class="render-object material-lacquer light-cr depth-2 card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">LIGHT-CR</div>
+        </div>
+    </div>
+
+    <div class="render-object material-lacquer light-bl depth-2 card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">LIGHT-BL</div>
+        </div>
+    </div>
+
+    <div class="render-object material-lacquer light-bc depth-2 card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">LIGHT-BC</div>
+        </div>
+    </div>
+
+    <div class="render-object material-lacquer light-br depth-2 card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">LIGHT-BR</div>
+        </div>
+    </div>
+
+</div>
+```
+
+</section>
+
+<section class="section space-2xl gallery">
+
+```
+<div class="gallery-header">
+
+    <div class="museum-label">
+        DEPTH SYSTEM
+    </div>
+
+    <h2 class="section-title">
+        Architectural Layer Hierarchy
+    </h2>
+
+    <p class="body-copy">
+        Depth is controlled independently from lighting and material response.
+        Objects move through hierarchy without changing materials.
+    </p>
+
+</div>
+
+<div class="gallery-grid grid-auto">
+
+    <div class="render-object material-frame depth-0 card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">DEPTH-0</div>
+            <p class="body-copy">
+                Surface plane.
+            </p>
+        </div>
+    </div>
+
+    <div class="render-object material-frame depth-1 card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">DEPTH-1</div>
+            <p class="body-copy">
+                Slight elevation.
+            </p>
+        </div>
+    </div>
+
+    <div class="render-object material-frame depth-2 card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">DEPTH-2</div>
+            <p class="body-copy">
+                Standard exhibit layer.
+            </p>
+        </div>
+    </div>
+
+    <div class="render-object material-frame depth-3 card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">DEPTH-3</div>
+            <p class="body-copy">
+                Feature layer.
+            </p>
+        </div>
+    </div>
+
+    <div class="render-object material-frame depth-4 card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">DEPTH-4</div>
+            <p class="body-copy">
+                Primary attention layer.
+            </p>
+        </div>
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- PART 5 STARTS BELOW THIS LINE -->
+<div class="gallery-header">
+
+    <div class="museum-label">
+        MATERIAL SYSTEM
+    </div>
+
+    <h2 class="section-title">
+        Approved Materials
+    </h2>
+
+    <p class="body-copy">
+        Materials define how surfaces interpret light. The lighting system remains constant while material behavior changes.
+    </p>
+
+</div>
+
+<div class="gallery-grid grid-4">
+
+    <div class="render-object material-bg card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">MATERIAL-BG</div>
+        </div>
+    </div>
+
+    <div class="render-object material-lacquer lacquer-reflection card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">MATERIAL-LACQUER</div>
+        </div>
+    </div>
+
+    <div class="render-object material-glass museum-glass fresnel card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">MATERIAL-GLASS</div>
+        </div>
+    </div>
+
+    <div class="render-object material-gold specular card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">MATERIAL-GOLD</div>
+        </div>
+    </div>
+
+    <div class="render-object material-label card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">MATERIAL-LABEL</div>
+        </div>
+    </div>
+
+    <div class="render-object material-frame gold-border-inner card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">MATERIAL-FRAME</div>
+        </div>
+    </div>
+
+    <div class="render-object material-text-panel card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">MATERIAL-TEXT-PANEL</div>
+        </div>
+    </div>
+
+    <div class="render-object material-action material-gold card card-md gallery-tile">
+        <div class="card-panel">
+            <div class="museum-label">MATERIAL-ACTION</div>
+        </div>
+    </div>
+
+</div>
+<div class="gallery-header">
+
+    <div class="museum-label">
+        IMPORTANCE SYSTEM
+    </div>
+
+    <h2 class="section-title">
+        Attention Hierarchy
+    </h2>
+
+</div>
+
+<div class="gallery-grid grid-auto">
+
+    <div class="render-object importance-1 material-text-panel card card-md">
+        <div class="card-panel">
+            <div class="museum-label">IMPORTANCE-1</div>
+        </div>
+    </div>
+
+    <div class="render-object importance-2 material-text-panel card card-md">
+        <div class="card-panel">
+            <div class="museum-label">IMPORTANCE-2</div>
+        </div>
+    </div>
+
+    <div class="render-object importance-3 material-text-panel card card-md">
+        <div class="card-panel">
+            <div class="museum-label">IMPORTANCE-3</div>
+        </div>
+    </div>
+
+    <div class="render-object importance-4 material-text-panel card card-md">
+        <div class="card-panel">
+            <div class="museum-label">IMPORTANCE-4</div>
+        </div>
+    </div>
+
+    <div class="render-object importance-5 material-gold specular card card-md">
+        <div class="card-panel">
+            <div class="museum-label">IMPORTANCE-5</div>
+        </div>
+    </div>
+
+</div>
+<div class="gallery-header">
+
+    <div class="museum-label">
+        IMAGE FRAME SYSTEM
+    </div>
+
+    <h2 class="section-title">
+        Exhibition Frame Formats
+    </h2>
+
+</div>
+
+<div class="gallery-grid grid-3">
+
+    <div class="render-object material-frame gold-border-inner depth-3 card">
+
+        <div style="aspect-ratio:3/4;"></div>
+
+        <div class="card-panel">
+            <div class="museum-label">PORTRAIT</div>
+        </div>
+
+    </div>
+
+    <div class="render-object material-frame gold-border-inner depth-3 card">
+
+        <div style="aspect-ratio:16/9;"></div>
+
+        <div class="card-panel">
+            <div class="museum-label">LANDSCAPE</div>
+        </div>
+
+    </div>
+
+    <div class="render-object material-frame gold-border-inner depth-3 card">
+
+        <div style="aspect-ratio:1/1;"></div>
+
+        <div class="card-panel">
+            <div class="museum-label">ARTIFACT</div>
+        </div>
+
+    </div>
+
+</div>
+<div class="gallery-header">
+
+    <div class="museum-label">
+        ACTION SYSTEM
+    </div>
+
+    <h2 class="section-title">
+        Call To Action Gallery
+    </h2>
+
+    <p class="body-copy">
+        Actions inherit hierarchy from importance, depth, material, and light.
+    </p>
+
+</div>
+
+<div class="gallery-grid grid-3">
+
+    <a href="#"
+       class="render-object material-action material-gold specular gold-border depth-3 importance-5 card card-md">
+
+        <div class="card-panel stack-sm">
+
+            <div class="museum-label">
+                PRIMARY
+            </div>
+
+            <div class="cta">
+                Begin Excavation
+            </div>
+
+        </div>
+
+    </a>
+
+    <a href="#"
+       class="render-object material-action material-glass museum-glass fresnel gold-border depth-2 importance-4 card card-md">
+
+        <div class="card-panel stack-sm">
+
+            <div class="museum-label">
+                SECONDARY
+            </div>
+
+            <div class="cta">
+                Recover History
+            </div>
+
+        </div>
+
+    </a>
+
+    <a href="#"
+       class="render-object material-action material-lacquer lacquer-reflection gold-border depth-2 importance-3 card card-md">
+
+        <div class="card-panel stack-sm">
+
+            <div class="museum-label">
+                TERTIARY
+            </div>
+
+            <div class="cta">
+                View Artifacts
+            </div>
+
+        </div>
+
+    </a>
+
+</div>
+<div class="gallery-header">
+
+    <div class="museum-label">
+        COMPLETE EXAMPLE
+    </div>
+
+    <h2 class="section-title">
+        LEGAiSEE Business Archaeology
+    </h2>
+
+</div>
+
+<div class="render-object
+            material-lacquer
+            lacquer-reflection
+            light-tl
+            depth-4
+            importance-5
+            gold-border-inner
+            card
+            card-lg">
+
+    <div class="card-panel stack-lg">
+
+        <div>
+
+            <div class="museum-label">
+                INSTITUTIONAL MEMORY RECOVERY
+            </div>
+
+            <h2 class="section-title">
+                Your Most Valuable Assets May Already Exist
+            </h2>
+
+        </div>
+
+        <p class="body-copy">
+
+            LEGAiSEE excavates forgotten content,
+            historical marketing assets,
+            legacy authority signals,
+            institutional knowledge,
+            archived campaigns,
+            operational intelligence,
+            and recoverable market value hidden inside years of business activity.
+
+        </p>
+
+        <div class="grid grid-3">
+
+            <div class="render-object material-glass museum-glass fresnel card card-sm">
+                <div class="card-panel">
+                    <div class="museum-label">ARCHIVES</div>
+                </div>
+            </div>
+
+            <div class="render-object material-glass museum-glass fresnel card card-sm">
+                <div class="card-panel">
+                    <div class="museum-label">AUTHORITY</div>
+                </div>
+            </div>
+
+            <div class="render-object material-glass museum-glass fresnel card card-sm">
+                <div class="card-panel">
+                    <div class="museum-label">RECOVERY</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div>
+
+            <a href="#"
+               class="render-object
+                      material-action
+                      material-gold
+                      specular
+                      gold-border
+                      depth-3
+                      importance-5
+                      card">
+
+                <div class="card-panel">
+
+                    <div class="cta">
+                        Schedule An Excavation
+                    </div>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+</section> 
+    </main> 
+
+<!-- DISABLED FOR DEBUG -->
+<!-- <script src="https://www.legaisee.com/legaisee-design-system/assets/js/lvos-render-engine.js"></script> -->
+<script src="https://www.legaisee.com/legaisee-design-system/assets/js/lvos-light-field.js"></script>
+    </body> 
+    </html>

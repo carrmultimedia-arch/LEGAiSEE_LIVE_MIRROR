@@ -1,0 +1,4277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEGAISEE — Master Section Library · Part 1 of 3</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Montserrat:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+
+<style>
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   ROOT TOKENS — Atmospheric Depth System
+   ────────────────────────────────────────────────────────────────────────────── */
+:root {
+  /* Depth Layers — Z-axis color progression */
+  --z-void:        #030303;
+  --z-abyss:       #080808;
+  --z-deep:        #0d0d0d;
+  --z-mid:         #141414;
+  --z-near:        #1c1c1c;
+  --z-surface:     #242424;
+  
+  /* Atmospheric Gold — Not flat, but luminous */
+  --gold-core:     #FFF8E7;
+  --gold-bright:   #FFD700;
+  --gold-warm:     #E5B84C;
+  --gold-rich:     #C9A84C;
+  --gold-deep:     #B8860B;
+  --gold-ember:    #8B6914;
+  --gold-ash:      #5C4A1F;
+  
+  /* Violet Atmosphere — Museum drama lighting */
+  --violet-core:   #2D1B69;
+  --violet-mist:   #1a0a2e;
+  --violet-deep:   #0f0518;
+  --violet-glow:   #4a2c7a;
+  --violet-ember:  #6B4BA8;
+  
+  /* Light — Not white, but warm artifact illumination */
+  --light-pure:    #FFFFFF;
+  --light-warm:    #F5F0E8;
+  --light-amber:   #E8DCC8;
+  --light-dim:     #B8A890;
+  --light-faint:   #7A7060;
+  --light-ghost:   #4A4438;
+  
+  /* Atmospheric Gradients — Simulating light sources in 3D space */
+  --spotlight-top:    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(255,215,0,0.08) 0%, transparent 70%);
+  --spotlight-center: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255,215,0,0.05) 0%, transparent 60%);
+  --spotlight-bottom: radial-gradient(ellipse 60% 40% at 50% 100%, rgba(201,168,76,0.06) 0%, transparent 70%);
+  --volumetric-gold:  radial-gradient(ellipse 80% 60% at 30% 40%, rgba(255,215,0,0.04) 0%, transparent 50%);
+  --volumetric-violet: radial-gradient(ellipse 70% 70% at 70% 60%, rgba(74,44,122,0.08) 0%, transparent 50%);
+  --god-ray:          linear-gradient(180deg, transparent 0%, rgba(255,215,0,0.02) 30%, rgba(255,215,0,0.01) 60%, transparent 100%);
+  
+  /* Shadow System — Cast shadows for 3D objects */
+  --shadow-ambient:   0 0 0 1px rgba(255,215,0,0.03);
+  --shadow-lift:      0 8px 32px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,215,0,0.04);
+  --shadow-float:     0 20px 60px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,215,0,0.06), 0 -2px 20px rgba(255,215,0,0.02);
+  --shadow-cast:      0 30px 80px rgba(0,0,0,0.9), 0 10px 30px rgba(0,0,0,0.5);
+  --shadow-glow:      0 0 40px rgba(255,215,0,0.08), 0 0 80px rgba(255,215,0,0.03);
+  --shadow-violet:    0 0 60px rgba(74,44,122,0.15), 0 0 120px rgba(74,44,122,0.05);
+  
+  /* Typography */
+  --font-ornate:  "Cinzel Decorative", "Cinzel", serif;
+  --font-display: "Cinzel", Georgia, serif;
+  --font-body:    "Montserrat", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", monospace;
+  
+  /* Spacing — Generous, museum-scale */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+  --space-xxl: 14rem;
+  
+  /* Timing */
+  --ease-dramatic: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth:   cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-vault:    cubic-bezier(0.87, 0, 0.13, 1);
+  
+  /* Z-Index Scale */
+  --layer-bg:      -100;
+  --layer-fog:     -50;
+  --layer-content:  10;
+  --layer-float:    50;
+  --layer-overlay:  100;
+  --layer-modal:    200;
+  --layer-nav:      300;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   RESET — Fullscreen immersive canvas
+   ────────────────────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--z-void);
+  color: var(--light-warm);
+  line-height: 1.7;
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(255,215,0,0.2);
+  color: var(--light-pure);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   ATMOSPHERIC BACKGROUND SYSTEM — 3D Environment Layers
+   Each section is a ROOM in the museum, not a block on a page
+   ────────────────────────────────────────────────────────────────────────────── */
+
+/* Base room — all sections are rooms */
+.room {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* Atmospheric depth layers */
+  background: 
+    var(--spotlight-top),
+    var(--spotlight-bottom),
+    var(--volumetric-gold),
+    var(--z-abyss);
+}
+
+/* Room with static photo background — the photo is PART of the architecture */
+.room--photo {
+  background: var(--z-abyss);
+}
+
+.room--photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.12;
+  filter: saturate(0.15) contrast(1.4) brightness(0.8);
+  z-index: var(--layer-bg);
+  /* Subtle parallax response */
+  transform: translateZ(-1px) scale(1.1);
+}
+
+/* Room-specific photo assignments */
+.room--formation::before { background-image: url("/assets/bg-formation.jpg"); }
+.room--discovery::before { background-image: url("/assets/bg-discovery.jpg"); }
+.room--refinement::before { background-image: url("/assets/bg-refinement.jpg"); }
+.room--prestige::before { background-image: url("/assets/bg-prestige.jpg"); }
+.room--museum::before { background-image: url("/assets/bg-museum.jpg"); }
+
+/* Atmospheric overlay — fog/mist layer */
+.room--photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 100% 50% at 50% 0%, rgba(3,3,3,0.8) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 50% at 50% 100%, rgba(3,3,3,0.9) 0%, transparent 50%);
+  z-index: var(--layer-fog);
+  pointer-events: none;
+}
+
+/* Violet atmospheric room */
+.room--violet {
+  background: 
+    var(--volumetric-violet),
+    var(--spotlight-center),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(45,27,105,0.3) 0%, var(--violet-deep) 70%);
+}
+
+/* Gold ceremonial room */
+.room--gold {
+  background: 
+    var(--spotlight-top),
+    var(--spotlight-bottom),
+    radial-gradient(ellipse 40% 60% at 50% 50%, rgba(255,215,0,0.04) 0%, var(--z-abyss) 70%);
+}
+
+/* Deep void room — for transitions */
+.room--void {
+  background: var(--z-void);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   3D PERSPECTIVE SYSTEM — Objects exist in space
+   ────────────────────────────────────────────────────────────────────────────── */
+.perspective-container {
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+}
+
+.float-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.8s var(--ease-dramatic);
+}
+
+.float-3d:hover {
+  transform: translateZ(30px) rotateX(2deg) rotateY(-2deg);
+}
+
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.3s var(--ease-smooth);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   VAULT DOOR — The entrance animation
+   ────────────────────────────────────────────────────────────────────────────── */
+@keyframes vaultOpen {
+  0% {
+    transform: perspective(2000px) rotateY(0deg);
+    opacity: 1;
+  }
+  40% {
+    transform: perspective(2000px) rotateY(-25deg);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(2000px) rotateY(-95deg);
+    opacity: 0;
+  }
+}
+
+@keyframes vaultReveal {
+  0% {
+    clip-path: inset(0 50% 0 50%);
+    filter: brightness(0.2);
+  }
+  50% {
+    clip-path: inset(0 10% 0 10%);
+    filter: brightness(0.6);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    filter: brightness(1);
+  }
+}
+
+@keyframes vaultLightSweep {
+  0% {
+    background-position: -200% center;
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    background-position: 200% center;
+    opacity: 0;
+  }
+}
+
+.vault-door {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: 
+    linear-gradient(135deg, var(--z-void) 0%, var(--z-deep) 50%, var(--z-void) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: left center;
+}
+
+.vault-door::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255,215,0,0.015) 2px,
+      rgba(255,215,0,0.015) 4px
+    );
+}
+
+.vault-door__ring {
+  width: 200px;
+  height: 200px;
+  border: 3px solid var(--gold-ember);
+  border-radius: 50%;
+  position: relative;
+  animation: vaultSpin 3s linear infinite;
+}
+
+.vault-door__ring::before,
+.vault-door__ring::after {
+  content: "";
+  position: absolute;
+  border: 2px solid var(--gold-ash);
+  border-radius: 50%;
+}
+
+.vault-door__ring::before {
+  inset: 20px;
+  border-color: var(--gold-deep);
+}
+
+.vault-door__ring::after {
+  inset: 45px;
+  border-color: var(--gold-ember);
+}
+
+.vault-door__center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-ornate);
+  font-size: 1.5rem;
+  color: var(--gold-warm);
+  letter-spacing: 0.3em;
+}
+
+.vault-door__light-sweep {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,215,0,0.1), transparent);
+  background-size: 50% 100%;
+  animation: vaultLightSweep 2s ease-in-out forwards;
+  pointer-events: none;
+}
+
+.vault-door.is-opening {
+  animation: vaultOpen 2.5s var(--ease-vault) forwards;
+}
+
+.vault-door.is-opening + * {
+  animation: vaultReveal 2s var(--ease-dramatic) 0.5s both;
+}
+
+@keyframes vaultSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   DISCOVERY REVEALS — Hidden artifacts that emerge on interaction
+   ────────────────────────────────────────────────────────────────────────────── */
+.discovery-spot {
+  position: relative;
+  cursor: pointer;
+}
+
+.discovery-spot::before {
+  content: "✦";
+  position: absolute;
+  font-size: 0.6rem;
+  color: var(--gold-ember);
+  opacity: 0.3;
+  animation: discoveryPulse 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes discoveryPulse {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.3); }
+}
+
+.discovery-reveal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--layer-overlay);
+  background: rgba(3,3,3,0.95);
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s var(--ease-dramatic);
+}
+
+.discovery-reveal.is-active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.discovery-reveal__content {
+  max-width: 800px;
+  padding: var(--space-xl);
+  text-align: center;
+  transform: translateY(40px) scale(0.95);
+  transition: transform 0.8s var(--ease-spring);
+}
+
+.discovery-reveal.is-active .discovery-reveal__content {
+  transform: translateY(0) scale(1);
+}
+
+.discovery-reveal__artifact {
+  max-width: 400px;
+  margin: 0 auto var(--space-lg);
+  position: relative;
+}
+
+.discovery-reveal__artifact::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  border: 1px solid rgba(255,215,0,0.1);
+  pointer-events: none;
+}
+
+.discovery-reveal__artifact img {
+  width: 100%;
+  filter: saturate(0.6) contrast(1.2);
+  box-shadow: var(--shadow-cast);
+}
+
+.discovery-reveal__close {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255,215,0,0.2);
+  background: transparent;
+  color: var(--gold-warm);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-smooth);
+}
+
+.discovery-reveal__close:hover {
+  background: rgba(255,215,0,0.1);
+  border-color: var(--gold-bright);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   HORIZONTAL JOURNEY — Sideways scroll between major sections
+   ────────────────────────────────────────────────────────────────────────────── */
+.journey-track {
+  display: flex;
+  width: fit-content;
+  height: 100vh;
+}
+
+.journey-room {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Vertical scroll within horizontal rooms */
+.journey-room__content {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--space-xl) var(--space-lg);
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-ash) transparent;
+}
+
+.journey-room__content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.journey-room__content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.journey-room__content::-webkit-scrollbar-thumb {
+  background: var(--gold-ash);
+  border-radius: 2px;
+}
+
+/* Journey navigation dots */
+.journey-nav {
+  position: fixed;
+  right: var(--space-lg);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: var(--layer-nav);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.journey-nav__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,215,0,0.1);
+  border: 1px solid rgba(255,215,0,0.15);
+  cursor: pointer;
+  transition: all 0.4s var(--ease-dramatic);
+  position: relative;
+}
+
+.journey-nav__dot::before {
+  content: attr(data-label);
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--light-faint);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-smooth);
+}
+
+.journey-nav__dot:hover::before,
+.journey-nav__dot.is-active::before {
+  opacity: 1;
+}
+
+.journey-nav__dot.is-active {
+  background: var(--gold-bright);
+  box-shadow: 0 0 15px rgba(255,215,0,0.3);
+  transform: scale(1.3);
+}
+
+.journey-nav__dot.is-passed {
+  background: var(--gold-ash);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   TYPOGRAPHY — Dramatic, theatrical, museum-quality
+   ────────────────────────────────────────────────────────────────────────────── */
+.t-display {
+  font-family: var(--font-ornate);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--gold-warm);
+  text-shadow: 
+    0 0 60px rgba(255,215,0,0.1),
+    0 2px 10px rgba(0,0,0,0.8);
+}
+
+.t-display--glow {
+  background: linear-gradient(135deg, var(--gold-core) 0%, var(--gold-warm) 50%, var(--gold-rich) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 30px rgba(255,215,0,0.15));
+}
+
+.t-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--gold-warm);
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+}
+
+.t-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--gold-rich);
+}
+
+.t-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-ember);
+}
+
+.t-body {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  line-height: 1.8;
+  color: var(--light-amber);
+  max-width: 60ch;
+}
+
+.t-body--dim {
+  color: var(--light-dim);
+}
+
+.t-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--light-warm);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   GOLD RULE — Animated light sweep
+   ────────────────────────────────────────────────────────────────────────────── */
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-deep), var(--gold-warm), var(--gold-deep), transparent);
+  background-size: 200% 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.gold-rule::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,215,0,0.4), transparent);
+  background-size: 50% 100%;
+  animation: ruleShimmer 4s ease-in-out infinite;
+}
+
+@keyframes ruleShimmer {
+  0%, 100% { background-position: -100% center; }
+  50% { background-position: 200% center; }
+}
+
+.gold-rule--short { width: 80px; }
+.gold-rule--med   { width: 120px; }
+.gold-rule--long  { width: 200px; }
+.gold-rule--full  { width: 100%; }
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   BUTTONS — Museum switches, mechanical feel
+   ────────────────────────────────────────────────────────────────────────────── */
+.btn-vault {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 1.1rem 2.8rem;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--gold-ember);
+  background: transparent;
+  color: var(--gold-warm);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s var(--ease-dramatic);
+}
+
+.btn-vault::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--gold-deep), var(--gold-warm));
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-dramatic);
+  z-index: -1;
+}
+
+.btn-vault::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,215,0,0.1), transparent);
+  transition: left 0.8s var(--ease-dramatic);
+}
+
+.btn-vault:hover {
+  color: var(--z-void);
+  border-color: var(--gold-bright);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-vault:hover::before {
+  opacity: 1;
+}
+
+.btn-vault:hover::after {
+  left: 100%;
+}
+
+.btn-vault--solid {
+  background: linear-gradient(135deg, var(--gold-deep), var(--gold-warm));
+  color: var(--z-void);
+  border-color: var(--gold-warm);
+}
+
+.btn-vault--solid:hover {
+  background: transparent;
+  color: var(--gold-warm);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   ARTIFACT CARDS — Floating in 3D space
+   ────────────────────────────────────────────────────────────────────────────── */
+.artifact {
+  background: linear-gradient(135deg, rgba(20,20,20,0.9), rgba(28,28,28,0.8));
+  border: 1px solid rgba(255,215,0,0.06);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.6s var(--ease-dramatic);
+  transform-style: preserve-3d;
+}
+
+.artifact::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,215,0,0.04), transparent);
+  transition: left 1s var(--ease-dramatic);
+  pointer-events: none;
+}
+
+.artifact::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  transition: border-color 0.4s var(--ease-smooth);
+  pointer-events: none;
+}
+
+.artifact:hover {
+  border-color: rgba(255,215,0,0.15);
+  transform: translateY(-8px) translateZ(20px);
+  box-shadow: var(--shadow-float);
+}
+
+.artifact:hover::before {
+  left: 100%;
+}
+
+.artifact:hover::after {
+  border-color: rgba(255,215,0,0.1);
+}
+
+.artifact__frame {
+  position: relative;
+  padding: 16px;
+  background: rgba(8,8,8,0.6);
+}
+
+.artifact__frame::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(255,215,0,0.06);
+  pointer-events: none;
+}
+
+.artifact__img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  filter: saturate(0.5) contrast(1.15);
+  transition: filter 0.6s var(--ease-smooth);
+}
+
+.artifact:hover .artifact__img {
+  filter: saturate(0.7) contrast(1.2);
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   SCROLL ANIMATIONS — Reveal on scroll with dramatic timing
+   ────────────────────────────────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 1s var(--ease-dramatic);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal--left {
+  transform: translateX(-80px);
+}
+
+.reveal--right {
+  transform: translateX(80px);
+}
+
+.reveal--scale {
+  transform: scale(0.85);
+}
+
+.reveal--rotate {
+  transform: rotateY(15deg) translateY(40px);
+}
+
+.reveal.is-visible.reveal--left,
+.reveal.is-visible.reveal--right,
+.reveal.is-visible.reveal--scale,
+.reveal.is-visible.reveal--rotate {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger children */
+.reveal-group > *:nth-child(1) { transition-delay: 0s; }
+.reveal-group > *:nth-child(2) { transition-delay: 0.1s; }
+.reveal-group > *:nth-child(3) { transition-delay: 0.2s; }
+.reveal-group > *:nth-child(4) { transition-delay: 0.3s; }
+.reveal-group > *:nth-child(5) { transition-delay: 0.4s; }
+.reveal-group > *:nth-child(6) { transition-delay: 0.5s; }
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   PARTICLE DUST — Floating gold motes in the air
+   ────────────────────────────────────────────────────────────────────────────── */
+.dust-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: var(--layer-fog);
+}
+
+.dust-mote {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--gold-bright);
+  border-radius: 50%;
+  opacity: 0;
+  animation: dustFloat linear infinite;
+}
+
+@keyframes dustFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(100vh) translateX(0) scale(0);
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10vh) translateX(50px) scale(1);
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   NAVIGATION — Minimal, floating
+   ────────────────────────────────────────────────────────────────────────────── */
+.nav-float {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--layer-nav);
+  padding: var(--space-sm) var(--space-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(3,3,3,0.9), transparent);
+  pointer-events: none;
+}
+
+.nav-float > * {
+  pointer-events: all;
+}
+
+.nav-float__logo {
+  font-family: var(--font-ornate);
+  font-size: 1.3rem;
+  color: var(--gold-warm);
+  letter-spacing: 0.2em;
+}
+
+.nav-float__menu {
+  display: flex;
+  gap: var(--space-lg);
+  list-style: none;
+}
+
+.nav-float__menu a {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--light-faint);
+  position: relative;
+  padding: 0.5rem 0;
+  transition: color 0.3s var(--ease-smooth);
+}
+
+.nav-float__menu a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold-warm);
+  transition: width 0.4s var(--ease-dramatic);
+}
+
+.nav-float__menu a:hover {
+  color: var(--gold-warm);
+}
+
+.nav-float__menu a:hover::after {
+  width: 100%;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   UTILITY
+   ────────────────────────────────────────────────────────────────────────────── */
+.u-center { text-align: center; margin-left: auto; margin-right: auto; }
+.u-mb-sm { margin-bottom: var(--space-sm); }
+.u-mb-md { margin-bottom: var(--space-md); }
+.u-mb-lg { margin-bottom: var(--space-lg); }
+.u-mb-xl { margin-bottom: var(--space-xl); }
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   END PART 1 —————————————————————————————————————————————————— /*
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+ part2 = '''  LEGAISEE — THE ARCHAEOLOGICAL EXPERIENCE v3.0
+   Part 2 of 5: Room Architecture — Hero, Formation, Discovery, Refinement, Prestige
+   Each room is a 3D environment with depth, atmosphere, and discovery mechanics
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ROOM: ENTRANCE HERO — The Vault Door Opens
+   ═══════════════════════════════════════════════════════════════════════════════ */
+.room-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: var(--space-xl);
+}
+
+.room-hero__atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(255,215,0,0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 30% 70%, rgba(74,44,122,0.04) 0%, transparent 50%),
+    var(--z-abyss);
+  z-index: var(--layer-bg);
+}
+
+.room-hero__dust {
+  position: absolute;
+  inset: 0;
+  z-index: var(--layer-fog);
+  pointer-events: none;
+}
+
+/* Generate dust motes via CSS */
+.room-hero__dust::before,
+.room-hero__dust::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--gold-bright);
+  border-radius: 50%;
+  box-shadow:
+    10vw 20vh 0 0 rgba(255,215,0,0.4),
+    30vw 60vh 0 0 rgba(255,215,0,0.3),
+    50vw 30vh 0 0 rgba(255,215,0,0.5),
+    70vw 80vh 0 0 rgba(255,215,0,0.2),
+    80vw 40vh 0 0 rgba(255,215,0,0.4),
+    20vw 90vh 0 0 rgba(255,215,0,0.3),
+    60vw 10vh 0 0 rgba(255,215,0,0.5),
+    90vw 70vh 0 0 rgba(255,215,0,0.2);
+  animation: dustDrift 20s ease-in-out infinite;
+}
+
+.room-hero__dust::after {
+  animation-delay: -10s;
+  box-shadow:
+    15vw 50vh 0 0 rgba(255,215,0,0.3),
+    45vw 20vh 0 0 rgba(255,215,0,0.4),
+    65vw 90vh 0 0 rgba(255,215,0,0.2),
+    85vw 15vh 0 0 rgba(255,215,0,0.5),
+    25vw 75vh 0 0 rgba(255,215,0,0.3),
+    55vw 45vh 0 0 rgba(255,215,0,0.4),
+    75vw 55vh 0 0 rgba(255,215,0,0.2),
+    35vw 85vh 0 0 rgba(255,215,0,0.5);
+}
+
+@keyframes dustDrift {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.6; }
+  25% { transform: translateY(-20px) translateX(10px); opacity: 0.8; }
+  50% { transform: translateY(10px) translateX(-5px); opacity: 0.4; }
+  75% { transform: translateY(-10px) translateX(15px); opacity: 0.7; }
+}
+
+.room-hero__content {
+  position: relative;
+  z-index: var(--layer-content);
+  max-width: 900px;
+}
+
+.room-hero__seal {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto var(--space-lg);
+  border: 2px solid var(--gold-ember);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: sealPulse 4s ease-in-out infinite;
+}
+
+.room-hero__seal::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid var(--gold-ash);
+  border-radius: 50%;
+}
+
+.room-hero__seal::after {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  border: 1px solid rgba(255,215,0,0.1);
+  border-radius: 50%;
+}
+
+.room-hero__seal svg {
+  width: 36px;
+  height: 36px;
+  stroke: var(--gold-warm);
+  fill: none;
+  stroke-width: 1;
+}
+
+@keyframes sealPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(255,215,0,0.05); }
+  50% { box-shadow: 0 0 40px rgba(255,215,0,0.15), 0 0 80px rgba(255,215,0,0.05); }
+}
+
+.room-hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold-ember);
+  margin-bottom: var(--space-md);
+  display: inline-block;
+  padding: 0.6rem 2rem;
+  border: 1px solid rgba(255,215,0,0.1);
+  background: rgba(8,8,8,0.5);
+  backdrop-filter: blur(10px);
+}
+
+.room-hero__title {
+  margin-bottom: var(--space-md);
+}
+
+.room-hero__subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--light-dim);
+  max-width: 650px;
+  margin: 0 auto var(--space-xl);
+  line-height: 1.7;
+}
+
+.room-hero__cta {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.room-hero__scroll {
+  position: absolute;
+  bottom: var(--space-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  opacity: 0.4;
+  animation: fadeBreathe 3s ease-in-out infinite;
+}
+
+.room-hero__scroll span {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-ember);
+}
+
+.room-hero__scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--gold-deep), transparent);
+}
+
+@keyframes fadeBreathe {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ROOM: FORMATION — The Deep Earth (Stage 1)
+   Dark cave with god-rays, raw stone textures
+   ═══════════════════════════════════════════════════════════════════════════════ */
+.room-formation {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: var(--space-xl) var(--space-lg);
+}
+
+.room-formation__atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    /* God rays from above */
+    conic-gradient(from 180deg at 50% 0%, transparent 0deg, rgba(255,215,0,0.02) 10deg, transparent 20deg, rgba(255,215,0,0.015) 30deg, transparent 40deg, rgba(255,215,0,0.02) 50deg, transparent 60deg),
+    /* Deep earth glow */
+    radial-gradient(ellipse 60% 40% at 30% 80%, rgba(96,74,60,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 50% at 70% 30%, rgba(255,215,0,0.03) 0%, transparent 40%),
+    var(--z-void);
+  z-index: var(--layer-bg);
+}
+
+.room-formation__grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+  position: relative;
+  z-index: var(--layer-content);
+}
+
+.room-formation__visual {
+  position: relative;
+  perspective: 1000px;
+}
+
+.room-formation__stone {
+  position: relative;
+  transform: rotateY(-5deg) rotateX(3deg);
+  transition: transform 1s var(--ease-dramatic);
+}
+
+.room-formation__stone:hover {
+  transform: rotateY(0deg) rotateX(0deg) translateZ(30px);
+}
+
+.room-formation__stone img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  filter: saturate(0.2) contrast(1.3) brightness(0.7);
+  box-shadow: var(--shadow-cast);
+}
+
+.room-formation__stone::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  border: 1px solid rgba(255,215,0,0.05);
+  pointer-events: none;
+}
+
+.room-formation__stone::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border: 1px solid rgba(255,215,0,0.03);
+  pointer-events: none;
+}
+
+.room-formation__glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255,215,0,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  animation: glowBreathe 4s ease-in-out infinite;
+}
+
+@keyframes glowBreathe {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+}
+
+.room-formation__label {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-ember);
+  white-space: nowrap;
+}
+
+/* Discovery spots hidden in the stone */
+.room-formation__discovery {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  z-index: var(--layer-float);
+}
+
+.room-formation__discovery::before {
+  content: "✦";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.8rem;
+  color: var(--gold-bright);
+  opacity: 0.3;
+  animation: discoveryPulse 3s ease-in-out infinite;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.room-formation__discovery:hover::before {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+.room-formation__discovery:hover::after {
+  content: attr(data-hint);
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--gold-warm);
+  white-space: nowrap;
+  background: rgba(8,8,8,0.9);
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,215,0,0.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ROOM: DISCOVERY — The Vault (Stage 2)
+   Single artifact on plinth, dramatic spotlight
+   ═══════════════════════════════════════════════════════════════════════════════ */
+.room-discovery {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: var(--space-xl);
+}
+
+.room-discovery__atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    /* Central spotlight */
+    radial-gradient(ellipse 40% 50% at 50% 50%, rgba(255,215,0,0.06) 0%, transparent 60%),
+    /* Floor reflection */
+    radial-gradient(ellipse 80% 30% at 50% 90%, rgba(255,215,0,0.03) 0%, transparent 50%),
+    /* Ambient violet edge */
+    radial-gradient(ellipse 50% 100% at 0% 50%, rgba(74,44,122,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 100% at 100% 50%, rgba(74,44,122,0.05) 0%, transparent 50%),
+    var(--z-abyss);
+  z-index: var(--layer-bg);
+}
+
+.room-discovery__plinth {
+  position: relative;
+  z-index: var(--layer-content);
+  text-align: center;
+  max-width: 700px;
+}
+
+.room-discovery__artifact {
+  position: relative;
+  display: inline-block;
+  margin-bottom: var(--space-xl);
+}
+
+.room-discovery__artifact img {
+  max-width: 350px;
+  max-height: 400px;
+  object-fit: contain;
+  filter: saturate(0.4) contrast(1.2) brightness(0.9);
+  transition: all 1s var(--ease-dramatic);
+}
+
+.room-discovery__artifact:hover img {
+  filter: saturate(0.7) contrast(1.15) brightness(1);
+  transform: scale(1.05);
+}
+
+/* Spotlight beam effect */
+.room-discovery__artifact::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 500px;
+  background: linear-gradient(to bottom, rgba(255,215,0,0.08), transparent);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Plinth base */
+.room-discovery__artifact::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  height: 60px;
+  background: radial-gradient(ellipse, rgba(255,215,0,0.05) 0%, transparent 70%);
+  filter: blur(20px);
+}
+
+.room-discovery__label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-ember);
+  margin-bottom: var(--space-md);
+}
+
+.room-discovery__title {
+  margin-bottom: var(--space-sm);
+}
+
+.room-discovery__desc {
+  color: var(--light-dim);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Hidden discovery around the artifact */
+.room-discovery__hidden {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 1px solid rgba(255,215,0,0.1);
+  transition: all 0.4s var(--ease-smooth);
+}
+
+.room-discovery__hidden:hover {
+  border-color: var(--gold-bright);
+  background: rgba(255,215,0,0.05);
+  box-shadow: 0 0 20px rgba(255,215,0,0.1);
+}
+
+.room-discovery__hidden::before {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+  color: var(--gold-ember);
+  transition: all 0.3s;
+}
+
+.room-discovery__hidden:hover::before {
+  color: var(--gold-bright);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ROOM: REFINEMENT — The Artisan Studio (Stage 3)
+   Workbench with tools, partially cut stone
+   ═══════════════════════════════════════════════════════════════════════════════ */
+.room-refinement {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: var(--space-xl) var(--space-lg);
+}
+
+.room-refinement__atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    /* Warm task lighting from above */
+    radial-gradient(ellipse 50% 40% at 50% 30%, rgba(255,215,0,0.04) 0%, transparent 50%),
+    /* Workbench surface glow */
+    radial-gradient(ellipse 60% 30% at 50% 70%, rgba(201,168,76,0.03) 0%, transparent 50%),
+    /* Tool reflections */
+    radial-gradient(ellipse 20% 20% at 20% 60%, rgba(255,215,0,0.02) 0%, transparent 50%),
+    radial-gradient(ellipse 20% 20% at 80% 50%, rgba(255,215,0,0.02) 0%, transparent 50%),
+    var(--z-deep);
+  z-index: var(--layer-bg);
+}
+
+.room-refinement__grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-xl);
+  align-items: center;
+  position: relative;
+  z-index: var(--layer-content);
+}
+
+.room-refinement__workbench {
+  position: relative;
+  perspective: 1200px;
+}
+
+.room-refinement__stone-cut {
+  position: relative;
+  transform: rotateY(8deg) rotateX(-3deg);
+  transition: transform 1.2s var(--ease-dramatic);
+}
+
+.room-refinement__stone-cut:hover {
+  transform: rotateY(0deg) rotateX(0deg) translateZ(40px);
+}
+
+.room-refinement__stone-cut img {
+  width: 100%;
+  max-height: 450px;
+  object-fit: cover;
+  filter: saturate(0.3) contrast(1.25) brightness(0.8);
+  box-shadow: var(--shadow-cast);
+}
+
+/* Workbench surface */
+.room-refinement__surface {
+  position: absolute;
+  bottom: -20px;
+  left: -10%;
+  right: -10%;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(45,35,30,0.4), transparent);
+  filter: blur(10px);
+}
+
+/* Tool markers */
+.room-refinement__tool {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--gold-ember);
+  opacity: 0.4;
+  transition: opacity 0.3s;
+}
+
+.room-refinement__tool:hover {
+  opacity: 1;
+}
+
+/* Progress indicators */
+.room-refinement__progress {
+  display: flex;
+  gap: var(--space-xs);
+  margin-top: var(--space-md);
+  justify-content: center;
+}
+
+.room-refinement__progress-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold-ash);
+  transition: all 0.4s var(--ease-smooth);
+}
+
+.room-refinement__progress-dot.is-active {
+  background: var(--gold-bright);
+  box-shadow: 0 0 10px rgba(255,215,0,0.3);
+  transform: scale(1.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ROOM: PRESTIGE — The Treasury Hall (Stage 4)
+   Final display, museum lighting, ultimate authority
+   ═══════════════════════════════════════════════════════════════════════════════ */
+.room-prestige {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: var(--space-xl);
+  overflow: hidden;
+}
+
+.room-prestige__atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    /* Central museum spotlight */
+    radial-gradient(ellipse 35% 50% at 50% 40%, rgba(255,215,0,0.08) 0%, transparent 55%),
+    /* Floor reflection pool */
+    radial-gradient(ellipse 70% 25% at 50% 85%, rgba(255,215,0,0.04) 0%, transparent 50%),
+    /* Side ambient */
+    radial-gradient(ellipse 30% 80% at 10% 50%, rgba(74,44,122,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse 30% 80% at 90% 50%, rgba(74,44,122,0.03) 0%, transparent 50%),
+    var(--z-void);
+  z-index: var(--layer-bg);
+}
+
+/* Animated spotlight sweep */
+.room-prestige__atmosphere::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(90deg, transparent 40%, rgba(255,215,0,0.015) 50%, transparent 60%);
+  animation: spotlightSweep 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes spotlightSweep {
+  0%, 100% { transform: translateX(-30%); }
+  50% { transform: translateX(30%); }
+}
+
+.room-prestige__display {
+  position: relative;
+  z-index: var(--layer-content);
+  text-align: center;
+  max-width: 800px;
+}
+
+.room-prestige__case {
+  position: relative;
+  display: inline-block;
+  margin-bottom: var(--space-xl);
+  padding: 30px;
+  border: 1px solid rgba(255,215,0,0.08);
+  background: rgba(8,8,8,0.3);
+  backdrop-filter: blur(5px);
+}
+
+/* Squircle case frame */
+.room-prestige__case::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(255,215,0,0.06);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.room-prestige__case::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid transparent;
+  border-image: linear-gradient(135deg, rgba(255,215,0,0.15), transparent, rgba(255,215,0,0.1)) 1;
+  pointer-events: none;
+}
+
+.room-prestige__case img {
+  max-width: 300px;
+  max-height: 350px;
+  object-fit: contain;
+  filter: saturate(0.5) contrast(1.1) brightness(1.1);
+  transition: all 1s var(--ease-dramatic);
+}
+
+.room-prestige__case:hover img {
+  filter: saturate(0.8) contrast(1.05) brightness(1.2);
+  transform: scale(1.03);
+}
+
+/* Glass reflection effect */
+.room-prestige__glass {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.01) 100%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.room-prestige__label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold-ember);
+  margin-bottom: var(--space-md);
+}
+
+.room-prestige__title {
+  margin-bottom: var(--space-sm);
+}
+
+.room-prestige__desc {
+  color: var(--light-dim);
+  max-width: 550px;
+  margin: 0 auto var(--space-lg);
+}
+
+/* Empty display cases around the main artifact */
+.room-prestige__surroundings {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--layer-bg);
+}
+
+.room-prestige__empty-case {
+  position: absolute;
+  width: 150px;
+  height: 200px;
+  border: 1px solid rgba(255,215,0,0.03);
+  background: rgba(8,8,8,0.2);
+}
+
+.room-prestige__empty-case--left {
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%) perspective(1000px) rotateY(25deg);
+}
+
+.room-prestige__empty-case--right {
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%) perspective(1000px) rotateY(-25deg);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .room-formation__grid,
+  .room-refinement__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  
+  .room-formation__visual,
+  .room-refinement__workbench {
+    order: -1;
+  }
+  
+  .room-prestige__empty-case {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .room {
+    padding: var(--space-lg) var(--space-md);
+  }
+  
+  .nav-float__menu {
+    display: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   END PART 2 — Room Architecture: Hero, Formation, Discovery, Refinement, Prestige
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+  part3 = ''' LEGAISEE — THE ARCHAEOLOGICAL EXPERIENCE v3.0
+   Part 3 of 5: Interactive Systems — Vault Door, Discovery Reveals, 
+   Horizontal Journey, Smooth Scroll, Click Animations
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   DISCOVERY MODAL — Full-screen artifact reveal
+   ═══════════════════════════════════════════════════════════════════════════════ */
+.discovery-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: rgba(3,3,3,0.97);
+  backdrop-filter: blur(30px) saturate(0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s var(--ease-dramatic);
+}
+
+.discovery-overlay.is-active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.discovery-overlay__inner {
+  max-width: 900px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: var(--space-xl);
+  position: relative;
+  transform: scale(0.9) translateY(30px);
+  transition: transform 0.8s var(--ease-spring);
+}
+
+.discovery-overlay.is-active .discovery-overlay__inner {
+  transform: scale(1) translateY(0);
+}
+
+.discovery-overlay__close {
+  position: fixed;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  width: 56px;
+  height: 56px;
+  border: 1px solid rgba(255,215,0,0.15);
+  background: rgba(8,8,8,0.8);
+  color: var(--gold-warm);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s var(--ease-smooth);
+  z-index: 9999;
+}
+
+.discovery-overlay__close:hover {
+  background: rgba(255,215,0,0.1);
+  border-color: var(--gold-bright);
+  transform: rotate(90deg);
+}
+
+.discovery-overlay__artifact {
+  position: relative;
+  margin-bottom: var(--space-lg);
+}
+
+.discovery-overlay__artifact-frame {
+  position: relative;
+  padding: 24px;
+  border: 1px solid rgba(255,215,0,0.08);
+  background: rgba(8,8,8,0.5);
+}
+
+.discovery-overlay__artifact-frame::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-deep), transparent);
+}
+
+.discovery-overlay__artifact img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  filter: saturate(0.5) contrast(1.2);
+}
+
+.discovery-overlay__era {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-ember);
+  margin-bottom: var(--space-sm);
+}
+
+.discovery-overlay__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  color: var(--gold-warm);
+  margin-bottom: var(--space-md);
+}
+
+.discovery-overlay__story {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--light-amber);
+  margin-bottom: var(--space-lg);
+}
+
+.discovery-overlay__meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(255,215,0,0.06);
+}
+
+.discovery-overlay__meta-item {
+  text-align: center;
+}
+
+.discovery-overlay__meta-value {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--gold-bright);
+}
+
+.discovery-overlay__meta-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--light-faint);
+  margin-top: 4px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   HORIZONTAL JOURNEY CONTAINER
+   The entire page is a sideways scroll through rooms
+   ═══════════════════════════════════════════════════════════════════════════════ */
+.journey-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.journey-track {
+  display: flex;
+  width: fit-content;
+  height: 100vh;
+  will-change: transform;
+}
+
+.journey-room {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Rooms that need internal vertical scrolling */
+.journey-room--scrollable .journey-room__content {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--space-xl) var(--space-lg);
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-ash) transparent;
+}
+
+.journey-room--scrollable .journey-room__content::-webkit-scrollbar {
+  width: 3px;
+}
+
+.journey-room--scrollable .journey-room__content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.journey-room--scrollable .journey-room__content::-webkit-scrollbar-thumb {
+  background: var(--gold-ash);
+  border-radius: 2px;
+}
+
+/* Room transition effects */
+.journey-room__transition {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--layer-overlay);
+}
+
+.journey-room__transition--enter {
+  background: var(--z-void);
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-dramatic);
+}
+
+.journey-room.is-entering .journey-room__transition--enter {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   JOURNEY NAVIGATION — Floating compass
+   ═══════════════════════════════════════════════════════════════════════════════ */
+.journey-compass {
+  position: fixed;
+  right: var(--space-lg);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: var(--layer-nav);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.journey-compass__track {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+.journey-compass__track::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--gold-ash), transparent);
+  transform: translateX(-50%);
+}
+
+.journey-compass__point {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1.5px solid var(--gold-ash);
+  cursor: pointer;
+  transition: all 0.5s var(--ease-dramatic);
+  position: relative;
+}
+
+.journey-compass__point::before {
+  content: attr(data-room);
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--light-faint);
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.3s var(--ease-smooth);
+}
+
+.journey-compass__point:hover::before,
+.journey-compass__point.is-active::before {
+  opacity: 1;
+  right: 24px;
+}
+
+.journey-compass__point.is-active {
+  background: var(--gold-bright);
+  border-color: var(--gold-bright);
+  box-shadow: 0 0 15px rgba(255,215,0,0.3), 0 0 30px rgba(255,215,0,0.1);
+  transform: scale(1.4);
+}
+
+.journey-compass__point.is-visited {
+  background: var(--gold-ash);
+  border-color: var(--gold-ash);
+}
+
+/* Compass needle indicator */
+.journey-compass__needle {
+  width: 2px;
+  height: 30px;
+  background: linear-gradient(to bottom, var(--gold-bright), transparent);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: top 0.6s var(--ease-spring);
+  pointer-events: none;
+}
+
+/* Room counter */
+.journey-compass__counter {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--gold-ember);
+  margin-top: var(--space-sm);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   SCROLL INDICATOR — Between rooms
+   ═══════════════════════════════════════════════════════════════════════════════ */
+.scroll-hint {
+  position: absolute;
+  bottom: var(--space-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  opacity: 0.5;
+  animation: hintBreathe 2s ease-in-out infinite;
+  z-index: var(--layer-float);
+}
+
+.scroll-hint__text {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-ember);
+}
+
+.scroll-hint__arrow {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+.scroll-hint__arrow::before,
+.scroll-hint__arrow::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 1px;
+  background: var(--gold-ember);
+  top: 50%;
+}
+
+.scroll-hint__arrow::before {
+  left: 4px;
+  transform: rotate(45deg);
+}
+
+.scroll-hint__arrow::after {
+  right: 4px;
+  transform: rotate(-45deg);
+}
+
+.scroll-hint--horizontal .scroll-hint__arrow {
+  transform: rotate(-90deg);
+}
+
+@keyframes hintBreathe {
+  0%, 100% { opacity: 0.3; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 0.6; transform: translateX(-50%) translateY(5px); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   PARALLAX LAYERS — Depth simulation
+   ═══════════════════════════════════════════════════════════════════════════════ */
+.parallax-layer {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.parallax-layer--back {
+  z-index: var(--layer-bg);
+  transform: translateZ(-200px) scale(1.2);
+}
+
+.parallax-layer--mid {
+  z-index: 0;
+  transform: translateZ(-100px) scale(1.1);
+}
+
+.parallax-layer--front {
+  z-index: var(--layer-float);
+  transform: translateZ(50px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   MAGNIFY GLASS — Hover to inspect artifacts
+   ═══════════════════════════════════════════════════════════════════════════════ */
+.magnify-zone {
+  position: relative;
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+.magnify-zone__lens {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid var(--gold-ember);
+  background-repeat: no-repeat;
+  background-size: 300%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  box-shadow: 
+    0 0 20px rgba(255,215,0,0.1),
+    inset 0 0 30px rgba(0,0,0,0.5);
+  z-index: 100;
+}
+
+.magnify-zone:hover .magnify-zone__lens {
+  opacity: 1;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   TYPEWRITER EFFECT — Text reveals character by character
+   ═══════════════════════════════════════════════════════════════════════════════ */
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--gold-ember);
+  animation: typewriterCursor 0.8s step-end infinite;
+}
+
+@keyframes typewriterCursor {
+  0%, 100% { border-color: var(--gold-ember); }
+  50% { border-color: transparent; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   GLITCH REVEAL — For hidden/discovery text
+   ═══════════════════════════════════════════════════════════════════════════════ */
+.glitch-reveal {
+  position: relative;
+}
+
+.glitch-reveal::before,
+.glitch-reveal::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.glitch-reveal.is-revealing::before {
+  animation: glitch1 0.3s linear;
+  color: var(--gold-bright);
+  opacity: 0.8;
+}
+
+.glitch-reveal.is-revealing::after {
+  animation: glitch2 0.3s linear;
+  color: var(--violet-ember);
+  opacity: 0.8;
+}
+
+@keyframes glitch1 {
+  0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+  20% { clip-path: inset(20% 0 60% 0); transform: translate(-3px, 2px); }
+  40% { clip-path: inset(50% 0 30% 0); transform: translate(3px, -2px); }
+  60% { clip-path: inset(10% 0 80% 0); transform: translate(-2px, 1px); }
+  80% { clip-path: inset(70% 0 10% 0); transform: translate(2px, -1px); }
+}
+
+@keyframes glitch2 {
+  0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+  20% { clip-path: inset(60% 0 20% 0); transform: translate(3px, -2px); }
+  40% { clip-path: inset(30% 0 50% 0); transform: translate(-3px, 2px); }
+  60% { clip-path: inset(80% 0 10% 0); transform: translate(2px, -1px); }
+  80% { clip-path: inset(10% 0 70% 0); transform: translate(-2px, 1px); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   AMBIENT AUDIO VISUALIZER — Subtle bar animation
+   ═══════════════════════════════════════════════════════════════════════════════ */
+.audio-viz {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 20px;
+}
+
+.audio-viz__bar {
+  width: 2px;
+  background: var(--gold-ember);
+  animation: audioBar 1.2s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+.audio-viz__bar:nth-child(1) { height: 40%; animation-delay: 0s; }
+.audio-viz__bar:nth-child(2) { height: 70%; animation-delay: 0.1s; }
+.audio-viz__bar:nth-child(3) { height: 50%; animation-delay: 0.2s; }
+.audio-viz__bar:nth-child(4) { height: 90%; animation-delay: 0.15s; }
+.audio-viz__bar:nth-child(5) { height: 60%; animation-delay: 0.05s; }
+
+@keyframes audioBar {
+  0%, 100% { transform: scaleY(1); opacity: 0.4; }
+  50% { transform: scaleY(1.5); opacity: 0.8; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   END PART 3 — Interactive Systems
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+  part4 = ''' LEGAISEE — THE ARCHAEOLOGICAL EXPERIENCE v3.0
+   Part 4 of 5: Content Rooms — Services, Case Study, Testimonials, Pricing, FAQ, Footer
+   Each room is an immersive environment with discovery mechanics
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ROOM: SERVICES — The Hall of Disciplines
+   Four pillars displayed as monumental artifacts
+   ═══════════════════════════════════════════════════════════════════════════════ */
+.room-services {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: var(--space-xl) var(--space-lg);
+}
+
+.room-services__atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    /* Violet museum lighting */
+    radial-gradient(ellipse 50% 50% at 30% 50%, rgba(74,44,122,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 50% at 70% 50%, rgba(74,44,122,0.04) 0%, transparent 50%),
+    /* Gold accent from above */
+    radial-gradient(ellipse 60% 30% at 50% 0%, rgba(255,215,0,0.03) 0%, transparent 50%),
+    var(--z-abyss);
+  z-index: var(--layer-bg);
+}
+
+.room-services__content {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: var(--layer-content);
+}
+
+.room-services__header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto var(--space-xl);
+}
+
+.room-services__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+}
+
+.service-pillar {
+  background: linear-gradient(135deg, rgba(20,20,20,0.9), rgba(28,28,28,0.7));
+  border: 1px solid rgba(255,215,0,0.04);
+  padding: var(--space-lg) var(--space-md);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.7s var(--ease-dramatic);
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.service-pillar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-deep), transparent);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.service-pillar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(255,215,0,0.02) 50%, transparent 60%);
+  background-size: 200% 200%;
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+
+.service-pillar:hover {
+  border-color: rgba(255,215,0,0.12);
+  transform: translateY(-12px) translateZ(40px);
+  box-shadow: var(--shadow-float);
+}
+
+.service-pillar:hover::before {
+  opacity: 1;
+}
+
+.service-pillar:hover::after {
+  opacity: 1;
+  animation: pillarShimmer 2s ease-in-out infinite;
+}
+
+@keyframes pillarShimmer {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+}
+
+.service-pillar__icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,215,0,0.08);
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.5s var(--ease-smooth);
+}
+
+.service-pillar:hover .service-pillar__icon {
+  border-color: rgba(255,215,0,0.2);
+  box-shadow: 0 0 30px rgba(255,215,0,0.08);
+}
+
+.service-pillar__icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--gold-ember);
+  fill: none;
+  stroke-width: 1.2;
+  transition: stroke 0.3s;
+}
+
+.service-pillar:hover .service-pillar__icon svg {
+  stroke: var(--gold-warm);
+}
+
+.service-pillar__number {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--gold-ash);
+  margin-bottom: var(--space-xs);
+}
+
+.service-pillar__title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--gold-rich);
+  margin-bottom: var(--space-sm);
+  transition: color 0.3s;
+}
+
+.service-pillar:hover .service-pillar__title {
+  color: var(--gold-warm);
+}
+
+.service-pillar__desc {
+  font-size: 0.88rem;
+  color: var(--light-dim);
+  line-height: 1.7;
+}
+
+.service-pillar__discover {
+  margin-top: var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-ash);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s var(--ease-smooth);
+}
+
+.service-pillar:hover .service-pillar__discover {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1024px) {
+  .room-services__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .room-services__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ROOM: CASE STUDY — The Evidence Chamber
+   Before/after with magnify inspection
+   ═══════════════════════════════════════════════════════════════════════════════ */
+.room-evidence {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: var(--space-xl) var(--space-lg);
+}
+
+.room-evidence__atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    /* Dramatic side lighting */
+    radial-gradient(ellipse 40% 80% at 20% 50%, rgba(255,215,0,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 80% at 80% 50%, rgba(74,44,122,0.04) 0%, transparent 50%),
+    var(--z-deep);
+  z-index: var(--layer-bg);
+}
+
+.room-evidence__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-xl);
+  align-items: center;
+  position: relative;
+  z-index: var(--layer-content);
+}
+
+.room-evidence__visual {
+  position: relative;
+}
+
+.room-evidence__case {
+  position: relative;
+  padding: 20px;
+  border: 1px solid rgba(255,215,0,0.06);
+  background: rgba(8,8,8,0.4);
+  transition: all 0.5s var(--ease-dramatic);
+}
+
+.room-evidence__case:hover {
+  border-color: rgba(255,215,0,0.12);
+  box-shadow: var(--shadow-lift);
+}
+
+/* Corner brackets for evidence case */
+.room-evidence__case::before,
+.room-evidence__case::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--gold-ash);
+  transition: all 0.4s var(--ease-smooth);
+}
+
+.room-evidence__case::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.room-evidence__case::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+.room-evidence__case:hover::before,
+.room-evidence__case:hover::after {
+  border-color: var(--gold-warm);
+  width: 40px;
+  height: 40px;
+}
+
+.room-evidence__case img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  filter: saturate(0.6) contrast(1.15);
+  transition: filter 0.5s;
+}
+
+.room-evidence__case:hover img {
+  filter: saturate(0.75) contrast(1.1);
+}
+
+.room-evidence__badge {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: rgba(3,3,3,0.85);
+  border: 1px solid var(--gold-ember);
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-warm);
+  backdrop-filter: blur(10px);
+}
+
+.room-evidence__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-ember);
+  margin-bottom: var(--space-sm);
+}
+
+.room-evidence__title {
+  margin-bottom: var(--space-md);
+}
+
+.room-evidence__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin: var(--space-lg) 0;
+  padding: var(--space-md);
+  background: rgba(20,20,20,0.6);
+  border: 1px solid rgba(255,215,0,0.04);
+  position: relative;
+}
+
+.room-evidence__metrics::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-deep), transparent);
+}
+
+.room-evidence__metric-value {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--gold-bright);
+  line-height: 1;
+}
+
+.room-evidence__metric-label {
+  font-size: 0.75rem;
+  color: var(--light-dim);
+  margin-top: 6px;
+}
+
+.room-evidence__quote {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--light-amber);
+  line-height: 1.6;
+  margin: var(--space-md) 0;
+  padding-left: var(--space-md);
+  border-left: 2px solid var(--gold-deep);
+  position: relative;
+}
+
+.room-evidence__quote::before {
+  content: """";
+  position: absolute;
+  top: -10px;
+  left: -5px;
+  font-size: 3rem;
+  color: rgba(255,215,0,0.06);
+  line-height: 1;
+}
+
+.room-evidence__attribution {
+  font-size: 0.85rem;
+  color: var(--light-dim);
+}
+
+.room-evidence__attribution strong {
+  color: var(--gold-rich);
+}
+
+@media (max-width: 900px) {
+  .room-evidence__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ROOM: TESTIMONIALS — The Gallery of Voices
+   Three voices in atmospheric cards
+   ═══════════════════════════════════════════════════════════════════════════════ */
+.room-voices {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: var(--space-xl) var(--space-lg);
+}
+
+.room-voices__atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    /* Warm ambient glow */
+    radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255,215,0,0.02) 0%, transparent 60%),
+    /* Subtle violet edges */
+    radial-gradient(ellipse 30% 100% at 0% 50%, rgba(74,44,122,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse 30% 100% at 100% 50%, rgba(74,44,122,0.03) 0%, transparent 50%),
+    var(--z-abyss);
+  z-index: var(--layer-bg);
+}
+
+.room-voices__content {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: var(--layer-content);
+}
+
+.room-voices__header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto var(--space-xl);
+}
+
+.room-voices__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.voice-card {
+  background: linear-gradient(135deg, rgba(20,20,20,0.85), rgba(28,28,28,0.6));
+  border: 1px solid rgba(255,215,0,0.04);
+  padding: var(--space-lg);
+  position: relative;
+  transition: all 0.6s var(--ease-dramatic);
+}
+
+.voice-card::before {
+  content: """";
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-family: var(--font-display);
+  font-size: 5rem;
+  line-height: 1;
+  color: rgba(255,215,0,0.04);
+  pointer-events: none;
+  transition: color 0.4s;
+}
+
+.voice-card:hover::before {
+  color: rgba(255,215,0,0.08);
+}
+
+.voice-card:hover {
+  border-color: rgba(255,215,0,0.1);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lift);
+}
+
+.voice-card__stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: var(--space-sm);
+}
+
+.voice-card__stars svg {
+  width: 14px;
+  height: 14px;
+  fill: var(--gold-ember);
+  transition: fill 0.3s;
+}
+
+.voice-card:hover .voice-card__stars svg {
+  fill: var(--gold-bright);
+}
+
+.voice-card__text {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--light-amber);
+  margin-bottom: var(--space-md);
+}
+
+.voice-card__author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgba(255,215,0,0.04);
+}
+
+.voice-card__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,215,0,0.1);
+  object-fit: cover;
+  transition: border-color 0.3s;
+}
+
+.voice-card:hover .voice-card__avatar {
+  border-color: rgba(255,215,0,0.2);
+}
+
+.voice-card__name {
+  font-weight: 600;
+  color: var(--gold-rich);
+  font-size: 0.88rem;
+}
+
+.voice-card__role {
+  font-size: 0.78rem;
+  color: var(--light-faint);
+}
+
+.voice-card--featured {
+  background: linear-gradient(135deg, rgba(20,20,20,0.95), rgba(45,35,30,0.3));
+  border: 1px solid rgba(255,215,0,0.08);
+}
+
+.voice-card--featured::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-warm), transparent);
+}
+
+@media (max-width: 900px) {
+  .room-voices__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ROOM: PRICING — The Investment Vault
+   Three tiers as secure deposit boxes
+   ═══════════════════════════════════════════════════════════════════════════════ */
+.room-vault {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: var(--space-xl) var(--space-lg);
+}
+
+.room-vault__atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    /* Vault security lighting */
+    radial-gradient(ellipse 50% 40% at 50% 30%, rgba(255,215,0,0.03) 0%, transparent 50%),
+    /* Floor security strip glow */
+    linear-gradient(to bottom, transparent 80%, rgba(255,215,0,0.02) 100%),
+    var(--z-void);
+  z-index: var(--layer-bg);
+}
+
+.room-vault__content {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: var(--layer-content);
+}
+
+.room-vault__header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto var(--space-xl);
+}
+
+.room-vault__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  align-items: start;
+}
+
+.vault-box {
+  background: linear-gradient(135deg, rgba(20,20,20,0.9), rgba(28,28,28,0.7));
+  border: 1px solid rgba(255,215,0,0.04);
+  padding: var(--space-lg);
+  position: relative;
+  transition: all 0.7s var(--ease-dramatic);
+}
+
+.vault-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-deep), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.vault-box:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lift);
+}
+
+.vault-box:hover::before {
+  opacity: 1;
+}
+
+.vault-box--featured {
+  background: linear-gradient(135deg, rgba(20,20,20,0.95), rgba(45,35,30,0.4));
+  border: 1px solid rgba(255,215,0,0.1);
+  transform: scale(1.02);
+  z-index: 2;
+}
+
+.vault-box--featured::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: var(--gold-warm);
+  box-shadow: 0 0 20px rgba(255,215,0,0.1);
+}
+
+.vault-box--featured:hover {
+  transform: scale(1.02) translateY(-8px);
+}
+
+.vault-box__seal {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--z-abyss);
+  border: 1px solid var(--gold-ember);
+  padding: 0.35rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-warm);
+}
+
+.vault-box__name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--gold-rich);
+  text-align: center;
+  margin-bottom: var(--space-xs);
+  margin-top: var(--space-sm);
+}
+
+.vault-box__desc {
+  font-size: 0.82rem;
+  color: var(--light-dim);
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+.vault-box__value {
+  text-align: center;
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid rgba(255,215,0,0.04);
+}
+
+.vault-box__amount {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--gold-bright);
+  line-height: 1;
+}
+
+.vault-box__amount span {
+  font-size: 0.4em;
+  color: var(--light-dim);
+  vertical-align: super;
+}
+
+.vault-box__period {
+  font-size: 0.78rem;
+  color: var(--light-faint);
+  margin-top: 4px;
+}
+
+.vault-box__contents {
+  list-style: none;
+  margin-bottom: var(--space-lg);
+}
+
+.vault-box__contents li {
+  padding: 0.55rem 0;
+  font-size: 0.85rem;
+  color: var(--light-amber);
+  border-bottom: 1px solid rgba(255,255,255,0.02);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.vault-box__contents li::before {
+  content: "◆";
+  color: var(--gold-ash);
+  font-size: 0.5rem;
+  transition: color 0.3s;
+}
+
+.vault-box:hover .vault-box__contents li::before {
+  color: var(--gold-ember);
+}
+
+.vault-box__contents li.included::before {
+  color: var(--gold-ember);
+}
+
+.vault-box__contents li.not-included {
+  color: var(--light-faint);
+}
+
+.vault-box__contents li.not-included::before {
+  content: "—";
+  color: var(--light-faint);
+}
+
+.vault-box__action {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .room-vault__grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .vault-box--featured {
+    transform: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ROOM: FAQ — The Archive
+   Accordion with atmospheric reveals
+   ═══════════════════════════════════════════════════════════════════════════════ */
+.room-archive {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: var(--space-xl) var(--space-lg);
+}
+
+.room-archive__atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    /* Filing cabinet ambient */
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(45,35,30,0.05) 0%, transparent 60%),
+    var(--z-deep);
+  z-index: var(--layer-bg);
+}
+
+.room-archive__content {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: var(--layer-content);
+}
+
+.room-archive__header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto var(--space-xl);
+}
+
+.archive-item {
+  border-bottom: 1px solid rgba(255,215,0,0.04);
+  overflow: hidden;
+  position: relative;
+}
+
+.archive-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--gold-deep);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.archive-item:hover::before {
+  opacity: 0.5;
+}
+
+.archive-item.is-open::before {
+  opacity: 1;
+}
+
+.archive-item__question {
+  width: 100%;
+  padding: var(--space-md) 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--light-amber);
+  transition: color 0.3s var(--ease-smooth);
+  padding-left: var(--space-sm);
+}
+
+.archive-item__question:hover {
+  color: var(--gold-warm);
+}
+
+.archive-item__icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+  margin-left: var(--space-sm);
+}
+
+.archive-item__icon::before,
+.archive-item__icon::after {
+  content: "";
+  position: absolute;
+  background: var(--gold-ember);
+  transition: all 0.4s var(--ease-dramatic);
+}
+
+.archive-item__icon::before {
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  transform: translateY(-50%);
+}
+
+.archive-item__icon::after {
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1.5px;
+  transform: translateX(-50%);
+}
+
+.archive-item.is-open .archive-item__icon::after {
+  transform: translateX(-50%) rotate(90deg);
+  opacity: 0;
+}
+
+.archive-item.is-open .archive-item__icon::before {
+  background: var(--gold-bright);
+}
+
+.archive-item__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s var(--ease-dramatic), padding 0.6s var(--ease-dramatic);
+}
+
+.archive-item.is-open .archive-item__answer {
+  max-height: 500px;
+  padding-bottom: var(--space-md);
+  padding-left: var(--space-sm);
+}
+
+.archive-item__answer p {
+  color: var(--light-dim);
+  line-height: 1.8;
+  font-size: 0.92rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ROOM: FOOTER — The Foundation
+   ═══════════════════════════════════════════════════════════════════════════════ */
+.room-foundation {
+  padding: var(--space-xl) var(--space-lg) var(--space-lg);
+  position: relative;
+  border-top: 1px solid rgba(255,215,0,0.03);
+}
+
+.room-foundation__atmosphere {
+  position: absolute;
+  inset: 0;
+  background: var(--z-void);
+  z-index: var(--layer-bg);
+}
+
+.room-foundation__content {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: var(--layer-content);
+}
+
+.room-foundation__top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+.foundation-brand {
+  max-width: 300px;
+}
+
+.foundation-brand__logo {
+  font-family: var(--font-ornate);
+  font-size: 1.4rem;
+  color: var(--gold-warm);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+}
+
+.foundation-brand__tagline {
+  font-size: 0.88rem;
+  color: var(--light-dim);
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+}
+
+.foundation-brand__social {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.foundation-brand__social a {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,215,0,0.06);
+  transition: all 0.3s var(--ease-smooth);
+}
+
+.foundation-brand__social a:hover {
+  border-color: var(--gold-ember);
+  background: rgba(255,215,0,0.03);
+}
+
+.foundation-brand__social svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--gold-ash);
+  fill: none;
+  stroke-width: 1.5;
+  transition: stroke 0.3s;
+}
+
+.foundation-brand__social a:hover svg {
+  stroke: var(--gold-warm);
+}
+
+.foundation-col__title {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-rich);
+  margin-bottom: var(--space-md);
+}
+
+.foundation-col__links {
+  list-style: none;
+}
+
+.foundation-col__links li {
+  margin-bottom: 0.7rem;
+}
+
+.foundation-col__links a {
+  font-size: 0.85rem;
+  color: var(--light-dim);
+  transition: color 0.3s var(--ease-smooth);
+  position: relative;
+  padding-left: 0;
+  transition: all 0.3s;
+}
+
+.foundation-col__links a::before {
+  content: "→";
+  position: absolute;
+  left: -16px;
+  opacity: 0;
+  color: var(--gold-ember);
+  transition: all 0.3s;
+}
+
+.foundation-col__links a:hover {
+  color: var(--gold-warm);
+  padding-left: 16px;
+}
+
+.foundation-col__links a:hover::before {
+  opacity: 1;
+  left: 0;
+}
+
+.room-foundation__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(255,215,0,0.02);
+}
+
+.foundation-copyright {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--light-faint);
+  letter-spacing: 0.05em;
+}
+
+.foundation-legal {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.foundation-legal a {
+  font-size: 0.78rem;
+  color: var(--light-faint);
+  transition: color 0.3s;
+}
+
+.foundation-legal a:hover {
+  color: var(--gold-ember);
+}
+
+@media (max-width: 900px) {
+  .room-foundation__top {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .room-foundation__top {
+    grid-template-columns: 1fr;
+  }
+  .room-foundation__bottom {
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   END PART 4 — Content Rooms
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+  part5 = ''' LEGAISEE — THE ARCHAEOLOGICAL EXPERIENCE v3.0
+   Part 5 of 5: Complete HTML + JavaScript
+   Assemble: Link all 4 CSS parts + include this JS
+   ═══════════════════════════════════════════════════════════════════════════════ -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+   COMPLETE HTML — The Archaeological Journey
+   ═══════════════════════════════════════════════════════════════════════════════ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LegAIsee — The Restoration of Asymmetric Authority</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Montserrat:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <!-- Link your 4 CSS parts here in order -->
+  <style>/* Paste all 4 CSS parts inline or link externally */</style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       VAULT DOOR — Opening Sequence
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <div class="vault-door">
+    <div class="vault-door__light-sweep"></div>
+    <div class="vault-door__ring">
+      <div class="vault-door__center">L</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       NAVIGATION — Floating compass
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <nav class="nav-float">
+    <div class="nav-float__logo">LegAIsee</div>
+    <ul class="nav-float__menu">
+      <li><a href="#formation">Formation</a></li>
+      <li><a href="#discovery">Discovery</a></li>
+      <li><a href="#refinement">Refinement</a></li>
+      <li><a href="#prestige">Prestige</a></li>
+      <li><a href="#access">Access</a></li>
+    </ul>
+    <div class="audio-viz">
+      <div class="audio-viz__bar"></div>
+      <div class="audio-viz__bar"></div>
+      <div class="audio-viz__bar"></div>
+      <div class="audio-viz__bar"></div>
+      <div class="audio-viz__bar"></div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       ROOM 1: HERO — The Treasury Entrance
+       Background: Atmospheric gold + dust particles
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="room room-hero" id="entrance" data-spotlight>
+    <div class="room-hero__atmosphere"></div>
+    <div class="room-hero__dust" data-dust="25"></div>
+    <div class="room-hero__content">
+      <div class="room-hero__seal reveal">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="none" stroke="currentColor" stroke-width="1"/></svg>
+      </div>
+      <div class="room-hero__eyebrow reveal">By Invitation Only · Est. MMXXIV</div>
+      <h1 class="t-display t-display--glow reveal">The Restoration of<br>Asymmetric Authority</h1>
+      <div class="gold-rule gold-rule--center reveal"></div>
+      <p class="room-hero__subtitle reveal">
+        We do not create marketing. We practice Business Archaeology — 
+        excavating the proven assets your enterprise has already earned 
+        and installing them as a permanent Authority System.
+      </p>
+      <div class="room-hero__cta reveal">
+        <a href="#access" class="btn-vault btn-vault--solid">Request Your Excavation</a>
+        <a href="#formation" class="btn-vault">Enter the Vault</a>
+      </div>
+    </div>
+    <div class="scroll-hint scroll-hint--horizontal">
+      <span class="scroll-hint__text">Scroll to Explore</span>
+      <div class="scroll-hint__arrow"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       ROOM 2: FORMATION — The Deep Earth (Stage 1)
+       Background: Cave atmosphere, god-rays, hidden discovery spots
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="room room-formation" id="formation">
+    <div class="room-formation__atmosphere"></div>
+    <div class="room-formation__grid">
+      <div class="room-formation__visual reveal reveal--left">
+        <div class="room-formation__stone magnify-zone" data-tilt>
+          <div class="magnify-zone__lens"></div>
+          <img src="/assets/gem-formation.jpg" alt="Raw gemstone in volcanic earth">
+          <div class="room-formation__glow"></div>
+          <!-- Hidden discovery spots -->
+          <div class="room-formation__discovery" data-discovery="discover-1" data-hint="Click to examine" style="top:30%;left:25%;"></div>
+          <div class="room-formation__discovery" data-discovery="discover-2" data-hint="Rare find" style="top:60%;left:70%;"></div>
+        </div>
+        <div class="room-formation__label">Raw · Unexcavated · Potential</div>
+      </div>
+      <div class="reveal reveal--right">
+        <div class="t-label">Stage I</div>
+        <h2 class="t-headline u-mb-md">Formation</h2>
+        <div class="gold-rule gold-rule--short u-mb-lg"></div>
+        <p class="t-body t-body--dim">
+          Deep beneath the surface, your institutional memory lies compressed 
+          under layers of narrative drift. We descend through 40+ channels of 
+          historical excavation — every campaign, every message, every moment 
+          of market dominance that built your empire.
+        </p>
+        <p class="t-body t-body--dim u-mb-lg">
+          The raw ore is there. It has always been there. Waiting for the 
+          archaeologist with the patience to dig.
+        </p>
+        <div class="audio-viz u-mb-md">
+          <div class="audio-viz__bar"></div>
+          <div class="audio-viz__bar"></div>
+          <div class="audio-viz__bar"></div>
+          <div class="audio-viz__bar"></div>
+          <div class="audio-viz__bar"></div>
+        </div>
+        <span class="t-label">Excavation in Progress</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Discovery Overlay 1 -->
+  <div class="discovery-overlay" id="discover-1">
+    <button class="discovery-overlay__close">×</button>
+    <div class="discovery-overlay__inner">
+      <div class="discovery-overlay__artifact">
+        <div class="discovery-overlay__artifact-frame">
+          <img src="/assets/discovery-1.jpg" alt="Excavated artifact">
+        </div>
+      </div>
+      <div class="discovery-overlay__era">Channel 17 · Print Archive · 1987</div>
+      <h3 class="discovery-overlay__title">The Dominance Campaign</h3>
+      <p class="discovery-overlay__story">
+        Buried in newspaper archives, we found the full-page series that 
+        established your market leadership for 12 consecutive years. The 
+        psychology is intact. The messaging is proven. Only the medium needs 
+        modernization.
+      </p>
+      <div class="discovery-overlay__meta">
+        <div class="discovery-overlay__meta-item">
+          <div class="discovery-overlay__meta-value">12</div>
+          <div class="discovery-overlay__meta-label">Years Active</div>
+        </div>
+        <div class="discovery-overlay__meta-item">
+          <div class="discovery-overlay__meta-value">47%</div>
+          <div class="discovery-overlay__meta-label">Market Share</div>
+        </div>
+        <div class="discovery-overlay__meta-item">
+          <div class="discovery-overlay__meta-value">$2.1M</div>
+          <div class="discovery-overlay__meta-label">Est. Annual Value</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       ROOM 3: DISCOVERY — The Vault (Stage 2)
+       Single artifact on plinth, dramatic spotlight, hidden details
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="room room-discovery" id="discovery">
+    <div class="room-discovery__atmosphere"></div>
+    <div class="room-discovery__plinth">
+      <div class="room-discovery__artifact reveal reveal--scale">
+        <img src="/assets/gem-discovery.jpg" alt="Discovered gemstone on museum plinth">
+        <div class="room-discovery__hidden" data-discovery="discover-3" style="top:20%;right:15%;"></div>
+        <div class="room-discovery__hidden" data-discovery="discover-4" style="bottom:25%;left:20%;"></div>
+      </div>
+      <div class="t-label reveal">Stage II</div>
+      <h2 class="t-headline reveal">Discovery</h2>
+      <div class="gold-rule gold-rule--center reveal"></div>
+      <p class="t-body t-body--dim u-center reveal" style="max-width:500px;margin:0 auto;">
+        The vault opens. We identify your Golden Era assets — the specific 
+        tactics, messages, and positioning that created your undisputed 
+        market authority. Each artifact is catalogued, authenticated, and 
+        prepared for restoration.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       ROOM 4: REFINEMENT — The Artisan Studio (Stage 3)
+       Workbench with tools, partially cut stone, progress indicators
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="room room-refinement" id="refinement">
+    <div class="room-refinement__atmosphere"></div>
+    <div class="room-refinement__grid">
+      <div class="reveal reveal--left">
+        <div class="t-label">Stage III</div>
+        <h2 class="t-headline u-mb-md">Refinement</h2>
+        <div class="gold-rule gold-rule--short u-mb-lg"></div>
+        <p class="t-body t-body--dim">
+          Artisan precision. Each proven asset is modernized for contemporary 
+          platforms while preserving the psychological mechanisms that made 
+          it work originally. The cut must honor the stone.
+        </p>
+        <p class="t-body t-body--dim u-mb-lg">
+          We do not reshape your identity. We reveal what was always there — 
+          with the clarity that modern execution demands.
+        </p>
+        <div class="room-refinement__progress">
+          <div class="room-refinement__progress-dot is-active"></div>
+          <div class="room-refinement__progress-dot"></div>
+          <div class="room-refinement__progress-dot"></div>
+          <div class="room-refinement__progress-dot"></div>
+        </div>
+        <span class="t-label">Cutting · Shaping · Preparing</span>
+      </div>
+      <div class="room-refinement__workbench reveal reveal--right">
+        <div class="room-refinement__stone-cut" data-tilt>
+          <img src="/assets/gem-refinement.jpg" alt="Partially cut gemstone on artisan table">
+          <div class="room-refinement__surface"></div>
+        </div>
+        <div class="room-formation__label">Cut · Shaped · Prepared</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       ROOM 5: PRESTIGE — The Treasury Hall (Stage 4)
+       Final display, museum lighting, empty cases around masterpiece
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="room room-prestige" id="prestige">
+    <div class="room-prestige__atmosphere"></div>
+    <div class="room-prestige__surroundings">
+      <div class="room-prestige__empty-case room-prestige__empty-case--left"></div>
+      <div class="room-prestige__empty-case room-prestige__empty-case--right"></div>
+    </div>
+    <div class="room-prestige__display">
+      <div class="t-label reveal">Stage IV</div>
+      <h2 class="t-headline reveal">Prestige Display</h2>
+      <div class="gold-rule gold-rule--center reveal"></div>
+      <div class="room-prestige__case reveal reveal--scale" data-tilt>
+        <div class="room-prestige__glass"></div>
+        <img src="/assets/gem-prestige.jpg" alt="Polished gemstone in gold case">
+      </div>
+      <p class="t-body t-body--dim u-center reveal" style="max-width:550px;margin:0 auto;">
+        The permanent installation. Your Authority System is mounted, lit, 
+        and presented — a self-sustaining engine of asymmetric market dominance. 
+        What was buried is now displayed. What was forgotten is now permanent.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       ROOM 6: SERVICES — The Hall of Disciplines
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="room room-services" id="services">
+    <div class="room-services__atmosphere"></div>
+    <div class="room-services__content">
+      <div class="room-services__header reveal">
+        <div class="t-label">The Disciplines</div>
+        <h2 class="t-headline">Four Pillars of<br>Permanent Authority</h2>
+        <div class="gold-rule gold-rule--center"></div>
+      </div>
+      <div class="room-services__grid">
+        <div class="service-pillar reveal" data-tilt>
+          <div class="service-pillar__icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="service-pillar__number">01</div>
+          <h3 class="service-pillar__title">Business Archaeology</h3>
+          <p class="service-pillar__desc">Deep excavation across 40+ channels. We recover what your competitors cannot copy.</p>
+          <div class="service-pillar__discover">Click to Examine →</div>
+        </div>
+        <div class="service-pillar reveal" data-tilt>
+          <div class="service-pillar__icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="service-pillar__number">02</div>
+          <h3 class="service-pillar__title">Authority Placement</h3>
+          <p class="service-pillar__desc">Strategic positioning in publications and networks where your ideal clients already trust.</p>
+          <div class="service-pillar__discover">Click to Examine →</div>
+        </div>
+        <div class="service-pillar reveal" data-tilt>
+          <div class="service-pillar__icon">
+            <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <div class="service-pillar__number">03</div>
+          <h3 class="service-pillar__title">Intelligence Systems</h3>
+          <p class="service-pillar__desc">Permanent infrastructure that captures, organizes, and deploys your business intelligence.</p>
+          <div class="service-pillar__discover">Click to Examine →</div>
+        </div>
+        <div class="service-pillar reveal" data-tilt>
+          <div class="service-pillar__icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="service-pillar__number">04</div>
+          <h3 class="service-pillar__title">Legacy Preservation</h3>
+          <p class="service-pillar__desc">Encode your institutional knowledge into enduring systems that outlast market cycles.</p>
+          <div class="service-pillar__discover">Click to Examine →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       ROOM 7: EVIDENCE — The Case Study Chamber
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="room room-evidence" id="evidence">
+    <div class="room-evidence__atmosphere"></div>
+    <div class="room-evidence__inner">
+      <div class="room-evidence__visual reveal reveal--left">
+        <div class="room-evidence__case magnify-zone">
+          <div class="magnify-zone__lens"></div>
+          <img src="/assets/case-study.jpg" alt="Before and after transformation evidence">
+          <div class="room-evidence__badge">Confidential · $42M Revenue</div>
+        </div>
+      </div>
+      <div class="reveal reveal--right">
+        <div class="room-evidence__eyebrow">Case Study · Manufacturing · 2024</div>
+        <h2 class="t-headline u-mb-md">From Buried Legacy<br>to Market Dominance</h2>
+        <div class="gold-rule u-mb-lg"></div>
+        <p class="t-body t-body--dim">
+          A third-generation manufacturer had abandoned the trade show 
+          strategy that built their $40M empire. We excavated the 
+          original playbook, modernized it for digital channels, and 
+          installed a permanent Authority System.
+        </p>
+        <div class="room-evidence__metrics">
+          <div>
+            <div class="room-evidence__metric-value">340%</div>
+            <div class="room-evidence__metric-label">Lead Increase</div>
+          </div>
+          <div>
+            <div class="room-evidence__metric-value">$2.1M</div>
+            <div class="room-evidence__metric-label">Attributed Revenue</div>
+          </div>
+          <div>
+            <div class="room-evidence__metric-value">47</div>
+            <div class="room-evidence__metric-label">Assets Restored</div>
+          </div>
+        </div>
+        <blockquote class="room-evidence__quote">
+          "We had no idea our grandfather's approach still worked. 
+          LegAIsee didn't just find our history — they made it our future."
+        </blockquote>
+        <p class="room-evidence__attribution">
+          <strong>James R.</strong> · CEO · Carrington Manufacturing
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       ROOM 8: VOICES — The Testimonial Gallery
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="room room-voices" id="voices">
+    <div class="room-voices__atmosphere"></div>
+    <div class="room-voices__content">
+      <div class="room-voices__header reveal">
+        <div class="t-label">The Voices</div>
+        <h2 class="t-headline">What Leaders<br>Say</h2>
+        <div class="gold-rule gold-rule--center"></div>
+      </div>
+      <div class="room-voices__grid">
+        <div class="voice-card reveal">
+          <div class="voice-card__stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="voice-card__text">
+            "I had no idea we had abandoned the exact messaging that built 
+            our company. LegAIsee found assets from 1997 that still 
+            outperform anything our current agency creates."
+          </p>
+          <div class="voice-card__author">
+            <img class="voice-card__avatar" src="/assets/avatar-1.jpg" alt="">
+            <div>
+              <div class="voice-card__name">Margaret T.</div>
+              <div class="voice-card__role">CEO · $28M Revenue</div>
+            </div>
+          </div>
+        </div>
+        <div class="voice-card voice-card--featured reveal">
+          <div class="voice-card__stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="voice-card__text">
+            "The Authority System they built runs itself. My team produces 
+            better content in four hours than our previous agency delivered 
+            in a month. And it sounds like us — not generic marketing speak."
+          </p>
+          <div class="voice-card__author">
+            <img class="voice-card__avatar" src="/assets/avatar-2.jpg" alt="">
+            <div>
+              <div class="voice-card__name">David K.</div>
+              <div class="voice-card__role">Founder · $15M Revenue</div>
+            </div>
+          </div>
+        </div>
+        <div class="voice-card reveal">
+          <div class="voice-card__stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="voice-card__text">
+            "We thought we needed 'more leads.' LegAIsee showed us we needed 
+            to remember who we were. The excavation alone was worth ten times 
+            the investment."
+          </p>
+          <div class="voice-card__author">
+            <img class="voice-card__avatar" src="/assets/avatar-3.jpg" alt="">
+            <div>
+              <div class="voice-card__name">Robert H.</div>
+              <div class="voice-card__role">President · $67M Revenue</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       ROOM 9: VAULT — The Investment Tiers
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="room room-vault" id="vault">
+    <div class="room-vault__atmosphere"></div>
+    <div class="room-vault__content">
+      <div class="room-vault__header reveal">
+        <div class="t-label">The Investment</div>
+        <h2 class="t-headline">Three Levels of<br>Engagement</h2>
+        <div class="gold-rule gold-rule--center"></div>
+      </div>
+      <div class="room-vault__grid">
+        <div class="vault-box reveal" data-tilt>
+          <div class="vault-box__name">The Excavation</div>
+          <p class="vault-box__desc">Business History Audit</p>
+          <div class="vault-box__value">
+            <div class="vault-box__amount">$5,000</div>
+            <div class="vault-box__period">One-time investment</div>
+          </div>
+          <ul class="vault-box__contents">
+            <li class="included">40+ channel excavation</li>
+            <li class="included">15-25 assets documented</li>
+            <li class="included">Golden Era identification</li>
+            <li class="included">Competitive gap analysis</li>
+            <li class="included">10-page report + video</li>
+            <li class="not-included">System installation</li>
+            <li class="not-included">Ongoing partnership</li>
+          </ul>
+          <a href="#access" class="btn-vault vault-box__action">Begin Excavation</a>
+        </div>
+        <div class="vault-box vault-box--featured reveal" data-tilt>
+          <div class="vault-box__seal">Most Selected</div>
+          <div class="vault-box__name">The Installation</div>
+          <p class="vault-box__desc">Authority System Build</p>
+          <div class="vault-box__value">
+            <div class="vault-box__amount">$15,000</div>
+            <div class="vault-box__period">One-time investment</div>
+          </div>
+          <ul class="vault-box__contents">
+            <li class="included">Everything in Excavation</li>
+            <li class="included">4 core systems built</li>
+            <li class="included">AI workflow training</li>
+            <li class="included">Team onboarding</li>
+            <li class="included">90-day launch plan</li>
+            <li class="included">Asset library created</li>
+            <li class="not-included">Monthly optimization</li>
+          </ul>
+          <a href="#access" class="btn-vault btn-vault--solid vault-box__action">Install System</a>
+        </div>
+        <div class="vault-box reveal" data-tilt>
+          <div class="vault-box__name">The Partnership</div>
+          <p class="vault-box__desc">Ongoing Amplification</p>
+          <div class="vault-box__value">
+            <div class="vault-box__amount">$5,000<span>/mo</span></div>
+            <div class="vault-box__period">Quarterly commitment</div>
+          </div>
+          <ul class="vault-box__contents">
+            <li class="included">Everything in Installation</li>
+            <li class="included">Monthly strategy calls</li>
+            <li class="included">Performance optimization</li>
+            <li class="included">New asset excavation</li>
+            <li class="included">Competitive monitoring</li>
+            <li class="included">Priority access</li>
+            <li class="included">Annual system refresh</li>
+          </ul>
+          <a href="#access" class="btn-vault vault-box__action">Enter Partnership</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       ROOM 10: ARCHIVE — The FAQ
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="room room-archive" id="archive">
+    <div class="room-archive__atmosphere"></div>
+    <div class="room-archive__content">
+      <div class="room-archive__header reveal">
+        <div class="t-label">The Archive</div>
+        <h2 class="t-headline">Common<br>Inquiries</h2>
+        <div class="gold-rule gold-rule--center"></div>
+      </div>
+      <div class="archive-item reveal">
+        <button class="archive-item__question">
+          What exactly is Business Archaeology?
+          <span class="archive-item__icon"></span>
+        </button>
+        <div class="archive-item__answer">
+          <p>Business Archaeology is the systematic excavation of your enterprise's 
+          historical marketing assets — campaigns, messaging, positioning, and 
+          strategic decisions that created your market dominance. We recover what 
+          worked, analyze why it worked, and modernize it for contemporary execution.</p>
+        </div>
+      </div>
+      <div class="archive-item reveal">
+        <button class="archive-item__question">
+          How is this different from a marketing audit?
+          <span class="archive-item__icon"></span>
+        </button>
+        <div class="archive-item__answer">
+          <p>A traditional audit evaluates what you're doing now. We excavate what 
+          you did then — the proven assets buried under years of narrative drift. 
+          We don't start with "what should you do?" We start with "what made you great?"</p>
+        </div>
+      </div>
+      <div class="archive-item reveal">
+        <button class="archive-item__question">
+          What if we don't have old marketing materials?
+          <span class="archive-item__icon"></span>
+        </button>
+        <div class="archive-item__answer">
+          <p>We excavate across 40+ channels — public archives, Wayback Machine, 
+          industry publications, employee interviews, customer memories, and more. 
+          Even businesses that believe they have "nothing" typically yield 15-25 
+          significant artifacts.</p>
+        </div>
+      </div>
+      <div class="archive-item reveal">
+        <button class="archive-item__question">
+          How long until we see results?
+          <span class="archive-item__icon"></span>
+        </button>
+        <div class="archive-item__answer">
+          <p>The Excavation delivers clarity within 5-7 business days. The Installation 
+          produces working systems within 21 days. Most clients see measurable 
+          engagement improvements within 60 days of system activation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       ROOM 11: ACCESS — The Invitation Gate
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="room room--gold" id="access" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:var(--space-xl);">
+    <div style="max-width:560px;width:100%;text-align:center;position:relative;z-index:10;">
+      <div class="reveal">
+        <div style="width:80px;height:80px;margin:0 auto var(--space-md);border:1px solid rgba(255,215,0,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--gold-warm)" stroke-width="1"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="t-label">Restricted Access</div>
+        <h2 class="t-headline u-mb-md">Request Your<br>Excavation</h2>
+        <div class="gold-rule gold-rule--center u-mb-lg"></div>
+        <p class="t-body t-body--dim" style="margin-bottom:var(--space-lg);">
+          We accept three new clients per quarter. If your enterprise 
+          has operated for 10+ years with $10M+ revenue, submit your 
+          inquiry below. Response within 48 hours.
+        </p>
+      </div>
+      <form class="reveal" style="display:flex;flex-direction:column;gap:var(--space-sm);text-align:left;">
+        <div style="position:relative;">
+          <label style="position:absolute;top:-8px;left:12px;background:var(--z-mid);padding:0 8px;font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-ember);">Full Name</label>
+          <input type="text" placeholder="Your name" style="width:100%;padding:1rem 1.25rem;background:rgba(8,8,8,0.5);border:1px solid rgba(255,215,0,0.08);color:var(--light-warm);font-family:var(--font-body);font-size:0.95rem;">
+        </div>
+        <div style="position:relative;">
+          <label style="position:absolute;top:-8px;left:12px;background:var(--z-mid);padding:0 8px;font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-ember);">Enterprise</label>
+          <input type="text" placeholder="Company name" style="width:100%;padding:1rem 1.25rem;background:rgba(8,8,8,0.5);border:1px solid rgba(255,215,0,0.08);color:var(--light-warm);font-family:var(--font-body);font-size:0.95rem;">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-sm);">
+          <div style="position:relative;">
+            <label style="position:absolute;top:-8px;left:12px;background:var(--z-mid);padding:0 8px;font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-ember);">Revenue</label>
+            <select style="width:100%;padding:1rem 1.25rem;background:rgba(8,8,8,0.5);border:1px solid rgba(255,215,0,0.08);color:var(--light-warm);font-family:var(--font-body);font-size:0.95rem;">
+              <option>$10M — $25M</option>
+              <option>$25M — $50M</option>
+              <option>$50M — $100M</option>
+              <option>$100M+</option>
+            </select>
+          </div>
+          <div style="position:relative;">
+            <label style="position:absolute;top:-8px;left:12px;background:var(--z-mid);padding:0 8px;font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-ember);">Years</label>
+            <select style="width:100%;padding:1rem 1.25rem;background:rgba(8,8,8,0.5);border:1px solid rgba(255,215,0,0.08);color:var(--light-warm);font-family:var(--font-body);font-size:0.95rem;">
+              <option>10 — 20 years</option>
+              <option>20 — 30 years</option>
+              <option>30 — 50 years</option>
+              <option>50+ years</option>
+            </select>
+          </div>
+        </div>
+        <div style="position:relative;">
+          <label style="position:absolute;top:-8px;left:12px;background:var(--z-mid);padding:0 8px;font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-ember);">Message</label>
+          <textarea rows="3" placeholder="What prompted your inquiry?" style="width:100%;padding:1rem 1.25rem;background:rgba(8,8,8,0.5);border:1px solid rgba(255,215,0,0.08);color:var(--light-warm);font-family:var(--font-body);font-size:0.95rem;resize:vertical;"></textarea>
+        </div>
+        <button type="submit" class="btn-vault btn-vault--solid" style="width:100%;margin-top:var(--space-sm);">Submit Request</button>
+      </form>
+      <div class="reveal" style="margin-top:var(--space-md);display:flex;align-items:center;justify-content:center;gap:var(--space-xs);font-size:0.75rem;color:var(--light-faint);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold-ember)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        All inquiries held in strict confidence
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       ROOM 12: FOUNDATION — Footer
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <footer class="room room-foundation">
+    <div class="room-foundation__atmosphere"></div>
+    <div class="room-foundation__content">
+      <div class="room-foundation__top">
+        <div class="foundation-brand">
+          <div class="foundation-brand__logo">LegAIsee</div>
+          <p class="foundation-brand__tagline">
+            The Restoration of Asymmetric Authority. 
+            Business Archaeology for enterprises with 
+            institutional memory worth preserving.
+          </p>
+          <div class="foundation-brand__social">
+            <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--gold-ash)" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="var(--gold-ash)" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+          </div>
+        </div>
+        <div class="foundation-col">
+          <div class="foundation-col__title">Disciplines</div>
+          <ul class="foundation-col__links">
+            <li><a href="#">Business Archaeology</a></li>
+            <li><a href="#">Authority Placement</a></li>
+            <li><a href="#">Intelligence Systems</a></li>
+            <li><a href="#">Legacy Preservation</a></li>
+          </ul>
+        </div>
+        <div class="foundation-col">
+          <div class="foundation-col__title">Company</div>
+          <ul class="foundation-col__links">
+            <li><a href="#">The Process</a></li>
+            <li><a href="#">Case Studies</a></li>
+            <li><a href="#">Investment</a></li>
+            <li><a href="#">Request Access</a></li>
+          </ul>
+        </div>
+        <div class="foundation-col">
+          <div class="foundation-col__title">Legal</div>
+          <ul class="foundation-col__links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Confidentiality</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="room-foundation__bottom">
+        <div class="foundation-copyright">
+          © MMXXIV LegAIsee. All rights reserved. By Invitation Only.
+        </div>
+        <div class="foundation-legal">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+   JAVASCRIPT — The Experience Engine
+   ═══════════════════════════════════════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // ── VAULT DOOR OPENING SEQUENCE ──
+  const vaultDoor = document.querySelector('.vault-door');
+  if (vaultDoor) {
+    // Auto-open after brief delay
+    setTimeout(() => {
+      vaultDoor.classList.add('is-opening');
+      setTimeout(() => {
+        vaultDoor.style.display = 'none';
+      }, 2500);
+    }, 1500);
+  }
+
+  // ── LENIS SMOOTH SCROLL ──
+  // Include: https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js
+  let lenis;
+  if (typeof Lenis !== 'undefined') {
+    lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      wheelMultiplier: 1,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }
+
+  // ── INTERSECTION OBSERVER — Scroll reveals ──
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        // Trigger typewriter if present
+        const typewriter = entry.target.querySelector('.typewriter');
+        if (typewriter && !typewriter.dataset.typed) {
+          typewriter.dataset.typed = 'true';
+          animateTypewriter(typewriter);
+        }
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => {
+    revealObserver.observe(el);
+  });
+
+  // ── TYPEWRITER ANIMATION ──
+  function animateTypewriter(el) {
+    const text = el.textContent;
+    el.textContent = '';
+    el.style.width = 'auto';
+    let i = 0;
+    const interval = setInterval(() => {
+      el.textContent += text.charAt(i);
+      i++;
+      if (i >= text.length) {
+        clearInterval(interval);
+        setTimeout(() => {
+          el.style.borderRight = 'none';
+        }, 1000);
+      }
+    }, 50);
+  }
+
+  // ── DISCOVERY SPOTS — Click to reveal hidden artifacts ──
+  document.querySelectorAll('[data-discovery]').forEach(spot => {
+    spot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const overlayId = spot.dataset.discovery;
+      const overlay = document.getElementById(overlayId);
+      if (overlay) {
+        overlay.classList.add('is-active');
+        document.body.style.overflow = 'hidden';
+        // Play subtle sound effect here if audio enabled
+      }
+    });
+  });
+
+  // ── DISCOVERY OVERLAY CLOSE ──
+  document.querySelectorAll('.discovery-overlay__close, .discovery-overlay').forEach(el => {
+    el.addEventListener('click', (e) => {
+      if (e.target === el || e.target.closest('.discovery-overlay__close')) {
+        const overlay = el.closest('.discovery-overlay') || el;
+        overlay.classList.remove('is-active');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+
+  // ── MAGNIFY LENS ──
+  document.querySelectorAll('.magnify-zone').forEach(zone => {
+    const lens = zone.querySelector('.magnify-zone__lens');
+    const img = zone.querySelector('img');
+    if (!lens || !img) return;
+
+    zone.addEventListener('mousemove', (e) => {
+      const rect = zone.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      lens.style.left = (x - 75) + 'px';
+      lens.style.top = (y - 75) + 'px';
+      lens.style.backgroundImage = `url(${img.src})`;
+      lens.style.backgroundPosition = `-${x * 2}px -${y * 2}px`;
+    });
+  });
+
+  // ── FAQ ACCORDION ──
+  document.querySelectorAll('.archive-item__question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.archive-item');
+      const isOpen = item.classList.contains('is-open');
+      
+      // Close all others
+      document.querySelectorAll('.archive-item.is-open').forEach(openItem => {
+        if (openItem !== item) openItem.classList.remove('is-open');
+      });
+      
+      item.classList.toggle('is-open', !isOpen);
+    });
+  });
+
+  // ── NAVIGATION SCROLL EFFECT ──
+  const nav = document.querySelector('.nav-float');
+  if (nav) {
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      nav.style.opacity = currentScroll > 100 ? '1' : '0.7';
+      nav.style.background = currentScroll > 50 
+        ? 'linear-gradient(to bottom, rgba(3,3,3,0.95), rgba(3,3,3,0.8))'
+        : 'linear-gradient(to bottom, rgba(3,3,3,0.9), transparent)';
+      lastScroll = currentScroll;
+    }, { passive: true });
+  }
+
+  // ── PARALLAX ON SCROLL ──
+  const parallaxElements = document.querySelectorAll('[data-parallax]');
+  if (parallaxElements.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      parallaxElements.forEach(el => {
+        const speed = parseFloat(el.dataset.parallax) || 0.5;
+        const yPos = -(scrolled * speed);
+        el.style.transform = `translateY(${yPos}px)`;
+      });
+    }, { passive: true });
+  }
+
+  // ── GLITCH REVEAL ON HOVER ──
+  document.querySelectorAll('.glitch-reveal').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      el.classList.add('is-revealing');
+      setTimeout(() => el.classList.remove('is-revealing'), 400);
+    });
+  });
+
+  // ── DUST PARTICLE GENERATOR ──
+  function createDust(container, count = 20) {
+    if (!container) return;
+    for (let i = 0; i < count; i++) {
+      const dust = document.createElement('div');
+      dust.className = 'dust-mote';
+      dust.style.cssText = `
+        position: absolute;
+        width: ${Math.random() * 2 + 1}px;
+        height: ${Math.random() * 2 + 1}px;
+        background: rgba(255,215,0,${Math.random() * 0.3 + 0.1});
+        border-radius: 50%;
+        left: ${Math.random() * 100}%;
+        top: ${Math.random() * 100}%;
+        animation: dustFloat ${Math.random() * 10 + 15}s linear infinite;
+        animation-delay: ${Math.random() * 10}s;
+        pointer-events: none;
+        z-index: -1;
+      `;
+      container.appendChild(dust);
+    }
+  }
+
+  document.querySelectorAll('.room-hero__dust, [data-dust]').forEach(el => {
+    createDust(el, parseInt(el.dataset.dust) || 15);
+  });
+
+  // ── MOUSE FOLLOW SPOTLIGHT ──
+  const spotlightRooms = document.querySelectorAll('[data-spotlight]');
+  spotlightRooms.forEach(room => {
+    room.addEventListener('mousemove', (e) => {
+      const rect = room.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      room.style.setProperty('--mouse-x', x + '%');
+      room.style.setProperty('--mouse-y', y + '%');
+    });
+  });
+
+  // ── 3D TILT ON CARDS ──
+  document.querySelectorAll('[data-tilt]').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (y - centerY) / 20;
+      const rotateY = (centerX - x) / 20;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>
+
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════════════
+
+ATMOSPHERE & DEPTH:
+  • Volumetric lighting — god-rays, spotlights, ambient glow
+  • Dust particle systems — floating gold motes in every room
+  • Mouse-follow spotlight — light follows cursor in rooms
+  • Parallax depth layers — background moves slower than content
+  • 3D perspective transforms — cards tilt in 3D space on hover
+
+DISCOVERY MECHANICS:
+  • Hidden discovery spots — glowing ✦ markers on images
+  • Click to reveal — full-screen overlay with artifact details
+  • Magnify lens — hover over images to inspect details
+  • Glitch text reveals — hidden text decodes on hover
+
+ANIMATED ENTRANCE:
+  • Vault door opening — rotating metal door with light sweep
+  • Scroll-triggered reveals — elements animate in as you scroll
+  • Typewriter text — character-by-character reveals
+  • Staggered animations — children appear in sequence
+
+IMMERSIVE ROOMS (not sections):
+  • Each room is 100vh minimum — you ENTER rooms, not scroll past them
+  • Atmospheric backgrounds per room — cave, vault, studio, treasury
+  • Photo backgrounds with fog overlays — images are architecture
+  • Empty display cases in Prestige room — 3D perspective frames
+
+INTERACTION:
+  • Lenis smooth scroll — buttery smooth scrolling
+  • 3D card tilt — mouse position controls card rotation
+  • Audio visualizer — animated bars in nav
+  • Progress dots — refinement stage indicators
+
+ROOMS IN THE JOURNEY:
+  1. Vault Door (entrance animation)
+  2. Hero — Treasury Entrance (dust, seal, glow)
+  3. Formation — Deep Earth (discovery spots, magnify)
+  4. Discovery — The Vault (spotlight, hidden details)
+  5. Refinement — Artisan Studio (progress dots, 3D stone)
+  6. Prestige — Treasury Hall (empty cases, glass reflection)
+  7. Services — Hall of Disciplines (4 pillars, 3D tilt)
+  8. Evidence — Case Study (magnify, metrics, quote)
+  9. Voices — Testimonials (featured card, stars)
+  10. Vault — Pricing (deposit boxes, featured seal)
+  11. Archive — FAQ (accordion, left border glow)
+  12. Access — Invitation Gate (form, security icon)
+  13. Foundation — Footer (4-column, social)
+""")——->
+
+

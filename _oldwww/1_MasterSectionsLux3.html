@@ -1,0 +1,2357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legaisee Luxury Library — The Complete Collection</title>
+<style>
+/* ================================================================
+   LEGAISEE LUXURY LIBRARY — COMPLETE ASSEMBLY (Session 7)
+   25 Sections · $5M+ Clientele · Zero Omissions
+   Palette: Obsidian, Gold, Platinum, Silver, Pewter
+   NO VIOLET ANYWHERE
+   ================================================================ */
+
+:root {
+  --obsidian: #050505;
+  --obsidian-light: #090909;
+  --obsidian-mid: #0f0f0f;
+  --charcoal: #161616;
+  --graphite: #1e1e1e;
+  --gold: #C9A961;
+  --gold-light: #D4B978;
+  --gold-bright: #E8D5A3;
+  --gold-vivid: #F0C24B;
+  --gold-dim: #8B7040;
+  --platinum: #EBEBEB;
+  --silver: #A8A8A8;
+  --pewter: #6A6A6A;
+  --white: #FFFFFF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--obsidian);
+  color: var(--platinum);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  line-height: 1.7;
+  font-size: 18px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* --- Typography --- */
+.d-xl { font-family: 'Cinzel', Georgia, serif; font-size: clamp(42px, 5.5vw, 76px); font-weight: 400; line-height: 1.15; letter-spacing: -0.01em; color: var(--platinum); }
+.d-lg { font-family: 'Cinzel', Georgia, serif; font-size: clamp(32px, 4vw, 52px); font-weight: 400; line-height: 1.2; letter-spacing: 0.02em; color: var(--platinum); }
+.d-md { font-family: 'Cinzel', Georgia, serif; font-size: clamp(24px, 3vw, 36px); font-weight: 400; line-height: 1.25; color: var(--platinum); }
+.d-sm { font-family: 'Cinzel', Georgia, sans-seri; font-size: clamp(18px, 2vw, 24px); font-weight: 400; line-height: 1.3; color: var(--platinum); }
+.b-xl { font-family: 'Cormorant Garamond', Georgia, sans-serif; font-size: clamp(20px, 2.2vw, 26px); font-weight: 300; line-height: 1.75; color: var(--silver); }
+.b-lg { font-family: 'Cormorant Garamond', Georgia, sans-serif; font-size: clamp(17px, 1.6vw, 20px); font-weight: 300; line-height: 1.7; color: var(--silver); }
+.b-md { font-family: 'Cormorant Garamond', Georgia, sans-serif; font-size: 16px; font-weight: 300; line-height: 1.65; color: var(--pewter); }
+
+/* --- UI Typography --- */
+.eyebrow {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 24px;
+}
+.micro-label {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pewter);
+}
+.prestige-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+}
+.prestige-label::before,
+.prestige-label::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+
+/* --- Section Architecture --- */
+.lux-section {
+  position: relative;
+  width: 100%;
+  padding: 155px 90px;
+  overflow: hidden;
+}
+.lux-section-alt { background: var(--obsidian-light); }
+.lux-section-charcoal { background: var(--charcoal); }
+.lux-section-gold { background: linear-gradient(180deg, var(--charcoal) 0%, rgba(201,169,97,0.03) 50%, var(--charcoal) 100%); }
+
+.section-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Background System --- */
+.bg-vault {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(201,169,97,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(201,169,97,0.02) 0%, transparent 50%),
+    linear-gradient(180deg, var(--obsidian) 0%, var(--obsidian-mid) 100%);
+  pointer-events: none;
+  transition: opacity 1.2s ease;
+}
+.bg-archive {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(139,112,64,0.03) 0%, transparent 60%),
+    linear-gradient(180deg, var(--obsidian) 0%, var(--obsidian-light) 50%, var(--obsidian) 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.bg-gallery {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(201,169,97,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(201,169,97,0.02) 0%, transparent 50%),
+    linear-gradient(180deg, var(--obsidian) 0%, var(--obsidian-light) 50%, var(--obsidian) 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+/* --- Dividers --- */
+.divider-gold {
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-dim));
+  margin: 48px 0;
+}
+.divider-subtle {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--graphite), transparent);
+  margin: 64px 0;
+}
+.divider-wide {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 5%, var(--gold-dim) 50%, transparent 95%);
+  margin: 80px 0;
+}
+
+/* --- Cards & Containers --- */
+.specimen-card {
+  background: var(--obsidian-light);
+  border: 1px solid var(--graphite);
+  padding: 64px 56px;
+  position: relative;
+}
+.museum-card {
+  background: var(--obsidian-mid);
+  border: 1px solid rgba(201,169,97,0.15);
+  padding: 56px 48px;
+  position: relative;
+}
+.museum-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+.exhibit-card {
+  background: var(--obsidian-light);
+  border: 1px solid rgba(201,169,97,0.12);
+  padding: 56px 48px;
+  position: relative;
+  transition: border-color 0.4s ease, transform 0.4s ease;
+}
+.exhibit-card:hover {
+  border-color: rgba(201,169,97,0.35);
+  transform: translateY(-2px);
+}
+.exhibit-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 20%; right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.exhibit-card:hover::after { opacity: 1; }
+.case-dossier {
+  background: var(--charcoal);
+  border-left: 3px solid var(--gold-dim);
+  padding: 40px 36px;
+  position: relative;
+}
+.case-dossier::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -3px; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--gold), var(--gold-dim), transparent);
+}
+.truth-tier-card {
+  background: var(--obsidian-mid);
+  border: 1px solid var(--graphite);
+  padding: 40px 32px;
+  position: relative;
+}
+.truth-tier-card.tier-1-active { border-color: rgba(201,169,97,0.3); }
+
+/* --- Gemstone Image System --- */
+.gem-placeholder {
+  position: relative;
+  overflow: hidden;
+  background: var(--obsidian-mid);
+  border: 1px solid rgba(201,169,97,0.22);
+}
+.gem-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+  transition: opacity 0.5s ease, transform 0.6s ease;
+}
+.gem-placeholder:hover img { opacity: 1; transform: scale(1.03); }
+.gem-catalog-num {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  background: rgba(5,5,5,0.8);
+  padding: 4px 10px;
+  border: 1px solid rgba(201,169,97,0.2);
+}
+.gem-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 24px;
+  background: linear-gradient(0deg, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.6) 60%, transparent 100%);
+}
+.gem-caption-title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 14px;
+  color: var(--gold-light);
+  margin-bottom: 4px;
+}
+.gem-caption-desc {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 14px;
+  color: var(--pewter);
+  font-style: italic;
+}
+
+/* --- Buttons --- */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--obsidian);
+  background: var(--gold);
+  padding: 18px 40px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-outline-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: transparent;
+  padding: 16px 36px;
+  border: 1px solid var(--gold-dim);
+  cursor: pointer;
+  transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+  text-decoration: none;
+}
+.btn-outline-gold:hover { border-color: var(--gold); color: var(--gold-bright); background: rgba(201,169,97,0.05); }
+
+/* --- Lists --- */
+.feature-list { list-style: none; padding: 0; }
+.feature-list li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 14px;
+  color: var(--silver);
+  font-size: 17px;
+  line-height: 1.65;
+}
+.feature-list li::before {
+  content: '◆';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  color: var(--gold-dim);
+  font-size: 10px;
+}
+
+/* --- Stats --- */
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pewter);
+}
+
+/* --- Process Numbers --- */
+.process-n {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 72px;
+  font-weight: 400;
+  color: rgba(201,169,97,0.08);
+  line-height: 1;
+  position: absolute;
+  top: -8px;
+  left: -4px;
+}
+
+/* --- Grid Layouts --- */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.four-col { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+.five-col { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
+
+/* --- FAQ Accordion --- */
+.faq-item { border-bottom: 1px solid var(--graphite); padding: 32px 0; }
+.faq-q {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 20px;
+  color: var(--platinum);
+  margin-bottom: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.faq-q::after {
+  content: '+';
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  color: var(--gold-dim);
+  transition: transform 0.3s ease;
+}
+.faq-item.active .faq-q::after { transform: rotate(45deg); color: var(--gold); }
+.faq-a {
+  color: var(--silver);
+  font-size: 17px;
+  line-height: 1.7;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.3s ease;
+}
+.faq-item.active .faq-a { max-height: 500px; padding-top: 8px; }
+
+/* --- Price Display --- */
+.price-tag {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1.2;
+}
+.price-note {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--pewter);
+  margin-top: 8px;
+}
+
+/* --- Commission Seal --- */
+.commission-seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold-dim);
+  padding: 8px 18px;
+  margin-bottom: 24px;
+}
+.commission-seal::before { content: '◆'; font-size: 8px; color: var(--gold-dim); }
+
+/* --- CTA Box --- */
+.cta-box {
+  text-align: center;
+  padding: 80px 60px;
+  background: var(--obsidian-mid);
+  border: 1px solid rgba(201,169,97,0.15);
+  position: relative;
+}
+.cta-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+
+/* --- Registry Form --- */
+.registry-form { max-width: 600px; margin: 0 auto; }
+.registry-form input,
+.registry-form textarea,
+.registry-form select {
+  width: 100%;
+  background: var(--obsidian);
+  border: 1px solid var(--graphite);
+  color: var(--platinum);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 17px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  transition: border-color 0.3s ease;
+}
+.registry-form input:focus,
+.registry-form textarea:focus,
+.registry-form select:focus { outline: none; border-color: var(--gold-dim); }
+.registry-form input::placeholder,
+.registry-form textarea::placeholder { color: var(--pewter); font-style: italic; }
+
+/* --- Truth Tier Badges --- */
+.truth-tier {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border: 1px solid;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+.tier-1 { color: var(--gold); border-color: var(--gold-dim); background: rgba(201,169,97,0.05); }
+.tier-2 { color: var(--silver); border-color: var(--pewter); background: rgba(168,168,168,0.05); }
+.tier-3 { color: var(--pewter); border-color: var(--graphite); }
+.tier-4 { color: #4a4a4a; border-color: var(--graphite); }
+
+/* --- Speakeasy Frame --- */
+.speakeasy-frame {
+  border: 1px solid rgba(201,169,97,0.12);
+  background: linear-gradient(180deg, var(--obsidian-light) 0%, var(--obsidian-mid) 100%);
+  position: relative;
+}
+.speakeasy-frame::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 10%, var(--gold-dim) 50%, transparent 90%);
+}
+
+/* --- Channel Grid --- */
+.channel-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--graphite);
+  border: 1px solid var(--graphite);
+}
+.channel-cell {
+  background: var(--obsidian-light);
+  padding: 24px 20px;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+.channel-cell:hover { background: var(--obsidian-mid); }
+.channel-cell-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--silver);
+}
+.channel-cell-era {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  color: var(--pewter);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* --- Voice Dimension --- */
+.voice-dimension {
+  background: var(--obsidian-mid);
+  border: 1px solid var(--graphite);
+  padding: 32px 28px;
+  position: relative;
+}
+.voice-dim-num {
+  font-family: 'Cinzel', serif;
+  font-size: 48px;
+  color: rgba(201,169,97,0.1);
+  line-height: 1;
+  position: absolute;
+  top: 12px;
+  right: 16px;
+}
+.voice-dim-title {
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+}
+.voice-dim-desc {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: var(--silver);
+  line-height: 1.6;
+}
+
+/* --- Industry Crest --- */
+.industry-crest {
+  background: var(--obsidian-mid);
+  border: 1px solid var(--graphite);
+  padding: 40px 32px;
+  text-align: center;
+  transition: border-color 0.3s ease;
+}
+.industry-crest:hover { border-color: rgba(201,169,97,0.25); }
+.industry-crest-name {
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  color: var(--platinum);
+  margin-bottom: 12px;
+}
+.industry-crest-focus {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 16px;
+}
+.industry-crest-desc {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  color: var(--silver);
+  line-height: 1.6;
+}
+
+/* --- Image Aspect Ratios --- */
+.aspect-16-10 { aspect-ratio: 16 / 10; }
+.aspect-4-3 { aspect-ratio: 4 / 3; }
+.aspect-3-2 { aspect-ratio: 3 / 2; }
+.aspect-21-9 { aspect-ratio: 21 / 9; }
+.aspect-1-1 { aspect-ratio: 1 / 1; }
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .lux-section { padding: 100px 40px; }
+  .two-col { grid-template-columns: 1fr; gap: 48px; }
+  .three-col { grid-template-columns: 1fr; gap: 32px; }
+  .four-col { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .five-col { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .channel-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .lux-section { padding: 80px 24px; }
+  .four-col { grid-template-columns: 1fr; }
+  .five-col { grid-template-columns: 1fr; }
+  .channel-grid { grid-template-columns: 1fr; }
+  .specimen-card, .museum-card, .exhibit-card { padding: 40px 28px; }
+}
+
+/* --- Animations --- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-in { animation: fadeUp 0.8s ease forwards; }
+
+/* --- Scroll Reveal --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* --- Nav --- */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 40px;
+  background: linear-gradient(180deg, rgba(5,5,5,0.9) 0%, transparent 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+}
+.nav-links {
+  display: flex;
+  gap: 32px;
+}
+.nav-links a {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--pewter);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.nav-links a:hover { color: var(--gold); }
+
+/* --- Footer --- */
+.site-footer {
+  padding: 80px 90px 60px;
+  border-top: 1px solid var(--graphite);
+  text-align: center;
+}
+
+/* --- Phase Card --- */
+.phase-card {
+  background: var(--obsidian-light);
+  border: 1px solid var(--graphite);
+  padding: 48px 40px;
+  position: relative;
+}
+.phase-ghost {
+  font-family: 'Cinzel', serif;
+  font-size: 96px;
+  font-weight: 400;
+  color: rgba(201,169,97,0.04);
+  line-height: 1;
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<base target="_blank">
+</head>
+<body>
+
+<!-- Background Layers -->
+<div class="bg-vault" id="bg-vault"></div>
+<div class="bg-archive" id="bg-archive"></div>
+<div class="bg-gallery" id="bg-gallery"></div>
+
+<!-- Navigation -->
+<nav class="site-nav">
+  <div class="nav-logo">LEGAISEE</div>
+  <div class="nav-links">
+    <a href="#lux-01">Entry</a>
+    <a href="#lux-06">Method</a>
+    <a href="#lux-11">Industries</a>
+    <a href="#lux-16">Exhibits</a>
+    <a href="#lux-21">Commissions</a>
+    <a href="#lux-25">Registry</a>
+  </div>
+</nav>
+
+<!-- ================================================================
+     LUX-01: THE VELVET ROPE
+     Gemstone Stage: Habitat
+     Background: BG-01 The Vault Interior
+     ================================================================ -->
+<section class="lux-section" id="lux-01" style="padding-top: 200px;">
+  <div class="section-inner" style="text-align: center; max-width: 900px;">
+
+    <div class="prestige-label" style="justify-content: center;">The Speakeasy Entry</div>
+
+    <h1 class="d-xl" style="margin-bottom: 48px;">
+      Sit down. Let the door close behind you. Pour a glass of something that took twenty years to reach its peak.
+    </h1>
+
+    <div class="divider-gold" style="margin: 48px auto;"></div>
+
+    <p class="b-xl" style="color: var(--platinum);">
+      You and I are here because you have built an enterprise that has stood the test of time. You have scaled, you have survived, and you have led.
+    </p>
+
+  </div>
+</section>
+
+<div class="divider-subtle" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-02: THE RESTORATION THESIS
+     Gemstone Stage: Raw
+     ================================================================ -->
+<section class="lux-section lux-section-alt" id="lux-02">
+  <div class="section-inner">
+
+    <div class="prestige-label">The Restoration Thesis</div>
+
+    <div class="two-col" style="align-items: center;">
+      <div>
+        <p class="b-xl" style="margin-bottom: 24px; color: var(--platinum);">
+          Yet, there is a quiet, persistent recognition that the business no longer moves with the absolute clarity it once possessed. Decisions landed cleaner back then. Your market position was undisputed, and your name carried a specific, unreplicable weight that your competitors could not copy, no matter how closely they watched.
+        </p>
+
+        <p class="b-lg" style="margin-bottom: 20px;">
+          That clarity wasn't the result of luck or temporary market conditions. It was the output of a precise strategic structure—a combination of messaging and positioning that worked predictably until it was quietly forgotten.
+        </p>
+
+        <p class="b-lg" style="margin-bottom: 20px;">
+          Most businesses of this scale do not decline because of a lack of talent; they drift. Over years of expansion, generational shifts, turnover, and the arrival of new decision-makers, the original "Golden Era" logic is replaced by reactive marketing and tactical noise.
+        </p>
+
+        <p class="b-lg" style="margin-bottom: 20px;">
+          Legacy files disappear, and the high-leverage assets that built your empire are buried under layers of "Narrative Drift".
+        </p>
+
+        <p class="b-xl" style="color: var(--gold-light); font-style: italic;">
+          For a Texas Sized Business, the cost of losing this institutional memory is catastrophic, resulting in structural blind spots that leak revenue and erode your pricing power.
+        </p>
+      </div>
+
+      <div>
+        <!-- Gemstone Stage: Raw -->
+        <div class="gem-placeholder aspect-4-3" style="margin-bottom: 16px;">
+          <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&q=80" alt="Raw Stone from Earth — Uncut mineral specimen">
+          <span class="gem-catalog-num">CAT-RAW-002</span>
+          <div class="gem-caption">
+            <div class="gem-caption-title">Raw Stone from Earth</div>
+            <div class="gem-caption-desc">The Raw Stone — before the lapidary touches it</div>
+          </div>
+        </div>
+
+        <div class="museum-card">
+          <p class="micro-label" style="margin-bottom: 16px;">The Condition</p>
+          <ul class="feature-list">
+            <li>quiet, persistent recognition</li>
+            <li>absolute clarity it once possessed</li>
+            <li>Decisions landed cleaner back then</li>
+            <li>unreplicable weight</li>
+            <li>precise strategic structure</li>
+            <li>quietly forgotten</li>
+            <li>drift — generational shifts, turnover</li>
+            <li>Narrative Drift</li>
+            <li>Texas Sized Business</li>
+            <li>structural blind spots</li>
+            <li>leak revenue</li>
+            <li>erode your pricing power</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-subtle" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-03: THE ARCHITECT'S CREDENTIALS
+     Gemstone Stage: Cut
+     ================================================================ -->
+<section class="lux-section" id="lux-03">
+  <div class="section-inner">
+
+    <div class="prestige-label">The Architect</div>
+
+    <div class="two-col" style="align-items: center; direction: rtl;">
+      <div style="direction: ltr;">
+        <!-- Gemstone Stage: Cut -->
+        <div class="gem-placeholder aspect-16-10" style="margin-bottom: 16px;">
+          <img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?w=800&q=80" alt="Cut and Shaped — Faceted gemstone on cutting wheel">
+          <span class="gem-catalog-num">CAT-CUT-003</span>
+          <div class="gem-caption">
+            <div class="gem-caption-title">Cut / Shaped</div>
+            <div class="gem-caption-desc">The Lapidary — strategic refinement</div>
+          </div>
+        </div>
+
+        <div class="museum-card">
+          <p class="micro-label" style="margin-bottom: 16px;">Credentials</p>
+          <div class="stat-item" style="text-align: left;">
+            <div class="stat-num" style="font-size: 42px;">30</div>
+            <div class="stat-label">Years in Broadcast &amp; Production</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="direction: ltr;">
+        <h2 class="d-lg" style="margin-bottom: 24px;">The Architect</h2>
+        <div class="divider-gold"></div>
+
+        <p class="b-xl" style="margin-bottom: 24px; color: var(--platinum);">
+          Our founder spent three decades in the trenches of high-end broadcast, advertising, and technical production—mastering the "Signal" that commands attention.
+        </p>
+
+        <p class="b-lg" style="margin-bottom: 20px;">
+          This methodology was born from years of working with consistent clients and noticing patterns that eventually arise over time. We combine the forensic discipline of an archivist with the DNA of a master broadcaster to ensure your business's recovered assets are displayed in a way the market can not ignore.
+        </p>
+
+        <p class="b-xl" style="color: var(--gold-light); font-style: italic;">
+          We don't find your history; we turn it into Unavoidable Logic.
+        </p>
+
+        <div style="margin-top: 32px;">
+          <span class="truth-tier tier-1">Signal</span>
+          <span class="truth-tier tier-1">Unavoidable Logic</span>
+          <span class="truth-tier tier-1">three decades</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-subtle" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-04: THE BEDROCK PLEDGE
+     Gemstone Stage: Mounted
+     ================================================================ -->
+<section class="lux-section lux-section-alt" id="lux-04">
+  <div class="section-inner">
+
+    <div class="prestige-label">The Bedrock of Forensic Truth</div>
+
+    <div style="text-align: center; max-width: 900px; margin: 0 auto 64px;">
+      <h2 class="d-lg" style="margin-bottom: 24px;">We operate in The Bedrock of Forensic Truth.</h2>
+      <p class="b-xl" style="color: var(--platinum);">
+        If you are going to trust us with the legacy of a multi-million dollar institution, you deserve to know exactly how we weigh the evidence, how we access the inaccessible, and the specialized commissions we reserve for the highest stakes.
+      </p>
+    </div>
+
+    <!-- Gemstone Stage: Mounted -->
+    <div class="gem-placeholder aspect-21-9" style="margin-bottom: 64px;">
+      <img src="https://images.unsplash.com/photo-1515562140307-00e657d1e317?w=1400&q=80" alt="Mounted in Precious Metal — Stone set in gold setting">
+      <span class="gem-catalog-num">CAT-MNT-004</span>
+      <div class="gem-caption">
+        <div class="gem-caption-title">Mounted in Precious Metal</div>
+        <div class="gem-caption-desc">Prestige authority — the mounting phase</div>
+      </div>
+    </div>
+
+    <div class="speakeasy-frame" style="padding: 56px 48px;">
+      <p class="micro-label" style="margin-bottom: 24px; text-align: center;">The Philosophy of Strategic Continuity</p>
+
+      <p class="b-lg" style="max-width: 800px; margin: 0 auto 20px; text-align: center;">
+        Traditional strategy is often built on interpretation—the subjective opinions of agencies guessing what might work next. Our discipline is built on forensic documentation.
+      </p>
+
+      <p class="b-lg" style="max-width: 800px; margin: 0 auto 20px; text-align: center;">
+        We treat your company's history as an archaeological dig worth millions, where the evidence of your greatest success is still present, waiting to be recovered.
+      </p>
+
+      <p class="b-xl" style="max-width: 800px; margin: 0 auto; text-align: center; color: var(--platinum); font-style: italic;">
+        This approach is rooted in the principle of the Lindy Effect: the idea that the longer a strategic move has already worked, the longer it is likely to work in the future. We do not ask what the market wants today; we ask what your business has already proved it can deliver better than anyone else.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-subtle" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-05: THE TEN FRAMEWORKS OVERVIEW
+     Gemstone Stage: Display
+     ================================================================ -->
+<section class="lux-section" id="lux-05">
+  <div class="section-inner">
+
+    <div class="prestige-label">The Ten Interlocking Frameworks</div>
+
+    <div style="text-align: center; max-width: 900px; margin: 0 auto 64px;">
+      <h2 class="d-lg" style="margin-bottom: 24px;">The Ten Interlocking Frameworks of Reconstruction</h2>
+      <p class="b-xl" style="color: var(--platinum);">
+        Our methodology is a disciplined, industry-agnostic reconstruction designed to transform scattered fragments of the past into a mechanized Authority System. It is governed by ten interlocking frameworks that ensure every strategic move is anchored in proof rather than speculation.
+      </p>
+    </div>
+
+    <!-- Gemstone Stage: Display -->
+    <div class="gem-placeholder aspect-21-9" style="margin-bottom: 64px;">
+      <img src="https://images.unsplash.com/photo-1565060169194-12d03853366c?w=1400&q=80" alt="Prestige Museum Display — Lit museum case, velvet pedestal">
+      <span class="gem-catalog-num">CAT-DSP-005</span>
+      <div class="gem-caption">
+        <div class="gem-caption-title">Prestige Museum Display</div>
+        <div class="gem-caption-desc">The Display — public authority, unavoidable logic</div>
+      </div>
+    </div>
+
+    <div class="speakeasy-frame" style="padding: 56px 48px;">
+      <p class="micro-label" style="margin-bottom: 32px; text-align: center;">What We Do Not Do</p>
+      <p class="d-md" style="text-align: center; color: var(--gold-light); font-style: italic;">
+        We do not "create" marketing here. We practice Business Archaeology.
+      </p>
+      <p class="b-lg" style="max-width: 700px; margin: 24px auto 0; text-align: center;">
+        We excavate the proven assets your business has already earned and install them as a permanent Authority System. Scaling an unstable narrative only accelerates failure; therefore, we must stabilize your institutional foundation before you invest another dollar in expansion or automation.
+      </p>
+    </div>
+
+    <div class="divider-gold" style="margin: 64px auto;"></div>
+
+    <div class="five-col">
+      <div class="museum-card" style="text-align: center;">
+        <div class="stat-num" style="font-size: 32px;">01</div>
+        <p class="b-md" style="margin-top: 12px;">40+ Channel Taxonomy</p>
+      </div>
+      <div class="museum-card" style="text-align: center;">
+        <div class="stat-num" style="font-size: 32px;">02</div>
+        <p class="b-md" style="margin-top: 12px;">3-Source Rule</p>
+      </div>
+      <div class="museum-card" style="text-align: center;">
+        <div class="stat-num" style="font-size: 32px;">03</div>
+        <p class="b-md" style="margin-top: 12px;">Hierarchy of Truth</p>
+      </div>
+      <div class="museum-card" style="text-align: center;">
+        <div class="stat-num" style="font-size: 32px;">04</div>
+        <p class="b-md" style="margin-top: 12px;">Triangulation Protocol</p>
+      </div>
+      <div class="museum-card" style="text-align: center;">
+        <div class="stat-num" style="font-size: 32px;">05</div>
+        <p class="b-md" style="margin-top: 12px;">Eight Classes of Evidence</p>
+      </div>
+    </div>
+
+    <div class="five-col" style="margin-top: 24px;">
+      <div class="museum-card" style="text-align: center;">
+        <div class="stat-num" style="font-size: 32px;">06</div>
+        <p class="b-md" style="margin-top: 12px;">Continuous Verification</p>
+      </div>
+      <div class="museum-card" style="text-align: center;">
+        <div class="stat-num" style="font-size: 32px;">07</div>
+        <p class="b-md" style="margin-top: 12px;">8-Dimension Voice Profile</p>
+      </div>
+      <div class="museum-card" style="text-align: center;">
+        <div class="stat-num" style="font-size: 32px;">08</div>
+        <p class="b-md" style="margin-top: 12px;">ROI Triggers</p>
+      </div>
+      <div class="museum-card" style="text-align: center;">
+        <div class="stat-num" style="font-size: 32px;">09</div>
+        <p class="b-md" style="margin-top: 12px;">Competitive Asymmetry</p>
+      </div>
+      <div class="museum-card" style="text-align: center;">
+        <div class="stat-num" style="font-size: 32px;">10</div>
+        <p class="b-md" style="margin-top: 12px;">Master Operations Doctrine</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-wide" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-06: THE 40+ CHANNEL TAXONOMY
+     Gemstone Stage: Habitat
+     Background: BG-02 The Archive Wall
+     ================================================================ -->
+<section class="lux-section lux-section-alt" id="lux-06">
+  <div class="section-inner">
+
+    <div class="prestige-label">The Methodology Deep-Dive</div>
+
+    <div style="text-align: center; max-width: 900px; margin: 0 auto 64px;">
+      <p class="eyebrow">Framework 01</p>
+      <h2 class="d-lg" style="margin-bottom: 24px;">The 40+ Channel Taxonomy</h2>
+      <p class="b-xl" style="color: var(--platinum);">
+        The investigation begins with the 40+ Channel Taxonomy. We reconstruct your narrative across every available signal—from early print and radio archives to modern digital footprints and internal financial filings—tracing your footprint from the 1890s to the present.
+      </p>
+    </div>
+
+    <!-- Gemstone Stage: Habitat -->
+    <div class="gem-placeholder aspect-21-9" style="margin-bottom: 64px;">
+      <img src="https://images.unsplash.com/photo-1517999144091-3d9dca6d1e43?w=1400&q=80" alt="Natural Habitat — Rough geological formation">
+      <span class="gem-catalog-num">CAT-HAB-006</span>
+      <div class="gem-caption">
+        <div class="gem-caption-title">Natural Habitat</div>
+        <div class="gem-caption-desc">Where the stone sleeps before discovery</div>
+      </div>
+    </div>
+
+    <p class="micro-label" style="margin-bottom: 24px; text-align: center;">Eight Major Classes of Data</p>
+
+    <div class="four-col">
+      <div class="museum-card" style="text-align: center;">
+        <div class="stat-num" style="font-size: 28px;">I</div>
+        <p class="b-md" style="margin-top: 12px;">Advertising and Marketing history</p>
+      </div>
+      <div class="museum-card" style="text-align: center;">
+        <div class="stat-num" style="font-size: 28px;">II</div>
+        <p class="b-md" style="margin-top: 12px;">Financial Records and Public Filings</p>
+      </div>
+      <div class="museum-card" style="text-align: center;">
+        <div class="stat-num" style="font-size: 28px;">III</div>
+        <p class="b-md" style="margin-top: 12px;">Operations and Infrastructure</p>
+      </div>
+      <div class="museum-card" style="text-align: center;">
+        <div class="stat-num" style="font-size: 28px;">IV</div>
+        <p class="b-md" style="margin-top: 12px;">Digital Presence</p>
+      </div>
+    </div>
+
+    <div class="four-col" style="margin-top: 24px;">
+      <div class="museum-card" style="text-align: center;">
+        <div class="stat-num" style="font-size: 28px;">V</div>
+        <p class="b-md" style="margin-top: 12px;">Brand Voice and Communications</p>
+      </div>
+      <div class="museum-card" style="text-align: center;">
+        <div class="stat-num" style="font-size: 28px;">VI</div>
+        <p class="b-md" style="margin-top: 12px;">Personnel and Leadership history</p>
+      </div>
+      <div class="museum-card" style="text-align: center;">
+        <div class="stat-num" style="font-size: 28px;">VII</div>
+        <p class="b-md" style="margin-top: 12px;">Customer and Market Data</p>
+      </div>
+      <div class="museum-card" style="text-align: center;">
+        <div class="stat-num" style="font-size: 28px;">VIII</div>
+        <p class="b-md" style="margin-top: 12px;">The Competitive Landscape</p>
+      </div>
+    </div>
+
+    <p class="b-lg" style="max-width: 800px; margin: 48px auto 0; text-align: center;">
+      This ensures methodical coverage, mapping not just what was said, but how the market interpreted those signals across different cultural and media eras.
+    </p>
+
+  </div>
+</section>
+
+<div class="divider-subtle" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-07: THE HIERARCHY OF TRUTH
+     Gemstone Stage: Raw
+     ================================================================ -->
+<section class="lux-section" id="lux-07">
+  <div class="section-inner">
+
+    <div class="prestige-label">Frameworks 02–04</div>
+
+    <div style="text-align: center; max-width: 900px; margin: 0 auto 64px;">
+      <p class="eyebrow">The Hierarchy of Truth · The 3-Source Rule</p>
+      <h2 class="d-lg" style="margin-bottom: 24px;">The Bedrock of Evidence</h2>
+      <p class="b-xl" style="color: var(--platinum); font-style: italic;">
+        We don't just "find" information; we grade it!
+      </p>
+    </div>
+
+    <!-- Gemstone Stage: Raw -->
+    <div class="gem-placeholder aspect-4-3" style="margin-bottom: 64px; max-width: 800px; margin-left: auto; margin-right: auto;">
+      <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&q=80" alt="Raw Stone — Uncut mineral specimen">
+      <span class="gem-catalog-num">CAT-RAW-007</span>
+      <div class="gem-caption">
+        <div class="gem-caption-title">Raw Stone from Earth</div>
+        <div class="gem-caption-desc">Evidence before it is graded and cut</div>
+      </div>
+    </div>
+
+    <p class="b-lg" style="max-width: 800px; margin: 0 auto 48px; text-align: center;">
+      Accuracy is maintained through the 3-Source Rule: no significant strategic claim is authorized without two independent sources or one Tier 1 verified primary source from our Hierarchy of Truth. All information is graded via our Source Hierarchy, ranging from Tier 1 (Verified Primary Evidence) to Tier 4 (Uncertain or Speculative). Every signal we exhumed is categorized on a four-tier scale to establish a measurable confidence level before it ever touches your strategy.
+    </p>
+
+    <div class="four-col">
+
+      <div class="truth-tier-card tier-1-active">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <span class="truth-tier tier-1">Tier 1</span>
+        </div>
+        <h3 class="d-sm" style="margin-bottom: 12px;">Tier 1: The Verified Primary</h3>
+        <p class="b-lg">
+          This is the gold standard—irrefutable, documented evidence. Think of an original 1994 technical publication, a signed legal filing, or a physical 35mm master of a peak-era commercial. This is data that requires no interpretation because it exists as a primary artifact.
+        </p>
+      </div>
+
+      <div class="truth-tier-card">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <span class="truth-tier tier-2">Tier 2</span>
+        </div>
+        <h3 class="d-sm" style="margin-bottom: 12px;">Tier 2: The Probable</h3>
+        <p class="b-lg">
+          These are highly credible secondary sources. This might be a detailed internal report from a former marketing director or a consistent pattern of press coverage from reputable trade journals during your "Golden Era." It is solid, reliable, and carries significant weight in our triangulation.
+        </p>
+      </div>
+
+      <div class="truth-tier-card">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <span class="truth-tier tier-3">Tier 3</span>
+        </div>
+        <h3 class="d-sm" style="margin-bottom: 12px;">Tier 3: The Plausible</h3>
+        <p class="b-lg">
+          This represents reasonable assumptions supported by context. When we see your revenue spike alongside a specific cultural shift, and three different former employees vaguely recall a "handshake agreement" that changed your positioning, we have a plausible signal. It is a thread worth pulling, but it is not yet a foundation.
+        </p>
+      </div>
+
+      <div class="truth-tier-card">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <span class="truth-tier tier-4">Tier 4</span>
+        </div>
+        <h3 class="d-sm" style="margin-bottom: 12px;">Tier 4: The Uncertain</h3>
+        <p class="b-lg">
+          This is the realm of the speculative or the conflicting. It might be a founder's memory that contradicts every financial ledger we've exhumed, or a "ghost page" on the deep web that suggests a direction you never actually took. We record these contradictions transparently rather than hiding them, because sometimes the friction between what was said and what happened is where the most valuable truth is buried.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-subtle" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-08: THE TRIANGULATION PROTOCOL
+     Gemstone Stage: Cut
+     ================================================================ -->
+<section class="lux-section lux-section-alt" id="lux-08">
+  <div class="section-inner">
+
+    <div class="prestige-label">Framework 04</div>
+
+    <div class="two-col" style="align-items: center;">
+      <div>
+        <p class="eyebrow">Conflict Resolution System</p>
+        <h2 class="d-lg" style="margin-bottom: 24px;">The Triangulation Protocol</h2>
+        <div class="divider-gold"></div>
+
+        <p class="b-xl" style="margin-bottom: 24px; color: var(--platinum);">
+          When institutional memory inevitably conflicts—such as a legacy financial ledger contradicting a founder's recollection—we apply the Triangulation Protocol, where conflicting accounts are recorded verbatim and synthesized into a single, defensible record of truth.
+        </p>
+
+        <p class="b-lg" style="margin-bottom: 20px;">
+          We do not cherry-pick the cleanest story; we synthesize the version of truth that coexists logically across all validated signals to produce a single, defensible record for executive decision-making.
+        </p>
+
+        <p class="b-lg" style="margin-bottom: 20px; color: var(--gold-light); font-style: italic;">
+          In a high-stakes corporate environment, a million-dollar decision cannot be built on a hunch or a fuzzy memory. This is why we treat information with the same rigor as an intelligence brief.
+        </p>
+
+        <div class="museum-card" style="margin-top: 32px;">
+          <p class="micro-label" style="margin-bottom: 16px;">The Triangulation Promise</p>
+          <ul class="feature-list">
+            <li>Conflicting accounts recorded verbatim</li>
+            <li>Synthesized into single defensible record</li>
+            <li>No cherry-picking of cleanest story</li>
+            <li>Executive decision-grade confidence</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <!-- Gemstone Stage: Cut -->
+        <div class="gem-placeholder aspect-16-10" style="margin-bottom: 16px;">
+          <img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?w=800&q=80" alt="Cut and Shaped — Faceted gemstone">
+          <span class="gem-catalog-num">CAT-CUT-008</span>
+          <div class="gem-caption">
+            <div class="gem-caption-title">Cut / Shaped</div>
+            <div class="gem-caption-desc">Resolving contradictions into clarity</div>
+          </div>
+        </div>
+
+        <div class="speakeasy-frame" style="padding: 32px;">
+          <p class="b-md" style="text-align: center; font-style: italic;">
+            "ghost pages" · "ghost employee" tracking · Competitive Gap
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-subtle" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-09: THE EIGHT CLASSES OF EVIDENCE
+     Gemstone Stage: Mounted
+     ================================================================ -->
+<section class="lux-section" id="lux-09">
+  <div class="section-inner">
+
+    <div class="prestige-label">Framework 05</div>
+
+    <div style="text-align: center; max-width: 900px; margin: 0 auto 64px;">
+      <p class="eyebrow">The Taxonomy of the Unseen</p>
+      <h2 class="d-lg" style="margin-bottom: 24px;">The Eight Classes of Evidence</h2>
+      <p class="b-xl" style="color: var(--platinum);">
+        To find your "Golden Era" inflection point, we scan the horizon across eight major classes of data.
+      </p>
+    </div>
+
+    <!-- Gemstone Stage: Mounted -->
+    <div class="gem-placeholder aspect-3-2" style="margin-bottom: 64px; max-width: 900px; margin-left: auto; margin-right: auto;">
+      <img src="https://images.unsplash.com/photo-1515562140307-00e657d1e317?w=1000&q=80" alt="Mounted in Precious Metal">
+      <span class="gem-catalog-num">CAT-MNT-009</span>
+      <div class="gem-caption">
+        <div class="gem-caption-title">Mounted in Precious Metal</div>
+        <div class="gem-caption-desc">Eight classes, one unified truth</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="specimen-card">
+        <p class="micro-label" style="margin-bottom: 16px;">Class I–IV</p>
+        <p class="b-lg" style="margin-bottom: 16px;">We exhume your Advertising and Marketing history, searching for past professional investments like "Addy Awards" and press archives that prove you were once the premier educator in your field. We dive into Financial Records and Public Filings, searching for comparative budget lines that reveal exactly when high-leverage assets were abandoned. We examine your Operations and Infrastructure, looking at historical architectural decisions and site locations that correlate with revenue peaks. Our Digital Presence investigation goes deep, to scrape "ghost" pages—abandoned URLs still indexed but forgotten by your current team.</p>
+      </div>
+      <div class="specimen-card">
+        <p class="micro-label" style="margin-bottom: 16px;">Class V–VIII</p>
+        <p class="b-lg" style="margin-bottom: 16px;">We model your Brand Voice through discontinued technical publications and deep-narrative catalogs. Our Personnel and Leadership protocol utilizes "ghost employee" tracking to find former directors and reconstruct the strategies used during their tenures. We scrape Customer and Market Data from unconventional sources to hear the authentic language of your market. Finally, we monitor the Competitive Landscape to see which rivals occupied the "Competitive Gap" you left behind.</p>
+      </div>
+    </div>
+
+    <div class="divider-gold" style="margin: 48px auto;"></div>
+
+    <div class="speakeasy-frame" style="padding: 48px;">
+      <p class="b-lg" style="max-width: 800px; margin: 0 auto; text-align: center;">
+        Findings are treated as a <span style="color: var(--gold-light);">Continuous Verification Model</span>, a living system where reports are updated as new evidence of your company's excellence surfaces. Once recovered, your brand is modeled through the 8-Dimension Voice Profile, mapping your unique communication DNA across vocabulary, sentence architecture, humor, perspective, transitions, calls-to-action, evidence style, and visual language.
+      </p>
+      <p class="b-lg" style="max-width: 800px; margin: 20px auto 0; text-align: center;">
+        We prioritize <span style="color: var(--gold-light);">ROI Triggers</span>, focusing on businesses with significant pre-2010 investments or those undergoing transitions. This results in <span style="color: var(--gold-light);">Competitive Asymmetry</span>: surfacing internal advantages your rivals cannot see and giving you an unavoidable market logic.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-subtle" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-10: THE 8-DIMENSION VOICE PROFILE
+     Gemstone Stage: Display
+     ================================================================ -->
+<section class="lux-section lux-section-alt" id="lux-10">
+  <div class="section-inner">
+
+    <div class="prestige-label">Framework 07</div>
+
+    <div style="text-align: center; max-width: 900px; margin: 0 auto 64px;">
+      <p class="eyebrow">The Linguistic Blueprint</p>
+      <h2 class="d-lg" style="margin-bottom: 24px;">The 8-Dimension Voice Profile</h2>
+      <p class="d-md" style="color: var(--gold-light); font-style: italic;">
+        Authenticity cannot be faked; it must be modeled.
+      </p>
+    </div>
+
+    <!-- Gemstone Stage: Display -->
+    <div class="gem-placeholder aspect-21-9" style="margin-bottom: 64px;">
+      <img src="https://images.unsplash.com/photo-1565060169194-12d03853366c?w=1400&q=80" alt="Prestige Museum Display">
+      <span class="gem-catalog-num">CAT-DSP-010</span>
+      <div class="gem-caption">
+        <div class="gem-caption-title">Prestige Museum Display</div>
+        <div class="gem-caption-desc">The voice, fully restored and displayed</div>
+      </div>
+    </div>
+
+    <p class="b-lg" style="max-width: 800px; margin: 0 auto 48px; text-align: center;">
+      When we move from excavation to reconstruction, we use an 8-Dimension Voice Profile to ensure that any AI-driven system or new content behaves exactly like your Peak Era. We don't just give you a "brand guide"; we map your company's communication DNA across eight specific linguistic dimensions:
+    </p>
+
+    <div class="two-col">
+      <div class="specimen-card">
+        <p class="micro-label" style="margin-bottom: 16px;">Dimensions 1–4</p>
+        <ul class="feature-list">
+          <li><strong>Vocabulary:</strong> The specific lexicon unique to your brand's authority.</li>
+          <li><strong>Sentence Architecture:</strong> The structural patterns, rhythm, and complexity of your speech.</li>
+          <li><strong>Humor and Tone:</strong> The characteristic wit and emotional quality that defines your prestige.</li>
+          <li><strong>Perspective:</strong> The point of view from which your business communicates to the world.</li>
+        </ul>
+      </div>
+      <div class="specimen-card">
+        <p class="micro-label" style="margin-bottom: 16px;">Dimensions 5–8</p>
+        <ul class="feature-list">
+          <li><strong>Transitions and Flow:</strong> How your ideas connect and the cadence of your delivery.</li>
+          <li><strong>Calls-to-Action:</strong> The specific, often subtle way your brand prompts its audience to move.</li>
+          <li><strong>Evidence Style:</strong> The manner in which you provide proof and establish your intellectual authority.</li>
+          <li><strong>Visual Language:</strong> The aesthetic cues and imagery that reinforce your spoken and written message.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider-gold" style="margin: 64px auto;"></div>
+
+    <div class="speakeasy-frame" style="padding: 48px;">
+      <p class="b-lg" style="max-width: 800px; margin: 0 auto; text-align: center;">
+        By mapping these dimensions, we ensure that the "Master Operations Doctrine" we build for you doesn't just sound like you—it acts like you, preserving your authority without requiring your constant presence. This ensures that our AI-driven systems produce output that behaves exactly like your company's most effective era, providing consistency without requiring your constant presence. We prioritize ROI Triggers, focusing on businesses with significant pre-2010 investments or those undergoing founder transitions where the highest value is typically buried. The final result is Competitive Asymmetry, surfacing internal advantages your rivals cannot see and giving you an unavoidable market logic.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-wide" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-11: MANUFACTURING & TECHNICAL DEPTH
+     Gemstone Stage: Raw
+     Background: BG-02 The Archive Wall (continued)
+     ================================================================ -->
+<section class="lux-section" id="lux-11">
+  <div class="section-inner">
+
+    <div class="prestige-label">Industry-Specific Dig Sites</div>
+
+    <div style="text-align: center; max-width: 900px; margin: 0 auto 64px;">
+      <h2 class="d-lg" style="margin-bottom: 24px;">Manufacturing &amp; Technical Depth</h2>
+      <p class="b-xl" style="color: var(--platinum);">
+        While our protocols are rigid, our focus shifts to align with the unique value drivers of your industry.
+      </p>
+    </div>
+
+    <div class="two-col" style="align-items: center;">
+      <div>
+        <!-- Gemstone Stage: Raw -->
+        <div class="gem-placeholder aspect-4-3" style="margin-bottom: 16px;">
+          <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&q=80" alt="Raw Stone">
+          <span class="gem-catalog-num">CAT-RAW-011</span>
+          <div class="gem-caption">
+            <div class="gem-caption-title">Raw Stone</div>
+            <div class="gem-caption-desc">Technical depth — the foundation of manufacturing authority</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="specimen-card">
+        <p class="micro-label" style="margin-bottom: 16px;">Manufacturing Focus</p>
+        <p class="b-lg" style="margin-bottom: 20px;">
+          Manufacturing: We focus on <span style="color: var(--gold-light);">Technical Depth</span>, reconstructing legacy technical publications to move you from a commodity provider to a premier educator.
+        </p>
+        <p class="b-lg">
+          Our research depth is facilitated by the <span style="color: var(--gold-light);">Private Archaeology Protocol</span>, which accesses digital, physical, and human artifacts typically unavailable to standard marketers, such as non-public records, legacy databases, and firsthand oral histories. This is a <span style="color: var(--gold-light);">Continuous Verification Model</span>, where findings are treated as living documents, updated as new evidence of your company's excellence surfaces.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-subtle" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-12: PROFESSIONAL SERVICES
+     Gemstone Stage: Cut
+     ================================================================ -->
+<section class="lux-section lux-section-alt" id="lux-12">
+  <div class="section-inner">
+
+    <div class="two-col" style="align-items: center; direction: rtl;">
+      <div style="direction: ltr;">
+        <!-- Gemstone Stage: Cut -->
+        <div class="gem-placeholder aspect-16-10" style="margin-bottom: 16px;">
+          <img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?w=800&q=80" alt="Cut and Shaped">
+          <span class="gem-catalog-num">CAT-CUT-012</span>
+          <div class="gem-caption">
+            <div class="gem-caption-title">Cut / Shaped</div>
+            <div class="gem-caption-desc">Institutional reputation — refined and polished</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="direction: ltr;">
+        <h2 class="d-lg" style="margin-bottom: 24px;">Professional Services</h2>
+        <div class="divider-gold"></div>
+        <p class="b-xl" style="margin-bottom: 24px; color: var(--platinum);">
+          Professional Services: We emphasize <span style="color: var(--gold-light);">Institutional Reputation Recovery</span>, ensuring modern AI-driven content carries the intellectual weight of your founding partners.
+        </p>
+        <p class="b-lg">
+          Our research depth is facilitated by the Private Archaeology Protocol, which accesses digital, physical, and human artifacts typically unavailable to standard marketers, such as non-public records, legacy databases, and firsthand oral histories. This is a Continuous Verification Model, where findings are treated as living documents, updated as new evidence of your company's excellence surfaces.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-subtle" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-13: HEALTHCARE & FINANCIAL SERVICES
+     Gemstone Stage: Mounted
+     ================================================================ -->
+<section class="lux-section" id="lux-13">
+  <div class="section-inner">
+
+    <div style="text-align: center; max-width: 900px; margin: 0 auto 64px;">
+      <h2 class="d-lg" style="margin-bottom: 24px;">Healthcare &amp; Financial Services</h2>
+    </div>
+
+    <div class="two-col">
+      <div class="specimen-card">
+        <p class="micro-label" style="margin-bottom: 16px;">Healthcare &amp; Med</p>
+        <p class="b-lg">
+          Healthcare &amp; Med: We focus on <span style="color: var(--gold-light);">Institutional Trust</span>, using our Source Hierarchy to build a narrative of reliability on defensible medical legacy.
+        </p>
+        <p class="b-lg" style="margin-top: 16px;">
+          Energy &amp; Utilities: We reconnect current growth plans with original pioneering logic, investigating pre-2010 communication to restore mission clarity.
+        </p>
+      </div>
+
+      <div class="specimen-card">
+        <p class="micro-label" style="margin-bottom: 16px;">Financial Services</p>
+        <p class="b-lg">
+          Financial Services: We prioritize <span style="color: var(--gold-light);">Source Triangulation</span> to identify the "Golden Era" of client retention and reconstruct communication structures that lead through market cycles.
+        </p>
+        <p class="b-lg" style="margin-top: 16px;">
+          Our research depth is facilitated by the Private Archaeology Protocol, which accesses digital, physical, and human artifacts typically unavailable to standard marketers, such as non-public records, legacy databases, and firsthand oral histories. This is a Continuous Verification Model, where findings are treated as living documents, updated as new evidence of your company's excellence surfaces.
+        </p>
+      </div>
+    </div>
+
+    <!-- Gemstone Stage: Mounted -->
+    <div class="gem-placeholder aspect-3-2" style="margin-top: 64px; max-width: 900px; margin-left: auto; margin-right: auto;">
+      <img src="https://images.unsplash.com/photo-1515562140307-00e657d1e317?w=1000&q=80" alt="Mounted in Precious Metal">
+      <span class="gem-catalog-num">CAT-MNT-013</span>
+      <div class="gem-caption">
+        <div class="gem-caption-title">Mounted in Precious Metal</div>
+        <div class="gem-caption-desc">Trust and retention — the mounting of institutional authority</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-subtle" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-14: REAL ESTATE & LUXURY GOODS
+     Gemstone Stage: Display
+     ================================================================ -->
+<section class="lux-section lux-section-alt" id="lux-14">
+  <div class="section-inner">
+
+    <div class="two-col" style="align-items: center;">
+      <div>
+        <h2 class="d-lg" style="margin-bottom: 24px;">Real Estate &amp; Luxury Goods</h2>
+        <div class="divider-gold"></div>
+
+        <p class="b-xl" style="margin-bottom: 24px; color: var(--platinum);">
+          Real Estate: We focus on <span style="color: var(--gold-light);">Provenance and Property Narrative</span>, tracing development histories from the 1890s to justify premium pricing.
+        </p>
+
+        <p class="b-lg" style="margin-bottom: 20px;">
+          Luxury Goods: Our methodology aligns with your brand's heritage, excavating authentic artifacts to justify extreme pricing power.
+        </p>
+
+        <p class="b-lg">
+          Our research depth is facilitated by the Private Archaeology Protocol, which accesses digital, physical, and human artifacts typically unavailable to standard marketers, such as non-public records, legacy databases, and firsthand oral histories. This is a Continuous Verification Model, where findings are treated as living documents, updated as new evidence of your company's excellence surfaces.
+        </p>
+      </div>
+
+      <div>
+        <!-- Gemstone Stage: Display -->
+        <div class="gem-placeholder aspect-21-9" style="margin-bottom: 16px;">
+          <img src="https://images.unsplash.com/photo-1565060169194-12d03853366c?w=1400&q=80" alt="Prestige Museum Display">
+          <span class="gem-catalog-num">CAT-DSP-014</span>
+          <div class="gem-caption">
+            <div class="gem-caption-title">Prestige Museum Display</div>
+            <div class="gem-caption-desc">Provenance narrative — the displayed authority of legacy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-subtle" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-15: B2B TECH, PE, HIGHER ED, HOSPITALITY
+     Gemstone Stage: Habitat
+     ================================================================ -->
+<section class="lux-section" id="lux-15">
+  <div class="section-inner">
+
+    <div style="text-align: center; max-width: 900px; margin: 0 auto 64px;">
+      <h2 class="d-lg" style="margin-bottom: 24px;">B2B Technology, Private Equity, Higher Education &amp; Hospitality</h2>
+    </div>
+
+    <!-- Gemstone Stage: Habitat -->
+    <div class="gem-placeholder aspect-21-9" style="margin-bottom: 64px;">
+      <img src="https://images.unsplash.com/photo-1517999144091-3d9dca6d1e43?w=1400&q=80" alt="Natural Habitat">
+      <span class="gem-catalog-num">CAT-HAB-015</span>
+      <div class="gem-caption">
+        <div class="gem-caption-title">Natural Habitat</div>
+        <div class="gem-caption-desc">Authority in its natural environment — before excavation</div>
+      </div>
+    </div>
+
+    <div class="four-col">
+      <div class="industry-crest">
+        <div class="industry-crest-name">B2B Technology &amp; Private Equity</div>
+        <div class="industry-crest-focus">Revenue Leak Detection System</div>
+        <div class="industry-crest-desc">B2B Technology &amp; Private Equity: We function as a Revenue Leak Detection System, stabilizing the narrative before scaling to improve exit multiples and valuation.</div>
+      </div>
+      <div class="industry-crest">
+        <div class="industry-crest-name">Luxury Goods</div>
+        <div class="industry-crest-focus">Heritage &amp; Pricing Power</div>
+        <div class="industry-crest-desc">Luxury Goods: Our methodology aligns with your brand's heritage, excavating authentic artifacts to justify extreme pricing power.</div>
+      </div>
+      <div class="industry-crest">
+        <div class="industry-crest-name">Higher Education</div>
+        <div class="industry-crest-focus">Long-form Authority</div>
+        <div class="industry-crest-desc">Higher Education: We leverage Long-form Authority, reframing the institution as a timeless authority to appeal to major donors.</div>
+      </div>
+      <div class="industry-crest">
+        <div class="industry-crest-name">Hospitality</div>
+        <div class="industry-crest-focus">Peak Era Restoration</div>
+        <div class="industry-crest-desc">Hospitality: We conduct forensic excavations into the "Peak Era" of guest experience to restore high-margin service standards.</div>
+      </div>
+    </div>
+
+    <p class="b-lg" style="max-width: 800px; margin: 48px auto 0; text-align: center;">
+      Our research depth is facilitated by the Private Archaeology Protocol, which accesses digital, physical, and human artifacts typically unavailable to standard marketers, such as non-public records, legacy databases, and firsthand oral histories. This is a Continuous Verification Model, where findings are treated as living documents, updated as new evidence of your company's excellence surfaces.
+    </p>
+
+  </div>
+</section>
+
+<div class="divider-wide" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-16: PHASE 0 — THE SURFACE SURVEY
+     Gemstone Stage: Habitat
+     Background: BG-03 The Gallery Hall
+     ================================================================ -->
+<section class="lux-section lux-section-alt" id="lux-16">
+  <div class="section-inner">
+
+    <div class="prestige-label">The Exhibits of Restoration</div>
+
+    <div style="text-align: center; max-width: 900px; margin: 0 auto 64px;">
+      <p class="b-xl" style="color: var(--platinum); font-style: italic;">
+        The work unfolds in a natural order, for every attempt to shortcut this sequence leads to the same failure. We present our services as Exhibits in a private gallery, each producing the artifact required for the next.
+      </p>
+    </div>
+
+    <div class="two-col" style="align-items: center;">
+      <div>
+        <p class="eyebrow">Phase 0</p>
+        <h2 class="d-lg" style="margin-bottom: 16px;">Phase 0: The Surface Survey: $2,500</h2>
+        <div class="price-tag" style="margin-bottom: 16px;">$2,500</div>
+        <div class="divider-gold"></div>
+
+        <p class="b-xl" style="margin-bottom: 24px; color: var(--platinum);">
+          A complete mapping of surface signals to determine if recoverable authority exists.
+        </p>
+
+        <a href="#lux-25" class="btn-outline-gold">Begin with Phase 0</a>
+      </div>
+
+      <div>
+        <!-- Gemstone Stage: Habitat -->
+        <div class="gem-placeholder aspect-4-3" style="margin-bottom: 16px;">
+          <img src="https://images.unsplash.com/photo-1517999144091-3d9dca6d1e43?w=800&q=80" alt="Natural Habitat">
+          <span class="gem-catalog-num">CAT-HAB-016</span>
+          <div class="gem-caption">
+            <div class="gem-caption-title">Natural Habitat</div>
+            <div class="gem-caption-desc">The surface survey — mapping before excavation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-subtle" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-17: EXHIBIT A — THE ARCHAEOLOGICAL EXCAVATION
+     Gemstone Stage: Raw
+     ================================================================ -->
+<section class="lux-section" id="lux-17">
+  <div class="section-inner">
+
+    <div class="two-col" style="align-items: center; direction: rtl;">
+      <div style="direction: ltr;">
+        <!-- Gemstone Stage: Raw -->
+        <div class="gem-placeholder aspect-4-3" style="margin-bottom: 16px;">
+          <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&q=80" alt="Raw Stone">
+          <span class="gem-catalog-num">CAT-RAW-017</span>
+          <div class="gem-caption">
+            <div class="gem-caption-title">Raw Stone from Earth</div>
+            <div class="gem-caption-desc">The Raw Stone — Exhibit A excavation phase</div>
+          </div>
+        </div>
+
+        <div class="museum-card">
+          <p class="micro-label" style="margin-bottom: 16px;">Deliverable Specs</p>
+          <div class="stat-item" style="text-align: left;">
+            <div class="stat-num" style="font-size: 32px;">30–50</div>
+            <div class="stat-label">Pages · Decision-Grade Executive Briefing</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="direction: ltr;">
+        <p class="eyebrow">Exhibit A · Forensic Discovery</p>
+        <h2 class="d-lg" style="margin-bottom: 16px;">Exhibit A: The Archaeological Excavation (Forensic Discovery)</h2>
+        <div class="price-tag" style="margin-bottom: 16px;">$5,000 – $7,500</div>
+        <div class="divider-gold"></div>
+
+        <p class="b-xl" style="margin-bottom: 24px; color: var(--platinum);">
+          This is a high-stakes investigation into your company's "Institutional Blind Spots". We extract signals from customer reviews, lost deal explanations, and legacy campaigns to find the "Raw Stone" in your archives.
+        </p>
+
+        <p class="b-lg" style="margin-bottom: 20px;">
+          The deliverable is a Decision-Grade Executive Briefing (30–50 pages) structured for your Board of Directors. It identifies "Revenue Leaks" and immediately reactivates abandoned assets worth millions.
+        </p>
+
+        <div class="commission-seal">Board-Ready Deliverable</div>
+
+        <a href="#registry" class="btn-outline-gold">Commission Exhibit A</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-subtle" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-18: EXHIBIT B — THE LAPIDARY
+     Gemstone Stage: Cut
+     ================================================================ -->
+<section class="lux-section lux-section-alt" id="lux-18">
+  <div class="section-inner">
+
+    <div class="two-col" style="align-items: center;">
+      <div>
+        <p class="eyebrow">Exhibit B · Strategic Refinement</p>
+        <h2 class="d-lg" style="margin-bottom: 16px;">Exhibit B: The Lapidary (Strategic Refinement, The Authority System Build)</h2>
+        <p class="d-sm" style="color: var(--gold-dim); margin-bottom: 16px;">The Authority System Build</p>
+        <div class="price-tag" style="margin-bottom: 16px;">$8,500 – $18,000</div>
+        <div class="divider-gold"></div>
+
+        <p class="b-xl" style="margin-bottom: 24px; color: var(--platinum);">
+          We take the proven voice of your peak era and rebuild it into a living, AI-driven Authority System.
+        </p>
+
+        <p class="b-lg" style="margin-bottom: 20px;">
+          This is the move from understanding to implementation, creating a Master Operations Doctrine that ensures your messaging and publishing operate with rhythmic, mechanized precision.
+        </p>
+
+        <div class="commission-seal">Master Operations Doctrine Included</div>
+
+        <a href="#registry" class="btn-outline-gold">Commission Exhibit B</a>
+      </div>
+
+      <div>
+        <!-- Gemstone Stage: Cut -->
+        <div class="gem-placeholder aspect-16-10" style="margin-bottom: 16px;">
+          <img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?w=800&q=80" alt="Cut and Shaped">
+          <span class="gem-catalog-num">CAT-CUT-018</span>
+          <div class="gem-caption">
+            <div class="gem-caption-title">Cut / Shaped</div>
+            <div class="gem-caption-desc">The Lapidary — strategic refinement</div>
+          </div>
+        </div>
+
+        <div class="museum-card">
+          <p class="micro-label" style="margin-bottom: 16px;">System Components</p>
+          <ul class="feature-list">
+            <li>AI-driven Authority System</li>
+            <li>Proven voice reconstruction</li>
+            <li>Rhythmic, mechanized precision</li>
+            <li>Master Operations Doctrine</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-subtle" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-19: EXHIBIT C — THE MOUNTING
+     Gemstone Stage: Mounted
+     ================================================================ -->
+<section class="lux-section" id="lux-19">
+  <div class="section-inner">
+
+    <div class="two-col" style="align-items: center; direction: rtl;">
+      <div style="direction: ltr;">
+        <!-- Gemstone Stage: Mounted -->
+        <div class="gem-placeholder aspect-3-2" style="margin-bottom: 16px;">
+          <img src="https://images.unsplash.com/photo-1515562140307-00e657d1e317?w=800&q=80" alt="Mounted in Precious Metal">
+          <span class="gem-catalog-num">CAT-MNT-019</span>
+          <div class="gem-caption">
+            <div class="gem-caption-title">Mounted in Precious Metal</div>
+            <div class="gem-caption-desc">Prestige authority — the mounting phase</div>
+          </div>
+        </div>
+
+        <div class="museum-card">
+          <p class="micro-label" style="margin-bottom: 16px;">Partnership Scope</p>
+          <ul class="feature-list">
+            <li>Integration with Legal, Finance, and PR</li>
+            <li>Market signal monitoring</li>
+            <li>Narrative Drift prevention</li>
+            <li>Real-time asymmetric advantage preservation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="direction: ltr;">
+        <p class="eyebrow">Exhibit C · Prestige Authority</p>
+        <h2 class="d-lg" style="margin-bottom: 16px;">Exhibit C: The Mounting (Prestige Authority, Strategic Partnership)</h2>
+        <p class="d-sm" style="color: var(--gold-dim); margin-bottom: 16px;">Strategic Partnership</p>
+        <div class="price-tag" style="margin-bottom: 16px;">Starting at $4,500 <span style="font-size: 0.5em; color: var(--pewter);">/ Month</span></div>
+        <div class="divider-gold"></div>
+
+        <p class="b-xl" style="margin-bottom: 24px; color: var(--platinum);">
+          Ongoing course correction and preservation of your asymmetric advantage.
+        </p>
+
+        <p class="b-lg" style="margin-bottom: 20px;">
+          We do not replace your internal teams; we provide the structure they have been missing. We integrate with your existing Legal, Finance, and PR departments to monitor market signals and ensure "Narrative Drift" never returns. This preserves your asymmetric advantage in real-time, providing the oversight and context needed to prevent the system from degrading over time.
+        </p>
+
+        <a href="#registry" class="btn-outline-gold">Commission Exhibit C</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-subtle" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-20: EXHIBIT D — THE CAMERA AUTHORITY FRAMEWORK
+     Gemstone Stage: Display
+     ================================================================ -->
+<section class="lux-section lux-section-alt" id="lux-20">
+  <div class="section-inner">
+
+    <div class="two-col" style="align-items: center;">
+      <div>
+        <p class="eyebrow">Exhibit D · Executive Signal</p>
+        <h2 class="d-lg" style="margin-bottom: 16px;">Exhibit D: The CAMERA Authority Framework™</h2>
+        <div class="price-tag" style="margin-bottom: 16px;">$6,500 – $7,500</div>
+        <div class="divider-gold"></div>
+
+        <p class="b-xl" style="margin-bottom: 24px; color: var(--platinum);">
+          Direct C-suite coaching to turn the executive into the market's primary signal.
+        </p>
+
+        <p class="b-lg" style="margin-bottom: 20px;">
+          At the highest level of Texas business, the market responds to the signal of the leader. We leverage 30 years of broadcast and advertising judgment to turn the CEO into the market's primary signal through: Character Positioning, Audience Psychology, Monetization Alignment, Engagement Engineering, Repurposing Infrastructure, and AI Acceleration.
+        </p>
+
+        <div class="commission-seal">C-Suite Direct</div>
+
+        <a href="#registry" class="btn-outline-gold">Commission Exhibit D</a>
+      </div>
+
+      <div>
+        <!-- Gemstone Stage: Display -->
+        <div class="gem-placeholder aspect-21-9" style="margin-bottom: 16px;">
+          <img src="https://images.unsplash.com/photo-1565060169194-12d03853366c?w=1400&q=80" alt="Prestige Museum Display">
+          <span class="gem-catalog-num">CAT-DSP-020</span>
+          <div class="gem-caption">
+            <div class="gem-caption-title">Prestige Museum Display</div>
+            <div class="gem-caption-desc">The CEO as the market's primary signal</div>
+          </div>
+        </div>
+
+        <div class="museum-card">
+          <p class="micro-label" style="margin-bottom: 16px;">CAMERA Components</p>
+          <ul class="feature-list">
+            <li>Character Positioning</li>
+            <li>Audience Psychology</li>
+            <li>Monetization Alignment</li>
+            <li>Engagement Engineering</li>
+            <li>Repurposing Infrastructure</li>
+            <li>AI Acceleration</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-wide" style="max-width: 1280px; margin: 0 auto;"></div>
+<!-- Background Layer -->
+<!-- ================================================================
+     LUX-21: EXHIBIT E — THE MASTER CRAFTSMAN'S PRESENCE
+     Gemstone Stage: Habitat
+     ================================================================ -->
+<section class="lux-section" id="lux-21">
+  <div class="section-inner">
+
+    <div class="prestige-label">The Expanded Gallery: Specialized Commissions</div>
+
+    <div class="two-col" style="align-items: center;">
+      <div>
+        <p class="eyebrow">Exhibit E · Private Commission</p>
+        <h2 class="d-lg" style="margin-bottom: 24px;">The Master Craftsman's Presence ($18,000 / month)</h2>
+        <div class="price-tag" style="margin-bottom: 8px;">$18,000 / month</div>
+        <div class="divider-gold"></div>
+
+        <p class="b-xl" style="margin-bottom: 24px; color: var(--platinum);">
+          While our standard Exhibits—Excavation, Lapidary, Mounting, and CAMERA—form the backbone of our system, the true power of Business Archaeology is found in our Private Commissions. These are highly specialized services designed for the unique complexities of multi-million dollar transitions and the preservation of monumental legacy. There are moments when the stakes of a production are too high to delegate to a standard crew. In this commission, the Architect personally directs the work.
+        </p>
+
+        <p class="b-lg" style="margin-bottom: 20px;">
+          We aren't there to "haul gear" or run "cameras"; we are there to Produce, Direct, and ensure that every frame of a high-stakes shoot serves the Authority Blueprint. We oversee the production elite to ensure that the final cut reflects the precision of your restored voice.
+        </p>
+
+        <p class="b-lg" style="margin-bottom: 32px;">
+          We provide personalization-set direction for high-stakes shoots, ensuring every frame serves the Authority Blueprint.
+        </p>
+
+        <div class="commission-seal">Invitation Only</div>
+
+        <a href="#registry" class="btn-outline-gold">Inquire About Exhibit E</a>
+      </div>
+
+      <div>
+        <!-- Gemstone Stage: Habitat — Natural Habitat -->
+        <div class="gem-placeholder aspect-4-3" style="margin-bottom: 16px;">
+          <img src="https://images.unsplash.com/photo-1517999144091-3d9dca6d1e43?w=800&q=80" alt="Natural Habitat — Rough geological formation where the stone sleeps before discovery">
+          <span class="gem-catalog-num">CAT-HAB-021</span>
+          <div class="gem-caption">
+            <div class="gem-caption-title">Natural Habitat</div>
+            <div class="gem-caption-desc">Where the stone sleeps before discovery</div>
+          </div>
+        </div>
+
+        <div class="museum-card">
+          <p class="micro-label" style="margin-bottom: 16px;">Commission Parameters</p>
+          <ul class="feature-list">
+            <li>Personal direction by the Architect on every production</li>
+            <li>Authority Blueprint alignment for all visual output</li>
+            <li>Oversight of production elite and creative teams</li>
+            <li>Frame-by-frame precision for high-stakes messaging</li>
+            <li>Monthly retainer with project-specific scheduling</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-subtle" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-22: EXHIBIT F — ESTATE & PROVENANCE APPRAISAL
+     Gemstone Stage: Raw
+     ================================================================ -->
+<section class="lux-section lux-section-alt" id="lux-22">
+  <div class="section-inner">
+
+    <div class="prestige-label">The Expanded Gallery</div>
+
+    <div class="two-col" style="align-items: center; direction: rtl;">
+      <div style="direction: ltr;">
+        <!-- Gemstone Stage: Raw — Raw Stone from Earth -->
+        <div class="gem-placeholder aspect-4-3" style="margin-bottom: 16px;">
+          <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800&q=80" alt="Raw Stone — Uncut mineral specimen in matrix, rough emerald/beryl">
+          <span class="gem-catalog-num">CAT-RAW-022</span>
+          <div class="gem-caption">
+            <div class="gem-caption-title">Raw Stone from Earth</div>
+            <div class="gem-caption-desc">The Raw Stone — Exhibit A excavation phase</div>
+          </div>
+        </div>
+
+        <div class="museum-card">
+          <p class="micro-label" style="margin-bottom: 16px;">Valuation Impact</p>
+          <div class="stat-item" style="text-align: left;">
+            <div class="stat-num" style="font-size: 42px;">EV ↑</div>
+            <div class="stat-label">Enterprise Value Increase</div>
+          </div>
+          <p class="b-md" style="margin-top: 16px; font-style: italic;">
+            Documented provenance reduces due diligence friction and significantly increases exit multiples.
+          </p>
+        </div>
+      </div>
+
+      <div style="direction: ltr;">
+        <p class="eyebrow">Exhibit F · Private Commission</p>
+        <h2 class="d-lg" style="margin-bottom: 24px;">The Estate &amp; Provenance Appraisal ($25,000 – $50,000)</h2>
+        <div class="price-tag" style="margin-bottom: 8px;">$25,000 – $50,000</div>
+        <div class="divider-gold"></div>
+
+        <p class="b-xl" style="margin-bottom: 24px; color: var(--platinum); font-style: italic;">
+          This is a CFO-level conversation, not a marketing one.
+        </p>
+
+        <p class="b-lg" style="margin-bottom: 20px;">
+          For the firm preparing for a sale, a generational transition, or a capital raise, we document your market authority as Verifiable Intellectual Property. We package your "Proven Success Patterns" and historical provenance into a dossier that reduces due diligence friction and significantly increases your Enterprise Value (EV) and exit multiples.
+        </p>
+
+        <p class="b-lg" style="margin-bottom: 32px;">
+          For those preparing for a sale or succession, the Estate &amp; Provenance Appraisal documents your market authority as verifiable intellectual property, increasing Enterprise Value (EV) and exit multiples.
+        </p>
+
+        <div class="commission-seal">CFO-Level Engagement</div>
+
+        <a href="#registry" class="btn-outline-gold">Inquire About Exhibit F</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-subtle" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-23: EXHIBIT G — THE CURATOR'S SECRET INTELLIGENCE
+     Gemstone Stage: Cut
+     ================================================================ -->
+<section class="lux-section" id="lux-23">
+  <div class="section-inner">
+
+    <div class="prestige-label">The Expanded Gallery</div>
+
+    <div class="two-col" style="align-items: center;">
+      <div>
+        <p class="eyebrow">Exhibit G · Private Commission</p>
+        <h2 class="d-lg" style="margin-bottom: 24px;">The Curator's Secret Intelligence</h2>
+        <div class="price-tag" style="margin-bottom: 8px;">$35,000 <span style="font-size: 0.5em; color: var(--pewter);">/ quarter</span></div>
+        <div class="divider-gold"></div>
+
+        <p class="b-xl" style="margin-bottom: 24px; color: var(--platinum);">
+          This is our most exclusive tier, available by invitation only.
+        </p>
+
+        <p class="b-lg" style="margin-bottom: 20px;">
+          Because we operate across multiple businesses, we see industry-wide authority shifts that no single business can detect. We provide an anonymized, high-level pattern recognition brief that highlights "Competitive Gaps" and early-warning signals, giving you a landscape view that preserves your asymmetric advantage in perpetuity.
+        </p>
+
+        <p class="b-lg" style="margin-bottom: 32px;">
+          The Curator's Secret Intelligence ($35,000 / quarter) is an invitation-only brief providing pattern recognition derived from our full collection of cross-client data.
+        </p>
+
+        <div class="commission-seal">Invitation-Only · Quarterly Brief</div>
+
+        <a href="#registry" class="btn-outline-gold">Request Invitation</a>
+      </div>
+
+      <div>
+        <!-- Gemstone Stage: Cut — Cut/Shaped -->
+        <div class="gem-placeholder aspect-16-10" style="margin-bottom: 16px;">
+          <img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?w=800&q=80" alt="Cut/Shaped — Faceted gemstone on cutting wheel, lapidary process">
+          <span class="gem-catalog-num">CAT-CUT-023</span>
+          <div class="gem-caption">
+            <div class="gem-caption-title">Cut / Shaped</div>
+            <div class="gem-caption-desc">The Lapidary — strategic refinement</div>
+          </div>
+        </div>
+
+        <div class="museum-card">
+          <p class="micro-label" style="margin-bottom: 16px;">Intelligence Deliverables</p>
+          <ul class="feature-list">
+            <li>Cross-client pattern recognition brief</li>
+            <li>Competitive Gap early-warning signals</li>
+            <li>Industry-wide authority shift detection</li>
+            <li>Anonymized landscape intelligence</li>
+            <li>Quarterly strategic preservation recommendations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-subtle" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-24: THE EVIDENCE OF RESTORATION
+     Gemstone Stage: Mounted
+     ================================================================ -->
+<section class="lux-section lux-section-alt" id="lux-24">
+  <div class="section-inner">
+
+    <div class="prestige-label" style="justify-content: center;">The Evidence Room</div>
+
+    <div style="text-align: center; max-width: 900px; margin: 0 auto 80px;">
+      <p class="eyebrow">Case Studies · Forensic Reconstruction</p>
+      <h2 class="d-lg" style="margin-bottom: 24px;">The Evidence of Restoration</h2>
+      <p class="b-xl" style="color: var(--platinum);">
+        These are not success stories; they are reconstructions of lost value.
+      </p>
+    </div>
+
+    <!-- Gemstone Stage: Mounted — Mounted in Precious Metal -->
+    <div class="gem-placeholder aspect-21-9" style="margin-bottom: 64px; max-width: 100%;">
+      <img src="https://images.unsplash.com/photo-1515562140307-00e657d1e317?w=1400&q=80" alt="Mounted in Precious Metal — Stone set in gold/platinum setting, jeweler's bench">
+      <span class="gem-catalog-num">CAT-MNT-024</span>
+      <div class="gem-caption">
+        <div class="gem-caption-title">Mounted in Precious Metal</div>
+        <div class="gem-caption-desc">Prestige authority — the mounting phase</div>
+      </div>
+    </div>
+
+    <div class="four-col" style="margin-bottom: 64px;">
+
+      <!-- Case I -->
+      <div class="case-dossier">
+        <p class="micro-label" style="margin-bottom: 12px; color: var(--gold-dim);">Case I: The Membership That Disappeared</p>
+        <h3 class="d-md" style="font-size: 22px; margin-bottom: 16px;">The Membership That Disappeared</h3>
+        <p class="b-lg" style="margin-bottom: 16px;">
+          A $30M service company hit a growth plateau. Our audit found that ten years prior, they had a "Membership Mechanism" that drove 60% of revenue, but it was abandoned by a new hire for short-term discounts. We restored the structure, and recurring revenue reappeared within months.
+        </p>
+        <div style="display: flex; gap: 16px; margin-top: 20px;">
+          <div class="stat-item" style="text-align: left;">
+            <div class="stat-num" style="font-size: 28px;">60%</div>
+            <div class="stat-label">Revenue Driver</div>
+          </div>
+          <div class="stat-item" style="text-align: left;">
+            <div class="stat-num" style="font-size: 28px;">$30M</div>
+            <div class="stat-label">Company Scale</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case II -->
+      <div class="case-dossier">
+        <p class="micro-label" style="margin-bottom: 12px; color: var(--gold-dim);">Case II: The Reputation No One Was Using</p>
+        <h3 class="d-md" style="font-size: 22px; margin-bottom: 16px;">The Reputation No One Was Using</h3>
+        <p class="b-lg" style="margin-bottom: 16px;">
+          A three-generation firm had reduced itself to competing on cost. Our excavation uncovered a discontinued technical publication from 1995 that established them as a premier educator. By reconstructing this voice through modern AI, we moved them from negotiating price to leading the conversation.
+        </p>
+        <div style="display: flex; gap: 16px; margin-top: 20px;">
+          <div class="stat-item" style="text-align: left;">
+            <div class="stat-num" style="font-size: 28px;">1995</div>
+            <div class="stat-label">Asset Era</div>
+          </div>
+          <div class="stat-item" style="text-align: left;">
+            <div class="stat-num" style="font-size: 28px;">3 Gen</div>
+            <div class="stat-label">Family Legacy</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case III -->
+      <div class="case-dossier">
+        <p class="micro-label" style="margin-bottom: 12px; color: var(--gold-dim);">Case III: The Authority That Was Replaced by Price</p>
+        <h3 class="d-md" style="font-size: 22px; margin-bottom: 16px;">The Authority That Was Replaced by Price</h3>
+        <p class="b-lg" style="margin-bottom: 16px;">
+          A company reduced itself by shifting from expertise-based communication to price-based competition for convenience. We reframed their communication around knowledge, moving them back to a position where they no longer had to justify themselves through cost.
+        </p>
+        <div style="display: flex; gap: 16px; margin-top: 20px;">
+          <div class="stat-item" style="text-align: left;">
+            <div class="stat-num" style="font-size: 28px;">Price</div>
+            <div class="stat-label">→ Authority</div>
+          </div>
+          <div class="stat-item" style="text-align: left;">
+            <div class="stat-num" style="font-size: 28px;">Full</div>
+            <div class="stat-label">Reframe</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case IV -->
+      <div class="case-dossier">
+        <p class="micro-label" style="margin-bottom: 12px; color: var(--gold-dim);">Case IV: The Catalog That Outperformed the Website</p>
+        <h3 class="d-md" style="font-size: 22px; margin-bottom: 16px;">The Catalog That Outperformed the Website</h3>
+        <p class="b-lg" style="margin-bottom: 16px;">
+          A brand lost $20M in LTV by modernizing to a speed-focused website, removing the deep-narrative catalogs that originally built their trust. We re-mounted these depth-heavy environments as a modern environment where customers could "imagine" rather than just "browse".
+        </p>
+        <div style="display: flex; gap: 16px; margin-top: 20px;">
+          <div class="stat-item" style="text-align: left;">
+            <div class="stat-num" style="font-size: 28px;">$20M</div>
+            <div class="stat-label">LTV at Risk</div>
+          </div>
+          <div class="stat-item" style="text-align: left;">
+            <div class="stat-num" style="font-size: 28px;">Depth</div>
+            <div class="stat-label">→ Imagination</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Metrics Bar -->
+    <div class="speakeasy-frame" style="padding: 48px; text-align: center;">
+      <p class="micro-label" style="margin-bottom: 32px;">How We Measure Restoration</p>
+      <div class="four-col" style="gap: 24px;">
+        <div class="stat-item">
+          <div class="stat-num">Forensic CAC</div>
+          <div class="stat-label">Total Capital to Recover Signal</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">EV</div>
+          <div class="stat-label">Enterprise Value Increase</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">Exit Multiples</div>
+          <div class="stat-label">Valuation Premium</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">3:1</div>
+          <div class="stat-label">LTV:CAC Authority Ratio</div>
+        </div>
+      </div>
+      <div class="divider-gold" style="margin: 40px auto;"></div>
+      <p class="b-lg" style="max-width: 800px; margin: 0 auto;">
+        We measure success through Forensic CAC—the total capital allocated to recover your signal, including C-suite time and specialized internal teams. We do not sell deliverables; we install Institutional Infrastructure that increases Enterprise Value (EV) and Exit Multiples. Private Equity firms pay a premium for the stability and documented "Proven Success Patterns" we provide.
+      </p>
+      <p class="b-lg" style="max-width: 800px; margin: 20px auto 0;">
+        Our Restoration ROI tracks the revenue generated from reactivating abandoned assets minus the archaeology costs. For the Texas giant, the goal is an LTV:CAC Authority Ratio of at least 3:1, ensuring your authority is a sustainable asset that decreases market friction over time.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider-subtle" style="max-width: 1280px; margin: 0 auto;"></div>
+
+<!-- ================================================================
+     LUX-25: THE PRIVATE RECORD + THE SHALLOW DIG + REGISTRY ACCESS
+     Gemstone Stage: Display
+     ================================================================ -->
+<section class="lux-section" id="lux-25">
+  <div class="section-inner">
+
+    <div class="prestige-label" style="justify-content: center;">The Final Invitation</div>
+
+    <!-- Gemstone Stage: Display — Prestige Museum Display -->
+    <div class="gem-placeholder aspect-21-9" style="margin-bottom: 64px;">
+      <img src="https://images.unsplash.com/photo-1565060169194-12d03853366c?w=1400&q=80" alt="Prestige Museum Display — Lit museum case, velvet pedestal, dramatic spotlight">
+      <span class="gem-catalog-num">CAT-DSP-025</span>
+      <div class="gem-caption">
+        <div class="gem-caption-title">Prestige Museum Display</div>
+        <div class="gem-caption-desc">The Display — public authority, unavoidable logic</div>
+      </div>
+    </div>
+
+    <!-- The Private Record -->
+    <div style="text-align: center; max-width: 900px; margin: 0 auto 80px;">
+      <p class="eyebrow">Conversations Before Commitment</p>
+      <h2 class="d-lg" style="margin-bottom: 32px;">The Private Record: Conversations Before Commitment</h2>
+    </div>
+
+    <!-- FAQ Section -->
+    <div style="max-width: 900px; margin: 0 auto 80px;">
+
+      <div class="faq-item active">
+        <div class="faq-q">How is this different from market research?</div>
+        <div class="faq-a" style="max-height: 500px; padding-top: 8px;">
+          Market research looks outward at trends; we look inward at your specific, proven "Golden Era" evidence. When we begin there, strategy stops being speculative and becomes reconstructive.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What if we don't have archives?</div>
+        <div class="faq-a">
+          History doesn't disappear; it fragments. We triangulate signals from public records, digital archives, and institutional memory to reconstruct the pattern.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Do we have to use AI?</div>
+        <div class="faq-a">
+          No one is handing control to a machine. We use AI for scale, allowing your specific voice and thinking to be expressed consistently without requiring your constant presence.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- The Shallow Dig -->
+    <div class="cta-box" style="margin-bottom: 80px;">
+      <p class="eyebrow">Phase 0 · Surface Survey</p>
+      <h2 class="d-lg" style="margin-bottom: 16px;">The Shallow Dig: Your Institutional Snapshot ($2,500)</h2>
+      <div class="price-tag" style="margin-bottom: 24px;">$2,500</div>
+      <p class="b-xl" style="max-width: 700px; margin: 0 auto 24px; color: var(--platinum); font-style: italic;">
+        This is our gatekeeper.
+      </p>
+      <p class="b-lg" style="max-width: 700px; margin: 0 auto 20px;">
+        Before we commit to a full excavation, we perform a surface-level mapping of your public footprint—reviewing competitive signals and legacy echo patterns. We do not dig where there is no stone. This report is the map that tells us where your buried authority is and if it is recoverable.
+      </p>
+      <p class="b-lg" style="max-width: 700px; margin: 0 auto 20px;">
+        There is a version of your business that worked better than this one, and we can surface the first signal of that version Today!
+      </p>
+      <p class="b-lg" style="max-width: 700px; margin: 0 auto 32px;">
+        This is not a "lead magnet"; it is a rapid, surface-level excavation across your digital footprint to identify your Estimated Golden Era, one Abandoned Asset, the Competitive Gap that your rivals filled when you drifted, and one undeniable inflection point worth your attention.
+      </p>
+      <div class="divider-gold" style="margin: 32px auto;"></div>
+      <p class="b-md" style="max-width: 600px; margin: 0 auto 32px; font-style: italic;">
+        We do not dig where there is no stone.
+      </p>
+      <a href="#registry-form" class="btn-gold">Request Access to the Registry</a>
+    </div>
+
+    <!-- Registry Form -->
+    <div id="registry-form" style="max-width: 800px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 48px;">
+        <p class="eyebrow">Registry Access</p>
+        <h3 class="d-md">Request Entry</h3>
+        <p class="b-lg" style="margin-top: 16px;">
+          Complete the form below. If your institution qualifies, you will receive a private invitation to discuss your excavation.
+        </p>
+      </div>
+
+      <form class="registry-form">
+        <div class="two-col" style="gap: 20px;">
+          <input type="text" placeholder="Full Name" required>
+          <input type="text" placeholder="Title / Role" required>
+        </div>
+        <div class="two-col" style="gap: 20px;">
+          <input type="email" placeholder="Business Email" required>
+          <input type="text" placeholder="Company Name" required>
+        </div>
+        <input type="text" placeholder="Company Website">
+        <div class="two-col" style="gap: 20px;">
+          <input type="text" placeholder="Years in Operation">
+          <input type="text" placeholder="Annual Revenue Range">
+        </div>
+        <textarea rows="4" placeholder="What signals have you noticed that suggest your business has drifted from its peak era?"></textarea>
+        <div style="text-align: center; margin-top: 8px;">
+          <button type="submit" class="btn-gold">Submit Registry Request</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="padding: 60px 90px; border-top: 1px solid var(--graphite); text-align: center;">
+  <p class="micro-label" style="color: var(--pewter);">
+    Legaisee · Business Archaeology &amp; Authority Systems · Session 6 of 7
+  </p>
+  <p class="b-md" style="margin-top: 12px; color: var(--pewter);">
+    The Expanded Gallery · Private Commissions · Evidence of Restoration · The Private Record
+  </p>
+</footer>
+
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
+<footer class="site-footer">
+  <div class="prestige-label" style="justify-content: center; margin-bottom: 24px;">Legaisee</div>
+  <p class="d-sm" style="margin-bottom: 16px;">Business Archaeology &amp; Authority Systems</p>
+  <p class="b-md" style="margin-bottom: 32px; color: var(--pewter);">
+    The Complete Luxury Library — 25 Sections · $5M+ Clientele · Zero Omissions
+  </p>
+  <div class="divider-gold" style="margin: 32px auto;"></div>
+  <p class="micro-label" style="color: var(--pewter);">
+    Session 7 of 7 · Assembly Complete · All Copy Sacred
+  </p>
+</footer>
+
+<script>
+// FAQ Accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isActive = item.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+    if (!isActive) item.classList.add('active');
+  });
+});
+
+// Scroll Reveal
+const revealElements = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+revealElements.forEach(el => revealObserver.observe(el));
+
+// Background Switching based on scroll position
+const bgVault = document.getElementById('bg-vault');
+const bgArchive = document.getElementById('bg-archive');
+const bgGallery = document.getElementById('bg-gallery');
+
+const lux01 = document.getElementById('lux-01');
+const lux06 = document.getElementById('lux-06');
+const lux16 = document.getElementById('lux-16');
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const vh = window.innerHeight;
+
+  if (lux16 && scrollY >= lux16.offsetTop - vh/2) {
+    bgVault.style.opacity = '0';
+    bgArchive.style.opacity = '0';
+    bgGallery.style.opacity = '1';
+  } else if (lux06 && scrollY >= lux06.offsetTop - vh/2) {
+    bgVault.style.opacity = '0';
+    bgArchive.style.opacity = '1';
+    bgGallery.style.opacity = '0';
+  } else {
+    bgVault.style.opacity = '1';
+    bgArchive.style.opacity = '0';
+    bgGallery.style.opacity = '0';
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+/* ==========================================================
+   LVOS V2
+   CAMERA SYSTEM (VISUAL DEPTH + PERSPECTIVE LAYER)
+========================================================== */
+
+/* ROOT CAMERA CONTEXT */
+
+:root{
+
+    --perspective: 1200px;
+    --depth-0: translateZ(0px);
+    --depth-1: translateZ(40px);
+    --depth-2: translateZ(80px);
+    --depth-3: translateZ(140px);
+    --depth-4: translateZ(220px);
+}
+
+/* CAMERA STAGE */
+
+.camera{
+
+    perspective:var(--perspective);
+    transform-style:preserve-3d;
+}
+
+/* LAYERS */
+
+.layer{
+
+    transform-style:preserve-3d;
+    will-change:transform;
+}
+
+/* DEPTH UTILITIES */
+
+.z-0{transform:var(--depth-0);}
+.z-1{transform:var(--depth-1);}
+.z-2{transform:var(--depth-2);}
+.z-3{transform:var(--depth-3);}
+.z-4{transform:var(--depth-4);}
+
+/* PARALLAX BASE */
+
+.parallax{
+
+    transform-style:preserve-3d;
+    will-change:transform;
+}
+
+/* FIXED CAMERA BACKGROUND */
+
+.camera-bg{
+
+    position:fixed;
+    inset:0;
+
+    transform:translateZ(-200px) scale(1.2);
+
+    pointer-events:none;
+}
+
+/* DEPTH FOG (LIGHT ATMOSPHERE LAYER) */
+
+.depth-fog{
+
+    position:absolute;
+    inset:0;
+
+    background:radial-gradient(
+        circle at center,
+        transparent 0%,
+        rgba(0,0,0,.25) 60%,
+        rgba(0,0,0,.85) 100%
+    );
+
+    pointer-events:none;
+}

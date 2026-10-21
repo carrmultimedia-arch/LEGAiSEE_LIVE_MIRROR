@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Private Registry — LEGAiSEE</title>
+  <meta name="description" content="The Private Registry is not a contact form. It is the first act of the excavation — a qualification gate for enterprises with the depth of history worth recovering." />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="legaisee.css" />
+  <link rel="stylesheet" href="legaisee-luxury.css" />
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════════
+       REGISTRY.HTML — PAGE-SPECIFIC STYLES
+       New classes only. No override of existing legaisee.css.
+       ═══════════════════════════════════════════════════════════════ */
+
+    /* ── Hero ── */
+    .registry-hero {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding: 140px 24px 100px;
+    }
+    .registry-hero .hero-wordmark {
+      font-family: var(--font-cinzel);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: none;
+      color: var(--gold-dim);
+      margin-bottom: 32px;
+    }
+    .registry-hero .hero-headline {
+      max-width: 900px;
+      margin-bottom: 28px;
+    }
+    .registry-hero .hero-subhead {
+      font-family: var(--font-ui);
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      color: var(--silver);
+      line-height: 1.75;
+      max-width: 680px;
+      margin-bottom: 44px;
+    }
+    .registry-hero .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 48px;
+    }
+    .registry-hero .hero-pill {
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-border);
+      padding: 8px 18px;
+      background: rgba(201,169,97,0.04);
+      white-space: nowrap;
+    }
+
+    /* ── Intake Section (Sacred Embed) ── */
+    .intake-sanctuary {
+      position: relative;
+      padding: 0;
+      background: var(--obsidian);
+    }
+    .intake-sanctuary .intake-frame {
+      width: 100%;
+      height: 100vh;
+      min-height: 700px;
+      border: none;
+      display: block;
+    }
+    .intake-sanctuary .intake-label-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--obsidian-mid);
+      border-top: 1px solid rgba(201,169,97,0.12);
+      border-bottom: 1px solid rgba(201,169,97,0.12);
+    }
+    .intake-sanctuary .intake-label-bar .label-line {
+      flex: 0 0 60px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-dim));
+    }
+    .intake-sanctuary .intake-label-bar .label-line:last-child {
+      background: linear-gradient(to left, transparent, var(--gold-dim));
+    }
+    .intake-sanctuary .intake-label-bar .label-text {
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      white-space: nowrap;
+    }
+
+    /* ── Process Timeline ── */
+    .process-timeline {
+      position: relative;
+      padding-left: 0;
+    }
+    .process-timeline::before {
+      content: '';
+      position: absolute;
+      left: 18px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--gold-dim), transparent);
+    }
+    .timeline-step {
+      position: relative;
+      padding-left: 56px;
+      padding-bottom: 48px;
+    }
+    .timeline-step:last-child { padding-bottom: 0; }
+    .timeline-step::before {
+      content: '';
+      position: absolute;
+      left: 12px;
+      top: 6px;
+      width: 13px;
+      height: 13px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      border: 2px solid var(--obsidian);
+      box-shadow: 0 0 0 1px var(--gold-dim);
+    }
+    .timeline-step .step-num {
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .timeline-step .step-title {
+      font-family: var(--font-cinzel);
+      font-size: clamp(0.88rem, 1.3vw, 1.05rem);
+      color: var(--text-primary);
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+    .timeline-step .step-body {
+      font-family: var(--font-ui);
+      font-size: clamp(0.88rem, 1.3vw, 0.96rem);
+      color: var(--text-body);
+      line-height: 1.78;
+      max-width: 640px;
+    }
+
+    /* ── Qualification Grid ── */
+    .qual-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(201,169,97,0.10);
+      border: 1px solid rgba(201,169,97,0.10);
+    }
+    .qual-cell {
+      background: var(--card);
+      padding: 36px 28px;
+      position: relative;
+      transition: background 0.3s ease;
+    }
+    .qual-cell:hover { background: rgba(201,169,97,0.03); }
+    .qual-cell .qual-roman {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      color: rgba(201,169,97,0.12);
+      line-height: 1;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .qual-cell .qual-title {
+      font-family: var(--font-cinzel);
+      font-size: 0.82rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+    .qual-cell .qual-body {
+      font-family: var(--font-ui);
+      font-size: 0.86rem;
+      color: var(--text-body);
+      line-height: 1.72;
+    }
+    .qual-cell .qual-tag {
+      display: inline-block;
+      margin-top: 14px;
+      font-family: var(--font-ui);
+      font-size: 0.52rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 1px solid;
+    }
+    .qual-tag.req {
+      color: rgba(201,169,97,0.65);
+      border-color: rgba(201,169,97,0.25);
+      background: rgba(201,169,97,0.04);
+    }
+    .qual-tag.pref {
+      color: rgba(176,176,176,0.55);
+      border-color: rgba(176,176,176,0.18);
+    }
+    .qual-tag.crit {
+      color: rgba(201,169,97,0.80);
+      border-color: rgba(201,169,97,0.35);
+      background: rgba(201,169,97,0.06);
+    }
+
+    /* ── Deliverable Preview ── */
+    .deliver-preview {
+      border: 1px solid rgba(201,169,97,0.18);
+      background: linear-gradient(145deg, var(--charcoal) 0%, var(--obsidian) 100%);
+      padding: 48px 44px;
+      position: relative;
+    }
+    .deliver-preview::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+    }
+    .deliver-preview .preview-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .deliver-preview .preview-header .preview-icon {
+      width: 36px; height: 36px;
+      border: 1px solid var(--gold-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .deliver-preview .preview-header .preview-title {
+      font-family: var(--font-cinzel);
+      font-size: 0.88rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+    }
+    .deliver-preview .preview-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .deliver-preview .preview-list li {
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+      color: var(--text-body);
+      line-height: 1.72;
+      padding-left: 24px;
+      position: relative;
+    }
+    .deliver-preview .preview-list li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 10px;
+      width: 6px; height: 6px;
+      background: var(--gold-dim);
+      transform: rotate(45deg);
+    }
+
+    /* ── Philosophy Depth (Tier 3) ── */
+    .philosophy-depth {
+      border-top: 1px solid rgba(201,169,97,0.10);
+    }
+    .depth-block {
+      padding: 56px 0;
+      border-bottom: 1px solid rgba(201,169,97,0.08);
+    }
+    .depth-block:last-child { border-bottom: none; }
+    .depth-block .depth-label {
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 18px;
+      display: block;
+    }
+    .depth-block .depth-title {
+      font-family: var(--font-cinzel);
+      font-size: clamp(1rem, 1.8vw, 1.3rem);
+      color: var(--text-primary);
+      letter-spacing: 0.06em;
+      margin-bottom: 18px;
+      line-height: 1.35;
+    }
+    .depth-block .depth-body {
+      font-family: var(--font-ui);
+      font-size: clamp(0.9rem, 1.4vw, 1rem);
+      color: var(--text-body);
+      line-height: 1.82;
+      max-width: 780px;
+    }
+    .depth-block .depth-body em {
+      color: var(--gold-bright);
+      font-style: italic;
+    }
+
+    /* ── FAQ Schema Section ── */
+    .faq-schema-section { padding-top: 0; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .qual-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-timeline::before { left: 14px; }
+      .timeline-step { padding-left: 44px; }
+      .timeline-step::before { left: 8px; width: 11px; height: 11px; }
+    }
+    @media (max-width: 768px) {
+      .registry-hero { min-height: auto; padding: 100px 20px 60px; }
+      .qual-grid { grid-template-columns: 1fr; }
+      .deliver-preview { padding: 32px 24px; }
+      .intake-sanctuary .intake-frame { height: 85vh; min-height: 600px; }
+    }
+    @media (max-width: 480px) {
+      .registry-hero .hero-pills { gap: 8px; }
+      .registry-hero .hero-pill { font-size: 0.56rem; padding: 6px 12px; }
+      .intake-sanctuary .intake-frame { height: 80vh; min-height: 500px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the Private Registry?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Private Registry is not a contact form. It is the first act of the excavation — a qualification gate for enterprises with the depth of history worth recovering. Every submission is read personally by The Architect."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who qualifies for the Private Registry?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enterprises with five or more years of operating history, annual revenue at or approaching $30M+, operating presence in the San Antonio–Austin I-35 corridor, and leadership willing to look back before building forward."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens after I submit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Architect reviews every submission personally. If your enterprise qualifies, you will receive a private response within five business days. There is no automated sequence, no sales funnel, and no follow-up campaign."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my submission confidential?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Everything that enters the Registry is governed by a confidentiality standard that is not negotiable. No team reviews your submission. No system flags it. No algorithm scores it. One human being reads what you wrote."
+        }
+      }
+    ]
+  }
+  </script>
+<base target="_blank">
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     NAVIGATION — Preserved from index.html
+     ═══════════════════════════════════════════════════════════════ -->
+<nav class="site-nav" id="siteNav" aria-label="Primary">
+  <a href="index.html" class="nav-logo-wrap" aria-label="LEGAiSEE Home">
+    <img src="https://www.legaisee.com/Images/LegaiseeLogo.png" alt="LEGAiSEE" />
+    <span class="nav-logo-text">Business Archaeology</span>
+  </a>
+
+  <ul class="nav-links" role="menubar">
+    <li role="none"><a href="archaeology.html" role="menuitem">The Archaeology</a></li>
+    <li role="none"><a href="method.html" role="menuitem">The Method</a></li>
+    <li role="none"><a href="serve.html" role="menuitem">Who We Serve</a></li>
+    <li role="none"><a href="architect.html" role="menuitem">The Architect</a></li>
+    <li role="none"><a href="practitioner.html" role="menuitem">The Practitioner</a></li>
+    <li role="none"><a href="commissions.html" role="menuitem">Commissions</a></li>
+  </ul>
+
+  <a href="registry.html" class="nav-cta" role="menuitem">Enter the Registry</a>
+
+  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMobile">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile" id="navMobile" role="menu">
+  <a href="archaeology.html" role="menuitem">The Archaeology</a>
+  <a href="method.html" role="menuitem">The Method</a>
+  <a href="serve.html" role="menuitem">Who We Serve</a>
+  <a href="architect.html" role="menuitem">The Architect</a>
+  <a href="practitioner.html" role="menuitem">The Practitioner</a>
+  <a href="commissions.html" role="menuitem">Commissions</a>
+  <a href="registry.html" role="menuitem">Enter the Registry</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TIER 1 — ABOVE FOLD: 15-Second Scan
+     Headline, subhead, stat pills, one CTA.
+     Sets expectation: "Registry is not a form. It is a qualification gate."
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="lux-section bg-vault registry-hero" id="registry-hero">
+  <div class="section-inner">
+    <p class="hero-wordmark reveal">The Private Registry · Access Point</p>
+
+    <h1 class="d-xl hero-headline reveal reveal-d1">
+      The Door Is Here.<br>The Conversation Is What Opens It.
+    </h1>
+
+    <p class="hero-subhead reveal reveal-d2">
+      The Registry is not a contact form. It is the first act of the excavation —
+      the moment you step forward and say that what was lost is worth recovering.
+    </p>
+
+    <div class="hero-pills reveal reveal-d3">
+      <span class="hero-pill">Three Clients Maximum</span>
+      <span class="hero-pill">No Public Intake</span>
+      <span class="hero-pill">Confidential by Design</span>
+      <span class="hero-pill">One Practitioner</span>
+    </div>
+
+    <div class="btn-group reveal reveal-d4">
+      <a href="#intake-sanctuary" class="btn btn-gold">Begin the Excavation</a>
+      <a href="#what-happens" class="btn btn-outline-gold">What Happens Next</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TIER 2 — 90-Second Understanding
+     What Happens After You Submit, Who Qualifies, What You Receive.
+     Two screens of content. No philosophy yet.
+     ═══════════════════════════════════════════════════════════════ -->
+
+<!-- 2A: What Happens After You Submit — Process Timeline -->
+<section class="lux-section bg-vault-mid" id="what-happens">
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="label-line"></span>
+      <span class="label-text">The Process</span>
+      <span class="label-line"></span>
+    </div>
+
+    <h2 class="d-lg reveal reveal-d1" style="max-width: 700px; margin-bottom: 64px;">
+      What Happens After You Submit
+    </h2>
+
+    <div class="two-col-4060">
+      <div class="reveal reveal-d2">
+        <p class="b-xl" style="margin-bottom: 28px;">
+          The Registry submission initiates a private review. The Architect reads every
+          submission personally. There is no automated response, no sales sequence,
+          no follow-up funnel. There is a human being who reads what you wrote and
+          decides whether to open the door.
+        </p>
+        <p class="b-lg">
+          If your enterprise qualifies — if the history is deep enough, the access is available,
+          and a dig site worth opening exists — you will receive a private response within
+          five business days.
+        </p>
+      </div>
+
+      <div class="process-timeline reveal reveal-d3">
+        <div class="timeline-step">
+          <span class="step-num">Step 01</span>
+          <h3 class="step-title">Submission Received</h3>
+          <p class="step-body">
+            Your credentials enter the Private Registry. No algorithm scores them.
+            No assistant pre-sorts them. They arrive, intact, in the order they were written.
+          </p>
+        </div>
+        <div class="timeline-step">
+          <span class="step-num">Step 02</span>
+          <h3 class="step-title">The Architect Reviews</h3>
+          <p class="step-body">
+            Every submission is read by the same practitioner who will conduct the excavation
+            if the engagement proceeds. The review considers depth of history, access to
+            archives, and the presence of a genuine inflection point worth documenting.
+          </p>
+        </div>
+        <div class="timeline-step">
+          <span class="step-num">Step 03</span>
+          <h3 class="step-title">Private Response</h3>
+          <p class="step-body">
+            If the record warrants a conversation, you receive a personal response within
+            five business days. If the fit is not present, you receive an honest and
+            immediate decline — no ghosting, no soft maybes.
+          </p>
+        </div>
+        <div class="timeline-step">
+          <span class="step-num">Step 04</span>
+          <h3 class="step-title">The Conversation</h3>
+          <p class="step-body">
+            A single call. No pitch deck. No discovery questionnaire. The Architect listens
+            to what you have built, what you have lost, and what you suspect is still buried
+            in the record. From that conversation, the appropriate Exhibit is proposed.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2B: Who Qualifies — Six-Criteria Grid -->
+<section class="lux-section bg-vault" id="who-qualifies">
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="label-line"></span>
+      <span class="label-text">Qualification</span>
+      <span class="label-line"></span>
+    </div>
+
+    <h2 class="d-lg reveal reveal-d1" style="max-width: 800px; margin-bottom: 16px;">
+      Who Qualifies for the Private Registry
+    </h2>
+    <p class="b-lg reveal reveal-d1" style="max-width: 700px; margin-bottom: 56px; color: var(--silver);">
+      Not every enterprise carries the depth of record that makes excavation worthwhile.
+      These six criteria separate the candidates from the curious.
+    </p>
+
+    <div class="qual-grid reveal reveal-d2">
+      <div class="qual-cell">
+        <span class="qual-roman">I</span>
+        <h3 class="qual-title">Operating History</h3>
+        <p class="qual-body">
+          Five years minimum — preferably ten or more, or generationally owned.
+          The excavation requires sediment.
+        </p>
+        <span class="qual-tag req">Required</span>
+      </div>
+      <div class="qual-cell">
+        <span class="qual-roman">II</span>
+        <h3 class="qual-title">Enterprise Scale</h3>
+        <p class="qual-body">
+          At or approaching the $30M+ annual revenue threshold.
+          The methodology is built for structural depth, not startup velocity.
+        </p>
+        <span class="qual-tag req">Required</span>
+      </div>
+      <div class="qual-cell">
+        <span class="qual-roman">III</span>
+        <h3 class="qual-title">Geographic Presence</h3>
+        <p class="qual-body">
+          Operating presence in the San Antonio–Austin I-35 corridor.
+          The practice serves this corridor with forensic precision.
+        </p>
+        <span class="qual-tag req">Required</span>
+      </div>
+      <div class="qual-cell">
+        <span class="qual-roman">IV</span>
+        <h3 class="qual-title">The Lost Signal</h3>
+        <p class="qual-body">
+          A sense that something precise was lost in the transition from what
+          the business was to what it is now. Nostalgia is not enough. Accuracy is.
+        </p>
+        <span class="qual-tag crit">Critical</span>
+      </div>
+      <div class="qual-cell">
+        <span class="qual-roman">V</span>
+        <h3 class="qual-title">Archive Access</h3>
+        <p class="qual-body">
+          Access to historical archives, former personnel, and financial records
+          from the enterprise's formative years. The dig requires source material.
+        </p>
+        <span class="qual-tag pref">Preferred</span>
+      </div>
+      <div class="qual-cell">
+        <span class="qual-roman">VI</span>
+        <h3 class="qual-title">Leadership Appetite</h3>
+        <p class="qual-body">
+          Willingness to look back before building forward — without defensiveness
+          about what the archaeology may reveal. The truth is the client.
+        </p>
+        <span class="qual-tag crit">Essential</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2C: What You Receive — Deliverable Preview -->
+<section class="lux-section bg-vault-mid" id="what-you-receive">
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="label-line"></span>
+      <span class="label-text">The Deliverable</span>
+      <span class="label-line"></span>
+    </div>
+
+    <div class="two-col-4060">
+      <div class="reveal reveal-d1">
+        <h2 class="d-lg" style="margin-bottom: 24px;">
+          What You Receive
+        </h2>
+        <p class="b-xl" style="margin-bottom: 20px;">
+          Every engagement — regardless of Exhibit — begins with Phase 0:
+          <em>The Shallow Dig</em>. It is not an intake form. It is the first act
+          of the excavation.
+        </p>
+        <p class="b-lg" style="margin-bottom: 28px;">
+          This is not a lead magnet. There is no white paper. No downloadable framework.
+          No automated sequence that delivers a generic assessment and a sales call.
+          What follows is a genuine forensic pass across your institutional record —
+          conducted by a practitioner, delivered as a written brief, and used as the
+          foundation of every subsequent Exhibit.
+        </p>
+        <div class="signal-block" style="margin: 32px 0 0;">
+          <span class="signal-label">Investment</span>
+          <p style="font-family: var(--font-cinzel); font-size: 1.1rem; color: var(--gold); letter-spacing: 0.06em; margin: 0;">
+            $2,500 · One-time · Non-refundable
+          </p>
+          <p style="font-family: var(--font-ui); font-size: 0.82rem; color: var(--text-muted); margin: 6px 0 0;">
+            Principals only. Delivered as written forensic brief.
+          </p>
+        </div>
+      </div>
+
+      <div class="deliver-preview reveal reveal-d2">
+        <div class="preview-header">
+          <div class="preview-icon">◆</div>
+          <span class="preview-title">The Phase 0 Brief Contains</span>
+        </div>
+        <ul class="preview-list">
+          <li><strong>Your Estimated Golden Era</strong> — The period in your institutional history during which the business operated closest to its highest potential.</li>
+          <li><strong>One Abandoned Asset</strong> — A capability, relationship, method, or competitive advantage that existed in your record and was discontinued.</li>
+          <li><strong>The Competitive Gap</strong> — The forensic measurement between what your business has documented and what your primary competitors are able to prove.</li>
+          <li><strong>One Undeniable Inflection Point</strong> — A moment in the institutional timeline where the business changed direction, located and documented as active evidence.</li>
+        </ul>
+        <p style="font-family: var(--font-ui); font-size: 0.82rem; color: var(--text-muted); margin-top: 24px; font-style: italic; line-height: 1.7;">
+          If the brief reveals that a deeper Exhibit is warranted, that determination
+          will be stated plainly. The Shallow Dig serves the record — not the engagement pipeline.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SACRED INTAKE EMBED — Intaketest.html
+     Embedded via iframe to preserve its structure, styling, API calls,
+     and functionality completely untouched.
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="intake-sanctuary" id="intake-sanctuary">
+  <div class="intake-label-bar">
+    <span class="label-line"></span>
+    <span class="label-text">Phase 0 — Forensic Intake</span>
+    <span class="label-line"></span>
+  </div>
+  <iframe
+    src="Intaketest.html"
+    class="intake-frame"
+    title="LEGAiSEE Forensic Intake"
+    loading="lazy"
+    sandbox="allow-scripts allow-same-origin allow-forms"
+  ></iframe>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TIER 3 — FULL PHILOSOPHY (Below Fold, Optional Depth)
+     "The Registry as Filter," "Why Invitation Only," "The Architect's Burden"
+     Clearly labeled as optional depth.
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="lux-section bg-vault philosophy-depth" id="philosophy-depth">
+  <div class="section-inner">
+    <div class="section-label reveal">
+      <span class="label-line"></span>
+      <span class="label-text">Optional Depth</span>
+      <span class="label-line"></span>
+    </div>
+
+    <h2 class="d-lg reveal reveal-d1" style="margin-bottom: 56px;">
+      The Philosophy of the Gate
+    </h2>
+
+    <div class="depth-block reveal reveal-d1">
+      <span class="depth-label">The Registry as Filter</span>
+      <h3 class="depth-title">Why the Door Is Narrow</h3>
+      <p class="depth-body">
+        Most service practices optimize for volume. They build funnels, nurture sequences,
+        and automated qualification systems designed to move as many prospects as possible
+        toward a sales conversation. <em>The Private Registry inverts this logic.</em>
+      </p>
+      <p class="depth-body" style="margin-top: 16px;">
+        The Registry is designed to be difficult to enter. The questions are open-ended.
+        The criteria are strict. The response is slow by design. This is not inefficiency —
+        it is <em>structural selectivity</em>. The enterprises that complete the Registry
+        are the same enterprises that have the patience, the historical depth, and the
+        leadership seriousness to sustain a genuine archaeological engagement.
+      </p>
+    </div>
+
+    <div class="depth-block reveal reveal-d2">
+      <span class="depth-label">Why Invitation Only</span>
+      <h3 class="depth-title">The Three-Client Maximum</h3>
+      <p class="depth-body">
+        The practice serves three clients at a time. Not because of capacity constraints,
+        but because <em>attention is the non-renewable resource</em>. Every excavation requires
+        the same depth of focus, the same forensic discipline, and the same personal presence
+        that the first client received. Scaling that attention would dilute it.
+      </p>
+      <p class="depth-body" style="margin-top: 16px;">
+        When a client graduates — when their signal is restored and their system is
+        self-sustaining — that slot opens. The next enterprise enters not by urgency,
+        but by <em>fit</em>. This is why there is no public intake, no advertising, and
+        no outbound sales. The work speaks. The right enterprises find the door.
+      </p>
+    </div>
+
+    <div class="depth-block reveal reveal-d3">
+      <span class="depth-label">The Architect's Burden</span>
+      <h3 class="depth-title">What It Costs to Read Every Word</h3>
+      <p class="depth-body">
+        Reading every submission personally is not a marketing posture. It is a
+        <em>methodological necessity</em>. The Architect cannot delegate the judgment
+        of whether an enterprise carries the depth of record worth excavating. That
+        judgment requires the same forensic intuition that the excavation itself demands —
+        the ability to sense, from a few paragraphs of institutional memory, whether there
+        is bedrock beneath the surface or only sediment.
+      </p>
+      <p class="depth-body" style="margin-top: 16px;">
+        This is why the response takes five business days. Not because the Architect is
+        busy, but because <em>the decision is consequential</em>. Opening the door commits
+        both parties to a process that will surface truths that have been buried for years.
+        That commitment deserves deliberation.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     TIER 4 — ENGAGEMENT DOOR
+     "Begin the Registry" → scrolls to the embedded Intaketest.html section.
+     Not a dead end. The final CTA before the footer.
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="lux-section bg-vault-mid section-lit" id="engagement-door">
+  <div class="lighting-overlay"></div>
+  <div class="section-inner" style="text-align: center;">
+    <div class="section-label reveal">
+      <span class="label-line"></span>
+      <span class="label-text">The Final Word</span>
+      <span class="label-line"></span>
+    </div>
+
+    <h2 class="d-lg reveal reveal-d1" style="max-width: 800px; margin: 0 auto 28px;">
+      If You Are Reading This, You Already Know
+    </h2>
+
+    <p class="b-xl reveal reveal-d2" style="max-width: 720px; margin: 0 auto 44px;">
+      Enterprises that find their way to the Private Registry rarely arrive by accident.
+      They arrive because something in the way this practice is described resonated with
+      something they have been unable to name.
+    </p>
+
+    <p class="b-accent reveal reveal-d2" style="max-width: 640px; margin: 0 auto 48px;">
+      That feeling is not nostalgia. It is accurate perception.
+      The archaeology will confirm it, document it, and give it the precise name it deserves.
+    </p>
+
+    <div class="gate-seal reveal reveal-d3" style="margin: 0 auto;">
+      <span class="seal-line">Three Clients Maximum</span>
+      <span class="seal-line">By Invitation Only</span>
+      <span class="seal-line">The Signal, Restored</span>
+    </div>
+
+    <div class="btn-group reveal reveal-d4" style="justify-content: center; margin-top: 48px;">
+      <a href="#intake-sanctuary" class="btn btn-gold">Begin the Registry</a>
+      <a href="index.html" class="btn btn-outline-gold">Return to the Vault</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FAQ SCHEMA SECTION (Visible, for SEO + user clarity)
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="lux-section-sm bg-vault faq-schema-section" id="faq">
+  <div class="section-inner-narrow">
+    <div class="section-label reveal">
+      <span class="label-line"></span>
+      <span class="label-text">Frequently Asked</span>
+      <span class="label-line"></span>
+    </div>
+
+    <h2 class="d-md reveal reveal-d1" style="margin-bottom: 48px;">Questions About the Registry</h2>
+
+    <div class="faq-item reveal reveal-d1">
+      <h3 class="faq-question">What is the Private Registry?</h3>
+      <p class="faq-answer">
+        The Private Registry is not a contact form. It is the first act of the excavation —
+        a qualification gate for enterprises with the depth of history worth recovering.
+        Every submission is read personally by The Architect.
+      </p>
+    </div>
+
+    <div class="faq-item reveal reveal-d2">
+      <h3 class="faq-question">Who qualifies for the Private Registry?</h3>
+      <p class="faq-answer">
+        Enterprises with five or more years of operating history, annual revenue at or
+        approaching $30M+, operating presence in the San Antonio–Austin I-35 corridor,
+        and leadership willing to look back before building forward.
+      </p>
+    </div>
+
+    <div class="faq-item reveal reveal-d3">
+      <h3 class="faq-question">What happens after I submit?</h3>
+      <p class="faq-answer">
+        The Architect reviews every submission personally. If your enterprise qualifies,
+        you will receive a private response within five business days. There is no
+        automated sequence, no sales funnel, and no follow-up campaign.
+      </p>
+    </div>
+
+    <div class="faq-item reveal reveal-d4">
+      <h3 class="faq-question">Is my submission confidential?</h3>
+      <p class="faq-answer">
+        Everything that enters the Registry is governed by a confidentiality standard
+        that is not negotiable. No team reviews your submission. No system flags it.
+        No algorithm scores it. One human being reads what you wrote.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     FOOTER — Preserved from index.html
+     ═══════════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <img src="https://www.legaisee.com/Images/LegaiseeLogo.png" alt="LEGAiSEE" style="height: 32px; width: auto; margin-bottom: 14px;" />
+      <p class="footer-brand-tagline">
+        Forensic excavation of the strategic structure that once made you unmistakable —
+        and the disciplined reconstruction of that signal for the market that exists today.
+      </p>
+    </div>
+    <div>
+      <h4 class="footer-col-title">The Practice</h4>
+      <ul class="footer-links">
+        <li><a href="archaeology.html">The Archaeology</a></li>
+        <li><a href="method.html">The Method</a></li>
+        <li><a href="serve.html">Who We Serve</a></li>
+        <li><a href="architect.html">The Architect</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="footer-col-title">Engagement</h4>
+      <ul class="footer-links">
+        <li><a href="practitioner.html">The Practitioner</a></li>
+        <li><a href="commissions.html">Commissions</a></li>
+        <li><a href="registry.html">The Private Registry</a></li>
+        <li><a href="comparison.html">The Comparison</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="footer-col-title">Contact</h4>
+      <ul class="footer-links">
+        <li><a href="registry.html">Enter the Registry</a></li>
+        <li>San Antonio · Austin</li>
+        <li>The I-35 Corridor</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 LEGAiSEE. All rights reserved.</p>
+    <p class="footer-seal">Business Archaeology & Authority Systems</p>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SCRIPTS — Scroll reveal + mobile nav (preserved from index.html)
+     ═══════════════════════════════════════════════════════════════ -->
+<script>
+  /* Mobile nav toggle */
+  (function() {
+    const hamburger = document.getElementById('navHamburger');
+    const mobileNav = document.getElementById('navMobile');
+    if (!hamburger || !mobileNav) return;
+
+    hamburger.addEventListener('click', function() {
+      const isOpen = mobileNav.classList.toggle('is-open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    mobileNav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileNav.classList.remove('is-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
+
+  /* Scroll reveal */
+  (function() {
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    if (!reveals.length) return;
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(function(el) { observer.observe(el); });
+  })();
+
+  /* Nav scroll state */
+  (function() {
+    const nav = document.getElementById('siteNav');
+    if (!nav) return;
+    window.addEventListener('scroll', function() {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  })();
+</script>
+
+</body>
+</html>

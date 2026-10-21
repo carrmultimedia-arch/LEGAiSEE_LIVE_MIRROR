@@ -1,0 +1,931 @@
+/* =========================================================================================
+LEGAiSEE — MASTER LUXURY AUTHORITY SYSTEM
+Museum / Speakeasy / Broadcast / Executive Intelligence Aesthetic
+Unified CSS Architecture
+========================================================================================= */
+
+/* =========================================================================================
+ROOT VARIABLES
+========================================================================================= */
+
+:root{
+
+    --obsidian:#050505;
+    --carbon:#0b0b0b;
+    --museum-black:#101010;
+    --charcoal:#171717;
+    --graphite:#1f1f1f;
+
+    --gold:#c6a66a;
+    --gold-soft:#d7b980;
+    --gold-bright:#f0d7a1;
+    --gold-muted:#8f7447;
+    --gold-shadow:#5d4a28;
+
+    --cream:#e9dfd0;
+    --ivory:#f5f0e6;
+    --silver:#8d8d8d;
+
+    --glass-dark:rgba(18,18,18,.72);
+    --glass-mid:rgba(24,24,24,.58);
+    --glass-light:rgba(255,255,255,.06);
+
+    --border-gold:rgba(212,178,109,.24);
+    --border-soft:rgba(255,255,255,.08);
+
+    --shadow-deep:
+        0 30px 60px rgba(0,0,0,.6),
+        0 10px 20px rgba(0,0,0,.45);
+
+    --shadow-gold:
+        0 0 40px rgba(198,166,106,.12),
+        0 0 90px rgba(198,166,106,.08);
+
+    --gradient-gold-left:
+        radial-gradient(circle at top left,
+        rgba(212,178,109,.18),
+        transparent 42%);
+
+    --gradient-gold-right:
+        radial-gradient(circle at top right,
+        rgba(212,178,109,.15),
+        transparent 42%);
+
+    --gradient-gold-bottom:
+        radial-gradient(circle at bottom center,
+        rgba(212,178,109,.10),
+        transparent 48%);
+
+    --transition-slow:all .7s cubic-bezier(.19,1,.22,1);
+    --transition-fast:all .35s ease;
+
+    --max-width:1500px;
+    --content-width:1180px;
+
+    --radius-xl:38px;
+    --radius-lg:26px;
+    --radius-md:18px;
+
+    --nav-height:88px;
+}
+
+/* =========================================================================================
+RESET
+========================================================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:
+        var(--gradient-gold-left),
+        var(--gradient-gold-right),
+        var(--obsidian);
+
+    color:var(--cream);
+
+    font-family:
+        Inter,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    overflow-x:hidden;
+    line-height:1.7;
+}
+
+/* =========================================================================================
+TYPOGRAPHY
+========================================================================================= */
+
+h1,h2,h3,h4,h5,h6{
+    font-family:
+        "Cormorant Garamond",
+        "Baskerville",
+        "Times New Roman",
+        serif;
+
+    font-weight:500;
+    letter-spacing:.02em;
+    color:var(--ivory);
+}
+
+h1{
+    font-size:clamp(4rem,8vw,8rem);
+    line-height:.94;
+}
+
+h2{
+    font-size:clamp(2.6rem,5vw,5rem);
+    line-height:1;
+}
+
+h3{
+    font-size:clamp(1.8rem,3vw,2.8rem);
+}
+
+h4{
+    font-size:1.4rem;
+}
+
+p{
+    color:rgba(233,223,208,.86);
+    font-size:1.05rem;
+    font-weight:300;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.gold-text{
+    color:var(--gold-bright);
+}
+
+.eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.24em;
+    font-size:.76rem;
+    color:var(--gold-soft);
+    margin-bottom:20px;
+}
+
+/* =========================================================================================
+LAYOUT
+========================================================================================= */
+
+.page-shell{
+    width:100%;
+    position:relative;
+}
+
+.content-width{
+    width:min(92%, var(--content-width));
+    margin-inline:auto;
+}
+
+.section{
+    position:relative;
+    padding:140px 0;
+    overflow:hidden;
+}
+
+.section-tight{
+    padding:90px 0;
+}
+
+.section-title-wrap{
+    width:min(900px,100%);
+    margin:0 auto 70px auto;
+    text-align:center;
+}
+
+.section-title-wrap p{
+    margin-top:28px;
+    text-align:left;
+}
+
+/* =========================================================================================
+STATIC CINEMATIC BACKGROUND SECTIONS
+========================================================================================= */
+
+.background-reveal{
+    position:relative;
+    min-height:120vh;
+
+    background-size:cover;
+    background-position:center center;
+    background-attachment:fixed;
+
+    display:flex;
+    align-items:center;
+
+    overflow:hidden;
+}
+
+.background-reveal::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.85),
+            rgba(0,0,0,.45),
+            rgba(0,0,0,.88)
+        );
+
+    z-index:1;
+}
+
+.background-reveal::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        var(--gradient-gold-left),
+        var(--gradient-gold-right),
+        var(--gradient-gold-bottom);
+
+    mix-blend-mode:screen;
+    opacity:.8;
+
+    z-index:2;
+}
+
+.background-content{
+    position:relative;
+    z-index:4;
+    width:100%;
+}
+
+/* =========================================================================================
+LUXURY CARD SYSTEM
+========================================================================================= */
+
+.lux-card{
+    position:relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.05),
+            rgba(255,255,255,.015)
+        );
+
+    border:
+        1px solid var(--border-gold);
+
+    border-radius:var(--radius-xl);
+
+    backdrop-filter:blur(16px);
+
+    box-shadow:
+        var(--shadow-deep),
+        var(--shadow-gold);
+
+    overflow:hidden;
+
+    transition:var(--transition-slow);
+}
+
+.lux-card::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.06),
+            transparent 20%,
+            transparent 70%,
+            rgba(212,178,109,.08)
+        );
+
+    pointer-events:none;
+}
+
+.lux-card:hover{
+    transform:
+        translateY(-8px)
+        scale(1.01);
+
+    border-color:
+        rgba(240,215,161,.42);
+
+    box-shadow:
+        0 45px 80px rgba(0,0,0,.7),
+        0 0 60px rgba(198,166,106,.18);
+}
+
+.card-padding{
+    padding:48px;
+}
+
+.card-grid{
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    gap:30px;
+}
+
+.card-col-4{
+    grid-column:span 4;
+}
+
+.card-col-5{
+    grid-column:span 5;
+}
+
+.card-col-6{
+    grid-column:span 6;
+}
+
+.card-col-7{
+    grid-column:span 7;
+}
+
+.card-col-8{
+    grid-column:span 8;
+}
+
+/* =========================================================================================
+ASSET / GEMSTONE HOLDERS
+========================================================================================= */
+
+.gem-stage{
+    position:relative;
+    border-radius:34px;
+    overflow:hidden;
+    min-height:540px;
+
+    border:
+        1px solid rgba(212,178,109,.24);
+
+    box-shadow:
+        var(--shadow-deep);
+}
+
+.gem-stage img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+
+    filter:
+        contrast(1.08)
+        brightness(.82)
+        saturate(.9);
+}
+
+.gem-overlay{
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.15),
+            rgba(0,0,0,.68)
+        );
+}
+
+.gem-caption{
+    position:absolute;
+    left:40px;
+    bottom:40px;
+    z-index:5;
+}
+
+/* =========================================================================================
+NAVIGATION
+========================================================================================= */
+
+.main-nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:var(--nav-height);
+
+    z-index:9999;
+
+    backdrop-filter:blur(18px);
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.78),
+            rgba(0,0,0,.22)
+        );
+
+    border-bottom:
+        1px solid rgba(212,178,109,.18);
+}
+
+.nav-inner{
+    width:min(95%,1500px);
+
+    margin-inline:auto;
+
+    height:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.nav-logo{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+.nav-logo img{
+    width:64px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:36px;
+}
+
+.nav-links a{
+    font-size:.86rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+
+    color:rgba(255,255,255,.82);
+
+    transition:var(--transition-fast);
+}
+
+.nav-links a:hover{
+    color:var(--gold-bright);
+}
+
+.nav-cta{
+    padding:14px 24px;
+
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold),
+            var(--gold-soft)
+        );
+
+    color:#111;
+
+    font-weight:600;
+}
+
+/* =========================================================================================
+HERO
+========================================================================================= */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+
+    position:relative;
+
+    padding-top:120px;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:60px;
+    align-items:center;
+}
+
+.hero-copy{
+    position:relative;
+    z-index:5;
+}
+
+.hero-copy p{
+    max-width:760px;
+    margin-top:40px;
+    font-size:1.12rem;
+}
+
+.hero-actions{
+    margin-top:50px;
+
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.button-lux{
+    position:relative;
+
+    padding:18px 34px;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+    font-size:.82rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-weight:700;
+
+    transition:var(--transition-fast);
+}
+
+.button-gold{
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold),
+            var(--gold-soft)
+        );
+
+    color:#111;
+}
+
+.button-outline{
+    border:
+        1px solid rgba(212,178,109,.28);
+
+    background:
+        rgba(255,255,255,.03);
+
+    color:var(--cream);
+}
+
+.button-lux:hover{
+    transform:translateY(-3px);
+}
+
+/* =========================================================================================
+SHOWCASE PANELS
+========================================================================================= */
+
+.showcase-panel{
+    position:relative;
+
+    border-radius:38px;
+    overflow:hidden;
+
+    min-height:720px;
+
+    background-size:cover;
+    background-position:center;
+
+    border:
+        1px solid rgba(212,178,109,.18);
+
+    box-shadow:
+        var(--shadow-deep);
+}
+
+.showcase-panel::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.2),
+            rgba(0,0,0,.72)
+        );
+}
+
+.showcase-panel-content{
+    position:absolute;
+    bottom:50px;
+    left:50px;
+    right:50px;
+    z-index:5;
+}
+
+/* =========================================================================================
+TIMELINE / EVIDENCE
+========================================================================================= */
+
+.timeline{
+    position:relative;
+    margin-top:80px;
+}
+
+.timeline::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    bottom:0;
+    left:50%;
+
+    width:1px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(212,178,109,.45),
+            transparent
+        );
+}
+
+.timeline-item{
+    position:relative;
+
+    width:calc(50% - 40px);
+
+    margin-bottom:80px;
+}
+
+.timeline-item:nth-child(odd){
+    margin-right:auto;
+}
+
+.timeline-item:nth-child(even){
+    margin-left:auto;
+}
+
+/* =========================================================================================
+FOOTER
+========================================================================================= */
+
+.footer{
+    position:relative;
+
+    padding:120px 0 60px 0;
+
+    border-top:
+        1px solid rgba(212,178,109,.18);
+
+    background:
+        linear-gradient(
+            to top,
+            #050505,
+            #111
+        );
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:50px;
+}
+
+.footer small{
+    display:block;
+    margin-top:40px;
+    opacity:.5;
+}
+
+/* =========================================================================================
+ANIMATIONS
+========================================================================================= */
+
+.fade-up{
+    opacity:0;
+    transform:translateY(60px);
+    animation:fadeUp 1.2s ease forwards;
+}
+
+@keyframes fadeUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================================================================================
+RESPONSIVE
+========================================================================================= */
+
+@media(max-width:1100px){
+
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
+
+    .card-col-4,
+    .card-col-5,
+    .card-col-6,
+    .card-col-7,
+    .card-col-8{
+        grid-column:span 12;
+    }
+
+    .timeline::before{
+        left:20px;
+    }
+
+    .timeline-item{
+        width:calc(100% - 60px);
+        margin-left:60px !important;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:768px){
+
+    h1{
+        font-size:4rem;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .card-padding{
+        padding:32px;
+    }
+
+    .section{
+        padding:100px 0;
+    }
+<!-- =====================================================================================
+LEGAiSEE SHARED NAVIGATION
+===================================================================================== -->
+
+<nav class="main-nav">
+
+    <div class="nav-inner">
+
+        <a href="page-home.html" class="nav-logo">
+
+            <img
+                src="https://www.legaisee.com/Images/Legaisee-sm-300.png"
+                alt="LEGAiSEE Logo"
+            >
+
+            <div>
+                <h4>LEGAiSEE</h4>
+                <p class="eyebrow">Business Archaeology & Authority Systems</p>
+            </div>
+
+        </a>
+
+        <div class="nav-links">
+
+            <a href="page-home.html">Home</a>
+
+            <a href="page-methodology.html">Methodology</a>
+
+            <a href="page-industries.html">Industries</a>
+
+            <a href="page-exhibits.html">Exhibits</a>
+
+            <a href="page-evidence.html">Evidence</a>
+
+            <a href="page-private-record.html">Private Record</a>
+
+        </div>
+
+        <a href="page-private-record.html" class="nav-cta">
+            Request Access
+        </a>
+
+    </div>
+/* ============================================
+   EXHIBITS PAGE CLASSES (Add to stylesheet)
+   ============================================ */
+
+.page-width {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.page-narrow {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.page-narrow.center {
+    text-align: center;
+}
+
+/* Section system */
+.lux-section {
+    position: relative;
+    padding: 120px 0;
+    overflow: hidden;
+}
+
+.section-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+.section-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 1;
+}
+
+.section-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Museum cards */
+.museum-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card-inner {
+    padding: 48px;
+}
+
+/* Exhibit grid */
+.exhibit-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+}
+
+.exhibit-large {
+    grid-column: span 7;
+}
+
+.exhibit-small {
+    grid-column: span 5;
+}
+
+/* Reveal frame */
+.reveal-frame {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.reveal-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+.reveal-cover {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 1;
+}
+
+.reveal-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 700px;
+    padding: 48px;
+}
+
+/* Quote panel */
+.quote-panel {
+    text-align: center;
+    padding: 100px 0;
+}
+
+/* Gold accent */
+.gold {
+    color: #c9a96e;
+}
+
+/* Button */
+.btn-gold {
+    display: inline-block;
+    padding: 16px 40px;
+    background: #c9a96e;
+    color: #0a0a0a;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-gold:hover {
+    background: #e0c088;
+}
+
+
+</nav>
+    .showcase-panel{
+        min-height:560px;
+    }
+
+    .gem-stage{
+        min-height:420px;
+    }
+}

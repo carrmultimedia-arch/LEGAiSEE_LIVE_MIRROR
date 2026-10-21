@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEGAISEE — The Restoration of Asymmetric Authority</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════════════
+   LEGAISEE — HOME PAGE (The Vault) — LENIS FIXED
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  --obsidian: #050505; --obsidian-light: #080808; --obsidian-mid: #0c0c0c;
+  --charcoal: #111111; --graphite: #161616; --graphite-light: #1a1a1a; --panel: #0e0e10;
+  --gold: #C9A961; --gold-light: #D4B978; --gold-bright: #E8D5A3; --gold-vivid: #F0C24B;
+  --gold-dim: #8B7040; --gold-whisper: rgba(201,169,97,0.06); --gold-glow: rgba(201,169,97,0.12);
+  --gold-border: rgba(201,169,97,0.18); --gold-border-strong: rgba(201,169,97,0.35);
+  --platinum: #E8E0CC; --silver: #A8A0A0; --pewter: #6A6262; --white: #F5F0E8;
+  --violet-deep: #1C0E34; --violet-mid: #2d1f4a;
+  --font-display: 'Cinzel', serif; --font-body: 'Cormorant Garamond', serif; --font-ui: 'Inter', sans-serif;
+  --r-xs: 4px; --r-sm: 8px; --r-md: 14px; --r-lg: 22px; --r-xl: 32px; --r-pill: 999px;
+  --shadow-gold: 0 0 60px rgba(201,169,97,0.08), 0 0 120px rgba(201,169,97,0.04);
+  --shadow-card: 0 24px 80px rgba(0,0,0,0.7), 0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lift: 0 32px 100px rgba(0,0,0,0.8), 0 0 60px rgba(201,169,97,0.06);
+  --shadow-glass: 0 20px 50px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.04);
+  --shadow-glass-hover: 0 36px 80px rgba(0,0,0,0.70), 0 0 24px rgba(230,194,86,0.07);
+  --ease-gold: cubic-bezier(0.22, 0.68, 0, 1.2); --ease-silk: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-dramatic: cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* LENIS CRITICAL FIXES — These must be exactly as Lenis expects */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-scrolling iframe { pointer-events: none; }
+
+html {
+  scroll-behavior: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--obsidian);
+  color: var(--platinum);
+  line-height: 1.7;
+  font-size: 17px;
+  font-weight: 400;
+  /* CRITICAL: Remove overflow-x:hidden — it breaks Lenis scroll calculation */
+  overflow-x: clip;
+  min-height: 100vh;
+}
+
+/* Background noise layers — use fixed positioning but ensure they don't block scroll */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(rgba(5,5,5,0.92), rgba(5,5,5,0.88)),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  background-size: cover, 512px 512px;
+  pointer-events: none;
+  z-index: -2;
+}
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; height: auto; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+@keyframes orb-rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes vault-light { 0%,100% { opacity: 0.7; transform: translateX(-50%) scaleX(0.9); } 50% { opacity: 1; transform: translateX(-50%) scaleX(1.1); } }
+@keyframes spotlight-sweep { 0% { transform: translateX(-100%) rotate(-15deg); opacity: 0; } 50% { opacity: 0.08; } 100% { transform: translateX(200%) rotate(-15deg); opacity: 0; } }
+@keyframes sheen { 0% { left: -40%; opacity: 0; } 8% { opacity: 1; } 92% { opacity: 1; } 100% { left: 140%; opacity: 0; } }
+@keyframes breathe { 0%,100% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.02); opacity: 1; } }
+@keyframes reveal-up { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+.d-xl { font-family: var(--font-display); font-size: clamp(2.8rem, 5vw, 4.8rem); font-weight: 300; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.05; color: var(--platinum); }
+.d-lg { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.12; color: var(--platinum); }
+.d-md { font-family: var(--font-display); font-size: clamp(1.4rem, 2.2vw, 1.9rem); font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.18; color: var(--platinum); }
+.d-sm { font-family: var(--font-display); font-size: 1.05rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.3; color: var(--platinum); }
+.b-xl { font-family: var(--font-body); font-size: 1.35rem; line-height: 1.85; color: var(--platinum); font-weight: 400; }
+.b-lg { font-family: var(--font-body); font-size: 1.18rem; line-height: 1.82; color: var(--platinum); font-weight: 400; }
+.b-md { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.8; color: var(--silver); font-weight: 400; }
+.b-sm { font-family: var(--font-ui); font-size: 0.82rem; line-height: 1.72; color: var(--silver); font-weight: 300; }
+.b-xs { font-family: var(--font-ui); font-size: 0.72rem; line-height: 1.65; color: var(--pewter); font-weight: 300; }
+
+.prestige-label {
+  display: inline-flex; align-items: center; gap: 16px;
+  font-family: var(--font-ui); font-size: 0.58rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.36em; color: var(--gold-dim); margin-bottom: 22px;
+}
+.prestige-label::before, .prestige-label::after {
+  content: ''; flex: 0 0 44px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold));
+}
+.prestige-label::after { background: linear-gradient(to left, transparent, var(--gold)); }
+
+.glass-card {
+  background: linear-gradient(180deg, rgba(24,24,26,0.88), rgba(10,10,12,0.80));
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.05); border-radius: 18px;
+  box-shadow: var(--shadow-glass);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  position: relative; overflow: hidden;
+}
+.glass-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at top left, rgba(244,225,133,0.05), transparent 60%);
+  pointer-events: none;
+}
+.glass-card:hover {
+  border-color: rgba(230,194,86,0.30);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-glass-hover);
+}
+
+.glass-panel {
+  background: linear-gradient(180deg, rgba(22,22,24,0.80), rgba(10,10,12,0.65));
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.05); border-radius: 24px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,255,255,0.04);
+  position: relative; overflow: hidden;
+}
+.glass-panel::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at top center, rgba(244,225,133,0.07), transparent 60%);
+  pointer-events: none;
+}
+
+.btn {
+  display: inline-flex; align-items: center; gap: 14px;
+  font-family: var(--font-display); font-size: 0.68rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.22em; padding: 18px 42px;
+  transition: all 0.38s var(--ease-silk); position: relative; overflow: hidden;
+  cursor: pointer; border: none; outline: none; white-space: nowrap;
+}
+.btn::before {
+  content: ''; position: absolute; top: 0; left: -60%;
+  width: 40%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transition: left 0.6s var(--ease-silk); pointer-events: none;
+}
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dim) 100%);
+  color: var(--obsidian); letter-spacing: 0.18em;
+}
+.btn-gold:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(201,169,97,0.3); }
+.btn-gold:hover::before { left: 130%; }
+.btn-outline-gold {
+  background: transparent; color: var(--gold); border: 1px solid var(--gold-border-strong);
+}
+.btn-outline-gold:hover {
+  background: rgba(201,169,97,0.06); border-color: var(--gold); transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(201,169,97,0.12);
+}
+
+.top-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  background: linear-gradient(to bottom, rgba(5,5,5,0.92), rgba(5,5,5,0.75), transparent);
+  border-bottom: 1px solid rgba(201,169,97,0.07);
+  padding: 16px 48px; display: flex; align-items: center; justify-content: space-between;
+  z-index: 9000; height: 72px;
+}
+.nav-brand { display: flex; align-items: center; gap: 14px; }
+.nav-brand img { width: 32px; height: 32px; object-fit: contain; }
+.nav-brand-text {
+  font-family: var(--font-display); font-size: 0.88rem; font-weight: 600;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold);
+}
+.nav-links { display: flex; gap: 8px; align-items: center; }
+.nav-links a {
+  font-family: var(--font-ui); font-size: 0.68rem; text-transform: uppercase;
+  letter-spacing: 0.18em; color: rgba(235,235,235,0.55); position: relative;
+  padding: 8px 18px; transition: color 0.3s ease;
+}
+.nav-links a:hover { color: var(--gold-light); }
+.nav-links a::after {
+  content: ''; position: absolute; left: 50%; bottom: 0;
+  width: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent);
+  transition: width 0.35s var(--ease-silk), left 0.35s var(--ease-silk);
+}
+.nav-links a:hover::after { width: 80%; left: 10%; }
+.nav-links a.active { color: var(--gold); }
+.nav-links a.active::after { width: 60%; left: 20%; }
+.nav-cta {
+  border: 1px solid var(--gold-border-strong) !important; padding: 10px 24px !important;
+  color: var(--gold) !important; transition: all 0.3s ease !important;
+  font-family: var(--font-display) !important; font-size: 0.62rem !important;
+  letter-spacing: 0.2em !important; border-radius: var(--r-pill); margin-left: 16px;
+}
+.nav-cta:hover { background: var(--gold) !important; color: var(--obsidian) !important; }
+
+.container { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
+.container-narrow { max-width: 900px; margin: 0 auto; padding: 0 48px; }
+.s-pad { padding: 120px 48px; }
+.s-pad-sm { padding: 80px 48px; }
+.s-pad-lg { padding: 160px 48px; }
+.center { text-align: center; }
+.flex-row { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
+.mb-8 { margin-bottom: 8px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+.mb-32 { margin-bottom: 32px; }
+.mb-48 { margin-bottom: 48px; }
+.mb-56 { margin-bottom: 56px; }
+.mb-64 { margin-bottom: 64px; }
+.mt-24 { margin-top: 24px; }
+.mt-32 { margin-top: 32px; }
+.mt-48 { margin-top: 48px; }
+
+/* Gemstone Placeholders */
+.gem-placeholder {
+  position: relative; overflow: hidden;
+  background: linear-gradient(150deg, var(--obsidian-mid) 0%, var(--obsidian) 100%);
+  border: 1px solid var(--gold-border);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 40px 32px; min-height: 280px;
+}
+.gem-placeholder::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(201,169,97,0.08), transparent 60%);
+  pointer-events: none;
+}
+.gem-icon {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: conic-gradient(from 200deg, var(--gold-vivid), var(--gold-dim), var(--gold-bright), var(--gold), var(--gold-vivid));
+  box-shadow: 0 0 24px rgba(201,169,97,0.3), inset 0 0 8px rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.2); position: relative; flex-shrink: 0;
+  animation: orb-rotate 20s linear infinite; margin-bottom: 20px;
+}
+.gem-icon::after {
+  content: ''; position: absolute; top: 8px; left: 10px;
+  width: 20px; height: 12px; background: rgba(255,255,255,0.3); border-radius: 50%; filter: blur(3px);
+}
+.gem-label {
+  font-family: var(--font-display); font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light);
+  margin-bottom: 8px; position: relative; z-index: 1;
+}
+.gem-dim {
+  font-family: var(--font-ui); font-size: 0.64rem; color: var(--pewter);
+  letter-spacing: 0.1em; position: relative; z-index: 1;
+}
+.gem-stage-raw .gem-icon { background: conic-gradient(from 200deg, #5a4a3a, #3a2a1a, #6a5a4a, #4a3a2a, #5a4a3a); }
+.gem-stage-cut .gem-icon { background: conic-gradient(from 200deg, var(--gold-vivid), var(--gold-dim), var(--gold-bright), var(--gold), var(--gold-vivid)); }
+.gem-stage-polished .gem-icon { background: conic-gradient(from 200deg, #fff8e7, var(--gold-bright), var(--gold-light), var(--gold), #fff8e7); box-shadow: 0 0 40px rgba(201,169,97,0.5); }
+.gem-stage-mounted .gem-icon { background: conic-gradient(from 200deg, var(--gold-vivid), var(--gold-dim), var(--gold-bright), var(--gold), var(--gold-vivid)); border: 2px solid var(--gold); }
+
+/* Hero */
+.hero-vault {
+  position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  overflow: hidden; background: var(--obsidian); padding-top: 72px;
+}
+.hero-vault-spotlight {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 100%;
+  background: radial-gradient(ellipse 65% 72% at 50% 0%, rgba(201,169,97,0.1), rgba(201,169,97,0.03) 42%, transparent 72%);
+  pointer-events: none; z-index: 0; animation: vault-light 10s ease-in-out infinite;
+}
+.hero-vault-specular {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 2; overflow: hidden;
+}
+.hero-vault-specular::before {
+  content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  background: linear-gradient(105deg, transparent 40%, rgba(201,169,97,0.015) 45%, rgba(201,169,97,0.04) 50%, rgba(201,169,97,0.015) 55%, transparent 60%);
+  animation: spotlight-sweep 12s ease-in-out infinite;
+}
+.hero-vault-content {
+  position: relative; z-index: 3; text-align: center; max-width: 840px;
+  display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 0 24px;
+}
+.hero-divider {
+  width: 120px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+/* Section backgrounds */
+.section-obsidian { background: var(--obsidian); position: relative; }
+.section-obsidian::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-border), transparent);
+}
+.section-obsidian-light { background: var(--obsidian-light); position: relative; }
+.section-obsidian-light::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-border), transparent);
+}
+
+/* Codex pullquote */
+.codex-pull {
+  font-family: var(--font-body); font-size: 1.55rem; font-style: italic;
+  color: var(--gold-light); text-align: center;
+  padding: 48px 0; border-top: 1px solid rgba(201,169,97,0.12);
+  border-bottom: 1px solid rgba(201,169,97,0.12); margin: 48px 0; line-height: 1.5;
+}
+
+/* Footer */
+.footer-prestige {
+  padding: 32px 48px; background: var(--obsidian-light);
+  border-top: 1px solid rgba(201,169,97,0.1);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 18px;
+}
+.footer-prestige-left { display: flex; align-items: center; gap: 14px; }
+.footer-prestige-brand {
+  font-family: var(--font-display); font-size: 0.72rem;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold);
+}
+.footer-prestige-tag {
+  font-family: var(--font-ui); font-size: 0.58rem; color: var(--pewter); letter-spacing: 0.12em;
+}
+.footer-prestige-right {
+  font-family: var(--font-ui); font-size: 0.58rem; color: var(--pewter); letter-spacing: 0.1em;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.8s var(--ease-silk), transform 0.8s var(--ease-silk);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Responsive */
+
+/* Grid layout classes (replacing inline styles for responsive override) */
+.architect-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.gem-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.provenance-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.provenance-grid-row2 {
+  margin-top: 24px;
+}
+
+@media (max-width: 1024px) {
+  .container, .container-narrow { padding: 0 32px; }
+  .s-pad { padding: 80px 32px; }
+  .architect-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .gem-showcase-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+  .provenance-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+  .provenance-grid-row2 {
+    margin-top: 16px !important;
+  }
+}
+@media (max-width: 768px) {
+  .top-nav { padding: 12px 24px; height: auto; flex-wrap: wrap; }
+  .nav-links { display: none; }
+  .container, .container-narrow { padding: 0 24px; }
+  .s-pad { padding: 64px 24px; }
+  .hero-vault { min-height: 80vh; }
+  .d-xl { font-size: clamp(2rem, 8vw, 3.2rem); }
+  .footer-prestige { flex-direction: column; text-align: center; }
+  .architect-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .gem-showcase-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .provenance-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .provenance-grid-row2 {
+    margin-top: 16px !important;
+  }
+  .glass-panel {
+    padding: 36px 24px !important;
+  }
+  .gem-placeholder {
+    min-height: 200px !important;
+    padding: 32px 24px !important;
+  }
+  .codex-pull {
+    font-size: 1.2rem !important;
+    padding: 32px 0 !important;
+    margin: 32px 0 !important;
+  }
+  .flex-row {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .flex-row .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .hero-vault-content {
+    padding: 0 20px !important;
+    gap: 16px !important;
+  }
+  .hero-vault-content .b-lg {
+    font-size: 1rem !important;
+    line-height: 1.7 !important;
+  }
+  .d-lg {
+    font-size: clamp(1.4rem, 5vw, 2rem) !important;
+  }
+  .d-md {
+    font-size: clamp(1.1rem, 3vw, 1.5rem) !important;
+  }
+  .b-xl {
+    font-size: 1.1rem !important;
+    line-height: 1.7 !important;
+  }
+  .prestige-label {
+    font-size: 0.52rem !important;
+    gap: 10px !important;
+    margin-bottom: 16px !important;
+  }
+  .prestige-label::before,
+  .prestige-label::after {
+    flex: 0 0 24px !important;
+  }
+  .hero-divider {
+    width: 80px !important;
+  }
+  .center.mb-64 {
+    margin-bottom: 40px !important;
+  }
+  .mb-32 { margin-bottom: 20px !important; }
+  .mb-48 { margin-bottom: 28px !important; }
+  .mb-56 { margin-bottom: 32px !important; }
+  .mb-64 { margin-bottom: 40px !important; }
+  .mt-48 { margin-top: 28px !important; }
+}
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════════════════════════════════ -->
+<nav class="top-nav">
+  <div class="nav-brand">
+    <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAISEE">
+  </div>
+  <div class="nav-links">
+    <a href="index.html" class="active">The Room</a>
+    <a href="philosophy.html">Doctrine</a>
+    <a href="services.html">Gallery</a>
+    <a href="results.html">Evidence</a>
+    <a href="access.html" class="nav-cta">Request Entry</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     HERO — The Restoration of Asymmetric Authority
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="hero-vault">
+  <div class="hero-vault-spotlight"></div>
+  <div class="hero-vault-specular"></div>
+  <div class="hero-vault-content">
+    <span class="prestige-label">By Invitation Only &middot; Est. MMXXIV</span>
+    <h1 class="d-xl" style="color: var(--gold);">The Restoration of<br>Asymmetric Authority</h1>
+    <div class="hero-divider"></div>
+    <p class="b-lg" style="max-width: 720px; color: var(--silver);">
+      Sit down. Let the door close behind you. Pour a glass of something that took twenty years to reach its peak.
+    </p>
+    <p class="b-lg" style="max-width: 720px; color: var(--silver);">
+      You and I are here because you have built an enterprise that has stood the test of time. You have scaled, you have survived, and you have led. Yet, there is a quiet, persistent recognition that the business no longer moves with the absolute clarity it once possessed. Decisions landed cleaner back then. Your market position was undisputed, and your name carried a specific, unreplicable weight that your competitors could not copy, no matter how closely they watched.
+    </p>
+    <p class="b-lg" style="max-width: 720px; color: var(--silver);">
+      That clarity was not the result of luck or temporary market conditions. It was the output of a precise strategic structure — a combination of messaging and positioning that worked predictably until it was quietly forgotten.
+    </p>
+    <p class="b-lg" style="max-width: 720px; color: var(--silver);">
+      Most businesses of this scale do not decline because of a lack of talent; they drift. Over years of expansion, generational shifts, turnover, and the arrival of new decision-makers, the original "Golden Era" logic is replaced by reactive marketing and tactical noise. Legacy files disappear, and the high-leverage assets that built your empire are buried under layers of "Narrative Drift". For a Texas Sized Business, the cost of losing this institutional memory is catastrophic, resulting in structural blind spots that leak revenue and erode your pricing power.
+    </p>
+    <div class="codex-pull" style="max-width: 700px;">
+      "We do not 'create' marketing here. We practice Business Archaeology. We excavate the proven assets your business has already earned and install them as a permanent Authority System."
+    </div>
+    <p class="b-lg" style="max-width: 720px; color: var(--silver);">
+      Scaling an unstable narrative only accelerates failure; therefore, we must stabilize your institutional foundation before you invest another dollar in expansion or automation.
+    </p>
+    <div class="flex-row" style="justify-content: center; margin-top: 24px;">
+      <a href="philosophy.html" class="btn btn-gold">Enter the Doctrine</a>
+      <a href="access.html" class="btn btn-outline-gold">Request Entry</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     THE ARCHITECT
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="section-obsidian-light s-pad">
+  <div class="container">
+    <div class="center mb-64">
+      <span class="prestige-label">The Architect</span>
+      <h2 class="d-lg">Three Decades in<br><span style="color:var(--gold);">The Signal</span></h2>
+    </div>
+    <div class="architect-grid">
+      <div class="glass-panel" style="padding: 56px 48px;">
+        <p class="b-xl" style="margin-bottom: 32px;">
+          Our founder spent three decades in the trenches of high-end broadcast, advertising, and technical production — mastering the "Signal" that commands attention.
+        </p>
+        <p class="b-lg" style="color: var(--silver);">
+          This methodology was born from years of working with consistent clients and noticing patterns that eventually arise over time. We combine the forensic discipline of an archivist with the DNA of a master broadcaster to ensure your business's recovered assets are displayed in a way the market can not ignore.
+        </p>
+        <p class="b-lg" style="color: var(--silver); margin-top: 24px;">
+          We do not find your history; we turn it into <em style="color:var(--gold-light);">Unavoidable Logic</em>.
+        </p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        <div class="gem-placeholder gem-stage-raw" style="min-height: 200px;">
+          <div class="gem-icon"></div>
+          <div class="gem-label">Raw Stone</div>
+          <div class="gem-dim">700 &times; 880 px</div>
+        </div>
+        <div class="gem-placeholder gem-stage-cut" style="min-height: 200px;">
+          <div class="gem-icon"></div>
+          <div class="gem-label">The Cut</div>
+          <div class="gem-dim">700 &times; 880 px</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     BEDROCK OF FORENSIC TRUTH — Philosophy Preview
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="section-obsidian s-pad">
+  <div class="container-narrow">
+    <span class="prestige-label">The Bedrock</span>
+    <h2 class="d-lg mb-32">Forensic <span style="color:var(--gold);">Truth</span></h2>
+    <p class="b-xl" style="margin-bottom: 32px;">
+      We operate in The Bedrock of Forensic Truth. If you are going to trust us with the legacy of a multi-million dollar institution, you deserve to know exactly how we weigh the evidence, how we access the inaccessible, and the specialized commissions we reserve for the highest stakes.
+    </p>
+    <p class="b-lg" style="color: var(--silver); margin-bottom: 32px;">
+      Traditional strategy is often built on interpretation — the subjective opinions of agencies guessing what might work next. Our discipline is built on forensic documentation. We treat your company's history as an archaeological dig worth millions, where the evidence of your greatest success is still present, waiting to be recovered.
+    </p>
+    <p class="b-lg" style="color: var(--silver); margin-bottom: 32px;">
+      This approach is rooted in the principle of the <em style="color:var(--gold-light);">Lindy Effect</em>: the idea that the longer a strategic move has already worked, the longer it is likely to work in the future. We do not ask what the market wants today; we ask what your business has already proved it can deliver better than anyone else.
+    </p>
+    <div class="flex-row" style="justify-content: center; margin-top: 48px;">
+      <a href="philosophy.html" class="btn btn-outline-gold">Explore the Doctrine</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     GEMSTONE SHOWCASE
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="section-obsidian-light s-pad">
+  <div class="container">
+    <div class="center mb-64">
+      <span class="prestige-label">The Process</span>
+      <h2 class="d-lg">From <span style="color:var(--gold);">Raw</span> to <span style="color:var(--gold);">Mounted</span></h2>
+    </div>
+    <div class="gem-showcase-grid">
+      <div class="gem-placeholder gem-stage-raw">
+        <div class="gem-icon"></div>
+        <div class="gem-label">Raw Stone</div>
+        <div class="gem-dim">Excavation</div>
+        <div class="gem-dim">700 &times; 880 px</div>
+      </div>
+      <div class="gem-placeholder gem-stage-cut">
+        <div class="gem-icon"></div>
+        <div class="gem-label">The Cut</div>
+        <div class="gem-dim">Refinement</div>
+        <div class="gem-dim">700 &times; 880 px</div>
+      </div>
+      <div class="gem-placeholder gem-stage-polished">
+        <div class="gem-icon"></div>
+        <div class="gem-label">Polished</div>
+        <div class="gem-dim">Authority System</div>
+        <div class="gem-dim">700 &times; 880 px</div>
+      </div>
+      <div class="gem-placeholder gem-stage-mounted">
+        <div class="gem-icon"></div>
+        <div class="gem-label">Mounted</div>
+        <div class="gem-dim">Prestige Display</div>
+        <div class="gem-dim">700 &times; 880 px</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     PROVENANCE SEALS
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="section-obsidian s-pad">
+  <div class="container">
+    <div class="center mb-64">
+      <span class="prestige-label">Provenance</span>
+      <h2 class="d-lg">Verified <span style="color:var(--gold);">Evidence Only</span></h2>
+    </div>
+    <div class="provenance-grid">
+      <div class="glass-card" style="padding: 48px 40px; text-align: center;">
+        <div style="font-family: var(--font-display); font-size: 2.8rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 12px;">47</div>
+        <div style="font-family: var(--font-display); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--platinum); margin-bottom: 8px;">Corporate Clients</div>
+        <div style="font-family: var(--font-ui); font-size: 0.72rem; color: var(--pewter); letter-spacing: 0.1em;">Served</div>
+      </div>
+      <div class="glass-card" style="padding: 48px 40px; text-align: center;">
+        <div style="font-family: var(--font-display); font-size: 2.8rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 12px;">$142M</div>
+        <div style="font-family: var(--font-display); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--platinum); margin-bottom: 8px;">Attributed</div>
+        <div style="font-family: var(--font-ui); font-size: 0.72rem; color: var(--pewter); letter-spacing: 0.1em;">To Recovered Tactics</div>
+      </div>
+      <div class="glass-card" style="padding: 48px 40px; text-align: center;">
+        <div style="font-family: var(--font-display); font-size: 2.8rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 12px;">28&times;</div>
+        <div style="font-family: var(--font-display); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--platinum); margin-bottom: 8px;">Average Audit</div>
+        <div style="font-family: var(--font-ui); font-size: 0.72rem; color: var(--pewter); letter-spacing: 0.1em;">ROI</div>
+      </div>
+    </div>
+    <div class="provenance-grid provenance-grid-row2">
+      <div class="glass-card" style="padding: 48px 40px; text-align: center;">
+        <div style="font-family: var(--font-display); font-size: 2.8rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 12px;">100%</div>
+        <div style="font-family: var(--font-display); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--platinum); margin-bottom: 8px;">Audits With</div>
+        <div style="font-family: var(--font-ui); font-size: 0.72rem; color: var(--pewter); letter-spacing: 0.1em;">Actionable Assets</div>
+      </div>
+      <div class="glass-card" style="padding: 48px 40px; text-align: center;">
+        <div style="font-family: var(--font-display); font-size: 2.8rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 12px;">14 mo</div>
+        <div style="font-family: var(--font-display); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--platinum); margin-bottom: 8px;">Average Engagement</div>
+        <div style="font-family: var(--font-ui); font-size: 0.72rem; color: var(--pewter); letter-spacing: 0.1em;">Length</div>
+      </div>
+      <div class="glass-card" style="padding: 48px 40px; text-align: center;">
+        <div style="font-family: var(--font-display); font-size: 2.8rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 12px;">3</div>
+        <div style="font-family: var(--font-display); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--platinum); margin-bottom: 8px;">Maximum Clients</div>
+        <div style="font-family: var(--font-ui); font-size: 0.72rem; color: var(--pewter); letter-spacing: 0.1em;">Per Quarter</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════════════ -->
+<footer class="footer-prestige">
+  <div class="footer-prestige-left">
+    <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAISEE" style="width:20px;height:20px;object-fit:contain;">
+    <span class="footer-prestige-brand">LEGAISEE</span>
+    <span class="footer-prestige-tag">Business Archaeology &amp; Authority Systems</span>
+  </div>
+  <div class="footer-prestige-right">
+    &copy; MMXXVI &middot; Discreet &middot; Invitation-only &middot; Outcome-obsessed
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     LENIS SMOOTH SCROLL — FIXED IMPLEMENTATION
+     ═══════════════════════════════════════════════════════════════════ -->
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<script>
+// Initialize Lenis with safe defaults
+const lenis = new Lenis({
+  duration: 1.8,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  orientation: 'vertical',
+  gestureOrientation: 'vertical',
+  smoothWheel: true,
+  wheelMultiplier: 1,
+  touchMultiplier: 2,
+});
+
+// CRITICAL: RAF loop must be initialized AFTER Lenis is created
+// and must use the proper pattern
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
+// Sync Lenis with GSAP ScrollTrigger if you add GSAP later
+// lenis.on('scroll', ScrollTrigger.update);
+// gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+// gsap.ticker.lagSmoothing(0);
+
+// Scroll reveal — IntersectionObserver works fine with Lenis
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.glass-card, .gem-placeholder, .glass-panel').forEach(el => {
+  el.classList.add('reveal');
+  revealObserver.observe(el);
+});
+</script>
+
+<style>
+
+@media (max-width: 480px) {
+  .d-xl {
+    font-size: clamp(1.6rem, 9vw, 2.2rem) !important;
+    letter-spacing: 0.08em !important;
+  }
+  .hero-vault-content .b-lg {
+    font-size: 0.95rem !important;
+  }
+  .glass-card {
+    padding: 32px 24px !important;
+  }
+  .gem-placeholder {
+    min-height: 160px !important;
+    padding: 24px 20px !important;
+  }
+  .gem-icon {
+    width: 48px !important;
+    height: 48px !important;
+    margin-bottom: 14px !important;
+  }
+  .gem-label {
+    font-size: 0.65rem !important;
+  }
+  .provenance-grid .glass-card {
+    padding: 32px 24px !important;
+  }
+}
+</style></body>
+</html>

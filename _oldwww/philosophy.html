@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEGAISEE — Doctrine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --obsidian: #050505; --obsidian-light: #080808; --obsidian-mid: #0c0c0c;
+  --charcoal: #111111; --graphite: #161616; --graphite-light: #1a1a1a; --panel: #0e0e10;
+  --gold: #C9A961; --gold-light: #D4B978; --gold-bright: #E8D5A3; --gold-vivid: #F0C24B;
+  --gold-dim: #8B7040; --gold-whisper: rgba(201,169,97,0.06); --gold-glow: rgba(201,169,97,0.12);
+  --gold-border: rgba(201,169,97,0.18); --gold-border-strong: rgba(201,169,97,0.35);
+  --platinum: #E8E0CC; --silver: #A8A0A0; --pewter: #6A6262; --white: #F5F0E8;
+  --violet-deep: #010102ff; --violet-mid: #08050cff;
+  --font-display: 'Cinzel', serif; --font-body: 'Cormorant Garamond', serif; --font-ui: 'Inter', sans-serif;
+  --ease-silk: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-dramatic: cubic-bezier(0.87, 0, 0.13, 1);
+  --ease-gold: cubic-bezier(0.22, 0.68, 0, 1.2);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+html { scroll-behavior: auto; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: var(--font-body); background: var(--obsidian); color: var(--platinum);
+  line-height: 1.7; font-size: 17px; font-weight: 400; overflow-x: clip; min-height: 100vh;
+}
+
+body::before {
+  content: ''; position: fixed; inset: 0;
+  background: linear-gradient(rgba(5,5,5,0.92), rgba(5,5,5,0.88)),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  background-size: cover, 512px 512px; pointer-events: none; z-index: -2;
+}
+body::after {
+  content: ''; position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 9999; opacity: 0.4;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; height: auto; }
+
+/* ═══ TYPOGRAPHY ═══ */
+.d-xl { font-family: var(--font-display); font-size: clamp(2.4rem, 4.5vw, 4rem); font-weight: 300; letter-spacing: 0.14em; text-transform: uppercase; line-height: 1.05; color: var(--platinum); }
+.d-lg { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.6rem); font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.12; color: var(--platinum); }
+.d-md { font-family: var(--font-display); font-size: clamp(1.1rem, 1.8vw, 1.5rem); font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.18; color: var(--platinum); }
+.b-xl { font-family: var(--font-body); font-size: 1.3rem; line-height: 1.85; color: var(--platinum); font-weight: 400; }
+.b-lg { font-family: var(--font-body); font-size: 1.12rem; line-height: 1.82; color: var(--silver); font-weight: 400; }
+.b-md { font-family: var(--font-body); font-size: 1rem; line-height: 1.8; color: var(--silver); font-weight: 400; }
+.b-sm { font-family: var(--font-ui); font-size: 0.78rem; line-height: 1.7; color: var(--pewter); font-weight: 300; }
+
+/* ═══ NAVIGATION ═══ */
+.top-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+  background: linear-gradient(to bottom, rgba(5,5,5,0.92), rgba(5,5,5,0.75), transparent);
+  border-bottom: 1px solid rgba(201,169,97,0.07);
+  padding: 16px 48px; display: flex; align-items: center; justify-content: space-between;
+  z-index: 9000; height: 72px;
+}
+.nav-brand { display: flex; align-items: center; gap: 14px; }
+.nav-brand img { width: 32px; height: 32px; object-fit: contain; }
+.nav-brand-text {
+  font-family: var(--font-display); font-size: 0.88rem; font-weight: 600;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold);
+}
+.nav-links { display: flex; gap: 8px; align-items: center; }
+.nav-links a {
+  font-family: var(--font-ui); font-size: 0.68rem; text-transform: uppercase;
+  letter-spacing: 0.18em; color: rgba(235,235,235,0.55); position: relative;
+  padding: 8px 18px; transition: color 0.3s ease;
+}
+.nav-links a:hover { color: var(--gold-light); }
+.nav-links a::after {
+  content: ''; position: absolute; left: 50%; bottom: 0;
+  width: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent);
+  transition: width 0.35s var(--ease-silk), left 0.35s var(--ease-silk);
+}
+.nav-links a:hover::after { width: 80%; left: 10%; }
+.nav-links a.active { color: var(--gold); }
+.nav-links a.active::after { width: 60%; left: 20%; }
+.nav-cta {
+  border: 1px solid var(--gold-border-strong) !important; padding: 10px 24px !important;
+  color: var(--gold) !important; transition: all 0.3s ease !important;
+  font-family: var(--font-display) !important; font-size: 0.62rem !important;
+  letter-spacing: 0.2em !important; border-radius: 999px; margin-left: 16px;
+}
+.nav-cta:hover { background: var(--gold) !important; color: var(--obsidian) !important; }
+
+/* ═══ SECTIONS & BACKGROUNDS ═══ */
+.section-obsidian { background: var(--obsidian); position: relative; }
+.section-obsidian::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-border), transparent);
+}
+.section-obsidian-light { background: var(--obsidian-light); position: relative; }
+.section-obsidian-light::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-border), transparent);
+}
+.section-violet {
+  background: linear-gradient(180deg, var(--violet-deep) 0%, #150a28 50%, var(--obsidian) 100%);
+  position: relative;
+}
+.section-violet::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,169,97,0.15), transparent);
+}
+.section-gold-dust {
+  background: var(--obsidian);
+  position: relative;
+}
+.section-gold-dust::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(201,169,97,0.04), transparent 70%);
+  pointer-events: none;
+}
+/* CORE TEST WRAPPER */
+.section{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  padding:60px;
+}
+
+/* YOUR GRADIENT TESTS */
+.section-violet-top {
+  background: radial-gradient(
+    circle at top,
+    rgba(59, 43, 95, 0.25),
+    transparent 55%
+  );
+}
+
+.section-gold-bottom {
+  background: radial-gradient(
+    circle at bottom,
+    rgba(245, 199, 106, 0.12),
+    transparent 55%
+  );
+}
+.s-pad { padding: 120px 48px; }
+.s-pad-lg { padding: 160px 48px; }
+.s-pad-sm { padding: 80px 48px; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+.container-wide { max-width: 1400px; margin: 0 auto; padding: 0 48px; }
+
+/* ═══ PRESTIGE LABEL ═══ */
+.prestige-label {
+  display: inline-flex; align-items: center; gap: 16px;
+  font-family: var(--font-ui); font-size: 0.58rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.36em; color: var(--gold-dim); margin-bottom: 22px;
+}
+.prestige-label::before, .prestige-label::after {
+  content: ''; flex: 0 0 44px; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold));
+}
+.prestige-label::after { background: linear-gradient(to left, transparent, var(--gold)); }
+
+/* ═══ GOLD DIVIDER ═══ */
+.gold-divider {
+  width: 60px; height: 2px;
+  background: linear-gradient(to right, var(--gold-dim), var(--gold), var(--gold-dim));
+  margin: 20px 0 32px 0;
+  border-radius: 1px;
+}
+.gold-divider.center { margin: 20px auto 32px auto; }
+
+/* ═══ GLASS CARDS ═══ */
+.glass-card {
+  background: linear-gradient(180deg, rgba(24,24,26,0.88), rgba(10,10,12,0.80));
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.05); border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.04);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  position: relative; overflow: hidden;
+}
+.glass-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at top left, rgba(244,225,133,0.05), transparent 60%);
+  pointer-events: none;
+}
+.glass-card:hover {
+  border-color: rgba(230,194,86,0.30);
+  transform: translateY(-6px);
+  box-shadow: 0 36px 80px rgba(0,0,0,0.70), 0 0 24px rgba(230,194,86,0.07);
+}
+
+/* ═══ ASYMMETRIC CARD LAYOUTS ═══ */
+.asymmetric-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 80px;
+}
+.asymmetric-row:last-child { margin-bottom: 0; }
+
+.asymmetric-row.offset-left .card-wrap:first-child { transform: translateY(40px); }
+.asymmetric-row.offset-left .card-wrap:last-child { transform: translateY(-20px); }
+.asymmetric-row.offset-right .card-wrap:first-child { transform: translateY(-20px); }
+.asymmetric-row.offset-right .card-wrap:last-child { transform: translateY(40px); }
+
+.card-wrap { position: relative; }
+
+.card-content {
+  padding: 48px 44px;
+  text-align: left;
+}
+.card-content .b-xl,
+.card-content .b-lg,
+.card-content .b-md {
+  text-align: left;
+}
+.card-content p + p { margin-top: 20px; }
+
+.card-narrow { max-width: 520px; }
+.card-wide { max-width: 640px; }
+
+/* Card with image side */
+.card-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: stretch;
+}
+.card-split .card-content { padding: 48px 40px; }
+.card-split .card-visual {
+  background: linear-gradient(150deg, var(--obsidian-mid) 0%, var(--obsidian) 100%);
+  border-left: 1px solid var(--gold-border);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 40px;
+  position: relative; overflow: hidden;
+}
+.card-split .card-visual::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(201,169,97,0.08), transparent 60%);
+  pointer-events: none;
+}
+
+/* ═══ FULL-WIDTH MANIFESTO CARD ═══ */
+.manifesto-card {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 64px 56px;
+}
+.manifesto-card .b-xl {
+  font-size: 1.45rem;
+  line-height: 1.9;
+  color: var(--platinum);
+}
+
+/* ═══ GEMSTONE PLACEHOLDERS ═══ */
+.gem-placeholder {
+  position: relative; overflow: hidden;
+  background: linear-gradient(150deg, var(--obsidian-mid) 0%, var(--obsidian) 100%);
+  border: 1px solid var(--gold-border);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 40px 32px; min-height: 280px;
+}
+.gem-placeholder::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(201,169,97,0.08), transparent 60%);
+  pointer-events: none;
+}
+.gem-icon {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: conic-gradient(from 200deg, var(--gold-vivid), var(--gold-dim), var(--gold-bright), var(--gold), var(--gold-vivid));
+  box-shadow: 0 0 24px rgba(201,169,97,0.3), inset 0 0 8px rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.2); position: relative; flex-shrink: 0;
+  animation: orb-rotate 20s linear infinite; margin-bottom: 20px;
+}
+.gem-icon::after {
+  content: ''; position: absolute; top: 8px; left: 10px;
+  width: 20px; height: 12px; background: rgba(255,255,255,0.3); border-radius: 50%; filter: blur(3px);
+}
+.gem-label {
+  font-family: var(--font-display); font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light);
+  margin-bottom: 8px; position: relative; z-index: 1;
+}
+.gem-dim {
+  font-family: var(--font-ui); font-size: 0.64rem; color: var(--pewter);
+  letter-spacing: 0.1em; position: relative; z-index: 1;
+}
+@keyframes orb-rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* ═══ BUTTONS ═══ */
+.btn {
+  display: inline-flex; align-items: center; gap: 14px;
+  font-family: var(--font-display); font-size: 0.68rem; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.22em; padding: 18px 42px;
+  transition: all 0.38s var(--ease-silk); position: relative; overflow: hidden;
+  cursor: pointer; border: none; outline: none; white-space: nowrap;
+}
+.btn::before {
+  content: ''; position: absolute; top: 0; left: -60%;
+  width: 40%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transition: left 0.6s var(--ease-silk); pointer-events: none;
+}
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dim) 100%);
+  color: var(--obsidian); letter-spacing: 0.18em;
+}
+.btn-gold:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(201,169,97,0.3); }
+.btn-gold:hover::before { left: 130%; }
+.btn-outline-gold {
+  background: transparent; color: var(--gold); border: 1px solid var(--gold-border-strong);
+}
+.btn-outline-gold:hover {
+  background: rgba(201,169,97,0.06); border-color: var(--gold); transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(201,169,97,0.12);
+}
+
+/* ═══ HERO — DOCTRINE ═══ */
+.hero-doctrine {
+  position: relative; min-height: 70vh; display: flex; align-items: center;
+  overflow: hidden; background: var(--obsidian); padding-top: 72px;
+}
+.hero-doctrine-content {
+  position: relative; z-index: 3; max-width: 1200px; margin: 0 auto;
+  padding: 80px 48px; display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 64px; align-items: center;
+}
+.hero-doctrine-left { text-align: left; }
+.hero-doctrine-left .prestige-label { margin-bottom: 28px; }
+.hero-doctrine-left .d-xl { margin-bottom: 24px; }
+.hero-doctrine-left .gold-divider { margin: 0 0 32px 0; }
+.hero-doctrine-left .b-lg {
+  max-width: 560px; color: var(--silver); text-align: left;
+}
+
+/* ═══ SCROLL REVEAL ANIMATIONS ═══ */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.9s var(--ease-silk), transform 0.9s var(--ease-silk);
+}
+.reveal.from-left { transform: translateX(-60px); }
+.reveal.from-right { transform: translateX(60px); }
+.reveal.from-bottom { transform: translateY(40px); }
+.reveal.from-scale { transform: scale(0.92); }
+.reveal.visible {
+  opacity: 1;
+  transform: translateX(0) translateY(0) scale(1);
+}
+
+/* Stagger delays */
+.reveal.d1 { transition-delay: 0.1s; }
+.reveal.d2 { transition-delay: 0.2s; }
+.reveal.d3 { transition-delay: 0.3s; }
+.reveal.d4 { transition-delay: 0.4s; }
+
+/* ═══ FOOTER ═══ */
+.footer-prestige {
+  padding: 32px 48px; background: var(--obsidian-light);
+  border-top: 1px solid rgba(201,169,97,0.1);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 18px;
+}
+.footer-prestige-left { display: flex; align-items: center; gap: 14px; }
+.footer-prestige-brand {
+  font-family: var(--font-display); font-size: 0.72rem;
+  letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold);
+}
+.footer-prestige-tag {
+  font-family: var(--font-ui); font-size: 0.58rem; color: var(--pewter); letter-spacing: 0.12em;
+}
+.footer-prestige-right {
+  font-family: var(--font-ui); font-size: 0.58rem; color: var(--pewter); letter-spacing: 0.1em;
+}
+
+/* ═══ RESPONSIVE ═══ */
+/* Commissions grid layout */
+.commissions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+@media (max-width: 1024px) {
+  .container, .container-wide { padding: 0 32px; }
+  .s-pad { padding: 80px 32px; }
+  .s-pad-lg { padding: 100px 32px; }
+  .s-pad-sm { padding: 60px 32px; }
+  .asymmetric-row { 
+    grid-template-columns: 1fr !important; 
+    gap: 32px; 
+    margin-bottom: 60px; 
+  }
+  .asymmetric-row.offset-left .card-wrap:first-child,
+  .asymmetric-row.offset-left .card-wrap:last-child,
+  .asymmetric-row.offset-right .card-wrap:first-child,
+  .asymmetric-row.offset-right .card-wrap:last-child { 
+    transform: none !important; 
+  }
+  .hero-doctrine-content { 
+    grid-template-columns: 1fr !important; 
+    gap: 48px; 
+    padding: 60px 32px; 
+  }
+  .card-split { grid-template-columns: 1fr; }
+  .card-split .card-visual { 
+    border-left: none; 
+    border-top: 1px solid var(--gold-border); 
+  }
+  .commissions-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 24px !important;
+  }
+  .card-content { padding: 36px 28px !important; }
+  .manifesto-card { padding: 48px 32px !important; }
+}
+@media (max-width: 768px) {
+  .top-nav { padding: 12px 24px; height: auto; flex-wrap: wrap; }
+  .nav-links { display: none; }
+  .container, .container-wide { padding: 0 24px; }
+  .s-pad { padding: 64px 24px; }
+  .s-pad-lg { padding: 80px 24px; }
+  .s-pad-sm { padding: 48px 24px; }
+  .asymmetric-row { 
+    grid-template-columns: 1fr !important; 
+    gap: 20px; 
+    margin-bottom: 40px !important;
+  }
+  .asymmetric-row.offset-left .card-wrap:first-child,
+  .asymmetric-row.offset-left .card-wrap:last-child,
+  .asymmetric-row.offset-right .card-wrap:first-child,
+  .asymmetric-row.offset-right .card-wrap:last-child { 
+    transform: none !important; 
+  }
+  .card-content { padding: 28px 22px !important; }
+  .manifesto-card { padding: 36px 24px !important; }
+  .hero-doctrine { 
+    min-height: auto !important; 
+    padding-top: 60px !important;
+  }
+  .hero-doctrine-content { 
+    padding: 40px 24px !important; 
+    gap: 32px !important; 
+  }
+  .hero-doctrine-left .d-xl { 
+    font-size: clamp(1.5rem, 7vw, 2.2rem) !important;
+    letter-spacing: 0.08em !important;
+    line-height: 1.1 !important;
+  }
+  .hero-doctrine-left .b-lg {
+    font-size: 1rem !important;
+    line-height: 1.7 !important;
+  }
+  .d-xl { font-size: clamp(1.8rem, 7vw, 2.8rem); }
+  .d-lg { font-size: clamp(1.3rem, 5vw, 1.8rem) !important; }
+  .d-md { font-size: clamp(1rem, 3vw, 1.3rem) !important; }
+  .b-xl { font-size: 1.1rem !important; line-height: 1.7 !important; }
+  .b-lg { font-size: 1rem !important; line-height: 1.7 !important; }
+  .footer-prestige { 
+    flex-direction: column !important; 
+    text-align: center; 
+    padding: 24px 24px !important;
+    gap: 12px !important;
+  }
+  .commissions-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .commissions-grid .card-content {
+    padding: 32px 24px !important;
+  }
+  .commissions-grid .d-md {
+    font-size: 1rem !important;
+  }
+  .gem-placeholder {
+    min-height: 220px !important;
+    padding: 32px 24px !important;
+  }
+  .gem-icon {
+    width: 48px !important;
+    height: 48px !important;
+    margin-bottom: 14px !important;
+  }
+  .gem-label { font-size: 0.65rem !important; }
+  .gem-dim { font-size: 0.58rem !important; }
+  .prestige-label {
+    font-size: 0.52rem !important;
+    gap: 10px !important;
+    margin-bottom: 16px !important;
+  }
+  .prestige-label::before,
+  .prestige-label::after {
+    flex: 0 0 24px !important;
+  }
+  .gold-divider {
+    width: 40px !important;
+    margin: 14px 0 24px 0 !important;
+  }
+  .gold-divider.center {
+    margin: 14px auto 24px auto !important;
+  }
+  .card-wrap { width: 100% !important; }
+  .card-wide { max-width: 100% !important; }
+  .card-narrow { max-width: 100% !important; }
+}
+
+
+/* ─── SMALL MOBILE (max-width: 480px) ─── */
+@media (max-width: 480px) {
+  .hero-doctrine-left .d-xl {
+    font-size: clamp(1.3rem, 8vw, 1.8rem) !important;
+  }
+  .d-lg {
+    font-size: clamp(1.1rem, 5vw, 1.5rem) !important;
+  }
+  .commissions-grid .d-md {
+    font-size: 0.9rem !important;
+  }
+  .manifesto-card .b-xl {
+    font-size: 0.95rem !important;
+  }
+  .card-split .card-content {
+    padding: 24px 20px !important;
+  }
+  .card-split .card-visual {
+    padding: 28px 20px !important;
+    min-height: 160px !important;
+  }
+}
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════════════════════════════════ -->
+<nav class="top-nav">
+  <div class="nav-brand">
+    <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAISEE">
+    <span class="nav-brand-text">LEGAISEE</span>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">The Room</a>
+    <a href="philosophy.html" class="active">Doctrine</a>
+    <a href="services.html">Gallery</a>
+    <a href="results.html">Evidence</a>
+    <a href="access.html" class="nav-cta">Request Entry</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     HERO — The Bedrock
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="hero-doctrine">
+  <div class="hero-doctrine-content">
+    <div class="hero-doctrine-left">
+      <span class="prestige-label">The Bedrock of Forensic Truth</span>
+      <h1 class="d-xl" style="color: var(--gold);">We Do Not Guess.<br>We Excavate.</h1>
+      <div class="gold-divider"></div>
+      <p class="b-lg">
+        Traditional strategy is built on interpretation — the subjective opinions of agencies guessing what might work next. Our discipline is built on forensic documentation. We treat your company's history as an archaeological dig worth millions, where the evidence of your greatest success is still present, waiting to be recovered.
+      </p>
+    </div>
+    <div class="gem-placeholder" style="min-height: 360px; border-radius: 18px;">
+      <div class="gem-icon" style="width: 80px; height: 80px;"></div>
+      <div class="gem-label">Doctrine Visual</div>
+      <div class="gem-dim">600 &times; 720 px</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 1 — The Lindy Effect (VIOLET)
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="section-violet-top  s-pad">
+  <div class="container-wide">
+
+    <!-- Section header -->
+    <div style="text-align: center; margin-bottom: 80px;">
+      <span class="prestige-label">First Principle</span>
+      <h2 class="d-lg">The <span style="color:var(--gold);">Lindy Effect</span></h2>
+      <div class="gold-divider center"></div>
+    </div>
+
+    <!-- Asymmetric row 1: text left, gem right -->
+    <div class="asymmetric-row offset-left">
+      <div class="card-wrap reveal from-left d1">
+        <div class="glass-card card-content card-wide">
+          <p class="b-xl" style="margin-bottom: 24px;">
+            The Lindy Effect states that the future life expectancy of a non-perishable entity is proportional to its current age. In plain terms: the longer something has worked, the longer it is likely to keep working.
+          </p>
+          <p class="b-lg">
+            We do not ask what the market wants today. We ask what your business has already proved it can deliver better than anyone else. The tactics that built your empire did not stop working because they became ineffective. They stopped working because they were forgotten.
+          </p>
+          <p class="b-lg" style="margin-top: 20px;">
+            This is not nostalgia. It is statistical probability. The assets buried in your history have already survived market cycles, competitive pressure, and economic downturns. They are the most robust strategic tools you own.
+          </p>
+        </div>
+      </div>
+      <div class="card-wrap reveal from-right d2">
+        <div class="gem-placeholder" style="border-radius: 18px; min-height: 320px;">
+          <div class="gem-icon"></div>
+          <div class="gem-label">Lindy Visualization</div>
+          <div class="gem-dim">520 &times; 640 px</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Asymmetric row 2: gem left, text right -->
+    <div class="asymmetric-row offset-right">
+      <div class="card-wrap reveal from-left d2">
+        <div class="gem-placeholder" style="border-radius: 18px; min-height: 300px;">
+          <div class="gem-icon"></div>
+          <div class="gem-label">Timeline Artifact</div>
+          <div class="gem-dim">520 &times; 640 px</div>
+        </div>
+      </div>
+      <div class="card-wrap reveal from-right d1">
+        <div class="glass-card card-content card-wide">
+          <p class="b-xl" style="margin-bottom: 24px;">
+            Narrative Drift is the silent killer of established businesses.
+          </p>
+          <p class="b-lg">
+            It begins innocently. A new marketing director arrives with fresh ideas. A competitor launches a campaign you feel compelled to answer. A consultant recommends "modernizing" your message. One decision at a time, the original logic that made you dominant is replaced by reactive noise.
+          </p>
+          <p class="b-lg" style="margin-top: 20px;">
+            After five years, no one in the building can articulate why customers originally chose you. After ten, the founding strategy exists only in the memory of retired employees — if they are still alive to recall it.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 2 — The Four Stages (OBSIDIAN)
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="section-obsidian s-pad-lg">
+  <div class="container-wide">
+
+    <div style="text-align: center; margin-bottom: 100px;">
+      <span class="prestige-label">Methodology</span>
+      <h2 class="d-lg">The Four <span style="color:var(--gold);">Stages</span></h2>
+      <div class="gold-divider center"></div>
+      <p class="b-lg" style="max-width: 640px; margin: 0 auto; color: var(--silver);">
+        Every engagement follows the same forensic protocol. Each stage produces a tangible artifact that becomes part of your permanent Authority System.
+      </p>
+    </div>
+
+    <!-- Stage 1 -->
+    <div class="asymmetric-row offset-left">
+      <div class="card-wrap reveal from-left d1">
+        <div class="glass-card card-split">
+          <div class="card-content">
+            <span class="b-sm" style="color: var(--gold-dim); letter-spacing: 0.2em; text-transform: uppercase;">Stage One</span>
+            <h3 class="d-md" style="margin: 12px 0 20px 0;">The <span style="color:var(--gold);">Excavation</span></h3>
+            <div class="gold-divider" style="width: 40px; margin: 0 0 24px 0;"></div>
+            <p class="b-lg">
+              We conduct a multi-channel forensic audit across every medium your business has ever touched. Print archives, broadcast transcripts, digital footprints, physical artifacts, and human memory. Nothing is assumed. Everything is documented.
+            </p>
+            <p class="b-lg" style="margin-top: 16px;">
+              The output is a 10-page Archaeological Report containing 15-25 verified assets, a timeline of your Golden Era, and a diagnosis of exactly when and why Narrative Drift began.
+            </p>
+          </div>
+          <div class="card-visual">
+            <div class="gem-icon" style="width: 72px; height: 72px;"></div>
+            <div class="gem-label">Excavation Map</div>
+            <div class="gem-dim">480 &times; 600 px</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-wrap reveal from-right d3">
+        <div class="glass-card card-content" style="padding-top: 56px;">
+          <span class="b-sm" style="color: var(--gold-dim); letter-spacing: 0.2em; text-transform: uppercase;">Deliverable</span>
+          <div style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 300; color: var(--gold); margin: 16px 0 8px 0;">10-Page</div>
+          <div class="d-sm" style="color: var(--platinum); margin-bottom: 20px;">Archaeological Report</div>
+          <div class="gold-divider" style="width: 40px; margin: 0 0 20px 0;"></div>
+          <p class="b-md">
+            Every claim verified. Every asset dated. Every contradiction triangulated and resolved. This is not a marketing document. It is a forensic record.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stage 2 -->
+    <div class="asymmetric-row offset-right">
+      <div class="card-wrap reveal from-left d3">
+        <div class="glass-card card-content" style="padding-top: 56px;">
+          <span class="b-sm" style="color: var(--gold-dim); letter-spacing: 0.2em; text-transform: uppercase;">Deliverable</span>
+          <div style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 300; color: var(--gold); margin: 16px 0 8px 0;">Authority</div>
+          <div class="d-sm" style="color: var(--platinum); margin-bottom: 20px;">System Blueprint</div>
+          <div class="gold-divider" style="width: 40px; margin: 0 0 20px 0;"></div>
+          <p class="b-md">
+            A complete operational architecture: content workflows, publishing rhythms, performance dashboards, and asset libraries. Your team can execute without us.
+          </p>
+        </div>
+      </div>
+      <div class="card-wrap reveal from-right d1">
+        <div class="glass-card card-split">
+          <div class="card-content">
+            <span class="b-sm" style="color: var(--gold-dim); letter-spacing: 0.2em; text-transform: uppercase;">Stage Two</span>
+            <h3 class="d-md" style="margin: 12px 0 20px 0;">The <span style="color:var(--gold);">Refinement</span></h3>
+            <div class="gold-divider" style="width: 40px; margin: 0 0 24px 0;"></div>
+            <p class="b-lg">
+              Raw assets are transformed into modern instruments of persuasion. We do not copy the past. We extract the psychological mechanism that made each asset work and rebuild it for contemporary platforms.
+            </p>
+            <p class="b-lg" style="margin-top: 16px;">
+              The result is a set of platform-specific variants: video scripts, email sequences, social frameworks, and landing page architectures — each one carrying the proven DNA of your Golden Era.
+            </p>
+          </div>
+          <div class="card-visual">
+            <div class="gem-icon" style="width: 72px; height: 72px; background: conic-gradient(from 200deg, #fff8e7, var(--gold-bright), var(--gold-light), var(--gold), #fff8e7); box-shadow: 0 0 40px rgba(201,169,97,0.5);"></div>
+            <div class="gem-label">The Cut</div>
+            <div class="gem-dim">480 &times; 600 px</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stage 3 -->
+    <div class="asymmetric-row offset-left">
+      <div class="card-wrap reveal from-left d1">
+        <div class="glass-card card-split">
+          <div class="card-content">
+            <span class="b-sm" style="color: var(--gold-dim); letter-spacing: 0.2em; text-transform: uppercase;">Stage Three</span>
+            <h3 class="d-md" style="margin: 12px 0 20px 0;">The <span style="color:var(--gold);">Polish</span></h3>
+            <div class="gold-divider" style="width: 40px; margin: 0 0 24px 0;"></div>
+            <p class="b-lg">
+              Systems are only valuable if they are adopted. We embed directly with your team, training them to operate the Authority System independently. Voice extraction, prompt engineering, quality rubrics, and troubleshooting protocols.
+            </p>
+            <p class="b-lg" style="margin-top: 16px;">
+              By the end of this stage, your team produces content that sounds like you at your best — consistently, efficiently, and without our daily involvement.
+            </p>
+          </div>
+          <div class="card-visual">
+            <div class="gem-icon" style="width: 72px; height: 72px; background: conic-gradient(from 200deg, var(--gold-vivid), var(--gold-dim), var(--gold-bright), var(--gold), var(--gold-vivid)); border: 2px solid var(--gold);"></div>
+            <div class="gem-label">Polished System</div>
+            <div class="gem-dim">480 &times; 600 px</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-wrap reveal from-right d3">
+        <div class="glass-card card-content" style="padding-top: 56px;">
+          <span class="b-sm" style="color: var(--gold-dim); letter-spacing: 0.2em; text-transform: uppercase;">Deliverable</span>
+          <div style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 300; color: var(--gold); margin: 16px 0 8px 0;">Team</div>
+          <div class="d-sm" style="color: var(--platinum); margin-bottom: 20px;">Certification & Handoff</div>
+          <div class="gold-divider" style="width: 40px; margin: 0 0 20px 0;"></div>
+          <p class="b-md">
+            Complete documentation, video training library, and 90 days of priority support. Your team owns the system. We become advisory.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stage 4 -->
+    <div class="asymmetric-row offset-right">
+      <div class="card-wrap reveal from-left d3">
+        <div class="glass-card card-content" style="padding-top: 56px;">
+          <span class="b-sm" style="color: var(--gold-dim); letter-spacing: 0.2em; text-transform: uppercase;">Deliverable</span>
+          <div style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 300; color: var(--gold); margin: 16px 0 8px 0;">Quarterly</div>
+          <div class="d-sm" style="color: var(--platinum); margin-bottom: 20px;">Strategic Review</div>
+          <div class="gold-divider" style="width: 40px; margin: 0 0 20px 0;"></div>
+          <p class="b-md">
+            Ongoing partnership at the retainer level. Competitive intelligence, system optimization, and new asset excavation as your business evolves.
+          </p>
+        </div>
+      </div>
+      <div class="card-wrap reveal from-right d1">
+        <div class="glass-card card-split">
+          <div class="card-content">
+            <span class="b-sm" style="color: var(--gold-dim); letter-spacing: 0.2em; text-transform: uppercase;">Stage Four</span>
+            <h3 class="d-md" style="margin: 12px 0 20px 0;">The <span style="color:var(--gold);">Mount</span></h3>
+            <div class="gold-divider" style="width: 40px; margin: 0 0 24px 0;"></div>
+            <p class="b-lg">
+              The Authority System is not a one-time installation. Markets shift. Competitors adapt. New channels emerge. The Mount is our ongoing partnership to ensure your recovered assets remain sharp and your narrative never drifts again.
+            </p>
+            <p class="b-lg" style="margin-top: 16px;">
+              We serve a maximum of three clients per quarter. This is not scarcity theater. It is the only way to maintain the depth of attention your history deserves.
+            </p>
+          </div>
+          <div class="card-visual">
+            <div class="gem-icon" style="width: 72px; height: 72px; background: conic-gradient(from 200deg, var(--gold-vivid), var(--gold-dim), var(--gold-bright), var(--gold), var(--gold-vivid)); border: 2px solid var(--gold); box-shadow: 0 0 48px rgba(201,169,97,0.4);"></div>
+            <div class="gem-label">Mounted Display</div>
+            <div class="gem-dim">480 &times; 600 px</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 3 — The Manifesto (GOLD DUST)
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="section-gold-dust s-pad-lg">
+  <div class="container">
+
+    <div style="text-align: center; margin-bottom: 80px;">
+      <span class="prestige-label">The Covenant</span>
+      <h2 class="d-lg">What We <span style="color:var(--gold);">Believe</span></h2>
+      <div class="gold-divider center"></div>
+    </div>
+
+    <div class="glass-card manifesto-card reveal from-bottom">
+      <p class="b-xl" style="margin-bottom: 32px;">
+        We believe that every business that has survived beyond a decade possesses a hidden arsenal of proven strategic assets. These assets are not theories. They are not hypotheses. They are documented, repeatable, revenue-generating mechanisms that have already been battle-tested by time.
+      </p>
+      <p class="b-xl" style="margin-bottom: 32px;">
+        We believe that the modern marketing industry has trained businesses to chase novelty at the expense of provenance. The result is a landscape of interchangeable brands shouting into the same algorithms, indistinguishable from one another, competing solely on price.
+      </p>
+      <p class="b-xl" style="margin-bottom: 32px;">
+        We believe that the most valuable competitive advantage is not found in what you might do tomorrow. It is found in what you have already proved you can do better than anyone else — and in your willingness to excavate that proof, refine it, and display it with the gravity it deserves.
+      </p>
+      <p class="b-xl" style="color: var(--gold-light); font-style: italic;">
+        We do not create marketing. We restore authority.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 4 — The Commissions (OBSIDIAN LIGHT)
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="section-obsidian-light s-pad">
+  <div class="container-wide">
+
+    <div style="text-align: center; margin-bottom: 80px;">
+      <span class="prestige-label">Engagement Models</span>
+      <h2 class="d-lg">The <span style="color:var(--gold);">Commissions</span></h2>
+      <div class="gold-divider center"></div>
+    </div>
+
+    <div class="commissions-grid">
+      <div class="glass-card card-content reveal from-bottom d1">
+        <span class="b-sm" style="color: var(--gold-dim); letter-spacing: 0.2em; text-transform: uppercase;">Commission One</span>
+        <h3 class="d-md" style="margin: 16px 0 20px 0;">The <span style="color:var(--gold);">Audit</span></h3>
+        <div class="gold-divider" style="width: 40px; margin: 0 0 24px 0;"></div>
+        <p class="b-lg" style="margin-bottom: 24px;">
+          A complete forensic excavation of your business history. 15-25 verified assets. Golden Era timeline. Narrative Drift diagnosis. 10-page report with video walkthrough.
+        </p>
+        <p class="b-md" style="color: var(--gold-light);">5-7 business days &middot; $5,000-7,500</p>
+      </div>
+      <div class="glass-card card-content reveal from-bottom d2">
+        <span class="b-sm" style="color: var(--gold-dim); letter-spacing: 0.2em; text-transform: uppercase;">Commission Two</span>
+        <h3 class="d-md" style="margin: 16px 0 20px 0;">The <span style="color:var(--gold);">Build</span></h3>
+        <div class="gold-divider" style="width: 40px; margin: 0 0 24px 0;"></div>
+        <p class="b-lg" style="margin-bottom: 24px;">
+          Full Authority System construction. Voice extraction, AI workflow engineering, publishing architecture, performance dashboards, and team certification. Everything documented.
+        </p>
+        <p class="b-md" style="color: var(--gold-light);">21-28 days &middot; $12,000-18,000</p>
+      </div>
+      <div class="glass-card card-content reveal from-bottom d3">
+        <span class="b-sm" style="color: var(--gold-dim); letter-spacing: 0.2em; text-transform: uppercase;">Commission Three</span>
+        <h3 class="d-md" style="margin: 16px 0 20px 0;">The <span style="color:var(--gold);">Partnership</span></h3>
+        <div class="gold-divider" style="width: 40px; margin: 0 0 24px 0;"></div>
+        <p class="b-lg" style="margin-bottom: 24px;">
+          Ongoing strategic partnership. Quarterly reviews, competitive intelligence, system optimization, and new asset excavation. Maximum three clients per quarter.
+        </p>
+        <p class="b-md" style="color: var(--gold-light);">8-12 hours/month &middot; $6,000-10,000/mo</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════════════ -->
+<footer class="footer-prestige">
+  <div class="footer-prestige-left">
+    <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAISEE" style="width:20px;height:20px;object-fit:contain;">
+    <span class="footer-prestige-brand">LEGAISEE</span>
+    <span class="footer-prestige-tag">Business Archaeology &amp; Authority Systems</span>
+  </div>
+  <div class="footer-prestige-right">
+    &copy; MMXXVI &middot; Discreet &middot; Invitation-only &middot; Outcome-obsessed
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     LENIS + SCROLL REVEAL
+     ═══════════════════════════════════════════════════════════════════ -->
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<script>
+const lenis = new Lenis({
+  duration: 1.2,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  orientation: 'vertical',
+  gestureOrientation: 'vertical',
+  smoothWheel: true,
+  wheelMultiplier: 1,
+  touchMultiplier: 2,
+});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
+// Scroll reveal with IntersectionObserver
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => {
+  revealObserver.observe(el);
+});
+</script>
+
+</body>
+</html>

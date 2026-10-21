@@ -1,0 +1,93 @@
+/* ==========================================================
+   LVOS V2
+   DESIGN TOKENS
+   ========================================================== */
+
+:root{
+
+/* COLORS */
+
+--black:#050608;
+--black-02:#08090b;
+--black-03:#0d1014;
+--black-04:#13171d;
+
+--white:#ffffff;
+
+--text:#f5f3ee;
+--text-soft:#b8b5ad;
+
+--gold-01:#2f1f08;
+--gold-02:#5c3d11;
+--gold-03:#8b6927;
+--gold-04:#b49145;
+--gold-05:#d8b96a;
+--gold-06:#f0d28f;
+--gold-07:#ffe9b8;
+
+/* GLASS */
+
+--glass-01:rgba(255,255,255,.02);
+--glass-02:rgba(255,255,255,.04);
+--glass-03:rgba(255,255,255,.08);
+--glass-04:rgba(255,255,255,.14);
+
+/* LIGHT */
+
+--warm-light:rgba(255,230,170,.12);
+--cool-light:rgba(170,205,255,.08);
+
+/* BORDERS */
+
+--border-soft:rgba(216,185,106,.14);
+--border:rgba(216,185,106,.26);
+--border-strong:rgba(216,185,106,.48);
+
+/* RADII */
+
+--radius-xs:8px;
+--radius-sm:14px;
+--radius-md:22px;
+--radius-lg:34px;
+--radius-xl:54px;
+
+/* SHADOWS */
+
+--shadow-1:0 4px 10px rgba(0,0,0,.15);
+--shadow-2:0 10px 30px rgba(0,0,0,.22);
+--shadow-3:0 20px 60px rgba(0,0,0,.30);
+--shadow-4:0 40px 120px rgba(0,0,0,.45);
+
+/* SPACING */
+
+--space-1:.25rem;
+--space-2:.5rem;
+--space-3:.75rem;
+--space-4:1rem;
+--space-5:1.5rem;
+--space-6:2rem;
+--space-7:3rem;
+--space-8:4rem;
+--space-9:6rem;
+--space-10:8rem;
+
+/* CONTENT */
+
+--container:1600px;
+--reading:900px;
+
+/* TRANSITIONS */
+
+--fast:.18s;
+--normal:.35s;
+--slow:.65s;
+
+/* Z */
+
+--z-base:1;
+--z-content:10;
+--z-overlay:100;
+--z-nav:1000;
+--z-modal:5000;
+
+}

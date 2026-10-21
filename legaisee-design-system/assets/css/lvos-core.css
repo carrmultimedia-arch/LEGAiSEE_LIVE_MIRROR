@@ -1,0 +1,221 @@
+:root{
+
+    --bg:#050608;
+    --bg-soft:#0b0d11;
+    --panel:#11151b;
+
+    --gold:#d4b15a;
+    --gold-bright:#ffe6a3;
+
+    --text:#f4f1e8;
+    --text-soft:#b8b3a7;
+
+    --border:rgba(212,177,90,.18);
+
+    --space-xs:.5rem;
+    --space-sm:1rem;
+    --space-md:1.5rem;
+    --space-lg:2.5rem;
+    --space-xl:4rem;
+    --space-2xl:7rem;
+
+    --card-sm:260px;
+    --card-md:340px;
+    --card-lg:900px;
+
+    --radius:18px;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    min-height:100%;
+}
+
+body{
+    padding:80px 40px;
+}
+.render-object {
+    background: #11151b !important;
+    border: 1px solid rgba(212, 177, 90, 0.25);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.55);
+    min-height: 180px;
+}
+main{
+    width:min(1600px,100%);
+    margin:auto;
+}
+
+.section{
+    width:100%;
+}
+
+.stack-sm>*+*{
+    margin-top:var(--space-sm);
+}
+
+.stack-lg>*+*{
+    margin-top:var(--space-lg);
+}
+
+.stack-xl>*+*{
+    margin-top:var(--space-xl);
+}
+
+.space-xl{
+    margin-bottom:var(--space-xl);
+}
+
+.space-2xl{
+    margin-bottom:var(--space-2xl);
+}
+
+.hero-title{
+    font-family:'Cinzel',serif;
+    font-size:clamp(2.5rem,5vw,5rem);
+    line-height:1.1;
+    margin-top:1rem;
+}
+
+.section-title{
+    font-family:'Cinzel',serif;
+    font-size:clamp(1.5rem,2vw,2.5rem);
+    margin-top:.75rem;
+}
+
+.body-copy{
+    max-width:900px;
+    line-height:1.8;
+    color:var(--text-soft);
+    margin-top:1rem;
+}
+
+.museum-label{
+    color:var(--gold);
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-size:.75rem;
+    font-weight:600;
+}
+
+.gallery-header{
+    margin-bottom:2rem;
+}
+
+.gallery-grid{
+    display:grid;
+    gap:2rem;
+}
+
+.grid-3{
+    grid-template-columns:repeat(3,1fr);
+}
+
+.grid-4{
+    grid-template-columns:repeat(4,1fr);
+}
+
+.grid-auto{
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+}
+
+.card{
+    position:relative;
+    overflow:hidden;
+    border-radius:var(--radius);
+    min-height:260px;
+}
+
+.card-sm{
+    min-height:180px;
+}
+
+.card-md{
+    min-height:260px;
+}
+
+.card-lg{
+    min-height:600px;
+}
+
+.card-panel{
+    position:relative;
+    z-index:50;
+    padding:2rem;
+}
+
+.render-object{
+    position:relative;
+    isolation:isolate;
+}
+
+.material-layer{
+    position:absolute;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+}
+/* ==========================================================
+   DEPTH SYSTEM (FIXED HIERARCHY MODEL)
+   ========================================================== */
+
+.depth-0{
+    transform:scale(0.92);
+    opacity:.55;
+}
+
+.depth-1{
+    transform:scale(0.98);
+    opacity:.70;
+}
+
+.depth-2{
+    transform:scale(1);
+    opacity:1;
+}
+
+.depth-3{
+    transform:scale(1.05);
+    opacity:1;
+}
+
+.depth-4{
+    transform:scale(1.12);
+    opacity:1;
+    z-index:5;
+}
+
+/* FORCE VISUAL DIFFERENTIATION */
+.render-object{
+    transition:transform .35s ease, opacity .35s ease;
+}
+@media(max-width:1200px){
+
+    .grid-4{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .grid-3{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:768px){
+
+    body{
+        padding:40px 20px;
+    }
+
+    .grid-3,
+    .grid-4{
+        grid-template-columns:1fr;
+    }
+}

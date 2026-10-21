@@ -1,0 +1,58 @@
+/* ==========================================================
+   LVOS OBJECTS
+========================================================== */
+
+.artifact-frame{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:36px;
+
+    background:#080808;
+
+}
+
+.artifact-frame img{
+
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+}
+
+.artifact-vertical{
+
+    aspect-ratio:9/16;
+
+}
+
+.artifact-horizontal{
+
+    aspect-ratio:16/9;
+
+}
+
+.artifact-square{
+
+    aspect-ratio:1/1;
+
+}
+
+.artifact-document{
+
+    aspect-ratio:3/4;
+
+}
+.render-object {
+    outline: 1px solid rgba(212,177,90,0.15);
+}
+/* =========================================================
+   DEBUG VISUAL LAYER (TEMP ONLY)
+========================================================= */
+
+.render-object {
+    outline: 1px solid rgba(212,177,90,0.15);
+}

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>LEGAiSEE Museum Concept</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+
+--bg:#060606;
+--bg2:#111111;
+
+--card:#0f0f0f;
+--card2:#191919;
+
+--gold1:#3f2a08;
+--gold2:#6a4c12;
+--gold3:#937028;
+--gold4:#c79d46;
+--gold5:#e4c16f;
+--gold6:#fff0bc;
+
+--light-x:18%;
+--light-y:20%;
+
+--text:#d4d4d4;
+
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+background:
+
+radial-gradient(
+circle at var(--light-x) var(--light-y),
+rgba(255,210,120,.08),
+rgba(255,210,120,.04) 15%,
+transparent 50%
+),
+
+linear-gradient(
+180deg,
+#121212,
+#050505
+);
+
+font-family:Inter,sans-serif;
+color:var(--text);
+overflow-x:hidden;
+}
+
+/* ---------- MUSEUM WALL ---------- */
+
+section{
+
+position:relative;
+padding:120px 6vw;
+}
+
+section::before{
+
+content:"";
+
+position:absolute;
+inset:0;
+
+background:
+
+radial-gradient(
+circle at var(--light-x) var(--light-y),
+rgba(255,220,120,.05),
+transparent 55%
+);
+
+pointer-events:none;
+}
+
+/* ---------- LIGHT HANDOFF ---------- */
+
+.hero{
+--light-x:15%;
+--light-y:15%;
+}
+
+.archive{
+--light-x:80%;
+--light-y:30%;
+}
+
+.artifacts{
+--light-x:25%;
+--light-y:70%;
+}
+
+.timeline{
+--light-x:75%;
+--light-y:80%;
+}
+
+/* ---------- HERO ---------- */
+
+.hero-panel{
+
+position:relative;
+
+max-width:1400px;
+margin:auto;
+
+padding:90px;
+
+border-radius:36px;
+
+background:
+linear-gradient(
+180deg,
+#191919,
+#090909
+);
+
+overflow:hidden;
+
+box-shadow:
+0 40px 120px rgba(0,0,0,.65);
+}
+
+.hero-panel::before{
+
+content:"";
+
+position:absolute;
+inset:0;
+
+background:
+
+radial-gradient(
+ellipse at var(--light-x) var(--light-y),
+rgba(255,255,255,.14),
+rgba(255,255,255,.03) 15%,
+transparent 35%
+);
+}
+
+.hero-panel::after{
+
+content:"";
+
+position:absolute;
+
+width:50%;
+height:180%;
+
+left:-15%;
+top:-30%;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.04),
+transparent
+);
+
+transform:rotate(22deg);
+}
+
+.gold-frame{
+
+position:relative;
+}
+
+.gold-frame::before{
+
+content:"";
+
+position:absolute;
+inset:0;
+
+padding:1px;
+border-radius:inherit;
+
+background:
+
+linear-gradient(
+135deg,
+var(--gold1),
+var(--gold3),
+var(--gold6),
+var(--gold4),
+var(--gold2)
+);
+
+-webkit-mask:
+linear-gradient(#fff 0 0) content-box,
+linear-gradient(#fff 0 0);
+
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+}
+
+/* ---------- TYPOGRAPHY ---------- */
+
+h1{
+
+font-family:Cinzel,serif;
+font-size:clamp(3rem,7vw,7rem);
+
+font-weight:600;
+
+letter-spacing:.12em;
+
+color:var(--gold5);
+
+margin-bottom:30px;
+}
+
+h2{
+
+font-family:Cinzel,serif;
+font-size:2rem;
+
+letter-spacing:.08em;
+
+color:var(--gold5);
+
+margin-bottom:20px;
+}
+
+.lead{
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:1.6rem;
+line-height:1.6;
+
+max-width:900px;
+}
+
+/* ---------- MUSEUM LABEL ---------- */
+
+.label{
+
+display:inline-block;
+
+margin-top:40px;
+
+padding:16px 24px;
+
+border-radius:12px;
+
+background:
+linear-gradient(
+180deg,
+#171717,
+#080808
+);
+
+position:relative;
+}
+
+.label::before{
+
+content:"";
+
+position:absolute;
+inset:0;
+
+background:
+
+linear-gradient(
+180deg,
+rgba(255,255,255,.08),
+transparent 30%
+);
+}
+
+.label small{
+
+letter-spacing:.2em;
+text-transform:uppercase;
+color:var(--gold5);
+}
+
+/* ---------- CARD GRID ---------- */
+
+.grid{
+
+display:flex;
+flex-wrap:wrap;
+gap:40px;
+
+max-width:1400px;
+margin:auto;
+}
+
+.card{
+
+flex:1;
+min-width:300px;
+
+position:relative;
+
+padding:40px;
+
+border-radius:28px;
+
+background:
+linear-gradient(
+180deg,
+#181818,
+#090909
+);
+
+overflow:hidden;
+
+box-shadow:
+0 30px 80px rgba(0,0,0,.5);
+}
+
+.card::before{
+
+content:"";
+
+position:absolute;
+inset:0;
+
+background:
+
+radial-gradient(
+ellipse at var(--light-x) var(--light-y),
+rgba(255,255,255,.12),
+transparent 35%
+);
+}
+
+.card::after{
+
+content:"";
+
+position:absolute;
+
+width:50%;
+height:170%;
+
+left:-20%;
+top:-40%;
+
+background:
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.04),
+transparent
+);
+
+transform:rotate(25deg);
+}
+
+.card h3{
+
+font-family:Cinzel,serif;
+color:var(--gold5);
+
+margin-bottom:20px;
+}
+
+.card p{
+
+line-height:1.8;
+opacity:.85;
+}
+
+/* ---------- IMAGE CASE ---------- */
+
+.image-case{
+
+height:380px;
+
+border-radius:22px;
+
+background:
+
+radial-gradient(
+circle at 30% 30%,
+rgba(255,255,255,.08),
+transparent 30%
+),
+
+linear-gradient(
+135deg,
+#1f1f1f,
+#070707
+);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:1.1rem;
+letter-spacing:.15em;
+text-transform:uppercase;
+color:var(--gold5);
+}
+
+/* ---------- ARTIFACTS ---------- */
+
+.artifact{
+
+text-align:center;
+}
+
+.artifact-number{
+
+font-size:4rem;
+
+font-family:Cinzel,serif;
+
+color:var(--gold5);
+
+margin-bottom:10px;
+}
+
+/* ---------- TIMELINE ---------- */
+
+.timeline-line{
+
+max-width:1200px;
+margin:auto;
+
+display:flex;
+justify-content:space-between;
+gap:40px;
+}
+
+.node{
+
+flex:1;
+
+padding:30px;
+
+border-radius:20px;
+
+background:
+linear-gradient(
+180deg,
+#181818,
+#090909
+);
+
+text-align:center;
+
+position:relative;
+}
+
+.node::before{
+
+content:"";
+
+position:absolute;
+
+top:-10px;
+left:50%;
+
+width:20px;
+height:20px;
+
+border-radius:50%;
+
+background:var(--gold5);
+
+transform:translateX(-50%);
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+
+padding:120px 6vw;
+
+text-align:center;
+}
+
+footer h2{
+
+font-size:3rem;
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+<div class="hero-panel gold-frame">
+
+<h1>LEGAiSEE</h1>
+
+<p class="lead">
+
+Business Archaeology for enduring enterprises.
+
+We excavate forgotten campaigns, lost media,
+institutional memory, customer stories,
+executive knowledge, historical assets,
+and authority signals hidden across decades
+of operation.
+
+</p>
+
+<div class="label">
+<small>Archive Exhibit 001 • Legacy Reconstruction</small>
+</div>
+
+</div>
+
+</section>
+
+<section class="archive">
+
+<div class="grid">
+
+<div class="card gold-frame">
+
+<div class="image-case">
+
+FOUNDING ARCHIVE
+
+</div>
+
+</div>
+
+<div class="card gold-frame">
+
+<h3>The Authority Gap</h3>
+
+<p>
+
+Most enterprises possess decades of trust,
+knowledge, customer relationships,
+campaign history, and proprietary expertise.
+
+Yet only a fraction of that legacy is visible.
+
+LEGAiSEE uncovers those buried assets and
+reconstructs them into modern authority systems.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="artifacts">
+
+<h2 style="text-align:center;margin-bottom:60px;">
+Recovered Artifacts
+</h2>
+
+<div class="grid">
+
+<div class="card gold-frame artifact">
+
+<div class="artifact-number">437</div>
+
+<p>Recovered Marketing Assets</p>
+
+</div>
+
+<div class="card gold-frame artifact">
+
+<div class="artifact-number">26</div>
+
+<p>Years Excavated</p>
+
+</div>
+
+<div class="card gold-frame artifact">
+
+<div class="artifact-number">18</div>
+
+<p>Authority Channels Rebuilt</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="timeline">
+
+<h2 style="text-align:center;margin-bottom:80px;">
+Excavation Timeline
+</h2>
+
+<div class="timeline-line">
+
+<div class="node">
+Discovery
+</div>
+
+<div class="node">
+Excavation
+</div>
+
+<div class="node">
+Reconstruction
+</div>
+
+<div class="node">
+Authority System
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<h2>
+The Museum of Your Company's Legacy
+</h2>
+
+<p style="max-width:800px;margin:30px auto;line-height:1.9;">
+
+Every artifact matters.
+Every story matters.
+Every forgotten asset has value.
+
+The question is whether it remains buried.
+
+</p>
+
+</footer>
+
+</body>
+</html>

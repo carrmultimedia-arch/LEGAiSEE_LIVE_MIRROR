@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEGAiSEE — Lighting Test · Continuity + Card Materials</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital@1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ==========================================================================
+   LIGHTING TEST — isolated from the live site cascade, per the established
+   workflow. Rebuilt mechanism (v2) after reference mockup review:
+
+   1. CONTINUITY — no separate seam element. Each section's own top/bottom
+      glow is a radial-gradient centered EXACTLY at the section's edge
+      (0% or 100%), so the box naturally clips it to a half-circle — half
+      the light is mathematically "off-screen" already. Two adjacent
+      sections share ONE x-position variable (e.g. --seam1-x) between
+      "bottom of section N" and "top of section N+1." Same token, same
+      color, same intensity → the two half-circles complete one circle
+      sitting on the seam. No DOM element to misalign, because there's
+      nothing to keep in sync by hand.
+
+   2. LUMINANCE, NOT COLOR — the background is and stays solid obsidian.
+      Every glow is ONE warm light color fading straight to transparent
+      (rgba light → transparent), never light-color-A blending into
+      light-color-B. This is illumination sitting on black, not a hue
+      ramp. (Card material colors — gold vs copper — are a separate,
+      foreground concern and untouched here.)
+
+   3. DRIFT — each seam's shared x-anchor can sit anywhere left/center/
+      right (not pinned to a single column), so the lamp wanders as you
+      scroll instead of reading as one repeated vertical stripe. Use the
+      L / C / R presets in the debug panel, or drag freely between them.
+
+   Toggle "Compare: independent (before)" to see the old failure mode —
+   each section guessing its own position with nothing shared.
+   ========================================================================== */
+
+:root{
+  --hue-amber: 33; /* still governs CARD/material accents — gold & copper, same hue */
+  --obsidian: #050505;
+  --gold:     hsl(var(--hue-amber) 46% 62%);
+  --copper:   hsl(var(--hue-amber) 58% 32%);
+  --pearl:    hsl(42 18% 94%);
+
+  /* ---- Section-to-section black variety ----
+     Not one flat slab of black. A short ramp of near-blacks, alternated
+     between adjacent sections (lighter, then back to darker) so there's
+     a subtle depth cue independent of the light glow. All stops stay
+     warm-neutral — no cool/blue lean, so this never reads as a third
+     hue family, just value steps of the same obsidian. */
+  --ob-1: #050505; /* darkest — base */
+  --ob-2: #0b0908; /* one step up */
+  --ob-3: #100d0a; /* two steps up, still reads as black */
+
+  /* ---- The lamp: one light, one color, always fading to transparent ---- */
+  --light-rgb: 250, 214, 150;
+  --light-intensity: 0.16;   /* dim, soft falloff — not a wash */
+
+  /* ---- Metallic gold ramp ----
+     A real gold reflection isn't one flat hue — it compresses toward
+     white at the highlight and warms slightly in shadow. So this ramp
+     drifts ~33°→50° across its stops on purpose; that drift IS the
+     material, not a second hue family. Used for borders + text fills. */
+  --gold-foil-stops:
+    hsl(var(--hue-amber) 55% 26%) 0%,
+    hsl(var(--hue-amber) 62% 46%) 28%,
+    hsl(46 72% 80%) 50%,
+    hsl(var(--hue-amber) 62% 46%) 72%,
+    hsl(var(--hue-amber) 55% 26%) 100%;
+  --gold-foil: linear-gradient(100deg, var(--gold-foil-stops));
+  --finish: var(--gold-foil); /* swap to flat-gold-finish via body.flat-gold */
+
+  /* ---- Shared seam anchors ----
+     Bottom-of-N and top-of-(N+1) read the SAME variable. That identity
+     is the entire continuity mechanism — there's nothing else to keep
+     in sync. */
+  --origin-x:   50%;  /* lamp's first appearance, top of page */
+  --seam1-x:    22%;  /* shared: bottom of Section 01 + top of Section 02 */
+  --seam2-x:    78%;  /* shared: bottom of Section 02 + top of Section 03 */
+  --terminus-x: 50%;  /* lamp dissipating, bottom of page, no next section */
+
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-caption: 'Cormorant Garamond', serif;
+}
+
+body.flat-gold{ --finish: linear-gradient(var(--gold), var(--gold)); }
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; min-height:100%; background:var(--obsidian) !important; color:var(--pearl); font-family:var(--font-body); }
+
+/* ===================== PAGE CHROME ===================== */
+
+.page-title{
+  position:fixed; top:1.1rem; left:1.25rem; z-index:50;
+  font-family:var(--font-display); font-size:0.72rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--gold); opacity:.85; pointer-events:none;
+}
+
+.debug-panel{
+  position:fixed; right:1rem; bottom:1rem; z-index:100;
+  width:240px; padding:1rem 1.1rem 1.05rem;
+  background:rgba(5,5,5,0.82);
+  border:1px solid hsl(var(--hue-amber) 40% 60% / 0.25);
+  border-radius:4px;
+  backdrop-filter:blur(10px);
+  font-size:0.72rem;
+}
+.debug-panel h3{
+  margin:0 0 .75rem; font-family:var(--font-display); font-size:0.68rem;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--gold); font-weight:600;
+}
+.debug-panel label{ display:block; margin-bottom:.65rem; color:hsl(42 18% 94% / .75); }
+.debug-panel input[type=range]{
+  width:100% !important; margin-top:.3rem; accent-color:var(--gold);
+  -webkit-appearance:auto; appearance:auto; height:auto !important;
+  background:transparent !important; display:block !important;
+}
+.debug-panel .row{ display:flex; align-items:center; gap:.5rem; margin-bottom:.55rem; }
+.debug-panel input[type=checkbox]{ accent-color:var(--gold); }
+.debug-panel .hint{ color:hsl(42 18% 94% / .45); font-size:.66rem; line-height:1.4; margin-top:.5rem; }
+.debug-panel .presets{ display:flex; gap:.35rem; margin-top:.35rem; }
+.debug-panel .presets button{
+  flex:1; padding:.25rem 0; font-size:.62rem; letter-spacing:.05em;
+  color:hsl(42 18% 94% / .8); background:rgba(255,255,255,.04);
+  border:1px solid hsl(var(--hue-amber) 40% 60% / .25); border-radius:2px; cursor:pointer;
+}
+.debug-panel .presets button:hover{ border-color:var(--gold); color:var(--gold); }
+.debug-panel hr{ border:none; border-top:1px solid hsl(42 18% 94% / .1); margin:.85rem 0; }
+
+/* ===================== SECTIONS — half-circle edge glows ===================== */
+
+main{ position:relative; }
+
+.zone{
+  position:relative;
+  isolation:isolate;
+  padding:5rem 6vw 6rem;
+  overflow:hidden;
+}
+
+/* Section-to-section black variety — alternates the three ob stops so
+   adjacent sections have a barely-perceptible depth shift independent
+   of the lamp glow. Same warm-neutral hue family, no blue. */
+.zone[data-pos="1"]{ background:var(--ob-1); }
+.zone[data-pos="2"]{ background:var(--ob-3); }
+.zone[data-pos="3"]{ background:var(--ob-2); }
+
+/* Each glow is centered AT the edge (0% or 100%), half off-screen. */
+.zone::before,
+.zone::after{
+  content:""; position:absolute; left:0; right:0; height:50%;
+  pointer-events:none; transition:background .25s ease;
+}
+.zone::before{
+  top:0;
+  background:radial-gradient(ellipse 65% 100% at var(--top-x) 0%,
+              rgba(var(--light-rgb), var(--light-intensity)) 0%, transparent 70%);
+}
+.zone::after{
+  bottom:0;
+  background:radial-gradient(ellipse 65% 100% at var(--bottom-x) 100%,
+              rgba(var(--light-rgb), var(--light-intensity)) 0%, transparent 70%);
+}
+
+/* Position assignments. */
+.zone[data-pos="1"]{ --top-x: var(--origin-x);   --bottom-x: var(--seam1-x); }
+.zone[data-pos="2"]{ --top-x: var(--seam1-x);    --bottom-x: var(--seam2-x); }
+.zone[data-pos="3"]{ --top-x: var(--seam2-x);    --bottom-x: var(--terminus-x); }
+.zone[data-pos="3"]::after{ opacity:.55; }
+
+/* Debug compare mode */
+body.debug-naive .zone[data-pos="1"]{ --bottom-x: 64%; }
+body.debug-naive .zone[data-pos="2"]{ --top-x: 35%; --bottom-x: 30%; }
+body.debug-naive .zone[data-pos="3"]{ --top-x: 60%; --bottom-x: 50%; }
+body.debug-naive .zone[data-pos="3"]::after{ opacity:1; }
+
+.zone-sub{
+  position:relative; z-index:2;
+  font-family:var(--font-caption); font-style:italic; font-size:0.95rem;
+  color:hsl(42 18% 94% / .55); margin:0 0 2.25rem;
+}
+
+/* ===================== SECTION HEADING WITH GOLD-FOIL FILL ===================== */
+
+/* The heading is the clearest demonstration of lighting direction:
+   the foil gradient angle is driven by --foil-angle, which the JS
+   moves to track the light's x-anchor — so the bright highlight strip
+   in the foil leans in the same direction the lamp is coming from. */
+.zone-heading{
+  position:relative; z-index:2;
+  font-family:var(--font-display); font-weight:600;
+  font-size:clamp(1.1rem, 2.2vw, 1.6rem); letter-spacing:.06em;
+  margin:0 0 .35rem; display:inline-block;
+  background:var(--finish);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+}
+
+/* ===================== SEAM GUIDES (debug only, no light) ===================== */
+
+/* Pure instrumentation — a hairline + label marking the literal DOM
+   boundary between sections, so the shared x-anchor can be checked
+   against the live site pixel-for-pixel. Carries no light itself. */
+.seam-guide{ display:none; height:0; position:relative; }
+body.show-guides .seam-guide{ display:block; }
+body.show-guides .seam-guide::before{
+  content:""; position:absolute; left:0; right:0; top:0; height:1px;
+  background:hsl(42 18% 94% / .5); z-index:10;
+}
+body.show-guides .seam-guide::after{
+  content:attr(data-label); position:absolute; left:1rem; top:-9px; z-index:10;
+  font:11px/1 var(--font-body); letter-spacing:.03em; color:hsl(42 18% 94% / .75);
+}
+
+/* ===================== CARDS ===================== */
+
+.card-grid{
+  position:relative; z-index:2;
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+  gap:1.25rem;
+}
+
+.card{
+  position:relative; isolation:isolate; overflow:hidden;
+  border-radius:3px; padding:1.6rem 1.5rem; min-height:190px;
+  display:flex; flex-direction:column; justify-content:space-between;
+}
+
+/* Gold-foil border — the gradient is painted as a background on a
+   ::before layer that underlies the card's own background, with a 1px
+   inset gap, so it reads as a glowing border not a fill. */
+.card::before{
+  content:""; position:absolute; inset:0; border-radius:inherit;
+  background:var(--finish);
+  padding:1px; /* border thickness controlled by padding */
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+          mask-composite:exclude;
+  pointer-events:none; z-index:0;
+  opacity:.65;
+}
+
+.card h4{
+  font-family:var(--font-display); font-size:.95rem; font-weight:600;
+  margin:0 0 .4rem;
+  /* foil fill on card headings — same finish as borders, same light direction */
+  background:var(--finish);
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+}
+.card p{ font-size:.82rem; line-height:1.5; color:hsl(42 18% 94% / .65); margin:0; }
+
+.card-tag{
+  align-self:flex-start; font-family:var(--font-body); font-size:.62rem;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--gold);
+  /* foil pill border — the entire pill ring is the foil ramp */
+  border:1px solid transparent;
+  background:
+    linear-gradient(var(--ob-1), var(--ob-1)) padding-box,
+    var(--finish) border-box;
+  border-radius:2px; padding:.2rem .5rem; margin-top:1rem; position:relative; z-index:2;
+}
+
+/* ---- Text card: frosted glass + lighting-direction sheen ---- */
+.card--text{
+  background:rgba(5,5,5,.42);
+  backdrop-filter:blur(16px) saturate(150%);
+  -webkit-backdrop-filter:blur(16px) saturate(150%);
+  box-shadow:inset 0 1px 0 hsl(42 18% 94% / .07), 0 10px 26px rgba(0,0,0,.35);
+}
+/* The sheen on a frosted card responds to lighting direction:
+   it's a radial hotspot that mirrors --top-x, so when the lamp is
+   left the sheen is top-left, when right it shifts right — same
+   physics as the section glow, applied at card scale. */
+.card--text::after{
+  content:""; position:absolute; inset:0; border-radius:inherit;
+  background:radial-gradient(
+    ellipse 80% 60% at var(--top-x) 0%,
+    rgba(var(--light-rgb), 0.07) 0%,
+    transparent 65%
+  );
+  pointer-events:none; z-index:1;
+}
+
+/* ---- Image card: scatter texture + light-catch ---- */
+.card--image{
+  background-size:cover; background-position:center;
+}
+/* grain layer */
+.card--image .grain{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.13; mix-blend-mode:overlay;
+}
+/* light-catch — same --top-x anchor as the section glow above */
+.card--image .light-catch{
+  position:absolute; inset:0; z-index:2; pointer-events:none;
+  background:radial-gradient(
+    circle at var(--top-x) 0%,
+    rgba(var(--light-rgb), 0.38),
+    transparent 60%
+  );
+  mix-blend-mode:soft-light;
+}
+.card--image h4, .card--image p{ position:relative; z-index:3; text-shadow:0 1px 6px rgba(0,0,0,.6); }
+.card--image .card-tag{ position:relative; z-index:3; }
+
+</style>
+</head>
+<body>
+
+<div class="page-title">Lighting Test — Continuity / Card Materials</div>
+
+<div class="debug-panel">
+  <h3>Light Continuity</h3>
+  <label>Seam 1↔2 X
+    <input type="range" id="seam1" min="5" max="95" value="22">
+  </label>
+  <div class="presets" data-target="seam1">
+    <button data-val="18">L</button><button data-val="50">C</button><button data-val="82">R</button>
+  </div>
+  <label style="margin-top:.7rem;">Seam 2↔3 X
+    <input type="range" id="seam2" min="5" max="95" value="78">
+  </label>
+  <div class="presets" data-target="seam2">
+    <button data-val="18">L</button><button data-val="50">C</button><button data-val="82">R</button>
+  </div>
+  <hr>
+  <label>Intensity
+    <input type="range" id="intensity" min="5" max="35" value="16">
+  </label>
+  <label>Gold foil angle
+    <input type="range" id="foilAngle" min="60" max="160" value="100">
+  </label>
+  <div class="row"><input type="checkbox" id="flatGold"><label for="flatGold" style="margin:0;">Flat gold (vs foil)</label></div>
+  <div class="row"><input type="checkbox" id="guides"><label for="guides" style="margin:0;">Show seam guides</label></div>
+  <div class="row"><input type="checkbox" id="naive"><label for="naive" style="margin:0;">Compare: independent (before)</label></div>
+  <div class="hint">Foil angle tracks the lamp direction — drag Seam sliders and watch the heading highlight shift.</div>
+</div>
+
+<main>
+
+  <!-- ===================== SECTION 01 — Museum / Authority ===================== -->
+  <section class="zone" data-pos="1">
+    <h2 class="zone-heading">Section 01 — Museum / Authority</h2>
+    <p class="zone-sub">Foil border + heading fill — highlight leans with the lamp. Frosted cards catch light from above-left here.</p>
+    <div class="card-grid">
+      <article class="card card--text">
+        <div>
+          <h4>Provenance Note</h4>
+          <p>Frosted glass with light-direction sheen. No grain. Foil border tracks the lamp.</p>
+        </div>
+        <span class="card-tag">Frosted Glass</span>
+      </article>
+      <article class="card card--image" style="background-image:radial-gradient(circle at 30% 20%, #2b2b2b, #050505 72%);">
+        <div class="grain"></div><div class="light-catch"></div>
+        <div>
+          <h4>Exhibit Plate</h4>
+          <p>Scatter grain + light-catch at same anchor as section glow above.</p>
+        </div>
+        <span class="card-tag">Scatter Texture</span>
+      </article>
+      <article class="card card--text">
+        <div>
+          <h4>Authority Clause</h4>
+          <p>Same frosted treatment — never combined with grain on this card type.</p>
+        </div>
+        <span class="card-tag">Frosted Glass</span>
+      </article>
+      <article class="card card--image" style="background-image:radial-gradient(circle at 65% 15%, #262422, #050505 70%);">
+        <div class="grain"></div><div class="light-catch"></div>
+        <div>
+          <h4>Material Study</h4>
+          <p>Placeholder gradient — swap for real photography on production pages.</p>
+        </div>
+        <span class="card-tag">Scatter Texture</span>
+      </article>
+    </div>
+  </section>
+
+  <div class="seam-guide" data-label="Seam 1↔2 · shares --seam1-x"></div>
+
+  <!-- ===================== SECTION 02 — Museum / Authority ===================== -->
+  <section class="zone" data-pos="2">
+    <h2 class="zone-heading">Section 02 — Museum / Authority</h2>
+    <p class="zone-sub">Slightly deeper black. Lamp enters from the left (where S01 exited), sweeps right.</p>
+    <div class="card-grid">
+      <article class="card card--image" style="background-image:radial-gradient(circle at 40% 25%, #2c2620, #050505 72%);">
+        <div class="grain"></div><div class="light-catch"></div>
+        <div>
+          <h4>Registry Mark</h4>
+          <p>Grain + light-catch only — no blur, no transparency on image cards.</p>
+        </div>
+        <span class="card-tag">Scatter Texture</span>
+      </article>
+      <article class="card card--text">
+        <div>
+          <h4>Confidentiality Cell</h4>
+          <p>Glass only — foil border, foil heading fill, sheen from the right now.</p>
+        </div>
+        <span class="card-tag">Frosted Glass</span>
+      </article>
+      <article class="card card--image" style="background-image:radial-gradient(circle at 70% 30%, #292420, #050505 70%);">
+        <div class="grain"></div><div class="light-catch"></div>
+        <div>
+          <h4>Lindy Proof</h4>
+          <p>Light is dim and warm — illumination over black, not a color wash.</p>
+        </div>
+        <span class="card-tag">Scatter Texture</span>
+      </article>
+      <article class="card card--text">
+        <div>
+          <h4>Pledge Clause</h4>
+          <p>No grain leaks into glass cards — the two systems stay separate.</p>
+        </div>
+        <span class="card-tag">Frosted Glass</span>
+      </article>
+    </div>
+  </section>
+
+  <div class="seam-guide" data-label="Seam 2↔3 · shares --seam2-x"></div>
+
+  <!-- ===================== SECTION 03 — Dig-site ===================== -->
+  <section class="zone" data-pos="3">
+    <h2 class="zone-heading">Section 03 — Dig-site</h2>
+    <p class="zone-sub">Mid-value black. Lamp enters from the right (S02 exit), dissipates at center.</p>
+    <div class="card-grid">
+      <article class="card card--text">
+        <div>
+          <h4>Excavation Note</h4>
+          <p>Material treatment is always the same. Section depth comes from the ob-ramp, not a new hue.</p>
+        </div>
+        <span class="card-tag">Frosted Glass</span>
+      </article>
+      <article class="card card--image" style="background-image:radial-gradient(circle at 35% 25%, #3a2c1c, #050505 72%);">
+        <div class="grain"></div><div class="light-catch"></div>
+        <div>
+          <h4>Artifact Scan</h4>
+          <p>Warmer placeholder tone for the dig-site family, same grain mechanism.</p>
+        </div>
+        <span class="card-tag">Scatter Texture</span>
+      </article>
+      <article class="card card--text">
+        <div>
+          <h4>Field Report</h4>
+          <p>Foil angle at this section mirrors the right-entry lamp position at the top seam.</p>
+        </div>
+        <span class="card-tag">Frosted Glass</span>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  const root = document.documentElement;
+  const seam1 = document.getElementById('seam1');
+  const seam2 = document.getElementById('seam2');
+  const intensity = document.getElementById('intensity');
+  const foilAngle = document.getElementById('foilAngle');
+  const flatGold = document.getElementById('flatGold');
+  const guides = document.getElementById('guides');
+  const naive = document.getElementById('naive');
+
+  function updateFoil(){
+    /* Derive angle from the average seam position so the foil highlight
+       leans in the same general direction the lamp is traveling.
+       Left anchor (0%) → shallow angle (~60deg), right (100%) → steep (~160deg). */
+    const avg = (parseFloat(seam1.value) + parseFloat(seam2.value)) / 2;
+    const angle = Math.round(60 + (avg / 100) * 100);
+    foilAngle.value = angle;
+    const stops = `hsl(33 55% 26%) 0%,hsl(33 62% 46%) 28%,hsl(46 72% 80%) 50%,hsl(33 62% 46%) 72%,hsl(33 55% 26%) 100%`;
+    root.style.setProperty('--gold-foil-stops', stops);
+    root.style.setProperty('--gold-foil', `linear-gradient(${angle}deg, ${stops})`);
+    if(!flatGold.checked) root.style.setProperty('--finish', `linear-gradient(${angle}deg, ${stops})`);
+  }
+
+  seam1.addEventListener('input', () => { root.style.setProperty('--seam1-x', seam1.value + '%'); updateFoil(); });
+  seam2.addEventListener('input', () => { root.style.setProperty('--seam2-x', seam2.value + '%'); updateFoil(); });
+  intensity.addEventListener('input', () => root.style.setProperty('--light-intensity', intensity.value / 100));
+  foilAngle.addEventListener('input', () => {
+    const stops = `hsl(33 55% 26%) 0%,hsl(33 62% 46%) 28%,hsl(46 72% 80%) 50%,hsl(33 62% 46%) 72%,hsl(33 55% 26%) 100%`;
+    root.style.setProperty('--finish', `linear-gradient(${foilAngle.value}deg, ${stops})`);
+  });
+  flatGold.addEventListener('change', () => {
+    document.body.classList.toggle('flat-gold', flatGold.checked);
+    if(!flatGold.checked) updateFoil();
+  });
+  guides.addEventListener('change', () => document.body.classList.toggle('show-guides', guides.checked));
+  naive.addEventListener('change', () => document.body.classList.toggle('debug-naive', naive.checked));
+
+  document.querySelectorAll('.presets').forEach(group => {
+    const slider = document.getElementById(group.dataset.target);
+    group.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        slider.value = btn.dataset.val;
+        slider.dispatchEvent(new Event('input'));
+      });
+    });
+  });
+
+  updateFoil(); // initialize on load
+</script>
+
+</body>
+</html>

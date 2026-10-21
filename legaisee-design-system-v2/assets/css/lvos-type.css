@@ -1,0 +1,147 @@
+/* ==========================================================
+   LVOS V2
+   TYPOGRAPHY
+========================================================== */
+
+/* HEADINGS */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+
+    margin:0 0 .5em;
+
+    color:var(--text);
+
+    font-family:var(--font-display);
+
+    font-weight:500;
+
+    line-height:1.1;
+
+    letter-spacing:.02em;
+}
+
+h1{
+    font-size:clamp(3rem,6vw,5.8rem);
+}
+
+h2{
+    font-size:clamp(2.2rem,4vw,4rem);
+}
+
+h3{
+    font-size:clamp(1.6rem,2.5vw,2.6rem);
+}
+
+h4{
+    font-size:clamp(1.3rem,2vw,2rem);
+}
+
+h5{
+    font-size:1.125rem;
+}
+
+h6{
+    font-size:1rem;
+}
+
+/* BODY */
+
+p{
+
+    margin:0 0 1.5rem;
+
+    color:var(--text-soft);
+
+    font-family:var(--font-body);
+
+    font-size:1.05rem;
+
+    line-height:1.85;
+}
+
+small{
+
+    font-size:.82rem;
+}
+
+/* DISPLAY */
+
+.display{
+
+    font-family:var(--font-display);
+
+    color:var(--text);
+}
+
+.heading{
+
+    font-family:var(--font-heading);
+
+    color:var(--text);
+}
+
+.body{
+
+    font-family:var(--font-body);
+}
+
+/* LABELS */
+
+.label{
+
+    display:inline-block;
+
+    color:var(--gold-05);
+
+    font-size:.72rem;
+
+    font-weight:600;
+
+    letter-spacing:.28em;
+
+    text-transform:uppercase;
+}
+
+/* COLORS */
+
+.text-gold{
+
+    color:var(--gold-06);
+}
+
+.text-white{
+
+    color:var(--white);
+}
+
+.text-muted{
+
+    color:var(--text-soft);
+}
+
+/* WEIGHTS */
+
+.light{
+
+    font-weight:300;
+}
+
+.normal{
+
+    font-weight:400;
+}
+
+.medium{
+
+    font-weight:500;
+}
+
+.bold{
+
+    font-weight:700;
+}

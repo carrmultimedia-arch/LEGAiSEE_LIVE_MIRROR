@@ -1,0 +1,194 @@
+<!-- ================================================================
+   LEGAISEE SHARED NAVIGATION
+   Fixed top nav with logo, links, CTA
+   Include this at the top of every page
+   ================================================================ -->
+
+<!-- Mouse Glow Effect (optional, add to each page body) -->
+<!-- <div class="mouse-glow" id="mouseGlow"></div> -->
+
+<!-- Navigation -->
+<nav class="site-nav" id="siteNav">
+  <a href="page-home.html" class="nav-logo">
+    <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAiSEE">
+    <span class="nav-logo-text">LEGAiSEE</span>
+  </a>
+
+  <div class="nav-links" id="navLinks">
+    <a href="page-home.html">Entry</a>
+    <a href="page-archiology.html">Archiology</a>
+    <a href="page-methodology.html">Methodology</a>
+    <a href="page-industries.html">Industries</a>
+    <a href="page-exhibits.html">Exhibits</a>
+    <a href="page-evidence.html">Evidence</a>
+    <a href="page-private-record.html">Private Record</a>
+  </div>
+
+  <a href="page-private-record.html#registry-form" class="nav-cta">Request Access</a>
+
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+
+
+
+
+
+<!-- ================================================================
+   SHARED SCRIPTS — Include at bottom of every page before </body>
+   ================================================================ -->
+
+<script>
+// ─── NAV SCROLL EFFECT ───
+(function() {
+  const nav = document.getElementById('siteNav');
+  if (!nav) return;
+
+  let ticking = false;
+
+  function updateNav() {
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(updateNav);
+      ticking = true;
+    }
+  });
+})();
+
+// ─── MOBILE NAV TOGGLE ───
+(function() {
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  if (!toggle || !links) return;
+
+  toggle.addEventListener('click', function() {
+    links.classList.toggle('active');
+    const spans = toggle.querySelectorAll('span');
+    if (links.classList.contains('active')) {
+      spans[0].style.transform = 'rotate(45deg) translate(4px, 4px)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'rotate(-45deg) translate(4px, -4px)';
+    } else {
+      spans[0].style.transform = 'none';
+      spans[1].style.opacity = '1';
+      spans[2].style.transform = 'none';
+    }
+  });
+
+  // Close nav on link click (mobile)
+  links.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      links.classList.remove('active');
+      const spans = toggle.querySelectorAll('span');
+      spans[0].style.transform = 'none';
+      spans[1].style.opacity = '1';
+      spans[2].style.transform = 'none';
+    });
+  });
+})();
+
+// ─── SCROLL REVEAL ───
+(function() {
+  const reveals = document.querySelectorAll('.reveal');
+  if (!reveals.length) return;
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  reveals.forEach(function(el) {
+    observer.observe(el);
+  });
+})();
+
+// ─── MOUSE GLOW (optional — uncomment if desired) ───
+/*
+(function() {
+  const glow = document.getElementById('mouseGlow');
+  if (!glow) return;
+
+  let mouseX = 0, mouseY = 0;
+  let glowX = 0, glowY = 0;
+
+  document.addEventListener('mousemove', function(e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function animateGlow() {
+    glowX += (mouseX - glowX) * 0.08;
+    glowY += (mouseY - glowY) * 0.08;
+    glow.style.left = glowX + 'px';
+    glow.style.top = glowY + 'px';
+    requestAnimationFrame(animateGlow);
+  }
+
+  animateGlow();
+})();
+*/
+
+// ─── FAQ ACCORDION ───
+(function() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  if (!faqItems.length) return;
+
+  faqItems.forEach(function(item) {
+    const question = item.querySelector('.faq-q');
+    if (!question) return;
+
+    question.addEventListener('click', function() {
+      const isActive = item.classList.contains('active');
+
+      // Close all others
+      faqItems.forEach(function(other) {
+        other.classList.remove('active');
+      });
+
+      // Toggle current
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    });
+  });
+})();
+
+// ─── PARALLAX BACKGROUNDS ───
+(function() {
+  const parallaxElements = document.querySelectorAll('.parallax-bg');
+  if (!parallaxElements.length) return;
+
+  let ticking = false;
+
+  function updateParallax() {
+    const scrollY = window.scrollY;
+    parallaxElements.forEach(function(el) {
+      const speed = el.dataset.parallaxSpeed || 0.3;
+      el.style.transform = 'translateY(' + (scrollY * speed) + 'px)';
+    });
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  });
+})();
+</script>

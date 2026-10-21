@@ -1,0 +1,12 @@
+DirectoryIndex index.php
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^.* git-handler.cgi/$0 [QSA,L,PT]
+
+AuthType Digest
+AuthDigestProvider file
+AuthUserFile "/home/carrmulti/www/www/LEGAiSEE_Repo.git/.htdigest"
+AuthName Limited!
+require valid-user

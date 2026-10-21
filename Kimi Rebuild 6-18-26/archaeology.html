@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Archaeology — LEGAiSEE Business Archaeology &amp; Authority Systems</title>
+<meta name="description" content="The discipline of Business Archaeology — 32 channels, 40+ year span, forensic verification. Excavating proven marketing assets for $20M+ enterprises. San Antonio · Austin · I-35 Corridor.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.legaisee.com/archaeology.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="legaisee.css">
+<link rel="stylesheet" href="legaisee-luxury.css">
+<style>
+  /* ═══════════════════════════════════════════════════════════════
+     ARCHAEOLOGY.HTML — PAGE-SPECIFIC STYLES
+     Following the index.html inline pattern. All layout here.
+     ═══════════════════════════════════════════════════════════════ */
+  :root {
+    --obsidian:     #0C0C10;
+    --obsidian-light: #111115;
+    --surface:      #181818;
+    --card:         #141414;
+    --charcoal:     #1a1a1e;
+    --gold:         #C9A961;
+    --gold-light:   #D4B978;
+    --gold-bright:  #E8D5A3;
+    --gold-dim:     rgba(201,169,97,0.4);
+    --gold-low:     rgba(201,169,97,0.12);
+    --gold-glow:    rgba(201,169,97,0.08);
+    --text-primary: rgba(255,255,255,0.92);
+    --text-body:    rgba(255,255,255,0.72);
+    --text-muted:   rgba(255,255,255,0.55);
+    --platinum:     #EBEBEB;
+    --silver:       #B0B0B0;
+    --pewter:       #787878;
+    --font-display: 'Cinzel Decorative', 'Cinzel', Georgia, serif;
+    --font-cinzel:  'Cinzel', Georgia, serif;
+    --font-ui:      'Inter', 'Helvetica Neue', sans-serif;
+    --ease-silk:    cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-dramatic: cubic-bezier(0.16, 1, 0.3, 1);
+    --nav-height:   76px;
+  }
+
+  /* ── HERO SECTION ── */
+  .arch-hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: var(--obsidian);
+  }
+  .arch-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url('https://www.legaisee.com/Images/HeroLightsWide.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0.22;
+    z-index: 0;
+  }
+  .arch-hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to bottom, var(--obsidian) 0%, transparent 25%, transparent 75%, var(--obsidian) 100%),
+      radial-gradient(ellipse 70% 70% at 50% 50%, transparent 0%, rgba(5,5,5,0.65) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .arch-hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: 980px;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .arch-hero__eyebrow {
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 28px;
+    padding: 8px 24px;
+    border: 1px solid rgba(201,169,97,0.12);
+    background: rgba(5,5,5,0.6);
+  }
+  .arch-hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 5.5vw, 4.8rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--platinum);
+    margin-bottom: 32px;
+  }
+  .arch-hero__title .gold-word { color: var(--gold); }
+  .arch-hero__divider {
+    width: 120px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin-bottom: 32px;
+  }
+  .arch-hero__subtitle {
+    font-family: var(--font-ui);
+    font-size: clamp(1.05rem, 1.9vw, 1.35rem);
+    font-weight: 400;
+    line-height: 1.82;
+    color: var(--silver);
+    max-width: 760px;
+    margin-bottom: 40px;
+  }
+
+  /* Stat Pills */
+  .stat-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+    margin-bottom: 44px;
+  }
+  .stat-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 22px;
+    background: rgba(201,169,97,0.05);
+    border: 1px solid rgba(201,169,97,0.15);
+    font-family: var(--font-ui);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    transition: all 0.4s var(--ease-silk);
+  }
+  .stat-pill:hover {
+    background: rgba(201,169,97,0.09);
+    border-color: rgba(201,169,97,0.28);
+  }
+  .stat-pill strong {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* Scroll hint */
+  .scroll-hint {
+    position: absolute;
+    bottom: 48px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.4;
+    animation: hintFloat 2.8s ease-in-out infinite;
+  }
+  .scroll-hint span {
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+  }
+  .scroll-hint .scroll-line {
+    width: 1px; height: 48px;
+    background: linear-gradient(to bottom, var(--gold-dim), transparent);
+  }
+  @keyframes hintFloat {
+    0%,100% { opacity: 0.3; transform: translateX(-50%) translateY(0); }
+    50%      { opacity: 0.5; transform: translateX(-50%) translateY(7px); }
+  }
+
+  /* ── CONTENT SECTIONS ── */
+  .arch-section {
+    position: relative;
+    padding: 100px 90px;
+    width: 100%;
+    overflow: hidden;
+  }
+  .arch-section--dark {
+    background: var(--obsidian);
+  }
+  .arch-section--mid {
+    background: linear-gradient(180deg, var(--obsidian) 0%, #0a0a0e 50%, var(--obsidian) 100%);
+  }
+  .arch-section--vault {
+    background: var(--obsidian);
+  }
+  .arch-section--vault::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url('http://www.legaisee.com/Images/Library2Diamond.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0.10;
+    z-index: 0;
+  }
+  .arch-section--vault > * { position: relative; z-index: 1; }
+
+  .arch-section__inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .arch-section__inner--narrow {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* Section header */
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .section-eyebrow {
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-eyebrow::before,
+  .section-eyebrow::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold));
+  }
+  .section-eyebrow::after {
+    background: linear-gradient(to left, transparent, var(--gold));
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: 0.04em;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+  }
+  .section-subtitle {
+    font-family: var(--font-ui);
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    color: var(--text-body);
+    line-height: 1.80;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* Two column layout */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+  .two-col--60-40 { grid-template-columns: 60% 40%; }
+  .two-col--40-60 { grid-template-columns: 40% 60%; }
+
+  /* ── CHANNEL TAXONOMY GRID ── */
+  .channel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .channel-card {
+    background: rgba(201,169,97,0.03);
+    border: 1px solid rgba(201,169,97,0.12);
+    border-radius: 0;
+    padding: 2rem 1.75rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s var(--ease-silk);
+  }
+  .channel-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.4;
+    transition: opacity 0.5s;
+  }
+  .channel-card:hover {
+    background: rgba(201,169,97,0.06);
+    border-color: rgba(201,169,97,0.25);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.50), 0 4px 16px rgba(0,0,0,0.30);
+  }
+  .channel-card:hover::before { opacity: 0.8; }
+  .channel-class-num {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.6;
+    margin-bottom: 0.5rem;
+  }
+  .channel-class-title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+  .channel-class-era {
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+  }
+  .channel-subclass-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .channel-subclass-list li {
+    font-family: var(--font-ui);
+    font-size: 0.82rem;
+    color: var(--text-body);
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .channel-subclass-list li:last-child { border-bottom: none; }
+  .channel-subclass-list li::before {
+    content: '◆';
+    font-size: 0.5rem;
+    color: var(--gold);
+    opacity: 0.5;
+  }
+  .channel-subclass-count {
+    margin-left: auto;
+    font-size: 0.68rem;
+    color: var(--gold);
+    opacity: 0.45;
+    font-family: var(--font-ui);
+  }
+
+  /* ── EXCAVATION STANDARD ── */
+  .standard-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .standard-card {
+    background: rgba(201,169,97,0.02);
+    border: 1px solid rgba(201,169,97,0.08);
+    border-radius: 0;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    position: relative;
+    transition: all 0.5s var(--ease-silk);
+  }
+  .standard-card:hover {
+    border-color: rgba(201,169,97,0.2);
+    background: rgba(201,169,97,0.04);
+    transform: translateY(-3px);
+  }
+  .standard-grade {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 900;
+    margin-bottom: 0.75rem;
+    line-height: 1;
+  }
+  .grade-verified { color: #C9A961; }
+  .grade-probable { color: #A09070; }
+  .grade-plausible { color: #7A7A7A; }
+  .grade-uncertain { color: #555555; }
+  .standard-label {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+  }
+  .standard-desc {
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    color: var(--text-body);
+    line-height: 1.65;
+  }
+
+  /* ── SOURCE HIERARCHY ── */
+  .hierarchy-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+  }
+  .hierarchy-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .hierarchy-list li:last-child { border-bottom: none; }
+  .hierarchy-tier {
+    font-family: var(--font-display);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+    white-space: nowrap;
+    min-width: 80px;
+    padding-top: 0.15rem;
+  }
+  .hierarchy-content h4 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.4rem;
+  }
+  .hierarchy-content p {
+    font-family: var(--font-ui);
+    font-size: 0.88rem;
+    color: var(--text-body);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ── PHILOSOPHY SECTION ── */
+  .philosophy-section {
+    border-top: 1px solid rgba(201,169,97,0.08);
+    padding-top: 5rem;
+  }
+  .philosophy-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.5;
+    margin-bottom: 2.5rem;
+    padding: 0.4rem 1rem;
+    border: 1px solid rgba(201,169,97,0.15);
+  }
+  .philosophy-label::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  /* ── ENGAGEMENT DOOR ── */
+  .engagement-door {
+    text-align: center;
+    padding: 6rem 2rem;
+    position: relative;
+  }
+  .engagement-door::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 1px; height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    opacity: 0.3;
+  }
+  .engagement-door h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    letter-spacing: 0.04em;
+  }
+  .engagement-door p {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    color: var(--text-body);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  /* ── FAQ ── */
+  .faq-item {
+    border-bottom: 1px solid rgba(201,169,97,0.08);
+    padding: 2rem 0;
+  }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-question {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.03em;
+  }
+  .faq-answer {
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    color: var(--text-body);
+    line-height: 1.7;
+  }
+
+  /* ── GEMSTONE BOX ── */
+  .gemstone-box {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(201,169,97,0.15);
+    background: linear-gradient(135deg, var(--charcoal) 0%, var(--card) 100%);
+  }
+  .gemstone-box::before {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border: 1px solid rgba(201,169,97,0.07);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .gemstone-img {
+    width: 100%;
+    display: block;
+    filter: saturate(0.68) contrast(1.08);
+    transition: filter 0.65s ease, transform 0.75s var(--ease-silk);
+  }
+  .gemstone-box:hover .gemstone-img {
+    filter: saturate(0.90) contrast(1.06);
+    transform: scale(1.04);
+  }
+  .gemstone-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 22px 20px;
+    background: linear-gradient(to top, rgba(5,5,5,0.96) 0%, rgba(5,5,5,0.4) 70%, transparent 100%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .gemstone-label {
+    font-family: var(--font-ui);
+    font-size: 0.55rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+  }
+  .gemstone-name {
+    font-family: var(--font-cinzel);
+    font-size: 0.85rem;
+    color: var(--gold-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .gemstone-stage {
+    font-family: var(--font-ui);
+    font-size: 0.72rem;
+    color: var(--pewter);
+    font-style: italic;
+  }
+
+  /* ── BEDROCK PLEDGE BOX ── */
+  .pledge-box {
+    padding: 2.5rem;
+    background: rgba(201,169,97,0.03);
+    border: 1px solid rgba(201,169,97,0.10);
+    position: relative;
+  }
+  .pledge-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.90s var(--ease-silk), transform 0.90s var(--ease-silk);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1200px) {
+    .arch-section { padding: 80px 60px; }
+    .two-col { gap: 48px; }
+    .channel-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 1024px) {
+    .two-col, .two-col--60-40, .two-col--40-60 { grid-template-columns: 1fr; gap: 40px; }
+    .standard-grid { grid-template-columns: repeat(2, 1fr); }
+    .arch-hero__content { padding: 0 28px; }
+  }
+  @media (max-width: 768px) {
+    .arch-section { padding: 60px 24px; }
+    .channel-grid { grid-template-columns: 1fr; }
+    .standard-grid { grid-template-columns: 1fr; }
+    .stat-pills { justify-content: flex-start; }
+    .hierarchy-list li { flex-direction: column; gap: 0.5rem; }
+    .hierarchy-tier { min-width: auto; }
+    .arch-hero__title { font-size: clamp(1.8rem, 8vw, 2.8rem); }
+    .section-title { font-size: clamp(1.4rem, 6vw, 2rem); }
+  }
+  @media (max-width: 480px) {
+    .arch-section { padding: 48px 18px; }
+    .arch-hero__content { padding: 0 18px; }
+    .stat-pill { font-size: 0.72rem; padding: 8px 14px; }
+    .stat-pill strong { font-size: 0.92rem; }
+    .btn { width: 100%; justify-content: center; }
+  }
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════
+   NAVIGATION — Shared system from legaisee.css
+   ═══════════════════════════════════════════════════════════════ -->
+<nav class="site-nav" id="site-nav">
+  <div class="nav-logo-wrap">
+    <a href="index.html">
+      <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAiSEE" class="nav-logo-img">
+    </a>
+  </div>
+  <div class="nav-links" id="nav-links">
+    <a href="index.html" data-nav="home">Home</a>
+    <a href="archaeology.html" data-nav="archaeology" style="color: var(--gold);">The Archaeology</a>
+    <a href="method.html" data-nav="method">The Method</a>
+    <a href="serve.html" data-nav="serve">Who We Serve</a>
+    <a href="architect.html" data-nav="architect">The Architect</a>
+    <a href="practitioner.html" data-nav="practitioner">The Practitioner</a>
+    <a href="commissions.html" data-nav="commissions">Commissions</a>
+    <a href="registry.html" class="nav-cta">The Registry</a>
+  </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Nav Drawer -->
+<div class="nav-mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="archaeology.html">The Archaeology</a>
+  <a href="method.html">The Method</a>
+  <a href="serve.html">Who We Serve</a>
+  <a href="architect.html">The Architect</a>
+  <a href="practitioner.html">The Practitioner</a>
+  <a href="commissions.html">Commissions</a>
+  <a href="registry.html">The Registry</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+   TIER 1 — ABOVE FOLD: 15-Second Scan
+   ═══════════════════════════════════════════════════════════════ -->
+<section class="arch-hero">
+  <div class="arch-hero__content">
+    <p class="arch-hero__eyebrow">The Discipline</p>
+    <h1 class="arch-hero__title">
+      <span class="gold-word">Business</span> Archaeology
+    </h1>
+    <div class="arch-hero__divider"></div>
+    <p class="arch-hero__subtitle">
+      Forensic excavation of the precise strategic structure that once produced your most profitable era — across 32 channels, 40+ years of institutional history, with verification standards that would satisfy a court of law.
+    </p>
+    <div class="stat-pills">
+      <div class="stat-pill"><strong>32</strong> Channels Excavated</div>
+      <div class="stat-pill"><strong>40+</strong> Year Span</div>
+      <div class="stat-pill"><strong>4-Tier</strong> Confidence Grading</div>
+      <div class="stat-pill"><strong>3-Source</strong> Verification Rule</div>
+    </div>
+    <a href="registry.html" class="btn btn-gold">Begin Your Excavation</a>
+  </div>
+  <div class="scroll-hint">
+    <span>Descend</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+   TIER 2 — 90-Second Understanding
+   ═══════════════════════════════════════════════════════════════ -->
+
+<!-- What Is Business Archaeology -->
+<section class="arch-section arch-section--dark">
+  <div class="arch-section__inner">
+    <div class="section-header">
+      <p class="section-eyebrow">The Discipline Defined</p>
+      <h2 class="section-title">What Is Business Archaeology</h2>
+    </div>
+    <div class="two-col two-col--60-40">
+      <div>
+        <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-primary); margin-bottom: 1.5rem; font-family: var(--font-ui);">
+          Business Archaeology is the forensic excavation of the precise strategic structure that once produced an enterprise's most profitable era — and the disciplined reconstruction of that signal for the market that exists today.
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.75; color: var(--text-body); margin-bottom: 1.5rem; font-family: var(--font-ui);">
+          It is not market research. It is not competitive analysis. It is not brand strategy dressed in historical language. It is a distinct discipline with its own methodology, its own verification standards, and its own epistemological rigor.
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.75; color: var(--text-body); font-family: var(--font-ui);">
+          Where traditional marketing begins with the question "What should you do?", Business Archaeology begins with the question "What made you great?" The answer is not guessed. It is excavated. It is classified. It is verified through triangulation. And only then is it reconstructed.
+        </p>
+      </div>
+      <div>
+        <div class="gemstone-box" style="aspect-ratio: 4/5;">
+          <img src="https://www.legaisee.com/Images/CAT-HAB-001.png" alt="Natural Habitat — the geological formation of earliest competitive advantage" class="gemstone-img" loading="lazy">
+          <div class="gemstone-caption">
+            <span class="gemstone-label">CAT-HAB-001</span>
+            <span class="gemstone-name">Natural Habitat</span>
+            <span class="gemstone-stage">Stage 0 — Formation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- The 32 Channels -->
+<section class="arch-section arch-section--mid">
+  <div class="arch-section__inner">
+    <div class="section-header">
+      <p class="section-eyebrow">The Taxonomy</p>
+      <h2 class="section-title">The 32 Channels</h2>
+      <p class="section-subtitle">Eight primary classes. Forty-plus subclasses. Every channel your enterprise has ever used — and many your competitors have forgotten.</p>
+    </div>
+
+    <div class="channel-grid">
+      <!-- Class 1: Print -->
+      <div class="channel-card reveal">
+        <div class="channel-class-num">Class I</div>
+        <div class="channel-class-title">Print</div>
+        <div class="channel-class-era">1890s — Present</div>
+        <ul class="channel-subclass-list">
+          <li>Newspapers <span class="channel-subclass-count">display, classifieds, inserts</span></li>
+          <li>Magazines <span class="channel-subclass-count">national, trade, local, pulp</span></li>
+          <li>Direct Mail <span class="channel-subclass-count">letters, postcards, catalogs, dimensional</span></li>
+          <li>Outdoor <span class="channel-subclass-count">billboards, transit, street furniture, aerial</span></li>
+          <li>Point-of-Sale <span class="channel-subclass-count">posters, counter cards, shelf talkers, packaging</span></li>
+          <li>Yellow Pages <span class="channel-subclass-count">display listings, bold listings</span></li>
+          <li>Alternative <span class="channel-subclass-count">matchbooks, blotters, calendars, premiums</span></li>
+        </ul>
+      </div>
+
+      <!-- Class 2: Broadcast Radio -->
+      <div class="channel-card reveal">
+        <div class="channel-class-num">Class II</div>
+        <div class="channel-class-title">Broadcast Radio</div>
+        <div class="channel-class-era">1920s — Present</div>
+        <ul class="channel-subclass-list">
+          <li>Network Radio <span class="channel-subclass-count">sponsored programs, spot announcements</span></li>
+          <li>Local Radio <span class="channel-subclass-count">DJ reads, live reads, produced spots</span></li>
+          <li>Satellite Radio <span class="channel-subclass-count">XM/Sirius, targeted channels</span></li>
+          <li>Podcast / Streaming <span class="channel-subclass-count">host reads, produced, branded content</span></li>
+          <li>HD Radio <span class="channel-subclass-count">multicast channels</span></li>
+        </ul>
+      </div>
+
+      <!-- Class 3: Broadcast Television -->
+      <div class="channel-card reveal">
+        <div class="channel-class-num">Class III</div>
+        <div class="channel-class-title">Broadcast Television</div>
+        <div class="channel-class-era">1940s — Present</div>
+        <ul class="channel-subclass-list">
+          <li>Network TV <span class="channel-subclass-count">sponsored shows, spot ads, infomercials</span></li>
+          <li>Local TV <span class="channel-subclass-count">station IDs, local spots, cable access</span></li>
+          <li>Cable TV <span class="channel-subclass-count">network spots, local avails, program-length</span></li>
+          <li>Satellite TV <span class="channel-subclass-count">DirecTV, Dish Network spots</span></li>
+          <li>Public TV <span class="channel-subclass-count">underwriting, sponsor messages</span></li>
+        </ul>
+      </div>
+
+      <!-- Class 4: Cinema / Video -->
+      <div class="channel-card reveal">
+        <div class="channel-class-num">Class IV</div>
+        <div class="channel-class-title">Cinema &amp; Video</div>
+        <div class="channel-class-era">1900s — Present</div>
+        <ul class="channel-subclass-list">
+          <li>Theater Trailers <span class="channel-subclass-count">pre-show, lobby, concession</span></li>
+          <li>In-Flight <span class="channel-subclass-count">airline, train, bus screens</span></li>
+          <li>Closed Circuit <span class="channel-subclass-count">hotel, hospital, elevator networks</span></li>
+          <li>Place-Based <span class="channel-subclass-count">gas pump, doctor office, fitness centers</span></li>
+          <li>DVD / Blu-ray <span class="channel-subclass-count">menu ads, trailers, inserts</span></li>
+        </ul>
+      </div>
+
+      <!-- Class 5: Digital Web -->
+      <div class="channel-card reveal">
+        <div class="channel-class-num">Class V</div>
+        <div class="channel-class-title">Digital Web</div>
+        <div class="channel-class-era">1990s — Present</div>
+        <ul class="channel-subclass-list">
+          <li>Display <span class="channel-subclass-count">banners, pop-ups, rich media</span></li>
+          <li>Search <span class="channel-subclass-count">SEM, SEO content, local search</span></li>
+          <li>Email <span class="channel-subclass-count">newsletters, drip campaigns, transactional</span></li>
+          <li>Websites <span class="channel-subclass-count">microsites, landing pages, corporate</span></li>
+          <li>Forums / Communities <span class="channel-subclass-count">sponsored posts, signatures, AMAs</span></li>
+          <li>Blogs <span class="channel-subclass-count">sponsored content, guest posts, native</span></li>
+        </ul>
+      </div>
+
+      <!-- Class 6: Mobile -->
+      <div class="channel-card reveal">
+        <div class="channel-class-num">Class VI</div>
+        <div class="channel-class-title">Mobile</div>
+        <div class="channel-class-era">2000s — Present</div>
+        <ul class="channel-subclass-list">
+          <li>SMS / MMS <span class="channel-subclass-count">text campaigns, multimedia messages</span></li>
+          <li>In-App <span class="channel-subclass-count">banners, interstitials, rewarded video</span></li>
+          <li>Mobile Web <span class="channel-subclass-count">responsive ads, mobile-optimized landing</span></li>
+          <li>Push Notifications <span class="channel-subclass-count">alerts, rich notifications, geofenced</span></li>
+          <li>Location-Based <span class="channel-subclass-count">beacons, geofencing, proximity</span></li>
+        </ul>
+      </div>
+
+      <!-- Class 7: Social Media -->
+      <div class="channel-card reveal">
+        <div class="channel-class-num">Class VII</div>
+        <div class="channel-class-title">Social Media</div>
+        <div class="channel-class-era">2000s — Present</div>
+        <ul class="channel-subclass-list">
+          <li>Meta <span class="channel-subclass-count">Facebook/Instagram feed, stories, reels</span></li>
+          <li>Video <span class="channel-subclass-count">YouTube pre-roll, mid-roll, shorts</span></li>
+          <li>Professional <span class="channel-subclass-count">LinkedIn feed, InMail, articles, jobs</span></li>
+          <li>Microblogging <span class="channel-subclass-count">Twitter/X tweets, threads, spaces</span></li>
+          <li>Visual <span class="channel-subclass-count">Pinterest pins, boards, shopping</span></li>
+          <li>Ephemeral <span class="channel-subclass-count">Snapchat stories, discover, filters</span></li>
+          <li>Audio <span class="channel-subclass-count">Clubhouse rooms, Twitter spaces, Discord</span></li>
+          <li>Emerging <span class="channel-subclass-count">TikTok, BeReal, Threads, BlueSky</span></li>
+        </ul>
+      </div>
+
+      <!-- Class 8: Advanced Digital -->
+      <div class="channel-card reveal">
+        <div class="channel-class-num">Class VIII</div>
+        <div class="channel-class-title">Advanced Digital</div>
+        <div class="channel-class-era">2010s — Present</div>
+        <ul class="channel-subclass-list">
+          <li>CTV / OTT <span class="channel-subclass-count">Hulu, Roku, Fire TV, Apple TV+</span></li>
+          <li>Programmatic <span class="channel-subclass-count">DSP, SSP, RTB, private marketplace</span></li>
+          <li>Audio Streaming <span class="channel-subclass-count">Spotify, Pandora, Apple Music, podcasts</span></li>
+          <li>Gaming <span class="channel-subclass-count">in-game, around-game, esports, metaverse</span></li>
+          <li>DOOH Digital <span class="channel-subclass-count">digital billboards, transit screens</span></li>
+          <li>Connected Home <span class="channel-subclass-count">smart speakers, smart displays, IoT</span></li>
+          <li>VR / AR <span class="channel-subclass-count">immersive ads, branded experiences</span></li>
+          <li>AI / Conversational <span class="channel-subclass-count">chatbot integrations, voice assistants</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 3rem;">
+      <p style="font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.1em; font-style: italic; font-family: var(--font-ui);">
+        This taxonomy is not decorative. It is the excavation map. Every engagement begins with a systematic pass across all eight classes, ensuring no channel — however dormant — escapes documentation.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- The Excavation Standard -->
+<section class="arch-section arch-section--dark">
+  <div class="arch-section__inner">
+    <div class="section-header">
+      <p class="section-eyebrow">The Standard</p>
+      <h2 class="section-title">The Excavation Standard</h2>
+      <p class="section-subtitle">No significant claim enters your report without verification. Every finding carries a confidence grade. Every grade is defensible.</p>
+    </div>
+
+    <div class="standard-grid">
+      <div class="standard-card reveal">
+        <div class="standard-grade grade-verified">Verified</div>
+        <div class="standard-label">Highest Confidence</div>
+        <div class="standard-desc">Multiple Tier 1 sources with no contradiction. Contemporaneous documents, financial records, third-party verification. The finding stands in court.</div>
+      </div>
+      <div class="standard-card reveal">
+        <div class="standard-grade grade-probable">Probable</div>
+        <div class="standard-label">Strong Confidence</div>
+        <div class="standard-desc">Tier 1 source supported by Tier 2 evidence. Minor gaps remain, but the pattern is clear. The finding is actionable with noted reservations.</div>
+      </div>
+      <div class="standard-card reveal">
+        <div class="standard-grade grade-plausible">Plausible</div>
+        <div class="standard-label">Moderate Confidence</div>
+        <div class="standard-desc">Tier 2 sources only, no direct contradiction. The finding is reasonable but not yet proven. Further excavation may elevate or refute it.</div>
+      </div>
+      <div class="standard-card reveal">
+        <div class="standard-grade grade-uncertain">Uncertain</div>
+        <div class="standard-label">Low Confidence</div>
+        <div class="standard-desc">Single source, conflicting accounts, or no supporting evidence. The finding is noted but not relied upon for strategic recommendations.</div>
+      </div>
+    </div>
+
+    <div class="two-col two-col--60-40" style="margin-top: 4rem;">
+      <div>
+        <h3 style="font-family: var(--font-display); font-size: 1.2rem; color: var(--text-primary); margin-bottom: 1rem; letter-spacing: 0.04em;">The 3-Source Rule</h3>
+        <p style="font-size: 0.9rem; line-height: 1.75; color: var(--text-body); margin-bottom: 1.5rem; font-family: var(--font-ui);">
+          For any significant claim in your audit, we require a minimum of two independent sources — ideally three or more converging sources. A single Tier 1 source alone is sufficient, but rare. Most findings require triangulation across public records, private archives, and human testimony.
+        </p>
+        <p style="font-size: 0.9rem; line-height: 1.75; color: var(--text-body); font-family: var(--font-ui);">
+          This is not academic pedantry. It is the difference between a report that changes boardroom decisions and a report that gathers dust. When your findings carry the weight of verified truth, they cannot be dismissed. They can only be acted upon.
+        </p>
+      </div>
+      <div>
+        <div class="gemstone-box" style="aspect-ratio: 4/5;">
+          <img src="https://www.legaisee.com/Images/CAT-CUT-001.png" alt="Cut &amp; Shaped — raw findings faceted into strategic instruments" class="gemstone-img" loading="lazy">
+          <div class="gemstone-caption">
+            <span class="gemstone-label">CAT-CUT-001</span>
+            <span class="gemstone-name">Cut &amp; Shaped</span>
+            <span class="gemstone-stage">Stage 2 — Refinement</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+   TIER 3 — Philosophy Depth (Optional)
+   ═══════════════════════════════════════════════════════════════ -->
+<section class="arch-section arch-section--vault">
+  <div class="arch-section__inner">
+    <div class="philosophy-label">Optional Depth — Tier 3</div>
+
+    <div class="section-header" style="margin-bottom: 3rem;">
+      <p class="section-eyebrow">The Philosophy</p>
+      <h2 class="section-title">The Discipline vs. The Industry</h2>
+    </div>
+
+    <div class="two-col" style="align-items: flex-start; margin-bottom: 4rem;">
+      <div>
+        <p style="font-size: 1rem; line-height: 1.8; color: var(--text-primary); margin-bottom: 1.5rem; font-family: var(--font-ui);">
+          The marketing industry sells futures. It sells possibility. It sells the promise that if you adopt the right framework, the right platform, the right trend, you will finally arrive at the success that has eluded you.
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.75; color: var(--text-body); margin-bottom: 1.5rem; font-family: var(--font-ui);">
+          Business Archaeology does not sell futures. It excavates the past. It begins with the assumption that your enterprise has already succeeded — that there was a period in your history when your market position was stronger, your messaging was sharper, and your competitive advantage was undeniable. The question is not "What should you do?" The question is "What did you stop doing — and why?"
+        </p>
+        <p style="font-size: 0.95rem; line-height: 1.75; color: var(--text-body); font-family: var(--font-ui);">
+          This is not nostalgia. Nostalgia is sentimental. Archaeology is forensic. We do not romanticize the past. We document it. We verify it. We grade it. And we reconstruct it with the same precision a gemologist applies to a stone that has waited a billion years to be seen.
+        </p>
+      </div>
+      <div>
+        <div class="gemstone-box" style="aspect-ratio: 4/5;">
+          <img src="https://www.legaisee.com/Images/CAT-RAW-001.png" alt="Raw Stone from Earth — excavated from archives, uncut and potentially priceless" class="gemstone-img" loading="lazy">
+          <div class="gemstone-caption">
+            <span class="gemstone-label">CAT-RAW-001</span>
+            <span class="gemstone-name">Raw Stone from Earth</span>
+            <span class="gemstone-stage">Stage 1 — Discovery</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 4rem;">
+      <h3 style="font-family: var(--font-display); font-size: 1.3rem; color: var(--text-primary); margin-bottom: 1.5rem; letter-spacing: 0.04em;">Why Forensic Rigor Matters</h3>
+      <p style="font-size: 0.95rem; line-height: 1.75; color: var(--text-body); margin-bottom: 1.5rem; font-family: var(--font-ui);">
+        A report that cannot be defended is a report that will not be read. In the boardrooms where your findings will be presented, there will be skeptics. There will be stakeholders who have built careers on the current narrative. There will be voices who dismiss historical analysis as irrelevant to present challenges.
+      </p>
+      <p style="font-size: 0.95rem; line-height: 1.75; color: var(--text-body); margin-bottom: 1.5rem; font-family: var(--font-ui);">
+        Forensic rigor is the armor that protects your findings from dismissal. When every claim is sourced, when every source is graded, when every grade is explained — the skeptic has no ground to stand on. The only response to verified truth is action.
+      </p>
+      <p style="font-size: 0.95rem; line-height: 1.75; color: var(--text-body); font-family: var(--font-ui);">
+        This is why we do not "find" information. We grade it. We do not "believe" sources. We triangulate them. We do not "report" findings. We verify them. The language of archaeology is the language of evidence — and evidence is the only language that commands attention in rooms where billions are at stake.
+      </p>
+    </div>
+
+    <div>
+      <h3 style="font-family: var(--font-display); font-size: 1.3rem; color: var(--text-primary); margin-bottom: 1.5rem; letter-spacing: 0.04em;">The Source Quality Hierarchy</h3>
+      <ul class="hierarchy-list">
+        <li class="reveal">
+          <span class="hierarchy-tier">Tier 1</span>
+          <div class="hierarchy-content">
+            <h4>Highest Confidence</h4>
+            <p>Contemporaneous documents with metadata. Financial records with actual spend data. Third-party verification from industry publications, awards databases, or news coverage. Multiple independent witnesses with matching, specific accounts. These sources carry the weight of legal evidence.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="hierarchy-tier">Tier 2</span>
+          <div class="hierarchy-content">
+            <h4>Medium Confidence</h4>
+            <p>Single witness with specific details — dates, names, amounts. Physical artifacts with clear provenance. Partial documents corroborated by other sources. These sources are credible but require additional support to reach the highest confidence grade.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="hierarchy-tier">Tier 3</span>
+          <div class="hierarchy-content">
+            <h4>Lower Confidence</h4>
+            <p>Single witness with vague recollections. Memory without supporting documentation. Self-interested testimony that promotes the speaker's own role. These sources are noted but not relied upon for strategic recommendations.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="hierarchy-tier">Tier 4</span>
+          <div class="hierarchy-content">
+            <h4>Lowest Confidence</h4>
+            <p>Hearsay — "I heard that..." Suspected falsehoods contradicted by multiple Tier 1 sources. Agenda-driven claims with no corroboration. These sources are documented as noted but explicitly excluded from the analysis.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="pledge-box" style="margin-top: 4rem;">
+      <h3 style="font-family: var(--font-display); font-size: 1.15rem; color: var(--text-primary); margin-bottom: 1.25rem; letter-spacing: 0.04em;">The Bedrock Pledge Revisited</h3>
+      <p style="font-size: 0.92rem; line-height: 1.75; color: var(--text-body); margin-bottom: 1rem; font-family: var(--font-ui);">
+        <strong style="color: var(--gold);">I.</strong> Every word is sacred. No copy is generated. No claims are invented. Every word that appears in your restoration is either excavated from your own historical record or synthesized through rigorous triangulation from verified sources.
+      </p>
+      <p style="font-size: 0.92rem; line-height: 1.75; color: var(--text-body); margin-bottom: 1rem; font-family: var(--font-ui);">
+        <strong style="color: var(--gold);">II.</strong> The 3-Source Rule. No significant claim enters your report without a minimum of two independent sources, ideally three or more converging. Tier 1 sources carry the highest confidence. Everything else is labeled.
+      </p>
+      <p style="font-size: 0.92rem; line-height: 1.75; color: var(--text-body); font-family: var(--font-ui);">
+        <strong style="color: var(--gold);">III.</strong> Continuous Verification. The excavation does not end at delivery. New artifacts emerge. Old sources are challenged. Our Continuous Verification Model allows for addendums, revisions, and the graceful incorporation of new evidence without compromising what has already been established.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+   TIER 4 — Engagement Door
+   ═══════════════════════════════════════════════════════════════ -->
+<section class="arch-section arch-section--dark">
+  <div class="arch-section__inner--narrow">
+    <div class="engagement-door">
+      <h2>Begin Your Excavation</h2>
+      <p>
+        The discipline of Business Archaeology is not a service you browse. It is a partnership you enter. If your enterprise carries the depth of history that warrants forensic excavation, the door is open.
+      </p>
+      <a href="registry.html" class="btn btn-gold">Enter the Private Registry</a>
+      <div class="stat-pills" style="margin-top: 2rem; justify-content: center;">
+        <div class="stat-pill">Three Clients Maximum</div>
+        <div class="stat-pill">By Invitation Only</div>
+        <div class="stat-pill">San Antonio · Austin · I-35 Corridor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+   FAQ SCHEMA SECTION
+   ═══════════════════════════════════════════════════════════════ -->
+<section class="arch-section" style="background: #08080a; border-top: 1px solid rgba(201,169,97,0.06);">
+  <div class="arch-section__inner--narrow">
+    <div class="section-header">
+      <p class="section-eyebrow">Common Inquiries</p>
+      <h2 class="section-title">Frequently Asked</h2>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-question">What distinguishes Business Archaeology from traditional marketing research?</div>
+      <div class="faq-answer">Traditional marketing research asks "What should you do?" Business Archaeology asks "What made you great?" The former speculates. The latter excavates. We do not generate recommendations from market trends or competitor analysis. We recover the precise strategic structure that once produced your most profitable era and reconstruct it for the present market.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-question">How long does a full excavation take?</div>
+      <div class="faq-answer">A complete Business History Audit — Phase 0 of every engagement — requires 5 to 7 business days from kickoff. This includes multi-channel excavation across all 32 classes, private archive review, human interviews where accessible, triangulation analysis, and the production of a written forensic brief with confidence-graded findings.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-question">What if our historical records are incomplete or lost?</div>
+      <div class="faq-answer">Incomplete records are the norm, not the exception. The Private Archaeology Protocol includes human artifact interviews — oral histories from previous owners, longtime employees, and customers who experienced both eras. We also triangulate across public records, competitor observations, and industry publications. A gap is documented, not hidden. The analysis proceeds with noted reservations.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-question">Who qualifies for a Business Archaeology engagement?</div>
+      <div class="faq-answer">Enterprises with five or more years of operating history — preferably ten or more, or generationally owned. Annual revenue at or approaching $30M+. Operating presence in the San Antonio–Austin I-35 corridor. Access to historical archives, former personnel, or financial records from formative years. And critically: leadership appetite to look back before building forward, without defensiveness about what the archaeology may reveal.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-question">Is the excavation confidential?</div>
+      <div class="faq-answer">Absolutely. Everything that enters the Registry — and everything produced by the excavation — is governed by a confidentiality standard that is not negotiable, not selectively applied, and not subject to revision. There are no case studies on a public website. No portfolio pages. No testimonials attributed to named enterprises without specific authorization. The work is private. The results are documented in boardrooms, not blog posts.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+   FOOTER — Shared system from legaisee.css
+   ═══════════════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 4px;">
+        <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAiSEE" style="height: 32px; width: auto;">
+      </div>
+      <p class="footer-brand-tagline">
+        Business Archaeology &amp; Authority Systems.<br>
+        We excavate the signal. We restore the clarity.<br>
+        We do not build on sand. We bedrock.
+      </p>
+      <div class="micro-label">San Antonio · Austin · The I-35 Corridor</div>
+    </div>
+    <div>
+      <div class="footer-col-title">The Practice</div>
+      <ul class="footer-links">
+        <li><a href="archaeology.html">The Archaeology</a></li>
+        <li><a href="method.html">The Method</a></li>
+        <li><a href="serve.html">Who We Serve</a></li>
+        <li><a href="architect.html">The Architect</a></li>
+        <li><a href="practitioner.html">The Practitioner</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Engagement</div>
+      <ul class="footer-links">
+        <li><a href="commissions.html">Commissions</a></li>
+        <li><a href="registry.html">The Registry</a></li>
+        <li><a href="comparison.html">The Comparison</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">The Registry</div>
+      <ul class="footer-links">
+        <li><a href="registry.html">Request Entry</a></li>
+        <li><a href="registry.html">Confidentiality Protocol</a></li>
+        <li><a href="registry.html">Current Availability</a></li>
+      </ul>
+      <div class="gate-seal" style="display: inline-flex; margin-top: 28px; padding: 16px 24px;">
+        <span class="seal-line">3 Clients Maximum</span>
+        <span class="seal-line">By Appointment Only</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">
+      &copy; LEGAiSEE · Business Archaeology &amp; Authority Systems · All Rights Reserved
+    </div>
+    <div class="footer-seal">The Signal, Restored</div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════
+   SCRIPTS
+   ═══════════════════════════════════════════════════════════════ -->
+<script>
+  // Mobile nav toggle
+  const hamburger = document.getElementById('nav-hamburger');
+  const mobileNav = document.getElementById('nav-mobile');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('is-open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Nav scroll behavior
+  const siteNav = document.getElementById('site-nav');
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 100) {
+      siteNav.classList.add('scrolled');
+    } else {
+      siteNav.classList.remove('scrolled');
+    }
+  });
+
+  // Scroll reveal observer
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Stagger channel cards
+  document.querySelectorAll('.channel-card').forEach((card, i) => {
+    card.style.transitionDelay = (i * 0.06) + 's';
+  });
+  document.querySelectorAll('.standard-card').forEach((card, i) => {
+    card.style.transitionDelay = (i * 0.08) + 's';
+  });
+</script>
+
+<!-- Schema.org FAQ structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What distinguishes Business Archaeology from traditional marketing research?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Traditional marketing research asks 'What should you do?' Business Archaeology asks 'What made you great?' The former speculates. The latter excavates. We do not generate recommendations from market trends or competitor analysis. We recover the precise strategic structure that once produced your most profitable era and reconstruct it for the present market."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a full excavation take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A complete Business History Audit — Phase 0 of every engagement — requires 5 to 7 business days from kickoff. This includes multi-channel excavation across all 32 classes, private archive review, human interviews where accessible, triangulation analysis, and the production of a written forensic brief with confidence-graded findings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if our historical records are incomplete or lost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Incomplete records are the norm, not the exception. The Private Archaeology Protocol includes human artifact interviews — oral histories from previous owners, longtime employees, and customers who experienced both eras. We also triangulate across public records, competitor observations, and industry publications. A gap is documented, not hidden. The analysis proceeds with noted reservations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who qualifies for a Business Archaeology engagement?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enterprises with five or more years of operating history — preferably ten or more, or generationally owned. Annual revenue at or approaching $30M+. Operating presence in the San Antonio–Austin I-35 corridor. Access to historical archives, former personnel, or financial records from formative years. And critically: leadership appetite to look back before building forward, without defensiveness about what the archaeology may reveal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the excavation confidential?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. Everything that enters the Registry — and everything produced by the excavation — is governed by a confidentiality standard that is not negotiable, not selectively applied, and not subject to revision. There are no case studies on a public website. No portfolio pages. No testimonials attributed to named enterprises without specific authorization. The work is private. The results are documented in boardrooms, not blog posts."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- llms.txt ready content (hidden, for AI crawlers) -->
+<div style="display:none;" aria-hidden="true" data-llms="true">
+# LEGAiSEE — The Archaeology
+Business Archaeology is the forensic excavation of the precise strategic structure that once produced an enterprise's most profitable era. 32 channels across 8 classes: Print (1890s-present), Broadcast Radio (1920s-present), Broadcast Television (1940s-present), Cinema & Video (1900s-present), Digital Web (1990s-present), Mobile (2000s-present), Social Media (2000s-present), Advanced Digital (2010s-present). Excavation standard: 4-tier confidence grading (Verified/Probable/Plausible/Uncertain) with 3-source verification rule. Source quality hierarchy: Tier 1 (contemporaneous documents, financial records, third-party verification), Tier 2 (single witness with specifics, physical artifacts), Tier 3 (vague recollections, self-interested testimony), Tier 4 (hearsay, suspected falsehoods). Serving enterprises with 5-10+ years history, $30M+ revenue, San Antonio-Austin I-35 Corridor. Three clients maximum. By invitation only. Confidential by design.
+</div>
+
+</body>
+</html>

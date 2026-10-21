@@ -1,0 +1,101 @@
+/* ==========================================================
+   LVOS V2
+   MOTION SYSTEM
+========================================================== */
+
+/* BASE TRANSITIONS */
+
+:root{
+    --motion-fast: 180ms;
+    --motion-normal: 350ms;
+    --motion-slow: 650ms;
+
+    --ease-out: cubic-bezier(.16, 1, .3, 1);
+    --ease-in: cubic-bezier(.7, 0, .84, 0);
+    --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+}
+
+/* GLOBAL TRANSITION HELPERS */
+
+.transition{
+    transition:all var(--motion-normal) var(--ease-out);
+}
+
+.transition-fast{
+    transition:all var(--motion-fast) var(--ease-out);
+}
+
+.transition-slow{
+    transition:all var(--motion-slow) var(--ease-out);
+}
+
+/* HOVER MOTION */
+
+.hover-lift{
+    transition:transform var(--motion-normal) var(--ease-out);
+}
+
+.hover-lift:hover{
+    transform:translateY(-6px);
+}
+
+.hover-scale{
+    transition:transform var(--motion-normal) var(--ease-out);
+}
+
+.hover-scale:hover{
+    transform:scale(1.03);
+}
+
+/* FADE IN SYSTEM */
+
+.fade-in{
+    opacity:0;
+    transform:translateY(20px);
+    transition:opacity var(--motion-slow) var(--ease-out),
+               transform var(--motion-slow) var(--ease-out);
+}
+
+.fade-in.is-visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* KEYFRAME MOTIONS */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+/* ANIMATION UTILITIES */
+
+.animate-fade-up{
+    animation:fadeUp var(--motion-slow) var(--ease-out) both;
+}
+
+.animate-fade-in{
+    animation:fadeIn var(--motion-normal) var(--ease-out) both;
+}
+
+/* REDUCED MOTION SUPPORT */
+
+@media (prefers-reduced-motion: reduce){
+
+    *{
+        animation:none !important;
+        transition:none !important;
+        scroll-behavior:auto !important;
+    }
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LVOS Render Lab</title>
+
+  <link rel="stylesheet" href="../../assets/css/lvos-core.css">
+  <link rel="stylesheet" href="../../assets/css/lvos-layout.css">
+  <link rel="stylesheet" href="../../assets/css/lvos-motion.css">
+</head>
+
+<body>
+
+<header class="system-header">
+  <div>RENDER LAB</div>
+  <div>ENGINE TEST: FRAME + TICK + DELTA</div>
+</header>
+
+<section class="scene-container">
+
+  <div class="material-stage">
+    <div class="content-stack">
+      <h1>RENDER PIPELINE</h1>
+      <p id="fps">FPS: --</p>
+      <p id="frame">FRAME: --</p>
+    </div>
+  </div>
+
+</section>
+
+<script src="../../assets/js/lvos-engine.js"></script>
+<script src="../../assets/js/lvos-loader.js"></script>
+
+<script>
+window.addEventListener("load", () => {
+  const fps = document.getElementById("fps");
+  const frame = document.getElementById("frame");
+
+  setInterval(() => {
+    if (!LVOS?.Engine?.state) return;
+
+    fps.textContent = "FPS: " + Math.round(1000 / (LVOS.Engine.state.delta || 16));
+    frame.textContent = "FRAME: " + LVOS.Engine.state.time;
+  }, 100);
+});
+</script>
+
+</body>
+</html>

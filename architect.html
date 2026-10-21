@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="LEGAiSEE — The Architect. Three decades of signal craft. The operating doctrine behind Business Archaeology and Authority Systems.">
+  <title>The Architect — LEGAiSEE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!--<link rel="stylesheet" href="legaisee-master.css"-->
+    <link rel="stylesheet" href="legaisee.css">
+    <link rel="stylesheet" href="legaisee-luxury.css" />
+
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css">
+  <style>
+    /* ── PAGE-SPECIFIC: ARCHITECT.HTML ───────────────────────────── */
+
+    /* PAGE HERO — full-screen library ambience */
+    .architect-hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 140px 90px 100px;
+      overflow: hidden;
+      background: var(--obsidian);
+    }
+    .architect-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('http://www.legaisee.com/Images/LibraryMain.png');
+      background-size: cover;
+      background-position: center 30%;
+      background-attachment: fixed; /* mobile: scroll via CSS */
+      opacity: 0.20;
+      z-index: 0;
+    }
+    .architect-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to right, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.60) 55%, rgba(5,5,5,0.88) 100%),
+        linear-gradient(to bottom, rgba(5,5,5,0.70) 0%, transparent 35%, rgba(5,5,5,0.90) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .architect-hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 88px;
+      align-items: center;
+      max-width: 1320px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* PORTRAIT FRAME — squircle gem-case style */
+    .portrait-frame {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid var(--gold-border);
+      aspect-ratio: 3/4;
+      background: var(--obsidian-mid);
+    }
+    .portrait-frame::before {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(201,169,97,0.06);
+      border-radius: 18px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .portrait-frame::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 15%, var(--gold-dim) 50%, transparent 85%);
+      opacity: 0.7;
+      z-index: 3;
+    }
+    .portrait-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      background: linear-gradient(160deg, var(--charcoal) 0%, var(--obsidian) 100%);
+      position: relative;
+    }
+    .portrait-placeholder .gem-catalog { top: 16px; left: 16px; }
+    .portrait-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 28px 28px 24px;
+      background: linear-gradient(to top, rgba(5,5,5,0.98) 0%, rgba(5,5,5,0.6) 65%, transparent 100%);
+      z-index: 4;
+    }
+    .portrait-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 6px;
+    }
+    .portrait-sub {
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+      font-style: italic;
+      color: var(--pewter);
+    }
+
+    /* CREDENTIAL ROW */
+    .credential-strip {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid rgba(201,169,97,0.10);
+      margin-bottom: 36px;
+    }
+    .credential-row {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 0;
+      border-bottom: 1px solid rgba(201,169,97,0.07);
+      transition: background 0.3s ease;
+    }
+    .credential-row:last-child { border-bottom: none; }
+    .credential-row:hover { background: rgba(201,169,97,0.02); }
+    .credential-year {
+      padding: 22px 18px;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      letter-spacing: 0.10em;
+      color: var(--gold-dim);
+      border-right: 1px solid rgba(201,169,97,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .credential-text {
+      padding: 22px 28px;
+      font-family: var(--font-ui);
+      font-size: 0.98rem;
+      color: var(--silver);
+      line-height: 1.65;
+      display: flex;
+      align-items: center;
+    }
+
+    /* OPERATING PRINCIPLES — large statement cards */
+    .principle-card {
+      padding: 64px 56px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(201,169,97,0.10);
+      background: var(--obsidian-light);
+      transition: all 0.5s var(--ease-silk);
+    }
+    .principle-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--gold), rgba(201,169,97,0.1));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .principle-card:hover { border-color: rgba(201,169,97,0.22); transform: translateY(-5px); box-shadow: var(--shadow-lift); }
+    .principle-card:hover::before { opacity: 1; }
+    .principle-ghost-num {
+      position: absolute;
+      top: -12px; right: 20px;
+      font-family: var(--font-display);
+      font-size: 8rem;
+      font-weight: 700;
+      color: rgba(201,169,97,0.04);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      transition: color 0.4s ease;
+    }
+    .principle-card:hover .principle-ghost-num { color: rgba(201,169,97,0.07); }
+    .principle-eyebrow {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.30em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      display: block;
+      margin-bottom: 20px;
+    }
+    .principle-statement {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+      letter-spacing: 0.04em;
+      line-height: 1.28;
+      color: var(--platinum);
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .principle-statement em { color: var(--gold); font-style: normal; }
+    .principle-body {
+      font-family: var(--font-ui);
+      font-size: 1.02rem;
+      color: var(--silver);
+      line-height: 1.78;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* THIRTY YEAR TIMELINE */
+    .decade-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: rgba(201,169,97,0.05);
+      border: 1px solid rgba(201,169,97,0.10);
+    }
+    .decade-cell {
+      background: var(--obsidian-light);
+      padding: 44px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.4s ease;
+    }
+    .decade-cell:hover { background: var(--obsidian-mid); }
+    .decade-label {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: rgba(201,169,97,0.12);
+      line-height: 1;
+      margin-bottom: 16px;
+      transition: color 0.4s ease;
+    }
+    .decade-cell:hover .decade-label { color: rgba(201,169,97,0.25); }
+    .decade-title {
+      font-family: var(--font-display);
+      font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold-light);
+      margin-bottom: 14px;
+    }
+    .decade-desc {
+      font-family: var(--font-ui);
+      font-size: 0.96rem;
+      color: var(--pewter);
+      line-height: 1.72;
+    }
+
+    /* SILENCE SECTION — The listening doctrine */
+    .silence-section {
+      position: relative;
+      overflow: hidden;
+    }
+    .silence-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('http://www.legaisee.com/Images/PreformingVertical.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; /* mobile: scroll via CSS */
+      opacity: 0.13;
+      z-index: 0;
+    }
+    .silence-section > * { position: relative; z-index: 1; }
+
+    /* SIGNAL LEXICON — Definition-style cards */
+    .lexicon-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: rgba(201,169,97,0.05);
+      border: 1px solid rgba(201,169,97,0.10);
+    }
+    .lexicon-entry {
+      background: var(--obsidian-light);
+      padding: 44px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.4s ease;
+    }
+    .lexicon-entry:hover { background: var(--obsidian-mid); }
+    .lexicon-term {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .lexicon-pos {
+      font-family: var(--font-ui);
+      font-size: 0.80rem;
+      font-style: italic;
+      color: var(--pewter);
+      margin-bottom: 16px;
+      display: block;
+    }
+    .lexicon-def {
+      font-family: var(--font-ui);
+      font-size: 1rem;
+      color: var(--silver);
+      line-height: 1.78;
+    }
+    .lexicon-def strong { color: var(--platinum); font-weight: 400; }
+
+    /* ARCHITECT CTA section */
+    .architect-cta {
+      position: relative;
+      overflow: hidden;
+    }
+    .architect-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('http://www.legaisee.com/Images/AtelierObsidian.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; /* mobile: scroll via CSS */
+      opacity: 0.16;
+      z-index: 0;
+    }
+    .architect-cta::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 75% 75% at 50% 50%, transparent 0%, rgba(5,5,5,0.88) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .architect-cta > * { position: relative; z-index: 2; }
+
+    @media (max-width: 1100px) {
+      .architect-hero { padding: 140px 48px 80px; }
+      .architect-hero-inner { grid-template-columns: 1fr; gap: 52px; }
+      .portrait-frame { max-width: 420px; margin: 0 auto; aspect-ratio: 4/3; }
+      .decade-grid { grid-template-columns: 1fr; }
+      .lexicon-grid { grid-template-columns: 1fr; }
+      .principle-card { padding: 48px 36px; }
+    }
+    @media (max-width: 768px) {
+      .architect-hero { padding: 120px 28px 60px; min-height: auto; }
+      .credential-row { grid-template-columns: 72px 1fr; }
+      .principle-card { padding: 40px 28px; }
+      .principle-ghost-num { font-size: 5rem; }
+      .decade-cell { padding: 36px 28px; }
+    }
+  </style>
+</head>
+
+<body>
+
+    <!-- DESKTOP NAV -->
+<nav class="site-nav" id="site-nav">
+ 
+  <!-- Logo -->
+  <div class="nav-logo-wrap">
+    <a href="/index.html">
+      <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAiSEE" class="nav-logo-img">
+    </a>
+  </div>
+
+    <!-- Desktop Links -->
+  <div class="nav-links" id="nav-links">
+    <a href="/index.html"        data-nav="home">Home</a>
+    <a href="/archaeology.html"  data-nav="archaeology">The Archaeology</a>
+    <a href="/method.html"       data-nav="method">The Method</a>
+    <a href="/serve.html"        data-nav="serve">Who We Serve</a>
+    <a href="/architect.html"    data-nav="architect" style="color: var(--gold);">The Architect</a>
+    <a href="/practitioner.html" data-nav="practitioner">The Practitioner</a>
+    <a href="/career.html"       data-nav="career">Career</a>
+    <a href="/commissions.html"  data-nav="commissions">Commissions</a>
+    <a href="/registry.html"     class="nav-cta" data-nav="home">Enter the Registry</a>
+  </div>
+ 
+  <!-- Hamburger — visible only on mobile -->
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+ 
+</nav>
+ 
+<!-- MOBILE DRAWER -->
+<div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+  <a href="/index.html"        data-nav="home">Home</a>
+  <a href="/archaeology.html"  data-nav="archaeology"style="color: var(--gold);">The Archaeology</a>
+  <a href="/method.html"       data-nav="method">The Method</a>
+  <a href="/serve.html"        data-nav="serve">Who We Serve</a>
+  <a href="/architect.html"    data-nav="architect">The Architect</a>
+  <a href="/practitioner.html" data-nav="practitioner">The Practitioner</a>
+  <a href="/career.html"       data-nav="career">Career</a>
+  <a href="/commissions.html"  data-nav="commissions">Commissions</a>
+  <a href="/registry.html"     data-nav="registry">Enter the Registry</a>
+</div>
+
+
+
+
+<!-- ═══════════════════════════════════════════════
+     PAGE HERO
+     Background: LibraryMain.png (parallax)
+     ═══════════════════════════════════════════════ -->
+<section class="architect-hero">
+  <div class="architect-hero-inner">
+
+    <!-- Left: Portrait placeholder + credential strip -->
+    <div>
+
+      <!-- GEMSTONE PLACEHOLDER: The Architect as the lapidary -->
+      <div class="portrait-frame reveal reveal-left" style="max-width: 460px;">
+        <div class="portrait-placeholder">
+          <span class="gem-catalog">CAT-ARC-001</span>
+          <div class="gem-stage-name" style="font-size: 1.1rem;">The Architect</div>
+          <div class="gem-stage-desc" style="text-align: center; max-width: 260px;">
+            Portrait photograph<br>to be placed here
+          </div>
+        </div>
+        <div class="portrait-caption">
+          <div class="portrait-title">The Architect</div>
+          <div class="portrait-sub">Business Archaeology &amp; Authority Systems · San Antonio, Texas</div>
+        </div>
+      </div>
+
+      <!-- GEMSTONE PLACEHOLDER: The Atelier — the workspace of the lapidary -->
+      <div class="gem-frame reveal reveal-d2 reveal-left" style="position: relative; aspect-ratio: 16/7; margin-top: 16px;">
+        <div class="gem-placeholder-box" style="min-height: 140px; background: linear-gradient(135deg, #0f0d08 0%, #050505 100%);">
+          <span class="gem-catalog">CAT-ATL-001</span>
+          <div class="gem-stage-name">The Atelier</div>
+          <div class="gem-stage-desc">The workspace where raw findings become precision instruments</div>
+        </div>
+        <div class="gem-caption-bar">
+          <div class="gem-caption-title">The Lapidary's Table</div>
+          <div class="gem-caption-sub">Where the cut happens · one stone at a time</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right: The Architect introduction -->
+    <div>
+      <span class="eyebrow reveal" style="margin-bottom: 32px;">The Architect · The Practice</span>
+
+      <h1 class="d-xl reveal" style="margin-bottom: 40px; line-height: 1.05;">
+        The Architect<br>Does Not<br>
+        <span class="text-gold">Sell</span>
+      </h1>
+
+      <p class="b-xl reveal reveal-d1" style="color: var(--platinum); margin-bottom: 28px;">
+        The Architect excavates. The Architect listens to the silence between what you say
+        and what your market hears. The Architect maps the structural blind spots that your
+        competitors are exploiting while you are not looking.
+      </p>
+
+      <div class="architect-phrase-block phrase-block--archivist">
+  <p class="architect-body-copy">
+    The work requires the forensic discipline of an archivist with the DNA 
+    of a master broadcaster — two instincts that rarely share the same 
+    practitioner, and that most institutions mistake for opposites. 
+    One recovers. The other transmits. Here, they operate as a single act.
+  </p>
+</div>
+
+      <p class="b-lg reveal reveal-d2" style="margin-bottom: 28px;">
+        The Architect builds systems that produce <strong class="text-gold">Signal</strong> — the kind
+        of Signal that does not require explanation, because it carries its own
+        <strong class="text-gold">Unavoidable Logic</strong>. The kind your market felt before they
+        could name it, and remembered long after the transaction was complete.
+      </p>
+
+      <p class="b-lg reveal reveal-d3" style="margin-bottom: 48px;">
+        Three decades of this work. The architecture of persuasion, the mathematics of attention,
+        and the physics of trust — accumulated across every major market cycle since the early 1990s,
+        applied now with forensic precision to the enterprises that built the I-35 corridor.
+      </p>
+
+      <div class="btn-group reveal reveal-d4">
+        <a href="registry.html" class="btn btn-gold">Enter the Registry</a>
+        <a href="commissions.html" class="btn btn-outline-gold">View Commissions</a>
+      </div>
+    </div>
+
+  </div>
+</section><!-- /architect-hero -->
+
+
+<!-- ═══════════════════════════════════════════════
+     AUTHORITY STRIP
+     ═══════════════════════════════════════════════ -->
+<div class="authority-strip">
+  <div class="authority-item"><div class="authority-value">30</div><div class="authority-label">Years of Signal Craft</div></div>
+  <div class="authority-item"><div class="authority-value">40+</div><div class="authority-label">Channels Mastered</div></div>
+  <div class="authority-item"><div class="authority-value">10</div><div class="authority-label">Interlocking Frameworks</div></div>
+  <div class="authority-item"><div class="authority-value">3</div><div class="authority-label">Clients Maximum</div></div>
+  <div class="authority-item"><div class="authority-value">1</div><div class="authority-label">Standard · Bedrock</div></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 1: THREE DECADES — The Timeline
+     Background: LibraryMain.png continues as parallax
+     ═══════════════════════════════════════════════ -->
+<section class="lux-section" style="background: var(--obsidian); padding-top: 140px; padding-bottom: 80px; position: relative; overflow: hidden;">
+  <div style="position: absolute; inset: 0; background-image: url('http://www.legaisee.com/Images/LibraryMain.png'); background-size: cover; background-position: center; background-attachment: fixed; /* mobile: scroll via CSS */ opacity: 0.08; z-index: 0;"></div>
+
+  <div class="section-inner" style="position: relative; z-index: 1;">
+
+    <div style="text-align: center; max-width: 820px; margin: 0 auto 80px;">
+      <div class="prestige-label reveal" style="justify-content: center;">The Formation</div>
+      <h2 class="d-lg reveal" style="margin-bottom: 24px;">Three Decades of<br>Signal Craft</h2>
+      <p class="b-xl reveal reveal-d1" style="color: var(--platinum);">
+        Authority is not declared. It is accumulated. Every market cycle navigated, every
+        medium mastered, every framework tested against real revenue — this is the compound
+        interest of three decades, now available to three clients at a time.
+      </p>
+    </div>
+
+    <!-- Decade grid -->
+    <div class="decade-grid reveal reveal-d2" style="margin-bottom: 80px;">
+
+      <div class="decade-cell">
+        <div class="decade-label">90s</div>
+        <div class="decade-title">The Analog Mastery</div>
+        <div class="decade-desc">
+          The formative decade — direct response, broadcast, print, outdoor, and personal selling
+          studied at the level of practitioners who built regional enterprises from nothing.
+          The mechanics of persuasion before digital noise existed. The fundamentals that
+          every channel that followed was built upon.
+        </div>
+      </div>
+
+      <div class="decade-cell" style="background: linear-gradient(160deg, var(--charcoal) 0%, var(--obsidian-light) 100%);">
+        <div class="decade-label" style="color: rgba(201,169,97,0.22);">00s</div>
+        <div class="decade-title">The Digital Transition</div>
+        <div class="decade-desc">
+          The decade when analog wisdom met digital infrastructure — and most practitioners
+          chose one or the other. The Architect chose both. The mathematics of attention
+          transferred from one medium to the next, and the structural differences between
+          them revealed the principles that held across all of them.
+        </div>
+      </div>
+
+      <div class="decade-cell">
+        <div class="decade-label">10s</div>
+        <div class="decade-title">The Platform Era</div>
+        <div class="decade-desc">
+          Social, search, mobile, video, programmatic — each new channel carrying its own
+          promise and its own failure mode. The pattern that emerged: the enterprises that
+          survived each transition were the ones with the strongest institutional foundations.
+          The signal survived the noise. The noise did not survive the signal.
+        </div>
+      </div>
+
+      <div class="decade-cell">
+        <div class="decade-label">20s</div>
+        <div class="decade-title">The Archaeology Doctrine</div>
+        <div class="decade-desc">
+          Three decades of pattern recognition converge into a single conclusion: the most
+          valuable strategic asset an enterprise possesses is not its current campaign — it is
+          its accumulated institutional memory. The forensic methodology to recover and
+          reconstruct that memory becomes the practice. Business Archaeology is born.
+        </div>
+      </div>
+
+      <div class="decade-cell" style="background: linear-gradient(160deg, var(--charcoal) 0%, var(--obsidian-light) 100%);">
+        <div class="decade-label" style="color: rgba(201,169,97,0.22);">Now</div>
+        <div class="decade-title">The I-35 Corridor</div>
+        <div class="decade-desc">
+          The methodology deployed at maximum depth, maximum precision, and minimum scale.
+          Three clients at any given time. The San Antonio–Austin corridor as the laboratory.
+          The enterprises that built this region as the subjects of the most consequential
+          institutional recovery work being done in South Texas today.
+        </div>
+      </div>
+
+      <!-- Credential strip in sixth cell -->
+      <div class="decade-cell">
+        <div class="decade-label" style="color: rgba(201,169,97,0.08);">30+</div>
+        <div class="decade-title">The Credential</div>
+        <div class="credential-strip" style="margin-top: 0; border-color: rgba(201,169,97,0.08);">
+          <div class="credential-row">
+            <div class="credential-year">1990s</div>
+            <div class="credential-text">Direct response, broadcast, and print — every major analog channel mastered in practice</div>
+          </div>
+          <div class="credential-row">
+            <div class="credential-year">2000s</div>
+            <div class="credential-text">Digital transition — search, email, web architecture, and the first social platforms</div>
+          </div>
+          <div class="credential-row">
+            <div class="credential-year">2010s</div>
+            <div class="credential-text">Platform mastery — social, mobile, video, programmatic, and content systems</div>
+          </div>
+          <div class="credential-row">
+            <div class="credential-year">2020s</div>
+            <div class="credential-text">Business Archaeology — the forensic methodology that unifies three decades of signal craft</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /decade-grid -->
+
+  </div>
+</section><!-- /timeline -->
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 2: THE SIGNAL LEXICON
+     Defining the vocabulary of the practice
+     ═══════════════════════════════════════════════ -->
+<section class="lux-section" style="overflow: hidden; background: var(--obsidian-light); padding-top: 120px; padding-bottom: 120px;">
+  <div class="section-inner">
+
+    <div style="text-align: center; max-width: 820px; margin: 0 auto 72px;">
+      <div class="prestige-label reveal" style="justify-content: center;">The Vocabulary</div>
+      <h2 class="d-lg reveal" style="margin-bottom: 24px;">The Architect's Lexicon</h2>
+      <p class="b-lg reveal reveal-d1">
+        Precision in language is the first discipline of precision in practice.
+        These are the terms the Architect uses — defined exactly as they are meant.
+      </p>
+    </div>
+
+    <div class="lexicon-grid reveal reveal-d2">
+
+      <div class="lexicon-entry">
+        <div class="lexicon-term">Signal</div>
+        <span class="lexicon-pos">noun · the fundamental unit of authority</span>
+        <div class="lexicon-def">
+          The coherent, recognizable emanation of an institution's genuine competitive identity —
+          what your market feels before they can name it and remembers long after the transaction
+          is complete. <strong>Signal is not messaging.</strong> Signal is what remains when all
+          the messaging is stripped away. It is the reason a prospect chooses you without a
+          complete explanation of why. Most enterprises have lost it. Almost none of them know
+          it can be recovered.
+        </div>
+      </div>
+
+      <div class="lexicon-entry">
+        <div class="lexicon-term">Unavoidable Logic</div>
+        <span class="lexicon-pos">noun · the destination of Signal restoration</span>
+        <div class="lexicon-def">
+          The state in which your authority is so clearly documented, so precisely expressed,
+          and so comprehensively deployed that a prospect who encounters it has no rational
+          framework for choosing anyone else. <strong>Unavoidable Logic is not pressure.</strong>
+          It is clarity — the absolute clarity your enterprise once possessed, restored and
+          made permanent through systematic forensic documentation and strategic architecture.
+        </div>
+      </div>
+
+      <div class="lexicon-entry">
+        <div class="lexicon-term">Narrative Drift</div>
+        <span class="lexicon-pos">noun · the condition we treat</span>
+        <div class="lexicon-def">
+          The slow, quiet erosion of institutional signal that occurs when no one is specifically
+          assigned to protect the narrative. <strong>Not a branding failure. Not a marketing
+          problem.</strong> A structural blind spot — produced by time, personnel change, and
+          the gradual replacement of proven institutional logic with reactive tactical noise.
+          Measurable in revenue, visible in pricing power, reversible through archaeology.
+        </div>
+      </div>
+
+      <div class="lexicon-entry">
+        <div class="lexicon-term">The Bedrock</div>
+        <span class="lexicon-pos">noun · the only acceptable foundation</span>
+        <div class="lexicon-def">
+          The verified historical record from which all reconstruction proceeds. Not assumptions.
+          Not guesswork. Not the convenient narrative that serves current leadership's preferences.
+          <strong>The Bedrock is what can be proven</strong> — through Tier 1 evidence, through
+          triangulation, through the 3-Source Rule applied without exception. We do not build
+          on sand. Every word of every deliverable stands on the Bedrock or it does not stand at all.
+        </div>
+      </div>
+
+      <div class="lexicon-entry">
+        <div class="lexicon-term">The Lapidary Phase</div>
+        <span class="lexicon-pos">noun · the refinement stage of excavation</span>
+        <div class="lexicon-def">
+          The phase of the engagement where raw findings — the classified, graded evidence from the
+          excavation — are cut and shaped into strategic instruments. <strong>Raw findings are not
+          deliverables.</strong> They are uncut stones. The Lapidary Phase is where the facets are
+          applied: where evidence becomes doctrine, where archaeology becomes authority, where the
+          stone emerges from the earth and begins its journey toward the museum floor.
+        </div>
+      </div>
+
+      <div class="lexicon-entry">
+        <div class="lexicon-term">Ghost Pages · Ghost Employees</div>
+        <span class="lexicon-pos">noun · the archaeology of the abandoned</span>
+        <div class="lexicon-def">
+          The digital residue of your institutional past — web pages removed but preserved in
+          archive systems, employee profiles from departed personnel still indexed in professional
+          networks, campaign landing pages that still live in cache. <strong>These are primary
+          evidence sources.</strong> The Architect knows where to find them and how to grade
+          what they contain. They are among the most reliable artifacts of the Golden Era — because
+          no one thought to curate them after the fact.
+        </div>
+      </div>
+
+    </div><!-- /lexicon-grid -->
+
+  </div>
+</section><!-- /lexicon -->
+
+<!-- ── BLOCK B ─────────────────────────────────────────────── -->
+<!-- Placement: After the method description block — pull-quote treatment -->
+<section>
+    <blockquote class="architect-pull-quote">
+  <p class="pull-quote__text">
+    We don&rsquo;t find your history.<br>
+    We turn it into Unavoidable Logic.
+  </p>
+  <div class="pull-quote__rule"></div>
+    </blockquote>
+    <div class="signal-block reveal reveal-d4">
+            <div class="signal-label">The Logic</div>
+            <p style="font-family: var(--font-ui); font-size: 1.05rem; color: var(--silver); line-height: 1.78;">
+              Unavoidable Logic is not a claim. It is a construct — a sequence of 
+    documented facts arranged so precisely that the conclusion your market 
+    must reach is not a matter of persuasion but of evidence. 
+    When the record is assembled correctly, the argument cannot be ignored.
+            </p>
+          </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 3: THE SILENCE DOCTRINE
+     The listening practice — the three physics
+     Background: PreformingVertical.png (parallax)
+     ═══════════════════════════════════════════════ -->
+<section class="silence-section lux-section" style="overflow: hidden; background: var(--obsidian); padding-top: 140px; padding-bottom: 120px;">
+  <div class="section-inner">
+
+    <div class="asym-grid-b" style="align-items: start; gap: 80px;">
+
+      <!-- Left: Copy block -->
+      <div>
+        <div class="prestige-label reveal" style="justify-content: flex-start;">The Operating Doctrine</div>
+        <h2 class="d-lg reveal" style="margin-bottom: 36px;">
+          The Architect Listens<br>to the Silence
+        </h2>
+        <div class="divider-gold short reveal" style="margin-left: 0; margin-right: auto; margin-bottom: 44px;"></div>
+
+        <p class="b-xl reveal" style="color: var(--platinum); margin-bottom: 28px;">
+          Between what you say and what your market hears, there is a gap.
+          Most enterprises have never measured that gap. The Architect maps it — precisely,
+          forensically, without flattery or politics — and then closes it.
+        </p>
+
+        <p class="b-lg reveal reveal-d1" style="margin-bottom: 24px;">
+          This practice draws on three disciplines that most specialists treat as separate fields.
+          The Architect treats them as one:
+        </p>
+
+        <!-- The three physics — vertical signal blocks -->
+        <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px;">
+
+          <div class="signal-block reveal reveal-d2">
+            <div class="signal-label">The Architecture of Persuasion</div>
+            <p style="font-family: var(--font-ui); font-size: 1.05rem; color: var(--silver); line-height: 1.78;">
+              The structural logic of why one message compels action and another does not —
+              independent of medium, independent of trend, independent of the current fashion
+              in marketing theory. Persuasion has physics. The Architect knows them.
+            </p>
+          </div>
+
+          <div class="signal-block reveal reveal-d3">
+            <div class="signal-label">The Mathematics of Attention</div>
+            <p style="font-family: var(--font-ui); font-size: 1.05rem; color: var(--silver); line-height: 1.78;">
+              The quantifiable relationship between exposure, frequency, channel combination,
+              and the specific threshold at which a market moves from awareness to preference.
+              Attention is not random. It follows patterns. The Architect maps them.
+            </p>
+          </div>
+
+          <div class="signal-block reveal reveal-d4">
+            <div class="signal-label">The Physics of Trust</div>
+            <p style="font-family: var(--font-ui); font-size: 1.05rem; color: var(--silver); line-height: 1.78;">
+              The precise mechanisms by which institutional trust is built, transferred across
+              generations of leadership, and — when it has eroded — forensically recovered.
+              Trust has a half-life. It also has a reconstruction pathway. The Architect builds it.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="pledge-box reveal reveal-d5" style="padding: 44px 52px;">
+          <p class="pledge-text" style="font-size: clamp(1rem, 1.7vw, 1.3rem);">
+            "The Architect does not sell. The Architect excavates. The Architect listens to the
+            silence between what you say and what your market hears — and builds systems that
+            close the gap with the precision of a surgical instrument."
+          </p>
+          <div class="divider-gold short" style="margin: 0 auto 20px;"></div>
+          <div class="pledge-attribution">The Operating Doctrine · Non-Negotiable</div>
+        </div>
+      </div>
+
+      <!-- Right: Gem + credential -->
+      <div style="padding-top: 60px; display: flex; flex-direction: column; gap: 24px;">
+
+        <!-- GEMSTONE PLACEHOLDER: Lapidary at work — the cut in progress -->
+        <div class="gem-frame reveal reveal-right" style="position: relative; aspect-ratio: 3/4; border-radius: 20px; overflow: hidden;">
+          <div class="gem-placeholder-box" style="min-height: 440px; border-radius: 20px; border: none; background: linear-gradient(160deg, #0a0f1a 0%, #050505 100%);">
+            <span class="gem-catalog">CAT-CUT-040</span>
+            <div class="gem-stage-name">The Lapidary at Work</div>
+            <div class="gem-stage-desc">The cut in progress — where raw findings become strategic instruments</div>
+          </div>
+          <div class="gem-caption-bar">
+            <div class="gem-caption-title">The Practice</div>
+            <div class="gem-caption-sub">Precision · Patience · No guesswork</div>
+          </div>
+        </div>
+
+        <!-- Operating constraint card -->
+        <div class="museum-card reveal reveal-d1 reveal-right" style="text-align: center; padding: 44px 36px;">
+          <div class="micro-label" style="margin-bottom: 20px;">The Deliberate Constraint</div>
+          <div class="stat-num" style="font-size: 3.2rem; margin-bottom: 12px;">3</div>
+          <div class="stat-label" style="margin-bottom: 24px;">Clients at Any Given Time</div>
+          <p class="b-md">
+            This is not a capacity limitation. It is a quality guarantee. The forensic depth
+            that produces genuine Signal recovery cannot be industrialized. Three engagements.
+            Full attention. Museum-quality research. No exceptions.
+          </p>
+        </div>
+
+      </div>
+    </div><!-- /asym-grid-b -->
+
+  </div>
+</section><!-- /silence doctrine -->
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 4: THE OPERATING PRINCIPLES
+     Four non-negotiable commitments
+     ═══════════════════════════════════════════════ -->
+<section class="lux-section" style="overflow: hidden; background: var(--obsidian-light); padding-top: 120px; padding-bottom: 120px;">
+  <div class="section-inner">
+
+    <div style="text-align: center; max-width: 820px; margin: 0 auto 80px;">
+      <div class="prestige-label reveal" style="justify-content: center;">Non-Negotiable</div>
+      <h2 class="d-lg reveal" style="margin-bottom: 24px;">The Operating Principles</h2>
+      <p class="b-lg reveal reveal-d1">
+        These are not aspirational values. They are operational constraints — as binding on every
+        engagement as the 3-Source Rule, as immovable as the Bedrock Pledge itself.
+      </p>
+    </div>
+
+    <!-- Four principles — asymmetric layout: first offset down -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px;">
+
+      <div class="principle-card reveal" style="margin-top: 0;">
+        <span class="principle-ghost-num">1</span>
+        <span class="principle-eyebrow">Principle One · The Standard</span>
+        <div class="principle-statement">
+          We do not build on <em>sand</em>.<br>We bedrock.
+        </div>
+        <div class="principle-body">
+          Every claim, every finding, every recommendation stands on verified evidence or it does
+          not stand at all. The Bedrock Pledge is not a marketing statement. It is the operating
+          condition of every deliverable we produce. Speculation is labeled. Uncertainty is
+          disclosed. Nothing is presented with more confidence than the evidence supports.
+        </div>
+      </div>
+
+      <div class="principle-card reveal reveal-d2" style="margin-top: 44px;">
+        <span class="principle-ghost-num">2</span>
+        <span class="principle-eyebrow">Principle Two · The Scope</span>
+        <div class="principle-statement">
+          No copy is generated.<br>No claims are <em>invented</em>.
+        </div>
+        <div class="principle-body">
+          We do not write marketing for you. We excavate the marketing you have already earned —
+          the authority you built, the positioning you proved, the evidence your history contains.
+          We reconstruct. We document. We deploy. Every word in every deliverable is either
+          recovered from your record or synthesized from verified sources through the
+          Triangulation Protocol. None of it is invented.
+        </div>
+      </div>
+
+      <div class="principle-card reveal reveal-d1" style="margin-top: -20px;">
+        <span class="principle-ghost-num">3</span>
+        <span class="principle-eyebrow">Principle Three · The Scale</span>
+        <div class="principle-statement">
+          Three clients.<br>Full attention. <em>Always</em>.
+        </div>
+        <div class="principle-body">
+          The three-client constraint is not an artificial scarcity mechanism. It is the
+          forensic reality of work that demands total engagement. Business Archaeology cannot
+          be industrialized without destroying the thing that makes it work. The depth of
+          research, the precision of triangulation, the nuance of the Voice Profile — these
+          require the kind of attention that cannot be divided past a certain threshold.
+        </div>
+      </div>
+
+      <div class="principle-card reveal reveal-d3" style="margin-top: 24px;">
+        <span class="principle-ghost-num">4</span>
+        <span class="principle-eyebrow">Principle Four · The Direction</span>
+        <div class="principle-statement">
+          We look back before<br>we look <em>forward</em>.
+        </div>
+        <div class="principle-body">
+          The reconstruction begins with the excavation. Not with the strategy. Not with the
+          creative brief. Not with the competitive analysis. With the dig. With the recovery
+          of what was lost. With the honest, forensic assessment of what your enterprise was
+          at its best — and why. Only then do we build forward. Scaling an unstable narrative
+          only accelerates failure. We do not scale until the foundation is verified.
+        </div>
+      </div>
+
+    </div><!-- /principles grid -->
+
+  </div>
+</section><!-- /principles -->
+
+<div class="architect-phrase-block phrase-block--signal">
+  <div class="architect-phrase-block__inner">
+    <span class="architect-phrase-label">The Signal</span>
+    <p class="architect-body-copy">
+      Every Exhibit is built toward one outcome — mastering the Signal 
+      that commands attention. Not the signal that requests it. Not the 
+      signal that competes for it. The Signal that makes attention 
+      structurally unavoidable, because it is constructed from what 
+      has already been proved.
+    </p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     CLOSING CTA
+     Background: AtelierObsidian.png (parallax)
+     ═══════════════════════════════════════════════ -->
+<section class="architect-cta lux-section" style="overflow: hidden; background: var(--obsidian); padding-top: 160px; padding-bottom: 160px; text-align: center;">
+  <div class="section-inner" style="max-width: 900px;">
+
+    <div class="prestige-label reveal" style="justify-content: center; margin-bottom: 52px;">
+      A Private Conversation
+    </div>
+
+    <h2 class="d-lg reveal" style="margin-bottom: 36px;">
+      The Conversation Is<br>How the Work Begins
+    </h2>
+
+    <p class="b-xl reveal reveal-d1" style="color: var(--platinum); max-width: 760px; margin: 0 auto 28px;">
+      The Architect does not pitch. The Architect does not present a deck. The Architect sits down
+      with the leadership of an enterprise that qualifies — and listens.
+    </p>
+
+    <p class="b-lg reveal reveal-d2" style="max-width: 720px; margin: 0 auto 52px;">
+      That conversation has a specific purpose: to determine whether the enterprise has a dig site
+      worth opening, whether the history is deep enough to contain a recoverable Golden Era,
+      and whether the leadership has the access and the appetite for what the archaeology will reveal.
+      Sometimes what it reveals is uncomfortable. Always it is worth knowing.
+    </p>
+
+    <!-- Final gem — the display specimen, the promise of the Architect's work -->
+    <div class="gem-frame reveal reveal-d3" style="max-width: 560px; margin: 0 auto 60px; position: relative; aspect-ratio: 1; border-radius: 28px; overflow: hidden;">
+      <div class="gem-placeholder-box" style="min-height: 420px; border-radius: 28px; border: none; background: linear-gradient(135deg, #0a0a0a 0%, #141410 40%, #0a0a0a 100%);">
+        <span class="gem-catalog">CAT-DSP-040</span>
+        <div class="gem-stage-name">The Museum Specimen</div>
+        <div class="gem-stage-desc">Authority recovered · mounted · exhibited · under the light it deserves</div>
+      </div>
+      <div class="gem-caption-bar">
+        <div class="gem-caption-title">Stage 4 — The Exhibition</div>
+        <div class="gem-caption-sub">The Architect's promise · the Signal restored</div>
+      </div>
+    </div>
+
+    <div class="btn-group reveal reveal-d4" style="justify-content: center; margin-bottom: 48px;">
+      <a href="registry.html" class="btn btn-gold">Enter the Private Registry</a>
+      <a href="commissions.html" class="btn btn-outline-gold">View Commissions</a>
+    </div>
+
+    <div class="gate-seal reveal reveal-d5" style="margin: 0 auto; display: inline-flex;">
+      <span class="seal-line">By Invitation Only</span>
+      <span class="seal-line">Three Clients · Maximum</span>
+      <span class="seal-line">The Signal, Restored</span>
+    </div>
+
+  </div>
+</section><!-- /cta -->
+
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 4px;">
+        <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAiSEE" style="height: 32px; width: auto;">
+        <div style="font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold);">LEGAiSEE</div>
+      </div>
+      <p class="footer-brand-tagline">Business Archaeology &amp; Authority Systems.<br>We do not build on sand. We bedrock.</p>
+      <div class="micro-label">San Antonio · Austin · The I-35 Corridor</div>
+    </div>
+    <div>
+      <div class="footer-col-title">The Practice</div>
+      <ul class="footer-links">
+        <li><a href="archaeology.html">The Archaeology</a></li>
+        <li><a href="method.html">The Ten Frameworks</a></li>
+        <li><a href="serve.html">Who We Serve</a></li>
+        <li><a href="architect.html">The Architect</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Commissions</div>
+      <ul class="footer-links">
+        <li><a href="commissions.html">The Excavation</a></li>
+        <li><a href="commissions.html">Authority Systems</a></li>
+        <li><a href="commissions.html">The Bedrock Pledge</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">The Registry</div>
+      <ul class="footer-links">
+        <li><a href="registry.html">Request Entry</a></li>
+        <li><a href="registry.html">Current Availability</a></li>
+      </ul>
+      <div class="gate-seal" style="display: inline-flex; margin-top: 28px; padding: 16px 24px;">
+        <span class="seal-line">By Invitation Only</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© LEGAiSEE · Business Archaeology &amp; Authority Systems · All Rights Reserved</div>
+    <div class="footer-seal">The Architect · The Signal · The Bedrock</div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════════════════ -->
+<script>
+  /* ── Scroll reveal ─────────────────────────────── */
+  (function () {
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.10,
+      rootMargin: '0px 0px -44px 0px'
+    });
+
+    reveals.forEach(el => observer.observe(el));
+  })();
+
+
+
+  /* ── Gem hover tilt ───────────────────────────── */
+  if (window.innerWidth > 1024) {
+    document.querySelectorAll('.gem-frame, .museum-card').forEach(el => {
+
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+
+        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 6;
+        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 6;
+
+        el.style.transform =
+          `perspective(800px) rotateY(${x}deg) rotateX(${-y}deg) translateY(-6px)`;
+      });
+
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = '';
+      });
+
+    });
+  }
+</script>
+
+<!-- Lenis Smooth Scroll -->
+<script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
+
+<script>
+  new Lenis({
+    autoRaf: true,
+    autoToggle: true,
+    anchors: true,
+    allowNestedScroll: true,
+    naiveDimensions: true,
+    stopInertiaOnNavigate: true
+  });
+
+(function () {
+  'use strict';
+ 
+  var hamburger  = document.getElementById('nav-hamburger');
+  var mobileMenu = document.getElementById('nav-mobile');
+  var siteNav    = document.getElementById('site-nav');
+ 
+  if (!hamburger || !mobileMenu) return;
+ 
+  /* ── Active nav state ──────────────────────────────────────── */
+  var currentPage = document.body.getAttribute('data-page') || '';
+  document.querySelectorAll('[data-nav]').forEach(function (link) {
+    if (link.getAttribute('data-nav') === currentPage) {
+      link.classList.add('is-active');
+    }
+  });
+ 
+  /* ── Open / Close helpers ──────────────────────────────────── */
+  function openMenu() {
+    mobileMenu.classList.add('is-open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    hamburger.setAttribute('aria-label', 'Close navigation menu');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+  }
+ 
+  function closeMenu() {
+    mobileMenu.classList.remove('is-open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Open navigation menu');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+  }
+ 
+  /* ── Hamburger click ───────────────────────────────────────── */
+  hamburger.addEventListener('click', function (e) {
+    e.stopPropagation();
+    mobileMenu.classList.contains('is-open') ? closeMenu() : openMenu();
+  });
+ 
+  /* ── Close on any mobile link click ───────────────────────── */
+  mobileMenu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+ 
+  /* ── Close on outside click ────────────────────────────────── */
+  document.addEventListener('click', function (e) {
+    if (mobileMenu.classList.contains('is-open') &&
+        !siteNav.contains(e.target) &&
+        !mobileMenu.contains(e.target)) {
+      closeMenu();
+    }
+  });
+ 
+  /* ── Close on Escape ───────────────────────────────────────── */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+      closeMenu();
+      hamburger.focus();
+    }
+  });
+ 
+  /* ── Close on desktop resize ───────────────────────────────── */
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 1024) closeMenu();
+  });
+ 
+  /* ── Scrolled state for nav bg ─────────────────────────────── */
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 40) {
+      siteNav.classList.add('scrolled');
+    } else {
+      siteNav.classList.remove('scrolled');
+    }
+  }, { passive: true });
+ 
+})();
+
+</script>
+</body>

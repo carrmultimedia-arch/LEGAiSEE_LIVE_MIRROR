@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>The Practitioner — LEGAiSEE Business Archaeology</title>
+  <meta name="description" content="John Carr. 33 years of documented operational record. Network broadcast credentials. Institutional clients. The forensic discipline of an archivist with the DNA of a master broadcaster.">
+ 
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/legaisee.css">
+      <link rel="stylesheet" href="legaisee-luxury.css" />
+
+
+  <style>
+    /* ─── PAGE-LEVEL VARIABLES ─── */
+    :root {
+      --obsidian:    #0C0C10;
+      --surface:     #181818;
+      --card:        #141414;
+      --gold:        #C9A961;
+      --gold-dim:    rgba(201, 170, 97, 0.4);
+      --gold-low:    rgba(201,169,97,0.12);
+      --gold-glow:   rgba(201,169,97,0.08);
+      --text-primary: rgba(255,255,255,0.92);
+      --text-body:    rgba(255,255,255,0.72);
+      --text-muted:   rgba(255,255,255,0.62);
+      --nav-height:   72px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 17px; scroll-behavior: smooth; }
+    body {
+      background: var(--obsidian);
+      color: var(--text-body);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV (self-contained — matches LEGAISEE-HEAD-NAV.html pattern) ─── */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      background: rgba(5,5,5,0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(201,169,97,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      z-index: 1000;
+    }
+    .nav-logo a {
+      display: flex; align-items: center;
+      text-decoration: none;
+    }
+    .nav-logo img { width: 160px; flex-shrink: 0; min-width: 120px; }
+
+    .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a[data-nav="practitioner"] { color: var(--gold); }
+    body[data-page="practitioner"] .nav-links a[data-nav="practitioner"] { color: var(--gold); }
+
+    .nav-cta {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-color: var(--obsidian);
+      background: var(--gold);
+      border: none;
+      padding: 0.55rem 1.2rem;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }, border-bottom: "1px solid var(--gold-low);
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--gold);
+      transition: all 0.25s;
+    }
+
+   .nav-mobile {
+    display: none;
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+
+    background: rgba(5,5,5,.97);
+    border-bottom: 1px solid var(--gold-dim);
+
+    padding: 1.5rem 2rem;
+
+    flex-direction: column;
+    gap: 1.2rem;
+
+    z-index: 9999;
+}
+
+.nav-mobile.is-open {
+    display: flex;
+}
+    @media (max-width: 1024px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .site-nav { position: fixed; }
+    }
+    @media (max-width: 768px) {
+      html { font-size: 15.5px; }
+      .site-nav { padding: 0 1.25rem; }
+    }
+
+    /* ─── LAYOUT ─── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    @media (max-width: 768px) { .container { padding: 0 1.25rem; } }
+
+    /* ─── HERO ─── */
+    .practitioner-hero {
+      padding-top: var(--nav-height);
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--obsidian);
+    }
+    .practitioner-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 70% 40%, rgba(201, 170, 97, 0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 20% 80%, rgba(201, 170, 97, 0.02) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      padding: 6rem 0 5rem;
+      width: 100%;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-eyebrow-line {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+    .hero-eyebrow-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .hero-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(2.2rem, 6vw, 4.2rem);
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(0.75rem, 1.8vw, 1rem);
+      font-weight: 400;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-statement {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+      font-weight: 300;
+      color: var(--text-body);
+      line-height: 1.75;
+      max-width: 680px;
+      margin-bottom: 3rem;
+    }
+
+    .hero-credentials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .credential-pill {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border: 1px solid rgba(201,169,97,0.2);
+      padding: 0.4rem 0.9rem;
+    }
+
+    /* ─── SECTION CHROME ─── */
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent 30%);
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .label-line {
+      flex: 1;
+      height: 1px;
+      background: var(--gold-dim);
+    }
+    .label-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    .section-number {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      color: var(--gold-dim);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ─── ERA SECTIONS ─── */
+    .era-section {
+      padding: 7rem 0;
+      position: relative;
+    }
+    .era-section--surface {
+      background: var(--surface);
+    }
+
+    .era-header {
+      margin-bottom: 4rem;
+    }
+    .era-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+    }
+    .era-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ─── RECORD GRID ─── */
+    .record-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .record-grid--3col {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .record-grid--wide {
+      grid-template-columns: 3fr 2fr;
+      gap: 3rem;
+    }
+    @media (max-width: 900px) {
+      .record-grid,
+      .record-grid--3col,
+      .record-grid--wide { grid-template-columns: 1fr; }
+    }
+
+    .record-card {
+      background: var(--card);
+      border: 1px solid rgba(201,169,97,0.1);
+      padding: 2rem;
+    }
+    .record-card--accented {
+      border-top: 2px solid var(--gold);
+    }
+
+    .record-card-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+    .record-card-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(0.85rem, 1.5vw, 1.05rem);
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+    .record-card-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .record-card-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 400;
+      color: var(--text-body);
+      line-height: 1.8;
+    }
+
+    /* ─── PROOF BLOCK (Addy Award, etc.) ─── */
+    .proof-block {
+      border-left: 3px solid var(--gold);
+      padding: 1.5rem 2rem;
+      background: var(--gold-glow);
+      margin: 2rem 0;
+    }
+    .proof-block-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .proof-block-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+    .proof-block-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-body);
+      line-height: 1.75;
+    }
+
+    /* ─── PULL QUOTE ─── */
+    .pull-quote {
+      text-align: center;
+      padding: 5rem 0;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .pull-quote__mark {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 4rem;
+      color: var(--gold-dim);
+      line-height: 0.5;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+    .pull-quote__text {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.5;
+      font-style: italic;
+    }
+    .pull-quote__rule {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 2rem auto 0;
+    }
+
+    /* ─── STAT STRIP ─── */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--gold-dim);
+      border-bottom: 1px solid var(--gold-dim);
+      margin: 3rem 0;
+    }
+    .stat-cell {
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      border-right: 1px solid var(--gold-dim);
+    }
+    .stat-cell:last-child { border-right: none; }
+    .stat-figure {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 400;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .stat-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    @media (max-width: 768px) {
+      .stats-strip { grid-template-columns: 1fr 1fr; }
+      .stat-cell:nth-child(2) { border-right: none; }
+      .stat-cell:nth-child(3) { border-top: 1px solid var(--gold-dim); }
+    }
+
+    /* ─── TIMELINE (vertical) ─── */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0.6rem; bottom: 0;
+      width: 1px;
+      background: var(--gold-dim);
+    }
+    .timeline-item {
+      position: relative;
+      padding-bottom: 2.5rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.3rem;
+      top: 0.55rem;
+      width: 7px; height: 7px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+    .timeline-year {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+    .timeline-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      color: var(--text-body);
+      line-height: 1.75;
+    }
+    .timeline-org {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    /* ─── FIELD NOTE (unresolved / documented) ─── */
+    .field-note {
+      background: rgba(201,169,97,0.04);
+      border: 1px solid rgba(201,169,97,0.12);
+      padding: 1.5rem 2rem;
+      margin-top: 2rem;
+    }
+    .field-note-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .field-note-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    /* ─── ETHICAL FRAMEWORK ─── */
+    .ethics-block {
+      padding: 5rem 0;
+      background: var(--surface);
+    }
+    .ethics-inner {
+      max-width: 820px;
+    }
+    .ethics-body {
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--text-body);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ─── CLOSING INVITATION ─── */
+    .closing-section {
+      padding: 8rem 0 7rem;
+      background: var(--obsidian);
+      position: relative;
+    }
+    .closing-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 0%, rgba(201, 170, 97, 0.3) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .closing-inner {
+      position: relative; z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .closing-headline {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.35;
+      margin-bottom: 1.75rem;
+    }
+    .closing-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--text-body);
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+    }
+    .closing-cta {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--obsidian);
+      background: var(--gold);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .closing-cta:hover { opacity: 0.85; }
+    .closing-note {
+      margin-top: 1.25rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+ /* Mobile section background overrides for practitioner.html */
+  @media (max-width: 1024px) {
+    /* The practitioner hero has a CSS radial-gradient background,
+       no external image ::before. No image override needed.
+       All practitioner visual alignment is in legaisee-luxury.css. */
+ 
+    /* If you later add a hero background image, add its override here:
+    .practitioner-hero::before {
+      filter: brightness(0.40) blur(2px);
+      opacity: 0.22;
+    }
+    */
+  }
+ 
+  /* Note: All visual alignment to site system is in legaisee-luxury.css.
+     The standalone CSS on this page will be overridden by the luxury CSS.
+     No further HTML changes are needed for visual consistency. */
+ 
+    /* ─── FOOTER ─── */
+    .site-footer {
+      padding: 2.5rem 0;
+      border-top: 1px solid rgba(201,169,97,0.1);
+      background: var(--obsidian);
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+    .footer-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+    .footer-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ─── BODY COPY UTIL ─── */
+    p { margin-bottom: 1.2rem; }
+    p:last-child { margin-bottom: 0; }
+    .text-gold { color: var(--gold); }
+    .text-primary { color: var(--text-primary); }
+  </style>
+
+</head>
+
+<body data-page="practitioner">
+
+  <!-- DESKTOP NAV -->
+<nav class="site-nav" id="site-nav">
+ 
+  <!-- Logo -->
+  <div class="nav-logo-wrap">
+    <a href="/index.html">
+      <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAiSEE" class="nav-logo-img">
+    </a>
+  </div>
+
+  <!-- Desktop Links -->
+  <div class="nav-links" id="nav-links">
+    <a href="/index.html"        data-nav="home"">Home</a>
+    <a href="/archaeology.html"  data-nav="archaeology">The Archaeology</a>
+    <a href="/method.html"       data-nav="method">The Method</a>
+    <a href="/serve.html"        data-nav="serve">Who We Serve</a>
+    <a href="/architect.html"    data-nav="architect">The Architect</a>
+    <a href="/practitioner.html" data-nav="practitioner"style="color: var(--gold)";>The Practitioner</a>
+    <a href="/commissions.html"  data-nav="commissions">Commissions</a>
+    <a href="/registry.html"     class="nav-cta" data-nav="registry">Enter the Registry</a>
+  </div>
+ 
+  <!-- Hamburger — visible only on mobile -->
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+ 
+</nav>
+ 
+<!-- MOBILE DRAWER -->
+<div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+  <a href="/index.html"        data-nav="home"style="color: var(--gold);">Home</a>
+  <a href="/archaeology.html"  data-nav="archaeology">The Archaeology</a>
+  <a href="/method.html"       data-nav="method">The Method</a>
+  <a href="/serve.html"        data-nav="serve">Who We Serve</a>
+  <a href="/architect.html"    data-nav="architect">The Architect</a>
+  <a href="/practitioner.html" data-nav="practitioner"style="color: var(--gold)";>The Practitioner</a>
+  <a href="/commissions.html"  data-nav="commissions">Commissions</a>
+  <a href="/registry.html"     data-nav="registry">Enter the Registry</a>
+</div>
+
+
+  <!-- ═══ HERO ═══ -->
+
+  <section class="practitioner-hero">
+    <div class="container">
+      <div class="hero-inner">
+
+
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-line"></span>
+      <span class="hero-eyebrow-text">Institutional Record</span>
+    </div>
+
+    <h1 class="hero-name">John Carr</h1>
+    <p class="hero-title">Founder &amp; Principal · LEGAiSEE</p>
+
+    <p class="hero-statement">
+      The forensic discipline of an archivist with the DNA of a master broadcaster. Thirty-three years of documented operational record — network television, institutional clients, national production scope — applied to a single methodology: excavating what a business has already proved.
+    </p>
+
+    <div class="hero-credentials">
+      <span class="credential-pill">Network Broadcast · 1992–2006</span>
+      <span class="credential-pill">FCC Compliance Certified</span>
+      <span class="credential-pill">Addy Award · AAF</span>
+      <span class="credential-pill">FAA Part 107 Certified</span>
+      <span class="credential-pill">33 Years Continuous Record</span>
+      <span class="credential-pill">22 Years Documented Web Presence</span>
+    </div>
+
+  </div>
+</div>
+
+
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══ STATS STRIP ═══ -->
+
+  <div style="background: var(--surface);">
+    <div class="container">
+      <div class="stats-strip">
+        <div class="stat-cell">
+          <span class="stat-figure">33</span>
+          <span class="stat-label">Years of Operational Record</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-figure">22</span>
+          <span class="stat-label">Years Timestamped Web Presence</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-figure">52</span>
+          <span class="stat-label">Wayback Machine Captures</span>
+        </div>
+        <div class="stat-cell">
+          <span class="stat-figure">3</span>
+          <span class="stat-label">Documented Business Identities</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══ ERA ONE ═══ -->
+
+  <section class="era-section">
+    <div class="container">
+
+
+  <div class="era-header">
+    <div class="section-label">
+      <span class="label-line"></span>
+      <span class="label-text">Era One · 1992–2006</span>
+      <span class="label-line"></span>
+    </div>
+    <h2 class="era-title">The Signal Era</h2>
+    <p class="era-subtitle">Lake Charles, Louisiana · Network Television · The Foundation</p>
+  </div>
+
+  <div class="record-grid--wide record-grid">
+    <div>
+      <p style="font-size:1.05rem; font-weight:300; color:var(--text-body); line-height:1.9; margin-bottom:1.5rem;">
+        The record does not begin at a freelance gig or a production house. It begins at a network television affiliate in 1992 — directing live broadcasts under FCC regulation, where what goes out over the air is permanent and there are no second takes.
+      </p>
+      <p style="font-size:1.05rem; font-weight:300; color:var(--text-body); line-height:1.9; margin-bottom:1.5rem;">
+        Fourteen years across two stations. KPLC-TV, the NBC affiliate, from 1992 to 1998 — Director, Technical Director, Master Control Operator. Then KVHP-TV FOX 29 from 1998 to 2006 — Head Director, Producer, operations crew lead. Live newscasts, specialty programming, promos. Real-time decisions in regulated environments. The discipline required at that level does not come from a course. It is built under operational pressure, repeatedly, until it becomes instinct.
+      </p>
+      <p style="font-size:1.05rem; font-weight:300; color:var(--text-body); line-height:1.9;">
+        Carr Multimedia was founded in November 2000 — while still employed at KVHP. That is not incidental. The practice was built before leaving broadcast. The decision was deliberate.
+      </p>
+
+      <div class="proof-block">
+        <div class="proof-block-label">Adjudicated Excellence · American Advertising Federation</div>
+        <div class="proof-block-title">Addy Award — Television: Local Self Promotion Campaign</div>
+        <div class="proof-block-body">
+          Awarded for the Sunny That Morning Show promotional campaign. Formally adjudicated by the American Advertising Federation. The only independently verified award in the practitioner's record. It predates LEGAiSEE by more than two decades. It remains on the record.
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">Sep 1992 – Aug 1998</div>
+          <div class="timeline-body">
+            <span class="timeline-org">KPLC-TV · NBC Affiliate</span><br>
+            Director / Technical Director / Master Control Operator. Live broadcasts, FCC compliance, operations staff.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">Nov 1998 – Jul 2006</div>
+          <div class="timeline-body">
+            <span class="timeline-org">KVHP-TV · FOX 29</span><br>
+            Head Director / Producer / Technical Director. Live newscasts, specialty shows, promos, operations crew supervision.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">Nov 2000</div>
+          <div class="timeline-body">
+            <span class="timeline-org">Carr Multimedia Digital Creations — Founded</span><br>
+            Founded while still in broadcast. Deliberate. Not reactive.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">Pre-2006</div>
+          <div class="timeline-body">
+            <span class="timeline-org">Addy Award</span><br>
+            American Advertising Federation. Television: Local Self Promotion Campaign. Formally adjudicated.
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:2rem;">
+        <div class="record-card">
+          <div class="record-card-label">Technical Foundation</div>
+          <div class="record-card-body">
+            Sowela Technical Institute — Electronics &amp; Instrumentation. McNeese State University — Music. The technical substrate was built before the broadcast career began. Guitar and piano since the mid-1980s. Multiple bands, live performance, recording, production. The practitioner's fluency in sound — both broadcast signal and acoustic performance — is not incidental to the methodology. It is where pattern recognition begins.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══ PULL QUOTE ═══ -->
+
+  <div style="background: var(--surface);">
+    <div class="container">
+      <div class="pull-quote">
+        <span class="pull-quote__mark">"</span>
+        <p class="pull-quote__text">We don't find your history. We turn it into Unavoidable Logic.</p>
+        <div class="pull-quote__rule"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══ ERA TWO ═══ -->
+
+  <section class="era-section">
+    <div class="container">
+
+
+  <div class="era-header">
+    <div class="section-label">
+      <span class="label-line"></span>
+      <span class="label-text">Era Two · 2006–2020</span>
+      <span class="label-line"></span>
+    </div>
+    <h2 class="era-title">The Build</h2>
+    <p class="era-subtitle">Texas · Institutional Clients · National Production Scope</p>
+  </div>
+
+  <p style="font-size:1.05rem; font-weight:300; color:var(--text-body); line-height:1.9; max-width:820px; margin-bottom:3rem;">
+    Fourteen years of documented client work at institutional scale. The methodology was not theorised during this era — it was applied, across industries, at scope, long before it had a name.
+  </p>
+
+  <div class="record-grid" style="margin-bottom:2.5rem;">
+    <div class="record-card record-card--accented">
+      <div class="record-card-label">Institutional Client</div>
+      <div class="record-card-title">Houston Methodist Hospital</div>
+      <div class="record-card-meta">Houston, TX</div>
+      <div class="record-card-body">Live streams and cinematic brand video for one of the largest hospital systems in the United States. Institutional-tier production at institutional-tier standards.</div>
+    </div>
+
+    <div class="record-card record-card--accented">
+      <div class="record-card-label">Multi-City Live Production</div>
+      <div class="record-card-title">MyCare Medical</div>
+      <div class="record-card-meta">Tampa · Houston · Rio Grande Valley — simultaneously</div>
+      <div class="record-card-body">Multi-location broadcast across three cities in a single production event. The operational complexity of that execution does not happen by accident. It is the result of broadcast-trained systems thinking applied to enterprise production.</div>
+    </div>
+
+    <div class="record-card record-card--accented">
+      <div class="record-card-label">National Production Scope</div>
+      <div class="record-card-title">Texas Flying Legends Museum</div>
+      <div class="record-card-meta">Airshow Circuit · National</div>
+      <div class="record-card-body">Travelled the national airshow circuit with Texas Flying Legends, filming performances across the country. Documentary-grade coverage of a nationally touring operation. The national scope of this work is documented by the circuit itself.</div>
+    </div>
+
+    <div class="record-card record-card--accented">
+      <div class="record-card-label">Multi-Discipline National Production</div>
+      <div class="record-card-title">Music Doing Good</div>
+      <div class="record-card-meta">Maine · Bahamas · Aspen</div>
+      <div class="record-card-body">Front-of-house live sound, multitrack recording, and video production across multiple national and international locations. Running FOH for a nonprofit at this level requires technical fluency across three disciplines simultaneously. The record shows it was done.</div>
+    </div>
+  </div>
+
+  <div class="record-grid--3col record-grid" style="margin-bottom:3rem;">
+    <div class="record-card">
+      <div class="record-card-label">2006–2011</div>
+      <div class="record-card-title">Reel Connection Media</div>
+      <div class="record-card-meta">Spring, TX</div>
+      <div class="record-card-body">Editor, Animator, Videographer, IT Technician. Corporate video, animation, graphics, network management. The technical scope expanded.</div>
+    </div>
+
+    <div class="record-card">
+      <div class="record-card-label">2011–2016</div>
+      <div class="record-card-title">Capital Technologies Inc.</div>
+      <div class="record-card-meta">Houston, TX</div>
+      <div class="record-card-body">Video Producer, Audio Engineer, Technical Coordinator. Pro audio and video for concerts, live events, studio productions, and institutional media.</div>
+    </div>
+
+    <div class="record-card">
+      <div class="record-card-label">2018–2020</div>
+      <div class="record-card-title">DFS Marketing Inc.</div>
+      <div class="record-card-meta">Conroe, TX</div>
+      <div class="record-card-body">Production Manager, Content Creator. Social media, SEO, website management, analytics, live sales events. In-office IT. The full-stack marketing practitioner role.</div>
+    </div>
+  </div>
+
+  <!-- Early adoption row -->
+  <div class="record-grid" style="margin-bottom:2.5rem;">
+    <div class="record-card">
+      <div class="record-card-label">Documented Early Adoption</div>
+      <div class="record-card-title">Drone Operations · 2014</div>
+      <div class="record-card-body">
+        Operational drone work began in 2014 — two full years before the FAA Part 107 regulation took effect in August 2016. FAA Part 107 certification was obtained immediately upon its availability in 2017. Currently operates a fleet of five DJI drones. Early adoption in regulated domains, documented and dated, is a pattern in this record. It is not coincidence.
+      </div>
+    </div>
+
+    <div class="record-card">
+      <div class="record-card-label">Abandoned Asset — Documented</div>
+      <div class="record-card-title">Interactive Video Library</div>
+      <div class="record-card-body">
+        Between approximately 2018 and 2021, a full interactive video demonstration library was built across seven industry verticals: pool cleaning, skin care, legal, home insurance, coffee, chiropractic, and personal training. Branching video paths, embedded lead capture, embedded calls to action. The capability was built before the market understood it. The library likely remains intact. This is the methodology applied to the practitioner's own record: an identified abandoned asset with recoverable value.
+      </div>
+    </div>
+  </div>
+
+  <!-- Discovery Call proof block -->
+  <div class="proof-block">
+    <div class="proof-block-label">Methodology Origin — Pre-2021</div>
+    <div class="proof-block-title">The Discovery Call System</div>
+    <div class="proof-block-body">
+      A structured pre-qualification intake form and discovery call protocol was in documented operational use before LEGAiSEE existed. The language at the time described it as getting "the mundane stuff out of the way." It is the direct operational ancestor of what is now Phase 0 — the Shallow Dig. The methodology predates the name. That is how real methodologies are built.
+    </div>
+  </div>
+
+</div>
+
+
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══ ERA THREE ═══ -->
+
+  <section class="era-section era-section--surface">
+    <div class="container">
+
+
+  <div class="era-header">
+    <div class="section-label">
+      <span class="label-line"></span>
+      <span class="label-text">Era Three · 2020–Present</span>
+      <span class="label-line"></span>
+    </div>
+    <h2 class="era-title">The Archaeology Emerges</h2>
+    <p class="era-subtitle">The Methodology · The Identity Resolution · LEGAiSEE</p>
+  </div>
+
+  <div class="record-grid--wide record-grid">
+    <div>
+      <p style="font-size:1.05rem; font-weight:300; color:var(--text-body); line-height:1.9; margin-bottom:1.5rem;">
+        The pivot to LEGAiSEE is not a crisis response. It is the logical conclusion of twenty-eight years of watching businesses use media incorrectly — spending against fictions, building on assumptions, burying their own proof under opinion.
+      </p>
+      <p style="font-size:1.05rem; font-weight:300; color:var(--text-body); line-height:1.9; margin-bottom:1.5rem;">
+        Fourteen years of controlling what goes out over the air. Another fourteen years watching what that signal built — or failed to build — for institutions of every size. The practitioner was watching a pattern accumulate for two decades before it had a name.
+      </p>
+      <p style="font-size:1.05rem; font-weight:300; color:var(--text-body); line-height:1.9; margin-bottom:1.5rem;">
+        LEGAiSEE is what happens when someone who built that depth of record decides to stop producing content and start excavating the proof that should have been driving it.
+      </p>
+      <p style="font-size:1.05rem; font-weight:300; color:var(--text-body); line-height:1.9; margin-bottom:2rem;">
+        Three business identities are in the documented record. Carr Multimedia Digital Creations. Carr Multimedia — the marketing machine. LEGAiSEE. Each transition is evidenced in archived web captures, dated and retrievable. That progression — from practitioner, to strategist, to archaeologist — is itself a proof of concept. The methodology was tested on the practitioner's own record before it was offered to anyone else.
+      </p>
+
+      <div class="proof-block">
+        <div class="proof-block-label">22 Years · 52 Captures</div>
+        <div class="proof-block-title">Continuous Documented Web Presence — 2004 to Present</div>
+        <div class="proof-block-body">
+          52 Wayback Machine captures from July 28, 2004 through May 2026. A timestamped institutional record that most businesses in any category cannot produce. The practitioner's own web archive is the demonstration of what Business Archaeology can surface — and why the record matters.
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">Jan 2022 – Aug 2022</div>
+          <div class="timeline-body">
+            <span class="timeline-org">WLFT-TV · Baker, Louisiana</span><br>
+            Production Manager, Director, Technical Director. Live shows, virtual sets, motion graphics, streaming. Return to broadcast.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">Pre-2021</div>
+          <div class="timeline-body">
+            <span class="timeline-org">Discovery Call System — Operational</span><br>
+            Pre-qualification intake protocol in documented use. Direct ancestor of Phase 0.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-body">
+            <span class="timeline-org">Final Identity Resolution</span><br>
+            Domain migration from carrmultimedia.com to legaisee.com. WordPress to plain HTML. The methodology formalised.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2025–Present</div>
+          <div class="timeline-body">
+            <span class="timeline-org">LEGAiSEE · Active</span><br>
+            Business archaeology and authority positioning. San Antonio / Austin I-35 corridor. Principals only. The record is open.
+          </div>
+        </div>
+      </div>
+
+      <div class="field-note">
+        <div class="field-note-label">Field Note — Practitioner's Own Record</div>
+        <div class="field-note-body">
+          The excavation of the practitioner's institutional record was conducted using the same methodology applied to client engagements. Not all threads resolved cleanly. The Louisiana DBA filing could not be located in Calcasieu Parish records. The practitioner's original founding entity registration remains unverified. That finding is documented here rather than omitted. The methodology demands it.
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══ ETHICAL FRAMEWORK ═══ -->
+
+  <section class="ethics-block">
+    <div class="container">
+      <div class="ethics-inner">
+
+
+    <div class="section-label" style="margin-bottom:2.5rem;">
+      <span class="label-line"></span>
+      <span class="label-text">Ethical Framework</span>
+      <span class="label-line"></span>
+    </div>
+
+    <p class="ethics-body">
+      Before there was a methodology, there was a document. It was published in the practitioner's official institutional values materials — predating LEGAiSEE by at least a decade. It reads: <em style="color:var(--text-primary);">"A Scout is Trustworthy, Loyal, Helpful, Friendly, Courteous, Kind, Obedient, Cheerful, Thrifty, Brave, Clean and Reverent. Once a Scout, Always a Scout."</em>
+    </p>
+    <p class="ethics-body">
+      That is not a mission statement. It is a documented ethical orientation. It matters here because the methodology requires something that cannot be extracted from process documentation: the willingness to report what the record actually shows, not what the client would prefer it to show.
+    </p>
+    <p class="ethics-body">
+      Business Archaeology does not cherry-pick the cleanest story. It does not suppress an abandoned asset because the client is embarrassed by it. It does not inflate a credential or omit an unresolved thread. The practitioner's own record above contains an unresolved filing and a clearly documented identity evolution that includes a phase called "Rockstar Marketing Machine." Both are in the record because the record is what it is. The methodology applied to clients is applied first to the practitioner. The ethical orientation behind that approach was documented long before the methodology existed.
+    </p>
+
+    <div class="proof-block" style="margin-top:0;">
+      <div class="proof-block-label">The Competitive Moat</div>
+      <div class="proof-block-title">Why Human Verification Is the Product</div>
+      <div class="proof-block-body">
+        The institutional record this methodology produces is worth what it is because a qualified practitioner verified it — not because software generated it. The AI excavates. The practitioner interprets. The client receives a confirmed, documented institutional signal that cannot be replicated by a competitor with different software. The depth of the practitioner's operational record determines the quality of the interpretation. Thirty-three years of documented record is not a marketing claim. It is the substrate the methodology runs on.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══ CLOSING INVITATION ═══ -->
+
+  <section class="closing-section">
+    <div class="container">
+      <div class="closing-inner">
+
+
+    <div class="section-label" style="margin-bottom:2.5rem;">
+      <span class="label-line"></span>
+      <span class="label-text">The Invitation</span>
+      <span class="label-line"></span>
+    </div>
+
+    <h2 class="closing-headline">The practitioner's record is open.<br>The question is whether yours is.</h2>
+
+    <p class="closing-body">
+      Every enterprise of thirty million dollars or more has a record. Most of it is buried — in archived campaigns, abandoned initiatives, operational decisions that shaped the business and were never documented as proof. The methodology exists to surface that record and turn it into something a competitor cannot replicate and a market cannot ignore. Phase 0 is where it begins.
+    </p>
+
+    <a href="/registry.html" class="closing-cta">Enter the Registry</a>
+    <p class="closing-note">Phase 0 · The Shallow Dig · $2,500 · Non-refundable · Principals only</p>
+
+  </div>
+</div>
+
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 4px;">
+        <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAiSEE" style="height: 32px; width: auto;">
+        <div style="font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold);">LEGAiSEE</div>
+      </div>
+      <p class="footer-brand-tagline">Business Archaeology &amp; Authority Systems.<br>We do not build on sand. We bedrock.</p>
+      <div class="micro-label">San Antonio · Austin · The I-35 Corridor</div>
+    </div>
+    <div>
+      <div class="footer-col-title">The Practice</div>
+      <ul class="footer-links">
+        <li><a href="archaeology.html">The Archaeology</a></li>
+        <li><a href="method.html">The Ten Frameworks</a></li>
+        <li><a href="serve.html">Who We Serve</a></li>
+        <li><a href="architect.html">The Architect</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Commissions</div>
+      <ul class="footer-links">
+        <li><a href="commissions.html">The Excavation</a></li>
+        <li><a href="commissions.html">Authority Systems</a></li>
+        <li><a href="commissions.html">The Bedrock Pledge</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">The Registry</div>
+      <ul class="footer-links">
+        <li><a href="registry.html">Request Entry</a></li>
+        <li><a href="registry.html">Current Availability</a></li>
+      </ul>
+      <div class="gate-seal" style="display: inline-flex; margin-top: 28px; padding: 16px 24px;">
+        <span class="seal-line">By Invitation Only</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© LEGAiSEE · Business Archaeology &amp; Authority Systems · All Rights Reserved</div>
+    <div class="footer-seal">The Architect · The Signal · The Bedrock</div>
+  </div>
+</footer>
+
+
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════════════════ -->
+<script>
+  /* ── Scroll reveal ─────────────────────────────── */
+  (function () {
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.10,
+      rootMargin: '0px 0px -44px 0px'
+    });
+
+    reveals.forEach(el => observer.observe(el));
+  })();
+
+  /* ── Mobile menu system ───────────────────────── */
+  (function () {
+    'use strict';
+
+    var hamburger  = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var header     = document.getElementById('site-header');
+
+    if (!hamburger || !mobileMenu) return;
+
+    /* Active nav */
+    var currentPage = document.body.getAttribute('data-page') || '';
+
+    document.querySelectorAll('[data-nav]').forEach(function (link) {
+      if (link.getAttribute('data-nav') === currentPage) {
+        link.classList.add('is-active');
+      }
+    });
+
+    function openMenu() {
+      mobileMenu.classList.add('is-open');
+      hamburger.classList.add('is-active');
+      hamburger.setAttribute('aria-expanded', 'true');
+      mobileMenu.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeMenu() {
+      mobileMenu.classList.remove('is-open');
+      hamburger.classList.remove('is-active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+    }
+
+    hamburger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      mobileMenu.classList.contains('is-open')
+        ? closeMenu()
+        : openMenu();
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('click', function (e) {
+      if (
+        mobileMenu.classList.contains('is-open') &&
+        !header.contains(e.target)
+      ) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+        closeMenu();
+        hamburger.focus();
+      }
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 1024) {
+        closeMenu();
+      }
+    });
+  })();
+
+  /* ── Gem hover tilt ───────────────────────────── */
+  if (window.innerWidth > 1024) {
+    document.querySelectorAll('.gem-frame, .museum-card').forEach(el => {
+
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+
+        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 6;
+        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 6;
+
+        el.style.transform =
+          `perspective(800px) rotateY(${x}deg) rotateX(${-y}deg) translateY(-6px)`;
+      });
+
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = '';
+      });
+
+    });
+  }
+</script>
+
+<!-- Lenis Smooth Scroll -->
+<script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
+
+<script>
+  new Lenis({
+    autoRaf: true,
+    autoToggle: true,
+    anchors: true,
+    allowNestedScroll: true,
+    naiveDimensions: true,
+    stopInertiaOnNavigate: true
+  });
+
+
+(function () {
+  'use strict';
+ 
+  var hamburger  = document.getElementById('nav-hamburger');
+  var mobileMenu = document.getElementById('nav-mobile');
+  var siteNav    = document.getElementById('site-nav');
+ 
+  if (!hamburger || !mobileMenu) return;
+ 
+  /* ── Active nav state ──────────────────────────────────────── */
+  var currentPage = document.body.getAttribute('data-page') || '';
+  document.querySelectorAll('[data-nav]').forEach(function (link) {
+    if (link.getAttribute('data-nav') === currentPage) {
+      link.classList.add('is-active');
+    }
+  });
+ 
+  /* ── Open / Close helpers ──────────────────────────────────── */
+  function openMenu() {
+    mobileMenu.classList.add('is-open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    hamburger.setAttribute('aria-label', 'Close navigation menu');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+  }
+ 
+  function closeMenu() {
+    mobileMenu.classList.remove('is-open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Open navigation menu');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+  }
+ 
+  /* ── Hamburger click ───────────────────────────────────────── */
+  hamburger.addEventListener('click', function (e) {
+    e.stopPropagation();
+    mobileMenu.classList.contains('is-open') ? closeMenu() : openMenu();
+  });
+ 
+  /* ── Close on any mobile link click ───────────────────────── */
+  mobileMenu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+ 
+  /* ── Close on outside click ────────────────────────────────── */
+  document.addEventListener('click', function (e) {
+    if (mobileMenu.classList.contains('is-open') &&
+        !siteNav.contains(e.target) &&
+        !mobileMenu.contains(e.target)) {
+      closeMenu();
+    }
+  });
+ 
+  /* ── Close on Escape ───────────────────────────────────────── */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+      closeMenu();
+      hamburger.focus();
+    }
+  });
+ 
+  /* ── Close on desktop resize ───────────────────────────────── */
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 1024) closeMenu();
+  });
+ 
+  /* ── Scrolled state for nav bg ─────────────────────────────── */
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 40) {
+      siteNav.classList.add('scrolled');
+    } else {
+      siteNav.classList.remove('scrolled');
+    }
+  }, { passive: true });
+ 
+})();
+
+
+
+</script>
+
+</body>
+</html>

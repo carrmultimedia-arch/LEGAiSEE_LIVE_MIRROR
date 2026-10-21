@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LVOS Animation Lab</title>
+
+  <link rel="stylesheet" href="../../assets/css/lvos-core.css">
+  <link rel="stylesheet" href="../../assets/css/lvos-motion.css">
+</head>
+
+<body>
+
+<header class="system-header">
+  <div>ANIMATION LAB</div>
+  <div>MOTION TIMELINE + EASING RESPONSE</div>
+</header>
+
+<section class="scene-container">
+
+  <div class="material-stage">
+    <div class="content-stack">
+
+      <div id="boxA" class="motion-box">A</div>
+      <div id="boxB" class="motion-box">B</div>
+      <div id="boxC" class="motion-box">C</div>
+
+    </div>
+  </div>
+
+</section>
+
+<script src="../../assets/js/lvos-motion.js"></script>
+<script src="../../assets/js/lvos-loader.js"></script>
+
+<script>
+window.addEventListener("scroll", () => {
+
+  const r = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+
+  const ease = r * r * (3 - 2 * r); // smoothstep
+
+  const a = document.getElementById("boxA");
+  const b = document.getElementById("boxB");
+  const c = document.getElementById("boxC");
+
+  a.style.transform = `translateX(${ease * 200}px)`;
+  b.style.transform = `translateY(${ease * 150}px)`;
+  c.style.opacity = 1 - ease;
+
+});
+</script>
+
+</body>
+</html>

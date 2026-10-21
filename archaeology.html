@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="LEGAiSEE Business Archaeology — Forensic excavation of institutional memory. Narrative Drift, The Lindy Effect, and the restoration of what once made you unmistakable.">
+  <title>The Archaeology — LEGAiSEE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+ 
+    <!--<link rel="stylesheet" href="legaisee-master.css"-->
+    <link rel="stylesheet" href="legaisee.css">
+    <link rel="stylesheet" href="legaisee-luxury.css" />
+
+    
+  
+  <style>
+    /* ── PAGE-SPECIFIC: ARCHAEOLOGY.HTML ─────────────────────────── */
+
+    /* PAGE HERO — Dig site with vertical light */
+    .arch-hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 60px;
+      padding: 0 90px 100px;
+      overflow: hidden;
+      background: var(--obsidian);
+    }
+    .arch-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('http://www.legaisee.com/Images/DigWfloor1.png');
+      background-size: cover;
+      background-position: center 30%;
+      background-attachment: fixed; /* mobile: scroll via CSS */
+      opacity: 0.22;
+      z-index: 0;
+    }
+    .arch-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(5,5,5,0.75) 0%, rgba(5,5,5,0.3) 40%, rgba(5,5,5,0.85) 100%),
+        linear-gradient(to right, rgba(5,5,5,0.6) 0%, transparent 60%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .arch-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+    }
+    .arch-hero-label {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      letter-spacing: 0.40em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      display: block;
+      margin-bottom: 32px;
+      padding-top: 120px;
+    }
+
+    /* DRIFT DIAGRAM — Visual representation of narrative drift */
+    .drift-diagram {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid rgba(201,169,97,0.10);
+      margin: 64px 0;
+    }
+    .drift-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 120px;
+      align-items: stretch;
+      border-bottom: 1px solid rgba(201,169,97,0.07);
+    }
+    .drift-row:last-child { border-bottom: none; }
+    .drift-era {
+      padding: 28px 24px;
+      background: rgba(201,169,97,0.04);
+      border-right: 1px solid rgba(201,169,97,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      text-align: center;
+    }
+    .drift-event {
+      padding: 28px 40px;
+      font-family: var(--font-ui);
+      font-size: 1rem;
+      color: var(--silver);
+      line-height: 1.70;
+      display: flex;
+      align-items: center;
+    }
+    .drift-signal {
+      padding: 28px 24px;
+      border-left: 1px solid rgba(201,169,97,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .drift-signal.strong { color: var(--gold); }
+    .drift-signal.fading { color: var(--pewter); }
+    .drift-signal.lost   { color: rgba(106,106,106,0.4); }
+
+    /* LINDY EFFECT — Two-part visual proof */
+    .lindy-proof {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: rgba(201,169,97,0.05);
+      border: 1px solid rgba(201,169,97,0.10);
+      margin: 48px 0;
+    }
+    .lindy-cell {
+      padding: 52px 48px;
+      background: var(--obsidian-light);
+      position: relative;
+      overflow: hidden;
+    }
+    .lindy-cell::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .lindy-cell.truth::before  { background: var(--gold); }
+    .lindy-cell.modern::before { background: var(--graphite); }
+    .lindy-cell:hover::before  { opacity: 1; }
+    .lindy-cell-label {
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .lindy-cell.truth  .lindy-cell-label { color: var(--gold); }
+    .lindy-cell.modern .lindy-cell-label { color: var(--pewter); }
+    .lindy-cell-title {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 1.6vw, 1.3rem);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 18px;
+    }
+    .lindy-cell.truth  .lindy-cell-title { color: var(--platinum); }
+    .lindy-cell.modern .lindy-cell-title { color: var(--pewter); }
+
+    /* COST LEDGER — Revenue leak visual */
+    .cost-ledger {
+      background: var(--obsidian-mid);
+      border: 1px solid rgba(201,169,97,0.12);
+      overflow: hidden;
+    }
+    .ledger-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      background: rgba(201,169,97,0.04);
+      border-bottom: 1px solid rgba(201,169,97,0.10);
+      font-family: var(--font-ui);
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+    }
+    .ledger-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      padding: 22px 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+    .ledger-row:last-child { border-bottom: none; }
+    .ledger-row:hover { background: rgba(201,169,97,0.02); }
+    .ledger-item {
+      font-family: var(--font-ui);
+      font-size: 1.02rem;
+      color: var(--silver);
+      line-height: 1.6;
+    }
+    .ledger-cost {
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .ledger-cost.high   { color: rgba(201,169,97,0.4); }
+    .ledger-cost.medium { color: rgba(201,169,97,0.25); }
+
+    /* EXCAVATION STAGES — Horizontal timeline */
+    .excavation-timeline {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .excavation-timeline::before {
+      content: '';
+      position: absolute;
+      left: 28px; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--gold), rgba(201,169,97,0.08));
+    }
+    .excavation-step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 40px;
+      padding: 40px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      align-items: start;
+    }
+    .excavation-step:last-child { border-bottom: none; }
+    .excavation-node {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--obsidian-mid);
+      border: 1px solid rgba(201,169,97,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      transition: all 0.4s ease;
+    }
+    .excavation-step:hover .excavation-node {
+      background: rgba(201,169,97,0.08);
+      border-color: var(--gold);
+      box-shadow: 0 0 20px rgba(201,169,97,0.10);
+    }
+    .excavation-body {}
+    .excavation-title {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+    }
+    .excavation-desc {
+      font-family: var(--font-ui);
+      font-size: 1.02rem;
+      color: var(--silver);
+      line-height: 1.75;
+    }
+    .excavation-gem {
+      margin-top: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .excavation-gem-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold-dim);
+      flex-shrink: 0;
+    }
+    .excavation-gem-label {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+    }
+
+    /* GOLDEN ERA FRAME */
+    .golden-era-frame {
+      background: linear-gradient(135deg, var(--charcoal) 0%, var(--obsidian-mid) 100%);
+      border: 1px solid rgba(201,169,97,0.15);
+      padding: 72px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .golden-era-frame::before {
+      content: 'GOLDEN ERA';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) rotate(-8deg);
+      font-family: var(--font-display);
+      font-size: 8vw;
+      font-weight: 700;
+      color: rgba(201,169,97,0.025);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: 0.12em;
+    }
+    .golden-era-frame::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+      opacity: 0.6;
+    }
+
+    /* PULL QUOTE — Large italic editorial */
+    .pull-quote {
+      font-family: var(--font-ui);
+      font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+      font-style: italic;
+      color: var(--platinum);
+      line-height: 1.62;
+      padding: 52px 0;
+      border-top: 1px solid rgba(201,169,97,0.12);
+      border-bottom: 1px solid rgba(201,169,97,0.12);
+      margin: 60px 0;
+      text-align: center;
+    }
+    .pull-quote em { color: var(--gold); font-style: normal; }
+
+    /* ARCHAEOLOGY CTA section bg */
+    .arch-cta-section {
+      position: relative;
+      overflow: hidden;
+    }
+    .arch-cta-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('http://www.legaisee.com/Images/LibraryMain.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; /* mobile: scroll via CSS */
+      opacity: 0.12;
+      z-index: 0;
+    }
+    .arch-cta-section > * { position: relative; z-index: 1; }
+/* ── CSS to add to archaeology.html <style> block ── */
+  .excavation-discovery-link {
+    display: block;
+    margin-top: 44px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(201,169,97,0.06);
+    font-family: var(--font-ui);
+    font-size: 0.56rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(201,169,97,0.13);
+    text-align: center;
+    text-decoration: none;
+    transition: color 0.6s ease;
+  }
+  .excavation-discovery-link:hover {
+    color: rgba(201,169,97,0.55);
+  }
+ 
+  /* Mobile section background overrides — adjust values as needed */
+  @media (max-width: 1024px) {
+    .arch-hero::before {
+      filter: brightness(0.45) blur(2px);
+      opacity: 0.25;
+    }
+    .arch-cta-section::before {
+      filter: brightness(0.40) blur(3px);
+      opacity: 0.20;
+    }
+    /* Inline bg divs inside lux-sections (the absolute-positioned layers) */
+    /* legaisee-luxury.css sets filter: brightness(0.5) as a default.
+       Override any specific section here if you need different values: */
+    /* Example: .lux-section:nth-child(3) [style*="background-image"] {
+         filter: brightness(0.35) blur(2px) !important;
+       } */
+  }
+ 
+ 
+═══════════════════════════════════════════════════════════
+2. ARCHITECT.HTML
+═══════════════════════════════════════════════════════════
+ 
+CHANGE A — Remove broken CSS link:
+  DELETE: <link rel="stylesheet" href="legaisee-global-fixes.css">
+ 
+CHANGE B — Add luxury CSS:
+  ADD: <link rel="stylesheet" href="legaisee-luxury.css" />
+ 
+CHANGE C — Add to the page's existing <style> block:
+ 
+  /* Mobile section background overrides for architect.html */
+  @media (max-width: 1024px) {
+    .architect-hero::before {
+      filter: brightness(0.40) blur(2px);
+      opacity: 0.22;
+    }
+    .silence-section::before {
+      filter: brightness(0.38) blur(3px);
+      opacity: 0.18;
+    }
+    .architect-cta::before {
+      filter: brightness(0.35) blur(3px);
+      opacity: 0.20;
+    }
+    /* Section 1 inline bg (LibraryMain.png overlay div) */
+    .lux-section [style*="LibraryMain"] {
+      filter: brightness(0.40) blur(2px) !important;
+    }
+  }
+ 
+    /* Responsive overrides for this page */
+    @media (max-width: 900px) 
+    {
+      .arch-hero {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        gap: 40px;
+        padding: 120px 40px 60px;
+      }
+      .arch-hero > div[style] { width: 100%; max-width: 460px; }
+    }
+    @media (max-width: 768px) 
+    {
+      .arch-hero { padding: 120px 28px 60px; min-height: auto; }
+      .drift-row { grid-template-columns: 80px 1fr; }
+      .drift-signal { display: none; }
+      .lindy-proof { grid-template-columns: 1fr; }
+      .golden-era-frame { padding: 48px 32px; }
+      .excavation-step { grid-template-columns: 44px 1fr; gap: 24px; }
+      .ledger-row { grid-template-columns: 1fr; gap: 8px; }
+    }
+  </style>
+</head>
+
+<body>
+
+ <!-- DESKTOP NAV -->
+<nav class="site-nav" id="site-nav">
+ 
+  <!-- Logo -->
+  <div class="nav-logo-wrap">
+    <a href="/index.html">
+      <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAiSEE" class="nav-logo-img">
+    </a>
+  </div>
+
+  <!-- Desktop Links -->
+  <div class="nav-links" id="nav-links">
+    <a href="/index.html"        data-nav="home">Home</a>
+    <a href="/archaeology.html"  data-nav="archaeology"style="color: var(--gold);">The Archaeology</a>
+    <a href="/method.html"       data-nav="method">The Method</a>
+    <a href="/serve.html"        data-nav="serve">Who We Serve</a>
+    <a href="/architect.html"    data-nav="architect">The Architect</a>
+    <a href="/practitioner.html" data-nav="practitioner">The Practitioner</a>
+    <a href="/career.html"       data-nav="career">Career</a>
+    <a href="/commissions.html"  data-nav="commissions">Commissions</a>
+    <a href="/registry.html"     class="nav-cta" data-nav="home">Enter the Registry</a>
+  </div>
+ 
+  <!-- Hamburger — visible only on mobile -->
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+ 
+</nav>
+ 
+<!-- MOBILE DRAWER -->
+<div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+  <a href="/index.html"        data-nav="home">Home</a>
+  <a href="/archaeology.html"  data-nav="archaeology"style="color: var(--gold);">The Archaeology</a>
+  <a href="/method.html"       data-nav="method">The Method</a>
+  <a href="/serve.html"        data-nav="serve">Who We Serve</a>
+  <a href="/architect.html"    data-nav="architect">The Architect</a>
+  <a href="/practitioner.html" data-nav="practitioner">The Practitioner</a>
+  <a href="/career.html"       data-nav="career">Career</a>
+  <a href="/commissions.html"  data-nav="commissions">Commissions</a>
+  <a href="/registry.html"     data-nav="registry">Enter the Registry</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE HERO — The Dig Site
+     Background: DigWfloor1.png (parallax)
+     ═══════════════════════════════════════════════ -->
+<section class="arch-hero">
+
+  <div class="arch-hero-content">
+    <span class="arch-hero-label">Business Archaeology &nbsp;·&nbsp; The Practice</span>
+
+    <h1 class="d-xl reveal" style="margin-bottom: 36px; line-height: 1.05;">
+      The Forensic<br>
+      <span class="text-gold">Excavation</span>
+    </h1>
+
+    <p class="b-xl reveal reveal-d1" style="max-width: 640px; margin-bottom: 52px; color: var(--silver);">
+      Most businesses of this scale do not decline because of a lack of talent.
+      They drift. And the cost of that drift, for a Texas Sized Business, is catastrophic.
+    </p>
+
+    <div class="btn-group reveal reveal-d2">
+      <a href="registry.html" class="btn btn-gold">Enter the Registry</a>
+      <a href="method.html" class="btn btn-outline-gold">The Method</a>
+    </div>
+  </div>
+
+  <!-- GEMSTONE PLACEHOLDER: Stage 0 — Natural Habitat -->
+  <div style="position: relative; z-index: 2; max-width: 340px; width: 100%; flex-shrink: 0; align-self: flex-end;">
+    <div class="gem-frame reveal reveal-right" style="position: relative; aspect-ratio: 3/4;">
+      <div class="gem-placeholder-box" style="min-height: 380px;">
+        <span class="gem-catalog">CAT-HAB-010</span>
+        <div class="gem-stage-name">Natural Habitat</div>
+        <div class="gem-stage-desc">The gem in the earth — before anyone has named its value</div>
+      </div>
+      <div class="gem-caption-bar">
+        <div class="gem-caption-title">Stage 0 — Formation</div>
+        <div class="gem-caption-sub">Your institutional memory · undiscovered</div>
+      </div>
+    </div>
+  </div>
+
+</section><!-- /arch-hero -->
+
+
+<!-- ═══════════════════════════════════════════════
+     AUTHORITY STRIP
+     ═══════════════════════════════════════════════ -->
+<div class="authority-strip">
+  <div class="authority-item"><div class="authority-value">10+</div><div class="authority-label">Years Minimum Operating History</div></div>
+  <div class="authority-item"><div class="authority-value">$30M+</div><div class="authority-label">Revenue Threshold</div></div>
+  <div class="authority-item"><div class="authority-value">3</div><div class="authority-label">Generations Served</div></div>
+  <div class="authority-item"><div class="authority-value">1</div><div class="authority-label">Corridor · San Antonio to Austin</div></div>
+  <div class="authority-item"><div class="authority-value">0</div><div class="authority-label">Guesswork. Ever.</div></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 1: WHAT NARRATIVE DRIFT ACTUALLY IS
+     Background: DigWfloor1.png (continues as fixed bg)
+     ═══════════════════════════════════════════════ -->
+<section class="lux-section" style="background: var(--obsidian); padding-top: 140px; padding-bottom: 80px; position: relative; overflow: hidden;">
+  <div style="position: absolute; inset: 0; background-image: url('http://www.legaisee.com/Images/DigWfloor1.png'); background-size: cover; background-position: center; background-attachment: fixed; /* mobile: scroll via CSS */ opacity: 0.09; z-index: 0;"></div>
+
+  <div class="section-inner" style="position: relative; z-index: 1;">
+
+    <div class="two-col" style="align-items: start; gap: 88px;">
+
+      <!-- LEFT: The diagnosis -->
+      <div>
+        <div class="prestige-label reveal" style="justify-content: flex-start;">
+          The Condition · Diagnosed
+        </div>
+        <h2 class="d-lg reveal" style="margin-bottom: 36px;">
+          Narrative Drift<br>Is Not a<br>Marketing Problem
+        </h2>
+        <div class="divider-gold short reveal" style="margin-left: 0; margin-right: auto; margin-bottom: 44px;"></div>
+
+        <p class="b-xl reveal" style="color: var(--platinum); margin-bottom: 30px;">
+          Over years of expansion, generational shifts, turnover, and the arrival of new
+          decision-makers, the original <strong class="text-gold">"Golden Era" logic</strong> is
+          replaced by reactive marketing and tactical noise.
+        </p>
+
+        <p class="b-lg reveal reveal-d1" style="margin-bottom: 24px;">
+          Legacy files disappear. The high-leverage assets that built your empire are buried
+          under layers of well-meaning but misaligned strategy. The people who knew why things
+          worked — who carried that institutional memory in their heads — are gone.
+        </p>
+
+        <p class="b-lg reveal reveal-d2" style="margin-bottom: 24px;">
+          What remains is a business that still operates, still generates revenue, still employs
+          people — but no longer moves with the
+          <strong class="text-gold">absolute clarity it once possessed</strong>.
+          Decisions land differently now. Softer. Less certain. The market feels it before you do.
+        </p>
+
+        <p class="b-lg reveal reveal-d2" style="margin-bottom: 44px;">
+          It is a structural blind spot. And like all structural blind spots, it will
+          <strong class="text-gold">leak revenue</strong> and
+          <strong class="text-gold">erode your pricing power</strong> until someone with
+          forensic discipline maps the gap and closes it.
+        </p>
+
+        <!-- Signal block -->
+        <div class="signal-block reveal reveal-d3">
+          <div class="signal-label">The Precise Definition</div>
+          <p style="font-family: var(--font-ui); font-size: 1.15rem; font-style: italic; color: var(--gold-bright); line-height: 1.82;">
+            Narrative Drift is what happens when no one is assigned to protect the narrative.
+            It is not catastrophic. It is not dramatic. It is quiet — and that is what makes
+            it dangerous.
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT: The drift diagram + gemstone -->
+      <div>
+
+        <!-- Drift Diagram — timeline of erosion -->
+        <div class="reveal reveal-right" style="margin-bottom: 32px;">
+          <div class="micro-label" style="margin-bottom: 20px;">The Anatomy of Drift</div>
+          <div class="drift-diagram">
+            <div class="drift-row">
+              <div class="drift-era">The Founding Era</div>
+              <div class="drift-event">The original logic is in place. Messaging is precise. The market recognizes you on contact.</div>
+              <div class="drift-signal strong">Signal · Pure</div>
+            </div>
+            <div class="drift-row">
+              <div class="drift-era">Year 5–10</div>
+              <div class="drift-event">Growth brings new hires. New hires bring new frameworks. The original logic begins to dilute.</div>
+              <div class="drift-signal fading">Signal · Fading</div>
+            </div>
+            <div class="drift-row">
+              <div class="drift-era">Generational Shift</div>
+              <div class="drift-event">Leadership changes. The institutional memory walks out the door. A rebrand smooths the edges that made you distinct.</div>
+              <div class="drift-signal fading" style="color: rgba(106,106,106,0.6);">Signal · Muffled</div>
+            </div>
+            <div class="drift-row">
+              <div class="drift-era">Digital Pivot</div>
+              <div class="drift-event">The analog wisdom is discarded in favor of trends. The high-leverage tactics that built the empire are forgotten entirely.</div>
+              <div class="drift-signal lost">Signal · Lost</div>
+            </div>
+            <div class="drift-row">
+              <div class="drift-era">Today</div>
+              <div class="drift-event">Revenue continues. The enterprise operates. But no one can name what made it unmistakable — because no one remembers.</div>
+              <div class="drift-signal lost">Cost · Unseen</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GEMSTONE PLACEHOLDER: Stage 0 — Habitat (buried, unfound) -->
+        <div class="gem-frame reveal reveal-d1 reveal-right" style="position: relative; aspect-ratio: 16/9;">
+          <div class="gem-placeholder-box" style="min-height: 220px; background: linear-gradient(135deg, #0d1a0a 0%, #050505 100%);">
+            <span class="gem-catalog">CAT-HAB-011</span>
+            <div class="gem-stage-name">Buried</div>
+            <div class="gem-stage-desc">Still there. Entirely intact. Waiting to be found.</div>
+          </div>
+          <div class="gem-caption-bar">
+            <div class="gem-caption-title">Your Competitive Advantage</div>
+            <div class="gem-caption-sub">Not gone · Not obsolete · Quietly forgotten</div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /two-col -->
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 2: THE COST OF DRIFT
+     Revenue leak visual ledger
+     ═══════════════════════════════════════════════ -->
+<section class="lux-section" style="overflow: hidden; background: var(--obsidian-light); padding-top: 100px; padding-bottom: 100px;">
+  <div class="section-inner">
+
+    <div class="asym-grid-b reveal" style="align-items: start; gap: 80px;">
+
+      <!-- LEFT: The cost ledger -->
+      <div>
+        <div class="prestige-label reveal" style="justify-content: flex-start;">
+          For a Texas Sized Business
+        </div>
+        <h2 class="d-lg reveal" style="margin-bottom: 36px;">
+          What Narrative<br>Drift Actually Costs
+        </h2>
+        <div class="divider-gold short reveal" style="margin-left: 0; margin-right: auto; margin-bottom: 44px;"></div>
+
+        <p class="b-lg reveal reveal-d1" style="margin-bottom: 36px;">
+          The cost of losing institutional memory is not a line item on a balance sheet.
+          It is structural — invisible until you map it, and expensive once you do.
+        </p>
+
+        <div class="cost-ledger reveal reveal-d2">
+          <div class="ledger-header">
+            <span>The Drift Ledger</span>
+            <span>Impact Classification</span>
+          </div>
+          <div class="ledger-row">
+            <div class="ledger-item">Eroded pricing power — the market no longer accepts your premium without question</div>
+            <div class="ledger-cost high">Catastrophic</div>
+          </div>
+          <div class="ledger-row">
+            <div class="ledger-item">Structural blind spots exploited by competitors who remembered what you forgot</div>
+            <div class="ledger-cost high">Catastrophic</div>
+          </div>
+          <div class="ledger-row">
+            <div class="ledger-item">Marketing spend directed at reactive tactics rather than proven high-leverage channels</div>
+            <div class="ledger-cost medium">Significant</div>
+          </div>
+          <div class="ledger-row">
+            <div class="ledger-item">New decision-makers operating without access to the Golden Era logic that produced your best years</div>
+            <div class="ledger-cost medium">Significant</div>
+          </div>
+          <div class="ledger-row">
+            <div class="ledger-item">Legacy files, campaign artifacts, and ROI data destroyed, lost, or inaccessible</div>
+            <div class="ledger-cost medium">Recoverable</div>
+          </div>
+          <div class="ledger-row">
+            <div class="ledger-item">The specific vocabulary, rhythm, and evidence style that made your voice unreplicable — abandoned</div>
+            <div class="ledger-cost high">Recoverable</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Stats + gem -->
+      <div style="display: flex; flex-direction: column; gap: 24px; padding-top: 100px;">
+
+        <div class="museum-card reveal reveal-right" style="text-align: center; padding: 48px 36px;">
+          <div class="stat-num">$30M+</div>
+          <div class="stat-label">Annual Revenue Threshold Where Drift Becomes Catastrophic</div>
+        </div>
+
+        <div class="exhibit-card reveal reveal-d1 reveal-right">
+          <div class="micro-label" style="margin-bottom: 16px;">The Recovery</div>
+          <p class="b-lg" style="color: var(--platinum); margin-bottom: 16px;">
+            <em>This is an archaeological dig worth millions.</em>
+          </p>
+          <p class="b-md">
+            The absolute clarity it once possessed is still there — buried under layers of
+            well-meaning but misaligned strategy. We return it to that purity.
+          </p>
+        </div>
+
+        <!-- GEMSTONE: Raw stone — value not yet seen -->
+        <div class="gem-frame reveal reveal-d2 reveal-right" style="position: relative; aspect-ratio: 4/3;">
+          <div class="gem-placeholder-box" style="min-height: 240px; background: linear-gradient(180deg, #1a1005 0%, #050505 100%);">
+            <span class="gem-catalog">CAT-RAW-010</span>
+            <div class="gem-stage-name">Raw Stone</div>
+            <div class="gem-stage-desc">Pulled from the earth — value not yet visible to the untrained eye</div>
+          </div>
+          <div class="gem-caption-bar">
+            <div class="gem-caption-title">Stage 1 — Discovery</div>
+            <div class="gem-caption-sub">The excavation begins here</div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /asym-grid-b -->
+
+  </div>
+</section><!-- /cost of drift -->
+
+
+<!-- ═══════════════════════════════════════════════
+     PULL QUOTE — Editorial break
+     ═══════════════════════════════════════════════ -->
+<div style="background: var(--obsidian); padding: 0 90px;">
+  <div style="max-width: 1320px; margin: 0 auto;">
+    <div class="pull-quote reveal">
+      "For a Texas Sized Business, the cost of losing institutional memory is catastrophic —
+      resulting in <em>structural blind spots</em> that leak revenue and erode your pricing power
+      before you ever notice they exist."
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 3: THE LINDY EFFECT
+     Why your oldest assets are your most valuable
+     Background: Preforming1.png (parallax)
+     ═══════════════════════════════════════════════ -->
+<section class="lux-section" style="background: var(--obsidian); padding-top: 120px; padding-bottom: 120px; position: relative; overflow: hidden;">
+  <div style="position: absolute; inset: 0; background-image: url('http://www.legaisee.com/Images/Preforming1.png'); background-size: cover; background-position: center; background-attachment: fixed; /* mobile: scroll via CSS */ opacity: 0.13; z-index: 0;"></div>
+
+  <div class="section-inner" style="position: relative; z-index: 1;">
+
+    <div style="text-align: center; max-width: 820px; margin: 0 auto 80px;">
+      <div class="prestige-label reveal" style="justify-content: center;">The Governing Principle</div>
+      <h2 class="d-lg reveal" style="margin-bottom: 28px;">The Lindy Effect</h2>
+      <p class="b-xl reveal reveal-d1" style="color: var(--platinum);">
+        What has survived longest is most likely to survive into the future.
+        Your oldest, most durable competitive advantages are not obsolete.
+        They are <strong class="text-gold">quietly forgotten</strong>.
+      </p>
+    </div>
+
+    <!-- Lindy Proof — Two-cell grid -->
+    <div class="lindy-proof reveal reveal-d2" style="margin-bottom: 72px;">
+
+      <div class="lindy-cell truth">
+        <span class="lindy-cell-label">The Lindy Truth</span>
+        <div class="lindy-cell-title">What Has Survived Deserves Your Trust</div>
+        <p class="b-md" style="margin-bottom: 20px;">
+          A tactic that generated revenue in 1988, 1996, 2003, and 2011 is not a relic.
+          It is a <strong style="color: var(--silver);">proven instrument</strong> — one that has demonstrated
+          its effectiveness across multiple market cycles, multiple economic conditions, and multiple
+          competitive landscapes.
+        </p>
+        <p class="b-md">
+          The question is not whether it still works. The question is whether you still know how to use it —
+          and whether anyone on your current team has ever seen it deployed.
+        </p>
+      </div>
+
+      <div class="lindy-cell modern">
+        <span class="lindy-cell-label">The Modern Mistake</span>
+        <div class="lindy-cell-title">Discarding What Built You</div>
+        <p class="b-md" style="margin-bottom: 20px;">
+          Every decade produces a new wave of marketing consultants who insist that everything before them
+          is obsolete. Direct mail is dead. Radio is finished. Long-form copy doesn't convert.
+          Personal selling is inefficient.
+        </p>
+        <p class="b-md">
+          The enterprises that abandoned their proven channels to chase these claims paid for it —
+          in eroded market position, in lost pricing power, in the quiet, persistent recognition
+          that their competitors now carry in their place.
+        </p>
+      </div>
+
+    </div><!-- /lindy-proof -->
+
+    <!-- The Lindy implication — Three insights -->
+    <div class="three-col">
+
+      <div class="phase-card reveal">
+        <span class="phase-ghost">1</span>
+        <div class="eyebrow" style="margin-bottom: 16px;">The Age of an Asset</div>
+        <h4 class="d-sm" style="color: var(--gold-light); margin-bottom: 16px; font-size: 1.05rem;">Older Means More Proven</h4>
+        <p class="b-md">
+          Your Golden Era marketing materials, your original direct response campaigns, your founding-era
+          positioning statements — these are not nostalgic curiosities. They are a library of
+          proven instruments that survived their first market tests. They merit excavation, not disposal.
+        </p>
+      </div>
+
+      <div class="phase-card reveal reveal-d2">
+        <span class="phase-ghost">2</span>
+        <div class="eyebrow" style="margin-bottom: 16px;">The Competitor's Blind Spot</div>
+        <h4 class="d-sm" style="color: var(--gold-light); margin-bottom: 16px; font-size: 1.05rem;">Their Abandonment Is Your Opportunity</h4>
+        <p class="b-md">
+          What your competitors have forgotten about themselves is as valuable as what you have forgotten
+          about yourself. The abandoned tactics that once built their market position are now dormant —
+          available for reclamation by whoever maps them first.
+        </p>
+      </div>
+
+      <div class="phase-card reveal reveal-d3">
+        <span class="phase-ghost">3</span>
+        <div class="eyebrow" style="margin-bottom: 16px;">The Forensic Standard</div>
+        <h4 class="d-sm" style="color: var(--gold-light); margin-bottom: 16px; font-size: 1.05rem;">Documentation, Not Memory</h4>
+        <p class="b-md">
+          Memory is fallible. Documents are not. The Lindy Effect demands
+          <strong class="text-gold-l">forensic documentation</strong> — not fond recollections, but
+          verified records, dated materials, and contemporaneous artifacts that can be cross-referenced
+          against financial performance. This is the standard we apply.
+        </p>
+      </div>
+
+    </div><!-- /three-col -->
+
+  </div>
+</section><!-- /lindy -->
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 4: THE GOLDEN ERA
+     What it was — and how to find it again
+     ═══════════════════════════════════════════════ -->
+<section class="lux-section" style="overflow: hidden; background: var(--obsidian-light); padding-top: 140px; padding-bottom: 80px;">
+  <div class="section-inner">
+
+    <div class="asym-grid-a" style="align-items: start; gap: 72px;">
+
+      <!-- LEFT: The Golden Era concept -->
+      <div>
+        <div class="prestige-label reveal" style="justify-content: flex-start;">
+          What We Are Looking For
+        </div>
+        <h2 class="d-lg reveal" style="margin-bottom: 36px;">
+          The Golden Era
+        </h2>
+        <div class="divider-gold short reveal" style="margin-left: 0; margin-right: auto; margin-bottom: 44px;"></div>
+
+        <p class="b-xl reveal" style="color: var(--platinum); margin-bottom: 30px;">
+          Every enterprise of consequence has a Golden Era — a specific window of time when
+          the strategic structure was optimal, the messaging was precise, and the market
+          responded with a reliability that felt almost automatic.
+        </p>
+
+        <p class="b-lg reveal reveal-d1" style="margin-bottom: 24px;">
+          It may have lasted three years or thirty. It may have been built on a specific campaign,
+          a particular channel combination, a positioning statement that no one wrote down because
+          everyone just knew it. It may have been the work of a single person who understood something
+          about your market that no one else has articulated since.
+        </p>
+
+        <p class="b-lg reveal reveal-d2" style="margin-bottom: 24px;">
+          The Golden Era is not gone. The logic that produced it is not obsolete. What is missing
+          is the <strong class="text-gold">forensic documentation</strong> — the disciplined,
+          rigorous reconstruction of exactly what worked, exactly why it worked, and exactly
+          what conditions need to be recreated to produce the same result.
+        </p>
+
+        <p class="b-lg reveal reveal-d2" style="margin-bottom: 44px;">
+          That reconstruction is our work. It requires a methodology equal to its complexity —
+          not a weekend workshop, not a brand audit, not a fresh set of creative eyes. It requires
+          archaeology. It requires the architecture of persuasion, the mathematics of attention,
+          and the physics of trust — all applied with forensic precision to your specific history.
+        </p>
+
+        <!-- The Golden Era Frame -->
+        <div class="golden-era-frame reveal reveal-d3">
+          <p style="font-family: var(--font-ui); font-size: clamp(1.1rem, 1.8vw, 1.5rem); font-style: italic; color: var(--gold-bright); line-height: 1.88; position: relative; z-index: 1; margin-bottom: 28px;">
+            "Decisions landed cleaner back then. Your market position was undisputed, and your name
+            carried a specific, unreplicable weight that your competitors could not copy,
+            no matter how closely they watched."
+          </p>
+          <div class="divider-gold short" style="margin-left: 0; margin-right: auto; margin-bottom: 20px;"></div>
+          <div class="micro-label" style="position: relative; z-index: 1;">
+            The Condition — Precisely Diagnosed
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Excavation stages + gem image -->
+      <div style="padding-top: 80px;">
+
+        <!-- Excavation timeline — vertical steps -->
+        <div class="micro-label reveal" style="margin-bottom: 28px;">The Excavation Process</div>
+        <div class="excavation-timeline reveal reveal-d1">
+
+          <div class="excavation-step">
+            <div class="excavation-node">I</div>
+            <div class="excavation-body">
+              <div class="excavation-title">Map the Terrain</div>
+              <div class="excavation-desc">
+                We begin with the full topography of your institutional history — 40+ channel categories,
+                eight primary classes of evidence, and the complete arc of your enterprise from founding to present.
+              </div>
+              <div class="excavation-gem">
+                <div class="excavation-gem-dot"></div>
+                <div class="excavation-gem-label">Gem Stage: Natural Habitat</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="excavation-step">
+            <div class="excavation-node">II</div>
+            <div class="excavation-body">
+              <div class="excavation-title">Excavate the Artifacts</div>
+              <div class="excavation-desc">
+                Every document, every file, every campaign artifact, every oral history. We recover
+                the physical and digital residue of your Golden Era — classified, catalogued, and graded
+                against our Hierarchy of Truth.
+              </div>
+              <div class="excavation-gem">
+                <div class="excavation-gem-dot"></div>
+                <div class="excavation-gem-label">Gem Stage: Raw Stone from Earth</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="excavation-step">
+            <div class="excavation-node">III</div>
+            <div class="excavation-body">
+              <div class="excavation-title">Triangulate &amp; Verify</div>
+              <div class="excavation-desc">
+                No significant finding stands on a single source. We apply the 3-Source Rule to every claim —
+                cross-referencing documents, witnesses, and third-party records until the picture achieves
+                the confidence level it deserves.
+              </div>
+              <div class="excavation-gem">
+                <div class="excavation-gem-dot"></div>
+                <div class="excavation-gem-label">Gem Stage: Cut &amp; Shaped</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="excavation-step">
+            <div class="excavation-node">IV</div>
+            <div class="excavation-body">
+              <div class="excavation-title">Reconstruct the Signal</div>
+              <div class="excavation-desc">
+                The Lapidary phase. Raw findings are cut and shaped into the strategic instruments of
+                reconstruction — authority systems, content engines, and the Master Operations Doctrine
+                that governs their deployment.
+              </div>
+              <div class="excavation-gem">
+                <div class="excavation-gem-dot"></div>
+                <div class="excavation-gem-label">Gem Stage: Mounted · Displayed</div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /excavation-timeline -->
+
+ <!-- discovery link — very faint, reveals only on hover -->
+  <a href="comparison.html"
+     class="excavation-discovery-link"
+     title="Excavation Archive">
+    ◆ &nbsp; Excavation Archive &nbsp; ·&nbsp; The Complete Parallel
+  </a>
+
+        <!-- GEMSTONE: Gem in its case — the recovered asset -->
+        <div class="gem-frame reveal reveal-d2 reveal-right" style="margin-top: 24px; position: relative; aspect-ratio: 4/3;">
+          <div class="gem-placeholder-box" style="min-height: 260px; background: linear-gradient(135deg, #0a0a1a 0%, #050505 100%);">
+            <span class="gem-catalog">CAT-CUT-011</span>
+            <div class="gem-stage-name">The Lapidary</div>
+            <div class="gem-stage-desc">Raw findings faceted into strategic instruments — the reconstruction begins</div>
+          </div>
+          <div class="gem-caption-bar">
+            <div class="gem-caption-title">Stage 2 — Refinement</div>
+            <div class="gem-caption-sub">Precision · Verification · Clarity</div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /asym-grid-a -->
+
+  </div>
+</section><!-- /golden era -->
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 5: WHO QUALIFIES
+     The client criteria — not everyone
+     ═══════════════════════════════════════════════ -->
+<section class="lux-section" style="overflow: hidden; background: var(--obsidian); padding-top: 120px; padding-bottom: 120px;">
+  <div class="section-inner">
+
+    <div style="text-align: center; max-width: 820px; margin: 0 auto 80px;">
+      <div class="prestige-label reveal" style="justify-content: center;">Qualification</div>
+      <h2 class="d-lg reveal" style="margin-bottom: 24px;">
+        Not Every Enterprise<br>Has a Dig Site Worth Opening
+      </h2>
+      <p class="b-lg reveal reveal-d1">
+        The archaeology is most productive when the enterprise has accumulated enough history
+        to contain a Golden Era worth recovering. These are our working criteria.
+      </p>
+    </div>
+
+    <!-- Four qualification cards — slight asymmetric offset on card 2 -->
+    <div class="four-col">
+
+      <div class="exhibit-card reveal">
+        <div class="eyebrow">Criterion I</div>
+        <h4 class="d-sm" style="color: var(--gold-light); font-size: 1rem; margin-bottom: 16px;">Operating History</h4>
+        <p class="b-md">
+          Five to ten years minimum. Long enough to have accumulated institutional memory,
+          short enough that the people who built it may still be reachable for interview.
+          Generationally owned enterprises receive priority consideration.
+        </p>
+      </div>
+
+      <div class="exhibit-card reveal reveal-d1" style="margin-top: 40px;">
+        <div class="eyebrow">Criterion II</div>
+        <h4 class="d-sm" style="color: var(--gold-light); font-size: 1rem; margin-bottom: 16px;">Revenue Scale</h4>
+        <p class="b-md">
+          The $30M+ Giants. Enterprises operating at a scale where Narrative Drift produces
+          measurable, material impact on revenue and pricing power — and where the recovery
+          justifies the forensic investment.
+        </p>
+      </div>
+
+      <div class="exhibit-card reveal reveal-d2">
+        <div class="eyebrow">Criterion III</div>
+        <h4 class="d-sm" style="color: var(--gold-light); font-size: 1rem; margin-bottom: 16px;">Geographic Presence</h4>
+        <p class="b-md">
+          San Antonio, Austin, and the I-35 corridor between them. We serve the enterprises
+          that built this region — that have operated here long enough to have accumulated
+          the kind of history that matters.
+        </p>
+      </div>
+
+      <div class="exhibit-card reveal reveal-d3" style="margin-top: 24px;">
+        <div class="eyebrow">Criterion IV</div>
+        <h4 class="d-sm" style="color: var(--gold-light); font-size: 1rem; margin-bottom: 16px;">Leadership Readiness</h4>
+        <p class="b-md">
+          A willingness to look back before you look forward. The restoration requires access —
+          to archives, to people, to the honest assessment of what has changed since the
+          enterprise was at its most precise.
+        </p>
+      </div>
+
+    </div><!-- /four-col -->
+
+  </div>
+</section><!-- /qualifies -->
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 6: THE ARCHAEOLOGY CTA
+     Background: LibraryMain.png (parallax)
+     ═══════════════════════════════════════════════ -->
+<section class="arch-cta-section lux-section" style="overflow: hidden; background: var(--obsidian-mid); padding-top: 140px; padding-bottom: 140px;">
+  <div class="section-inner">
+
+    <div class="two-col" style="align-items: center; gap: 88px;">
+
+      <!-- LEFT: Museum Display gem — the promise -->
+      <div>
+        <!-- GEMSTONE: Mounted specimen — the result of the work -->
+        <div class="gem-frame reveal reveal-left" style="position: relative; aspect-ratio: 1; border-radius: 24px; overflow: hidden; max-width: 460px;">
+          <div class="gem-placeholder-box" style="min-height: 420px; border-radius: 24px; border: none; background: linear-gradient(135deg, #1a1200 0%, #050505 100%);">
+            <span class="gem-catalog">CAT-MNT-011</span>
+            <div class="gem-stage-name">Mounted</div>
+            <div class="gem-stage-desc">The recovered asset · set in its case · ready for the museum floor</div>
+          </div>
+          <div class="gem-caption-bar">
+            <div class="gem-caption-title">Stage 3 — The Setting</div>
+            <div class="gem-caption-sub">Your authority · secured · undeniable</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: CTA copy -->
+      <div>
+        <div class="prestige-label reveal" style="justify-content: flex-start;">
+          The Next Step
+        </div>
+        <h2 class="d-lg reveal" style="margin-bottom: 36px;">
+          Begin the<br>Excavation
+        </h2>
+        <div class="divider-gold short reveal" style="margin-left: 0; margin-right: auto; margin-bottom: 44px;"></div>
+
+        <p class="b-xl reveal" style="color: var(--platinum); margin-bottom: 28px;">
+          The Ten Interlocking Frameworks that govern our methodology are designed to recover
+          exactly what has been lost — and to reconstruct it with the forensic precision that
+          a Texas Sized Business deserves.
+        </p>
+
+        <p class="b-lg reveal reveal-d1" style="margin-bottom: 44px;">
+          The work unfolds in a natural order. It cannot be shortcut. But it can be begun —
+          with a single conversation, conducted in the same spirit as this page: directly,
+          honestly, and without noise.
+        </p>
+
+        <div class="signal-block reveal reveal-d2" style="margin-bottom: 48px;">
+          <div class="signal-label">Limited Availability</div>
+          <p style="font-family: var(--font-ui); font-size: 1.1rem; color: var(--silver); line-height: 1.8;">
+            We work with a maximum of three clients at any given time. This constraint ensures
+            museum-quality research and bespoke system architecture for every engagement.
+            The Private Registry determines priority of access.
+          </p>
+        </div>
+
+        <div class="btn-group reveal reveal-d3">
+          <a href="method.html" class="btn btn-gold">Study the Ten Frameworks</a>
+          <a href="registry.html" class="btn btn-outline-gold">Enter the Registry</a>
+        </div>
+
+        <div class="gate-seal reveal reveal-d4" style="margin-top: 36px; display: inline-flex;">
+          <span class="seal-line">Three Clients Maximum</span>
+          <span class="seal-line">Private Registry</span>
+        </div>
+      </div>
+
+    </div><!-- /two-col -->
+
+  </div>
+</section><!-- /cta -->
+
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 4px;">
+        <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAiSEE" style="height: 32px; width: auto;">
+        <div style="font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold);"></div>
+      </div>
+      <p class="footer-brand-tagline">
+        Business Archaeology &amp; Authority Systems.<br>
+        We do not build on sand. We bedrock.
+      </p>
+      <div class="micro-label">San Antonio · Austin · The I-35 Corridor</div>
+    </div>
+    <div>
+      <div class="footer-col-title">The Practice</div>
+      <ul class="footer-links">
+        <li><a href="archaeology.html">The Archaeology</a></li>
+        <li><a href="method.html">The Ten Frameworks</a></li>
+        <li><a href="serve.html">Who We Serve</a></li>
+        <li><a href="architect.html">The Architect</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Commissions</div>
+      <ul class="footer-links">
+        <li><a href="commissions.html">The Excavation</a></li>
+        <li><a href="commissions.html">Authority Systems</a></li>
+        <li><a href="commissions.html">The Bedrock Pledge</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">The Registry</div>
+      <ul class="footer-links">
+        <li><a href="registry.html">Request Entry</a></li>
+        <li><a href="registry.html">Current Availability</a></li>
+      </ul>
+      <div class="gate-seal" style="display: inline-flex; margin-top: 28px; padding: 16px 24px;">
+        <span class="seal-line">By Invitation Only</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© LEGAiSEE · Business Archaeology &amp; Authority Systems · All Rights Reserved</div>
+    <div class="footer-seal">The Signal, Restored</div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════════════════ -->
+<script>
+  /* ── Scroll reveal ─────────────────────────────── */
+  (function () {
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.10,
+      rootMargin: '0px 0px -44px 0px'
+    });
+
+    reveals.forEach(el => observer.observe(el));
+  })();
+
+
+  /* ── Gem hover tilt ───────────────────────────── */
+  if (window.innerWidth > 1024) {
+    document.querySelectorAll('.gem-frame, .museum-card').forEach(el => {
+
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+
+        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 6;
+        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 6;
+
+        el.style.transform =
+          `perspective(800px) rotateY(${x}deg) rotateX(${-y}deg) translateY(-6px)`;
+      });
+
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = '';
+      });
+
+    });
+  }
+</script>
+
+<!-- Lenis Smooth Scroll -->
+<script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
+
+<script>
+  new Lenis({
+    autoRaf: true,
+    autoToggle: true,
+    anchors: true,
+    allowNestedScroll: true,
+    naiveDimensions: true,
+    stopInertiaOnNavigate: true
+  });
+
+ 
+
+(function () {
+  'use strict';
+ 
+  var hamburger  = document.getElementById('nav-hamburger');
+  var mobileMenu = document.getElementById('nav-mobile');
+  var siteNav    = document.getElementById('site-nav');
+ 
+  if (!hamburger || !mobileMenu) return;
+ 
+  /* ── Active nav state ──────────────────────────────────────── */
+  var currentPage = document.body.getAttribute('data-page') || '';
+  document.querySelectorAll('[data-nav]').forEach(function (link) {
+    if (link.getAttribute('data-nav') === currentPage) {
+      link.classList.add('is-active');
+    }
+  });
+ 
+  /* ── Open / Close helpers ──────────────────────────────────── */
+  function openMenu() {
+    mobileMenu.classList.add('is-open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    hamburger.setAttribute('aria-label', 'Close navigation menu');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+  }
+ 
+  function closeMenu() {
+    mobileMenu.classList.remove('is-open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Open navigation menu');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+  }
+ 
+  /* ── Hamburger click ───────────────────────────────────────── */
+  hamburger.addEventListener('click', function (e) {
+    e.stopPropagation();
+    mobileMenu.classList.contains('is-open') ? closeMenu() : openMenu();
+  });
+ 
+  /* ── Close on any mobile link click ───────────────────────── */
+  mobileMenu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+ 
+  /* ── Close on outside click ────────────────────────────────── */
+  document.addEventListener('click', function (e) {
+    if (mobileMenu.classList.contains('is-open') &&
+        !siteNav.contains(e.target) &&
+        !mobileMenu.contains(e.target)) {
+      closeMenu();
+    }
+  });
+ 
+  /* ── Close on Escape ───────────────────────────────────────── */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+      closeMenu();
+      hamburger.focus();
+    }
+  });
+ 
+  /* ── Close on desktop resize ───────────────────────────────── */
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 1024) closeMenu();
+  });
+ 
+  /* ── Scrolled state for nav bg ─────────────────────────────── */
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 40) {
+      siteNav.classList.add('scrolled');
+    } else {
+      siteNav.classList.remove('scrolled');
+    }
+  }, { passive: true });
+ 
+})();
+
+ 
+
+</script>
+</body>
+</html>

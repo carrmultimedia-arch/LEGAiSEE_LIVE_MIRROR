@@ -1,0 +1,249 @@
+/* ═══════════════════════════════════════════════════════════════════
+   LEGAISEE — INDEX.HTML LIGHTING LAYER  v1
+   A standalone addon. Link AFTER legaisee-master.css and AFTER the
+   page's own embedded <style> block, so these rules can rely on
+   normal cascade order rather than !important warfare:
+
+     <link rel="stylesheet" href="legaisee-master.css">
+     <style> ...index.html's existing embedded styles... </style>
+     <link rel="stylesheet" href="index-lighting.css">
+
+   ───────────────────────────────────────────────────────────────────
+   THE RULE THIS FILE FOLLOWS (confirmed with the client before
+   building — do not deviate from this without re-confirming):
+
+   1. ONE soft radial glow per section, never more. Each section also
+      keeps a plain dark/charcoal base — the glow is a light source
+      IN the room, not a wash over the whole room.
+
+   2. Glow placement is decided by CONTENT, not by a fixed rotating
+      pattern:
+        - Symmetric/centered content → glow centered, usually behind
+          the focal element (a CTA, a headline, a seal).
+        - Asymmetric content (text one side, image/card the other)
+          → glow sits behind the image/card side, so the text side
+          stays high-contrast dark and reads cleanly.
+        - A bottom-centered CTA → glow sits bottom-center, behind
+          the button, to pull the eye down to it.
+        - An even grid/row with no asymmetry → glow stays calm,
+          wide, and centered — present but not directional.
+
+   3. Adjacent sections should hand off sensibly — if this section's
+      glow sits on the right, the next section's glow should not
+      jump to the opposite extreme without a reason; let it travel
+      (right → right or right → center → left) like one light
+      source moving with the scroll, not teleporting.
+
+   4. Hue is locked to two options ONLY: warm gold (museum spotlight)
+      or soft pearl-white (gallery track lighting). Never both in the
+      same section. Never any other hue.
+
+   5. Footer is always flat black/charcoal, no glow.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── CORRECTED v2 ──────────────────────────────────────────────
+     Two real bugs fixed here:
+     1. Hue was sitting at 41.5° which, blended at low alpha over
+        near-black, perceptually drifts toward yellow-green. Pulled
+        down to a deeper amber (~31°) which survives the low-opacity
+        blend and reads as warm gold instead.
+     2. Ellipse radii were declared at 50-70% per axis, which at
+        typical 800-1200px section heights produces a glow that
+        covers most of the element, not a corner hint. True 1/6-area
+        coverage (a soft glow that occupies roughly a sixth of the
+        card/section, like a single museum spotlight hitting one
+        corner) needs radii in the 22-26% range, not 50-70%, plus a
+        much lower peak alpha (0.05-0.07, not 0.13-0.16) so it lifts
+        the background slightly rather than recoloring it. ────── */
+  --glow-gold:      rgba(201, 146, 88, 0.07);
+  --glow-gold-soft: rgba(201, 146, 88, 0.045);
+  --glow-pearl:      rgba(242, 235, 220, 0.06);
+  --glow-pearl-soft: rgba(242, 235, 220, 0.035);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   IMPLEMENTATION NOTE — read before linking this file
+   ═══════════════════════════════════════════════════════════════════
+   Four of index.html's nine sections have no unique class (they're
+   all `<section class="lux-section" style="...">`), so they can't be
+   targeted by class name alone, and sibling-counting selectors like
+   nth-of-type don't work here either (they count ALL <section> tags
+   on the page, not position relative to another element — that's a
+   mistake I made in an earlier draft of this file and caught before
+   sending it).
+
+   The reliable fix is one small HTML edit: add a `data-light="..."`
+   attribute to each of those four unmarked <section> tags. This is
+   explicit, won't silently break if a section gets reordered or a
+   new section gets inserted later, and is easy to verify by eye.
+
+   Add these exact attributes to index.html (no other HTML changes
+   needed):
+
+     SECTION 4 (Archaeology intro, "we do not create marketing"):
+       <section class="lux-section" data-light="4" style="...">
+
+     SECTION 5 (Gemstone Journey, 5-card row):
+       <section class="lux-section" data-light="5" style="...">
+
+     SECTION 6 (Bedrock Pledge):
+       <section class="lux-section" data-light="6" style="...">
+
+     SECTION 7 (Ten Frameworks):
+       <section class="lux-section" data-light="7" style="...">
+
+   Sections 1, 2, 3, 8 (mounted specimen — needs one too, see below),
+   and 9 already have unique classes and are targeted directly.
+   Section 8 also needs data-light="8" since it shares the unmarked
+   pattern.
+   ═══════════════════════════════════════════════════════════════════ */
+
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION 1 — HERO (.hero-vault)
+   Symmetric/centered: seal ring, headline, centered CTA group,
+   bottom-center scroll hint. Glow sits top-center behind the seal
+   and headline — soft gold, like a single spotlight from directly
+   above the vault entrance — fading to near-black by the lower
+   third so the scroll-hint reads as the dark path forward.
+   ═══════════════════════════════════════════════════════════════════ */
+.hero-vault {
+  background:
+    radial-gradient(ellipse 26% 22% at 50% 16%, var(--glow-gold) 0%, transparent 78%),
+    var(--obsidian);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION 2 — VELVET ROPE (.velvet-rope-section)
+   Left-aligned label + prose, with a .signal-block (gold left-border
+   accent quote) sitting lower in the section. Glow sits bottom-left,
+   behind the signal-block, warm gold — picks up the same hue as the
+   block's own border so the block reads as genuinely lit, not just
+   outlined. Top of section stays dark, continuing the hero's fade.
+   ═══════════════════════════════════════════════════════════════════ */
+.velvet-rope-section {
+  background:
+    radial-gradient(ellipse 25% 24% at 16% 88%, var(--glow-gold) 0%, transparent 76%),
+    var(--obsidian);
+}
+
+/* Authority strip — five even stat cells, no asymmetry. Calm, flat,
+   no directional glow; just a slightly lighter charcoal table the
+   numbers sit on. */
+.authority-strip {
+  background: var(--charcoal);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION 3 — THESIS REVEAL (.thesis-reveal)
+   Text-heavy column on the LEFT (the dense Narrative Drift copy +
+   a signal-block), gem-image and museum-card offset to the RIGHT.
+   Glow sits behind the right-side visual stack so the left text
+   stays on clean, high-contrast dark. Soft pearl-white here, not
+   gold — this section is "the diagnosis," cooler and more clinical
+   than the warm invitation tone of section 2.
+   ═══════════════════════════════════════════════════════════════════ */
+.thesis-reveal {
+  background:
+    radial-gradient(ellipse 24% 26% at 84% 36%, var(--glow-pearl) 0%, transparent 76%),
+    var(--obsidian-light);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION 4 — ARCHAEOLOGY INTRO  [data-light="4"]
+   Mirror of Section 3: images now on the LEFT, dense copy on the
+   RIGHT. Glow flips to the left side, continuing the light's
+   right-to-left travel from Section 3. Back to warm gold — this
+   section states the practice's actual philosophy, the emotional
+   register returns to warm.
+   ═══════════════════════════════════════════════════════════════════ */
+section[data-light="4"] {
+  background:
+    radial-gradient(ellipse 24% 26% at 14% 42%, var(--glow-gold) 0%, transparent 76%),
+    var(--obsidian);
+}
+
+/* Ticker strip — thin, even, no glow. Stays as default charcoal. */
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION 5 — GEMSTONE JOURNEY  [data-light="5"]  (5-card even row)
+   No asymmetry in an even grid. Calm, wide, centered glow, soft
+   pearl-white — introduces a new visual idea (the whole journey)
+   rather than directing the eye to one side. Positioned high in
+   the section since the cards themselves run full-width below.
+   ═══════════════════════════════════════════════════════════════════ */
+section[data-light="5"] {
+  background:
+    radial-gradient(ellipse 26% 20% at 50% 10%, var(--glow-pearl-soft) 0%, transparent 78%),
+    var(--obsidian-mid);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION 6 — BEDROCK PLEDGE  [data-light="6"]
+   Three centered cards, then a centered .pledge-box below holding
+   the emotional payoff quote. Glow centered, weighted toward
+   bottom-center behind the pledge-box — warm gold, since the pledge
+   text itself is the section's gold-bright highlight color already.
+   ═══════════════════════════════════════════════════════════════════ */
+section[data-light="6"] {
+  background:
+    radial-gradient(ellipse 25% 23% at 50% 84%, var(--glow-gold) 0%, transparent 77%),
+    var(--obsidian);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION 7 — TEN FRAMEWORKS  [data-light="7"]
+   Centered intro + even 5-col tile grid (no asymmetry — calm top
+   glow), THEN a two-col preview lower in the same section: gem-image
+   LEFT, prose RIGHT. Because this is one continuous section element
+   with two different needs, the glow is placed for the lower,
+   image-left preview (the stronger compositional need), softened
+   so it doesn't fight the calm tile grid above it. Continues the
+   "left-side, warm gold" language from Section 4, since both are
+   methodology content.
+   ═══════════════════════════════════════════════════════════════════ */
+section[data-light="7"] {
+  background:
+    radial-gradient(ellipse 22% 26% at 12% 68%, var(--glow-gold-soft) 0%, transparent 75%),
+    var(--obsidian-light);
+}
+
+/* Geography strip — single calm band, no asymmetry, stays flat. */
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION 8 — MOUNTED SPECIMEN  [data-light="8"]
+   Text LEFT, squircle gem-case + quote frame RIGHT. Same logic as
+   Section 3: glow behind the right-side visual, text-left stays
+   clean and dark. Warm gold — this section is the confident close
+   of the case-for-the-work, before the final CTA.
+   ═══════════════════════════════════════════════════════════════════ */
+section[data-light="8"] {
+  background:
+    radial-gradient(ellipse 24% 25% at 86% 46%, var(--glow-gold) 0%, transparent 76%),
+    var(--obsidian);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION 9 — FINAL CTA (.final-cta)
+   Centered quote, centered gem-display, centered CTA button group.
+   Glow sits bottom-center, directly behind the button group, to
+   pull the eye down to "Enter the Private Registry" — the single
+   most important click on the page. Warmest, brightest gold on
+   the page, since this is the destination the whole scroll built
+   toward.
+   ═══════════════════════════════════════════════════════════════════ */
+.final-cta {
+  background:
+    radial-gradient(ellipse 25% 23% at 50% 80%, var(--glow-gold) 0%, transparent 76%),
+    var(--obsidian);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   FOOTER — flat black, no glow, per rule.
+   ═══════════════════════════════════════════════════════════════════ */
+.site-footer {
+  background: var(--charcoal);
+}
+

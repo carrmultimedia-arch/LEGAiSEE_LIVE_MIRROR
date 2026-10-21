@@ -1,0 +1,111 @@
+/* ==========================================================
+   LVOS V2
+   LIGHT ENGINE
+========================================================== */
+
+/* LIGHT VARIABLES */
+
+:root{
+
+    --light-intensity-low: 0.15;
+    --light-intensity-mid: 0.35;
+    --light-intensity-high: 0.6;
+
+    --specular-soft: rgba(255,255,255,.08);
+    --specular-mid: rgba(255,255,255,.14);
+    --specular-strong: rgba(255,255,255,.22);
+
+    --gold-glow: rgba(216,185,106,.25);
+}
+
+/* LIGHT BASE CLASS */
+
+.light{
+
+    position:relative;
+}
+
+/* GLOBAL HIGHLIGHT LAYER */
+
+.light::before{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+
+        radial-gradient(circle at 30% 20%,
+            rgba(255,255,255,var(--light-intensity-low)),
+            transparent 60%),
+
+        radial-gradient(circle at 70% 40%,
+            rgba(255,255,255,var(--light-intensity-mid)),
+            transparent 65%);
+}
+
+/* GOLD ACCENT LIGHT */
+
+.light-gold::after{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+
+        radial-gradient(circle at 50% 50%,
+            var(--gold-glow),
+            transparent 70%);
+}
+
+/* SPECULAR SURFACE RESPONSE */
+
+.specular{
+
+    position:relative;
+    overflow:hidden;
+}
+
+.specular::after{
+
+    content:"";
+
+    position:absolute;
+    inset:-50%;
+
+    background:linear-gradient(
+        120deg,
+        transparent 40%,
+        var(--specular-soft) 50%,
+        transparent 60%
+    );
+
+    transform:translateX(-100%);
+    animation:specularSweep 6s ease-in-out infinite;
+}
+
+@keyframes specularSweep{
+
+    0%{transform:translateX(-100%);}
+    50%{transform:translateX(100%);}
+    100%{transform:translateX(100%);}
+}
+
+/* LIGHT HOVER RESPONSE */
+
+.light-hover{
+
+    transition:filter var(--motion-normal) var(--ease-out);
+}
+
+.light-hover:hover{
+
+    filter:brightness(1.15) contrast(1.05);
+}

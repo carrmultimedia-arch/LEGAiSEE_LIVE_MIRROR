@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="LEGAiSEE — Who We Serve. Texas Sized Businesses, generationally owned enterprises, and the $30M+ Giants of the San Antonio/Austin I-35 Corridor.">
+  <title>Who We Serve — LEGAiSEE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css">
+  
+  <!--<link rel="stylesheet" href="legaisee-master.css"-->
+    <link rel="stylesheet" href="legaisee.css">
+    <link rel="stylesheet" href="legaisee-luxury.css" />
+  
+  <style>
+        
+    /* ── PAGE-SPECIFIC: SERVE.HTML ───────────────────────────────── */
+
+    /* PAGE HERO */
+    .serve-hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      padding: 140px 90px 100px;
+      overflow: hidden;
+      background: var(--obsidian);
+    }
+    .serve-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('http://www.legaisee.com/Images/AtelierObsidian.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; /* mobile: scroll via CSS */
+      opacity: 0.22;
+      z-index: 0;
+    }
+    .serve-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to right, rgba(5,5,5,0.92) 0%, rgba(5,5,5,0.55) 55%, rgba(5,5,5,0.80) 100%),
+        linear-gradient(to bottom, rgba(5,5,5,0.55) 0%, transparent 30%, rgba(5,5,5,0.80) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .serve-hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1320px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* CORRIDOR MAP — Visual I-35 representation */
+    .corridor-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+    .corridor-city {
+      display: grid;
+      grid-template-columns: 1fr 56px 1fr;
+      align-items: center;
+      gap: 0;
+    }
+    .corridor-city-name {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      padding: 32px 0;
+    }
+    .corridor-city-name.right { text-align: right; }
+    .corridor-city-sub {
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+      font-style: italic;
+      color: var(--pewter);
+      display: block;
+      margin-top: 6px;
+    }
+    .corridor-spine {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .corridor-dot {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      background: var(--obsidian);
+      position: relative;
+      z-index: 2;
+      flex-shrink: 0;
+    }
+    .corridor-dot.active { background: rgba(201,169,97,0.2); box-shadow: 0 0 16px rgba(201,169,97,0.3); }
+    .corridor-line {
+      width: 1px;
+      flex: 1;
+      background: linear-gradient(to bottom, var(--gold-dim), rgba(201,169,97,0.2));
+      min-height: 80px;
+    }
+    .corridor-mid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+      gap: 8px;
+    }
+    .corridor-mid-label {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      white-space: nowrap;
+    }
+    .corridor-badge {
+      background: rgba(201,169,97,0.07);
+      border: 1px solid rgba(201,169,97,0.20);
+      padding: 10px 18px;
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    /* CLIENT PROFILE CARDS — three archetypes */
+    .archetype-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: rgba(201,169,97,0.06);
+      border: 1px solid rgba(201,169,97,0.10);
+    }
+    .archetype-card {
+      background: var(--obsidian-light);
+      padding: 56px 44px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: all 0.5s var(--ease-silk);
+    }
+    .archetype-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .archetype-card:hover { background: var(--obsidian-mid); }
+    .archetype-card:hover::before { opacity: 1; }
+    .archetype-roman {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      color: rgba(201,169,97,0.08);
+      line-height: 1;
+      transition: color 0.4s ease;
+    }
+    .archetype-card:hover .archetype-roman { color: rgba(201,169,97,0.18); }
+    .archetype-type {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gold-light);
+      line-height: 1.2;
+    }
+    .archetype-threshold {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      border: 1px solid rgba(201,169,97,0.18);
+      padding: 6px 14px;
+      align-self: flex-start;
+    }
+    .archetype-desc {
+      font-family: var(--font-ui);
+      font-size: 1rem;
+      color: var(--silver);
+      line-height: 1.78;
+    }
+    .archetype-qualifiers {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .archetype-qualifiers li {
+      font-family: var(--font-ui);
+      font-size: 0.95rem;
+      color: var(--pewter);
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .archetype-qualifiers li::before {
+      content: '◆';
+      position: absolute;
+      left: 0; top: 4px;
+      color: var(--gold-dim);
+      font-size: 0.5rem;
+    }
+
+    /* INDUSTRY GRID */
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .industry-card {
+      background: var(--obsidian-light);
+      border: 1px solid rgba(201,169,97,0.08);
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s var(--ease-silk);
+    }
+    .industry-card:hover {
+      border-color: rgba(201,169,97,0.22);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card);
+    }
+    .industry-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .industry-card:hover::after { opacity: 1; }
+    .industry-icon {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      color: rgba(201,169,97,0.15);
+      margin-bottom: 16px;
+      display: block;
+      line-height: 1;
+    }
+    .industry-name {
+      font-family: var(--font-display);
+      font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--platinum);
+      margin-bottom: 12px;
+    }
+    .industry-desc {
+      font-family: var(--font-ui);
+      font-size: 0.92rem;
+      color: var(--pewter);
+      line-height: 1.70;
+    }
+    .industry-drift {
+      margin-top: 14px;
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      color: rgba(201,169,97,0.55);
+      font-style: italic;
+    }
+
+    /* SELF-QUALIFIER — Am I a candidate? -->*/
+    .qualifier-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid rgba(201,169,97,0.10);
+      overflow: hidden;
+    }
+    .qf-step {
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      gap: 0;
+      border-bottom: 1px solid rgba(201,169,97,0.07);
+      align-items: stretch;
+      transition: background 0.3s ease;
+    }
+    .qf-step:last-child { border-bottom: none; }
+    .qf-step:hover { background: rgba(201,169,97,0.02); }
+    .qf-num {
+      padding: 28px 20px;
+      background: rgba(201,169,97,0.04);
+      border-right: 1px solid rgba(201,169,97,0.08);
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--gold-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qf-question {
+      padding: 28px 36px;
+      font-family: var(--font-ui);
+      font-size: 1.05rem;
+      color: var(--silver);
+      line-height: 1.65;
+      display: flex;
+      align-items: center;
+    }
+    .qf-answer {
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      border-left: 1px solid rgba(201,169,97,0.08);
+      min-width: 140px;
+    }
+    .qf-yes {
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+      padding: 6px 14px;
+    }
+    .qf-partial {
+      font-family: var(--font-ui);
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--pewter);
+      border: 1px solid var(--graphite);
+      padding: 6px 14px;
+    }
+
+    /* NOT FOR EVERYONE — exclusion box */
+    .exclusion-box {
+      background: var(--charcoal);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-left: 3px solid rgba(106,106,106,0.3);
+      padding: 48px 52px;
+      position: relative;
+    }
+    .exclusion-box::before {
+      content: 'NOT FOR';
+      position: absolute;
+      top: 22px; right: 28px;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(106,106,106,0.3);
+    }
+
+/* Mobile section background overrides for serve.html */
+  @media (max-width: 1024px) {
+    .serve-hero::before {
+      filter: brightness(0.40) blur(2px);
+      opacity: 0.24;
+    }
+    /* Section 1 inline bg (HeroLightVertical) */
+    .lux-section [style*="HeroLightVertical"] {
+      filter: brightness(0.35) blur(2px) !important;
+    }
+    /* Section 3 industries inline bg (AtelierObsidian) */
+    .lux-section [style*="AtelierObsidian"] {
+      filter: brightness(0.32) blur(3px) !important;
+    }
+    /* Closing CTA inline bg (CaseMask2) */
+    .lux-section [style*="CaseMask2"] {
+      filter: brightness(0.35) blur(3px) !important;
+    }
+  }
+ 
+  /* Note: White section backgrounds (.section-block, .serve-capabilities etc.)
+     are fixed entirely in legaisee-luxury.css — no HTML change needed. */
+     
+    @media (max-width: 1100px) {
+      .serve-hero { padding: 140px 48px 80px; }
+      .serve-hero-inner { grid-template-columns: 1fr; gap: 52px; }
+      .archetype-grid { grid-template-columns: 1fr; }
+      .industry-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .serve-hero { padding: 120px 28px 60px; min-height: auto; }
+      .qf-step { grid-template-columns: 52px 1fr; }
+      .qf-answer { display: none; }
+      .industry-grid { grid-template-columns: 1fr; }
+      .corridor-city { grid-template-columns: 1fr 40px 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- DESKTOP NAV -->
+<nav class="site-nav" id="site-nav">
+ 
+  <!-- Logo -->
+  <div class="nav-logo-wrap">
+    <a href="/index.html">
+      <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAiSEE" class="nav-logo-img">
+    </a>
+  </div>
+
+  <!-- Desktop Links -->
+  <div class="nav-links" id="nav-links">
+    <a href="/index.html"        data-nav="home">Home</a>
+    <a href="/archaeology.html"  data-nav="archaeology">The Archaeology</a>
+    <a href="/method.html"       data-nav="method">The Method</a>
+    <a href="/serve.html"        data-nav="serve"style="color: var(--gold);">Who We Serve</a>
+    <a href="/architect.html"    data-nav="architect">The Architect</a>
+    <a href="/practitioner.html" data-nav="practitioner">The Practitioner</a>
+    <a href="/commissions.html"  data-nav="commissions">Commissions</a>
+    <a href="/registry.html"     class="nav-cta" data-nav="home">Enter the Registry</a>
+  </div>
+ 
+  <!-- Hamburger — visible only on mobile -->
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+ 
+</nav>
+ 
+<!-- MOBILE DRAWER -->
+<div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+  <a href="/index.html"        data-nav="home">Home</a>
+  <a href="/archaeology.html"  data-nav="archaeology">The Archaeology</a>
+  <a href="/method.html"       data-nav="method">The Method</a>
+  <a href="/serve.html"        data-nav="serve"style="color: var(--gold);">Who We Serve</a>
+  <a href="/architect.html"    data-nav="architect">The Architect</a>
+  <a href="/practitioner.html" data-nav="practitioner">The Practitioner</a>
+  <a href="/commissions.html"  data-nav="commissions">Commissions</a>
+  <a href="/registry.html"     data-nav="registry">Enter the Registry</a>
+</div>
+
+
+
+<!-- ═══════════════════════════════════════════════
+     PAGE HERO
+     Background: AtelierObsidian.png (parallax)
+     ═══════════════════════════════════════════════ -->
+<section class="serve-hero">
+  <div class="serve-hero-inner">
+
+    <!-- Left: headline + copy -->
+    <div>
+      <span class="eyebrow reveal">The Client · Who Qualifies</span>
+      <h1 class="d-xl reveal" style="margin-bottom: 36px; line-height: 1.05;">
+        Texas Sized<br>
+        <span class="text-gold">Business</span>
+      </h1>
+      <p class="b-xl reveal reveal-d1" style="margin-bottom: 28px;">
+        You have built an enterprise that has stood the test of time. Not a startup.
+        Not a venture. A real business — one that has employed people, served markets, and
+        accumulated the kind of history that most organizations never acquire.
+      </p>
+      <p class="b-lg reveal reveal-d2" style="margin-bottom: 48px;">
+        Texas Sized Business comes with Texas Sized blind spots. The drift that erodes your
+        pricing power happens exactly at the scale where no one notices it until the damage
+        is already structural.
+      </p>
+      <div class="btn-group reveal reveal-d3">
+        <a href="registry.html" class="btn btn-gold">Enter the Registry</a>
+        <a href="commissions.html" class="btn btn-outline-gold">View Commissions</a>
+      </div>
+    </div>
+
+    <!-- Right: I-35 Corridor visual -->
+    <div class="reveal reveal-right">
+      <div class="micro-label" style="margin-bottom: 28px; text-align: center;">The Service Territory</div>
+
+      <div class="corridor-visual">
+        <!-- Austin -->
+        <div class="corridor-city">
+          <div></div>
+          <div class="corridor-spine">
+            <div class="corridor-dot active"></div>
+            <div class="corridor-line" style="min-height: 48px;"></div>
+          </div>
+          <div class="corridor-city-name right">
+            Austin
+            <span class="corridor-city-sub">Capital region enterprises<br>$30M+ operating history</span>
+          </div>
+        </div>
+
+        <!-- I-35 Middle -->
+        <div class="corridor-city">
+          <div style="padding: 0 20px 0 0; text-align: right;">
+            <div style="font-family: var(--font-ui); font-size: 0.9rem; font-style: italic; color: var(--pewter); line-height: 1.6;">
+              Kyle · Buda<br>New Braunfels<br>San Marcos
+            </div>
+          </div>
+          <div class="corridor-spine">
+            <div class="corridor-mid">
+              <div class="corridor-mid-label">Interstate 35</div>
+            </div>
+          </div>
+          <div style="padding: 0 0 0 20px;">
+            <div class="corridor-badge">The Corridor</div>
+          </div>
+        </div>
+
+        <!-- San Antonio -->
+        <div class="corridor-city">
+          <div class="corridor-city-name">
+            San Antonio
+            <span class="corridor-city-sub">Generational enterprises<br>Family-owned giants</span>
+          </div>
+          <div class="corridor-spine">
+            <div class="corridor-line" style="min-height: 48px;"></div>
+            <div class="corridor-dot active"></div>
+          </div>
+          <div></div>
+        </div>
+      </div>
+
+      <!-- Gem placeholder — The territory gem -->
+      <div class="gem-frame reveal reveal-d2" style="position: relative; aspect-ratio: 16/7; margin-top: 28px;">
+        <div class="gem-placeholder-box" style="min-height: 140px; background: linear-gradient(135deg, #0a0f1a 0%, #050505 100%);">
+          <span class="gem-catalog">CAT-HAB-030</span>
+          <div class="gem-stage-name">The Territory</div>
+          <div class="gem-stage-desc">Where the stones sleep — the I-35 corridor and its buried institutional wealth</div>
+        </div>
+        <div class="gem-caption-bar">
+          <div class="gem-caption-title">The Service Territory</div>
+          <div class="gem-caption-sub">San Antonio · Austin · The I-35 Corridor</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section><!-- /serve-hero -->
+
+
+<!-- ═══════════════════════════════════════════════
+     AUTHORITY STRIP
+     ═══════════════════════════════════════════════ -->
+<div class="authority-strip">
+  <div class="authority-item"><div class="authority-value">$30M+</div><div class="authority-label">Minimum Annual Revenue</div></div>
+  <div class="authority-item"><div class="authority-value">10+</div><div class="authority-label">Years Operating History</div></div>
+  <div class="authority-item"><div class="authority-value">3</div><div class="authority-label">Client Maximum · Ever</div></div>
+  <div class="authority-item"><div class="authority-value">I-35</div><div class="authority-label">Corridor · SA to Austin</div></div>
+  <div class="authority-item"><div class="authority-value">∞</div><div class="authority-label">Generational Depth</div></div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 1: THREE CLIENT ARCHETYPES
+     ═══════════════════════════════════════════════ -->
+<section class="lux-section" style="background: var(--obsidian); padding-top: 140px; padding-bottom: 60px; position: relative; overflow: hidden;">
+  <div style="position: absolute; inset: 0; background-image: url('http://www.legaisee.com/Images/HeroLightVertical.png'); background-size: cover; background-position: center; background-attachment: fixed; /* mobile: scroll via CSS */ opacity: 0.09; z-index: 0;"></div>
+
+  <div class="section-inner" style="position: relative; z-index: 1;">
+
+    <div style="text-align: center; max-width: 820px; margin: 0 auto 72px;">
+      <div class="prestige-label reveal" style="justify-content: center;">The Three Archetypes</div>
+      <h2 class="d-lg reveal" style="margin-bottom: 24px;">Who Sits in This Room</h2>
+      <p class="b-lg reveal reveal-d1">
+        Every engagement begins with a conversation. That conversation is only available to
+        three distinct categories of enterprise — each qualifying by a different measure,
+        each carrying a different kind of buried authority.
+      </p>
+    </div>
+
+    <div class="archetype-grid reveal reveal-d2">
+
+      <!-- Archetype I: The Legacy Enterprise -->
+      <div class="archetype-card">
+        <div class="archetype-roman">I</div>
+        <div class="archetype-type">The Legacy Enterprise</div>
+        <div class="archetype-threshold">10–30 Years Operating</div>
+        <p class="archetype-desc">
+          A business that has passed through at least one complete market cycle — through boom
+          and contraction, through leadership transition, through the arrival of digital and
+          the departure of analog wisdom. Old enough to have a Golden Era. Young enough to
+          have survivors who remember it.
+        </p>
+        <ul class="archetype-qualifiers">
+          <li>Multiple leadership generations navigated</li>
+          <li>At least one significant rebrand or pivot in history</li>
+          <li>Revenue trajectory that peaked, plateaued, or shifted</li>
+          <li>Legacy files partially intact — some lost, some recoverable</li>
+          <li>Operating in a market where reputation still precedes transaction</li>
+        </ul>
+      </div>
+
+      <!-- Archetype II: The Generational Enterprise -->
+      <div class="archetype-card" style="background: linear-gradient(160deg, var(--charcoal) 0%, var(--obsidian-light) 100%); border-top: 2px solid rgba(201,169,97,0.22);">
+        <div class="archetype-roman" style="color: rgba(201,169,97,0.20);">II</div>
+        <div class="archetype-type" style="color: var(--gold);">The Generational Enterprise</div>
+        <div class="archetype-threshold" style="color: var(--gold); border-color: rgba(201,169,97,0.35);">Family · Multi-Generation</div>
+        <p class="archetype-desc" style="color: var(--platinum);">
+          Founded by a grandparent, expanded by a parent, and now led by someone who inherited
+          both the enterprise and its accumulated institutional memory — much of which exists
+          only in the minds of people who are no longer in the building. The generational gap
+          is a vault that has never been properly opened.
+        </p>
+        <ul class="archetype-qualifiers" style="border-top-color: rgba(201,169,97,0.10);">
+          <li>Two or more generations of family leadership</li>
+          <li>Founding-era documents potentially still accessible</li>
+          <li>Oral history library of extraordinary depth — if captured now</li>
+          <li>Brand equity often untranslated into explicit strategic language</li>
+          <li>Succession created a signal gap that the market felt before you did</li>
+        </ul>
+      </div>
+
+      <!-- Archetype III: The $30M+ Giant -->
+      <div class="archetype-card">
+        <div class="archetype-roman">III</div>
+        <div class="archetype-type">The $30M+ Giant</div>
+        <div class="archetype-threshold">Revenue · Scale · Influence</div>
+        <p class="archetype-desc">
+          Large enough that Narrative Drift produces catastrophic, material impact on revenue
+          and pricing power. Complex enough that the signal has fragmented across divisions,
+          departments, and decision-makers who have never been given a unified doctrine.
+          Influential enough that the recovery of your authority is genuinely worth excavating.
+        </p>
+        <ul class="archetype-qualifiers">
+          <li>Annual revenue at or significantly above the $30M threshold</li>
+          <li>Multiple internal stakeholders with competing narratives</li>
+          <li>Marketing spend allocated without a verified historical baseline</li>
+          <li>Market presence that exceeds your current messaging's ability to explain it</li>
+          <li>A pricing premium that the market once accepted — and now questions</li>
+        </ul>
+      </div>
+
+    </div><!-- /archetype-grid -->
+
+  </div>
+</section><!-- /archetypes -->
+
+<!-- ── SERVE CAPABILITY DEFINITIONS ──────────────────────── -->
+<section class="section-block serve-capabilities">
+  <div class="container">
+ 
+    <div class="section-label">
+      <span class="label-line"></span>
+      <span class="label-text">What Each Engagement Delivers</span>
+      <span class="label-line"></span>
+    </div>
+ 
+    <h2 class="section-title">The disciplines we bring to the record.</h2>
+ 
+    <div class="serve-definitions-list">
+ 
+      <!-- 1. Technical Depth -->
+      <div class="serve-definition-item" id="technical-depth">
+        <div class="serve-definition-item__marker">
+          <span class="serve-definition-numeral">I</span>
+        </div>
+        <div class="serve-definition-item__content">
+          <h3 class="serve-definition-term">Technical Depth</h3>
+          <p class="serve-definition-body">
+            The excavation is not surface-level. Every Exhibit requires Technical Depth — 
+            the practitioner's willingness to go into the machinery of the business: 
+            its operational records, financial history, proprietary processes, and 
+            competitive environment. Surface signals are not our product. 
+            What sits below the obvious is where the institutional proof lives, 
+            and Technical Depth is the method by which it is reached.
+          </p>
+        </div>
+      </div>
+ 
+      <!-- 2. Institutional Reputation Recovery -->
+      <div class="serve-definition-item" id="reputation-recovery">
+        <div class="serve-definition-item__marker">
+          <span class="serve-definition-numeral">II</span>
+        </div>
+        <div class="serve-definition-item__content">
+          <h3 class="serve-definition-term">Institutional Reputation Recovery</h3>
+          <p class="serve-definition-body">
+            Reputation is not managed. It is documented into a position from which 
+            it cannot be displaced. Institutional Reputation Recovery is the 
+            systematic process of excavating, assembling, and deploying the 
+            forensic record of an organisation's actual conduct — so that the 
+            institution's documented truth becomes structurally dominant over any 
+            competing narrative, whether generated by competitors, market conditions, 
+            or internal communication failure.
+          </p>
+        </div>
+      </div>
+ 
+      <!-- 3. Mission Clarity -->
+      <div class="serve-definition-item" id="mission-clarity">
+        <div class="serve-definition-item__marker">
+          <span class="serve-definition-numeral">III</span>
+        </div>
+        <div class="serve-definition-item__content">
+          <h3 class="serve-definition-term">Mission Clarity</h3>
+          <p class="serve-definition-body">
+            Mission statements are not written here — they are excavated. 
+            Mission Clarity is the result of identifying what the business has 
+            consistently done, consistently served, and consistently returned to 
+            across its entire operating history. When the record is examined without 
+            preference, the institution's actual mission — as opposed to its 
+            declared one — becomes visible. That is the statement worth publishing.
+          </p>
+        </div>
+      </div>
+ 
+      <!-- 4. Revenue Leak Detection System -->
+      <div class="serve-definition-item" id="revenue-leak">
+        <div class="serve-definition-item__marker">
+          <span class="serve-definition-numeral">IV</span>
+        </div>
+        <div class="serve-definition-item__content">
+          <h3 class="serve-definition-term">Revenue Leak Detection System</h3>
+          <p class="serve-definition-body">
+            Most businesses are losing revenue through mechanisms they have 
+            never formally identified. The Revenue Leak Detection System is a 
+            forensic audit of the business's revenue architecture — examining 
+            where customers are lost before conversion, where retention failures 
+            are masked by acquisition volume, where pricing friction is absorbed 
+            rather than corrected, and where the Forensic CAC diverges from the 
+            reported number. The system does not generate estimates. 
+            It surfaces what the record already contains.
+          </p>
+        </div>
+      </div>
+ 
+      <!-- 5. Provenance and Property Narrative -->
+      <div class="serve-definition-item" id="provenance-narrative">
+        <div class="serve-definition-item__marker">
+          <span class="serve-definition-numeral">V</span>
+        </div>
+        <div class="serve-definition-item__content">
+          <h3 class="serve-definition-term">Provenance and Property Narrative</h3>
+          <p class="serve-definition-body">
+            In any transaction environment — acquisition, merger, licensing, 
+            or strategic partnership — the Provenance and Property Narrative 
+            is the single most consequential document in the room. 
+            It is the forensic record of where the business came from, 
+            what it built, what it owns, and why those things have value 
+            independent of current revenue. A coherent Provenance and Property 
+            Narrative does not support the case for enterprise value — 
+            it is the case. When the record is correctly assembled, 
+            the multiple follows.
+          </p>
+        </div>
+      </div>
+ 
+    </div><!-- /.serve-definitions-list -->
+ 
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 2: THE SELF-QUALIFIER
+     Am I a candidate?
+     ═══════════════════════════════════════════════ -->
+<section class="lux-section" style="overflow: hidden; background: var(--obsidian-light); padding-top: 120px; padding-bottom: 120px;">
+  <div class="section-inner">
+
+    <div class="two-col two-col-4060" style="align-items: start; gap: 80px;">
+
+      <!-- Left: Copy + gem -->
+      <div>
+        <div class="prestige-label reveal" style="justify-content: flex-start;">Self-Assessment</div>
+        <h2 class="d-lg reveal" style="margin-bottom: 32px;">
+          Is There a Dig<br>Site Here?
+        </h2>
+        <div class="divider-gold short reveal" style="margin-left: 0; margin-right: auto; margin-bottom: 40px;"></div>
+
+        <p class="b-xl reveal" style="color: var(--platinum); margin-bottom: 28px;">
+          Not every enterprise has a dig site worth opening.
+          The archaeology is most productive when the institution has accumulated enough
+          layered history to contain a recoverable Golden Era.
+        </p>
+
+        <p class="b-lg reveal reveal-d1" style="margin-bottom: 40px;">
+          The questions to the right are the same questions we ask in the first conversation.
+          If you find yourself answering "yes" to three or more of them — you have a dig site.
+          And it is almost certainly worth opening.
+        </p>
+
+        <div class="signal-block reveal reveal-d2" style="margin-bottom: 36px;">
+          <div class="signal-label">The Honest Assessment</div>
+          <p style="font-family: var(--font-ui); font-size: 1.05rem; font-style: italic; color: var(--gold-bright); line-height: 1.82;">
+            "There is a version of your business that worked better than this one.
+            It is not gone. It is buried. And we know exactly where to dig."
+          </p>
+        </div>
+
+        <!-- GEMSTONE PLACEHOLDER: Raw stone — the unexamined enterprise -->
+        <div class="gem-frame reveal reveal-d3" style="position: relative; aspect-ratio: 4/3;">
+          <div class="gem-placeholder-box" style="min-height: 260px; background: linear-gradient(180deg, #1a1005 0%, #050505 100%);">
+            <span class="gem-catalog">CAT-RAW-030</span>
+            <div class="gem-stage-name">Unexamined</div>
+            <div class="gem-stage-desc">The stone before the geologist arrives — value potential unconfirmed, but suspected</div>
+          </div>
+          <div class="gem-caption-bar">
+            <div class="gem-caption-title">Before the Excavation</div>
+            <div class="gem-caption-sub">Buried · Intact · Waiting</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Qualifier flow -->
+      <div>
+        <div class="micro-label reveal" style="margin-bottom: 20px;">Seven Questions · Honest Answers Only</div>
+        <div class="qualifier-flow reveal reveal-d1">
+          <div class="qf-step">
+            <div class="qf-num">01</div>
+            <div class="qf-question">Has your business operated for five years or more — long enough to have a history that predates your current leadership's institutional memory?</div>
+            <div class="qf-answer"><span class="qf-yes">Qualifies</span></div>
+          </div>
+          <div class="qf-step">
+            <div class="qf-num">02</div>
+            <div class="qf-question">Do you operate within the San Antonio–Austin I-35 corridor, or have significant market presence in this region?</div>
+            <div class="qf-answer"><span class="qf-yes">Qualifies</span></div>
+          </div>
+          <div class="qf-step">
+            <div class="qf-num">03</div>
+            <div class="qf-question">Is there a period in your history when your market position felt more certain — when your name carried a weight it no longer carries today?</div>
+            <div class="qf-answer"><span class="qf-yes">Qualifies</span></div>
+          </div>
+          <div class="qf-step">
+            <div class="qf-num">04</div>
+            <div class="qf-question">Has your enterprise gone through a leadership transition, generational handoff, significant rebrand, or digital pivot in the last twenty years?</div>
+            <div class="qf-answer"><span class="qf-yes">Qualifies</span></div>
+          </div>
+          <div class="qf-step">
+            <div class="qf-num">05</div>
+            <div class="qf-question">Are there people who were part of your organization's formative years who have not been formally interviewed about what made it work?</div>
+            <div class="qf-answer"><span class="qf-yes">Qualifies</span></div>
+          </div>
+          <div class="qf-step">
+            <div class="qf-num">06</div>
+            <div class="qf-question">Do you have a sense that your current marketing spend is not producing the results your history suggests it should — without a clear explanation for why?</div>
+            <div class="qf-answer"><span class="qf-partial">Likely</span></div>
+          </div>
+          <div class="qf-step">
+            <div class="qf-num">07</div>
+            <div class="qf-question">Is there a premium your market once accepted without question that now requires explanation, justification, or discounting to close?</div>
+            <div class="qf-answer"><span class="qf-partial">Likely</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /two-col -->
+
+  </div>
+</section><!-- /self-qualifier -->
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 3: INDUSTRIES OF THE CORRIDOR
+     ═══════════════════════════════════════════════ -->
+<section class="lux-section" style="background: var(--obsidian); padding-top: 120px; padding-bottom: 100px; position: relative; overflow: hidden;">
+  <div style="position: absolute; inset: 0; background-image: url('http://www.legaisee.com/Images/AtelierObsidian.png'); background-size: cover; background-position: center; background-attachment: fixed; /* mobile: scroll via CSS */ opacity: 0.10; z-index: 0;"></div>
+
+  <div class="section-inner" style="position: relative; z-index: 1;">
+
+    <div style="text-align: center; max-width: 820px; margin: 0 auto 72px;">
+      <div class="prestige-label reveal" style="justify-content: center;">Industries of the Corridor</div>
+      <h2 class="d-lg reveal" style="margin-bottom: 24px;">The Enterprises<br>That Built This Region</h2>
+      <p class="b-lg reveal reveal-d1" style="color: var(--platinum);">
+        Every industry along the I-35 corridor has produced its own category of institutional memory —
+        and its own pattern of Narrative Drift. We know where each one hides its buried authority.
+      </p>
+    </div>
+
+    <div class="industry-grid">
+
+      <div class="industry-card reveal">
+        <span class="industry-icon">◈</span>
+        <div class="industry-name">Commercial Real Estate &amp; Development</div>
+        <div class="industry-desc">Decades of deal history, relationship capital, and market-timing intelligence that new competitors cannot replicate — but that current leadership may not know how to articulate.</div>
+        <div class="industry-drift">Common drift: founding-era reputation buried under generic brokerage language.</div>
+      </div>
+
+      <div class="industry-card reveal reveal-d1">
+        <span class="industry-icon">◈</span>
+        <div class="industry-name">Healthcare &amp; Medical Systems</div>
+        <div class="industry-desc">Physician-founded practices and regional health systems carrying community trust built over generations — trust that is quietly eroding as the enterprise scales past the personal.</div>
+        <div class="industry-drift">Common drift: founding physician's voice replaced by committee-approved copy.</div>
+      </div>
+
+      <div class="industry-card reveal reveal-d2">
+        <span class="industry-icon">◈</span>
+        <div class="industry-name">Legal &amp; Professional Services</div>
+        <div class="industry-desc">Firms whose reputation was built on a generation of exceptional outcomes and institutional relationships — but whose public presence no longer reflects the depth of what they have built.</div>
+        <div class="industry-drift">Common drift: founding partner's authority diluted by firm-wide brand neutrality.</div>
+      </div>
+
+      <div class="industry-card reveal">
+        <span class="industry-icon">◈</span>
+        <div class="industry-name">Manufacturing &amp; Industrial</div>
+        <div class="industry-desc">Generationally owned manufacturing enterprises carrying proprietary process knowledge, longstanding customer relationships, and regional supply chain authority that no competitor can replicate.</div>
+        <div class="industry-drift">Common drift: operational excellence never translated into market-facing authority.</div>
+      </div>
+
+      <div class="industry-card reveal reveal-d1">
+        <span class="industry-icon">◈</span>
+        <div class="industry-name">Financial Services &amp; Banking</div>
+        <div class="industry-desc">Community banks and regional investment firms whose founding relationship model built trust over decades — trust that the market no longer associates with their current brand presentation.</div>
+        <div class="industry-drift">Common drift: acquisition or rebrand severed the connection to founding-era trust signals.</div>
+      </div>
+
+      <div class="industry-card reveal reveal-d2">
+        <span class="industry-icon">◈</span>
+        <div class="industry-name">Hospitality &amp; Retail</div>
+        <div class="industry-desc">Local and regional hospitality enterprises that built their identity on a specific experiential promise — a promise that has drifted with each renovation, ownership transition, and brand refresh.</div>
+        <div class="industry-drift">Common drift: the original experiential promise replaced by category-generic positioning.</div>
+      </div>
+
+      <div class="industry-card reveal">
+        <span class="industry-icon">◈</span>
+        <div class="industry-name">Technology &amp; Engineering</div>
+        <div class="industry-desc">Corridor technology firms that built their initial authority on specific technical expertise — expertise that now competes in a market where every competitor makes identical capability claims.</div>
+        <div class="industry-drift">Common drift: technical leadership narrative replaced by undifferentiated solution language.</div>
+      </div>
+
+      <div class="industry-card reveal reveal-d1">
+        <span class="industry-icon">◈</span>
+        <div class="industry-name">Agriculture &amp; Land Management</div>
+        <div class="industry-desc">Multi-generational ranching, farming, and land management enterprises carrying environmental stewardship credibility and regional relationship depth that no newcomer can purchase.</div>
+        <div class="industry-drift">Common drift: generational story never formalized into strategic market-facing narrative.</div>
+      </div>
+
+      <div class="industry-card reveal reveal-d2">
+        <span class="industry-icon">◈</span>
+        <div class="industry-name">Construction &amp; Contracting</div>
+        <div class="industry-desc">Regional contractors and specialty builders who built their reputation project by project, relationship by relationship — now operating in a market where that reputation is invisible to the clients who need it most.</div>
+        <div class="industry-drift">Common drift: portfolio evidence undocumented and unavailable for strategic deployment.</div>
+      </div>
+
+    </div><!-- /industry-grid -->
+
+    <!-- GEMSTONE PLACEHOLDER: The cut stone — the industry's recovered authority -->
+    <div class="gem-frame reveal" style="max-width: 640px; margin: 64px auto 0; position: relative; aspect-ratio: 21/9;">
+      <div class="gem-placeholder-box" style="min-height: 180px; background: linear-gradient(135deg, #0a0a1a 0%, #050505 100%);">
+        <span class="gem-catalog">CAT-CUT-030</span>
+        <div class="gem-stage-name">The Corridor's Hidden Wealth</div>
+        <div class="gem-stage-desc">Buried institutional authority across every industry that built the I-35 region</div>
+      </div>
+      <div class="gem-caption-bar">
+        <div class="gem-caption-title">Stage 1 — Discovery</div>
+        <div class="gem-caption-sub">Nine industries · one methodology · the same buried signal</div>
+      </div>
+    </div>
+
+  </div>
+</section><!-- /industries -->
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 4: NOT FOR EVERYONE
+     The honest exclusion
+     ═══════════════════════════════════════════════ -->
+<section class="lux-section" style="overflow: hidden; background: var(--obsidian-light); padding-top: 100px; padding-bottom: 100px;">
+  <div class="section-inner">
+
+    <div class="two-col two-col-6040" style="align-items: start; gap: 80px;">
+
+      <!-- Left: Not for everyone -->
+      <div>
+        <div class="prestige-label reveal" style="justify-content: flex-start;">Honest Exclusion</div>
+        <h2 class="d-lg reveal" style="margin-bottom: 32px;">
+          This Is Not<br>for Everyone
+        </h2>
+        <div class="divider-gold short reveal" style="margin-left: 0; margin-right: auto; margin-bottom: 40px;"></div>
+
+        <p class="b-xl reveal" style="color: var(--platinum); margin-bottom: 28px;">
+          The work is precise. The standard is forensic. The timeline is deliberate.
+          We are not the right partner for every enterprise that approaches us —
+          and we say so directly, in the first conversation.
+        </p>
+
+        <div class="exclusion-box reveal reveal-d1">
+          <p class="b-lg" style="color: var(--pewter); margin-bottom: 24px;">The archaeology is not productive for enterprises that:</p>
+          <ul class="feature-list" style="margin-bottom: 0;">
+            <li style="color: var(--pewter);">Are less than five years old — not enough history to excavate</li>
+            <li style="color: var(--pewter);">Are seeking a new brand identity rather than a recovery of an existing one</li>
+            <li style="color: var(--pewter);">Are not willing to grant access to historical archives, personnel, and financial records</li>
+            <li style="color: var(--pewter);">Operate outside the I-35 corridor without significant prior presence in the region</li>
+            <li style="color: var(--pewter);">Expect results faster than the forensic process allows</li>
+            <li style="color: var(--pewter);">Are unwilling to look backward before they look forward</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right: The private registry access -->
+      <div>
+        <div class="museum-card reveal reveal-right" style="text-align: center; padding: 60px 44px;">
+          <div class="prestige-label" style="justify-content: center; margin-bottom: 36px;">Maximum Capacity</div>
+          <div class="stat-num" style="font-size: 4rem; margin-bottom: 12px;">3</div>
+          <div class="stat-label" style="margin-bottom: 32px;">Active Clients at Any Time</div>
+          <div class="divider-gold short" style="margin: 0 auto 32px;"></div>
+          <p class="b-md" style="margin-bottom: 36px;">
+            This constraint is not marketing. It is the forensic reality of work that demands
+            full attention, deep research, and bespoke system architecture. We do not
+            industrialize the excavation.
+          </p>
+          <a href="registry.html" class="btn btn-gold" style="width: 100%; justify-content: center;">
+            Enter the Private Registry
+          </a>
+          <div class="gate-seal" style="margin: 24px auto 0; display: inline-flex;">
+            <span class="seal-line">Current Availability</span>
+            <span class="seal-line">By Invitation Only</span>
+          </div>
+        </div>
+
+        <!-- GEMSTONE PLACEHOLDER: Mounted gem — for those who qualify -->
+        <div class="gem-frame reveal reveal-d2 reveal-right" style="position: relative; aspect-ratio: 4/3; margin-top: 20px; border-radius: 16px; overflow: hidden;">
+          <div class="gem-placeholder-box" style="min-height: 220px; border-radius: 16px; border: none; background: linear-gradient(135deg, #141008 0%, #050505 100%);">
+            <span class="gem-catalog">CAT-MNT-030</span>
+            <div class="gem-stage-name">For Those Who Qualify</div>
+            <div class="gem-stage-desc">The setting awaits the stone that deserves it</div>
+          </div>
+          <div class="gem-caption-bar">
+            <div class="gem-caption-title">Stage 3 — The Setting</div>
+            <div class="gem-caption-sub">Three settings · reserved · waiting</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /two-col -->
+
+  </div>
+</section><!-- /not for everyone -->
+
+
+<!-- ═══════════════════════════════════════════════
+     CLOSING CTA
+     Background: CaseMask2.png (parallax)
+     ═══════════════════════════════════════════════ -->
+<section class="lux-section" style="padding-top: 140px; padding-bottom: 140px; text-align: center; position: relative; overflow: hidden; background: var(--obsidian);">
+  <div style="position: absolute; inset: 0; background-image: url('http://www.legaisee.com/Images/CaseMask2.png'); background-size: cover; background-position: center; background-attachment: fixed; /* mobile: scroll via CSS */ opacity: 0.15; z-index: 0;"></div>
+  <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 80% 80% at 50% 50%, transparent 0%, rgba(5,5,5,0.90) 100%); z-index: 1;"></div>
+
+  <div class="section-inner" style="position: relative; z-index: 2; max-width: 860px;">
+
+    <div class="prestige-label reveal" style="justify-content: center; margin-bottom: 48px;">The Conversation Begins Here</div>
+
+    <h2 class="d-lg reveal" style="margin-bottom: 28px;">If You Are Still Reading,<br>You Are Probably a Candidate</h2>
+
+    <p class="b-xl reveal reveal-d1" style="color: var(--platinum); max-width: 720px; margin: 0 auto 52px;">
+      The enterprises that find their way to this page and read to its end are almost always
+      the ones who already know something has been lost. They felt the drift. They just didn't
+      have a name for it — or a methodology for recovering it.
+    </p>
+
+    <!-- Museum display gem — the promise -->
+    <div class="gem-frame reveal reveal-d2" style="max-width: 520px; margin: 0 auto 52px; position: relative; aspect-ratio: 16/9; border-radius: 16px; overflow: hidden;">
+      <div class="gem-placeholder-box" style="min-height: 220px; border-radius: 16px; border: none; background: linear-gradient(135deg, #0a0a0a 0%, #141410 50%, #0a0a0a 100%);">
+        <span class="gem-catalog">CAT-DSP-030</span>
+        <div class="gem-stage-name">Museum Display</div>
+        <div class="gem-stage-desc">Your authority · restored · presented under museum light · undeniable</div>
+      </div>
+      <div class="gem-caption-bar">
+        <div class="gem-caption-title">Stage 4 — The Exhibition</div>
+        <div class="gem-caption-sub">The signal restored · the drift reversed · the clarity returned</div>
+      </div>
+    </div>
+
+    <div class="btn-group reveal reveal-d3" style="justify-content: center; margin-bottom: 48px;">
+      <a href="registry.html" class="btn btn-gold">Enter the Private Registry</a>
+      <a href="architect.html" class="btn btn-outline-gold">Meet the Architect</a>
+    </div>
+
+    <div class="gate-seal reveal reveal-d4" style="margin: 0 auto; display: inline-flex;">
+      <span class="seal-line">San Antonio · Austin · I-35</span>
+      <span class="seal-line">By Invitation Only</span>
+      <span class="seal-line">Three Clients Maximum</span>
+    </div>
+
+  </div>
+</section><!-- /closing cta -->
+
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 4px;">
+        <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="LEGAiSEE" style="height: 32px; width: auto;">
+        <div style="font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold);">LEGAiSEE</div>
+      </div>
+      <p class="footer-brand-tagline">Business Archaeology &amp; Authority Systems.<br>We do not build on sand. We bedrock.</p>
+      <div class="micro-label">San Antonio · Austin · The I-35 Corridor</div>
+    </div>
+    <div>
+      <div class="footer-col-title">The Practice</div>
+      <ul class="footer-links">
+        <li><a href="archaeology.html">The Archaeology</a></li>
+        <li><a href="method.html">The Ten Frameworks</a></li>
+        <li><a href="serve.html">Who We Serve</a></li>
+        <li><a href="architect.html">The Architect</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Commissions</div>
+      <ul class="footer-links">
+        <li><a href="commissions.html">The Excavation</a></li>
+        <li><a href="commissions.html">Authority Systems</a></li>
+        <li><a href="commissions.html">The Bedrock Pledge</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">The Registry</div>
+      <ul class="footer-links">
+        <li><a href="registry.html">Request Entry</a></li>
+        <li><a href="registry.html">Current Availability</a></li>
+      </ul>
+      <div class="gate-seal" style="display: inline-flex; margin-top: 28px; padding: 16px 24px;">
+        <span class="seal-line">By Invitation Only</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© LEGAiSEE · Business Archaeology &amp; Authority Systems · All Rights Reserved</div>
+    <div class="footer-seal">The Signal, Restored</div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT
+     ═══════════════════════════════════════════════ -->
+<script>
+  /* ── Scroll reveal ─────────────────────────────── */
+  (function () {
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.10,
+      rootMargin: '0px 0px -44px 0px'
+    });
+
+    reveals.forEach(el => observer.observe(el));
+  })();
+
+  /* ── Mobile menu system ───────────────────────── */
+  (function () {
+    'use strict';
+
+    var hamburger  = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobile-menu');
+    var header     = document.getElementById('site-header');
+
+    if (!hamburger || !mobileMenu) return;
+
+    /* Active nav */
+    var currentPage = document.body.getAttribute('data-page') || '';
+
+    document.querySelectorAll('[data-nav]').forEach(function (link) {
+      if (link.getAttribute('data-nav') === currentPage) {
+        link.classList.add('is-active');
+      }
+    });
+
+    function openMenu() {
+      mobileMenu.classList.add('is-open');
+      hamburger.classList.add('is-active');
+      hamburger.setAttribute('aria-expanded', 'true');
+      mobileMenu.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeMenu() {
+      mobileMenu.classList.remove('is-open');
+      hamburger.classList.remove('is-active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+    }
+
+    hamburger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      mobileMenu.classList.contains('is-open')
+        ? closeMenu()
+        : openMenu();
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('click', function (e) {
+      if (
+        mobileMenu.classList.contains('is-open') &&
+        !header.contains(e.target)
+      ) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+        closeMenu();
+        hamburger.focus();
+      }
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 1024) {
+        closeMenu();
+      }
+    });
+  })();
+
+  /* ── Gem hover tilt ───────────────────────────── */
+  if (window.innerWidth > 1024) {
+    document.querySelectorAll('.gem-frame, .museum-card').forEach(el => {
+
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+
+        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 6;
+        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 6;
+
+        el.style.transform =
+          `perspective(800px) rotateY(${x}deg) rotateX(${-y}deg) translateY(-6px)`;
+      });
+
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = '';
+      });
+
+    });
+  }
+</script>
+
+<!-- Lenis Smooth Scroll -->
+<script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
+
+<script>
+  new Lenis({
+    autoRaf: true,
+    autoToggle: true,
+    anchors: true,
+    allowNestedScroll: true,
+    naiveDimensions: true,
+    stopInertiaOnNavigate: true
+  });
+
+(function () {
+  'use strict';
+ 
+  var hamburger  = document.getElementById('nav-hamburger');
+  var mobileMenu = document.getElementById('nav-mobile');
+  var siteNav    = document.getElementById('site-nav');
+ 
+  if (!hamburger || !mobileMenu) return;
+ 
+  /* ── Active nav state ──────────────────────────────────────── */
+  var currentPage = document.body.getAttribute('data-page') || '';
+  document.querySelectorAll('[data-nav]').forEach(function (link) {
+    if (link.getAttribute('data-nav') === currentPage) {
+      link.classList.add('is-active');
+    }
+  });
+ 
+  /* ── Open / Close helpers ──────────────────────────────────── */
+  function openMenu() {
+    mobileMenu.classList.add('is-open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    hamburger.setAttribute('aria-label', 'Close navigation menu');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+  }
+ 
+  function closeMenu() {
+    mobileMenu.classList.remove('is-open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Open navigation menu');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+  }
+ 
+  /* ── Hamburger click ───────────────────────────────────────── */
+  hamburger.addEventListener('click', function (e) {
+    e.stopPropagation();
+    mobileMenu.classList.contains('is-open') ? closeMenu() : openMenu();
+  });
+ 
+  /* ── Close on any mobile link click ───────────────────────── */
+  mobileMenu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+ 
+  /* ── Close on outside click ────────────────────────────────── */
+  document.addEventListener('click', function (e) {
+    if (mobileMenu.classList.contains('is-open') &&
+        !siteNav.contains(e.target) &&
+        !mobileMenu.contains(e.target)) {
+      closeMenu();
+    }
+  });
+ 
+  /* ── Close on Escape ───────────────────────────────────────── */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+      closeMenu();
+      hamburger.focus();
+    }
+  });
+ 
+  /* ── Close on desktop resize ───────────────────────────────── */
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 1024) closeMenu();
+  });
+ 
+  /* ── Scrolled state for nav bg ─────────────────────────────── */
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 40) {
+      siteNav.classList.add('scrolled');
+    } else {
+      siteNav.classList.remove('scrolled');
+    }
+  }, { passive: true });
+ 
+})();
+
+</script>
+</body>
+</html>

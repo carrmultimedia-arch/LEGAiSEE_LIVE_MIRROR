@@ -1,0 +1,113 @@
+/* ==========================================================
+   LVOS V2
+   LAYOUT SYSTEM
+========================================================== */
+
+/* BASE */
+
+body{
+    margin:0;
+    padding:0;
+}
+
+/* MAIN WRAPPER */
+
+main{
+
+    width:min(var(--container), 100%);
+
+    margin-inline:auto;
+
+    padding-inline:var(--space-6);
+}
+
+/* SECTIONS */
+
+section{
+
+    position:relative;
+
+    width:100%;
+
+    padding-block:var(--space-9);
+}
+
+/* SECTION VARIANTS */
+
+.section-sm{
+    padding-block:var(--space-6);
+}
+
+.section-lg{
+    padding-block:calc(var(--space-9) * 1.5);
+}
+
+/* CONTAINERS */
+
+.container{
+
+    width:min(var(--container), 100%);
+
+    margin-inline:auto;
+
+    padding-inline:var(--space-6);
+}
+
+.container-sm{
+    width:min(900px, 100%);
+    margin-inline:auto;
+}
+
+.container-lg{
+    width:min(1400px, 100%);
+    margin-inline:auto;
+}
+
+/* READING WIDTH */
+
+.reading{
+    max-width:var(--reading);
+    width:100%;
+}
+
+/* UTILITIES (layout-scoped only) */
+
+.full-width{
+    width:100%;
+}
+
+.center{
+    margin-inline:auto;
+}
+
+/* DIVIDER */
+
+.divider{
+
+    width:100%;
+    height:1px;
+
+    background:var(--border);
+
+    margin-block:var(--space-6);
+}
+
+/* SPACERS */
+
+.spacer-sm{height:var(--space-4);}
+.spacer-md{height:var(--space-6);}
+.spacer-lg{height:var(--space-9);}
+
+/* RESPONSIVE */
+
+@media (max-width:768px){
+
+    main,
+    .container{
+        padding-inline:var(--space-4);
+    }
+
+    section{
+        padding-block:var(--space-8);
+    }
+}

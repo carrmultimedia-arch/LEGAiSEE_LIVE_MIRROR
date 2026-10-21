@@ -1,0 +1,3642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LegAIsee — The Restoration of Asymmetric Authority</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+
+/* ═══════════════════════════════════════════════════════════════════
+   MASTER DESIGN TOKENS — LEGAISEE LUXURY SYSTEM
+   Target: $50M+ Revenue Corporate Executives
+   Tone: Rolls Royce · Rolex · NASA · Speakeasy Authority
+   ═══════════════════════════════════════════════════════════════════ */
+:root {
+  /* ── Core Blacks ── */
+  --obsidian:          #050505;
+  --obsidian-light:    #090909;
+  --obsidian-mid:      #0f0f0f;
+  --charcoal:          #161616;
+  --graphite:          #1e1e1e;
+  --graphite-light:    #242424;
+
+  /* ── True Gold Scale ── */
+  --gold:              #C9A961;
+  --gold-light:        #D4B978;
+  --gold-bright:       #E8D5A3;
+  --gold-vivid:        #F0C24B;
+  --gold-dim:          #8B7040;
+  --gold-whisper:      rgba(201,169,97,0.08);
+  --gold-glow:         rgba(201,169,97,0.18);
+  --gold-border:       rgba(201,169,97,0.22);
+  --gold-border-strong:rgba(201,169,97,0.45);
+
+  /* ── Platinum & Neutrals ── */
+  --platinum:          #EBEBEB;
+  --silver:            #A8A8A8;
+  --pewter:            #6A6A6A;
+  --white:             #FFFFFF;
+
+  /* ── Accent (depth/mystery) ── */
+  --violet-deep:       #1C0E34;
+  --violet-mid:        #3b2b5f;
+
+  /* ── Borders ── */
+  --border-gold:       rgba(201,169,97,0.18);
+  --border-subtle:     rgba(255,255,255,0.05);
+  --border-micro:      rgba(255,255,255,0.03);
+
+  /* ── Typography ── */
+  --font-display:      'Cinzel', serif;
+  --font-body:         'Cormorant Garamond', serif;
+  --font-ui:           'Inter', sans-serif;
+
+  /* ── Radii ── */
+  --r-xs:              4px;
+  --r-sm:              8px;
+  --r-md:              14px;
+  --r-lg:              22px;
+  --r-pill:            999px;
+
+  /* ── Shadows ── */
+  --shadow-gold:       0 0 60px rgba(201,169,97,0.12), 0 0 120px rgba(201,169,97,0.06);
+  --shadow-card:       0 24px 80px rgba(0,0,0,0.7), 0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lift:       0 32px 100px rgba(0,0,0,0.8), 0 0 60px rgba(201,169,97,0.08);
+
+  /* ── Sidebar ── */
+  --sidebar-w:         272px;
+
+  /* ── Transitions ── */
+  --ease-gold:         cubic-bezier(0.22, 0.68, 0, 1.2);
+  --ease-silk:         cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   RESET + BASE
+   ═══════════════════════════════════════════════════════════════════ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--obsidian);
+  color: var(--platinum);
+  line-height: 1.7;
+  font-size: 18px;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+/* Grain texture overlay — the Rolls Royce leather feel */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.35;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; height: auto; }
+button { font-family: inherit; cursor: pointer; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   KEYFRAME ANIMATIONS
+   ═══════════════════════════════════════════════════════════════════ */
+@keyframes flow {
+  0%,100% { transform: translate(0,0) rotate(0deg) scale(1); }
+  33%      { transform: translate(1.5%,2%) rotate(0.5deg) scale(1.01); }
+  66%      { transform: translate(-1%,0.5%) rotate(-0.5deg) scale(0.99); }
+}
+
+@keyframes sheen {
+  0%   { left: -40%; opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { left: 140%; opacity: 0; }
+}
+
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes pulse-gold {
+  0%,100% { opacity: 1; box-shadow: 0 0 8px rgba(201,169,97,0.6); }
+  50%      { opacity: 0.5; box-shadow: 0 0 20px rgba(201,169,97,0.3); }
+}
+
+@keyframes pulse-dot {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(0.75); }
+}
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes border-trace {
+  0%   { clip-path: inset(0 100% 100% 0); }
+  25%  { clip-path: inset(0 0 100% 0); }
+  50%  { clip-path: inset(0 0 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes orb-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes vault-light {
+  0%,100% { opacity: 0.7; transform: translateX(-50%) scaleX(0.9); }
+  50%      { opacity: 1; transform: translateX(-50%) scaleX(1.1); }
+}
+
+@keyframes classified-blink {
+  0%,49%  { opacity: 1; }
+  50%,100%{ opacity: 0; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   LIBRARY SHELL — Sidebar + Content
+   ═══════════════════════════════════════════════════════════════════ */
+.lib-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Sidebar ── */
+.lib-sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  background: var(--obsidian-light);
+  border-right: 1px solid var(--border-gold);
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 9000;
+  padding-bottom: 60px;
+}
+
+.lib-sidebar::-webkit-scrollbar { width: 2px; }
+.lib-sidebar::-webkit-scrollbar-track { background: transparent; }
+.lib-sidebar::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+
+.lib-sidebar-header {
+  padding: 32px 28px 24px;
+  border-bottom: 1px solid var(--border-gold);
+  position: sticky;
+  top: 0;
+  background: var(--obsidian-light);
+  z-index: 1;
+}
+
+.lib-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.lib-orb {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: conic-gradient(from 200deg, var(--gold-vivid), var(--gold-dim), var(--gold-bright), var(--gold), var(--gold-vivid));
+  box-shadow: 0 0 20px rgba(201,169,97,0.5), inset 0 0 8px rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.25);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.lib-orb::after {
+  content: '';
+  position: absolute;
+  top: 3px; left: 4px;
+  width: 8px; height: 5px;
+  background: rgba(255,255,255,0.35);
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+.lib-sidebar-title {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.lib-sidebar-sub {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--pewter);
+  opacity: 0.7;
+  padding-left: 40px;
+}
+
+.lib-nav-group {
+  padding: 20px 0 0;
+}
+
+.lib-nav-group-label {
+  font-family: var(--font-ui);
+  font-size: 0.52rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--gold-dim);
+  padding: 0 28px 10px;
+  border-bottom: 1px solid rgba(201,169,97,0.07);
+  margin-bottom: 4px;
+}
+
+.lib-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 28px;
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  color: var(--pewter);
+  transition: all 0.2s var(--ease-silk);
+  border-left: 2px solid transparent;
+  letter-spacing: 0.02em;
+}
+
+.lib-nav-link:hover {
+  color: var(--gold-light);
+  border-left-color: var(--gold);
+  background: rgba(201,169,97,0.04);
+  padding-left: 32px;
+}
+
+.lib-nav-link.active {
+  color: var(--gold);
+  border-left-color: var(--gold);
+  background: rgba(201,169,97,0.06);
+}
+
+.lib-badge {
+  display: inline-block;
+  font-size: 0.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  background: rgba(201,169,97,0.14);
+  color: var(--gold);
+  padding: 2px 6px;
+  border-radius: 2px;
+  border: 1px solid rgba(201,169,97,0.25);
+}
+
+.lib-badge-new {
+  background: rgba(240,194,75,0.12);
+  color: var(--gold-vivid);
+  border-color: rgba(240,194,75,0.3);
+}
+
+.lib-content {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Section Wrappers ── */
+.lib-section {
+  position: relative;
+  border-bottom: 1px solid rgba(201,169,97,0.06);
+}
+
+.lib-section-tag {
+  position: absolute;
+  top: 22px; right: 28px;
+  font-family: var(--font-ui);
+  font-size: 0.52rem;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--gold-dim);
+  background: rgba(201,169,97,0.05);
+  border: 1px solid rgba(201,169,97,0.14);
+  padding: 5px 11px;
+  border-radius: var(--r-xs);
+  z-index: 100;
+  opacity: 0.65;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   TYPOGRAPHY SYSTEM
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Display Scale */
+.d-xl {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.05;
+}
+
+.d-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.6rem);
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.d-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.18;
+}
+
+.d-sm {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+/* Body Scale */
+.b-xl {
+  font-family: var(--font-body);
+  font-size: 1.35rem;
+  line-height: 1.85;
+  color: var(--platinum);
+}
+
+.b-lg {
+  font-family: var(--font-body);
+  font-size: 1.18rem;
+  line-height: 1.82;
+  color: var(--platinum);
+}
+
+.b-md {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--silver);
+}
+
+.b-sm {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  line-height: 1.72;
+  color: var(--silver);
+}
+
+.b-xs {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  line-height: 1.65;
+  color: var(--pewter);
+}
+
+/* Label Components */
+.prestige-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  color: var(--gold-dim);
+  margin-bottom: 22px;
+}
+.prestige-label::before,
+.prestige-label::after {
+  content: '';
+  flex: 0 0 44px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold));
+}
+.prestige-label::after { background: linear-gradient(to left, transparent, var(--gold)); }
+
+.micro-label {
+  font-family: var(--font-ui);
+  font-size: 0.56rem;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  color: var(--gold-dim);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: rgba(201,169,97,0.8);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.catalog-tag {
+  font-family: var(--font-ui);
+  font-size: 0.52rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  opacity: 0.6;
+}
+
+/* Color Utils */
+.text-gold     { color: var(--gold); }
+.text-gold-l   { color: var(--gold-light); }
+.text-gold-v   { color: var(--gold-vivid); }
+.text-silver   { color: var(--silver); }
+.text-platinum { color: var(--platinum); }
+.text-italic   { font-style: italic; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   BUTTON SYSTEM
+   ═══════════════════════════════════════════════════════════════════ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  padding: 18px 42px;
+  transition: all 0.38s var(--ease-silk);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Sheen sweep shared */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -60%;
+  width: 40%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+  transition: left 0.6s var(--ease-silk);
+  pointer-events: none;
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dim) 100%);
+  color: var(--obsidian);
+  letter-spacing: 0.18em;
+}
+.btn-gold:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(201,169,97,0.35); }
+.btn-gold:hover::before { left: 130%; }
+
+.btn-outline-gold {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold-border-strong);
+}
+.btn-outline-gold:hover {
+  background: rgba(201,169,97,0.07);
+  border-color: var(--gold);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(201,169,97,0.15);
+}
+
+.btn-outline-white {
+  background: transparent;
+  color: var(--platinum);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.btn-outline-white:hover {
+  border-color: var(--gold-border-strong);
+  color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.btn-pill {
+  border-radius: var(--r-pill);
+  background: radial-gradient(circle at top left, rgba(201,169,97,0.2), transparent 60%);
+  border: 1px solid var(--gold-border-strong);
+  color: var(--gold);
+  box-shadow: 0 0 20px rgba(201,169,97,0.2), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.btn-pill:hover {
+  box-shadow: 0 0 40px rgba(201,169,97,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+  transform: translateY(-3px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   CARD SYSTEM
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Museum Card — core card */
+.museum-card {
+  background: linear-gradient(150deg, var(--obsidian-mid) 0%, var(--obsidian) 100%);
+  border: 1px solid var(--border-gold);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Specimen Card — content card */
+.specimen-card {
+  background: var(--obsidian-mid);
+  border: 1px solid rgba(201,169,97,0.11);
+  padding: 48px;
+  position: relative;
+  transition: border-color 0.35s var(--ease-silk), transform 0.35s var(--ease-silk), box-shadow 0.35s var(--ease-silk);
+}
+.specimen-card:hover {
+  border-color: rgba(201,169,97,0.28);
+  transform: translateY(-5px);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.5), 0 0 40px rgba(201,169,97,0.06);
+}
+.specimen-card[data-catalog]::after {
+  content: attr(data-catalog);
+  position: absolute;
+  top: 18px; right: 22px;
+  font-family: var(--font-ui);
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  opacity: 0.45;
+}
+
+.specimen-header {
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(201,169,97,0.1);
+}
+
+/* Phase Card */
+.phase-card {
+  position: relative;
+  padding: 48px;
+  background: linear-gradient(140deg, var(--charcoal) 0%, var(--obsidian) 100%);
+  border-left: 2px solid var(--gold);
+  overflow: hidden;
+}
+.phase-ghost {
+  font-family: var(--font-display);
+  font-size: 7rem;
+  color: rgba(201,169,97,0.05);
+  position: absolute;
+  top: 8px; right: 16px;
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   IMAGE TREATMENTS
+   ═══════════════════════════════════════════════════════════════════ */
+.prestige-image {
+  position: relative;
+  overflow: hidden;
+}
+.prestige-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(0.72) contrast(1.06);
+  transition: transform 0.7s var(--ease-silk), filter 0.5s ease;
+  display: block;
+}
+.prestige-image:hover img {
+  transform: scale(1.04);
+  filter: saturate(0.88) contrast(1.06);
+}
+.prestige-image::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(5,5,5,0.38) 0%, transparent 38%, transparent 62%, rgba(5,5,5,0.22) 100%);
+  pointer-events: none;
+}
+
+.image-frame {
+  border: 1px solid rgba(201,169,97,0.22);
+  padding: 10px;
+  background: var(--obsidian-mid);
+}
+
+.image-caption {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--gold-dim);
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(201,169,97,0.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SHARED COMPONENT ATOMS
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201,169,97,0.07);
+  border: 1px solid rgba(201,169,97,0.22);
+  padding: 6px 16px;
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--gold);
+}
+
+/* Logo Orb */
+.logo-orb {
+  width: 28px; height: 28px;
+  border-radius: var(--r-pill);
+  background: conic-gradient(from 200deg, var(--gold-vivid), var(--gold-dim), var(--gold-bright), var(--gold), var(--gold-vivid));
+  box-shadow: 0 0 20px rgba(201,169,97,0.55), 0 0 40px rgba(0,0,0,0.9);
+  border: 1px solid rgba(255,255,255,0.28);
+  position: relative;
+  flex-shrink: 0;
+}
+.logo-orb::after {
+  content: '';
+  position: absolute;
+  top: 3px; left: 4px;
+  width: 9px; height: 5px;
+  background: rgba(255,255,255,0.32);
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+/* Dividers */
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201,169,97,0.38), transparent);
+}
+.divider-subtle {
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+/* Feature List — Diamond bullets */
+.feature-list { list-style: none; }
+.feature-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  color: var(--silver);
+}
+.feature-list li::before {
+  content: '◆';
+  color: var(--gold);
+  font-size: 0.5rem;
+  flex-shrink: 0;
+}
+.feature-list-dash li::before { content: '—'; font-size: 0.85rem; font-weight: 300; }
+
+/* Nested Bullets */
+.nested-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-left: 22px;
+  border-left: 1px solid rgba(201,169,97,0.16);
+  margin-top: 10px;
+}
+.nested-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: var(--silver);
+}
+.nested-dot {
+  width: 5px; height: 5px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 2px;
+  box-shadow: 0 0 6px rgba(201,169,97,0.5);
+}
+
+/* Feature Stack */
+.feature-stack { display: flex; flex-direction: column; }
+.feature-item {
+  display: flex;
+  gap: 26px;
+  align-items: flex-start;
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(201,169,97,0.07);
+}
+.feature-num {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  color: var(--gold-dim);
+  letter-spacing: 0.22em;
+  min-width: 38px;
+  padding-top: 4px;
+}
+.feature-content h4 {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 9px;
+}
+.feature-content p {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  color: var(--silver);
+  line-height: 1.72;
+}
+
+/* Stat */
+.stat-item { text-align: center; padding: 36px 24px; }
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.stat-label {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--silver);
+  display: block;
+}
+
+/* Process List Item */
+.process-n {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 400;
+  color: var(--gold);
+  min-width: 58px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.process-list-item {
+  display: flex;
+  gap: 28px;
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.process-list-item:last-child { border-bottom: none; }
+.process-list-item h4 {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 9px;
+  color: var(--platinum);
+}
+.process-list-item p {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--silver);
+  line-height: 1.7;
+}
+
+/* Exclusivity Strip */
+.excl-strip {
+  display: flex;
+  gap: 0;
+}
+.excl-item {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 28px 40px;
+  border-right: 1px solid rgba(201,169,97,0.1);
+}
+.excl-item:first-child { padding-left: 0; }
+.excl-item:last-child { border-right: none; }
+.excl-value {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  color: var(--gold);
+  line-height: 1;
+}
+.excl-label {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--silver);
+}
+
+/* Availability Card */
+.availability-card {
+  background: radial-gradient(circle at top, rgba(201,169,97,0.12), rgba(5,5,5,0.97));
+  border: 1px solid rgba(201,169,97,0.32);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-gold);
+  padding: 40px;
+}
+
+/* Sheen effect */
+.sheen {
+  position: relative;
+  overflow: hidden;
+}
+.sheen::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -40%;
+  width: 35%; height: 100%;
+  background: radial-gradient(ellipse 80% 100% at center, rgba(255,175,90,0.1) 0%, rgba(255,155,70,0.05) 40%, transparent 70%);
+  filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.sheen:hover::after {
+  animation: sheen 5.5s var(--ease-silk) forwards;
+  animation-delay: 0.6s;
+  opacity: 1;
+}
+
+/* Flow Background */
+.flow-bg {
+  position: relative;
+  overflow: hidden;
+}
+.flow-bg::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: 
+    radial-gradient(ellipse at 22% 30%, rgba(201,169,97,0.06) 0%, transparent 48%),
+    radial-gradient(ellipse at 80% 72%, rgba(201,169,97,0.04) 0%, transparent 38%),
+    radial-gradient(ellipse at 50% 100%, rgba(28,14,52,0.2) 0%, transparent 40%);
+  animation: flow 26s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Comparison Table */
+.comparison-table { width: 100%; border-collapse: collapse; }
+.comparison-table th,
+.comparison-table td {
+  padding: 20px 26px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+}
+.comparison-table th {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 1px solid rgba(201,169,97,0.22);
+  padding-bottom: 22px;
+}
+.check { color: var(--gold); font-weight: 700; }
+
+/* Nav Pills */
+.nav-pill {
+  padding: 13px 28px;
+  background: var(--obsidian-mid);
+  border: 1px solid rgba(201,169,97,0.16);
+  color: var(--silver);
+  font-family: var(--font-ui);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-weight: 500;
+}
+.nav-pill:hover,
+.nav-pill.active {
+  background: var(--gold);
+  color: var(--obsidian);
+  border-color: var(--gold);
+}
+
+/* FAQ */
+.faq-item {
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  padding: 24px 0;
+}
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  color: var(--platinum);
+  user-select: none;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  outline: none;
+}
+.faq-question::after {
+  content: '+';
+  color: var(--gold);
+  font-size: 1.5rem;
+  font-family: var(--font-ui);
+  font-weight: 300;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  margin-left: 20px;
+}
+.faq-answer {
+  margin-top: 16px;
+  color: var(--silver);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  line-height: 1.82;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+.faq-item.open .faq-question::after { transform: rotate(45deg); }
+.faq-item.open .faq-answer { max-height: 600px; opacity: 1; }
+
+/* Team Avatar */
+.team-avatar {
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  color: var(--obsidian);
+  margin: 0 auto 24px;
+  box-shadow: 0 0 30px rgba(201,169,97,0.25);
+}
+
+/* Pricing Card */
+.pricing-card {
+  background: var(--obsidian-mid);
+  border: 1px solid rgba(201,169,97,0.1);
+  padding: 56px 44px;
+  text-align: center;
+  position: relative;
+  transition: all 0.35s var(--ease-silk);
+}
+.pricing-card:hover {
+  border-color: rgba(201,169,97,0.32);
+  transform: translateY(-7px);
+  box-shadow: var(--shadow-card);
+}
+.pricing-card.featured {
+  border-color: var(--gold);
+  background: linear-gradient(165deg, rgba(201,169,97,0.06) 0%, var(--obsidian-mid) 100%);
+}
+.pricing-card.featured::before {
+  content: 'Recommended';
+  position: absolute;
+  top: -14px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--obsidian);
+  padding: 5px 20px;
+  font-family: var(--font-ui);
+  font-size: 0.56rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+.price-display {
+  font-family: var(--font-display);
+  font-size: 2.9rem;
+  color: var(--gold);
+  margin: 26px 0;
+}
+.price-display .price-period {
+  font-size: 1rem;
+  color: var(--silver);
+}
+
+/* Timeline Vertical */
+.timeline-vertical {
+  position: relative;
+  padding-left: 48px;
+}
+.timeline-vertical::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+.timeline-v-item {
+  position: relative;
+  padding-bottom: 48px;
+}
+.timeline-v-item::before {
+  content: '';
+  position: absolute;
+  left: -52px; top: 9px;
+  width: 9px; height: 9px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 14px rgba(201,169,97,0.7);
+}
+.timeline-date {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+/* Queue / Waiting Room */
+.queue-slot {
+  width: 52px; height: 5px;
+  background: rgba(201,169,97,0.14);
+  border: 1px solid rgba(201,169,97,0.18);
+  transition: all 0.35s ease;
+}
+.queue-slot.filled { background: var(--gold); border-color: var(--gold); }
+.queue-slot.pending {
+  background: rgba(201,169,97,0.38);
+  border-color: rgba(201,169,97,0.5);
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+
+/* Newsletter */
+.newsletter-input {
+  padding: 18px 20px;
+  background: var(--obsidian);
+  border: 1px solid rgba(201,169,97,0.16);
+  color: var(--white);
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+  width: 100%;
+}
+.newsletter-input:focus { border-color: rgba(201,169,97,0.42); }
+.newsletter-input::placeholder { color: var(--pewter); }
+
+/* Dossier Card */
+.dossier-card {
+  background: var(--obsidian-mid);
+  border: 1px solid rgba(201,169,97,0.14);
+  position: relative;
+  overflow: hidden;
+}
+.dossier-header {
+  background: rgba(201,169,97,0.04);
+  border-bottom: 1px solid rgba(201,169,97,0.11);
+  padding: 22px 34px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dossier-stamp {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201,169,97,0.32);
+  padding: 7px 16px;
+  opacity: 0.75;
+}
+.dossier-body { padding: 38px 34px; }
+.dossier-field {
+  margin-bottom: 22px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.dossier-field-label {
+  font-family: var(--font-ui);
+  font-size: 0.56rem;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--gold-dim);
+  margin-bottom: 7px;
+}
+.dossier-field-value {
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  color: var(--platinum);
+  line-height: 1.62;
+}
+.dossier-redacted {
+  display: inline-block;
+  background: var(--platinum);
+  color: var(--platinum);
+  user-select: none;
+  border-radius: 2px;
+  padding: 0 4px;
+  font-size: 0.85em;
+}
+.dossier-result-tag {
+  display: inline-block;
+  background: rgba(201,169,97,0.11);
+  border: 1px solid rgba(201,169,97,0.3);
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  padding: 8px 22px;
+}
+
+/* Ticker */
+.archive-ticker-wrap {
+  overflow: hidden;
+  border-top: 1px solid rgba(201,169,97,0.11);
+  border-bottom: 1px solid rgba(201,169,97,0.11);
+  padding: 22px 0;
+  background: var(--obsidian-light);
+}
+.archive-ticker {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker-scroll 36s linear infinite;
+}
+.archive-ticker:hover { animation-play-state: paused; }
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  padding: 0 44px;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--silver);
+  white-space: nowrap;
+}
+.ticker-dot {
+  width: 4px; height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: pulse-dot 2.2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.ticker-gold { color: var(--gold); }
+
+/* Codex / Editorial */
+.codex-drop::first-letter {
+  font-family: var(--font-display);
+  font-size: 6rem;
+  float: left;
+  line-height: 0.72;
+  padding-right: 20px;
+  padding-top: 10px;
+  color: var(--gold);
+}
+.codex-pull {
+  font-family: var(--font-body);
+  font-size: 1.65rem;
+  font-style: italic;
+  color: var(--gold-light);
+  text-align: center;
+  padding: 44px 0;
+  border-top: 1px solid rgba(201,169,97,0.14);
+  border-bottom: 1px solid rgba(201,169,97,0.14);
+  margin: 52px 0;
+  line-height: 1.52;
+}
+.codex-annotation {
+  display: flex;
+  gap: 22px;
+  background: rgba(201,169,97,0.04);
+  border: 1px solid rgba(201,169,97,0.1);
+  border-left: 3px solid var(--gold);
+  padding: 26px 30px;
+  margin: 34px 0;
+}
+.codex-annotation-label {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  rotate: 180deg;
+  flex-shrink: 0;
+}
+
+/* Specimen Gallery */
+.specimen-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: rgba(201,169,97,0.05);
+}
+.gallery-cell {
+  position: relative;
+  background: var(--obsidian);
+  overflow: hidden;
+  cursor: pointer;
+}
+.gallery-cell:nth-child(1) { grid-column: span 2; }
+.gallery-cell:nth-child(4) { grid-column: span 2; }
+.gallery-cell img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(0.55);
+  transition: all 0.55s var(--ease-silk);
+  aspect-ratio: 4/3;
+  display: block;
+}
+.gallery-cell:hover img {
+  filter: saturate(0.9);
+  transform: scale(1.05);
+}
+.gallery-cell-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(5,5,5,0.88) 0%, transparent 52%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 26px;
+}
+.gallery-cell:hover .gallery-cell-overlay { opacity: 1; }
+.gallery-overlay-title {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.gallery-overlay-sub {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  color: var(--silver);
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+}
+
+/* Provenance Card */
+.provenance-card {
+  background: var(--obsidian-mid);
+  border: 1px solid rgba(201,169,97,0.18);
+  max-width: 820px;
+  margin: 0 auto;
+  position: relative;
+}
+.provenance-top-bar {
+  background: rgba(201,169,97,0.06);
+  border-bottom: 1px solid rgba(201,169,97,0.14);
+  padding: 15px 38px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-ui);
+  font-size: 0.56rem;
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  color: var(--gold-dim);
+}
+.provenance-body {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  min-height: 400px;
+}
+.provenance-image {
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid rgba(201,169,97,0.12);
+}
+.provenance-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(0.68);
+}
+.provenance-data {
+  padding: 38px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.provenance-row {
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.provenance-key {
+  font-family: var(--font-ui);
+  font-size: 0.53rem;
+  text-transform: uppercase;
+  letter-spacing: 0.27em;
+  color: var(--gold-dim);
+  margin-bottom: 5px;
+}
+.provenance-val {
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  color: var(--platinum);
+}
+.conf-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: rgba(201,169,97,0.18);
+}
+.conf-dot.filled { background: var(--gold); }
+
+/* Waiting Room */
+.waiting-room {
+  background: var(--obsidian-light);
+  border: 1px solid rgba(201,169,97,0.14);
+  padding: 90px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.waiting-room::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 240px; height: 100%;
+  background: radial-gradient(ellipse 100% 55% at 50% 0%, rgba(201,169,97,0.1), transparent 65%);
+  pointer-events: none;
+}
+
+/* Private Room */
+.private-room {
+  position: relative;
+  min-height: 82vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--obsidian);
+  overflow: hidden;
+}
+.private-room-glow {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 650px; height: 440px;
+  background: radial-gradient(ellipse, rgba(28,14,52,0.32), transparent 70%);
+  pointer-events: none;
+}
+.private-room-frame {
+  border: 1px solid rgba(201,169,97,0.2);
+  padding: 90px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+.private-room-frame::before,
+.private-room-frame::after {
+  content: '';
+  position: absolute;
+  width: 44px; height: 44px;
+  border-color: var(--gold);
+  border-style: solid;
+  opacity: 0.38;
+}
+.private-room-frame::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+.private-room-frame::after  { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+.private-room-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 18px 22px;
+  font-family: var(--font-body);
+  font-size: 1.08rem;
+  color: var(--platinum);
+  outline: none;
+  letter-spacing: 0.08em;
+  width: 100%;
+}
+.private-room-input::placeholder { color: var(--silver); opacity: 0.38; font-style: italic; }
+.private-room-submit {
+  background: var(--gold);
+  border: none;
+  color: var(--obsidian);
+  font-family: var(--font-display);
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  padding: 18px 28px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.private-room-submit:hover { background: var(--gold-bright); }
+
+/* Guarantee Box */
+.guarantee-box {
+  border: 1px solid var(--gold);
+  padding: 52px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.guarantee-box::before {
+  content: '';
+  position: absolute;
+  top: -60%; left: -60%;
+  width: 220%; height: 220%;
+  background: radial-gradient(circle, rgba(201,169,97,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Case Study Split */
+.case-study-split {
+  display: flex;
+  min-height: 88vh;
+}
+.case-study-image {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+.case-study-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(0.62) contrast(1.06);
+}
+.case-study-fade {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 0%, var(--obsidian) 100%);
+}
+.case-study-content {
+  flex: 1;
+  padding: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Prestige Quote */
+.prestige-quote {
+  position: relative;
+  padding: 40px 0 40px 60px;
+  border-left: 2px solid var(--gold);
+}
+.prestige-quote p {
+  font-family: var(--font-body);
+  font-size: 1.38rem;
+  font-style: italic;
+  color: var(--platinum);
+  line-height: 1.65;
+}
+
+/* Testimonial Block */
+.testimonial-block {
+  background: var(--obsidian-mid);
+  border: 1px solid rgba(201,169,97,0.14);
+  padding: 70px;
+  position: relative;
+  overflow: hidden;
+}
+.testimonial-block::before {
+  content: '\201C';
+  font-family: var(--font-body);
+  font-size: 11rem;
+  color: rgba(201,169,97,0.06);
+  position: absolute;
+  top: 10px; left: 32px;
+  line-height: 1;
+  pointer-events: none;
+}
+.testimonial-text {
+  font-family: var(--font-body);
+  font-size: 1.52rem;
+  line-height: 1.65;
+  font-style: italic;
+  position: relative;
+  z-index: 1;
+}
+
+/* Service Cards */
+.svc-card-01 {
+  position: relative;
+  padding: 52px 42px;
+  background: var(--obsidian-mid);
+  border: 1px solid rgba(201,169,97,0.1);
+  transition: all 0.35s var(--ease-silk);
+}
+.svc-card-01:hover {
+  border-color: rgba(201,169,97,0.28);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.svc-card-01::before {
+  content: attr(data-label);
+  position: absolute;
+  top: 0; left: 38px;
+  transform: translateY(-50%);
+  background: var(--obsidian);
+  padding: 0 14px;
+  font-family: var(--font-ui);
+  font-size: 0.56rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--gold);
+}
+
+/* Excavation Map */
+.excavation-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 1px;
+  background: rgba(201,169,97,0.05);
+  margin-bottom: 42px;
+}
+.ex-cell {
+  background: var(--obsidian);
+  aspect-ratio: 1;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.ex-cell:hover { background: rgba(201,169,97,0.09); }
+.ex-cell.active { background: rgba(201,169,97,0.14); }
+.ex-cell.active::after {
+  content: '';
+  position: absolute; inset: 4px;
+  border: 1px solid rgba(201,169,97,0.38);
+}
+.ex-cell.dug { background: rgba(28,14,52,0.35); }
+.ex-cell.dug::after {
+  content: '◆';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 0.52rem;
+  color: var(--gold);
+}
+.ex-channel-tag {
+  padding: 11px 15px;
+  background: var(--obsidian);
+  border: 1px solid rgba(201,169,97,0.09);
+  font-family: var(--font-ui);
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: var(--silver);
+  transition: all 0.25s ease;
+}
+.ex-channel-tag.excavated {
+  border-color: rgba(201,169,97,0.28);
+  color: var(--gold);
+  background: rgba(201,169,97,0.05);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   CTA BLOCKS
+   ═══════════════════════════════════════════════════════════════════ */
+.cta-box {
+  background: linear-gradient(140deg, var(--charcoal) 0%, var(--obsidian) 50%, var(--charcoal) 100%);
+  border: 1px solid rgba(201,169,97,0.18);
+  padding: 90px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-box::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(201,169,97,0.04) 0%, transparent 62%);
+  pointer-events: none;
+}
+
+.cta-fullbleed {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.cta-fullbleed-bg img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.2;
+  filter: saturate(0.45);
+}
+.cta-fullbleed-overlay {
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, var(--obsidian) 66%);
+}
+.cta-fullbleed-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 780px;
+  padding: 90px 44px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   FOOTER SYSTEM
+   ═══════════════════════════════════════════════════════════════════ */
+.footer-01 {
+  padding: 30px 44px;
+  background: var(--obsidian-light);
+  border-top: 1px solid rgba(201,169,97,0.16);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  color: rgba(229,229,229,0.48);
+  letter-spacing: 0.06em;
+}
+.footer-02 {
+  background: var(--obsidian-light);
+  border-top: 1px solid rgba(201,169,97,0.1);
+  padding: 88px;
+}
+.footer-02-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 64px;
+  margin-bottom: 64px;
+}
+.footer-02-links { list-style: none; line-height: 2.4; }
+.footer-02-links a {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--silver);
+  transition: color 0.25s ease;
+}
+.footer-02-links a:hover { color: var(--gold); }
+.footer-02-bottom {
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  color: var(--silver);
+}
+.footer-03 {
+  background: var(--obsidian-light);
+  border-top: 1px solid rgba(201,169,97,0.1);
+  padding: 88px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   LAYOUT HELPERS
+   ═══════════════════════════════════════════════════════════════════ */
+.container      { max-width: 1240px; margin: 0 auto; padding: 0 44px; }
+.container-wide { max-width: 1440px; margin: 0 auto; padding: 0 64px; }
+.s-pad          { padding: 110px 90px; }
+.s-pad-sm       { padding: 76px 90px; }
+.s-pad-lg       { padding: 155px 90px; }
+.grid-2         { display: grid; grid-template-columns: repeat(2,1fr); gap: 44px; }
+.grid-3         { display: grid; grid-template-columns: repeat(3,1fr); gap: 36px; }
+.grid-4         { display: grid; grid-template-columns: repeat(4,1fr); gap: 28px; }
+.split          { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: start; }
+.split-60-40    { grid-template-columns: 1.5fr 1fr; }
+.split-40-60    { grid-template-columns: 1fr 1.5fr; }
+.center         { text-align: center; }
+.flex-row       { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
+.mb-8  { margin-bottom: 8px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+.mb-32 { margin-bottom: 32px; }
+.mb-48 { margin-bottom: 48px; }
+.mb-64 { margin-bottom: 64px; }
+.mt-24 { margin-top: 24px; }
+.mt-32 { margin-top: 32px; }
+.mt-48 { margin-top: 48px; }
+.mt-64 { margin-top: 64px; }
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION-SPECIFIC: NAV SECTIONS
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* NAV-01: Crystal Clear Transparent */
+.nav-01 {
+  position: relative;
+  background: linear-gradient(to bottom, rgba(5,5,5,0.96) 0%, rgba(5,5,5,0.3) 100%);
+  padding: 38px 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-01-brand {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.nav-01-links {
+  display: flex;
+  gap: 54px;
+  align-items: center;
+}
+.nav-01-links a {
+  font-family: var(--font-ui);
+  font-size: 0.63rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.82);
+  position: relative;
+  transition: color 0.3s ease;
+}
+.nav-01-links a:hover { color: var(--gold); }
+.nav-01-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width 0.35s var(--ease-silk);
+}
+.nav-01-links a:hover::after { width: 100%; }
+.nav-01-cta {
+  border: 1px solid var(--gold-border-strong) !important;
+  padding: 12px 26px !important;
+  color: var(--gold) !important;
+  transition: all 0.3s ease !important;
+  font-family: var(--font-display) !important;
+  font-size: 0.62rem !important;
+  letter-spacing: 0.2em !important;
+}
+.nav-01-cta:hover {
+  background: var(--gold) !important;
+  color: var(--obsidian) !important;
+}
+
+/* NAV-02: Frosted Glass with Orb */
+.nav-02 {
+  position: relative;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: linear-gradient(to bottom, rgba(5,5,5,0.94), rgba(5,5,5,0.72), transparent);
+  border-bottom: 1px solid rgba(201,169,97,0.09);
+  padding: 18px 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-02-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.nav-02-links {
+  display: flex;
+  gap: 36px;
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+.nav-02-links a {
+  color: rgba(235,235,235,0.7);
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.25s ease;
+}
+.nav-02-links a:hover { color: var(--gold-light); }
+.nav-02-links a::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 0; height: 1px;
+  background: linear-gradient(to right, var(--gold), var(--gold-bright));
+  transition: width 0.28s var(--ease-silk);
+}
+.nav-02-links a:hover::after { width: 100%; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   SECTION-SPECIFIC: HERO SECTIONS
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* HERO-01: Centered */
+.hero-01 {
+  padding: 150px 64px 110px;
+  text-align: center;
+  position: relative;
+  background: radial-gradient(ellipse at 50% 0%, rgba(201,169,97,0.06) 0%, transparent 55%);
+}
+
+/* HERO-02: Two-Column with Stat Card */
+.hero-02 {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 110px 0 90px;
+  background: 
+    radial-gradient(circle at 15% 40%, rgba(201,169,97,0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 70%, rgba(28,14,52,0.55) 0%, transparent 45%),
+    radial-gradient(circle at 50% 0%, rgba(9,9,9,0.9) 0%, var(--obsidian) 100%);
+  overflow: hidden;
+}
+.hero-02-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 3fr 2.2fr;
+  gap: 64px;
+  align-items: center;
+}
+.hero-stat-card {
+  background: radial-gradient(circle at top, rgba(201,169,97,0.13), rgba(5,5,5,0.97));
+  border-radius: var(--r-lg);
+  border: 1px solid rgba(201,169,97,0.36);
+  box-shadow: var(--shadow-lift);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -35%;
+  width: 35%; height: 100%;
+  background: radial-gradient(ellipse 80% 100% at center, rgba(255,175,90,0.12) 0%, rgba(255,155,70,0.06) 40%, transparent 70%);
+  filter: blur(10px);
+  opacity: 0;
+}
+.hero-stat-card:hover::before {
+  animation: sheen 5.5s var(--ease-silk) forwards;
+  animation-delay: 0.7s;
+  opacity: 1;
+}
+.hero-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.hero-stat-item {
+  background: rgba(5,5,5,0.88);
+  border: 1px solid rgba(235,235,235,0.06);
+  border-radius: var(--r-md);
+  padding: 16px 18px;
+  transition: all 0.38s ease;
+}
+.hero-stat-item:hover {
+  background: rgba(201,169,97,0.09);
+  border-color: rgba(201,169,97,0.28);
+  transform: translateY(-2px);
+}
+.hero-stat-item strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  color: var(--platinum);
+  margin-bottom: 4px;
+}
+.hero-stat-item span {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  color: rgba(235,235,235,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+}
+.hero-meta-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-family: var(--font-ui);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(235,235,235,0.5);
+}
+.hero-meta-tags span {
+  position: relative;
+  padding-left: 18px;
+}
+.hero-meta-tags span::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 30%, var(--gold) 100%);
+  transform: translateY(-50%);
+  box-shadow: 0 0 10px rgba(201,169,97,0.85);
+}
+
+/* HERO-03: Asymmetric + Museum Card */
+.hero-03-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.12fr;
+  gap: 88px;
+  align-items: start;
+}
+
+/* HERO-04: Cinematic Full-bleed */
+.hero-04 {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero-04-bg {
+  position: absolute; inset: 0; z-index: 0;
+}
+.hero-04-bg img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0.36;
+  filter: saturate(0.52) contrast(1.12);
+}
+.hero-04-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, var(--obsidian) 0%, transparent 25%, transparent 70%, var(--obsidian) 100%);
+}
+.hero-04-content {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* HERO-05: The Vault — Speakeasy */
+.hero-vault {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--obsidian);
+}
+.vault-curtain-left,
+.vault-curtain-right {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 26%;
+  z-index: 1;
+  pointer-events: none;
+}
+.vault-curtain-left {
+  left: 0;
+  background: linear-gradient(to right, #030200 30%, rgba(3,2,0,0.85) 70%, transparent);
+  box-shadow: 80px 0 140px rgba(0,0,0,0.95);
+}
+.vault-curtain-right {
+  right: 0;
+  background: linear-gradient(to left, #030200 30%, rgba(3,2,0,0.85) 70%, transparent);
+  box-shadow: -80px 0 140px rgba(0,0,0,0.95);
+}
+.vault-floor {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 220px;
+  background: linear-gradient(to top, rgba(201,169,97,0.04), transparent);
+  z-index: 0;
+}
+.vault-spotlight {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 100%;
+  background: radial-gradient(ellipse 65% 72% at 50% 0%, rgba(201,169,97,0.16), rgba(201,169,97,0.05) 42%, transparent 72%);
+  pointer-events: none;
+  z-index: 0;
+  animation: vault-light 8s ease-in-out infinite;
+}
+.vault-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+.vault-seal {
+  width: 84px; height: 84px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,169,97,0.38);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 8px;
+}
+.vault-seal::before {
+  content: '';
+  position: absolute; inset: 7px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,169,97,0.18);
+}
+.vault-seal-inner {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--gold);
+}
+.vault-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.44em;
+  color: var(--gold-dim);
+}
+.vault-tagline {
+  font-family: var(--font-body);
+  font-size: 1.12rem;
+  color: var(--silver);
+  font-style: italic;
+  line-height: 1.72;
+  max-width: 520px;
+}
+.vault-divider {
+  width: 108px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+/* PAGE HEADER-01 */
+.page-header-01 {
+  padding: 190px 64px 100px;
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.page-subtitle {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  color: var(--silver);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.88;
+}
+
+/* SVC-03 */
+.svc-03-grid { display: flex; gap: 88px; }
+.svc-03-main { flex: 1.5; }
+.svc-03-aside { flex: 1; }
+.svc-03-sticky { position: sticky; top: 44px; }
+.journey-step { margin-bottom: 32px; }
+.journey-label {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold-dim);
+}
+.journey-step p {
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  color: var(--platinum);
+  margin-top: 7px;
+}
+
+/* SVC-04 Mosaic */
+.svc-mosaic {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 30px;
+}
+.svc-mosaic .specimen-card[data-span="5"] { grid-column: span 5; }
+.svc-mosaic .specimen-card[data-span="7"] { grid-column: span 7; }
+
+/* Process 3-col */
+.proc-3col {
+  display: grid;
+  grid-template-columns: 1fr 1.12fr 1fr;
+  gap: 34px;
+}
+.proc-3col .specimen-card:nth-child(2) { transform: translateY(-24px); }
+
+/* Alternating */
+.proc-alternating { display: flex; flex-direction: column; gap: 110px; }
+.proc-alt-row { display: flex; gap: 88px; align-items: center; }
+.proc-alt-row.reverse { flex-direction: row-reverse; }
+.proc-alt-image { flex: 1.2; position: relative; }
+.proc-catalog-badge {
+  position: absolute;
+  bottom: -30px; right: 38px;
+  background: var(--obsidian);
+  padding: 18px 26px;
+  border: 1px solid rgba(201,169,97,0.26);
+}
+.proc-alt-row.reverse .proc-catalog-badge { right: auto; left: 38px; }
+.proc-alt-content { flex: 1; display: flex; flex-direction: column; gap: 24px; }
+
+/* Stats Row */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  border-top: 1px solid rgba(201,169,97,0.1);
+  border-bottom: 1px solid rgba(201,169,97,0.1);
+  padding: 44px 0;
+}
+
+/* Comparison Panels */
+.comp-panels { display: flex; border: 1px solid rgba(201,169,97,0.13); }
+.comp-panel { flex: 1; padding: 62px; }
+.comp-panel:first-child {
+  background: var(--obsidian-mid);
+  border-right: 1px solid rgba(201,169,97,0.1);
+}
+.comp-panel:last-child {
+  background: linear-gradient(140deg, rgba(201,169,97,0.04) 0%, transparent 100%);
+}
+.comp-item {
+  padding: 16px 0;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  color: var(--silver);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.comp-panel.active .comp-item { color: var(--platinum); }
+
+/* Gem Stage */
+.gem-stage {
+  background: radial-gradient(ellipse at center, rgba(59,43,95,0.22) 0%, var(--obsidian) 68%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-md) var(--r-md) 0 0;
+}
+.gem-caption-bar {
+  padding: 22px 26px;
+  background: rgba(5,5,9,0.96);
+  border: 1px solid rgba(201,169,97,0.1);
+  border-top: none;
+  border-radius: 0 0 var(--r-md) var(--r-md);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   NEW LUXURY SECTIONS — CSS
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* INTEL-01: Credentials & Authority Strip */
+.intel-strip {
+  background: var(--obsidian-light);
+  border-top: 1px solid rgba(201,169,97,0.1);
+  border-bottom: 1px solid rgba(201,169,97,0.1);
+  padding: 48px 90px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+}
+.intel-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 28px;
+  border-right: 1px solid rgba(201,169,97,0.08);
+  text-align: center;
+  transition: background 0.3s ease;
+}
+.intel-item:last-child { border-right: none; }
+.intel-item:hover { background: rgba(201,169,97,0.03); }
+.intel-icon {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 10px;
+  opacity: 0.7;
+}
+.intel-value {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.intel-desc {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--pewter);
+}
+
+/* CORP-01: Corporate Intelligence Panel */
+.corp-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 80vh;
+}
+.corp-left {
+  background: 
+    radial-gradient(circle at 0% 50%, rgba(201,169,97,0.07) 0%, transparent 55%),
+    var(--charcoal);
+  border-right: 1px solid rgba(201,169,97,0.12);
+  padding: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.corp-right {
+  background: var(--obsidian-mid);
+  padding: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+}
+.corp-metric {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(201,169,97,0.07);
+}
+.corp-metric:last-child { border-bottom: none; }
+.corp-metric-num {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  color: var(--gold);
+  line-height: 1;
+  min-width: 90px;
+  flex-shrink: 0;
+}
+.corp-metric-label {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--platinum);
+  margin-bottom: 6px;
+}
+.corp-metric-desc {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: var(--silver);
+  line-height: 1.7;
+}
+
+/* CONFID-01: Confidentiality Protocol */
+.confid-section {
+  position: relative;
+  overflow: hidden;
+}
+.confid-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%) rotate(-12deg);
+  font-family: var(--font-display);
+  font-size: 18vw;
+  font-weight: 700;
+  color: rgba(201,169,97,0.022);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: 0.1em;
+}
+.confid-card {
+  background: linear-gradient(160deg, var(--charcoal), var(--obsidian));
+  border: 1px solid rgba(201,169,97,0.16);
+  padding: 70px;
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.confid-card::before,
+.confid-card::after {
+  content: '';
+  position: absolute;
+  width: 52px; height: 52px;
+  border-color: var(--gold);
+  border-style: solid;
+  opacity: 0.28;
+}
+.confid-card::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.confid-card::after  { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+.confid-header {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(201,169,97,0.12);
+}
+.confid-seal-ring {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,169,97,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+.confid-seal-ring::before {
+  content: '';
+  position: absolute; inset: 5px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,169,97,0.18);
+}
+.confid-seal-inner {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+}
+.confid-classified {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold-border-strong);
+  padding: 6px 14px;
+  margin-bottom: 12px;
+}
+.confid-points {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.confid-point {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.confid-point-num {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  color: var(--gold-dim);
+  letter-spacing: 0.18em;
+  min-width: 28px;
+  padding-top: 2px;
+}
+
+/* EXEC-01: Executive Briefing Card */
+.exec-card {
+  background: 
+    radial-gradient(circle at 0% 0%, rgba(201,169,97,0.06) 0%, transparent 40%),
+    linear-gradient(160deg, var(--charcoal), var(--obsidian));
+  border: 1px solid rgba(201,169,97,0.18);
+  position: relative;
+  overflow: hidden;
+}
+.exec-card-top {
+  background: rgba(201,169,97,0.05);
+  border-bottom: 1px solid rgba(201,169,97,0.12);
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-ui);
+  font-size: 0.56rem;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--gold-dim);
+}
+.exec-card-body {
+  padding: 52px;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 0;
+}
+.exec-card-divider {
+  background: rgba(201,169,97,0.1);
+  margin: 0 52px;
+}
+.exec-kpi {
+  text-align: center;
+  padding: 28px;
+}
+.exec-kpi-value {
+  font-family: var(--font-display);
+  font-size: 3.4rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.exec-kpi-label {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--silver);
+}
+
+/* ROI-01: The Recovery Calculus */
+.roi-section {
+  background: 
+    radial-gradient(circle at 50% 100%, rgba(28,14,52,0.35) 0%, transparent 55%),
+    var(--obsidian-light);
+}
+.roi-card {
+  background: var(--obsidian-mid);
+  border: 1px solid rgba(201,169,97,0.14);
+  padding: 60px;
+  position: relative;
+}
+.roi-row {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  gap: 0;
+  align-items: center;
+  margin-bottom: 36px;
+}
+.roi-cell {
+  padding: 28px 32px;
+  background: rgba(5,5,5,0.5);
+  border: 1px solid rgba(201,169,97,0.08);
+  text-align: center;
+}
+.roi-cell-value {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--platinum);
+  display: block;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.roi-cell-label {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--pewter);
+}
+.roi-cell.gold-bg {
+  background: rgba(201,169,97,0.08);
+  border-color: rgba(201,169,97,0.24);
+}
+.roi-cell.gold-bg .roi-cell-value { color: var(--gold); }
+.roi-op {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--gold-dim);
+}
+
+/* ACCESS-01: The Access Hierarchy */
+.access-tiers {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid rgba(201,169,97,0.14);
+}
+.access-tier {
+  display: grid;
+  grid-template-columns: 260px 1fr auto;
+  gap: 0;
+  border-bottom: 1px solid rgba(201,169,97,0.07);
+  transition: background 0.3s ease;
+}
+.access-tier:last-child { border-bottom: none; }
+.access-tier:hover { background: rgba(201,169,97,0.025); }
+.access-tier.current { background: rgba(201,169,97,0.04); }
+.access-tier-level {
+  padding: 36px 44px;
+  border-right: 1px solid rgba(201,169,97,0.07);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(5,5,5,0.3);
+}
+.access-tier-roman {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.access-tier-name {
+  font-family: var(--font-ui);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--gold-dim);
+}
+.access-tier-body {
+  padding: 36px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.access-tier-title {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--platinum);
+  margin-bottom: 8px;
+}
+.access-tier-desc {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--silver);
+  line-height: 1.7;
+}
+.access-tier-price {
+  padding: 36px 44px;
+  border-left: 1px solid rgba(201,169,97,0.07);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  min-width: 180px;
+}
+.access-price-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 5px;
+}
+.access-price-label {
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--pewter);
+}
+
+/* CHRON-01: Corporate Timeline Excavation */
+.chron-timeline {
+  position: relative;
+}
+.chron-axis {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--gold), rgba(201,169,97,0.15));
+}
+.chron-row {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  gap: 0;
+  margin-bottom: 0;
+}
+.chron-left { padding: 48px 52px 48px 0; text-align: right; }
+.chron-right { padding: 48px 0 48px 52px; }
+.chron-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+.chron-node {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 18px rgba(201,169,97,0.7);
+  border: 2px solid var(--obsidian);
+  flex-shrink: 0;
+}
+.chron-year {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  color: var(--gold);
+  letter-spacing: 0.14em;
+  margin-top: 8px;
+}
+.chron-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+}
+.chron-text {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--silver);
+  line-height: 1.7;
+}
+.chron-era-badge {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  padding: 5px 12px;
+  border: 1px solid rgba(201,169,97,0.22);
+  color: var(--gold-dim);
+  margin-bottom: 12px;
+}
+
+/* SEAL-01: Provenance Seals */
+.seal-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid rgba(201,169,97,0.12);
+}
+.seal-item {
+  padding: 52px 36px;
+  border-right: 1px solid rgba(201,169,97,0.08);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  transition: background 0.3s ease;
+}
+.seal-item:last-child { border-right: none; }
+.seal-item:hover { background: rgba(201,169,97,0.03); }
+.seal-ring {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,169,97,0.32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.seal-ring::before {
+  content: '';
+  position: absolute; inset: 6px;
+  border-radius: 50%;
+  border: 1px solid rgba(201,169,97,0.16);
+}
+.seal-glyph {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--gold);
+}
+.seal-title {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--platinum);
+}
+.seal-desc {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--silver);
+  line-height: 1.7;
+}
+
+/* Process List Box */
+.process-list-box {
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 40px;
+}
+
+/* Service Detail Grid */
+.service-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 88px;
+  align-items: start;
+}
+.service-meta-row {
+  display: flex;
+  gap: 38px;
+  margin-bottom: 38px;
+  font-family: var(--font-ui);
+  font-size: 0.64rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--silver);
+}
+.service-meta-row span { color: var(--gold); font-weight: 600; }
+
+</style>
+</head>
+<base target="_blank">
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       SECTION 1: NAVIGATION
+       Background: Solid black (transparent with blur)
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <nav class="l-nav">
+    <div class="l-nav__inner">
+      <div class="l-nav__logo">
+        LegAIsee
+        <span>By Invitation Only · Est. MMXXIV</span>
+      </div>
+      <ul class="l-nav__links">
+        <li><a href="#process">Process</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#proof">Proof</a></li>
+        <li><a href="#investment">Investment</a></li>
+      </ul>
+      <a href="#invitation" class="l-btn l-btn--small l-nav__cta">Request Access</a>
+      <button class="l-nav__mobile-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       SECTION 2: HERO
+       Background: bg-grad-gold-radial (subtle gold glow from top)
+       Next section top: Black → use bg-solid-black next
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="l-section l-hero bg-grad-gold-radial" id="hero">
+    <div class="l-hero__content" data-animate>
+      <div class="l-hero__eyebrow">By Invitation Only · Est. MMXXIV</div>
+      <h1 class="l-h1 l-hero__title">The Restoration of<br>Asymmetric Authority</h1>
+      <div class="l-gold-rule l-gold-rule--center"></div>
+      <p class="l-hero__subtitle">
+        We do not create marketing. We practice Business Archaeology — 
+        excavating the proven assets your enterprise has already earned 
+        and installing them as a permanent Authority System.
+      </p>
+      <div class="l-hero__cta-group">
+        <a href="#invitation" class="l-btn l-btn--solid">Request Your Excavation</a>
+        <a href="#process" class="l-btn">Discover the Process</a>
+      </div>
+    </div>
+    <div class="l-hero__scroll-indicator">
+      <span>Scroll</span>
+      <div class="l-hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       SECTION 3: AUTHORITY STRIP
+       Background: bg-solid-black (seamless from hero gold radial)
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="l-section l-authority bg-solid-black">
+    <div class="l-authority__inner">
+      <div class="l-authority__item">
+        <div class="l-authority__number">40<span>+</span></div>
+        <div class="l-authority__label">Channels Excavated</div>
+      </div>
+      <div class="l-authority__divider"></div>
+      <div class="l-authority__item">
+        <div class="l-authority__number">$50<span>M+</span></div>
+        <div class="l-authority__label">Client Revenue Threshold</div>
+      </div>
+      <div class="l-authority__divider"></div>
+      <div class="l-authority__item">
+        <div class="l-authority__number">15<span>-25</span></div>
+        <div class="l-authority__label">Assets Per Excavation</div>
+      </div>
+      <div class="l-authority__divider"></div>
+      <div class="l-authority__item">
+        <div class="l-authority__number">100<span>%</span></div>
+        <div class="l-authority__label">Permanent Installation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       SECTION 4: MUSEUM VAULT (New Luxury Section)
+       Background: bg-photo-museum (museum vault image, very subtle)
+       Next section top: Black → use bg-solid-black next
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="l-museum-vault" id="vault">
+    <div class="l-museum-vault__bg"></div>
+    <div class="l-museum-vault__overlay"></div>
+    <div class="l-museum-vault__content" data-animate>
+      <div class="l-museum-vault__eyebrow">The Private Collection</div>
+      <h2 class="l-h1 l-museum-vault__title">What We Preserve<br>Cannot Be Replicated</h2>
+      <div class="l-gold-rule l-gold-rule--center"></div>
+      <p class="l-museum-vault__body">
+        Your institutional memory is your most defensible asset. While competitors 
+        chase trends, we excavate the strategic DNA that made your enterprise 
+        dominant — then encode it into systems that compound indefinitely.
+      </p>
+      <a href="#process" class="l-btn">Enter the Vault</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       SECTION 5: PROCESS TIMELINE (Gemstone Stages)
+       Background: bg-solid-black
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="l-section l-process bg-solid-black" id="process">
+    <div class="l-process__header" data-animate>
+      <div class="l-caption">The Method</div>
+      <h2 class="l-h2">From Raw Earth<br>to Prestige Display</h2>
+      <div class="l-gold-rule l-gold-rule--center"></div>
+    </div>
+    <div class="l-process__timeline">
+      <!-- Stage 1: Formation -->
+      <div class="l-process__stage" data-animate>
+        <div class="l-process__dot"></div>
+        <div class="l-process__text">
+          <div class="l-process__number">Stage I</div>
+          <h3 class="l-h3">Formation</h3>
+          <p class="l-process__desc">
+            Deep excavation across 40+ channels. We map your complete 
+            marketing archaeology — every campaign, every message, every 
+            moment of dominance that built your empire.
+          </p>
+        </div>
+        <div class="l-process__visual">
+          <div class="l-process__visual-frame">
+            <img src="/assets/gem-formation.jpg" alt="Raw gemstone in dark earth">
+          </div>
+          <div class="l-process__gem-label">Raw · Unexcavated · Potential</div>
+        </div>
+      </div>
+      <!-- Stage 2: Discovery -->
+      <div class="l-process__stage" data-animate>
+        <div class="l-process__dot"></div>
+        <div class="l-process__text">
+          <div class="l-process__number">Stage II</div>
+          <h3 class="l-h3">Discovery</h3>
+          <p class="l-process__desc">
+            The vault opens. We identify your Golden Era assets — 
+            the specific tactics, messages, and positioning that 
+            created your undisputed market authority.
+          </p>
+        </div>
+        <div class="l-process__visual">
+          <div class="l-process__visual-frame">
+            <img src="/assets/gem-discovery.jpg" alt="Gemstone on museum plinth">
+          </div>
+          <div class="l-process__gem-label">Revealed · Catalogued · Authenticated</div>
+        </div>
+      </div>
+      <!-- Stage 3: Refinement -->
+      <div class="l-process__stage" data-animate>
+        <div class="l-process__dot"></div>
+        <div class="l-process__text">
+          <div class="l-process__number">Stage III</div>
+          <h3 class="l-h3">Refinement</h3>
+          <p class="l-process__desc">
+            Artisan precision. Each proven asset is modernized for 
+            contemporary platforms while preserving the psychological 
+            mechanisms that made it work originally.
+          </p>
+        </div>
+        <div class="l-process__visual">
+          <div class="l-process__visual-frame">
+            <img src="/assets/gem-refinement.jpg" alt="Partially cut gemstone on artisan table">
+          </div>
+          <div class="l-process__gem-label">Cut · Shaped · Prepared</div>
+        </div>
+      </div>
+      <!-- Stage 4: Prestige -->
+      <div class="l-process__stage" data-animate>
+        <div class="l-process__dot"></div>
+        <div class="l-process__text">
+          <div class="l-process__number">Stage IV</div>
+          <h3 class="l-h3">Prestige Display</h3>
+          <p class="l-process__desc">
+            The permanent installation. Your Authority System is 
+            mounted, lit, and presented — a self-sustaining engine 
+            of asymmetric market dominance.
+          </p>
+        </div>
+        <div class="l-process__visual">
+          <div class="l-process__visual-frame">
+            <img src="/assets/gem-prestige.jpg" alt="Polished gemstone in gold case">
+          </div>
+          <div class="l-process__gem-label">Polished · Mounted · Perpetual</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       SECTION 6: SERVICES GRID
+       Background: bg-grad-violet-radial (dramatic shift)
+       Next section top: Black → use bg-solid-black next
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="l-section l-services bg-grad-violet-radial" id="services">
+    <div class="l-services__header" data-animate>
+      <div class="l-caption">The Disciplines</div>
+      <h2 class="l-h2">Four Pillars of<br>Permanent Authority</h2>
+      <div class="l-gold-rule l-gold-rule--center"></div>
+    </div>
+    <div class="l-services__grid">
+      <div class="l-service-card" data-animate>
+        <div class="l-service-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="l-service-card__number">01</div>
+        <h3 class="l-service-card__title">Business Archaeology</h3>
+        <p class="l-service-card__desc">
+          Deep excavation of your institutional memory across 40+ 
+          channels. We recover what your competitors cannot copy.
+        </p>
+        <a href="#" class="l-service-card__link">Explore Excavation</a>
+      </div>
+      <div class="l-service-card" data-animate>
+        <div class="l-service-card__icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div class="l-service-card__number">02</div>
+        <h3 class="l-service-card__title">Authority Placement</h3>
+        <p class="l-service-card__desc">
+          Strategic positioning in publications, platforms, and 
+          networks where your ideal clients already place trust.
+        </p>
+        <a href="#" class="l-service-card__link">Explore Placement</a>
+      </div>
+      <div class="l-service-card" data-animate>
+        <div class="l-service-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <div class="l-service-card__number">03</div>
+        <h3 class="l-service-card__title">Intelligence Systems</h3>
+        <p class="l-service-card__desc">
+          Permanent infrastructure that captures, organizes, and 
+          deploys your business intelligence without ongoing dependency.
+        </p>
+        <a href="#" class="l-service-card__link">Explore Systems</a>
+      </div>
+      <div class="l-service-card" data-animate>
+        <div class="l-service-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="l-service-card__number">04</div>
+        <h3 class="l-service-card__title">Legacy Preservation</h3>
+        <p class="l-service-card__desc">
+          Encode your institutional knowledge into enduring systems 
+          that outlast personnel changes and market cycles.
+        </p>
+        <a href="#" class="l-service-card__link">Explore Preservation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       SECTION 7: ARTIFACT GALLERY (New Luxury Section)
+       Background: bg-solid-black
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="l-section l-artifact-gallery bg-solid-black" id="gallery">
+    <div class="l-artifact-gallery__header" data-animate>
+      <div class="l-caption">The Collection</div>
+      <h2 class="l-h2">Artifacts of<br>Authority</h2>
+      <div class="l-gold-rule l-gold-rule--center"></div>
+    </div>
+    <div class="l-artifact-gallery__track">
+      <div class="l-artifact-card">
+        <div class="l-artifact-card__tag">Excavated</div>
+        <div class="l-artifact-card__frame">
+          <img class="l-artifact-card__img" src="/assets/artifact-1.jpg" alt="Vintage campaign">
+        </div>
+        <div class="l-artifact-card__content">
+          <div class="l-artifact-card__era">1987 — Print Campaign</div>
+          <h4 class="l-artifact-card__title">The Dominance Era</h4>
+          <p class="l-artifact-card__desc">Full-page newspaper series that established market leadership for 12 consecutive years.</p>
+        </div>
+      </div>
+      <div class="l-artifact-card">
+        <div class="l-artifact-card__tag">Restored</div>
+        <div class="l-artifact-card__frame">
+          <img class="l-artifact-card__img" src="/assets/artifact-2.jpg" alt="Modernized asset">
+        </div>
+        <div class="l-artifact-card__content">
+          <div class="l-artifact-card__era">1994 — Radio Jingle</div>
+          <h4 class="l-artifact-card__title">The Earworm Protocol</h4>
+          <p class="l-artifact-card__desc">Audio identity modernized for podcast sponsorships and streaming audio platforms.</p>
+        </div>
+      </div>
+      <div class="l-artifact-card">
+        <div class="l-artifact-card__tag">Modernized</div>
+        <div class="l-artifact-card__frame">
+          <img class="l-artifact-card__img" src="/assets/artifact-3.jpg" alt="Digital transformation">
+        </div>
+        <div class="l-artifact-card__content">
+          <div class="l-artifact-card__era">2003 — Direct Mail</div>
+          <h4 class="l-artifact-card__title">The Sequence Blueprint</h4>
+          <p class="l-artifact-card__desc">7-piece mail sequence rebuilt as automated email funnel with 340% improvement.</p>
+        </div>
+      </div>
+      <div class="l-artifact-card">
+        <div class="l-artifact-card__tag">Installed</div>
+        <div class="l-artifact-card__frame">
+          <img class="l-artifact-card__img" src="/assets/artifact-4.jpg" alt="Active system">
+        </div>
+        <div class="l-artifact-card__content">
+          <div class="l-artifact-card__era">2011 — Video Series</div>
+          <h4 class="l-artifact-card__title">The Authority Archive</h4>
+          <p class="l-artifact-card__desc">Legacy video content repurposed into 47 short-form assets generating 2.3M views.</p>
+        </div>
+      </div>
+    </div>
+    <div class="l-artifact-gallery__nav">
+      <button class="l-artifact-gallery__dot is-active"></button>
+      <button class="l-artifact-gallery__dot"></button>
+      <button class="l-artifact-gallery__dot"></button>
+      <button class="l-artifact-gallery__dot"></button>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       SECTION 8: CASE STUDY
+       Background: bg-solid-black
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="l-section l-case bg-solid-black" id="proof">
+    <div class="l-case__inner">
+      <div class="l-case__visual" data-animate>
+        <div class="l-case__frame">
+          <img src="/assets/case-study.jpg" alt="Before and after transformation">
+          <div class="l-case__badge">Confidential · $42M Revenue</div>
+        </div>
+      </div>
+      <div class="l-case__content" data-animate>
+        <div class="l-case__eyebrow">Case Study · Manufacturing · 2024</div>
+        <h2 class="l-h2 l-case__title">From Buried Legacy<br>to Market Dominance</h2>
+        <div class="l-gold-rule"></div>
+        <p class="l-body l-body--dim">
+          A third-generation manufacturer had abandoned the trade show 
+          strategy that built their $40M empire. We excavated the 
+          original playbook, modernized it for digital channels, and 
+          installed a permanent Authority System.
+        </p>
+        <div class="l-case__metrics">
+          <div>
+            <div class="l-case__metric-value">340%</div>
+            <div class="l-case__metric-label">Lead Increase</div>
+          </div>
+          <div>
+            <div class="l-case__metric-value">$2.1M</div>
+            <div class="l-case__metric-label">Attributed Revenue</div>
+          </div>
+          <div>
+            <div class="l-case__metric-value">47</div>
+            <div class="l-case__metric-label">Assets Restored</div>
+          </div>
+        </div>
+        <blockquote class="l-case__quote">
+          "We had no idea our grandfather's approach still worked. 
+          LegAIsee didn't just find our history — they made it our future."
+        </blockquote>
+        <p class="l-case__attribution">
+          <strong>James R.</strong> · CEO · Carrington Manufacturing
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       SECTION 9: COMPARISON TABLE (New Luxury Section)
+       Background: bg-grad-formation (subtle depth)
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="l-section l-comparison bg-grad-formation" id="comparison">
+    <div class="l-comparison__header" data-animate>
+      <div class="l-caption">The Distinction</div>
+      <h2 class="l-h2">Agency vs.<br>Archaeology</h2>
+      <div class="l-gold-rule l-gold-rule--center"></div>
+    </div>
+    <div class="l-comparison__table" data-animate>
+      <div class="l-comparison__row l-comparison__row--header">
+        <div class="l-comparison__cell"></div>
+        <div class="l-comparison__col-header">Traditional Agency</div>
+        <div class="l-comparison__col-header l-comparison__col-header--after">LegAIsee Archaeology</div>
+      </div>
+      <div class="l-comparison__row">
+        <div class="l-comparison__cell l-comparison__cell--label">Starting Point</div>
+        <div class="l-comparison__cell l-comparison__cell--before">Blank slate · "What should you do?"</div>
+        <div class="l-comparison__cell l-comparison__cell--after"><span class="l-comparison__check">✦</span>Proven assets · "What made you great?"</div>
+      </div>
+      <div class="l-comparison__row">
+        <div class="l-comparison__cell l-comparison__cell--label">Method</div>
+        <div class="l-comparison__cell l-comparison__cell--before">Trend-chasing · Best practices</div>
+        <div class="l-comparison__cell l-comparison__cell--after"><span class="l-comparison__check">✦</span>Historical excavation · Evidence-based</div>
+      </div>
+      <div class="l-comparison__row">
+        <div class="l-comparison__cell l-comparison__cell--label">Deliverable</div>
+        <div class="l-comparison__cell l-comparison__cell--before">Campaigns · Monthly retainers</div>
+        <div class="l-comparison__cell l-comparison__cell--after"><span class="l-comparison__check">✦</span>Permanent systems · Asset libraries</div>
+      </div>
+      <div class="l-comparison__row">
+        <div class="l-comparison__cell l-comparison__cell--label">Dependency</div>
+        <div class="l-comparison__cell l-comparison__cell--before">Ongoing · You need them forever</div>
+        <div class="l-comparison__cell l-comparison__cell--after"><span class="l-comparison__check">✦</span>Self-sustaining · Graduate to independence</div>
+      </div>
+      <div class="l-comparison__row">
+        <div class="l-comparison__cell l-comparison__cell--label">Pricing Logic</div>
+        <div class="l-comparison__cell l-comparison__cell--before">Hours · Headcount · Overhead</div>
+        <div class="l-comparison__cell l-comparison__cell--after"><span class="l-comparison__check">✦</span>Value · Provenance · Permanence</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       SECTION 10: PRICING
+       Background: bg-solid-black
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="l-section l-pricing bg-solid-black" id="investment">
+    <div class="l-pricing__header" data-animate>
+      <div class="l-caption">The Investment</div>
+      <h2 class="l-h2">Three Levels of<br>Engagement</h2>
+      <div class="l-gold-rule l-gold-rule--center"></div>
+    </div>
+    <div class="l-pricing__grid">
+      <div class="l-pricing-card" data-animate>
+        <div class="l-pricing-card__name">The Excavation</div>
+        <p class="l-pricing-card__desc">Business History Audit</p>
+        <div class="l-pricing-card__price">
+          <div class="l-pricing-card__amount">$5,000</div>
+          <div class="l-pricing-card__period">One-time investment</div>
+        </div>
+        <ul class="l-pricing-card__features">
+          <li class="included">40+ channel excavation</li>
+          <li class="included">15-25 assets documented</li>
+          <li class="included">Golden Era identification</li>
+          <li class="included">Competitive gap analysis</li>
+          <li class="included">10-page report + video</li>
+          <li class="not-included">System installation</li>
+          <li class="not-included">Ongoing partnership</li>
+        </ul>
+        <a href="#invitation" class="l-btn l-pricing-card__cta">Begin Excavation</a>
+      </div>
+      <div class="l-pricing-card l-pricing-card--featured" data-animate>
+        <div class="l-pricing-card__badge">Most Selected</div>
+        <div class="l-pricing-card__name">The Installation</div>
+        <p class="l-pricing-card__desc">Authority System Build</p>
+        <div class="l-pricing-card__price">
+          <div class="l-pricing-card__amount">$15,000</div>
+          <div class="l-pricing-card__period">One-time investment</div>
+        </div>
+        <ul class="l-pricing-card__features">
+          <li class="included">Everything in Excavation</li>
+          <li class="included">4 core systems built</li>
+          <li class="included">AI workflow training</li>
+          <li class="included">Team onboarding</li>
+          <li class="included">90-day launch plan</li>
+          <li class="included">Asset library created</li>
+          <li class="not-included">Monthly optimization</li>
+        </ul>
+        <a href="#invitation" class="l-btn l-btn--solid l-pricing-card__cta">Install System</a>
+      </div>
+      <div class="l-pricing-card" data-animate>
+        <div class="l-pricing-card__name">The Partnership</div>
+        <p class="l-pricing-card__desc">Ongoing Amplification</p>
+        <div class="l-pricing-card__price">
+          <div class="l-pricing-card__amount">$5,000<span>/mo</span></div>
+          <div class="l-pricing-card__period">Quarterly commitment</div>
+        </div>
+        <ul class="l-pricing-card__features">
+          <li class="included">Everything in Installation</li>
+          <li class="included">Monthly strategy calls</li>
+          <li class="included">Performance optimization</li>
+          <li class="included">New asset excavation</li>
+          <li class="included">Competitive monitoring</li>
+          <li class="included">Priority access</li>
+          <li class="included">Annual system refresh</li>
+        </ul>
+        <a href="#invitation" class="l-btn l-pricing-card__cta">Enter Partnership</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       SECTION 11: TESTIMONIALS
+       Background: bg-grad-violet-radial
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="l-section l-testimonials bg-grad-violet-radial">
+    <div class="l-testimonials__header" data-animate>
+      <div class="l-caption">The Voices</div>
+      <h2 class="l-h2">What Leaders<br>Say</h2>
+      <div class="l-gold-rule l-gold-rule--center"></div>
+    </div>
+    <div class="l-testimonials__grid">
+      <div class="l-testimonial-card" data-animate>
+        <div class="l-testimonial-card__stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="l-testimonial-card__text">
+          "I had no idea we had abandoned the exact messaging that built 
+          our company. LegAIsee found assets from 1997 that still 
+          outperform anything our current agency creates."
+        </p>
+        <div class="l-testimonial-card__author">
+          <img class="l-testimonial-card__avatar" src="/assets/avatar-1.jpg" alt="">
+          <div>
+            <div class="l-testimonial-card__name">Margaret T.</div>
+            <div class="l-testimonial-card__role">CEO · $28M Revenue</div>
+          </div>
+        </div>
+      </div>
+      <div class="l-testimonial-card l-testimonial-card--featured" data-animate>
+        <div class="l-testimonial-card__stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="l-testimonial-card__text">
+          "The Authority System they built runs itself. My team produces 
+          better content in four hours than our previous agency delivered 
+          in a month. And it sounds like us — not generic marketing speak."
+        </p>
+        <div class="l-testimonial-card__author">
+          <img class="l-testimonial-card__avatar" src="/assets/avatar-2.jpg" alt="">
+          <div>
+            <div class="l-testimonial-card__name">David K.</div>
+            <div class="l-testimonial-card__role">Founder · $15M Revenue</div>
+          </div>
+        </div>
+      </div>
+      <div class="l-testimonial-card" data-animate>
+        <div class="l-testimonial-card__stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="l-testimonial-card__text">
+          "We thought we needed 'more leads.' LegAIsee showed us we needed 
+          to remember who we were. The excavation alone was worth ten times 
+          the investment."
+        </p>
+        <div class="l-testimonial-card__author">
+          <img class="l-testimonial-card__avatar" src="/assets/avatar-3.jpg" alt="">
+          <div>
+            <div class="l-testimonial-card__name">Robert H.</div>
+            <div class="l-testimonial-card__role">President · $67M Revenue</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       SECTION 12: INVITATION GATE (New Luxury Section)
+       Background: bg-photo-prestige (prestige exhibit atmosphere)
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="l-section l-invitation-gate bg-photo-prestige" id="invitation">
+    <div class="l-invitation-gate__bg"></div>
+    <div class="l-invitation-gate__panel" data-animate>
+      <div class="l-invitation-gate__seal">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="l-invitation-gate__eyebrow">Restricted Access</div>
+      <h2 class="l-h2 l-invitation-gate__title">Request Your<br>Excavation</h2>
+      <div class="l-gold-rule l-gold-rule--center"></div>
+      <p class="l-invitation-gate__body">
+        We accept three new clients per quarter. If your enterprise 
+        has operated for 10+ years with $10M+ revenue, submit your 
+        inquiry below. Response within 48 hours.
+      </p>
+      <form class="l-invitation-gate__form">
+        <div class="l-invitation-gate__field">
+          <label>Full Name</label>
+          <input type="text" placeholder="Your name">
+        </div>
+        <div class="l-invitation-gate__field">
+          <label>Enterprise</label>
+          <input type="text" placeholder="Company name">
+        </div>
+        <div class="l-invitation-gate__field">
+          <label>Annual Revenue</label>
+          <select>
+            <option>$10M — $25M</option>
+            <option>$25M — $50M</option>
+            <option>$50M — $100M</option>
+            <option>$100M+</option>
+          </select>
+        </div>
+        <div class="l-invitation-gate__field">
+          <label>Years in Operation</label>
+          <select>
+            <option>10 — 20 years</option>
+            <option>20 — 30 years</option>
+            <option>30 — 50 years</option>
+            <option>50+ years</option>
+          </select>
+        </div>
+        <div class="l-invitation-gate__field">
+          <label>Message</label>
+          <textarea rows="3" placeholder="What prompted your inquiry?"></textarea>
+        </div>
+        <button type="submit" class="l-btn l-btn--solid l-invitation-gate__submit">
+          Submit Request
+        </button>
+      </form>
+      <div class="l-invitation-gate__trust">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        All inquiries held in strict confidence
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       SECTION 13: CTA
+       Background: bg-solid-black
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="l-section l-cta bg-solid-black">
+    <div class="l-cta__frame" data-animate>
+      <div class="l-cta__eyebrow">The Decision Point</div>
+      <h2 class="l-h1 l-cta__title">Your History Is<br>Your Moat</h2>
+      <div class="l-gold-rule l-gold-rule--center"></div>
+      <p class="l-cta__body">
+        Every day without excavation is another day your institutional 
+        memory erodes. The assets that built your empire are waiting 
+        to be restored. The only question is whether you act before 
+        your competitors discover theirs first.
+      </p>
+      <div class="l-cta__buttons">
+        <a href="#invitation" class="l-btn l-btn--solid">Begin Your Excavation</a>
+        <a href="#process" class="l-btn">Review the Process</a>
+      </div>
+      <p class="l-cta__note">Current availability: 1 opening · Next quarter waitlist available</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       SECTION 14: FAQ
+       Background: bg-solid-black
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <section class="l-section l-faq bg-solid-black">
+    <div class="l-faq__header" data-animate>
+      <div class="l-caption">The Archive</div>
+      <h2 class="l-h2">Common<br>Inquiries</h2>
+      <div class="l-gold-rule l-gold-rule--center"></div>
+    </div>
+    <div class="l-faq__list">
+      <div class="l-faq__item">
+        <button class="l-faq__question">
+          What exactly is Business Archaeology?
+          <span class="l-faq__icon"></span>
+        </button>
+        <div class="l-faq__answer">
+          <p>Business Archaeology is the systematic excavation of your enterprise's 
+          historical marketing assets — campaigns, messaging, positioning, and 
+          strategic decisions that created your market dominance. We recover what 
+          worked, analyze why it worked, and modernize it for contemporary execution.</p>
+        </div>
+      </div>
+      <div class="l-faq__item">
+        <button class="l-faq__question">
+          How is this different from a marketing audit?
+          <span class="l-faq__icon"></span>
+        </button>
+        <div class="l-faq__answer">
+          <p>A traditional audit evaluates what you're doing now. We excavate what 
+          you did then — the proven assets buried under years of narrative drift. 
+          We don't start with "what should you do?" We start with "what made you great?"</p>
+        </div>
+      </div>
+      <div class="l-faq__item">
+        <button class="l-faq__question">
+          What if we don't have old marketing materials?
+          <span class="l-faq__icon"></span>
+        </button>
+        <div class="l-faq__answer">
+          <p>We excavate across 40+ channels — public archives, Wayback Machine, 
+          industry publications, employee interviews, customer memories, and more. 
+          Even businesses that believe they have "nothing" typically yield 15-25 
+          significant artifacts.</p>
+        </div>
+      </div>
+      <div class="l-faq__item">
+        <button class="l-faq__question">
+          How long until we see results?
+          <span class="l-faq__icon"></span>
+        </button>
+        <div class="l-faq__answer">
+          <p>The Excavation delivers clarity within 5-7 business days. The Installation 
+          produces working systems within 21 days. Most clients see measurable 
+          engagement improvements within 60 days of system activation.</p>
+        </div>
+      </div>
+      <div class="l-faq__item">
+        <button class="l-faq__question">
+          Do you work with businesses outside Texas?
+          <span class="l-faq__icon"></span>
+        </button>
+        <div class="l-faq__answer">
+          <p>While our roots are in Texas enterprise, we serve clients nationally. 
+          The principles of institutional memory and authority systems apply 
+          regardless of geography. We conduct all work remotely with optional 
+          on-site components for premium engagements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════════
+       SECTION 15: FOOTER
+       Background: bg-solid-void (darkest)
+       ═══════════════════════════════════════════════════════════════════════════════ -->
+  <footer class="l-section l-footer bg-solid-void">
+    <div class="l-footer__inner">
+      <div class="l-footer__top">
+        <div class="l-footer__brand">
+          <div class="l-footer__logo">LegAIsee</div>
+          <p class="l-footer__tagline">
+            The Restoration of Asymmetric Authority. 
+            Business Archaeology for enterprises with 
+            institutional memory worth preserving.
+          </p>
+          <div class="l-footer__social">
+            <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+          </div>
+        </div>
+        <div class="l-footer__col">
+          <div class="l-footer__col-title">Disciplines</div>
+          <ul class="l-footer__links">
+            <li><a href="#">Business Archaeology</a></li>
+            <li><a href="#">Authority Placement</a></li>
+            <li><a href="#">Intelligence Systems</a></li>
+            <li><a href="#">Legacy Preservation</a></li>
+          </ul>
+        </div>
+        <div class="l-footer__col">
+          <div class="l-footer__col-title">Company</div>
+          <ul class="l-footer__links">
+            <li><a href="#">The Process</a></li>
+            <li><a href="#">Case Studies</a></li>
+            <li><a href="#">Investment</a></li>
+            <li><a href="#">Request Access</a></li>
+          </ul>
+        </div>
+        <div class="l-footer__col">
+          <div class="l-footer__col-title">Legal</div>
+          <ul class="l-footer__links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Confidentiality</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="l-footer__bottom">
+        <div class="l-footer__copyright">
+          © MMXXIV LegAIsee. All rights reserved. By Invitation Only.
+        </div>
+        <div class="l-footer__legal">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script>
+(function() {
+  'use strict';
+
+  // ── Navigation Scroll Effect ──
+  const nav = document.querySelector('.l-nav');
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('l-nav--scrolled', window.scrollY > 50);
+    });
+  }
+
+  // ── FAQ Accordion ──
+  document.querySelectorAll('.l-faq__question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.l-faq__item');
+      const isOpen = item.classList.contains('is-open');
+
+      // Close all others
+      document.querySelectorAll('.l-faq__item.is-open').forEach(openItem => {
+        if (openItem !== item) openItem.classList.remove('is-open');
+      });
+
+      // Toggle current
+      item.classList.toggle('is-open', !isOpen);
+    });
+  });
+
+  // ── Artifact Gallery Scroll Snap Dots ──
+  const galleryTrack = document.querySelector('.l-artifact-gallery__track');
+  const galleryDots = document.querySelectorAll('.l-artifact-gallery__dot');
+
+  if (galleryTrack && galleryDots.length) {
+    galleryTrack.addEventListener('scroll', () => {
+      const scrollLeft = galleryTrack.scrollLeft;
+      const cardWidth = galleryTrack.querySelector('.l-artifact-card').offsetWidth + 32; // gap
+      const activeIndex = Math.round(scrollLeft / cardWidth);
+
+      galleryDots.forEach((dot, i) => {
+        dot.classList.toggle('is-active', i === activeIndex);
+      });
+    });
+
+    galleryDots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        const cardWidth = galleryTrack.querySelector('.l-artifact-card').offsetWidth + 32;
+        galleryTrack.scrollTo({ left: cardWidth * i, behavior: 'smooth' });
+      });
+    });
+  }
+
+  // ── Intersection Observer for Fade-Up Animations ──
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('l-animate-fadeup');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('[data-animate]').forEach(el => {
+    el.style.opacity = '0';
+    fadeObserver.observe(el);
+  });
+
+  // ── Smooth Scroll for Anchor Links ──
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // ── Mobile Menu Toggle ──
+  const mobileToggle = document.querySelector('.l-nav__mobile-toggle');
+  const navLinks = document.querySelector('.l-nav__links');
+
+  if (mobileToggle && navLinks) {
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('is-open');
+      mobileToggle.classList.toggle('is-active');
+    });
+  }
+
+})();
+</script>
+</body>
+</html>

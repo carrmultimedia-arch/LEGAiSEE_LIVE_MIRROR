@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LVOS Component Lab</title>
+
+  <link rel="stylesheet" href="../../assets/css/lvos-core.css">
+  <link rel="stylesheet" href="../../assets/css/lvos-components.css">
+</head>
+
+<body>
+
+<header class="system-header">
+  <div>COMPONENT LAB</div>
+  <div>ISOLATION + REUSE TEST</div>
+</header>
+
+<section class="scene-container">
+
+  <div class="material-stage">
+    <div class="content-stack">
+
+      <div class="component-card">Card A</div>
+      <div class="component-card">Card B</div>
+      <div class="component-card">Card C</div>
+
+    </div>
+  </div>
+
+</section>
+
+<script src="../../assets/js/lvos-loader.js"></script>
+
+<script>
+const cards = document.querySelectorAll(".component-card");
+
+cards.forEach((c, i) => {
+  c.addEventListener("mouseenter", () => {
+    c.style.transform = "scale(1.05)";
+    c.style.opacity = "1";
+  });
+
+  c.addEventListener("mouseleave", () => {
+    c.style.transform = "scale(1)";
+    c.style.opacity = "0.85";
+  });
+});
+</script>
+
+</body>
+</html>

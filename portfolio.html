@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>John Carr · Recruiter Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ob:          #050505;
+      --ob-1:        #0d0d0d;
+      --ob-2:        #111111;
+      --ob-3:        #181818;
+      --gold:        #C9A961;
+      --gold-hi:     #E2C27A;
+      --gold-lo:     #8A6E3A;
+      --pearl:       #F0EAD8;
+      --mist:        rgba(201,169,97,0.08);
+      --mist-2:      rgba(201,169,97,0.15);
+      --seam-gold:   rgba(201,169,97,0.22);
+      --f-display:   'Cinzel', serif;
+      --f-body:      'Cormorant Garamond', serif;
+      --f-ui:        'Inter', sans-serif;
+      --max:         1280px;
+      --ease-gold:   cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background: var(--ob);
+      color: var(--pearl);
+      font-family: var(--f-body);
+      font-size: 18px;
+      line-height: 1.65;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    a { color: var(--gold); text-decoration: none; }
+    a:hover { color: var(--gold-hi); }
+
+    img { display: block; max-width: 100%; }
+
+    /* ═══════════════════════════════════════════════════════
+       HEADER
+    ═══════════════════════════════════════════════════════ */
+    .site-header {
+      position: relative;
+      text-align: center;
+      padding: 5rem 2rem 3rem;
+      border-bottom: 1px solid var(--seam-gold);
+    }
+
+    .site-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 55% at 50% 0%, rgba(201,169,97,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-eyebrow {
+      font-family: var(--f-ui);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.75;
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+
+    .header-name {
+      font-family: var(--f-display);
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      line-height: 1.1;
+      color: var(--pearl);
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    .header-title {
+      font-family: var(--f-body);
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--gold);
+      letter-spacing: 0.03em;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .header-rule {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto 1.2rem;
+      position: relative;
+    }
+
+    .header-subtitle {
+      font-family: var(--f-body);
+      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+      font-weight: 300;
+      color: var(--pearl);
+      opacity: 0.65;
+      max-width: 520px;
+      margin: 0 auto;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       FILTER BAR
+    ═══════════════════════════════════════════════════════ */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 2rem 2rem 1rem;
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .filter-btn {
+      font-family: var(--f-ui);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--pearl);
+      background: transparent;
+      border: 1px solid var(--seam-gold);
+      border-radius: 2px;
+      padding: 0.5rem 1.1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      opacity: 0.7;
+    }
+
+    .filter-btn:hover {
+      opacity: 1;
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .filter-btn.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--ob);
+      opacity: 1;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       MAIN CONTENT
+    ═══════════════════════════════════════════════════════ */
+    .main-content {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 1rem 2rem 4rem;
+    }
+
+    .category-section {
+      margin-bottom: 3.5rem;
+    }
+
+    .category-heading {
+      font-family: var(--f-display);
+      font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--pearl);
+      margin-bottom: 0.4rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--seam-gold);
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+    }
+
+    .category-count {
+      font-family: var(--f-ui);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.6;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       VIDEO CARD
+    ═══════════════════════════════════════════════════════ */
+    .video-card {
+      position: relative;
+      background: var(--ob-2);
+      border: 1px solid var(--seam-gold);
+      border-radius: 3px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.3s, transform 0.3s var(--ease-gold), box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .video-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(201,169,97,0.12);
+    }
+
+    .card-thumb-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background: var(--ob-3);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .card-thumb-wrap img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s var(--ease-gold);
+    }
+
+    .video-card:hover .card-thumb-wrap img {
+      transform: scale(1.04);
+    }
+
+    .card-play-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(5,5,5,0.30);
+      transition: background 0.3s;
+    }
+
+    .video-card:hover .card-play-overlay {
+      background: rgba(5,5,5,0.12);
+    }
+
+    .play-ring {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      background: rgba(5,5,5,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .video-card:hover .play-ring {
+      background: var(--gold);
+      transform: scale(1.08);
+    }
+
+    .play-triangle {
+      width: 0;
+      height: 0;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-left: 14px solid var(--gold);
+      margin-left: 3px;
+      transition: border-left-color 0.3s;
+    }
+
+    .video-card:hover .play-triangle {
+      border-left-color: var(--ob);
+    }
+
+    .card-body {
+      padding: 1.1rem 1.3rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .card-category-tag {
+      font-family: var(--f-ui);
+      font-size: 0.55rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ob);
+      background: var(--gold);
+      border-radius: 2px;
+      padding: 0.18rem 0.5rem;
+    }
+
+    .card-source {
+      font-family: var(--f-ui);
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+
+    .card-title {
+      font-family: var(--f-display);
+      font-size: 0.92rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--pearl);
+      margin-bottom: 0.4rem;
+      line-height: 1.35;
+    }
+
+    .card-desc {
+      font-family: var(--f-body);
+      font-size: 0.92rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--pearl);
+      opacity: 0.55;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .card-link-row {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid rgba(201,169,97,0.12);
+    }
+
+    .card-link {
+      font-family: var(--f-ui);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: color 0.2s;
+    }
+
+    .card-link:hover {
+      color: var(--gold-hi);
+    }
+
+    .card-link svg {
+      width: 12px;
+      height: 12px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       ERROR / EMPTY STATES
+    ═══════════════════════════════════════════════════════ */
+    .error-state {
+      text-align: center;
+      padding: 5rem 2rem;
+      border: 1px dashed var(--seam-gold);
+      border-radius: 3px;
+      max-width: 600px;
+      margin: 3rem auto;
+    }
+
+    .error-title {
+      font-family: var(--f-display);
+      font-size: 1.2rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.6rem;
+    }
+
+    .error-msg {
+      font-family: var(--f-body);
+      font-size: 1rem;
+      color: var(--pearl);
+      opacity: 0.5;
+      line-height: 1.6;
+    }
+
+    .error-detail {
+      font-family: var(--f-ui);
+      font-size: 0.7rem;
+      color: var(--pearl);
+      opacity: 0.35;
+      margin-top: 1rem;
+      word-break: break-word;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3rem 2rem;
+      border: 1px dashed var(--seam-gold);
+      border-radius: 3px;
+      grid-column: 1 / -1;
+    }
+
+    .empty-state-title {
+      font-family: var(--f-display);
+      font-size: 1rem;
+      color: var(--gold);
+      opacity: 0.5;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+
+    .empty-state-msg {
+      font-family: var(--f-ui);
+      font-size: 0.75rem;
+      color: var(--pearl);
+      opacity: 0.35;
+      letter-spacing: 0.06em;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════════════ */
+    .site-footer {
+      border-top: 1px solid rgba(201,169,97,0.12);
+      padding: 2rem;
+      text-align: center;
+      font-family: var(--f-ui);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--pearl);
+      opacity: 0.35;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .site-header { padding: 3.5rem 1.5rem 2.5rem; }
+      .main-content { padding: 1rem 1.2rem 3rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+<base target="_blank">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-eyebrow">Recruiter Portfolio</div>
+    <h1 class="header-name">John Carr</h1>
+    <p class="header-title">Broadcast Director / Multimedia Producer / Aerial Cinematographer</p>
+    <div class="header-rule"></div>
+    <p class="header-subtitle">Selected work across 33 years of production.</p>
+  </header>
+
+  <nav class="filter-bar" id="filter-bar" aria-label="Category filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="Broadcast Director">Broadcast</button>
+    <button class="filter-btn" data-filter="Multimedia Producer">Production</button>
+    <button class="filter-btn" data-filter="Marketing Content Producer">Marketing</button>
+    <button class="filter-btn" data-filter="Aerial Cinematographer">Aerial</button>
+    <button class="filter-btn" data-filter="Institutional / Healthcare">Healthcare</button>
+  </nav>
+
+  <main class="main-content" id="main-content">
+    <!-- Content injected by JS -->
+  </main>
+
+  <footer class="site-footer">
+    © <span id="year"></span> John Carr · New Braunfels, TX · Carr Multimedia
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    const JSON_PATH = 'jobhunt_portfolio.json';
+    const mainEl = document.getElementById('main-content');
+    const filterBar = document.getElementById('filter-bar');
+    let allVideos = [];
+    let currentFilter = 'all';
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* ── YouTube helpers ─────────────────────────────────── */
+    function extractVideoId(url) {
+      if (!url) return '';
+      try {
+        const u = new URL(url);
+        if (u.hostname === 'youtu.be') {
+          return u.pathname.replace('/', '').split('?')[0];
+        }
+        if (u.pathname.includes('/shorts/')) {
+          return u.pathname.split('/shorts/')[1].split('?')[0];
+        }
+        return u.searchParams.get('v') || '';
+      } catch (_) {
+        const m = url.match(/(?:v=|youtu\.be\/|shorts\/)([A-Za-z0-9_-]{11})/);
+        return m ? m[1] : '';
+      }
+    }
+
+    function ytThumb(url) {
+      const id = extractVideoId(url);
+      return id ? 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg' : '';
+    }
+
+    function ytWatch(url) {
+      const id = extractVideoId(url);
+      return id ? 'https://www.youtube.com/watch?v=' + id : url;
+    }
+
+    /* ── Error display ───────────────────────────────────── */
+    function showError(title, message, detail) {
+      mainEl.innerHTML =
+        '<div class="error-state">' +
+          '<div class="error-title">' + escapeHtml(title) + '</div>' +
+          '<div class="error-msg">' + escapeHtml(message) + '</div>' +
+          (detail ? '<div class="error-detail">' + escapeHtml(detail) + '</div>' : '') +
+        '</div>';
+    }
+
+    function escapeHtml(str) {
+      if (str == null) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    /* ── Normalize JSON shape ────────────────────────────── */
+    function normalizeData(raw) {
+      // Expect: { sections: { "Category Name": [video objects], ... } }
+      var videos = [];
+      var sections = raw && raw.sections ? raw.sections : {};
+      var sectionNames = Object.keys(sections);
+
+      sectionNames.forEach(function (sectionName) {
+        var list = sections[sectionName];
+        if (!Array.isArray(list)) return;
+        list.forEach(function (v) {
+          if (!v || typeof v !== 'object') return;
+          var url = (v.youtube_url || '').trim();
+          if (!url) return;
+          videos.push({
+            id: v.id || String(Math.random()).slice(2),
+            title: (v.title || '').trim() || 'Untitled',
+            source: (v.source || '').trim(),
+            sectionName: sectionName,
+            category: sectionName,
+            description: (v.description || '').trim(),
+            youtubeUrl: url,
+            thumbnail: (v.thumbnail || '').trim(),
+            playlists: v.playlists || null
+          });
+        });
+      });
+
+      return {
+        videos: videos,
+        sectionCount: sectionNames.length
+      };
+    }
+
+    /* ── Render ──────────────────────────────────────────── */
+    function groupByCategory(videos) {
+      const groups = {};
+      videos.forEach(v => {
+        const cat = v.category || 'Uncategorized';
+        if (!groups[cat]) groups[cat] = [];
+        groups[cat].push(v);
+      });
+      return groups;
+    }
+
+    function buildCard(video) {
+      const thumb = video.thumbnail || ytThumb(video.youtubeUrl);
+      const watchUrl = ytWatch(video.youtubeUrl);
+      const hasThumb = thumb && thumb.trim() !== '';
+
+      const thumbHtml = hasThumb
+        ? '<img src="' + escapeHtml(thumb) + '" alt="' + escapeHtml(video.title) + '" loading="lazy" />'
+        : '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--f-ui);font-size:0.7rem;color:var(--pearl);opacity:0.3;letter-spacing:0.1em;">NO THUMBNAIL</div>';
+
+      return (
+        '<article class="video-card" data-section="' + escapeHtml(video.sectionName) + '" tabindex="0" role="link" aria-label="Open ' + escapeHtml(video.title) + ' on YouTube">' +
+          '<div class="card-thumb-wrap">' +
+            thumbHtml +
+            '<div class="card-play-overlay">' +
+              '<div class="play-ring"><div class="play-triangle"></div></div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="card-body">' +
+            '<div class="card-meta-row">' +
+              '<span class="card-category-tag">' + escapeHtml(video.sectionName) + '</span>' +
+              (video.source ? '<span class="card-source">' + escapeHtml(video.source) + '</span>' : '') +
+            '</div>' +
+            '<h3 class="card-title">' + escapeHtml(video.title) + '</h3>' +
+            (video.description ? '<p class="card-desc">' + escapeHtml(video.description) + '</p>' : '') +
+            '<div class="card-link-row">' +
+              '<span class="card-link">' +
+                '<svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>' +
+                'Watch on YouTube' +
+              '</span>' +
+            '</div>' +
+          '</div>' +
+        '</article>'
+      );
+    }
+
+    function render() {
+      const filtered = currentFilter === 'all'
+        ? allVideos
+        : allVideos.filter(v => v.sectionName === currentFilter);
+
+      console.log('Videos displayed: ' + filtered.length);
+
+      if (filtered.length === 0) {
+        mainEl.innerHTML =
+          '<div class="empty-state">' +
+            '<div class="empty-state-title">No videos found</div>' +
+            '<div class="empty-state-msg">Try selecting a different category or check the JSON data source.</div>' +
+          '</div>';
+        return;
+      }
+
+      const groups = groupByCategory(filtered);
+      const categoryOrder = [
+        'Broadcast Director',
+        'Multimedia Producer',
+        'Marketing Content Producer',
+        'Aerial Cinematographer',
+        'Institutional / Healthcare'
+      ];
+
+      const sortedCats = Object.keys(groups).sort((a, b) => {
+        const ia = categoryOrder.indexOf(a);
+        const ib = categoryOrder.indexOf(b);
+        if (ia !== -1 && ib !== -1) return ia - ib;
+        if (ia !== -1) return -1;
+        if (ib !== -1) return 1;
+        return a.localeCompare(b);
+      });
+
+      let html = '';
+      sortedCats.forEach(cat => {
+        const items = groups[cat];
+        html +=
+          '<section class="category-section">' +
+            '<h2 class="category-heading">' +
+              escapeHtml(cat) +
+              '<span class="category-count">' + items.length + ' video' + (items.length === 1 ? '' : 's') + '</span>' +
+            '</h2>' +
+            '<div class="portfolio-grid">' +
+              items.map(buildCard).join('') +
+            '</div>' +
+          '</section>';
+      });
+
+      mainEl.innerHTML = html;
+    }
+
+    // Event delegation — set up once
+    mainEl.addEventListener('click', onCardClick);
+    mainEl.addEventListener('keydown', onCardKey);
+
+    const videoMap = new Map();
+
+    function onCardClick(e) {
+      const card = e.target.closest('.video-card');
+      if (!card) return;
+      const section = card.getAttribute('data-section');
+      const title = card.querySelector('.card-title').textContent;
+      const video = allVideos.find(function (v) {
+        return v.title === title && v.sectionName === section;
+      });
+      if (video && video.youtubeUrl) {
+        window.open(ytWatch(video.youtubeUrl), '_blank', 'noopener,noreferrer');
+      }
+    }
+
+    function onCardKey(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        onCardClick(e);
+      }
+    }
+
+    /* ── Filter handlers ─────────────────────────────────── */
+    filterBar.addEventListener('click', function (e) {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+
+      filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.getAttribute('data-filter');
+      console.log('Filter clicked: ' + currentFilter);
+      render();
+    });
+
+    /* ── Load JSON ───────────────────────────────────────── */
+    fetch(JSON_PATH)
+      .then(function (res) {
+        if (!res.ok) {
+          throw new Error('HTTP ' + res.status + ' — ' + res.statusText);
+        }
+        return res.json();
+      })
+      .then(function (data) {
+        console.log('Portfolio JSON loaded');
+        var result = normalizeData(data);
+        allVideos = result.videos;
+        console.log('Portfolio sections loaded: ' + result.sectionCount);
+        console.log('Videos loaded: ' + allVideos.length);
+        if (allVideos.length === 0) {
+          showError('No Videos Found', 'The portfolio JSON loaded successfully, but contained no valid video entries.', 'Check that jobhunt_portfolio.json includes a "sections" object with video arrays.');
+          return;
+        }
+        render();
+      })
+      .catch(function (err) {
+        showError(
+          'Unable to Load Portfolio',
+          'The page could not load jobhunt_portfolio.json. Make sure the file is in the same folder as this page and that you are viewing this page through a web server.',
+          err.message
+        );
+      });
+
+  }());
+  </script>
+</body>
+</html>

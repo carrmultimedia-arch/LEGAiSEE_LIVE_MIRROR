@@ -1,0 +1,1344 @@
+const {
+  Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell,
+  HeadingLevel, AlignmentType, LevelFormat, BorderStyle, WidthType,
+  ShadingType, VerticalAlign, PageNumber, PageBreak, TableOfContents,
+  Header, Footer
+} = require('docx');
+const fs = require('fs');
+
+// ─── COLORS ────────────────────────────────────────────────────────────────
+const C = {
+  black:   '1A1A1A',
+  navy:    '1B3A5C',
+  blue:    '1E5FA8',
+  teal:    '0F6E56',
+  amber:   '854F0B',
+  coral:   '993C1D',
+  ltGray:  'F2F2F2',
+  medGray: 'D9D9D9',
+  dkGray:  '555555',
+  white:   'FFFFFF',
+};
+
+// ─── NUMBERING CONFIG ──────────────────────────────────────────────────────
+const numbering = {
+  config: [
+    {
+      reference: 'bullets',
+      levels: [{
+        level: 0, format: LevelFormat.BULLET, text: '\u2022',
+        alignment: AlignmentType.LEFT,
+        style: { paragraph: { indent: { left: 720, hanging: 360 } } }
+      },{
+        level: 1, format: LevelFormat.BULLET, text: '\u25E6',
+        alignment: AlignmentType.LEFT,
+        style: { paragraph: { indent: { left: 1080, hanging: 360 } } }
+      }]
+    },
+    {
+      reference: 'steps',
+      levels: [{
+        level: 0, format: LevelFormat.DECIMAL, text: '%1.',
+        alignment: AlignmentType.LEFT,
+        style: { paragraph: { indent: { left: 720, hanging: 360 } } }
+      }]
+    },
+    {
+      reference: 'substeps',
+      levels: [{
+        level: 0, format: LevelFormat.LOWER_LETTER, text: '%1.',
+        alignment: AlignmentType.LEFT,
+        style: { paragraph: { indent: { left: 1080, hanging: 360 } } }
+      }]
+    }
+  ]
+};
+
+// ─── HELPER FUNCTIONS ──────────────────────────────────────────────────────
+function h1(text) {
+  return new Paragraph({
+    heading: HeadingLevel.HEADING_1,
+    children: [new TextRun({ text, font: 'Arial', size: 36, bold: true, color: C.navy })],
+    spacing: { before: 480, after: 240 },
+    pageBreakBefore: true,
+  });
+}
+
+function h2(text) {
+  return new Paragraph({
+    heading: HeadingLevel.HEADING_2,
+    children: [new TextRun({ text, font: 'Arial', size: 28, bold: true, color: C.navy })],
+    spacing: { before: 360, after: 180 },
+  });
+}
+
+function h3(text) {
+  return new Paragraph({
+    heading: HeadingLevel.HEADING_3,
+    children: [new TextRun({ text, font: 'Arial', size: 24, bold: true, color: C.blue })],
+    spacing: { before: 240, after: 120 },
+  });
+}
+
+function h4(text) {
+  return new Paragraph({
+    heading: HeadingLevel.HEADING_4,
+    children: [new TextRun({ text, font: 'Arial', size: 22, bold: true, color: C.teal })],
+    spacing: { before: 180, after: 100 },
+  });
+}
+
+function body(text, opts = {}) {
+  return new Paragraph({
+    children: [new TextRun({ text, font: 'Arial', size: 22, color: C.black, ...opts })],
+    spacing: { before: 60, after: 120 },
+    alignment: AlignmentType.LEFT,
+  });
+}
+
+function bodyBold(label, text) {
+  return new Paragraph({
+    children: [
+      new TextRun({ text: label + ' ', font: 'Arial', size: 22, bold: true, color: C.black }),
+      new TextRun({ text, font: 'Arial', size: 22, color: C.black }),
+    ],
+    spacing: { before: 60, after: 120 },
+  });
+}
+
+function bullet(text, level = 0, bold = false) {
+  return new Paragraph({
+    numbering: { reference: 'bullets', level },
+    children: [new TextRun({ text, font: 'Arial', size: 22, color: C.black, bold })],
+    spacing: { before: 40, after: 60 },
+  });
+}
+
+function step(text) {
+  return new Paragraph({
+    numbering: { reference: 'steps', level: 0 },
+    children: [new TextRun({ text, font: 'Arial', size: 22, color: C.black })],
+    spacing: { before: 60, after: 80 },
+  });
+}
+
+function substep(text) {
+  return new Paragraph({
+    numbering: { reference: 'substeps', level: 0 },
+    children: [new TextRun({ text, font: 'Arial', size: 22, color: C.black })],
+    spacing: { before: 40, after: 60 },
+  });
+}
+
+function spacer(n = 1) {
+  return Array(n).fill(null).map(() => new Paragraph({
+    children: [new TextRun('')],
+    spacing: { before: 0, after: 80 },
+  }));
+}
+
+function divider() {
+  return new Paragraph({
+    children: [new TextRun('')],
+    border: { bottom: { style: BorderStyle.SINGLE, size: 4, color: C.medGray } },
+    spacing: { before: 160, after: 160 },
+  });
+}
+
+function callout(label, text, color = C.teal) {
+  const border = { style: BorderStyle.SINGLE, size: 1, color: C.medGray };
+  const borders = { top: border, bottom: border, left: border, right: border };
+  return new Table({
+    width: { size: 9360, type: WidthType.DXA },
+    columnWidths: [9360],
+    rows: [
+      new TableRow({ children: [
+        new TableCell({
+          borders,
+          width: { size: 9360, type: WidthType.DXA },
+          shading: { fill: 'F5F8FF', type: ShadingType.CLEAR },
+          margins: { top: 160, bottom: 160, left: 200, right: 200 },
+          children: [
+            new Paragraph({ children: [new TextRun({ text: label, font: 'Arial', size: 20, bold: true, color: color })], spacing: { before: 0, after: 80 } }),
+            new Paragraph({ children: [new TextRun({ text, font: 'Arial', size: 20, color: C.black })], spacing: { before: 0, after: 0 } }),
+          ]
+        })
+      ]})
+    ]
+  });
+}
+
+function twoColTable(headers, rows, colWidths = [2000, 7360]) {
+  const border = { style: BorderStyle.SINGLE, size: 1, color: C.medGray };
+  const borders = { top: border, bottom: border, left: border, right: border };
+  const hRow = new TableRow({
+    children: headers.map((h, i) => new TableCell({
+      borders,
+      width: { size: colWidths[i], type: WidthType.DXA },
+      shading: { fill: C.navy, type: ShadingType.CLEAR },
+      margins: { top: 80, bottom: 80, left: 120, right: 120 },
+      children: [new Paragraph({ children: [new TextRun({ text: h, font: 'Arial', size: 20, bold: true, color: C.white })], spacing: { before: 0, after: 0 } })]
+    }))
+  });
+  const dataRows = rows.map(row => new TableRow({
+    children: row.map((cell, i) => new TableCell({
+      borders,
+      width: { size: colWidths[i], type: WidthType.DXA },
+      shading: { fill: C.white, type: ShadingType.CLEAR },
+      margins: { top: 80, bottom: 80, left: 120, right: 120 },
+      children: [new Paragraph({ children: [new TextRun({ text: cell, font: 'Arial', size: 20, color: C.black })], spacing: { before: 0, after: 0 } })]
+    }))
+  }));
+  return new Table({ width: { size: 9360, type: WidthType.DXA }, columnWidths: colWidths, rows: [hRow, ...dataRows] });
+}
+
+function threeColTable(headers, rows, colWidths = [2400, 3480, 3480]) {
+  const border = { style: BorderStyle.SINGLE, size: 1, color: C.medGray };
+  const borders = { top: border, bottom: border, left: border, right: border };
+  const hRow = new TableRow({
+    children: headers.map((h, i) => new TableCell({
+      borders,
+      width: { size: colWidths[i], type: WidthType.DXA },
+      shading: { fill: C.navy, type: ShadingType.CLEAR },
+      margins: { top: 80, bottom: 80, left: 120, right: 120 },
+      children: [new Paragraph({ children: [new TextRun({ text: h, font: 'Arial', size: 20, bold: true, color: C.white })], spacing: { before: 0, after: 0 } })]
+    }))
+  });
+  const dataRows = rows.map((row, ri) => new TableRow({
+    children: row.map((cell, i) => new TableCell({
+      borders,
+      width: { size: colWidths[i], type: WidthType.DXA },
+      shading: { fill: ri % 2 === 0 ? C.white : C.ltGray, type: ShadingType.CLEAR },
+      margins: { top: 80, bottom: 80, left: 120, right: 120 },
+      children: [new Paragraph({ children: [new TextRun({ text: cell, font: 'Arial', size: 20, color: C.black })], spacing: { before: 0, after: 0 } })]
+    }))
+  }));
+  return new Table({ width: { size: 9360, type: WidthType.DXA }, columnWidths: colWidths, rows: [hRow, ...dataRows] });
+}
+
+function partHeader(num, title, subtitle) {
+  const border = { style: BorderStyle.SINGLE, size: 1, color: C.medGray };
+  const borders = { top: border, bottom: border, left: border, right: border };
+  return new Table({
+    width: { size: 9360, type: WidthType.DXA },
+    columnWidths: [9360],
+    rows: [new TableRow({ children: [new TableCell({
+      borders,
+      width: { size: 9360, type: WidthType.DXA },
+      shading: { fill: C.navy, type: ShadingType.CLEAR },
+      margins: { top: 240, bottom: 240, left: 360, right: 360 },
+      children: [
+        new Paragraph({ children: [new TextRun({ text: `PART ${num}`, font: 'Arial', size: 20, bold: true, color: 'A0C4FF' })], spacing: { before: 0, after: 80 } }),
+        new Paragraph({ children: [new TextRun({ text: title, font: 'Arial', size: 32, bold: true, color: C.white })], spacing: { before: 0, after: 80 } }),
+        new Paragraph({ children: [new TextRun({ text: subtitle, font: 'Arial', size: 20, color: 'D0DFF0' })], spacing: { before: 0, after: 0 } }),
+      ]
+    })]})],
+  });
+}
+
+// ─── TITLE PAGE ────────────────────────────────────────────────────────────
+function titlePage() {
+  return [
+    ...spacer(4),
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      children: [new TextRun({ text: 'LEGAISEE', font: 'Arial', size: 56, bold: true, color: C.navy })],
+      spacing: { before: 0, after: 160 },
+    }),
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      children: [new TextRun({ text: 'Business Archaeology & Authority Systems', font: 'Arial', size: 32, bold: true, color: C.blue })],
+      spacing: { before: 0, after: 120 },
+    }),
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      children: [new TextRun({ text: 'Complete Operations Manual', font: 'Arial', size: 28, color: C.dkGray })],
+      spacing: { before: 0, after: 80 },
+    }),
+    divider(),
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      children: [new TextRun({ text: 'The Repeatable Daily Operations Bible', font: 'Arial', size: 24, italics: true, color: C.dkGray })],
+      spacing: { before: 80, after: 80 },
+    }),
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      children: [new TextRun({ text: 'From Vertical Selection to Year-End Renewal', font: 'Arial', size: 24, italics: true, color: C.dkGray })],
+      spacing: { before: 0, after: 80 },
+    }),
+    ...spacer(2),
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      children: [new TextRun({ text: 'Generic Edition — Applicable to Any Market Vertical', font: 'Arial', size: 20, color: C.teal })],
+      spacing: { before: 0, after: 0 },
+    }),
+    ...spacer(2),
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      children: [new TextRun({ text: 'Version 1.0  |  Carr Multimedia / Legaisee', font: 'Arial', size: 18, color: C.dkGray })],
+      spacing: { before: 0, after: 0 },
+    }),
+    new Paragraph({ children: [new PageBreak()] }),
+  ];
+}
+
+// ─── FULL DOCUMENT CONTENT ─────────────────────────────────────────────────
+const children = [
+  ...titlePage(),
+
+  // ── TABLE OF CONTENTS ──────────────────────────────────────────────────
+  new Paragraph({ heading: HeadingLevel.HEADING_1, children: [new TextRun({ text: 'Master Table of Contents', font: 'Arial', size: 36, bold: true, color: C.navy })], spacing: { before: 0, after: 240 } }),
+  new TableOfContents('Table of Contents', { hyperlink: true, headingSytles: ['Heading 1','Heading 2','Heading 3'], stylesWithLevels: [{ styleId:'Heading1',level:1 },{ styleId:'Heading2',level:2 },{ styleId:'Heading3',level:3 }] }),
+  new Paragraph({ children: [new PageBreak()] }),
+
+  // ══════════════════════════════════════════════════════════════════════
+  // PART I — PHILOSOPHY & FOUNDATIONS
+  // ══════════════════════════════════════════════════════════════════════
+  partHeader('I', 'Philosophy & Foundations', 'What Legaisee is, why it works, and the mental model that drives everything'),
+  ...spacer(1),
+
+  // CH 1
+  h1('Chapter 1: The Legaisee Model — What It Is and Why It Works'),
+  h2('1.1  The Core Premise'),
+  body('Every established business is sitting on buried authority — decades of earned reputation, client relationships, market knowledge, and proof of results that has never been excavated, organized, or deployed as a strategic asset. Legaisee is the systematic process of digging up that buried authority, organizing it into a coherent narrative, and building the content infrastructure to broadcast it continuously so the business becomes the undisputed expert in its category.'),
+  body('You are not a content agency. You are not a marketing firm. You are a Business Archaeologist and Authority Architect. That distinction matters in every sales conversation, every deliverable, and every renewal discussion.'),
+  h2('1.2  The Three-Layer Value Stack'),
+  h3('Layer 1: The Dig (Discovery)'),
+  body('The foundational work. You go deep into the client\'s business history, unearth their latent authority, and deliver a Strategic Intelligence Report that shows them who they actually are — not who they think they are. This layer alone justifies the engagement cost.'),
+  h3('Layer 2: The Authority System (Infrastructure)'),
+  body('You build the permanent content infrastructure that converts the dig findings into a claim on category leadership. This is not a content calendar. It is an interlocking system of search-owned pages, expert assets, distribution channels, and referral amplifiers that compounds in value over time.'),
+  h3('Layer 3: The Monthly Deliverables Engine (Execution)'),
+  body('The ongoing monthly cadence that keeps the system fed, the client visible, and the authority compounding. This is where the retainer is felt and justified every 30 days.'),
+  h2('1.3  The $8,000 Retainer Justification'),
+  body('The ROI conversation is simple and must be memorized:'),
+  callout('The ROI Script', '"One new client from this system typically pays for three to six months of my retainer in a single transaction. We are building infrastructure that generates pre-educated, pre-trusting leads around the clock — leads who arrive already sold on your authority. The alternative is spending $8,000 per month on ads that stop the moment you stop paying. This system compounds. Ads evaporate."', C.navy),
+  ...spacer(1),
+  body('Customize the single-client revenue figure for each vertical. Calculate it before the sales call.'),
+  h2('1.4  The Mindset Requirement'),
+  body('The Legaisee system requires you to think at three levels simultaneously:'),
+  bullet('Strategic: What does this client need to own in their market over 12 months?', 0, true),
+  bullet('Editorial: What content assets will establish and defend that ownership?', 0, true),
+  bullet('Operational: What specific task do I execute today, this week, this month?', 0, true),
+  body('This manual is organized to keep all three levels active at all times. Do not skip the strategy sections to get to the tactics. The tactics without the strategy produce deliverables that look like marketing. The strategy executed through the tactics produces authority that compounds like an asset.'),
+
+  divider(),
+
+  // CH 2
+  h1('Chapter 2: Business Archaeology Explained'),
+  h2('2.1  What Archaeology Means in This Context'),
+  body('Archaeological excavation is the systematic recovery of artifacts from the past in order to understand how a civilization functioned, what it valued, and why it succeeded or failed. Business Archaeology applies the same methodology to a company\'s history, producing insights that the business owner cannot see from inside their own daily operations.'),
+  body('The artifacts you are excavating include:'),
+  bullet('Client testimonials and case studies — the proof layer'),
+  bullet('Awards, certifications, and industry recognition — the credibility layer'),
+  bullet('Decision frameworks and business philosophy — the authority layer'),
+  bullet('Community relationships and embedded reputation — the trust layer'),
+  bullet('Proprietary processes, materials, and methods — the differentiation layer'),
+  bullet('Founder origin story and professional formation — the identity layer'),
+  h2('2.2  Why Business Owners Cannot Do This Themselves'),
+  body('The business owner is too close to the work to see the authority. They are inside the dig site. You are the trained archaeologist arriving from outside. Three specific blindspots prevent self-excavation:'),
+  bullet('Normalization blindspot: What is remarkable to a prospect is routine to the practitioner. A builder who has completed 200 custom homes on limestone terrain does not think that is notable. A prospect facing their first build on limestone terrain finds that fact extraordinarily reassuring.', 0, false),
+  bullet('Modesty blindspot: High-integrity operators in any field routinely undersell their accomplishments. They built the proof but buried it in humility. Your job is to surface it without them feeling they are bragging.', 0, false),
+  bullet('Presentism blindspot: Business owners think about what they are doing now, not what they have done across their entire career. The history is where the authority lives.', 0, false),
+  h2('2.3  The Archaeology Report as a Standalone Deliverable'),
+  body('The Strategic Archaeology Report delivered at the end of Month 2 is a document the client could sell, frame, or hand to a new employee as "the definitive guide to who we are and why we win." It is not a marketing brief. It is not a website overview. It is an independently valuable piece of strategic intelligence that justifies the first two months of the retainer on its own.'),
+  h2('2.4  The Authority System as the Permanent Infrastructure'),
+  body('Once the archaeology is complete, the findings must be converted into a durable content infrastructure. This is the difference between a dig that produces insight and a dig that produces compounding market advantage. The Authority System is the mechanism of conversion.'),
+  callout('Key Principle', 'The dig without the system produces an interesting report. The system without the dig produces generic content. Together they produce an unassailable claim on category leadership.', C.teal),
+
+  // ══════════════════════════════════════════════════════════════════════
+  // PART II — MARKET SELECTION & CLIENT ACQUISITION
+  // ══════════════════════════════════════════════════════════════════════
+  new Paragraph({ children: [new PageBreak()] }),
+  partHeader('II', 'Market Selection & Client Acquisition', 'How to choose the right vertical, find the right client, and close the engagement'),
+  ...spacer(1),
+
+  // CH 3
+  h1('Chapter 3: Choosing Your Next Market Vertical'),
+  h2('3.1  The Four Vertical Selection Criteria'),
+  body('Not all market verticals are created equal for the Legaisee model. Before prospecting in a new vertical, score it against these four criteria:'),
+  threeColTable(
+    ['Criterion', 'What to Look For', 'Disqualifying Signal'],
+    [
+      ['High transaction value', 'Single client worth $50K+ annually to the target business', 'Low-margin, high-volume commodity businesses'],
+      ['Long relationship cycles', 'Clients take 6–18 months to decide; relationship matters as much as price', 'Pure price-shopping, instant-purchase categories'],
+      ['Established but underdigital', 'Businesses with 10–30 year track records and weak online presence', 'VC-funded startups with dedicated marketing teams'],
+      ['Referral-dependent growth', 'Business currently grows primarily through word of mouth', 'Businesses already running sophisticated content marketing'],
+      ['Geographic clustering', 'Concentrated prospects within a metro area or regional market', 'Fully distributed/commoditized national chains'],
+    ]
+  ),
+  ...spacer(1),
+  h2('3.2  High-Probability Verticals by Category'),
+  h3('Professional Services'),
+  bullet('Specialty medical practices (orthopedic, dermatology, elective surgery)'),
+  bullet('Law firms with 15+ year histories in a specialty'),
+  bullet('Wealth management and family office advisors'),
+  bullet('Commercial real estate brokerages'),
+  bullet('Architecture and engineering firms'),
+  h3('Trades and Construction'),
+  bullet('Custom home builders ($800K+ price point)'),
+  bullet('Commercial general contractors'),
+  bullet('Specialty subcontractors (structural steel, high-end masonry, millwork)'),
+  bullet('Landscape architecture and design/build firms'),
+  h3('Hospitality and Experience'),
+  bullet('Independent hotels and boutique resorts'),
+  bullet('Private clubs, golf courses, and marina operators'),
+  bullet('Wedding and event venues'),
+  bullet('Specialty food and beverage with regional reputation'),
+  h3('Industrial and B2B'),
+  bullet('Manufacturing companies with proprietary processes'),
+  bullet('Distribution companies with long client relationships'),
+  bullet('Engineering and technical consulting firms'),
+  bullet('Commercial equipment dealers and service organizations'),
+  h2('3.3  Vertical Research Protocol (Before Prospecting)'),
+  body('Before contacting a single prospect, complete this 90-minute vertical intelligence session:'),
+  step('Open Claude or ChatGPT. Run this prompt: "Analyze the [VERTICAL] market in [GEOGRAPHY]. Who are the top 10–15 established players? What are the common differentiators claimed by leaders in this space? What are the most common buyer anxieties when choosing a [provider type]? What content formats or topics would establish authority in this vertical?"'),
+  step('Open Google and search: [vertical] + [city/region] + [age signals: "founded," "since," "years"]. Look for businesses with 15+ years of operation and minimal digital presence.'),
+  step('Search Google Maps for the vertical in your target geography. Note businesses with: 4.5+ star ratings, 20+ reviews mentioning "years," low website quality scores, no recent blog/content activity.'),
+  step('Search LinkedIn for the vertical + geography. Note companies with fewer than 500 followers but 15+ year founding dates.'),
+  step('Search the local Chamber of Commerce and business association member directories. Long-standing members with minimal web presence are ideal prospects.'),
+  step('Document your findings in a Vertical Intelligence Sheet (see Appendix B template) before making any contact.'),
+  h2('3.4  Vertical Saturation Rule'),
+  body('Do not take more than three clients in the same vertical simultaneously unless they are in non-competing geographies. Conflict of interest is real in referral-driven markets — your archaeological work reveals proprietary positioning that you cannot ethically replicate for a direct competitor.'),
+
+  divider(),
+
+  // CH 4
+  h1('Chapter 4: Ideal Client Profile — Who to Target'),
+  h2('4.1  The Universal Ideal Client Criteria'),
+  body('Across all verticals, the ideal Legaisee client shares five characteristics:'),
+  twoColTable(
+    ['Characteristic', 'Why It Matters'],
+    [
+      ['15+ years in business', 'Enough history to excavate. Short-tenure businesses lack the archaeological depth for the dig to produce meaningful assets.'],
+      ['Owner-operated or founder-led', 'The owner is the authority. Corporate-managed businesses with rotating leadership have no single authority figure to build around.'],
+      ['Referral-dependent revenue', 'If word-of-mouth already drives their pipeline, they understand relationship-based trust — which means they will immediately understand what you are building.'],
+      ['Reputation exceeds visibility', 'Their market reputation among existing clients and referrers is stronger than their digital footprint. This gap is your value proposition.'],
+      ['$500K–$5M annual revenue', 'Large enough to sustain the retainer without flinching; small enough that they don\'t have an internal marketing department competing with you.'],
+    ]
+  ),
+  ...spacer(1),
+  h2('4.2  The Prospect Scoring Sheet'),
+  body('Before any sales outreach, score each prospect on this 25-point scale:'),
+  threeColTable(
+    ['Factor', 'Score', 'Notes'],
+    [
+      ['Years in business (1pt per 3 years, max 5)', '0–5', 'Cap at 5 for 15+ years'],
+      ['Owner-operated (yes=5, no=0)', '0–5', 'Non-negotiable for highest scores'],
+      ['Digital presence gap (5=minimal, 0=sophisticated)', '0–5', 'Weak website, no blog, <500 social followers'],
+      ['Evidence of existing referral business (5=strong)', '0–5', 'Reviews mention "referred by," testimonials prominent'],
+      ['Transaction value fit ($50K+ per client = 5)', '0–5', 'Calculate ROI potential before scoring'],
+    ]
+  ),
+  ...spacer(1),
+  body('Target prospects scoring 18 or above. Do not invest sales time in prospects below 15.'),
+  h2('4.3  Prospect Red Flags'),
+  body('Walk away from prospects who exhibit any of the following:'),
+  bullet('Owner who frequently references competitors with envy or hostility — they will redirect your work toward attacking others rather than building their own authority'),
+  bullet('Business with active reputation problems (unresolved BBB complaints, pattern of negative reviews) — the archaeology will unearth bad history alongside good'),
+  bullet('Owner who wants to control all content before publication — approval bottlenecks kill the content engine'),
+  bullet('Owner who has had two or more marketing agencies "fail" them in the past 3 years — the problem is usually client-side'),
+  bullet('Business in active legal disputes related to their core work — creates liability exposure in content'),
+  bullet('Owner who cannot articulate a single client success story — may lack the archaeological material to produce a meaningful dig'),
+
+  divider(),
+
+  // CH 5
+  h1('Chapter 5: Prospecting Protocol — Finding and Qualifying Prospects'),
+  h2('5.1  The Cold Outreach Hierarchy'),
+  body('Outreach methods ranked by conversion probability in descending order:'),
+  bullet('Warm referral from existing client in same vertical (conversion rate: 40–60%)', 0, true),
+  bullet('Warm referral from professional network (attorney, accountant, banker) (20–35%)', 0, true),
+  bullet('Parade/trade show/industry event direct conversation (15–25%)', 0, true),
+  bullet('LinkedIn personalized connection + follow-up message (5–12%)', 0, true),
+  bullet('Cold email with specific intelligence about their business (3–8%)', 0, true),
+  bullet('Cold call (1–3%)', 0, true),
+  body('Prioritize methods at the top of this list. Build your referral network before you build your cold outreach machine.'),
+  h2('5.2  The LinkedIn Prospecting Protocol (Click-by-Click)'),
+  step('Log into LinkedIn. Click the Search bar at the top.'),
+  step('Type the vertical keyword (e.g., "custom home builder" or "orthopedic surgeon" or "estate attorney").'),
+  step('Click "People" filter. Then click "All Filters."'),
+  step('Set Location to your target geography. Set Connection to "2nd" (second-degree connections are warm enough for direct outreach).'),
+  step('Scroll results. For each prospect: click their profile, check "Experience" section for founding date or years in role. If 15+ years, check their company page for content activity.'),
+  step('If they qualify: click "Connect" > "Add a note." Write a personalized note (max 300 characters): "Hi [Name] — [Specific observation about their business, e.g., \'noticed you\'ve been building in [area] for 20+ years\']. I work with established [vertical] businesses on something I call Business Archaeology — excavating and deploying the authority they\'ve built. Worth a 15-minute call?"'),
+  step('Log the outreach in your CRM (Notion, HubSpot, or spreadsheet) with: Name, Company, Date contacted, Score, Follow-up date.'),
+  step('Follow up exactly 5 business days after connection acceptance if no response. One follow-up maximum.'),
+  h2('5.3  The Cold Email Protocol (Click-by-Click)'),
+  body('Cold email works only when it demonstrates specific intelligence about the prospect\'s business. Generic cold email is ignored. Intelligent cold email gets read.'),
+  h3('Step 1: Research the Prospect (15 minutes)'),
+  step('Open their website. Find: founding year, key services, testimonials, awards, staff bios.'),
+  step('Google: "[Business Name] reviews" — read the 5-star reviews for proof points you can cite.'),
+  step('Google: "[Owner Name]" — find any press mentions, awards, association roles.'),
+  step('Check their Google Business Profile for review volume and recency.'),
+  step('Check LinkedIn for the company page. Note follower count and last post date.'),
+  h3('Step 2: Write the Email'),
+  callout('Cold Email Template', 'Subject: Something I noticed about [Business Name]\n\n[First name],\n\nI\'ve been looking at established [vertical] businesses in [geography] and [Business Name] stood out — [specific observation: e.g., "you\'ve been building in Cordillera Ranch since 2001, which very few builders can say"]. That\'s a real authority asset.\n\nHere\'s what I do: I work with businesses like yours on something I call Business Archaeology — excavating 20+ years of earned reputation, client proof, and market expertise, then building the content infrastructure to broadcast it so you become the obvious authority in your category.\n\nOne well-placed client for you likely covers 3–6 months of my engagement. The businesses I work with grow their inbound pipeline, not their ad spend.\n\nWould a 15-minute call this week or next make sense? I can send a calendar link if so.\n\n[Your name]', C.blue),
+  h2('5.4  The Qualification Call Protocol'),
+  body('The first call has one goal: determine whether this is a client you want, not whether they want you. You are interviewing them.'),
+  h3('Opening (2 minutes)'),
+  body('"Before I tell you about what I do, I want to ask you a few questions to make sure we\'re actually a fit — I only work with a small number of clients and I\'m selective. Is that okay?"'),
+  h3('Qualification Questions (10 minutes)'),
+  step('"How long have you been in business, and how did you get started in [vertical]?" — Listen for the founder story and the archaeological raw material.'),
+  step('"Where does most of your new business come from today?" — Referral-dependent answers are green lights.'),
+  step('"What does your best client look like? How did you find them, or how did they find you?" — Reveals the value of the client relationship and the current funnel.'),
+  step('"If someone who doesn\'t know you searches for [what you do] in [your area], do they find you? Are you happy with that?" — Sets up the gap.'),
+  step('"What would change for your business if the right prospects found you before they found anyone else?" — Surfaces the pain and the desire simultaneously.'),
+  h3('The Pivot (3 minutes)'),
+  body('Only if they qualify: "Based on what you\'ve told me, I think there\'s a real excavation opportunity here. You\'ve built something significant over [X] years, and almost none of it is visible to prospects who don\'t already know you. Let me tell you how I approach this..."'),
+
+  divider(),
+
+  // CH 6
+  h1('Chapter 6: The Sales Process — From First Contact to Signed Contract'),
+  h2('6.1  The Sales Funnel Overview'),
+  threeColTable(
+    ['Stage', 'Goal', 'Tool'],
+    [
+      ['Prospect Identified', 'Score at 18+', 'Prospect Scoring Sheet'],
+      ['First Outreach', 'Secure qualification call', 'LinkedIn / Cold email'],
+      ['Qualification Call', 'Confirm mutual fit', 'Qualification script'],
+      ['Discovery Presentation', 'Demonstrate intelligence; propose engagement', 'Tailored mini-dig preview'],
+      ['Proposal Delivered', 'Send written proposal within 24 hours of call', 'Proposal template'],
+      ['Contract Signed', 'Countersigned agreement + first month retainer received', 'Contract template'],
+      ['Kickoff Call', 'Set expectations, begin archaeology', 'Onboarding checklist'],
+    ]
+  ),
+  ...spacer(1),
+  h2('6.2  The Discovery Presentation'),
+  body('The most powerful sales tool in the Legaisee system is a brief, specific demonstration of what the archaeology reveals before the client pays anything. Come to the discovery presentation having done 30–45 minutes of AI-assisted research on their business (see Chapter 9 for the AI research protocol).'),
+  body('In the presentation, present two or three specific insights:'),
+  bullet('One thing you found about their history or positioning that they have never articulated publicly'),
+  bullet('One specific content gap in their market that they are uniquely positioned to fill'),
+  bullet('One competitor who is winning attention in their space through methods your system would outperform'),
+  body('This is not a free strategy session. It is a proof of concept. You are showing them what the full dig will produce, not giving it to them.'),
+  h2('6.3  The Proposal Structure'),
+  body('The written proposal delivered within 24 hours of the discovery call contains these six sections:'),
+  bullet('The Strategic Diagnosis — two paragraphs summarizing what you found and what it means for their market position'),
+  bullet('The Engagement Scope — specific deliverables by month, organized by the three layers'),
+  bullet('The 12-Month Authority Roadmap — what they will own at the end of the year'),
+  bullet('The Investment — $8,000/month, billed on the 1st, 60-day minimum, then month-to-month with 30-day notice'),
+  bullet('The ROI Framing — specific calculation of what one new client is worth to them vs. monthly retainer'),
+  bullet('Next Step — one clear action: "If this feels right, reply to this email and I will send a contract and calendar invite for kickoff"'),
+  h2('6.4  Handling the Two Most Common Objections'),
+  h3('"Can we start with a smaller scope or a trial month?"'),
+  body('Response: "The archaeology takes the first two months to complete properly. A one-month trial produces half a dig — which is not useful to you and does not let me demonstrate what the system actually produces. The minimum engagement is 60 days. After that, you have a Strategic Intelligence Report, a content infrastructure foundation, and the first major authority asset. You will have enough to make a fully informed decision about continuing."'),
+  h3('"We have tried content marketing before and it didn\'t work."'),
+  body('Response: "That experience is actually exactly why this is different. Content marketing produces content. Business Archaeology produces discovered authority — your own proof, expertise, and story, systematically deployed. Generic content fails because it says nothing specific. The archaeology finds what is specific about you and builds from that. It cannot be replicated by a competitor because it is forensically yours."'),
+
+  divider(),
+
+  // CH 7
+  h1('Chapter 7: Onboarding — Setting the Engagement Up for Success'),
+  h2('7.1  The Onboarding Sequence (Days 1–14)'),
+  h3('Day 1: Contract and Payment'),
+  step('Send DocuSign contract with scope, deliverables, payment terms, and IP ownership clause (all content created is client-owned upon full payment).'),
+  step('Send invoice for Month 1 retainer. Do not begin work until payment clears.'),
+  step('Send calendar invite for Kickoff Call (schedule within 3 business days of contract signature).'),
+  h3('Day 2–3: Pre-Kickoff Research'),
+  step('Run the full AI Research Protocol (Chapter 9) on the client before the kickoff call. You should know more about their documented history than they expect.'),
+  step('Build a preliminary Archaeological Findings List — a running document of everything you discover that may become an asset.'),
+  h3('Day 4: The Kickoff Call (90 minutes)'),
+  body('Agenda:'),
+  bullet('15 min: Introductions and relationship building — this is the human investment call'),
+  bullet('20 min: The Preliminary Dig Preview — share what you already found; watch their reaction to identify the most resonant themes'),
+  bullet('25 min: The Archaeological Interview — structured questions to surface the history they have not published (see Section 7.2)'),
+  bullet('20 min: The 12-Month Roadmap walkthrough — what you will build, in what order, and why'),
+  bullet('10 min: Logistics — communication channels, approval process, file-sharing setup, contact list for subcontractors/referral sources'),
+  h3('Days 5–14: Foundation Build'),
+  step('Set up the client\'s Google Drive folder structure: /[Client Name]/Archaeology/Findings | /Monthly Reports | /Content Assets | /Distribution | /Meeting Notes'),
+  step('Create the Client Intelligence Dashboard — a living Google Sheet tracking: all published content, all search positions (quarterly), all testimonials collected, all referral sources mapped, all awards and credentials logged.'),
+  step('Begin Week 1 of the archaeology research cycle (Chapter 8).'),
+  h2('7.2  The Archaeological Interview Question Bank'),
+  body('Use these questions in the Kickoff Call and in follow-up sessions. You will not get through all of them in one call — spread them across Months 1 and 2.'),
+  h3('Origin and Formation'),
+  bullet('Walk me through how you got into this business. Who taught you, and what was the single most important thing they showed you?'),
+  bullet('What was the moment you decided to go out on your own? What gave you the confidence?'),
+  bullet('What did you know in Year 1 that you wish you had known on Day 1?'),
+  h3('Client and Proof'),
+  bullet('Tell me about the client you are most proud of serving. What made that project remarkable?'),
+  bullet('Has a client ever told you something about working with you that surprised you — something you did not realize was unusual?'),
+  bullet('What do your best clients have in common? Why do they choose you over others who do what you do?'),
+  h3('Philosophy and Process'),
+  bullet('If you could only teach one thing to someone entering your field, what would it be?'),
+  bullet('What do most people in your industry do that you refuse to do, and why?'),
+  bullet('What do you do that no competitor in your market does? Is it documented anywhere?'),
+  h3('Market and Future'),
+  bullet('What is the biggest misunderstanding the market has about what you do or what it costs?'),
+  bullet('If a prospect came to you after a bad experience with a competitor, what would be the first thing you would need them to understand?'),
+  bullet('What would you want to be known for at the end of your career that you are not yet known for publicly?'),
+
+  // ══════════════════════════════════════════════════════════════════════
+  // PART III — THE ARCHAEOLOGY DIG
+  // ══════════════════════════════════════════════════════════════════════
+  new Paragraph({ children: [new PageBreak()] }),
+  partHeader('III', 'The Archaeology Dig', 'The systematic discovery process that unearths the client\'s buried authority (Months 1–2)'),
+  ...spacer(1),
+
+  // CH 8
+  h1('Chapter 8: The Discovery Framework'),
+  h2('8.1  The Six Archaeological Layers'),
+  body('The dig operates across six layers, each producing its own category of assets:'),
+  threeColTable(
+    ['Layer', 'What to Excavate', 'Asset Produced'],
+    [
+      ['1. Proof Layer', 'Client testimonials, case studies, before/after outcomes, referral sources', 'Named Case Studies, Testimonial Archive'],
+      ['2. Credibility Layer', 'Awards, certifications, licenses, associations, media mentions', 'Authority Credentials Map'],
+      ['3. Authority Layer', 'Proprietary process, philosophy, methodology, expertise signals', 'The Authority Framework Document'],
+      ['4. Trust Layer', 'Community relationships, long-term partnerships, tenure signals', 'Trust Network Map'],
+      ['5. Differentiation Layer', 'What they do that competitors don\'t; unique materials, methods, approaches', 'The Differentiation Matrix'],
+      ['6. Identity Layer', 'Founder story, company origin, values, mission, why statement', 'The Brand Narrative Document'],
+    ]
+  ),
+  ...spacer(1),
+  h2('8.2  The Archaeology Research Cycle'),
+  body('The dig runs in a structured two-month cycle:'),
+  h3('Month 1, Week 1–2: Digital Excavation'),
+  body('Everything that exists publicly about the client. AI-assisted. See Chapter 9 for the full AI protocol.'),
+  h3('Month 1, Week 3–4: Human Excavation'),
+  body('The interviews, the relationship mapping, the proof story collection. Human-led. Cannot be automated.'),
+  h3('Month 2, Week 1–2: Synthesis and Analysis'),
+  body('Connecting the digital and human findings into a coherent narrative. AI-assisted drafting with human editorial judgment applied.'),
+  h3('Month 2, Week 3: Report Drafting'),
+  body('The Strategic Archaeology Report is written, internally reviewed, and sent to the client for a single round of feedback.'),
+  h3('Month 2, Week 4: Report Delivery and System Activation'),
+  body('The report is delivered in a 60-minute presentation call. The content infrastructure begins activating immediately after delivery.'),
+  h2('8.3  What the Archaeology Produces'),
+  body('By the end of Month 2, you have:'),
+  bullet('The Strategic Archaeology Report (10–20 pages) — the definitive document of who the client is and what they own in their market'),
+  bullet('The Differentiation Matrix — a side-by-side comparison of the client versus 3–5 key competitors across 8–12 criteria'),
+  bullet('The Testimonial Archive — all existing client proof organized by theme, client type, and deployment context'),
+  bullet('The Competitor Gap Map — specific content territories where the client is uniquely positioned to win authority'),
+  bullet('The 12-Month Content Architecture Plan — the specific assets to be built, in sequence, over the coming year'),
+
+  divider(),
+
+  // CH 9
+  h1('Chapter 9: AI Research Protocol — The Heavy Lifting'),
+  h2('9.1  The AI Toolkit'),
+  body('The following AI tools are used at different stages of the archaeology:'),
+  twoColTable(
+    ['Tool', 'Primary Use in the Legaisee System'],
+    [
+      ['Claude (Anthropic)', 'Strategic analysis, competitive positioning, long-form content drafting, market intelligence synthesis'],
+      ['ChatGPT (OpenAI)', 'Rapid research iteration, outline generation, first-draft content production'],
+      ['Perplexity AI', 'Real-time web research with citations — use for competitor discovery and market news'],
+      ['Google (manual)', 'Verification of AI findings; review aggregation; map/directory research'],
+    ]
+  ),
+  ...spacer(1),
+  h2('9.2  The Master Archaeology Research Prompt'),
+  body('This is the foundational prompt that launches every new client dig. Copy it exactly, fill in the brackets, and run it in Claude:'),
+  callout('Master Archaeology Prompt', 'You are a marketing strategist and business analyst. I need you to conduct a comprehensive competitive intelligence and brand archaeology analysis for the following business:\n\nBusiness Name: [NAME]\nVertical: [INDUSTRY]\nGeography: [CITY/REGION]\nFounded: [YEAR]\nPrice Point / Client Profile: [DESCRIPTION]\nKey Services: [LIST]\n\nPlease analyze:\n\n1. DIFFERENTIATION: What makes them unique vs. [NAME 3–5 specific local competitors]? Look for positioning gaps, underexploited proof, and overlooked strengths.\n\n2. CUSTOMER PSYCHOLOGY: Who is the ideal buyer in this vertical and geography? What fear, aspiration, or identity need drives a purchase at this price point? What does this provider solve that others don\'t?\n\n3. THE AUTHORITY GAP: What specific expertise, history, or proof does this business have that is NOT reflected in their current marketing or digital presence?\n\n4. CONTENT OPPORTUNITIES: What specific topics, search queries, or content formats would establish authority in this vertical? What is no one else producing that this business is uniquely qualified to produce?\n\n5. THE INVISIBLE MARKETING ENGINE: Based on what you know about businesses of this type and tenure, what non-digital trust mechanisms are likely driving their current growth? What does this reveal about their actual value to clients?\n\nOutput: A structured strategic analysis with specific, actionable findings. Include competitive observations, psychological insights, and specific content recommendations with example titles.', C.navy),
+  h2('9.3  Supplementary Research Prompts'),
+  h3('Competitor Deep Dive Prompt'),
+  callout('Competitor Analysis Prompt', 'Analyze [COMPETITOR NAME] as a competitor to [CLIENT NAME] in the [VERTICAL] market in [GEOGRAPHY].\n\nSpecifically:\n- What positioning claims do they make? Are those claims defensible or generic?\n- What content are they producing? What topics do they own vs. ignore?\n- What do their reviews reveal about what clients value most when choosing them?\n- Where are they most vulnerable to a well-positioned, content-rich competitor?\n- What would [CLIENT NAME] need to do to be clearly preferred over this competitor by an informed buyer?', C.blue),
+  h3('Buyer Psychology Prompt'),
+  callout('Buyer Psychology Prompt', 'Analyze the psychology of a buyer making a [PURCHASE TYPE] decision at the [$PRICE POINT] level in [GEOGRAPHY].\n\nSpecifically:\n- What are the three primary fears driving this buyer\'s decision process?\n- What does this purchase represent to them beyond its functional value? (identity, status, permanence, relief)\n- What information do they consume in the 6–18 months before making this decision?\n- What would cause them to choose a less-marketed but better-reviewed provider over a heavily marketed one?\n- What single piece of content, if they encountered it during their research, would make them feel they had found their provider?', C.blue),
+  h3('Content Architecture Prompt'),
+  callout('Content Architecture Prompt', 'Based on the following profile of [CLIENT NAME] in the [VERTICAL] market in [GEOGRAPHY]:\n\n[PASTE KEY FINDINGS FROM MASTER ARCHAEOLOGY PROMPT]\n\nDesign a 12-month content authority architecture. For each of the 12 months, recommend:\n1. The primary authority asset (type and specific topic)\n2. The specific search query or audience segment it targets\n3. The distribution channel it is optimized for\n4. The business outcome it is designed to drive\n\nPrioritize assets that establish category ownership rather than simply generating traffic. The client\'s goal is to be the undisputed authority their ideal buyer encounters during the research phase, not to chase volume.', C.blue),
+  h2('9.4  The AI Quality Control Rule'),
+  body('Every piece of AI-generated analysis or content passes through three human judgment checkpoints before it becomes a client deliverable:'),
+  bullet('Accuracy Check: Verify every specific claim the AI makes about the client, their competitors, or the market. AI hallucinates specifics. You verify specifics.', 0, true),
+  bullet('Specificity Check: Replace every generic statement with a client-specific one. "They have a strong reputation" becomes "Dr. Martinez has been the referring physician\'s first recommendation for knee reconstruction in Bexar County for over a decade, per three unprompted testimonials."', 0, true),
+  bullet('Voice Check: Every deliverable sounds like it was written by a strategist who knows the client intimately, not by an AI that read their website. Apply the client\'s vocabulary, their market\'s terminology, their community\'s references.', 0, true),
+
+  divider(),
+
+  // CH 10
+  h1('Chapter 10: The Archaeology Report — Your First Major Deliverable'),
+  h2('10.1  Report Structure'),
+  body('The Strategic Archaeology Report is delivered as a professionally designed document (use this template as the structural guide):'),
+  twoColTable(
+    ['Section', 'Content'],
+    [
+      ['Executive Summary (1 page)', 'The single most important strategic insight from the dig. What does this business actually own that the market doesn\'t know about yet?'],
+      ['Who You Are (2–3 pages)', 'The definitive identity narrative: origin story, formation, values, why this business exists and what it stands for. Written as if it could appear on the front page of their website.'],
+      ['What You Have Built (2–3 pages)', 'The proof inventory: all excavated credentials, awards, notable projects, client outcomes, and community relationships. Organized by theme.'],
+      ['Your Differentiation Matrix (1–2 pages)', 'Side-by-side analysis vs. 3–5 key competitors across 8–10 criteria. Where you win. Where gaps exist. What to claim and what to prove.'],
+      ['The Buyer\'s Journey (1–2 pages)', 'How your ideal client makes decisions. What they fear. What they need to believe before they sign. Where the current marketing fails to address those needs.'],
+      ['The Authority Gap (1 page)', 'Specific proof of the gap between the client\'s actual market authority and their current digital/content presence. The case for the system.'],
+      ['12-Month Authority Roadmap (1–2 pages)', 'The specific content infrastructure to be built, month by month, and what market position it will establish by Month 12.'],
+      ['Quick Wins List (1 page)', 'Five to seven specific tactical improvements that can be executed in the first 30 days with high impact and low effort.'],
+    ]
+  ),
+  ...spacer(1),
+  h2('10.2  Report Delivery Protocol'),
+  step('Send the draft report to the client 48 hours before the delivery call. Ask them to read it but not respond in writing — save their reactions for the call.'),
+  step('On the delivery call, walk through each section. Pause at the Differentiation Matrix and the Authority Gap — these are the highest-impact moments. Let the client sit in the recognition that the gap is real.'),
+  step('Collect verbal feedback. Ask: "Is there anything here that does not feel accurate? Is there anything significant we missed?" Take notes.'),
+  step('Revise within 5 business days. Deliver the final version as a PDF and a Google Doc.'),
+  step('File the final report in the client\'s Google Drive under /Archaeology/Reports.'),
+  step('Use the report as the strategic reference document for every piece of content produced in Months 3–12. Every deliverable traces back to a finding in the report.'),
+
+  // ══════════════════════════════════════════════════════════════════════
+  // PART IV — AUTHORITY SYSTEM BUILD
+  // ══════════════════════════════════════════════════════════════════════
+  new Paragraph({ children: [new PageBreak()] }),
+  partHeader('IV', 'The Authority System Build', 'The content infrastructure that converts the archaeology into compounding market advantage'),
+  ...spacer(1),
+
+  // CH 11
+  h1('Chapter 11: Content Infrastructure Setup'),
+  h2('11.1  The Six Infrastructure Components'),
+  body('The Authority System consists of six interconnected components, built in sequence:'),
+  h3('Component 1: The Website Foundation'),
+  body('Before producing any content, the client\'s website must function as a trust and authority destination. Minimum requirements:'),
+  bullet('Clear statement of who they serve and what they do — above the fold, in plain language'),
+  bullet('Visual portfolio or project gallery — minimum 12 high-quality examples'),
+  bullet('Named testimonials with specific outcomes and client identifiers (name, location, project type)'),
+  bullet('About page featuring the founder\'s story from the archaeology report'),
+  bullet('Contact form or consultation booking link — frictionless, prominent'),
+  bullet('Blog/Insights section — even if empty at launch, the structure must exist'),
+  body('If the website does not meet these minimums, the first month includes a website audit and specific copy recommendations. You are not a web designer, but you are the authority on the content it must contain.'),
+  h3('Component 2: The Community Landing Pages'),
+  body('The highest-ROI content investments in local service businesses are specific community or geography pages. These capture high-intent search traffic from buyers already looking in a specific area.'),
+  body('For each major community or specialty area the client serves, build one dedicated page containing:'),
+  bullet('Their specific experience in that community (named projects, named relationships if permitted)'),
+  bullet('Community-specific context (why working in this area requires expertise)'),
+  bullet('Specific testimonials from clients in that community'),
+  bullet('A clear call to action for prospects in that community'),
+  h3('Component 3: The Flagship Authority Asset'),
+  body('One major piece of content that establishes category ownership. This is the cornerstone of the Authority System. Examples by vertical:'),
+  twoColTable(
+    ['Vertical', 'Flagship Authority Asset Example'],
+    [
+      ['Custom home builder', '"The Complete Guide to Building a Custom Home in [Region]: What Every Buyer Needs to Know Before Signing"'],
+      ['Estate attorney', '"The [State] Estate Planning Playbook: What High-Net-Worth Families Always Ask and What Their Attorneys Should Tell Them"'],
+      ['Commercial contractor', '"Before You Break Ground: The 11 Questions to Ask Any Commercial Contractor in [City]"'],
+      ['Specialty medical practice', '"Understanding [Procedure]: A Patient\'s Complete Guide from First Consultation to Full Recovery"'],
+      ['Wealth manager', '"The [City] Retirement Reality Check: What the Market Won\'t Tell You About Preserving Wealth in [Region]"'],
+    ]
+  ),
+  ...spacer(1),
+  h3('Component 4: The Video / Podcast Presence'),
+  body('A YouTube channel or podcast series featuring the founder as the on-camera or on-mic expert. This is the single highest-authority-per-hour content investment. A 6-minute video of the founder explaining a complex decision in their field does more for authority than 20 blog posts.'),
+  body('Recommended format: The "Build Journal" or "Case Study" series — a monthly 4–8 minute video following one aspect of one project, or addressing one question buyers frequently ask.'),
+  h3('Component 5: The Email Relationship Engine'),
+  body('A monthly email to the client\'s existing network: past clients, referral sources, professional contacts. Not a newsletter. A practitioner\'s note — one insight, one story, one reason to think of the client when someone in their network needs what they do.'),
+  h3('Component 6: The Referral Amplification System'),
+  body('A documented process for converting completed projects into reactivated referral sources:'),
+  step('Project completion triggers a professional photography session'),
+  step('Photography triggers a named case study published on the website'),
+  step('Case study triggers a personalized email to the client with a Google review request and a LinkedIn post tag'),
+  step('Google review triggers a response and a thank-you note'),
+  step('Every six months, a "check-in" email to past clients asking how the project is performing and offering to answer any questions'),
+  h2('11.2  Infrastructure Build Timeline'),
+  threeColTable(
+    ['Month', 'Infrastructure Component Built', 'Primary Tool'],
+    [
+      ['Month 1', 'Website audit + copy recommendations; Google Drive setup; Client Intelligence Dashboard created', 'Manual + Google Sheets'],
+      ['Month 2', 'Community landing page #1 drafted; Flagship asset outline completed; Email list audit', 'Claude + client website'],
+      ['Month 3', 'Flagship authority asset published; Community landing page #1 live; Email engine launched', 'Claude + website CMS'],
+      ['Month 4–6', 'Video series launched (Months 4–6); Community pages 2–4 published; Referral amplification system activated', 'YouTube + Claude'],
+      ['Month 7–9', 'Second major authority asset; Association/realtor relationship content; Local media pitches', 'Claude + email'],
+      ['Month 10–12', 'Annual authority audit; System documentation; Year-2 plan', 'Google Docs + Claude'],
+    ]
+  ),
+
+  divider(),
+
+  // CH 12
+  h1('Chapter 12: The Content Architecture Plan'),
+  h2('12.1  The Monthly Asset Rotation'),
+  body('Each month produces one primary Authority Asset. Assets rotate on a four-month cycle to maintain variety and cover the full spectrum of buyer needs:'),
+  twoColTable(
+    ['Month in Cycle', 'Asset Type'],
+    [
+      ['Month A', 'The Guide — a comprehensive educational resource that answers the buyer\'s most important pre-decision questions'],
+      ['Month B', 'The Case Study — a fully documented client story with named client (if permitted), project context, process, and outcome'],
+      ['Month C', 'The Video Script + Published Video — founder or team on camera; distributed to YouTube, embedded on website, shared to email list'],
+      ['Month D', 'The Community or Specialty Page — a new community, geography, or specialty landing page targeting a specific high-intent search query'],
+    ]
+  ),
+  ...spacer(1),
+  h2('12.2  The Content Brief'),
+  body('Every piece of content begins with a Content Brief completed before any drafting begins. The Brief contains:'),
+  bullet('Target: Who is the specific reader/viewer? What do they know, fear, and want?'),
+  bullet('Purpose: What does this content need them to believe, do, or feel after consuming it?'),
+  bullet('Query: What specific search term, referral context, or buyer question does this answer?'),
+  bullet('Proof: What archaeology finding(s) does this content deploy?'),
+  bullet('Call to Action: What specific action should the reader take?'),
+  bullet('Distribution: Where does this go? (Website, email, LinkedIn, YouTube, print)'),
+  h2('12.3  The Distribution Matrix'),
+  body('Every asset is distributed across multiple channels to maximize reach per unit of production:'),
+  threeColTable(
+    ['Asset Type', 'Primary Channel', 'Secondary Channels'],
+    [
+      ['The Guide', 'Website (dedicated page, downloadable PDF)', 'Email list (full send), LinkedIn (excerpt + link), Google Business (linked post)'],
+      ['The Case Study', 'Website (portfolio/blog)', 'Email list, LinkedIn, Google Business post, tagged social mention of client (if permitted)'],
+      ['The Video', 'YouTube (published, SEO-optimized title/description)', 'Website (embedded), Email (thumbnail + link), LinkedIn (native upload or link)'],
+      ['Community Page', 'Website (indexed, SEO-optimized)', 'Google Business (service area update), LinkedIn (brief post), Email (relevant past clients in that area)'],
+    ]
+  ),
+
+  // ══════════════════════════════════════════════════════════════════════
+  // PART V — DAILY OPERATIONS PROTOCOL
+  // ══════════════════════════════════════════════════════════════════════
+  new Paragraph({ children: [new PageBreak()] }),
+  partHeader('V', 'Daily Operations Protocol', 'The repeatable daily, weekly, and monthly rhythms that keep the system running and the client thriving'),
+  ...spacer(1),
+
+  // CH 13
+  h1('Chapter 13: The Daily Operating Rhythm'),
+  h2('13.1  The Daily Non-Negotiables (Every Business Day)'),
+  body('These actions take 30–45 minutes total and must be completed before any client work begins:'),
+  h3('Morning Sweep (15 minutes)'),
+  step('Open your CRM. Check for any prospect or client messages requiring same-day response. Reply within 2 hours to clients; within 24 hours to prospects.'),
+  step('Check Google Alerts for each active client. You should have an alert set for: [Client Name], [Owner Name], [Key Competitor Names], [Vertical + Geography]. Spend 5 minutes scanning for anything actionable.'),
+  step('Check the Intelligence Brief calendar. If a brief is due within 5 business days, begin the research phase today.'),
+  h3('Daily Work Block (Defined by you — minimum 4 hours of client work)'),
+  body('Allocate your daily client work time as follows across a typical week:'),
+  twoColTable(
+    ['Day', 'Primary Focus'],
+    [
+      ['Monday', 'Intelligence Brief research + drafting for all active clients'],
+      ['Tuesday', 'Authority Asset production (writing, scripting, or structural work)'],
+      ['Wednesday', 'Distribution execution — publishing, scheduling, sending email'],
+      ['Thursday', 'Client calls, prospect calls, relationship work'],
+      ['Friday', 'Review and plan — review what shipped this week, plan next week\'s production'],
+    ]
+  ),
+  ...spacer(1),
+  h2('13.2  The Weekly Client Work Allocation'),
+  body('For each active client at the $8,000 retainer level, allocate 8–10 hours per month (2–2.5 hours per week). This is divided:'),
+  bullet('1.0 hour: Research and intelligence gathering (AI-assisted)'),
+  bullet('1.5 hours: Production — drafting, editing, publishing'),
+  bullet('0.5 hours: Distribution — sending, scheduling, posting'),
+  bullet('0.5 hours: Client communication, call prep, reporting'),
+  body('With this allocation, you can serve 4–5 clients at the $8,000 level working 40 hours per week, including your own business development time.'),
+  h2('13.3  The Client Capacity Model'),
+  threeColTable(
+    ['Number of Clients', 'Monthly Revenue', 'Hours/Week Required', 'Business Dev Time Remaining'],
+    [
+      ['1 client', '$8,000', '8–10 hrs', '30+ hrs — focus on prospecting'],
+      ['2 clients', '$16,000', '16–20 hrs', '20+ hrs — balance prospect + deliver'],
+      ['3 clients', '$24,000', '24–30 hrs', '10–15 hrs — maintain pipeline'],
+      ['4 clients', '$32,000', '32–40 hrs', '5 hrs — hire support or raise rates'],
+      ['5 clients', '$40,000', '40–50 hrs', 'Hire support immediately'],
+    ]
+  ),
+
+  divider(),
+
+  // CH 14
+  h1('Chapter 14: The Weekly Cadence'),
+  h2('14.1  The Week-in-Review Ritual (Every Friday, 30 minutes)'),
+  body('Open your Weekly Review document (keep a running Google Doc) and answer:'),
+  step('What shipped this week? List every deliverable published or delivered across all clients.'),
+  step('What is in progress? What is the status of each active asset in production?'),
+  step('What is behind schedule? What is the recovery plan?'),
+  step('What did I learn about any client\'s market this week that changes the strategy?'),
+  step('What is the one most important thing to accomplish next week for each client?'),
+  h2('14.2  The Week Kickoff Ritual (Every Monday, 20 minutes)'),
+  step('Open your task manager. Create this week\'s client task list from last Friday\'s review.'),
+  step('Check the Monthly Calendar (Chapter 15). What milestones fall this week?'),
+  step('Set your daily priorities. Monday through Friday: one "must ship" per day.'),
+  step('Block your deep work time. The production block is sacred — no calls, no Slack, no interruptions for the duration.'),
+  h2('14.3  Client Check-In Protocol'),
+  body('Brief client check-ins happen on an as-needed basis, not on a fixed schedule. The Monthly Strategy Call (see Chapter 15) is the formal touchpoint. Between calls, communicate via:'),
+  bullet('Email for deliverable submissions and approvals — always include a one-paragraph context note explaining what the deliverable is and what action you need from the client'),
+  bullet('Text or messaging app for time-sensitive items only — establish this protocol in onboarding'),
+  bullet('Shared Google Doc for running notes on decisions made and directions set — prevents "I thought we agreed" conversations'),
+
+  divider(),
+
+  // CH 15
+  h1('Chapter 15: The Monthly Deliverables Engine'),
+  h2('15.1  The Monthly Delivery Calendar'),
+  body('Each month operates on a four-week production cycle:'),
+  twoColTable(
+    ['Week', 'Activity'],
+    [
+      ['Week 1', 'Intelligence Brief research + draft; begin Authority Asset Content Brief; prior month distribution review'],
+      ['Week 2', 'Intelligence Brief delivered; Authority Asset first draft completed; Community or referral action executed'],
+      ['Week 3', 'Authority Asset revised + published; email newsletter drafted + sent; distribution actions executed'],
+      ['Week 4', 'Monthly Strategy Call; monthly performance review; next month\'s plan confirmed; invoice issued'],
+    ]
+  ),
+  ...spacer(1),
+  h2('15.2  The Intelligence Brief (Deliverable 1 of 3 per Month)'),
+  body('The Intelligence Brief is a 1–2 page strategic document delivered by Week 2 of every month. Structure:'),
+  bullet('Market Signal: One observation about the client\'s vertical, local market, or competitive landscape that is relevant and actionable this month'),
+  bullet('Competitor Watch: One specific move a competitor made in the past 30 days — new content, new service, new hire, award won, review pattern — and what it means'),
+  bullet('The Opportunity: One specific action the client should take this month based on the above two inputs, with rationale and expected outcome'),
+  bullet('Quick Metrics: 3–5 data points showing current content performance (page views, search position movement, email open rate, new reviews)'),
+  body('Time to produce: 60–90 minutes with AI research assistance. The perceived value to the client is a retained CMO who is watching their market so they do not have to.'),
+  h2('15.3  The Authority Asset (Deliverable 2 of 3 per Month)'),
+  body('The primary content output for the month. Produced according to the Content Brief (Chapter 12.2) and the monthly rotation (Chapter 12.1).'),
+  body('Production protocol:'),
+  step('Complete the Content Brief. Do not begin drafting until the Brief is complete.'),
+  step('Run the AI draft prompt (see Chapter 21 for the full prompt library) to produce a working draft. This draft is the raw material, not the deliverable.'),
+  step('Apply the three Quality Control checkpoints (Chapter 9.4): Accuracy, Specificity, Voice.'),
+  step('Edit until it reads as if written by someone who has spent 20 years in this specific market. Generic phrases are eliminated. Specific names, places, project types, and outcomes are inserted.'),
+  step('Submit to client for a single round of feedback. Use this language: "Please review and send any factual corrections or additions within 3 business days. This will publish on [DATE]."'),
+  step('Publish after client response or after 3 business days, whichever comes first.'),
+  h2('15.4  The Monthly Strategy Call (Deliverable 3 of 3 per Month)'),
+  body('The 45-minute monthly call is the relational and strategic anchor of the engagement. It is not a reporting call — it is a strategic conversation. Structure:'),
+  bullet('10 minutes: What went live this month — walk through every published piece briefly. The client should feel the momentum of consistent output.'),
+  bullet('10 minutes: What it is producing — share any evidence of the system working: new reviews, new inbound inquiries, search position gains, referral sources mentioning the content.'),
+  bullet('15 minutes: Strategy for next month — present the Content Brief for next month\'s Authority Asset and get verbal approval. Discuss any market developments from the Intelligence Brief.'),
+  bullet('10 minutes: The Dig continues — ask one or two Archaeological Interview questions (from Chapter 7.2) every month. The archaeology never fully ends; new material surfaces continuously.'),
+
+  // ══════════════════════════════════════════════════════════════════════
+  // PART VI — QUARTERLY EXECUTABLES
+  // ══════════════════════════════════════════════════════════════════════
+  new Paragraph({ children: [new PageBreak()] }),
+  partHeader('VI', 'Quarterly Executables', 'The specific strategic objectives, milestone deliverables, and client experience goals for each quarter of the 12-month engagement'),
+  ...spacer(1),
+
+  // CH 16
+  h1('Chapter 16: Q1 — Excavation and Foundation (Months 1–3)'),
+  h2('16.1  Q1 Strategic Objective'),
+  body('Complete the archaeology, establish the content infrastructure, and produce the first two major authority assets. By the end of Q1, the client should have more high-quality strategic content representing their business than they have produced in the previous five years combined.'),
+  h2('16.2  Q1 Milestones'),
+  twoColTable(
+    ['Milestone', 'Target Date'],
+    [
+      ['Kickoff call completed; archaeological interview session 1 done', 'Day 4'],
+      ['Digital excavation complete; Archaeological Findings List version 1 drafted', 'End of Month 1, Week 2'],
+      ['Client Intelligence Dashboard live in Google Drive', 'End of Month 1, Week 3'],
+      ['Intelligence Brief #1 delivered', 'Month 1, Week 2'],
+      ['Community Landing Page #1 published', 'End of Month 1'],
+      ['Strategic Archaeology Report draft sent to client', 'Month 2, Week 3'],
+      ['Strategic Archaeology Report finalized and delivered', 'End of Month 2'],
+      ['Flagship Authority Asset (The Guide) — draft completed', 'Month 2, Week 4'],
+      ['Flagship Authority Asset published on website', 'Month 3, Week 2'],
+      ['Email list audit completed; first email newsletter sent', 'Month 3, Week 3'],
+      ['Q1 Review delivered to client (metrics, wins, Q2 plan)', 'End of Month 3'],
+    ]
+  ),
+  ...spacer(1),
+  h2('16.3  The Q1 Review Deliverable'),
+  body('At the end of Q1, deliver a one-page written Q1 Review alongside the strategy call. It contains:'),
+  bullet('What was produced: list all deliverables with dates'),
+  bullet('What was discovered: the top three insights from the archaeology that will shape Q2 and beyond'),
+  bullet('Early evidence: any signals the system is working (search activity, reviews, referral mentions)'),
+  bullet('Q2 plan: the four major assets planned for Months 4–6 with rationale'),
+  callout('Q1 Client Experience Goal', 'By the end of Q1, the client should have said — either on a call or in writing — something like: "I did not realize we had all of this. I have been doing this for 20 years and I never thought to put it together this way." That moment of recognition is the validation that the archaeology is working.', C.teal),
+
+  divider(),
+
+  // CH 17
+  h1('Chapter 17: Q2 — Authority Establishment (Months 4–6)'),
+  h2('17.1  Q2 Strategic Objective'),
+  body('Own at least three specific search queries or market positions in the client\'s geography. Launch the video or podcast series. Activate the referral amplification system. The client should begin receiving inbound contact they can attribute to the content system.'),
+  h2('17.2  Q2 Milestones'),
+  twoColTable(
+    ['Milestone', 'Target Date'],
+    [
+      ['Video series launched — Episode 1 published to YouTube and website', 'Month 4, Week 2'],
+      ['Community Landing Pages 2 and 3 published', 'Month 4 and Month 5'],
+      ['Referral amplification system documented and activated', 'Month 4, Week 3'],
+      ['Google Business profile fully optimized with new content links', 'Month 4'],
+      ['Intelligence Brief #4, #5, #6 delivered on schedule', 'Monthly'],
+      ['Case Study #1 published (first named client story)', 'Month 5, Week 2'],
+      ['Video Episode #2 published', 'Month 5, Week 3'],
+      ['Email newsletter #4, #5, #6 sent on schedule', 'Monthly'],
+      ['Q2 Review delivered with first attribution evidence', 'End of Month 6'],
+    ]
+  ),
+  ...spacer(1),
+  h2('17.3  The Attribution Conversation'),
+  body('In Q2, begin asking the client to track attribution: when a new prospect contacts them, ask "How did you hear about us?" Implement this question consistently. The system works invisibly until attribution data makes it visible. Coach the client to ask, record, and report this data to you monthly.'),
+  callout('Q2 Client Experience Goal', 'By the end of Q2, the client should be able to point to at least one specific inquiry that came from the content system — someone who found them through a community page, the Guide, or a Google search — rather than a personal referral. That first digital attribution is the proof of concept that makes the renewal conversation easy.', C.teal),
+
+  divider(),
+
+  // CH 18
+  h1('Chapter 18: Q3 — Amplification (Months 7–9)'),
+  h2('18.1  Q3 Strategic Objective'),
+  body('The content infrastructure is established. Q3 focuses on amplification — distributing the authority through channels beyond the website. This includes professional relationship activation, local media, industry association positioning, and second-order content from the primary assets produced in Q1 and Q2.'),
+  h2('18.2  Q3 Amplification Channels'),
+  h3('Professional Referral Network Activation'),
+  body('Identify the professionals whose clients overlap with the ideal buyer profile — attorneys, accountants, financial advisors, real estate agents, or vertical-specific equivalents. For each:'),
+  step('Identify 5–10 specific professionals in the client\'s existing network.'),
+  step('Create a one-page "What We Do and Who We Serve" document designed specifically for referral partners — not a brochure, a referral brief.'),
+  step('Schedule a lunch, coffee, or brief educational call where the client shares one specific insight from the Flagship Authority Asset. The goal is to be useful, not to sell.'),
+  step('Follow up with a personalized email containing the Flagship Asset as a resource "for your clients who ask about [topic]."'),
+  h3('Local Media and Industry Press'),
+  body('Identify 3–5 local or industry media outlets where a founder profile, project story, or expert opinion piece would reach the ideal audience. Pitch one story per quarter:'),
+  step('Write a 150-word pitch based on one of the most compelling findings from the archaeology report.'),
+  step('Send to the editor or reporter most likely to cover the story. Do not pitch to generic "contact us" addresses.'),
+  step('Follow up once, 5 business days after the initial pitch. Do not pester.'),
+  h3('Second-Order Content'),
+  body('Every primary asset produced in Q1 and Q2 contains multiple pieces of second-order content. For example: the 30-page Flagship Guide can be atomized into:'),
+  bullet('Six 500-word blog posts (one per major section)'),
+  bullet('Twelve LinkedIn posts (one insight per post)'),
+  bullet('Four email newsletter topics'),
+  bullet('Two video scripts (the most counterintuitive or surprising sections)'),
+  bullet('One "Buyer\'s Checklist" downloadable one-pager'),
+  body('Atomize systematically. Do not create new content when existing content can be redistributed.'),
+  h2('18.3  Q3 Milestones'),
+  twoColTable(
+    ['Milestone', 'Target Date'],
+    [
+      ['Referral partner list built and briefed', 'Month 7'],
+      ['Video Episodes 3, 4, and 5 published', 'Monthly — Month 7, 8, 9'],
+      ['Local media or industry press pitch sent', 'Month 7 or 8'],
+      ['Community Landing Page 4 published', 'Month 8'],
+      ['Second major authority asset (type determined by Q2 performance data)', 'Month 9'],
+      ['Q3 Review with attribution report delivered', 'End of Month 9'],
+    ]
+  ),
+
+  divider(),
+
+  // CH 19
+  h1('Chapter 19: Q4 — Systematization and Renewal (Months 10–12)'),
+  h2('19.1  Q4 Strategic Objective'),
+  body('Consolidate the gains of Q1–Q3 into a documented, operational system the client understands and can articulate. Prepare the Annual Authority Audit. Execute the renewal conversation with confidence. Position the Year 2 engagement as the compounding phase.'),
+  h2('19.2  Q4 Milestones'),
+  twoColTable(
+    ['Milestone', 'Target Date'],
+    [
+      ['Monthly deliverables continue at full cadence', 'Months 10–12'],
+      ['Annual Authority Audit research begins', 'Month 10, Week 3'],
+      ['Year 2 content architecture plan drafted', 'Month 11, Week 2'],
+      ['Annual Authority Audit delivered to client', 'Month 11, Week 4'],
+      ['Renewal conversation initiated', 'Month 11 (see Chapter 24)'],
+      ['Year 2 contract signed (goal)', 'Before end of Month 12'],
+      ['Year-End Celebration deliverable produced', 'Month 12, Week 2'],
+    ]
+  ),
+  ...spacer(1),
+  h2('19.3  The Year-End Celebration Deliverable'),
+  body('In Month 12, produce a "Year in Review" one-page document or brief presentation for the client that shows:'),
+  bullet('Total content produced: count every article, video, email, page, and case study'),
+  bullet('Authority markers established: search queries now owned, reviews earned, press mentions, community pages live'),
+  bullet('Attribution evidence: all documented inbound leads, referrals, or inquiries traced to the system'),
+  bullet('The Before/After: a side-by-side of their digital presence at contract start vs. now'),
+  body('This document serves three purposes: it validates the engagement, it makes the renewal conversation concrete, and it becomes the opening slide of any case study you use in future sales conversations.'),
+
+  // ══════════════════════════════════════════════════════════════════════
+  // PART VII — AI WORKFLOW PROTOCOLS
+  // ══════════════════════════════════════════════════════════════════════
+  new Paragraph({ children: [new PageBreak()] }),
+  partHeader('VII', 'AI Workflow Protocols', 'The exact AI prompts, tools, and workflows for each deliverable — the production engine of the system'),
+  ...spacer(1),
+
+  // CH 20
+  h1('Chapter 20: AI Tools and Their Roles in the System'),
+  h2('20.1  The AI Productivity Principle'),
+  body('AI handles production. You handle judgment. This distinction is the source of your leverage. A solo practitioner using AI correctly can produce the output of a four-person content agency. A practitioner who outsources judgment to AI produces generic content that destroys the value of the system.'),
+  body('The rule: AI writes the first draft of everything. You transform the first draft into something that could only have been written by someone who knows this specific client, their specific market, and their specific buyers.'),
+  h2('20.2  Tool Assignment by Task'),
+  threeColTable(
+    ['Task', 'Primary AI Tool', 'Human Judgment Required'],
+    [
+      ['Market vertical intelligence', 'Claude (long context, strategic analysis)', 'Verify local specifics; add on-the-ground knowledge'],
+      ['Competitive analysis', 'Claude + Perplexity (real-time)', 'Evaluate strategic implications; test against client knowledge'],
+      ['Archaeology Report drafting', 'Claude (long-form, structured)', 'Heavy editing for specificity and voice; accuracy verification'],
+      ['Intelligence Brief research', 'Perplexity + Claude', 'Select the most relevant signal; write the opportunity section'],
+      ['Authority Asset first drafts', 'Claude or ChatGPT', 'Full editorial pass for specificity, voice, accuracy'],
+      ['Case study drafting', 'Claude', 'Accuracy check; client approval of quotes and details'],
+      ['Email newsletter', 'Claude', 'Voice matching; personal anecdote insertion'],
+      ['Video script', 'Claude', 'Conversational editing; pacing review; remove AI-speak'],
+      ['LinkedIn posts', 'Claude or ChatGPT', 'Brevity edit; hook review; voice matching'],
+      ['Community landing pages', 'Claude', 'Local specificity insertion; SEO keyword verification'],
+    ]
+  ),
+
+  divider(),
+
+  // CH 21
+  h1('Chapter 21: Prompt Frameworks for Each Deliverable'),
+  h2('21.1  Intelligence Brief Research Prompt'),
+  callout('Intelligence Brief Prompt', 'You are a market intelligence analyst for [CLIENT NAME], a [VERTICAL] in [GEOGRAPHY] with [X] years in business serving clients at [PRICE POINT].\n\nSearch for and analyze:\n1. Any notable moves by their top 3 competitors in the past 30 days: [COMPETITOR 1], [COMPETITOR 2], [COMPETITOR 3]. Look for new content, new services, awards, reviews, hires, or market positioning changes.\n2. Any market trends in the [VERTICAL] industry in [GEOGRAPHY/REGION] in the past 30 days that a sophisticated practitioner would find relevant.\n3. Any content gaps — topics that buyers in this market are actively searching for that no competitor is currently addressing well.\n\nOutput: A structured Intelligence Brief with three sections: Market Signal, Competitor Watch, and The Opportunity. Each section: 100–150 words. Specific, not generic. Every claim should be traceable to a real observation.', C.navy),
+  h2('21.2  Authority Asset — The Guide Prompt'),
+  callout('Guide Drafting Prompt', 'You are a senior content strategist writing for [CLIENT NAME], a [VERTICAL] in [GEOGRAPHY] founded in [YEAR] with [X years] of experience. Your voice is authoritative but accessible — the voice of a trusted expert explaining complex decisions to an intelligent buyer who is not an expert.\n\nWrite a comprehensive buyer\'s guide titled: "[TITLE]"\n\nTarget reader: [BUYER PROFILE — e.g., "A family relocating from a major metro area planning their first custom home in the Texas Hill Country, budget $1.2–2M, timeline 18 months"]\n\nThe guide must cover:\n[LIST 6–8 SPECIFIC SECTIONS FROM CONTENT BRIEF]\n\nTone: Expert. Direct. No jargon without explanation. No marketing language. This reads like it was written by the most experienced practitioner in the field who also happens to be an excellent teacher.\n\nLength: 1,800–2,500 words.\n\nDo not include any generic statements that could apply to any business in this category. Every paragraph should be specific enough that a competitor could not publish it without modification.', C.navy),
+  h2('21.3  Case Study Prompt'),
+  callout('Case Study Prompt', 'You are writing a client case study for [CLIENT NAME] about the following project:\n\nClient profile: [AGE/SITUATION/LOCATION — no full name unless permitted]\nProject type: [DESCRIPTION]\nKey challenge: [WHAT MADE THIS PROJECT COMPLEX OR SIGNIFICANT]\nApproach: [HOW THE CLIENT HANDLED IT]\nOutcome: [MEASURABLE OR EXPERIENTIAL RESULT]\nClient quote: "[VERBATIM QUOTE IF AVAILABLE, OR PARAPHRASED SENTIMENT]"\n\nWrite a 500–700 word case study in narrative form — not a bulleted list. Open with a scene or moment that puts the reader in the client\'s shoes. Build through the challenge and the process. End with the outcome and a reflection on what it means.\n\nThis case study should make a prospective buyer in a similar situation think: "That is exactly my situation. I want this provider."', C.navy),
+  h2('21.4  Email Newsletter Prompt'),
+  callout('Email Newsletter Prompt', 'Write a monthly email newsletter for [CLIENT NAME] to send to their existing network of past clients, referral partners, and professional contacts.\n\nThis month\'s topic / insight: [TOPIC FROM CONTENT BRIEF OR INTELLIGENCE BRIEF]\n\nTone: Practitioner to peer. Personal. One insight, explained clearly, with a direct application. This is not a marketing email. It is a practitioner\'s note — the kind of email a respected expert sends to their network when they have learned something worth sharing.\n\nStructure:\n- Subject line (3 options, no clickbait)\n- Opening (1–2 sentences — a scene, a question, or an observation)\n- The insight (150–200 words)\n- The application (50–75 words — what should the reader do or think differently)\n- The close (2–3 sentences — warm, no hard call to action)\n\nThe reader should finish this email thinking more highly of [CLIENT NAME] than they did before they opened it.', C.navy),
+  h2('21.5  Community Landing Page Prompt'),
+  callout('Community / Specialty Page Prompt', 'Write a community-specific service page for [CLIENT NAME]\'s website targeting [COMMUNITY/AREA NAME] in [GEOGRAPHY].\n\nTarget search query: "[SPECIFIC QUERY — e.g., \'custom home builder Cordillera Ranch\']"\n\nInclude:\n1. Opening paragraph establishing the client\'s specific experience in this community (use real details: years, named projects if permitted, community knowledge)\n2. Why building/working in this community requires specific expertise (terrain, HOA, architectural requirements, access, etc.)\n3. What the client offers specifically for buyers in this community\n4. Social proof — one or two testimonials from clients in this community (or nearby if none specific)\n5. A direct call to action for prospects in this community\n\nLength: 500–700 words. SEO-optimized but human-first — this page should be as useful to a buyer reading it as it is to a search engine indexing it.', C.navy),
+  h2('21.6  Video Script Prompt'),
+  callout('Video Script Prompt', 'Write a video script for [CLIENT NAME], the founder/owner of [BUSINESS], for a [4–6 minute] video titled: "[TITLE]"\n\nFormat: The founder speaks directly to camera. No teleprompter feel — this should sound like a practiced professional having a direct conversation with a buyer who is in the research phase.\n\nTopic: [SPECIFIC TOPIC FROM CONTENT BRIEF]\n\nStructure:\n- Opening hook (10–15 seconds) — a question, a counterintuitive fact, or a problem statement that the viewer immediately recognizes\n- The insight (2–3 minutes) — the core teaching, explained clearly, with a specific example or story\n- The common mistake (45–60 seconds) — what most buyers or competitors get wrong about this topic\n- The close (30 seconds) — a direct invitation to take the next step, no pressure\n\nWrite it to be spoken, not read. Short sentences. Conversational cadence. The viewer should feel like the most knowledgeable person in the room just sat down across from them.', C.navy),
+
+  divider(),
+
+  // CH 22
+  h1('Chapter 22: Quality Control and the Human Judgment Layer'),
+  h2('22.1  The Three-Pass Editorial Protocol'),
+  body('Every AI-produced draft goes through exactly three passes before delivery:'),
+  h3('Pass 1: The Accuracy Pass (15 minutes)'),
+  body('Read the draft with your notes and research open. Flag and correct every claim that:'),
+  bullet('Makes a specific statement about the client, competitor, or market that you cannot verify'),
+  bullet('Uses a statistic, ranking, or data point not sourced from your research'),
+  bullet('Attributes something to the client that is actually generic industry practice'),
+  h3('Pass 2: The Specificity Pass (20 minutes)'),
+  body('Underline every sentence that could appear in a competitor\'s content without modification. Rewrite each one. Replace:'),
+  bullet('"We have years of experience" → "[X] years building in [specific communities], including [specific named project types]"'),
+  bullet('"Our clients love us" → "[Client name or type], after [specific situation], said [specific quote or paraphrased outcome]"'),
+  bullet('"We use the highest quality materials" → "We specify [specific brand/type] because [specific reason tied to the client\'s market or methodology]"'),
+  h3('Pass 3: The Voice Pass (10 minutes)'),
+  body('Read the draft aloud. Flag every sentence that sounds like it was written by an AI or a generic copywriter. Apply the client\'s actual vocabulary. If they call it a "build" not a "project," use "build." If they refer to their community by its local nickname, use that. If they always say "we" not "I," match that. The final draft should be indistinguishable from something the client wrote on their best writing day.'),
+  h2('22.2  The Client Approval Protocol'),
+  body('Every published deliverable goes through one round of client approval. The protocol:'),
+  step('Submit with a cover note: "Attached is [DELIVERABLE NAME]. I\'ve highlighted two sections in yellow where I\'d appreciate your confirmation of the details. Otherwise, this is planned to publish on [DATE]. Please send any corrections by [DATE — 3 business days]. If I don\'t hear back, I\'ll proceed."'),
+  step('Follow up on Day 3 if no response: one brief message: "Just checking in on [DELIVERABLE] — no response needed if you\'re good to go."'),
+  step('Publish on the planned date regardless unless the client has flagged a specific concern.'),
+  body('Do not allow the approval process to become a bottleneck. Establish the 3-business-day window in the onboarding call and hold to it.'),
+
+  // ══════════════════════════════════════════════════════════════════════
+  // PART VIII — MONTH 12 & CONTRACT RENEWAL
+  // ══════════════════════════════════════════════════════════════════════
+  new Paragraph({ children: [new PageBreak()] }),
+  partHeader('VIII', 'Month 12 & Contract Renewal', 'The Annual Authority Audit, the renewal conversation, and scaling the Legaisee practice'),
+  ...spacer(1),
+
+  // CH 23
+  h1('Chapter 23: The Annual Authority Audit'),
+  h2('23.1  What the Annual Audit Measures'),
+  body('The Annual Authority Audit is a comprehensive review of what the 12-month engagement produced. It measures progress across five dimensions:'),
+  threeColTable(
+    ['Dimension', 'What to Measure', 'How to Measure'],
+    [
+      ['Content volume', 'Total assets produced vs. plan', 'Count all published pages, videos, emails, case studies'],
+      ['Search presence', 'Queries now ranking in top 10 for target terms', 'Google Search Console; manual search checks'],
+      ['Social proof', 'New reviews, testimonials, and named case studies vs. start', 'Google Business, Houzz, industry-specific review platforms'],
+      ['Attribution', 'Documented inbound leads or referrals traced to content system', 'Client-reported attribution data; CRM if available'],
+      ['Authority signals', 'Media mentions, speaking invitations, association roles, awards', 'Manual inventory vs. Month 1 baseline'],
+    ]
+  ),
+  ...spacer(1),
+  h2('23.2  The Audit Research Protocol'),
+  step('Open Google Search Console for the client\'s website (should have been set up in Month 1). Export the past 12 months of query data. Identify the top 10 queries by impressions and the top 10 by clicks.'),
+  step('Manually search for the 10 most important target queries (from the Community Landing Pages and Flagship Asset). Note position.'),
+  step('Count all reviews on Google Business, industry directories, and any platform used. Compare to Month 1 baseline.'),
+  step('Open the Client Intelligence Dashboard. Count every published asset across all channels.'),
+  step('Review the client\'s attribution notes from the past 12 months. List every inbound contact that could be traced to the content system.'),
+  step('Run this prompt in Claude: "I have just completed a 12-month authority-building engagement with [CLIENT NAME] in the [VERTICAL] market in [GEOGRAPHY]. Based on the following results [PASTE DATA], write an Annual Authority Audit summary that: (1) quantifies the progress honestly, (2) identifies the areas of greatest impact, (3) identifies what is still underdeveloped, and (4) recommends the three highest-priority focus areas for Year 2."'),
+
+  divider(),
+
+  // CH 24
+  h1('Chapter 24: The Renewal Conversation'),
+  h2('24.1  When to Initiate'),
+  body('Begin the renewal conversation at Month 11, not Month 12. You need a minimum of four weeks to negotiate, draft, and execute a new contract before the current one expires. Do not let the renewal be a Month 12 fire drill.'),
+  h2('24.2  The Renewal Framing'),
+  body('The renewal conversation is not a sales call. It is a strategic planning session. You are not asking for permission to continue — you are presenting a Year 2 plan that assumes continuation and asking whether the direction is right.'),
+  body('Open the conversation with:'),
+  callout('Renewal Opening', '"I want to share what we built this year and walk you through what I think Year 2 looks like. The first year was about excavation and foundation — putting the infrastructure in place. Year 2 is where the compounding really begins, because now we have the foundation to build on instead of starting from scratch. Let me show you what I mean."', C.navy),
+  h2('24.3  The Year 2 Positioning'),
+  body('Year 2 is positioned as the payoff year — the year the infrastructure produces compounding returns. Specific Year 2 themes:'),
+  bullet('The content we built in Year 1 is now aging into authority — search engines reward tenure. We keep adding to it.'),
+  bullet('The referral network we activated in Q3 is now warmed up. Year 2 deepens those relationships.'),
+  bullet('The attribution data we collected tells us exactly what is working. Year 2 doubles down on the highest performers.'),
+  bullet('The Flagship Asset we built in Month 3 can now be refreshed and amplified — a "Year 2 Edition" signals active, living authority.'),
+  h2('24.4  The Rate Conversation'),
+  body('At the 12-month mark, you have earned the right to raise rates. The appropriate Year 2 rate increase is 10–20%, depending on:'),
+  bullet('How clearly the ROI has been demonstrated'),
+  bullet('How smoothly the engagement has run'),
+  bullet('How much the scope has evolved beyond the original contract'),
+  body('Approach:'),
+  callout('Rate Increase Language', '"For Year 2, I\'m adjusting the engagement to $[NEW RATE]/month. This reflects both the results we\'ve produced and the expanded scope of what we\'re managing now compared to Month 1. The Year 2 plan I\'ve outlined above reflects that investment level."', C.navy),
+  body('Deliver the rate increase in writing alongside the Year 2 plan, not verbally first. Written framing is clearer and less likely to trigger an emotional reaction.'),
+  h2('24.5  If the Client Does Not Renew'),
+  body('If a client does not renew after 12 months, debrief honestly:'),
+  step('Send a gracious handover email: confirm all content and files are theirs, offer a 30-minute transition call to make sure they can maintain the system.'),
+  step('Conduct an internal debrief: what was the real reason? Attribution gap? Relationship friction? Budget pressure? Market change? Document honestly.'),
+  step('Ask for a testimonial — even clients who do not renew are often willing to provide one if the work was good.'),
+  step('Ask if they know anyone who might benefit from what you do. A non-renewing client who refers one new client has still contributed to your business.'),
+
+  divider(),
+
+  // CH 25
+  h1('Chapter 25: Scaling the Legaisee Practice'),
+  h2('25.1  The Capacity Ceiling and How to Break It'),
+  body('As a solo practitioner, your capacity ceiling is approximately four to five clients at full retainer without compromising delivery quality. To scale beyond that ceiling, you have three options:'),
+  bullet('Raise rates: Fewer clients at higher rates produces the same or greater revenue with lower workload. The authority system that makes clients more successful makes you more valuable and justifies higher rates.', 0, true),
+  bullet('Hire a production specialist: A skilled writer or content producer working 20 hours per week on AI-assisted drafting and distribution frees you for the high-judgment activities — archaeology, strategy, client relationships — that cannot be delegated.', 0, true),
+  bullet('Create a group engagement: A cohort model where four to six non-competing businesses in the same vertical share an archaeology session and receive a semi-customized version of the system at a lower individual rate ($3,000–$4,000/month) with shared leverage on your time.', 0, true),
+  h2('25.2  The Vertical Specialization Advantage'),
+  body('Over time, deep specialization in two or three verticals produces compounding advantages:'),
+  bullet('Archaeology efficiency: The second client in a vertical takes 30% less time to dig because you already understand the terrain, the competitor landscape, and the buyer psychology'),
+  bullet('Content reuse (ethically): The research frameworks and distribution tactics you develop for one client inform the strategy for the next — without reusing the client-specific content'),
+  bullet('Referral potential: Clients in the same vertical know each other. A highly satisfied client in a vertical will refer you to non-competing practitioners in adjacent geographies'),
+  h2('25.3  Building Your Own Authority System'),
+  body('The highest-leverage marketing investment you can make in the Legaisee practice is practicing what you preach. Your own authority system should mirror the one you build for clients:'),
+  bullet('A Flagship Guide: "The Business Archaeology Playbook for [Vertical] Owners" — written in public, shared with your target market'),
+  bullet('A Case Study Archive: Named (with permission) or anonymized case studies of engagements and results, published on your site'),
+  bullet('A Video or Podcast Presence: A series demonstrating your methodology — "what the archaeology found" episodes, market intelligence insights for specific verticals'),
+  bullet('A Referral Partner Network: Attorneys, accountants, and business advisors whose clients are your ideal prospects'),
+  body('You are the proof of concept. If your own digital presence does not demonstrate authority, the sales conversation is harder than it needs to be.'),
+
+  // ══════════════════════════════════════════════════════════════════════
+  // APPENDICES
+  // ══════════════════════════════════════════════════════════════════════
+  new Paragraph({ children: [new PageBreak()] }),
+  partHeader('APPENDICES', 'Reference Documents, Templates, and Checklists', 'Copy-and-use resources for daily operations'),
+  ...spacer(1),
+
+  h1('Appendix A: Master Prompt Library'),
+  body('All primary prompts from Chapters 9 and 21 are collected here for quick reference. Copy directly into Claude, ChatGPT, or Perplexity. Fill all [BRACKETED] fields before running.'),
+  bullet('A.1 Master Archaeology Research Prompt — Chapter 9.2'),
+  bullet('A.2 Competitor Deep Dive Prompt — Chapter 9.3'),
+  bullet('A.3 Buyer Psychology Prompt — Chapter 9.3'),
+  bullet('A.4 Content Architecture Prompt — Chapter 9.3'),
+  bullet('A.5 Intelligence Brief Research Prompt — Chapter 21.1'),
+  bullet('A.6 Authority Asset — The Guide Prompt — Chapter 21.2'),
+  bullet('A.7 Case Study Prompt — Chapter 21.3'),
+  bullet('A.8 Email Newsletter Prompt — Chapter 21.4'),
+  bullet('A.9 Community Landing Page Prompt — Chapter 21.5'),
+  bullet('A.10 Video Script Prompt — Chapter 21.6'),
+  bullet('A.11 Annual Audit Summary Prompt — Chapter 23.2'),
+
+  divider(),
+
+  h1('Appendix B: Client Onboarding Checklist'),
+  body('Complete every item in sequence. Check off as complete. Do not advance to the next phase until all items in the current phase are confirmed.'),
+  h3('Pre-Contract (Your Responsibility)'),
+  step('Prospect scored at 18+ on the Prospect Scoring Sheet'),
+  step('Discovery presentation delivered with specific archaeological preview'),
+  step('Proposal sent within 24 hours of discovery call'),
+  step('Objections handled and resolved'),
+  h3('Contract and Payment'),
+  step('Contract sent via DocuSign with scope, deliverables, payment terms, IP clause'),
+  step('Invoice issued for Month 1 retainer'),
+  step('Payment confirmed — DO NOT begin work until cleared'),
+  step('Kickoff call scheduled within 3 business days'),
+  h3('Pre-Kickoff (Days 2–3)'),
+  step('AI Master Archaeology Prompt run and output reviewed'),
+  step('Preliminary Archaeological Findings List created'),
+  step('Kickoff call agenda prepared'),
+  step('Google Alerts set for Client Name, Owner Name, top 3 competitors, vertical + geography'),
+  h3('Kickoff Call (Day 4)'),
+  step('Archaeological Interview Session 1 completed — notes taken'),
+  step('12-Month Roadmap walked through and confirmed'),
+  step('Communication channel preferences established'),
+  step('File sharing setup: client given access to their Google Drive folder'),
+  step('Approval process and 3-business-day window confirmed'),
+  step('Contact list for subcontractors, referral sources, and key relationships collected'),
+  h3('Foundation Build (Days 5–14)'),
+  step('Google Drive folder structure created: /Archaeology/Findings | /Monthly Reports | /Content Assets | /Distribution | /Meeting Notes'),
+  step('Client Intelligence Dashboard (Google Sheet) built and shared'),
+  step('Website audit completed — copy recommendations drafted'),
+  step('Existing testimonials and reviews collected and archived'),
+  step('Month 1 deliverable schedule confirmed in writing to client'),
+
+  divider(),
+
+  h1('Appendix C: Monthly Deliverable Checklist'),
+  body('Run this checklist for every active client every month.'),
+  h3('Week 1'),
+  step('Google Alerts reviewed — any items to include in Intelligence Brief?'),
+  step('Perplexity competitor research run for Intelligence Brief'),
+  step('Intelligence Brief drafted (using Prompt A.5)'),
+  step('Content Brief for Authority Asset completed'),
+  h3('Week 2'),
+  step('Intelligence Brief sent to client'),
+  step('Authority Asset first draft produced (using appropriate prompt from A.6–A.10)'),
+  step('Accuracy Pass completed on Authority Asset draft'),
+  step('Specificity Pass completed on Authority Asset draft'),
+  h3('Week 3'),
+  step('Voice Pass completed on Authority Asset draft'),
+  step('Authority Asset submitted to client for approval with cover note'),
+  step('Email newsletter drafted and submitted to client (or approved for send)'),
+  step('Distribution actions executed: Google Business post, LinkedIn post, prior content repurposed'),
+  h3('Week 4'),
+  step('Authority Asset published (approved or 3-day deadline passed)'),
+  step('Email newsletter sent'),
+  step('Monthly Strategy Call held — notes documented'),
+  step('Next month Content Brief drafted for client confirmation'),
+  step('Client Intelligence Dashboard updated with new metrics'),
+  step('Invoice issued for next month'),
+
+  divider(),
+
+  h1('Appendix D: Vertical-Specific Archaeology Frameworks'),
+  body('The core archaeology methodology applies to all verticals. The following modifications customize the interview questions and competitive analysis focus for specific high-probability verticals.'),
+  h3('D.1 Professional Services (Law, Medicine, Finance, Architecture)'),
+  body('Additional archaeology questions:'),
+  bullet('What is the hardest case or client situation you have ever navigated? What did it teach you that changed how you practice?'),
+  bullet('What do most practitioners in your field do in the first consultation that you believe is wrong for the client?'),
+  bullet('If a client could only ask you one question before deciding to work with you, what should that question be?'),
+  body('Competitive focus: In professional services, authority is primarily conveyed through specificity of expertise (subspecialty), outcome documentation (cases won, procedures completed, returns generated), and the quality of the referral network. The competitor gap map should focus on who owns the "named expertise" in the geography.'),
+  h3('D.2 Construction and Trades'),
+  body('Additional archaeology questions:'),
+  bullet('What is the most technically demanding project you have completed? What made it challenging and how did you solve it?'),
+  bullet('What do you specify or build differently than the standard practice in your trade, and why?'),
+  bullet('What does a client see in the finished product that they could not have articulated they wanted before the build began?'),
+  body('Competitive focus: In construction, authority is conveyed through geographic specificity (community knowledge), material expertise, and the quality of documented projects. The competitor gap map should focus on which communities and project types are unclaimed in the content landscape.'),
+  h3('D.3 Hospitality and Experience'),
+  body('Additional archaeology questions:'),
+  bullet('Tell me about a guest or client whose experience at your property or venue was exceptional in a way they did not expect. What happened?'),
+  bullet('What do you do in the first five minutes of a client\'s experience that sets the tone for everything that follows?'),
+  bullet('What is the one thing about this property or experience that photographs cannot capture?'),
+  body('Competitive focus: In hospitality, authority is conveyed through experience specificity (what it actually feels like), social proof depth (authentic reviews vs. curated testimonials), and the emotional resonance of the story. The competitor gap map should focus on who owns the "feeling" narrative for the category in the geography.'),
+  h3('D.4 Industrial and B2B'),
+  body('Additional archaeology questions:'),
+  bullet('Describe a client problem that you solved in a way that required skills or knowledge outside the standard scope of your industry.'),
+  bullet('What is your failure rate on the core deliverable you provide, and how does that compare to industry standard? What drives the difference?'),
+  bullet('What does a client of 10 years know about working with you that a prospect cannot learn from your website?'),
+  body('Competitive focus: In B2B and industrial, authority is conveyed through technical specificity, longevity of client relationships, and case studies that demonstrate outcome superiority. The competitor gap map should focus on who owns the "technical authority" content in the category and where the educational content gaps exist.'),
+
+  divider(),
+
+  // Final page
+  new Paragraph({ children: [new PageBreak()] }),
+  ...spacer(2),
+  new Paragraph({
+    alignment: AlignmentType.CENTER,
+    children: [new TextRun({ text: 'LEGAISEE OPERATIONS MANUAL', font: 'Arial', size: 28, bold: true, color: C.navy })],
+    spacing: { before: 0, after: 160 },
+  }),
+  new Paragraph({
+    alignment: AlignmentType.CENTER,
+    children: [new TextRun({ text: 'Version 1.0', font: 'Arial', size: 20, color: C.dkGray })],
+    spacing: { before: 0, after: 80 },
+  }),
+  new Paragraph({
+    alignment: AlignmentType.CENTER,
+    children: [new TextRun({ text: 'This document is the proprietary operational bible of the Legaisee Business Archaeology and Authority Systems practice.', font: 'Arial', size: 18, italics: true, color: C.dkGray })],
+    spacing: { before: 0, after: 80 },
+  }),
+  new Paragraph({
+    alignment: AlignmentType.CENTER,
+    children: [new TextRun({ text: 'It is to be updated at the end of every 12-month client engagement with new findings, refined prompts, and improved protocols.', font: 'Arial', size: 18, italics: true, color: C.dkGray })],
+    spacing: { before: 0, after: 80 },
+  }),
+  divider(),
+  new Paragraph({
+    alignment: AlignmentType.CENTER,
+    children: [new TextRun({ text: 'Carr Multimedia / Legaisee  |  carrmultimedia.com', font: 'Arial', size: 18, color: C.dkGray })],
+    spacing: { before: 80, after: 0 },
+  }),
+];
+
+// ─── BUILD DOCUMENT ────────────────────────────────────────────────────────
+const doc = new Document({
+  numbering,
+  styles: {
+    default: { document: { run: { font: 'Arial', size: 22 } } },
+    paragraphStyles: [
+      { id: 'Heading1', name: 'Heading 1', basedOn: 'Normal', next: 'Normal', quickFormat: true,
+        run: { size: 36, bold: true, font: 'Arial', color: C.navy },
+        paragraph: { spacing: { before: 480, after: 240 }, outlineLevel: 0 } },
+      { id: 'Heading2', name: 'Heading 2', basedOn: 'Normal', next: 'Normal', quickFormat: true,
+        run: { size: 28, bold: true, font: 'Arial', color: C.navy },
+        paragraph: { spacing: { before: 360, after: 180 }, outlineLevel: 1 } },
+      { id: 'Heading3', name: 'Heading 3', basedOn: 'Normal', next: 'Normal', quickFormat: true,
+        run: { size: 24, bold: true, font: 'Arial', color: C.blue },
+        paragraph: { spacing: { before: 240, after: 120 }, outlineLevel: 2 } },
+      { id: 'Heading4', name: 'Heading 4', basedOn: 'Normal', next: 'Normal', quickFormat: true,
+        run: { size: 22, bold: true, font: 'Arial', color: C.teal },
+        paragraph: { spacing: { before: 180, after: 100 }, outlineLevel: 3 } },
+    ]
+  },
+  sections: [{
+    properties: {
+      page: {
+        size: { width: 12240, height: 15840 },
+        margin: { top: 1440, right: 1440, bottom: 1440, left: 1440 }
+      }
+    },
+    children
+  }]
+});
+
+Packer.toBuffer(doc).then(buffer => {
+  fs.writeFileSync('/home/claude/Legaisee_Operations_Manual_v1.docx', buffer);
+  console.log('SUCCESS: Document created');
+}).catch(err => {
+  console.error('ERROR:', err.message);
+});

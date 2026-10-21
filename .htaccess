@@ -1,0 +1,28 @@
+DirectoryIndex index.html index.php home.html
+
+# Force HTTPS and www
+RewriteEngine On
+RewriteBase /
+
+# Redirect root to www
+RewriteCond %{HTTP_HOST} ^legaisee\.com$ [NC]
+RewriteRule ^(.*)$ https://www.legaisee.com/$1 [R=301,L]
+
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://www.legaisee.com/$1 [R=301,L]
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Shortcut: legaisee.com/cockpit → /commandcenter/shell.php?module=cockpit
+    RewriteRule ^cockpit/?$ commandcenter/shell.php?module=cockpit [L,QSA]
+
+    # Shortcut: legaisee.com/commandcenter → /commandcenter/shell.php
+    RewriteRule ^commandcenter/?$ commandcenter/shell.php [L,QSA]
+
+    # Don't rewrite real files or directories
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+</IfModule>

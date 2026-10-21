@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEGAiSEE — Lighting Test v3 · Scroll Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital@1&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ==========================================================================
+   LIGHTING TEST v3 — SCROLL ENGINE
+
+   Previous versions proved the visual system: correct materials, correct
+   glow continuity, correct foil behavior. This version answers the real
+   question: can page content *react to* light sources as it scrolls
+   through them?
+
+   MECHANISM
+   ----------
+   1. Light sources are defined in PAGE SPACE — fixed x (%), fixed y (px
+      from document top), radius (px), intensity (0–1). They do not move.
+      The page scrolls past them.
+
+   2. A single requestAnimationFrame loop runs on scroll. For every
+      "lit element" it calculates distance from each light source
+      (accounting for both x offset and y offset from light center)
+      and derives a 0–1 influence value using inverse-square falloff.
+
+   3. Where two lights overlap, their contributions ADD — same physics as
+      real photons, capped at 1.0 so nothing blows out.
+
+   4. The resulting values are written back as CSS custom properties
+      directly on each element:
+        --el-brightness   (0–1)   drives opacity of sheens/overlays
+        --el-top-x        (0–100) horizontal direction of nearest light
+        --el-foil-angle   (deg)   foil gradient lean toward light
+
+   5. The CSS already reads those properties — the scroll engine just
+      supplies the numbers. The visual system from v2 is unchanged.
+
+   LIGHT MAP (editable in the debug panel or directly below)
+   ----------
+   Each page would ship its own LIGHT_MAP array. Different pages, different
+   moods. The engine is page-agnostic.
+   ========================================================================== */
+
+/* ===================== TOKENS ===================== */
+
+:root{
+  --hue-amber: 33;
+  --obsidian:  #050505;
+  --ob-1: #050505;
+  --ob-2: #0b0908;
+  --ob-3: #100d0a;
+  --gold:  hsl(var(--hue-amber) 46% 62%);
+  --pearl: hsl(42 18% 94%);
+
+  --light-rgb: 250, 214, 150;
+
+  /* Gold foil ramp — angle is overwritten per-element by scroll engine */
+  --gold-foil-stops:
+    hsl(33 55% 26%) 0%,
+    hsl(33 62% 46%) 28%,
+    hsl(46 72% 80%) 50%,
+    hsl(33 62% 46%) 72%,
+    hsl(33 55% 26%) 100%;
+  --gold-foil: linear-gradient(110deg, var(--gold-foil-stops));
+  --finish: var(--gold-foil);
+
+  /* Per-element lighting — defaults (dark/unlit). Overwritten by JS. */
+  --el-brightness: 0;
+  --el-top-x: 50%;
+  --el-foil-angle: 110deg;
+
+  --font-display: 'Cinzel', serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-caption: 'Cormorant Garamond', serif;
+}
+
+body.flat-gold{ --finish: linear-gradient(var(--el-foil-angle), var(--gold), var(--gold)); }
+
+/* ===================== RESET / BASE ===================== */
+
+*{ box-sizing:border-box; }
+html{ scroll-behavior:auto; } /* keep smooth-scroll off — rAF handles it */
+html,body{ margin:0; min-height:100%; background:var(--ob-1) !important; color:var(--pearl); font-family:var(--font-body); }
+a{ color:inherit; text-decoration:none; }
+
+/* ===================== FIXED HUD ===================== */
+
+.page-title{
+  position:fixed; top:1rem; left:1.25rem; z-index:80;
+  font-family:var(--font-display); font-size:.68rem; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--gold); opacity:.7; pointer-events:none;
+}
+
+.debug-panel{
+  position:fixed; right:1rem; bottom:1rem; z-index:100;
+  width:256px; padding:1rem 1.1rem 1rem;
+  background:rgba(5,5,5,.88);
+  border:1px solid hsl(var(--hue-amber) 40% 60% / 0.2);
+  border-radius:4px; backdrop-filter:blur(12px);
+  font-size:.71rem; max-height:92vh; overflow-y:auto;
+}
+.debug-panel h3{
+  margin:0 0 .7rem; font-family:var(--font-display); font-size:.65rem;
+  letter-spacing:.08em; text-transform:uppercase; color:var(--gold); font-weight:600;
+}
+.debug-panel label{ display:block; margin-bottom:.55rem; color:hsl(42 18% 94% / .7); line-height:1.4; }
+.debug-panel input[type=range]{
+  width:100% !important; margin-top:.25rem; accent-color:var(--gold);
+  -webkit-appearance:auto; appearance:auto; display:block !important;
+  background:transparent !important; height:auto !important;
+}
+.debug-panel .row{ display:flex; align-items:center; gap:.45rem; margin-bottom:.5rem; }
+.debug-panel input[type=checkbox]{ accent-color:var(--gold); flex-shrink:0; }
+.debug-panel hr{ border:none; border-top:1px solid hsl(42 18% 94% / .1); margin:.75rem 0; }
+.debug-panel .hint{
+  color:hsl(42 18% 94% / .4); font-size:.63rem; line-height:1.45; margin-top:.4rem;
+}
+.debug-panel .section-head{
+  font-family:var(--font-display); font-size:.6rem; letter-spacing:.1em;
+  text-transform:uppercase; color:hsl(42 18% 94% / .5); margin:.7rem 0 .45rem;
+}
+/* Light-source indicator pills in the panel */
+.light-pill{
+  display:flex; align-items:center; gap:.5rem; margin-bottom:.4rem;
+  padding:.3rem .5rem; border-radius:2px;
+  background:rgba(255,255,255,.03);
+  border:1px solid hsl(var(--hue-amber) 40% 60% / .15);
+}
+.light-pill .swatch{
+  width:10px; height:10px; border-radius:50%; flex-shrink:0;
+  background:rgba(var(--light-rgb),0.8);
+  box-shadow:0 0 6px 2px rgba(var(--light-rgb),0.35);
+}
+.light-pill span{ color:hsl(42 18% 94% / .6); font-size:.63rem; }
+
+/* ===================== ZONES ===================== */
+
+main{ position:relative; }
+
+.zone{
+  position:relative; isolation:isolate;
+  padding:5rem 6vw 5.5rem; overflow:hidden;
+}
+.zone[data-shade="1"]{ background:var(--ob-1); }
+.zone[data-shade="2"]{ background:var(--ob-2); }
+.zone[data-shade="3"]{ background:var(--ob-3); }
+
+/* Static ambient — very faint base so sections aren't
+   completely black when no light source is nearby */
+.zone::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(ellipse 80% 60% at 50% 50%,
+    rgba(var(--light-rgb), 0.025) 0%, transparent 70%);
+}
+
+.zone-heading{
+  position:relative; z-index:2; display:inline-block;
+  font-family:var(--font-display); font-weight:600;
+  font-size:clamp(1.1rem,2.2vw,1.6rem); letter-spacing:.06em; margin:0 0 .3rem;
+  background:var(--finish); -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+}
+.zone-sub{
+  position:relative; z-index:2;
+  font-family:var(--font-caption); font-style:italic; font-size:.92rem;
+  color:hsl(42 18% 94% / .45); margin:0 0 2rem;
+}
+.zone-body{
+  position:relative; z-index:2;
+  font-size:.88rem; line-height:1.7;
+  color:hsl(42 18% 94% / .62); max-width:60ch; margin:0 0 2.2rem;
+}
+
+/* ===================== SECTION GLOW (scroll-driven) ===================== */
+
+/* This replaces the static ::after from v2. The glow position and
+   intensity are now written by the scroll engine, not baked in CSS. */
+.zone-glow{
+  position:absolute; inset:0; pointer-events:none; z-index:1;
+  background:
+    radial-gradient(
+      ellipse 60% 50% at var(--glow-x, 50%) var(--glow-y, -20%),
+      rgba(var(--light-rgb), var(--glow-top, 0)) 0%, transparent 65%
+    ),
+    radial-gradient(
+      ellipse 60% 50% at var(--glow-bx, 50%) var(--glow-by, 120%),
+      rgba(var(--light-rgb), var(--glow-bot, 0)) 0%, transparent 65%
+    );
+}
+
+/* ===================== CARDS ===================== */
+
+.card-grid{
+  position:relative; z-index:2;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1.2rem;
+}
+.card-grid--wide{ grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); }
+
+.card{
+  position:relative; isolation:isolate; overflow:hidden;
+  border-radius:3px; padding:1.55rem 1.45rem; min-height:180px;
+  display:flex; flex-direction:column; justify-content:space-between;
+  /* Per-element lighting — JS writes these on scroll */
+  --el-brightness: 0;
+  --el-top-x: 50%;
+  --el-foil-angle: 110deg;
+}
+
+/* Foil border — driven by per-element angle */
+.card::before{
+  content:""; position:absolute; inset:0; border-radius:inherit;
+  background:linear-gradient(var(--el-foil-angle), var(--gold-foil-stops));
+  padding:1px;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+  pointer-events:none; z-index:0;
+  opacity:calc(0.3 + var(--el-brightness) * 0.55);
+  transition:opacity .1s linear;
+}
+
+.card h4{
+  font-family:var(--font-display); font-size:.92rem; font-weight:600; margin:0 0 .4rem;
+  background:linear-gradient(var(--el-foil-angle), var(--gold-foil-stops));
+  -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+}
+.card p{ font-size:.81rem; line-height:1.55; color:hsl(42 18% 94% / .6); margin:0; position:relative; z-index:2; }
+
+.card-tag{
+  align-self:flex-start; font-family:var(--font-body); font-size:.61rem;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--gold);
+  border:1px solid transparent; border-radius:2px; padding:.2rem .5rem;
+  margin-top:.9rem; position:relative; z-index:2;
+  background:linear-gradient(var(--ob-1),var(--ob-1)) padding-box,
+             linear-gradient(var(--el-foil-angle), var(--gold-foil-stops)) border-box;
+}
+
+/* ---- Text card: frosted glass + scroll-reactive sheen ---- */
+.card--text{
+  background:rgba(5,5,5,.44);
+  backdrop-filter:blur(16px) saturate(140%);
+  -webkit-backdrop-filter:blur(16px) saturate(140%);
+  box-shadow:inset 0 1px 0 hsl(42 18% 94%/.06), 0 8px 24px rgba(0,0,0,.32);
+}
+.card--text .sheen{  /* light-catch layer — brightness from scroll engine */
+  position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:1;
+  background:radial-gradient(
+    ellipse 90% 70% at var(--el-top-x) 0%,
+    rgba(var(--light-rgb), calc(var(--el-brightness) * 0.12)) 0%,
+    transparent 65%
+  );
+}
+
+/* ---- Image card: grain + scroll-reactive light-catch ---- */
+.card--image{ background-size:cover; background-position:center; }
+.card--image .grain{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.12; mix-blend-mode:overlay;
+}
+.card--image .light-catch{
+  position:absolute; inset:0; z-index:2; pointer-events:none;
+  background:radial-gradient(
+    circle at var(--el-top-x) 0%,
+    rgba(var(--light-rgb), calc(var(--el-brightness) * 0.45)),
+    transparent 58%
+  );
+  mix-blend-mode:soft-light;
+}
+.card--image h4,
+.card--image p{ position:relative; z-index:3; text-shadow:0 1px 8px rgba(0,0,0,.65); }
+.card--image .card-tag{ z-index:3; }
+
+/* ---- Stat card variant ---- */
+.card--stat{
+  background:rgba(5,5,5,.44);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  box-shadow:0 8px 24px rgba(0,0,0,.3);
+  text-align:center; justify-content:center; gap:.3rem;
+}
+.card--stat .sheen{
+  position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:1;
+  background:radial-gradient(
+    ellipse 90% 70% at var(--el-top-x) 0%,
+    rgba(var(--light-rgb), calc(var(--el-brightness) * 0.10)) 0%, transparent 65%
+  );
+}
+.card--stat .stat-num{
+  position:relative; z-index:2;
+  font-family:var(--font-display); font-size:2rem; font-weight:600; line-height:1;
+  background:linear-gradient(var(--el-foil-angle), var(--gold-foil-stops));
+  -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+}
+.card--stat .stat-label{
+  position:relative; z-index:2;
+  font-size:.72rem; letter-spacing:.1em; text-transform:uppercase;
+  color:hsl(42 18% 94% / .5);
+}
+
+/* ---- Quote / pullout block ---- */
+.pullout{
+  position:relative; z-index:2; isolation:isolate; overflow:hidden;
+  margin:2rem 0; padding:1.8rem 2rem;
+  border-left:2px solid transparent;
+  background:
+    linear-gradient(var(--ob-2), var(--ob-2)) padding-box,
+    linear-gradient(var(--el-foil-angle), var(--gold-foil-stops)) border-box;
+  /* per-element lighting — same as cards */
+  --el-brightness: 0; --el-top-x: 50%; --el-foil-angle: 110deg;
+}
+.pullout .sheen{
+  position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(
+    ellipse 80% 60% at var(--el-top-x) 0%,
+    rgba(var(--light-rgb), calc(var(--el-brightness)*0.08)) 0%, transparent 65%
+  );
+}
+.pullout blockquote{
+  position:relative; z-index:2; margin:0;
+  font-family:var(--font-caption); font-style:italic;
+  font-size:clamp(1rem,1.5vw,1.3rem); line-height:1.6;
+  color:hsl(42 18% 94% / .75);
+}
+.pullout cite{
+  display:block; margin-top:.8rem; position:relative; z-index:2;
+  font-family:var(--font-body); font-style:normal; font-size:.72rem;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--gold); opacity:.7;
+}
+
+/* ---- Wide image placeholder ---- */
+.img-placeholder{
+  position:relative; z-index:2; isolation:isolate; overflow:hidden;
+  width:100%; height:260px; border-radius:3px;
+  background:var(--ob-3); margin:2rem 0;
+  display:flex; align-items:center; justify-content:center;
+  border:1px solid transparent;
+  --el-brightness:0; --el-top-x:50%; --el-foil-angle:110deg;
+}
+.img-placeholder::before{
+  content:""; position:absolute; inset:0; border-radius:inherit;
+  background:linear-gradient(var(--el-foil-angle),var(--gold-foil-stops));
+  padding:1px;
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+  opacity:calc(0.18 + var(--el-brightness)*0.4);
+}
+.img-placeholder .grain{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.10; mix-blend-mode:overlay;
+}
+.img-placeholder .light-catch{
+  position:absolute; inset:0; z-index:2; pointer-events:none;
+  background:radial-gradient(circle at var(--el-top-x) 30%,
+    rgba(var(--light-rgb), calc(var(--el-brightness)*0.35)), transparent 55%);
+  mix-blend-mode:soft-light;
+}
+.img-placeholder .label{
+  position:relative; z-index:3;
+  font-family:var(--font-display); font-size:.7rem; letter-spacing:.15em;
+  text-transform:uppercase; color:hsl(42 18% 94% / .3);
+}
+
+/* ---- Two-column layout ---- */
+.two-col{
+  display:grid; grid-template-columns:1fr 1fr; gap:2.5rem;
+  position:relative; z-index:2;
+  align-items:start;
+}
+@media(max-width:720px){ .two-col{ grid-template-columns:1fr; } }
+
+/* ===================== LIGHT SOURCE MARKERS (debug) ===================== */
+
+.light-marker{
+  position:absolute; pointer-events:none; z-index:200;
+  display:none;
+  transform:translate(-50%,-50%);
+}
+body.show-lights .light-marker{ display:block; }
+.light-marker .ring{
+  width:var(--lm-r); height:var(--lm-r);
+  border-radius:50%; border:1px dashed rgba(var(--light-rgb),.3);
+  position:absolute; transform:translate(-50%,-50%);
+}
+.light-marker .dot{
+  width:8px; height:8px; border-radius:50%;
+  background:rgba(var(--light-rgb),.9);
+  box-shadow:0 0 12px 4px rgba(var(--light-rgb),.5);
+  position:absolute; transform:translate(-50%,-50%);
+}
+.light-marker .lm-label{
+  position:absolute; top:6px; left:8px;
+  font:10px/1 var(--font-body); color:rgba(var(--light-rgb),.7);
+  letter-spacing:.04em; white-space:nowrap;
+}
+
+</style>
+</head>
+<body>
+
+<div class="page-title">LEGAiSEE — Lighting Test v3 · Scroll Engine</div>
+
+<div class="debug-panel">
+  <h3>Scroll Lighting Engine</h3>
+
+  <div class="section-head">Light Sources</div>
+  <div id="light-pills"><!-- populated by JS --></div>
+
+  <hr>
+  <div class="section-head">Controls</div>
+  <label>Global intensity scale
+    <input type="range" id="intensityScale" min="30" max="200" value="100">
+  </label>
+  <label>Falloff curve (higher = tighter)
+    <input type="range" id="falloff" min="10" max="40" value="18">
+  </label>
+  <hr>
+  <div class="row"><input type="checkbox" id="showLights"><label for="showLights">Show light positions</label></div>
+  <div class="row"><input type="checkbox" id="showValues"><label for="showValues">Show live values on elements</label></div>
+  <div class="row"><input type="checkbox" id="flatGold"><label for="flatGold">Flat gold (vs foil)</label></div>
+  <div class="hint">Light sources are fixed in page space. Elements report their brightness as they scroll through each light's radius.</div>
+</div>
+
+<main id="main-page">
+
+  <!-- Light source markers — positioned by JS, shown in debug mode -->
+  <div id="light-markers"></div>
+
+  <!-- ================================================================
+       SECTION 01 — Hero / Entry
+       Light 1: top-left entry. Museum lamp switching on.
+       ================================================================ -->
+  <section class="zone" data-shade="1">
+    <div class="zone-glow"></div>
+    <h2 class="zone-heading lit-element">The Business Archaeology Method</h2>
+    <p class="zone-sub">Excavating proven authority from institutional history.</p>
+    <p class="zone-body lit-element">
+      Forty years of decisions, campaigns, relationships, and results — almost
+      none of it documented in any form the current market can read. LEGAiSEE
+      exists to change that. We go in, we dig, and we surface what actually
+      worked before the industry moved on and forgot it.
+    </p>
+
+    <div class="two-col">
+      <div>
+        <div class="card-grid" style="grid-template-columns:1fr 1fr;">
+          <div class="card card--stat lit-element">
+            <div class="sheen"></div>
+            <span class="stat-num">40+</span>
+            <span class="stat-label">Channels excavated per engagement</span>
+          </div>
+          <div class="card card--stat lit-element">
+            <div class="sheen"></div>
+            <span class="stat-num">15</span>
+            <span class="stat-label">Avg. recoverable assets per client</span>
+          </div>
+          <div class="card card--stat lit-element">
+            <div class="sheen"></div>
+            <span class="stat-num">3</span>
+            <span class="stat-label">Transformation stages</span>
+          </div>
+          <div class="card card--stat lit-element">
+            <div class="sheen"></div>
+            <span class="stat-num">1</span>
+            <span class="stat-label">Authority system delivered</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <article class="card card--text lit-element" style="min-height:220px;">
+          <div class="sheen"></div>
+          <div>
+            <h4>Why History Outperforms Trend</h4>
+            <p>Tactics proven across a 30-year business horizon carry a credibility that
+               no AI-generated content strategy can replicate. The Lindy Effect applies:
+               what survived the previous three market cycles is likely to survive the next.</p>
+          </div>
+          <span class="card-tag">Foundational Principle</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SECTION 02 — The Excavation
+       Light 2: bottom-right of this section, crossing the seam into S03.
+       ================================================================ -->
+  <section class="zone" data-shade="2">
+    <div class="zone-glow"></div>
+    <h2 class="zone-heading lit-element">Phase One — Excavation</h2>
+    <p class="zone-sub">Public record, private archive, human intelligence.</p>
+
+    <div class="pullout lit-element">
+      <div class="sheen"></div>
+      <blockquote>
+        "Most businesses are sitting on decades of validated positioning they
+        have completely forgotten about. It doesn't take genius to recover it —
+        it takes a methodical excavation, and the discipline to stop chasing
+        the next shiny thing long enough to look backward."
+      </blockquote>
+      <cite>— Field Note, Engagement 001</cite>
+    </div>
+
+    <div class="card-grid">
+      <article class="card card--text lit-element">
+        <div class="sheen"></div>
+        <div>
+          <h4>Public Excavation</h4>
+          <p>Web archive crawls across 20+ years. YouTube, social media, press
+             mentions, trade publications, regulatory filings, patent records.
+             If it was ever public, it is recoverable.</p>
+        </div>
+        <span class="card-tag">Phase 1A</span>
+      </article>
+      <article class="card card--text lit-element">
+        <div class="sheen"></div>
+        <div>
+          <h4>Private Archives</h4>
+          <p>Old hard drives, email campaign exports, CRM data, design asset
+             libraries, internal memos. The assets clients have forgotten
+             are often the most powerful ones.</p>
+        </div>
+        <span class="card-tag">Phase 1B</span>
+      </article>
+      <article class="card card--text lit-element">
+        <div class="sheen"></div>
+        <div>
+          <h4>Human Intelligence</h4>
+          <p>Structured interviews with founders, long-tenured staff, and
+             legacy customers. Institutional memory exists only in people —
+             until it is formally recovered and documented.</p>
+        </div>
+        <span class="card-tag">Phase 1C</span>
+      </article>
+    </div>
+
+    <div class="img-placeholder lit-element" style="margin-top:2.5rem;">
+      <div class="grain"></div><div class="light-catch"></div>
+      <span class="label">Excavation Phase — Image Placeholder 800×260</span>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SECTION 03 — Alchemy / Transformation
+       Light 3: upper-center, wide radius. Bright collision zone if
+       light 2 overlaps here from below.
+       ================================================================ -->
+  <section class="zone" data-shade="3">
+    <div class="zone-glow"></div>
+    <h2 class="zone-heading lit-element">Phase Two — Alchemy</h2>
+    <p class="zone-sub">Raw historical assets cut and polished for the current market.</p>
+    <p class="zone-body lit-element">
+      Excavation surfaces the raw material. Alchemy is where it becomes useful.
+      A 1987 radio campaign is not directly deployable — but the positioning
+      logic inside it, the specific problem framing, the tone of voice: those
+      translate directly into 2025 platform content once the transformation
+      process is applied.
+    </p>
+
+    <div class="two-col">
+      <div class="card-grid" style="grid-template-columns:1fr;">
+        <article class="card card--image lit-element"
+          style="background-image:radial-gradient(circle at 25% 30%, #2c2418, #050505 68%); min-height:240px;">
+          <div class="grain"></div><div class="light-catch"></div>
+          <div>
+            <h4>Channel Translation</h4>
+            <p>Print ad headline logic becomes LinkedIn carousel hook.
+               Radio spot pacing becomes podcast host-read structure.
+               The container changes; the proven persuasion architecture does not.</p>
+          </div>
+          <span class="card-tag">Transformation</span>
+        </article>
+        <article class="card card--image lit-element"
+          style="background-image:radial-gradient(circle at 70% 20%, #1e1a10, #050505 65%); min-height:200px;">
+          <div class="grain"></div><div class="light-catch"></div>
+          <div>
+            <h4>Voice DNA Extraction</h4>
+            <p>The unique communication signature encoded across 40 years of
+               client-facing material is extracted and documented as a replicable
+               system — for humans and for AI-assisted production.</p>
+          </div>
+          <span class="card-tag">Voice System</span>
+        </article>
+      </div>
+      <div>
+        <article class="card card--text lit-element" style="min-height:480px;">
+          <div class="sheen"></div>
+          <div>
+            <h4>The Four Content Engines</h4>
+            <p style="margin-bottom:.9rem;">Every transformed asset feeds into one of four systems that
+               run simultaneously and compound over time:</p>
+            <p style="margin-bottom:.5rem;">— <strong style="color:var(--pearl);">Authority Engine</strong> — long-form proof of expertise</p>
+            <p style="margin-bottom:.5rem;">— <strong style="color:var(--pearl);">Discovery Engine</strong> — search and social reach</p>
+            <p style="margin-bottom:.5rem;">— <strong style="color:var(--pearl);">Trust Engine</strong> — case study and testimonial systems</p>
+            <p>— <strong style="color:var(--pearl);">Conversion Engine</strong> — funnel and offer architecture</p>
+          </div>
+          <span class="card-tag">System Architecture</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SECTION 04 — The Practitioner
+       Light 4: lower-left, moderate radius. Transition zone.
+       ================================================================ -->
+  <section class="zone" data-shade="1">
+    <div class="zone-glow"></div>
+    <h2 class="zone-heading lit-element">The Practitioner</h2>
+    <p class="zone-sub">The methodology is inseparable from the person who built it.</p>
+
+    <div class="two-col" style="margin-bottom:2.5rem;">
+      <div>
+        <p class="zone-body lit-element" style="margin:0;">
+          John Carr spent 33 years inside the production process —
+          broadcast television, corporate institutional, aerial cinematography.
+          Not observing it from the outside. Not consulting from a distance.
+          Inside the room, on the floor, behind the camera, at the edit suite.
+          That is the foundation the LEGAiSEE methodology is built on.
+        </p>
+        <div class="pullout lit-element" style="margin-top:1.5rem;">
+          <div class="sheen"></div>
+          <blockquote>
+            "Authority is not claimed. It is demonstrated through the accumulated
+            weight of documented, verifiable work over time. The archaeology is
+            the demonstration."
+          </blockquote>
+          <cite>— John Carr</cite>
+        </div>
+      </div>
+      <div class="card-grid" style="grid-template-columns:1fr;">
+        <article class="card card--text lit-element">
+          <div class="sheen"></div>
+          <div>
+            <h4>Broadcast Television</h4>
+            <p>KPLC NBC · KVHP FOX 29 · WLFT. Production Director, News Director,
+               on-air talent. Addy Award recipient.</p>
+          </div>
+          <span class="card-tag">Era One</span>
+        </article>
+        <article class="card card--text lit-element">
+          <div class="sheen"></div>
+          <div>
+            <h4>Institutional Production</h4>
+            <p>Houston Methodist Hospital. Texas Flying Legends Museum.
+               National-circuit corporate production. 33 years, Carr Multimedia.</p>
+          </div>
+          <span class="card-tag">Era Two</span>
+        </article>
+        <article class="card card--text lit-element">
+          <div class="sheen"></div>
+          <div>
+            <h4>FAA Part 107 Certified</h4>
+            <p>Licensed commercial UAS pilot. Aerial cinematography for
+               broadcast and institutional clients. New Braunfels, TX.</p>
+          </div>
+          <span class="card-tag">Credential</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SECTION 05 — Industries / Case Material
+       Light 5: upper-right, narrow beam. Creates contrast against S04.
+       ================================================================ -->
+  <section class="zone" data-shade="2">
+    <div class="zone-glow"></div>
+    <h2 class="zone-heading lit-element">Industries We Excavate</h2>
+    <p class="zone-sub">Business archaeology applies wherever institutional memory exists.</p>
+
+    <div class="card-grid card-grid--wide">
+      <article class="card card--image lit-element"
+        style="background-image:radial-gradient(circle at 40% 20%, #1a1208, #050505 70%); min-height:210px;">
+        <div class="grain"></div><div class="light-catch"></div>
+        <div>
+          <h4>Construction &amp; Real Estate</h4>
+          <p>Decades of completed projects, satisfied clients, and community
+             presence — almost never documented as authority. High-value excavation target.</p>
+        </div>
+        <span class="card-tag">High ROI</span>
+      </article>
+      <article class="card card--image lit-element"
+        style="background-image:radial-gradient(circle at 60% 30%, #1c1410, #050505 68%); min-height:210px;">
+        <div class="grain"></div><div class="light-catch"></div>
+        <div>
+          <h4>Hospitality &amp; Food Service</h4>
+          <p>Legacy restaurants, historic hotels, regional institutions.
+             Local authority that national brands cannot replicate or buy.</p>
+        </div>
+        <span class="card-tag">Legacy Play</span>
+      </article>
+      <article class="card card--image lit-element"
+        style="background-image:radial-gradient(circle at 30% 40%, #151210, #050505 65%); min-height:210px;">
+        <div class="grain"></div><div class="light-catch"></div>
+        <div>
+          <h4>Trades &amp; Services</h4>
+          <p>Multi-generational trades businesses hold some of the densest
+             institutional memory in the economy. Almost universally undervalued.</p>
+        </div>
+        <span class="card-tag">Underserved</span>
+      </article>
+    </div>
+
+    <div class="img-placeholder lit-element" style="height:300px; margin-top:2rem;">
+      <div class="grain"></div><div class="light-catch"></div>
+      <span class="label">Industry Matrix — Image Placeholder 1200×300</span>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SECTION 06 — Commissions / CTA
+       Light 6: center-bottom, warm and wide. Closing glow.
+       ================================================================ -->
+  <section class="zone" data-shade="3">
+    <div class="zone-glow"></div>
+    <h2 class="zone-heading lit-element">Private Commissions</h2>
+    <p class="zone-sub">Three engagements per quarter. By application only.</p>
+    <p class="zone-body lit-element">
+      LEGAiSEE does not take volume clients. Each engagement is a bespoke
+      excavation — months of research, analysis, and transformation work.
+      The result is an Authority System built to function for the next decade,
+      not a deliverable optimized for a quarterly reporting cycle.
+    </p>
+
+    <div class="two-col">
+      <div>
+        <div class="card-grid" style="grid-template-columns:1fr;">
+          <article class="card card--text lit-element" style="min-height:160px;">
+            <div class="sheen"></div>
+            <div>
+              <h4>Phase 1 Authority Dossier</h4>
+              <p>Full excavation report. 15–25 recovered assets. Transformation
+                 roadmap. Delivered as a private, verified document.</p>
+            </div>
+            <span class="card-tag">Entry Commission</span>
+          </article>
+          <article class="card card--text lit-element" style="min-height:160px;">
+            <div class="sheen"></div>
+            <div>
+              <h4>Full Authority System Build</h4>
+              <p>Dossier plus the four content engines, fully built, tested,
+                 and handed off with operating documentation.</p>
+            </div>
+            <span class="card-tag">Flagship</span>
+          </article>
+          <article class="card card--text lit-element" style="min-height:160px;">
+            <div class="sheen"></div>
+            <div>
+              <h4>Living Authority Vault</h4>
+              <p>Ongoing subscription. Authority system maintained, updated,
+                 and expanded as the business generates new proven material.</p>
+            </div>
+            <span class="card-tag">Ongoing</span>
+          </article>
+        </div>
+      </div>
+      <div>
+        <div class="card-grid" style="grid-template-columns:1fr 1fr; margin-bottom:1.2rem;">
+          <div class="card card--stat lit-element">
+            <div class="sheen"></div>
+            <span class="stat-num">3</span>
+            <span class="stat-label">New clients per quarter</span>
+          </div>
+          <div class="card card--stat lit-element">
+            <div class="sheen"></div>
+            <span class="stat-num">6wk</span>
+            <span class="stat-label">Current wait</span>
+          </div>
+        </div>
+        <article class="card card--image lit-element"
+          style="background-image:radial-gradient(circle at 50% 30%, #2a200c, #050505 65%); min-height:260px;">
+          <div class="grain"></div><div class="light-catch"></div>
+          <div>
+            <h4>The Registry</h4>
+            <p>Accepted clients are listed in The LEGAiSEE Registry — a
+               confidential, verified record of institutions whose authority
+               has been formally excavated and documented.</p>
+          </div>
+          <span class="card-tag">By Invitation</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main><!-- end #main-page -->
+
+<script>
+/* ================================================================
+   SCROLL LIGHTING ENGINE
+   ================================================================
+
+   LIGHT_MAP — define light sources in page space.
+   Each entry:
+     id       — identifier shown in debug panel
+     xPct     — horizontal position as % of page width (0–100)
+     yPx      — vertical position in px from document top
+               (set after DOM is ready, using section offsets below)
+     radius   — influence radius in px (soft edge, not hard clip)
+     intensity — peak brightness at center (0–1)
+
+   yPx values tagged [DYNAMIC] are resolved from DOM measurements
+   below, so they survive viewport changes and don't need to be
+   hand-coded against a specific screen height.
+================================================================ */
+
+const LIGHT_MAP = [
+  { id:'L1', label:'Entry · top-left',     xPct:18, yPx:null, anchorSel:'#s01', anchorPct:0.25, radius:580, intensity:0.82 },
+  { id:'L2', label:'Dig · bottom-right',   xPct:82, yPx:null, anchorSel:'#s02', anchorPct:0.80, radius:500, intensity:0.70 },
+  { id:'L3', label:'Alchemy · top-center', xPct:50, yPx:null, anchorSel:'#s03', anchorPct:0.20, radius:640, intensity:0.90 },
+  { id:'L4', label:'Practitioner · left',  xPct:22, yPx:null, anchorSel:'#s04', anchorPct:0.50, radius:460, intensity:0.75 },
+  { id:'L5', label:'Industries · right',   xPct:80, yPx:null, anchorSel:'#s05', anchorPct:0.15, radius:420, intensity:0.68 },
+  { id:'L6', label:'Close · center-warm',  xPct:50, yPx:null, anchorSel:'#s06', anchorPct:0.60, radius:600, intensity:0.85 },
+];
+
+// Assign section IDs to zones for anchor resolution
+document.querySelectorAll('.zone').forEach((z, i) => z.id = `s0${i+1}`);
+
+// Gather all elements that should respond to lighting
+const litEls = document.querySelectorAll('.lit-element, .img-placeholder, .pullout');
+
+// Controls
+const intensityScaleSlider = document.getElementById('intensityScale');
+const falloffSlider        = document.getElementById('falloff');
+const showLightsCB         = document.getElementById('showLights');
+const showValuesCB         = document.getElementById('showValues');
+const flatGoldCB           = document.getElementById('flatGold');
+
+let intensityScale = 1.0;
+let falloffPow     = 1.8;
+let frameScheduled = false;
+
+/* ----------------------------------------------------------
+   RESOLVE LIGHT Y POSITIONS from DOM
+   ---------------------------------------------------------- */
+function resolveLightPositions(){
+  LIGHT_MAP.forEach(L => {
+    const anchor = document.querySelector(L.anchorSel);
+    if(!anchor) return;
+    const rect = anchor.getBoundingClientRect();
+    const scrollY = window.scrollY || window.pageYOffset;
+    const sectionTop    = rect.top + scrollY;
+    const sectionHeight = rect.height;
+    L.yPx = sectionTop + sectionHeight * L.anchorPct;
+  });
+  buildLightMarkers();
+  buildLightPills();
+}
+
+/* ----------------------------------------------------------
+   DEBUG — LIGHT MARKERS in DOM
+   ---------------------------------------------------------- */
+function buildLightMarkers(){
+  const container = document.getElementById('light-markers');
+  container.innerHTML = '';
+  LIGHT_MAP.forEach(L => {
+    const m = document.createElement('div');
+    m.className = 'light-marker';
+    m.style.cssText = `position:absolute; left:${L.xPct}%; top:${L.yPx}px; --lm-r:${L.radius * 2}px;`;
+    m.innerHTML = `
+      <div class="ring"></div>
+      <div class="dot"></div>
+      <div class="lm-label">${L.id} · ${L.label}</div>`;
+    container.appendChild(m);
+  });
+}
+
+/* ----------------------------------------------------------
+   DEBUG — LIGHT PILLS in panel
+   ---------------------------------------------------------- */
+function buildLightPills(){
+  const container = document.getElementById('light-pills');
+  container.innerHTML = '';
+  LIGHT_MAP.forEach(L => {
+    const p = document.createElement('div');
+    p.className = 'light-pill';
+    p.innerHTML = `<div class="swatch"></div>
+      <span>${L.id} — ${L.label}<br>x:${L.xPct}% · r:${L.radius}px</span>`;
+    container.appendChild(p);
+  });
+}
+
+/* ----------------------------------------------------------
+   CORE ENGINE — called every animation frame on scroll
+   ---------------------------------------------------------- */
+function calcBrightness(elCenterY, elCenterXPct, light){
+  // Distance in px — treat x as equivalent-px using viewport width
+  const vw = window.innerWidth;
+  const dy = elCenterY - light.yPx;
+  const dx = (elCenterXPct - light.xPct) / 100 * vw;
+  const dist = Math.sqrt(dx*dx + dy*dy);
+
+  if(dist >= light.radius) return { b:0, x:light.xPct };
+
+  // Inverse-square-ish falloff, shaped by falloffPow slider
+  const t = 1 - (dist / light.radius);
+  const b = Math.pow(t, falloffPow) * light.intensity * intensityScale;
+  return { b: Math.min(b, 1), x: light.xPct, dx, dy };
+}
+
+function updateLighting(){
+  frameScheduled = false;
+  const scrollY = window.scrollY || window.pageYOffset;
+  const vw = window.innerWidth;
+
+  litEls.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    // Skip if completely off screen — small perf win on long pages
+    if(rect.bottom < -200 || rect.top > window.innerHeight + 200) return;
+
+    const elCenterY    = rect.top + scrollY + rect.height * 0.5;
+    const elCenterXPct = ((rect.left + rect.width * 0.5) / vw) * 100;
+
+    // Accumulate contributions from all lights
+    let totalB  = 0;
+    let weightedX = 0;
+    let totalW  = 0;
+
+    LIGHT_MAP.forEach(L => {
+      if(L.yPx === null) return;
+      const { b, x } = calcBrightness(elCenterY, elCenterXPct, L);
+      totalB     += b;
+      weightedX  += x * b;
+      totalW     += b;
+    });
+
+    totalB = Math.min(totalB, 1);
+    const dominantX = totalW > 0.001 ? weightedX / totalW : 50;
+
+    // Foil angle: light coming from left → shallow angle; from right → steep
+    const foilAngle = Math.round(70 + (dominantX / 100) * 80);
+
+    el.style.setProperty('--el-brightness', totalB.toFixed(3));
+    el.style.setProperty('--el-top-x', dominantX.toFixed(1) + '%');
+    el.style.setProperty('--el-foil-angle', foilAngle + 'deg');
+
+    if(showValuesCB && showValuesCB.checked){
+      el.dataset.dbgB = totalB.toFixed(2);
+      el.title = `brightness:${totalB.toFixed(2)} x:${dominantX.toFixed(0)}% angle:${foilAngle}°`;
+    } else {
+      el.title = '';
+    }
+  });
+}
+
+function scheduleFrame(){
+  if(!frameScheduled){
+    frameScheduled = true;
+    requestAnimationFrame(updateLighting);
+  }
+}
+
+/* ----------------------------------------------------------
+   CONTROLS
+   ---------------------------------------------------------- */
+intensityScaleSlider.addEventListener('input', () => {
+  intensityScale = intensityScaleSlider.value / 100;
+  scheduleFrame();
+});
+falloffSlider.addEventListener('input', () => {
+  falloffPow = falloffSlider.value / 10;
+  scheduleFrame();
+});
+showLightsCB.addEventListener('change', () => {
+  document.body.classList.toggle('show-lights', showLightsCB.checked);
+});
+flatGoldCB.addEventListener('change', () => {
+  document.body.classList.toggle('flat-gold', flatGoldCB.checked);
+});
+
+/* ----------------------------------------------------------
+   INIT + EVENT BINDING
+   ---------------------------------------------------------- */
+window.addEventListener('scroll', scheduleFrame, { passive:true });
+window.addEventListener('resize', () => { resolveLightPositions(); scheduleFrame(); });
+
+// Resolve positions after fonts/layout settle
+if(document.fonts && document.fonts.ready){
+  document.fonts.ready.then(() => { resolveLightPositions(); scheduleFrame(); });
+} else {
+  resolveLightPositions();
+  scheduleFrame();
+}
+// Belt-and-suspenders: also resolve after a short delay in case of late layout shifts
+setTimeout(() => { resolveLightPositions(); scheduleFrame(); }, 400);
+
+</script>
+</body>
+</html>

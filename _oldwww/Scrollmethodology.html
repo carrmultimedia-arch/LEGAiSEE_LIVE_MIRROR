@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Methodology — Legaisee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+''' + shared_css + '''
+
+        .vertical-page {
+            min-height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .page-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 120px 80px;
+        }
+
+        .page-section-inner {
+            max-width: 1100px;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-section-inner.split {
+            display: flex;
+            align-items: flex-start;
+            gap: 80px;
+        }
+
+        .page-section-inner.split .text-content {
+            flex: 1;
+        }
+
+        .page-section-inner.split .visual-content {
+            flex-shrink: 0;
+        }
+
+        .page-section-inner.centered {
+            text-align: center;
+        }
+
+        .page-section-inner.centered .body-text {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Long-form text blocks */
+        .longform-text {
+            column-count: 2;
+            column-gap: 50px;
+            margin-top: 20px;
+        }
+
+        .longform-text .body-text {
+            max-width: none;
+            break-inside: avoid;
+        }
+
+        @media (max-width: 1024px) {
+            .page-section { padding: 100px 30px; }
+            .page-section-inner.split {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .longform-text { column-count: 1; }
+            .gem-case { width: 220px; height: 280px; }
+            .gem-interior { width: 160px; height: 200px; }
+            .gem-stone { width: 100px; height: 130px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+
+    <nav class="nav">
+        <a href="index.html"><img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="Legaisee" class="nav-logo"></a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Archive</a>
+            <a href="methodology.html" class="nav-link active">Methodology</a>
+            <a href="exhibits.html" class="nav-link">Exhibits</a>
+            <a href="evidence.html" class="nav-link">Evidence</a>
+            <a href="registry.html" class="nav-link">Registry</a>
+        </div>
+    </nav>
+
+    <div class="vertical-page">
+
+        <!-- HERO -->
+        <div class="page-section bg-black">
+            <div class="corner-flourish top-left"></div>
+            <div class="corner-flourish top-right"></div>
+            <div class="corner-flourish bottom-left"></div>
+            <div class="corner-flourish bottom-right"></div>
+            <div class="page-section-inner centered">
+                <span class="label reveal">The Complete Methodology</span>
+                <h1 class="heading-xl reveal reveal-delay-1">
+                    Ten Interlocking<br><span class="gold">Frameworks</span>
+                </h1>
+                <div class="divider center reveal reveal-delay-2"></div>
+                <p class="body-text reveal reveal-delay-2" style="max-width: 650px;">
+                    Our methodology is a disciplined, industry-agnostic reconstruction designed to transform scattered fragments of the past into a mechanized Authority System. It is governed by ten interlocking frameworks that ensure every strategic move is anchored in proof rather than speculation.
+                </p>
+            </div>
+        </div>
+
+        <!-- FRAMEWORK 1: 40+ CHANNEL TAXONOMY -->
+        <div class="page-section bg-violet">
+            <div class="corner-flourish top-left"></div>
+            <div class="corner-flourish bottom-right"></div>
+            <div class="page-section-inner split">
+                <div class="text-content">
+                    <span class="label reveal">Framework I</span>
+                    <h2 class="heading-lg reveal reveal-delay-1">The 40+ Channel <span style="color: var(--gold);">Taxonomy</span></h2>
+                    <div class="divider reveal reveal-delay-2"></div>
+                    <div class="text-scroll reveal reveal-delay-2" style="max-height: 60vh;">
+                        <p class="body-text">The investigation begins with the 40+ Channel Taxonomy. We reconstruct your narrative across every available signal—from early print and radio archives to modern digital footprints and internal financial filings—tracing your footprint from the 1890s to the present.</p>
+                        <p class="body-text">We examine eight major classes of data:</p>
+                        <p class="body-text"><strong style="color: var(--gold); font-weight: 500;">1. Advertising and Marketing history</strong> — Past professional investments, Addy Awards, press archives proving you were once the premier educator in your field.</p>
+                        <p class="body-text"><strong style="color: var(--gold); font-weight: 500;">2. Financial Records and Public Filings</strong> — Comparative budget lines revealing exactly when high-leverage assets were abandoned.</p>
+                        <p class="body-text"><strong style="color: var(--gold); font-weight: 500;">3. Operations and Infrastructure</strong> — Historical architectural decisions and site locations correlating with revenue peaks.</p>
+                        <p class="body-text"><strong style="color: var(--gold); font-weight: 500;">4. Digital Presence</strong> — Scraping "ghost" pages: abandoned URLs still indexed but forgotten by your current team.</p>
+                        <p class="body-text"><strong style="color: var(--gold); font-weight: 500;">5. Brand Voice and Communications</strong> — Discontinued technical publications and deep-narrative catalogs modeling your voice.</p>
+                        <p class="body-text"><strong style="color: var(--gold); font-weight: 500;">6. Personnel and Leadership history</strong> — "Ghost employee" tracking to find former directors and reconstruct their strategies.</p>
+                        <p class="body-text"><strong style="color: var(--gold); font-weight: 500;">7. Customer and Market Data</strong> — Unconventional sources to hear the authentic language of your market.</p>
+                        <p class="body-text"><strong style="color: var(--gold); font-weight: 500;">8. Competitive Landscape</strong> — Monitoring which rivals occupied the "Competitive Gap" you left behind.</p>
+                        <p class="body-text">This ensures methodical coverage, mapping not just what was said, but how the market interpreted those signals across different cultural and media eras.</p>
+                    </div>
+                </div>
+                <div class="visual-content reveal reveal-delay-2">
+                    <div class="gem-case">
+                        <span class="gem-view-label">40+ Channels</span>
+                        <div class="gem-interior">
+                            <div class="gem-stone"></div>
+                        </div>
+                        <span class="gem-dimensions">1890s to Present</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FRAMEWORK 2: 3-SOURCE RULE -->
+        <div class="page-section bg-black">
+            <div class="corner-flourish top-left"></div>
+            <div class="corner-flourish top-right"></div>
+            <div class="corner-flourish bottom-left"></div>
+            <div class="corner-flourish bottom-right"></div>
+            <div class="page-section-inner split">
+                <div class="visual-content reveal">
+                    <div class="gem-case">
+                        <span class="gem-view-label">3-Source Rule</span>
+                        <div class="gem-interior">
+                            <div class="gem-stone" style="background: linear-gradient(145deg, rgba(201,169,97,0.3) 0%, rgba(26,11,46,0.6) 100%);"></div>
+                        </div>
+                        <span class="gem-dimensions">Verify Before Strategy</span>
+                    </div>
+                </div>
+                <div class="text-content">
+                    <span class="label reveal">Framework II</span>
+                    <h2 class="heading-lg reveal reveal-delay-1">The 3-Source <span style="color: var(--gold);">Rule</span></h2>
+                    <div class="divider reveal reveal-delay-2"></div>
+                    <div class="text-scroll reveal reveal-delay-2" style="max-height: 60vh;">
+                        <p class="body-text">Accuracy is maintained through the 3-Source Rule: no significant strategic claim is authorized without two independent sources or one Tier 1 verified primary source from our Hierarchy of Truth.</p>
+                        <p class="body-text">All information is graded via our Source Hierarchy, ranging from Tier 1 (Verified Primary Evidence) to Tier 4 (Uncertain or Speculative). When institutional memory inevitably conflicts—such as a legacy financial ledger contradicting a founder's recollection—we apply the Triangulation Protocol.</p>
+                        <p class="body-text">Conflicting accounts are recorded verbatim and synthesized into a single, defensible record of truth. We do not cherry-pick the cleanest story; we synthesize the version of truth that coexists logically across all validated signals to produce a single, defensible record for executive decision-making.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FRAMEWORK 3: HIERARCHY OF TRUTH -->
+        <div class="page-section bg-gold">
+            <div class="corner-flourish top-left"></div>
+            <div class="corner-flourish bottom-right"></div>
+            <div class="page-section-inner centered">
+                <span class="label reveal">Framework III</span>
+                <h2 class="heading-lg reveal reveal-delay-1">The Hierarchy of <span style="color: var(--gold);">Truth</span></h2>
+                <div class="divider center reveal reveal-delay-2"></div>
+                <div class="text-scroll reveal reveal-delay-2" style="max-height: 55vh; max-width: 800px; margin: 0 auto;">
+                    <p class="body-text" style="text-align: center;">In a high-stakes corporate environment, a million-dollar decision cannot be built on a hunch or a fuzzy memory. This is why we treat information with the same rigor as an intelligence brief. We don't just "find" information; we grade it! Every signal we exhumed is categorized on a four-tier scale to establish a measurable confidence level before it ever touches your strategy.</p>
+                    <div style="display: flex; flex-direction: column; gap: 24px; margin-top: 30px; text-align: left;">
+                        <div style="border-left: 2px solid var(--gold); padding-left: 24px;">
+                            <h4 style="font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px;">Tier 1: The Verified Primary</h4>
+                            <p class="body-text">This is the gold standard—irrefutable, documented evidence. Think of an original 1994 technical publication, a signed legal filing, or a physical 35mm master of a peak-era commercial. This is data that requires no interpretation because it exists as a primary artifact.</p>
+                        </div>
+                        <div style="border-left: 2px solid var(--gold-dim); padding-left: 24px;">
+                            <h4 style="font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px;">Tier 2: The Probable</h4>
+                            <p class="body-text">These are highly credible secondary sources. This might be a detailed internal report from a former marketing director or a consistent pattern of press coverage from reputable trade journals during your "Golden Era." It is solid, reliable, and carries significant weight in our triangulation.</p>
+                        </div>
+                        <div style="border-left: 2px solid rgba(201,169,97,0.4); padding-left: 24px;">
+                            <h4 style="font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px;">Tier 3: The Plausible</h4>
+                            <p class="body-text">This represents reasonable assumptions supported by context. When we see your revenue spike alongside a specific cultural shift, and three different former employees vaguely recall a "handshake agreement" that changed your positioning, we have a plausible signal. It is a thread worth pulling, but it is not yet a foundation.</p>
+                        </div>
+                        <div style="border-left: 2px solid rgba(201,169,97,0.2); padding-left: 24px;">
+                            <h4 style="font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px;">Tier 4: The Uncertain</h4>
+                            <p class="body-text">This is the realm of the speculative or the conflicting. It might be a founder's memory that contradicts every financial ledger we've exhumed, or a "ghost page" on the deep web that suggests a direction you never actually took. We record these contradictions transparently rather than hiding them, because sometimes the friction between what was said and what happened is where the most valuable truth is buried.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FRAMEWORK 4: TRIANGULATION -->
+        <div class="page-section bg-violet">
+            <div class="corner-flourish top-left"></div>
+            <div class="corner-flourish bottom-right"></div>
+            <div class="page-section-inner split">
+                <div class="text-content">
+                    <span class="label reveal">Framework IV</span>
+                    <h2 class="heading-lg reveal reveal-delay-1">The <span style="color: var(--gold);">Triangulation Protocol</span></h2>
+                    <div class="divider reveal reveal-delay-2"></div>
+                    <div class="text-scroll reveal reveal-delay-2" style="max-height: 60vh;">
+                        <p class="body-text">When institutional memory inevitably conflicts—such as a legacy financial ledger contradicting a founder's recollection—we apply the Triangulation Protocol, where conflicting accounts are recorded verbatim and synthesized into a single, defensible record of truth.</p>
+                        <p class="body-text">We do not cherry-pick the cleanest story; we synthesize the version of truth that coexists logically across all validated signals to produce a single, defensible record for executive decision-making.</p>
+                        <p class="body-text">The protocol operates on three principles: First, every source has bias—memory, perspective, agenda. Second, truth emerges from pattern across multiple sources. Third, contradiction is data, not failure. When a previous owner denies what employees confirm, we document the discrepancy, weight other sources higher, and note possible reasons. When sources contradict equally, we map each source's timeframe and look for resolutions where both could be partially true.</p>
+                    </div>
+                </div>
+                <div class="visual-content reveal reveal-delay-2">
+                    <div class="gem-case">
+                        <span class="gem-view-label">Triangulate</span>
+                        <div class="gem-interior">
+                            <div class="gem-stone" style="transform: rotateY(-25deg);"></div>
+                        </div>
+                        <span class="gem-dimensions">Source → Verify → Synthesize</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FRAMEWORK 5: PRIVATE ARCHAEOLOGY -->
+        <div class="page-section bg-black">
+            <div class="corner-flourish top-left"></div>
+            <div class="corner-flourish top-right"></div>
+            <div class="corner-flourish bottom-left"></div>
+            <div class="corner-flourish bottom-right"></div>
+            <div class="page-section-inner centered">
+                <span class="label reveal">Framework V</span>
+                <h2 class="heading-lg reveal reveal-delay-1">The Private <span style="color: var(--gold);">Archaeology Protocol</span></h2>
+                <div class="divider center reveal reveal-delay-2"></div>
+                <div class="text-scroll reveal reveal-delay-2" style="max-height: 55vh; max-width: 800px; margin: 0 auto;">
+                    <p class="body-text" style="text-align: center;">Our research depth is facilitated by the Private Archaeology Protocol, which accesses digital, physical, and human artifacts typically unavailable to standard marketers, such as non-public records, legacy databases, and firsthand oral histories.</p>
+                    <div class="longform-text" style="margin-top: 24px;">
+                        <p class="body-text"><strong style="color: var(--gold); font-weight: 500;">Digital Artifacts:</strong> Previous marketing director's laptops, old server backups, external drives in desk drawers, cloud accounts no longer monitored, email archives, CRM databases, graphic design files, and video projects from eras past.</p>
+                        <p class="body-text"><strong style="color: var(--gold); font-weight: 500;">Physical Artifacts:</strong> Direct mail samples, print ad tearsheets, radio and TV scripts, trade show materials, sales collateral, internal newsletters, customer correspondence, and award submissions.</p>
+                        <p class="body-text"><strong style="color: var(--gold); font-weight: 500;">Human Artifacts:</strong> Previous marketing directors, longtime sales staff, customer service veterans, founder and family members, and retired employees who saw the golden era firsthand.</p>
+                    </div>
+                    <p class="body-text" style="text-align: center; margin-top: 20px;">This is a Continuous Verification Model, where findings are treated as living documents, updated as new evidence of your company's excellence surfaces.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FRAMEWORK 6: VOICE PROFILE -->
+        <div class="page-section bg-gold">
+            <div class="corner-flourish top-left"></div>
+            <div class="corner-flourish bottom-right"></div>
+            <div class="page-section-inner split">
+                <div class="visual-content reveal">
+                    <div class="gem-case">
+                        <span class="gem-view-label">8 Dimensions</span>
+                        <div class="gem-interior">
+                            <div class="gem-stone" style="background: linear-gradient(145deg, rgba(201,169,97,0.4) 0%, rgba(45,27,78,0.5) 100%);"></div>
+                        </div>
+                        <span class="gem-dimensions">Voice Profile Matrix</span>
+                    </div>
+                </div>
+                <div class="text-content">
+                    <span class="label reveal">Framework VI</span>
+                    <h2 class="heading-lg reveal reveal-delay-1">The 8-Dimension <span style="color: var(--gold);">Voice Profile</span></h2>
+                    <div class="divider reveal reveal-delay-2"></div>
+                    <div class="text-scroll reveal reveal-delay-2" style="max-height: 60vh;">
+                        <p class="body-text">Authenticity cannot be faked; it must be modeled. When we move from excavation to reconstruction, we use an 8-Dimension Voice Profile to ensure that any AI-driven system or new content behaves exactly like your Peak Era. We don't just give you a "brand guide"; we map your company's communication DNA across eight specific linguistic dimensions:</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px 30px; margin-top: 20px;">
+                            <div>
+                                <h4 style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;">1. Vocabulary</h4>
+                                <p class="body-text" style="font-size: 12px;">The specific lexicon unique to your brand's authority.</p>
+                            </div>
+                            <div>
+                                <h4 style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;">2. Sentence Architecture</h4>
+                                <p class="body-text" style="font-size: 12px;">The structural patterns, rhythm, and complexity of your speech.</p>
+                            </div>
+                            <div>
+                                <h4 style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;">3. Humor and Tone</h4>
+                                <p class="body-text" style="font-size: 12px;">The characteristic wit and emotional quality that defines your prestige.</p>
+                            </div>
+                            <div>
+                                <h4 style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;">4. Perspective</h4>
+                                <p class="body-text" style="font-size: 12px;">The point of view from which your business communicates to the world.</p>
+                            </div>
+                            <div>
+                                <h4 style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;">5. Transitions and Flow</h4>
+                                <p class="body-text" style="font-size: 12px;">How your ideas connect and the cadence of your delivery.</p>
+                            </div>
+                            <div>
+                                <h4 style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;">6. Calls-to-Action</h4>
+                                <p class="body-text" style="font-size: 12px;">The specific, often subtle way your brand prompts its audience to move.</p>
+                            </div>
+                            <div>
+                                <h4 style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;">7. Evidence Style</h4>
+                                <p class="body-text" style="font-size: 12px;">The manner in which you provide proof and establish your intellectual authority.</p>
+                            </div>
+                            <div>
+                                <h4 style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;">8. Visual Language</h4>
+                                <p class="body-text" style="font-size: 12px;">The aesthetic cues and imagery that reinforce your spoken and written message.</p>
+                            </div>
+                        </div>
+                        <p class="body-text" style="margin-top: 20px;">By mapping these dimensions, we ensure that the "Master Operations Doctrine" we build for you doesn't just sound like you—it acts like you, preserving your authority without requiring your constant presence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FRAMEWORK 7: CONTINUOUS VERIFICATION -->
+        <div class="page-section bg-violet">
+            <div class="corner-flourish top-left"></div>
+            <div class="corner-flourish bottom-right"></div>
+            <div class="page-section-inner centered">
+                <span class="label reveal">Framework VII</span>
+                <h2 class="heading-lg reveal reveal-delay-1">Continuous <span style="color: var(--gold);">Verification Model</span></h2>
+                <div class="divider center reveal reveal-delay-2"></div>
+                <div class="text-scroll reveal reveal-delay-2" style="max-height: 55vh; max-width: 700px; margin: 0 auto;">
+                    <p class="body-text" style="text-align: center;">Findings are treated as a Continuous Verification Model, a living system where reports are updated as new evidence of your company's excellence surfaces. Once recovered, your brand is modeled through the 8-Dimension Voice Profile, mapping your unique communication DNA across vocabulary, sentence architecture, humor, perspective, transitions, calls-to-action, evidence style, and visual language.</p>
+                    <p class="body-text" style="text-align: center; margin-top: 16px;">This is not a one-time audit. It is a living archive. As new artifacts surface—through employee interviews, recovered hard drives, or newly digitized archives—the model updates. Your Authority System evolves with your history, not against it.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FRAMEWORK 8: ROI TRIGGERS -->
+        <div class="page-section bg-black">
+            <div class="corner-flourish top-left"></div>
+            <div class="corner-flourish top-right"></div>
+            <div class="corner-flourish bottom-left"></div>
+            <div class="corner-flourish bottom-right"></div>
+            <div class="page-section-inner split">
+                <div class="text-content">
+                    <span class="label reveal">Framework VIII</span>
+                    <h2 class="heading-lg reveal reveal-delay-1">ROI <span style="color: var(--gold);">Triggers</span></h2>
+                    <div class="divider reveal reveal-delay-2"></div>
+                    <div class="text-scroll reveal reveal-delay-2" style="max-height: 60vh;">
+                        <p class="body-text">We prioritize ROI Triggers, focusing on businesses with significant pre-2010 investments or those undergoing transitions. These are the enterprises where the highest value is typically buried—where legacy systems, abandoned campaigns, and forgotten positioning hold the keys to modern competitive advantage.</p>
+                        <p class="body-text">The trigger signals we look for include: businesses with 15+ years of operation, significant pre-2010 marketing investment, documented revenue peaks followed by unexplained decline, generational transitions in leadership, and enterprises that have shifted from expertise-based to price-based positioning.</p>
+                    </div>
+                </div>
+                <div class="visual-content reveal reveal-delay-2">
+                    <div class="gem-case">
+                        <span class="gem-view-label">ROI Focus</span>
+                        <div class="gem-interior">
+                            <div class="gem-stone" style="transform: rotateY(25deg);"></div>
+                        </div>
+                        <span class="gem-dimensions">Pre-2010 | Transition</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FRAMEWORK 9: COMPETITIVE ASYMMETRY -->
+        <div class="page-section bg-gold">
+            <div class="corner-flourish top-left"></div>
+            <div class="corner-flourish bottom-right"></div>
+            <div class="page-section-inner centered">
+                <span class="label reveal">Framework IX</span>
+                <h2 class="heading-lg reveal reveal-delay-1">Competitive <span style="color: var(--gold);">Asymmetry</span></h2>
+                <div class="divider center reveal reveal-delay-2"></div>
+                <div class="text-scroll reveal reveal-delay-2" style="max-height: 55vh; max-width: 700px; margin: 0 auto;">
+                    <p class="body-text" style="text-align: center;">The final result is Competitive Asymmetry: surfacing internal advantages your rivals cannot see and giving you an unavoidable market logic. While your competitors chase trends and react to market noise, you operate from a position of documented, proven authority that they cannot replicate.</p>
+                    <p class="body-text" style="text-align: center; margin-top: 16px;">This asymmetry is not temporary. It is structural. Once your Authority System is installed, it compounds. Every piece of content, every client interaction, every market signal reinforces the same proven positioning that built your enterprise in the first place.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FRAMEWORK 10: INDUSTRY-SPECIFIC -->
+        <div class="page-section bg-violet">
+            <div class="corner-flourish top-left"></div>
+            <div class="corner-flourish bottom-right"></div>
+            <div class="page-section-inner centered">
+                <span class="label reveal">Framework X</span>
+                <h2 class="heading-lg reveal reveal-delay-1">Industry-Specific <span style="color: var(--gold);">Dig Sites</span></h2>
+                <div class="divider center reveal reveal-delay-2"></div>
+                <div class="text-scroll reveal reveal-delay-2" style="max-height: 55vh; max-width: 900px; margin: 0 auto;">
+                    <p class="body-text" style="text-align: center; margin-bottom: 24px;">While our protocols are rigid, our focus shifts to align with the unique value drivers of your industry.</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px 40px; text-align: left;">
+                        <div>
+                            <h4 style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;">Manufacturing</h4>
+                            <p class="body-text" style="font-size: 12px;">We focus on Technical Depth, reconstructing legacy technical publications to move you from a commodity provider to a premier educator.</p>
+                        </div>
+                        <div>
+                            <h4 style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;">Professional Services</h4>
+                            <p class="body-text" style="font-size: 12px;">We emphasize Institutional Reputation Recovery, ensuring modern AI-driven content carries the intellectual weight of your founding partners.</p>
+                        </div>
+                        <div>
+                            <h4 style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;">Healthcare & Med</h4>
+                            <p class="body-text" style="font-size: 12px;">We focus on Institutional Trust, using our Source Hierarchy to build a narrative of reliability on defensible medical legacy.</p>
+                        </div>
+                        <div>
+                            <h4 style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;">Energy & Utilities</h4>
+                            <p class="body-text" style="font-size: 12px;">We reconnect current growth plans with original pioneering logic, investigating pre-2010 communication to restore mission clarity.</p>
+                        </div>
+                        <div>
+                            <h4 style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;">Financial Services</h4>
+                            <p class="body-text" style="font-size: 12px;">We prioritize Source Triangulation to identify the "Golden Era" of client retention and reconstruct communication structures that lead through market cycles.</p>
+                        </div>
+                        <div>
+                            <h4 style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;">Real Estate</h4>
+                            <p class="body-text" style="font-size: 12px;">We focus on Provenance and Property Narrative, tracing development histories from the 1890s to justify premium pricing.</p>
+                        </div>
+                        <div>
+                            <h4 style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;">B2B Technology & PE</h4>
+                            <p class="body-text" style="font-size: 12px;">We function as a Revenue Leak Detection System, stabilizing the narrative before scaling to improve exit multiples and valuation.</p>
+                        </div>
+                        <div>
+                            <h4 style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;">Luxury Goods</h4>
+                            <p class="body-text" style="font-size: 12px;">Our methodology aligns with your brand's heritage, excavating authentic artifacts to justify extreme pricing power.</p>
+                        </div>
+                        <div>
+                            <h4 style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;">Higher Education</h4>
+                            <p class="body-text" style="font-size: 12px;">We leverage Long-form Authority, reframing the institution as a timeless authority to appeal to major donors.</p>
+                        </div>
+                        <div>
+                            <h4 style="font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;">Hospitality</h4>
+                            <p class="body-text" style="font-size: 12px;">We conduct forensic excavations into the "Peak Era" of guest experience to restore high-margin service standards.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="page-section bg-black" style="min-height: 40vh; padding: 60px 80px;">
+            <div class="page-section-inner centered">
+                <img src="https://www.legaisee.com/Images/Legaisee-sm-300.png" alt="Legaisee" class="legacy-logo reveal" style="width: 160px;">
+                <p class="body-text reveal reveal-delay-1" style="text-align: center; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted);">
+                    © 2026 Legaisee — Private Office for Enterprise Asset Protection | All Rights Reserved | Privileged & Confidential
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const elReveals = entry.target.querySelectorAll('.reveal');
+                    elReveals.forEach((el, i) => {
+                        setTimeout(() => { el.classList.add('active'); }, i * 120);
+                    });
+                    if (entry.target.querySelectorAll('.reveal').length === 0) {
+                        entry.target.classList.add('active');
+                    }
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.page-section').forEach(section => {
+            revealObserver.observe(section);
+        });
+
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.page-section')[0].querySelectorAll('.reveal').forEach((el, i) => {
+                setTimeout(() => { el.classList.add('active'); }, i * 150);
+            });
+        });
+    </script>
+</body>
+</html>
