@@ -1,0 +1,4131 @@
+[
+ {
+  "path": "Color_Creator.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 2241,
+  "bytes": 73837,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 68
+ },
+ {
+  "path": "ExcavationCommand/dashboard.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 153,
+  "bytes": 3368,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "brain.phpbak",
+   "legaisee_diagnostic.phpbak",
+   "OS Contents.txt"
+  ],
+  "n": 61,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "ExcavationCommand/planner.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 39,
+  "bytes": 866,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "KnowledgeSystem/# 500  AI Systems/0504_SERIES_500_PROJECT_MANAGER.md",
+   "KnowledgeSystem/# 500  AI Systems/0503_SERIES_500_PLANNER_ENGINE.md",
+   "KnowledgeSystem/# 500  AI Systems/0505_SERIES_500_VOICE_INTERFACE.md",
+   "KnowledgeSystem/# 500  AI Systems/0506_SERIES_500_AUTONOMOUS_OPERATIONS.md"
+  ],
+  "n": 9,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ExcavationCommand/system_index.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 67,
+  "bytes": 1790,
+  "storage": "JSON",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 2
+ },
+ {
+  "path": "ProjectManager/api/auth/login.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 49,
+  "bytes": 908,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "engine/entity_extraction_engine.php.bak-20261027"
+  ],
+  "n": 5,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/api/auth/logout.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 44,
+  "bytes": 803,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/api/auth/status.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 44,
+  "bytes": 802,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "legaisee_diagnostic.phpbak",
+   "OS Contents.txt",
+   "SYSTEM_LEGEND.md",
+   "README.md"
+  ],
+  "n": 247,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/api/clients/index.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 104,
+  "bytes": 2060,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "modules/clients_module.phpbak",
+   "modules/dig_review_module.php.bak-20261027"
+  ],
+  "n": 52,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/api/comments/index.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 114,
+  "bytes": 2314,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "modules/clients_module.phpbak",
+   "modules/dig_review_module.php.bak-20261027"
+  ],
+  "n": 52,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/api/labels/index.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 106,
+  "bytes": 2078,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "modules/clients_module.phpbak",
+   "modules/dig_review_module.php.bak-20261027"
+  ],
+  "n": 52,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/api/milestones/index.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 104,
+  "bytes": 2072,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "modules/clients_module.phpbak",
+   "modules/dig_review_module.php.bak-20261027"
+  ],
+  "n": 52,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/api/permissions/index.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 15,
+  "bytes": 297,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "modules/clients_module.phpbak",
+   "modules/dig_review_module.php.bak-20261027"
+  ],
+  "n": 53,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/api/permissions/roles.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 15,
+  "bytes": 291,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0300_DATABASE_ARCHITECTURE.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0110_FEATURE_MATRIX.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0999_SESSION_HANDOFF.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0130_PERMISSION_MODEL.md"
+  ],
+  "n": 23,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/api/projects/index.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 105,
+  "bytes": 2048,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "modules/clients_module.phpbak",
+   "modules/dig_review_module.php.bak-20261027"
+  ],
+  "n": 52,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/api/projects/members.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 120,
+  "bytes": 2552,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "modules/dig_review_module.php.bak-20261027",
+   "modules/semantic_cluster_module.php.bak-20261027",
+   "modules/dig_review_module.php.bak-20261028",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0100_PRODUCT_OVERVIEW.md"
+  ],
+  "n": 9,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/api/tasks/index.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 114,
+  "bytes": 2308,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "modules/clients_module.phpbak",
+   "modules/dig_review_module.php.bak-20261027"
+  ],
+  "n": 52,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/api/users/index.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 92,
+  "bytes": 1793,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "modules/clients_module.phpbak",
+   "modules/dig_review_module.php.bak-20261027"
+  ],
+  "n": 52,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/api/users/show.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 44,
+  "bytes": 781,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "legaisee_diagnostic.phpbak",
+   "SYSTEM_LEGEND.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "RUNBOOK-server-steps.md"
+  ],
+  "n": 42,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/app/Controllers/AuthController.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 110,
+  "bytes": 2448,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 5,
+  "dup": [],
+  "defs": 5
+ },
+ {
+  "path": "ProjectManager/app/Controllers/ClientController.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 101,
+  "bytes": 2097,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0999_SESSION_HANDOFF.md"
+  ],
+  "n": 2,
+  "dup": [],
+  "defs": 7
+ },
+ {
+  "path": "ProjectManager/app/Controllers/CommentController.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 127,
+  "bytes": 2509,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0999_SESSION_HANDOFF.md"
+  ],
+  "n": 2,
+  "dup": [],
+  "defs": 8
+ },
+ {
+  "path": "ProjectManager/app/Controllers/LabelController.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 101,
+  "bytes": 2062,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0999_SESSION_HANDOFF.md"
+  ],
+  "n": 2,
+  "dup": [],
+  "defs": 7
+ },
+ {
+  "path": "ProjectManager/app/Controllers/MilestoneController.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 101,
+  "bytes": 2202,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0999_SESSION_HANDOFF.md"
+  ],
+  "n": 2,
+  "dup": [],
+  "defs": 7
+ },
+ {
+  "path": "ProjectManager/app/Controllers/ProjectController.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 121,
+  "bytes": 2678,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0999_SESSION_HANDOFF.md"
+  ],
+  "n": 2,
+  "dup": [],
+  "defs": 7
+ },
+ {
+  "path": "ProjectManager/app/Controllers/ProjectMemberController.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 133,
+  "bytes": 2900,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0999_SESSION_HANDOFF.md"
+  ],
+  "n": 2,
+  "dup": [],
+  "defs": 9
+ },
+ {
+  "path": "ProjectManager/app/Controllers/TaskController.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 127,
+  "bytes": 2398,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0999_SESSION_HANDOFF.md"
+  ],
+  "n": 2,
+  "dup": [],
+  "defs": 8
+ },
+ {
+  "path": "ProjectManager/app/Controllers/UserController.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 110,
+  "bytes": 2045,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0999_SESSION_HANDOFF.md"
+  ],
+  "n": 3,
+  "dup": [],
+  "defs": 7
+ },
+ {
+  "path": "ProjectManager/app/Core/Application.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 76,
+  "bytes": 1407,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "RUNBOOK-server-steps.md",
+   "modules/graph_module.php.bak-20261027",
+   "modules/dig_review_module.php.bak-20261027"
+  ],
+  "n": 138,
+  "dup": [],
+  "defs": 6
+ },
+ {
+  "path": "ProjectManager/app/Core/Container.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 42,
+  "bytes": 888,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "clients/server_sys_build_4-21-26/raw/20260422_015914_server_sys_build_4-21-26.md",
+   "normalized/c14fb342c0d3ca88aa4a626a870ac66d.txt",
+   "normalized/20260422_015914_server_sys_build_4-21-26.md"
+  ],
+  "n": 12,
+  "dup": [],
+  "defs": 4
+ },
+ {
+  "path": "ProjectManager/app/Core/Database.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 44,
+  "bytes": 862,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "legaisee_diagnostic.phpbak",
+   "shell.phpbak",
+   "SYSTEM_LEGEND.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 120,
+  "dup": [],
+  "defs": 6
+ },
+ {
+  "path": "ProjectManager/app/Core/Dispatcher.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 83,
+  "bytes": 1360,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md"
+  ],
+  "n": 3,
+  "dup": [],
+  "defs": 3
+ },
+ {
+  "path": "ProjectManager/app/Core/ExceptionHandler.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 55,
+  "bytes": 1008,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 3,
+  "dup": [],
+  "defs": 2
+ },
+ {
+  "path": "ProjectManager/app/Core/Request.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 95,
+  "bytes": 1682,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "ProjectManager/BUILD ORDER.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0030_GLOSSARY.md"
+  ],
+  "n": 34,
+  "dup": [],
+  "defs": 8
+ },
+ {
+  "path": "ProjectManager/app/Core/Router.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 97,
+  "bytes": 1621,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0030_GLOSSARY.md",
+   "LEGAiSEE Busines Plan/005_LEGAiSEE OM_PART 5 \u2014 EXISTING COMMAND CENTER CAPABILITY AUDIT.md",
+   "LEGAiSEE Busines Plan/LEGAiSEE Operating Manual_GPT Chat.md",
+   "LEGAiSEE Busines Plan/009_LEGAiSEE Operating Manual_GPT Chat.md"
+  ],
+  "n": 11,
+  "dup": [],
+  "defs": 8
+ },
+ {
+  "path": "ProjectManager/app/Models/ActivityLog.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 36,
+  "bytes": 719,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 2
+ },
+ {
+  "path": "ProjectManager/app/Models/Attachment.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 216,
+  "bytes": 4203,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0330_ATTACHMENT_MODEL.md",
+   "KnowledgeSystem/# 300  Excavation System/0301_SERIES_300_INGESTION.md"
+  ],
+  "n": 5,
+  "dup": [],
+  "defs": 20
+ },
+ {
+  "path": "ProjectManager/app/Models/Client.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 188,
+  "bytes": 3471,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "legaisee_diagnostic.phpbak",
+   "OS Contents.txt",
+   "SYSTEM_LEGEND.md",
+   "full_inventory3.txt"
+  ],
+  "n": 134,
+  "dup": [],
+  "defs": 18
+ },
+ {
+  "path": "ProjectManager/app/Models/Comment.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 125,
+  "bytes": 2276,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0999_SESSION_HANDOFF.md",
+   "LEGAiSEE Busines Plan/LEGAiSEE Operating Manual_GPT Chat.md",
+   "LEGAiSEE Busines Plan/013_LEGAiSEE Wiring Audit-Pass 9.md"
+  ],
+  "n": 8,
+  "dup": [],
+  "defs": 12
+ },
+ {
+  "path": "ProjectManager/app/Models/Label.php",
+  "status": "DEAD",
+  "verdict": "LIVE-CODE",
+  "lines": 133,
+  "bytes": 2473,
+  "storage": "NONE",
+  "path_hits": [
+   "style_test_Colors.html"
+  ],
+  "prose_hits": [
+   "legaisee_diagnostic.phpbak",
+   "shell.phpbak",
+   "legaisee_sqlite_viewer.phpbak",
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 86,
+  "dup": [],
+  "defs": 12
+ },
+ {
+  "path": "ProjectManager/app/Models/Milestone.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 134,
+  "bytes": 2698,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0110_FEATURE_MATRIX.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0030_GLOSSARY.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0999_SESSION_HANDOFF.md",
+   "LEGAiSEE Busines Plan/003_LEGAiSEE Operating Manual \u2014 Part 3-Staff Avatars and Role Training.md"
+  ],
+  "n": 15,
+  "dup": [],
+  "defs": 18
+ },
+ {
+  "path": "ProjectManager/app/Models/Permission.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 104,
+  "bytes": 1932,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0300_DATABASE_ARCHITECTURE.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0330_ATTACHMENT_MODEL.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0110_FEATURE_MATRIX.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0030_GLOSSARY.md"
+  ],
+  "n": 21,
+  "dup": [],
+  "defs": 10
+ },
+ {
+  "path": "ProjectManager/app/Models/Project.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 97,
+  "bytes": 3760,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "shell.phpbak",
+   "OS Contents.txt",
+   "SYSTEM_LEGEND.md",
+   "full_inventory3.txt"
+  ],
+  "n": 101,
+  "dup": [],
+  "defs": 24
+ },
+ {
+  "path": "ProjectManager/app/Models/ProjectMember.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 126,
+  "bytes": 2334,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0999_SESSION_HANDOFF.md"
+  ],
+  "n": 3,
+  "dup": [],
+  "defs": 12
+ },
+ {
+  "path": "ProjectManager/app/Models/Role.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 104,
+  "bytes": 1926,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0110_FEATURE_MATRIX.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0030_GLOSSARY.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/LEGAiSEE_PROJECT_MANAGER_HANDOFF_V1.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0130_PERMISSION_MODEL.md"
+  ],
+  "n": 91,
+  "dup": [],
+  "defs": 10
+ },
+ {
+  "path": "ProjectManager/app/Models/Task.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 204,
+  "bytes": 4653,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0110_FEATURE_MATRIX.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0030_GLOSSARY.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/LEGAiSEE_PROJECT_MANAGER_HANDOFF_V1.md"
+  ],
+  "n": 39,
+  "dup": [],
+  "defs": 23
+ },
+ {
+  "path": "ProjectManager/app/Models/User.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 174,
+  "bytes": 3111,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "legaisee_diagnostic.phpbak",
+   "tree.txt",
+   "tree.md",
+   "RUNBOOK-server-steps.md"
+  ],
+  "n": 53,
+  "dup": [],
+  "defs": 16
+ },
+ {
+  "path": "ProjectManager/app/Policies/DocumentPolicy.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 33,
+  "bytes": 533,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0130_PERMISSION_MODEL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 6
+ },
+ {
+  "path": "ProjectManager/app/Policies/PermissionPolicy.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 23,
+  "bytes": 359,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 4
+ },
+ {
+  "path": "ProjectManager/app/Policies/ProjectPolicy.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 38,
+  "bytes": 613,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0130_PERMISSION_MODEL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 7
+ },
+ {
+  "path": "ProjectManager/app/Policies/RolePolicy.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 33,
+  "bytes": 505,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 6
+ },
+ {
+  "path": "ProjectManager/app/Policies/TaskPolicy.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 38,
+  "bytes": 594,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0130_PERMISSION_MODEL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 7
+ },
+ {
+  "path": "ProjectManager/app/Policies/UserPolicy.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 33,
+  "bytes": 505,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0130_PERMISSION_MODEL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 6
+ },
+ {
+  "path": "ProjectManager/app/Repositories/ActivityLogRepository.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 52,
+  "bytes": 1141,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 4
+ },
+ {
+  "path": "ProjectManager/app/Repositories/AttachmentRepository.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 35,
+  "bytes": 691,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 4
+ },
+ {
+  "path": "ProjectManager/app/Repositories/ClientRepository.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 195,
+  "bytes": 4817,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0999_SESSION_HANDOFF.md"
+  ],
+  "n": 3,
+  "dup": [],
+  "defs": 10
+ },
+ {
+  "path": "ProjectManager/app/Repositories/CommentRepository.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 154,
+  "bytes": 3297,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0999_SESSION_HANDOFF.md"
+  ],
+  "n": 3,
+  "dup": [],
+  "defs": 9
+ },
+ {
+  "path": "ProjectManager/app/Repositories/LabelRepository.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 163,
+  "bytes": 3750,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0999_SESSION_HANDOFF.md"
+  ],
+  "n": 3,
+  "dup": [],
+  "defs": 8
+ },
+ {
+  "path": "ProjectManager/app/Repositories/MilestoneRepository.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 182,
+  "bytes": 4663,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0999_SESSION_HANDOFF.md"
+  ],
+  "n": 3,
+  "dup": [],
+  "defs": 9
+ },
+ {
+  "path": "ProjectManager/app/Repositories/PermissionRepository.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 132,
+  "bytes": 2948,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 9
+ },
+ {
+  "path": "ProjectManager/app/Repositories/ProjectMemberRepository.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 187,
+  "bytes": 3874,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0999_SESSION_HANDOFF.md"
+  ],
+  "n": 3,
+  "dup": [],
+  "defs": 10
+ },
+ {
+  "path": "ProjectManager/app/Repositories/ProjectRepository.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 188,
+  "bytes": 4342,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/LEGAiSEE_PROJECT_MANAGER_HANDOFF_V1.md"
+  ],
+  "n": 5,
+  "dup": [],
+  "defs": 9
+ },
+ {
+  "path": "ProjectManager/app/Repositories/RoleRepository.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 160,
+  "bytes": 3148,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 9
+ },
+ {
+  "path": "ProjectManager/app/Repositories/TaskRepository.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 164,
+  "bytes": 4260,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/LEGAiSEE_PROJECT_MANAGER_HANDOFF_V1.md"
+  ],
+  "n": 4,
+  "dup": [],
+  "defs": 9
+ },
+ {
+  "path": "ProjectManager/app/Repositories/UserRepository.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 175,
+  "bytes": 3636,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0999_SESSION_HANDOFF.md"
+  ],
+  "n": 9,
+  "dup": [],
+  "defs": 9
+ },
+ {
+  "path": "ProjectManager/app/Services/AuthorizationService.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 72,
+  "bytes": 1491,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 4,
+  "dup": [],
+  "defs": 5
+ },
+ {
+  "path": "ProjectManager/bootstrap.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 68,
+  "bytes": 1266,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/LEGAiSEE_PROJECT_MANAGER_HANDOFF_V1.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0920_BUILD_ORDER.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0910_CANONICAL_FILE_REGISTRY.md",
+   "LEGAiSEE Busines Plan/005_LEGAiSEE OM_PART 5 \u2014 EXISTING COMMAND CENTER CAPABILITY AUDIT.md"
+  ],
+  "n": 9,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/config.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "LIVE-CODE",
+  "lines": 28,
+  "bytes": 940,
+  "storage": "MYSQL",
+  "path_hits": [
+   ".htaccess"
+  ],
+  "prose_hits": [
+   "RUNBOOK-server-steps.md"
+  ],
+  "n": 9,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/database/connection.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 48,
+  "bytes": 1194,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "legaisee_diagnostic.phpbak",
+   "shell.phpbak",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0300_DATABASE_ARCHITECTURE.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0110_FEATURE_MATRIX.md"
+  ],
+  "n": 45,
+  "dup": [],
+  "defs": 2
+ },
+ {
+  "path": "ProjectManager/database/migration.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 75,
+  "bytes": 1501,
+  "storage": "JSON",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "RUNBOOK-server-steps.md",
+   "modules/dig_review_module.php.bak-20261027",
+   "modules/ingest_module.php.bak-20261027"
+  ],
+  "n": 25,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/database/migrations/001_create_users_table.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 19,
+  "bytes": 549,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "ProjectManager/database/migrations/002_create_roles_table.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 17,
+  "bytes": 432,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "ProjectManager/database/migrations/003_create_permissions_table.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 17,
+  "bytes": 438,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "ProjectManager/database/migrations/004_create_role_permissions_table.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 28,
+  "bytes": 627,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "ProjectManager/database/migrations/005_create_user_roles_table.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 28,
+  "bytes": 573,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "ProjectManager/database/migrations/006_create_attachments_table.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 29,
+  "bytes": 703,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "ProjectManager/database/migrations/007_create_activity_log_table.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 27,
+  "bytes": 610,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "ProjectManager/database/migrations/008_create_audit_tables.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 23,
+  "bytes": 482,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "ProjectManager/database/migrations/009_create_projects_table.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 47,
+  "bytes": 932,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "ProjectManager/database/migrations/010_create_pm_tasks_table.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 47,
+  "bytes": 921,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "ProjectManager/database/migrations/011_create_pm_milestones_table.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 40,
+  "bytes": 774,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "ProjectManager/database/migrations/012_create_pm_comments_table.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 40,
+  "bytes": 795,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "ProjectManager/database/migrations/013_create_pm_notes_table.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 40,
+  "bytes": 801,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "ProjectManager/database/schema.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 142,
+  "bytes": 3092,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "tree.txt",
+   "tree.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 32,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/index.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 5,
+  "bytes": 74,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "modules/clients_module.phpbak",
+   "modules/dig_review_module.php.bak-20261027"
+  ],
+  "n": 53,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/permissions.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 127,
+  "bytes": 3130,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "modules/insight_module.php.bak-20261027",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0300_DATABASE_ARCHITECTURE.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0110_FEATURE_MATRIX.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0030_GLOSSARY.md"
+  ],
+  "n": 39,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/project_board.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 370,
+  "bytes": 14266,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "ProjectManager/projects_dashboard.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 288,
+  "bytes": 8725,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "ProjectManager/router.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 20,
+  "bytes": 284,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0030_GLOSSARY.md",
+   "LEGAiSEE Busines Plan/005_LEGAiSEE OM_PART 5 \u2014 EXISTING COMMAND CENTER CAPABILITY AUDIT.md",
+   "LEGAiSEE Busines Plan/LEGAiSEE Operating Manual_GPT Chat.md",
+   "LEGAiSEE Busines Plan/009_LEGAiSEE Operating Manual_GPT Chat.md"
+  ],
+  "n": 11,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ProjectManager/tests/Auth/AuthenticationTest.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 23,
+  "bytes": 412,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 4
+ },
+ {
+  "path": "ProjectManager/tests/Core/BootstrapTest.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 35,
+  "bytes": 684,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 3
+ },
+ {
+  "path": "ProjectManager/tests/Core/ExceptionTest.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 42,
+  "bytes": 717,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 3
+ },
+ {
+  "path": "ProjectManager/tests/Core/RequestTest.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 76,
+  "bytes": 1443,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 4
+ },
+ {
+  "path": "ProjectManager/tests/Core/ResponseTest.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 68,
+  "bytes": 1179,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 4
+ },
+ {
+  "path": "ProjectManager/tests/Core/RouterTest.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 17,
+  "bytes": 290,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 2
+ },
+ {
+  "path": "ProjectManager/tests/Permissions/AuthorizationTest.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 18,
+  "bytes": 341,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 3
+ },
+ {
+  "path": "ProjectManager/tests/Permissions/PermissionTest.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 18,
+  "bytes": 334,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 3
+ },
+ {
+  "path": "ProjectManager/tests/Permissions/RoleTest.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 18,
+  "bytes": 313,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 3
+ },
+ {
+  "path": "api.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 124,
+  "bytes": 3237,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "normalized/8cdd9251de98033ed09d415a1bc68584.txt",
+   "normalized/9e421ae3e39e39b23cbc95e7251dbe8e.txt",
+   "normalized/671b5458b291529a79b1b49a3680e3de.txt"
+  ],
+  "n": 75,
+  "dup": [],
+  "defs": 2
+ },
+ {
+  "path": "api/agency_create.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 21,
+  "bytes": 476,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/agency_dashboard.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 15,
+  "bytes": 310,
+  "storage": "JSON",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/agency_dispatch.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "ZERO-REF",
+  "lines": 29,
+  "bytes": 707,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/agency_synthesis.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "ZERO-REF",
+  "lines": 31,
+  "bytes": 793,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/agent_spawn.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "ZERO-REF",
+  "lines": 34,
+  "bytes": 620,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/agent_tick.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "ZERO-REF",
+  "lines": 33,
+  "bytes": 857,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/anomaly_detector.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "ZERO-REF",
+  "lines": 37,
+  "bytes": 678,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/brain_commit.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "ZERO-REF",
+  "lines": 32,
+  "bytes": 751,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/brain_dossier.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "ZERO-REF",
+  "lines": 35,
+  "bytes": 845,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/brain_memory_graph.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 33,
+  "bytes": 694,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/brain_start.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "ZERO-REF",
+  "lines": 40,
+  "bytes": 929,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/brain_state.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "ZERO-REF",
+  "lines": 20,
+  "bytes": 428,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/brain_stream.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "ZERO-REF",
+  "lines": 54,
+  "bytes": 1342,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/brain_stream_v4.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "ZERO-REF",
+  "lines": 29,
+  "bytes": 701,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/case_agent.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 13,
+  "bytes": 254,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/case_create.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "ZERO-REF",
+  "lines": 33,
+  "bytes": 725,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/case_memory.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 19,
+  "bytes": 392,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/case_scheduler.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 34,
+  "bytes": 647,
+  "storage": "JSON",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/case_tick.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 45,
+  "bytes": 1119,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/dossier.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 26,
+  "bytes": 657,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "OS Contents.txt",
+   "LEGAiSEE Busines Plan/LEGAiSEE Operating Manual_GPT Chat.md",
+   "LEGAiSEE Busines Plan/009_LEGAiSEE Operating Manual_GPT Chat.md",
+   "KnowledgeSystem/# 400  Knowledge Graph/0401_SERIES_400_EDGES.md"
+  ],
+  "n": 26,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/file_tree.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 33,
+  "bytes": 726,
+  "storage": "JSON",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "api/graph_synthesizer.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "ZERO-REF",
+  "lines": 38,
+  "bytes": 757,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/intel_cache.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 11,
+  "bytes": 210,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/network_boot.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 25,
+  "bytes": 542,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/network_tick.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 45,
+  "bytes": 984,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/node_builder.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 30,
+  "bytes": 715,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/tree.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "A1-RESCUED",
+  "lines": 255,
+  "bytes": 8861,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/_response.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 48,
+  "bytes": 1219,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [
+   "response.php"
+  ],
+  "defs": 2
+ },
+ {
+  "path": "api/v8/agent.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 47,
+  "bytes": 1182,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0120_USER_ROLES.md",
+   "LEGAiSEE Busines Plan/003_LEGAiSEE Operating Manual \u2014 Part 3-Staff Avatars and Role Training.md",
+   "LEGAiSEE Busines Plan/002_LEGAiSEE Operating Manual_Part 2-Staffing and Workload Model.md",
+   "LEGAiSEE Busines Plan/LEGAiSEE Operating Manual_GPT Chat.md"
+  ],
+  "n": 15,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/alerts.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 25,
+  "bytes": 589,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md",
+   "LEGAiSEE Busines Plan/004_LEGAiSEE Operating Manual \u2014 Part 4-Software, Tools, and AI Capability Map.md",
+   "KnowledgeSystem/# 600  User Interface/0601_SERIES_600_DASHBOARD.md"
+  ],
+  "n": 8,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/autonomous_engine.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 95,
+  "bytes": 2317,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/build_edges.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 34,
+  "bytes": 823,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/build_graph.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 18,
+  "bytes": 420,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 2,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/cases.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 42,
+  "bytes": 1006,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "brain.phpbak",
+   "legaisee_diagnostic.phpbak",
+   "SYSTEM_LEGEND.md"
+  ],
+  "n": 90,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/cluster_insights.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 26,
+  "bytes": 741,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/compare_networks.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 37,
+  "bytes": 811,
+  "storage": "JSON",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/compressor.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "ZERO-REF",
+  "lines": 43,
+  "bytes": 1011,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/create_network.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 22,
+  "bytes": 473,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/dashboard.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 8,
+  "bytes": 259,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "brain.phpbak",
+   "legaisee_diagnostic.phpbak",
+   "OS Contents.txt",
+   "SYSTEM_LEGEND.md"
+  ],
+  "n": 61,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/debug_tasks.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 13,
+  "bytes": 267,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/dossier.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 30,
+  "bytes": 748,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "OS Contents.txt",
+   "LEGAiSEE Busines Plan/LEGAiSEE Operating Manual_GPT Chat.md",
+   "LEGAiSEE Busines Plan/009_LEGAiSEE Operating Manual_GPT Chat.md",
+   "KnowledgeSystem/# 400  Knowledge Graph/0401_SERIES_400_EDGES.md"
+  ],
+  "n": 26,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/dossier_v2.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 42,
+  "bytes": 1064,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/event_emit.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 36,
+  "bytes": 860,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/feedback.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 26,
+  "bytes": 704,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md",
+   "engine/entity_extraction_engine.php.bak-20261027",
+   "LEGAiSEE Busines Plan/LEGAiSEE Operating Manual_GPT Chat.md",
+   "LEGAiSEE Busines Plan/009_LEGAiSEE Operating Manual_GPT Chat.md"
+  ],
+  "n": 13,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/forecast.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 43,
+  "bytes": 903,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "LEGAiSEE Busines Plan/011_LEGAiSEE Wiring Audit-Pass 7.md",
+   "LEGAiSEE Busines Plan/LEGAiSEE Operating Manual_GPT Chat.md",
+   "LEGAiSEE Busines Plan/009_LEGAiSEE Operating Manual_GPT Chat.md"
+  ],
+  "n": 4,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/generate_tasks.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 37,
+  "bytes": 785,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/get_cases.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 27,
+  "bytes": 693,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "brain.phpbak"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/get_clients.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 30,
+  "bytes": 986,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "brain.phpbak",
+   "normalized/8cdd9251de98033ed09d415a1bc68584.txt",
+   "normalized/9e421ae3e39e39b23cbc95e7251dbe8e.txt"
+  ],
+  "n": 5,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/graph_ranker.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "ZERO-REF",
+  "lines": 24,
+  "bytes": 660,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/insights.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 48,
+  "bytes": 1272,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "clients/CLIENT JSON SCHEMA.md",
+   "clients/testclient/project/sessiondig001/raw/GPT Server Start 4-14-26.txt"
+  ],
+  "n": 57,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/investigator.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 42,
+  "bytes": 958,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "KnowledgeSystem/# 0000_SERIES-000-Governance/0002_KNOWLEDGE_SYSTEM_BUILD_ORDER.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/learn.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 56,
+  "bytes": 1178,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "SYSTEM_LEGEND.md",
+   "LEGAiSEE Busines Plan/003_LEGAiSEE Operating Manual \u2014 Part 3-Staff Avatars and Role Training.md",
+   "LEGAiSEE Busines Plan/002_LEGAiSEE Operating Manual_Part 2-Staffing and Workload Model.md"
+  ],
+  "n": 7,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/memory_store.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 28,
+  "bytes": 609,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/memory_weight.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 36,
+  "bytes": 839,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/mesh.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 35,
+  "bytes": 685,
+  "storage": "JSON",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 3,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/network_add_node.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "A1-RESCUED",
+  "lines": 44,
+  "bytes": 1206,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/patterns.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 34,
+  "bytes": 775,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "OS Contents.txt",
+   "SYSTEM_LEGEND.md",
+   "modules/dig_review_module.php.bak-20261027",
+   "modules/dig_review_module.php.bak-20261028"
+  ],
+  "n": 59,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/predictor.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 51,
+  "bytes": 1070,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/recommendations.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 18,
+  "bytes": 462,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md",
+   "README.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "clients/testclient/project/sessiondig001/raw/GPT Server Start 4-14-26.txt"
+  ],
+  "n": 57,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/run_worker.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 42,
+  "bytes": 977,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "brain.phpbak",
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "RUNBOOK-server-steps.md"
+  ],
+  "n": 3,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/summary.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 35,
+  "bytes": 932,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "legaisee_diagnostic.phpbak",
+   "OS Contents.txt",
+   "SYSTEM_LEGEND.md",
+   "clients/testclient/project/sessiondig001/raw/GPT Server Start 4-14-26.txt"
+  ],
+  "n": 60,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "api/v8/widget_registry.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 52,
+  "bytes": 1279,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "bootstrap.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 3,
+  "bytes": 77,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "legaisee_diagnostic.phpbak",
+   "full_inventory3.txt",
+   "tree.txt",
+   "tree.md"
+  ],
+  "n": 65,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "cli/chain_evolver.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 119,
+  "bytes": 2688,
+  "storage": "JSON",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "cli/chain_generator.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 125,
+  "bytes": 2943,
+  "storage": "JSON",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "components/card.php",
+  "status": "DEAD",
+  "verdict": "LIVE-CODE",
+  "lines": 29,
+  "bytes": 623,
+  "storage": "NONE",
+  "path_hits": [
+   "style_test_Colors.html"
+  ],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0920_BUILD_ORDER.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0910_CANONICAL_FILE_REGISTRY.md",
+   "legaisee_diagnostic.phpbak",
+   "SYSTEM_LEGEND.md"
+  ],
+  "n": 35,
+  "dup": [
+   "ui/components/card.php"
+  ],
+  "defs": 0
+ },
+ {
+  "path": "components/compare.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 24,
+  "bytes": 593,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "modules/search_module.php.bak-20261027",
+   "modules/search_module.php.bak-20261028"
+  ],
+  "n": 24,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "components/ui_card.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 28,
+  "bytes": 628,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "components/ui_folder_tree.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 22,
+  "bytes": 444,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "components/ui_tag.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 12,
+  "bytes": 205,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "create_findings_tables.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 86,
+  "bytes": 3369,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 2
+ },
+ {
+  "path": "create_review_flags.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 22,
+  "bytes": 758,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 1,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "create_session.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 73,
+  "bytes": 1635,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 2,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "create_test_data.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 23,
+  "bytes": 439,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 2,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "database/migrations/010_create_tree_nodes_table.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 31,
+  "bytes": 1187,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [
+   "database/migrations/010_create_tree_nodes_tablebk.php"
+  ],
+  "defs": 1
+ },
+ {
+  "path": "database/migrations/010_create_tree_nodes_tablebk.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 31,
+  "bytes": 1187,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [
+   "database/migrations/010_create_tree_nodes_table.php"
+  ],
+  "defs": 1
+ },
+ {
+  "path": "db_verify.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 32,
+  "bytes": 1020,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "diagnostics2.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 18,
+  "bytes": 812,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "embed_generate.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 59,
+  "bytes": 1846,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 2,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "engine/case_manager.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 25,
+  "bytes": 562,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 2,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "engine/client_manager.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 42,
+  "bytes": 833,
+  "storage": "JSON",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 2,
+  "dup": [],
+  "defs": 2
+ },
+ {
+  "path": "engine/cross_case_learning_compiler.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 187,
+  "bytes": 5007,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "engine/dashboard_engine.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 30,
+  "bytes": 862,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 2,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "engine/decision_engine_v2.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 156,
+  "bytes": 4549,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "engine/decision_governor.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 65,
+  "bytes": 1492,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "engine/entity_extraction_engine.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "A1-RESCUED",
+  "lines": 353,
+  "bytes": 14401,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "engine/execution_feedback_engine.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 169,
+  "bytes": 4534,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "engine/execution_router.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 161,
+  "bytes": 4176,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 2,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "engine/executive_dashboard_engine.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 47,
+  "bytes": 1306,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "engine/goal_alignment.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 29,
+  "bytes": 672,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "engine/goal_arbitration_engine.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 133,
+  "bytes": 3097,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 3
+ },
+ {
+  "path": "engine/goal_conflict_resolver.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 57,
+  "bytes": 1171,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 2
+ },
+ {
+  "path": "engine/goal_engine.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 50,
+  "bytes": 1180,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 1,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "engine/goal_generator.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 94,
+  "bytes": 2489,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "engine/governance_policy_engine.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 56,
+  "bytes": 1394,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "engine/graph_data.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 76,
+  "bytes": 1828,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "engine/graph_engine.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 22,
+  "bytes": 539,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 1,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "engine/graph_mutation_engine.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 83,
+  "bytes": 2047,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "engine/hierarchy_of_truth_engine.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "A1-RESCUED",
+  "lines": 175,
+  "bytes": 6782,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "engine/insight_mutator.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 20,
+  "bytes": 433,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "engine/long_horizon_planner.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 111,
+  "bytes": 2718,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 4
+ },
+ {
+  "path": "engine/memory_evolution_engine.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 54,
+  "bytes": 1266,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "engine/pattern_stability.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 39,
+  "bytes": 800,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "engine/policy_enforcement_engine.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 194,
+  "bytes": 5600,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "engine/system_behavior_spec.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 38,
+  "bytes": 982,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "engine/system_recommendation_engine.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 183,
+  "bytes": 5915,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "engine/temporal_memory_engine.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 86,
+  "bytes": 2105,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 5
+ },
+ {
+  "path": "export_report.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 116,
+  "bytes": 2446,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "tree.txt",
+   "tree.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 4,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ingest.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 44,
+  "bytes": 1138,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "tree.txt",
+   "tree.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 65,
+  "dup": [
+   "ingest2.php"
+  ],
+  "defs": 0
+ },
+ {
+  "path": "ingest2.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 44,
+  "bytes": 1138,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "tree.txt",
+   "tree.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 3,
+  "dup": [
+   "ingest.php"
+  ],
+  "defs": 0
+ },
+ {
+  "path": "intelligence.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "LIVE-CODE",
+  "lines": 146,
+  "bytes": 3765,
+  "storage": "NONE",
+  "path_hits": [
+   "style_test_Colors.html",
+   "engine/closed_loop.js"
+  ],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "tree.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "SYSTEM_LEGEND.md"
+  ],
+  "n": 129,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "kernel/bootstrap.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 3,
+  "bytes": 45,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/LEGAiSEE_PROJECT_MANAGER_HANDOFF_V1.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0920_BUILD_ORDER.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0910_CANONICAL_FILE_REGISTRY.md",
+   "LEGAiSEE Busines Plan/005_LEGAiSEE OM_PART 5 \u2014 EXISTING COMMAND CENTER CAPABILITY AUDIT.md"
+  ],
+  "n": 9,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "kernel/cluster_intelligence.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 97,
+  "bytes": 2403,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 2
+ },
+ {
+  "path": "kernel/folder_engine.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 47,
+  "bytes": 1042,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 1,
+  "dup": [],
+  "defs": 3
+ },
+ {
+  "path": "kernel/graph_auto_builder.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 88,
+  "bytes": 2154,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 3
+ },
+ {
+  "path": "kernel/graph_engine.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 70,
+  "bytes": 1890,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "kernel/ingestion_pipeline.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "A1-RESCUED",
+  "lines": 80,
+  "bytes": 2261,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "kernel/kernel.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "A1-RESCUED",
+  "lines": 19,
+  "bytes": 481,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "kernel/kernel_contract.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 5,
+  "bytes": 218,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 1,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "kernel/model/page_model.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 15,
+  "bytes": 384,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "kernel/module_contract.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 14,
+  "bytes": 375,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 2,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "kernel/nav_engine.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "A1-RESCUED",
+  "lines": 35,
+  "bytes": 704,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "kernel/task_generator.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 39,
+  "bytes": 1039,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "legaisee_prospects.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 677,
+  "bytes": 72387,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "tree.txt",
+   "tree.md"
+  ],
+  "n": 3,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "lib/legaisee_model.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 313,
+  "bytes": 6220,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 2,
+  "dup": [],
+  "defs": 16
+ },
+ {
+  "path": "lib/semantic_diff_engine.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "A1-RESCUED",
+  "lines": 246,
+  "bytes": 6929,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "load_module.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 65,
+  "bytes": 1502,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "load_sets.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 19,
+  "bytes": 371,
+  "storage": "JSON",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "tree.txt",
+   "tree.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 4,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "modules/001_create_tree_nodes.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 39,
+  "bytes": 1133,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "modules/utils/debug_helpers.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 16,
+  "bytes": 297,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 2
+ },
+ {
+  "path": "modules/utils/file_helpers.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 16,
+  "bytes": 438,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 2
+ },
+ {
+  "path": "modules/utils/json_helpers.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 1,
+  "bytes": 2,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "modules/utils/uic_v2.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 102,
+  "bytes": 2507,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 3
+ },
+ {
+  "path": "pages/goals.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 1,
+  "bytes": 36,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md",
+   "full_inventory3.txt",
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0030_GLOSSARY.md"
+  ],
+  "n": 20,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "pages/home.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 1,
+  "bytes": 41,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "RUNBOOK-server-steps.md",
+   "engine/entity_extraction_engine.php.bak-20261027",
+   "LEGAiSEE Busines Plan/LEGAiSEE Operating Manual_GPT Chat.md",
+   "LEGAiSEE Busines Plan/004_LEGAiSEE Operating Manual \u2014 Part 4-Software, Tools, and AI Capability Map.md"
+  ],
+  "n": 10,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "pages/logs.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 1,
+  "bytes": 35,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "SYSTEM_LEGEND.md",
+   "full_inventory3.txt",
+   "LEGAiSEE Busines Plan/003_LEGAiSEE Operating Manual \u2014 Part 3-Staff Avatars and Role Training.md",
+   "LEGAiSEE Busines Plan/005_LEGAiSEE OM_PART 5 \u2014 EXISTING COMMAND CENTER CAPABILITY AUDIT.md"
+  ],
+  "n": 30,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "pages/network_view.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 54,
+  "bytes": 1185,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "pages/networks.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 1,
+  "bytes": 52,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "RUNBOOK-server-steps.md",
+   "LEGAiSEE Busines Plan/011_LEGAiSEE Wiring Audit-Pass 7.md"
+  ],
+  "n": 6,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "pages/reasoning.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 1,
+  "bytes": 47,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "LEGAiSEE Busines Plan/004_LEGAiSEE Operating Manual \u2014 Part 4-Software, Tools, and AI Capability Map.md",
+   "KnowledgeSystem/# 400  Knowledge Graph/0403_SERIES_400_MEMORY.md",
+   "KnowledgeSystem/# 400  Knowledge Graph/0404_SERIES_400_TEMPORAL_INTELLIGENCE.md",
+   "KnowledgeSystem/# 400  Knowledge Graph/0406_SERIES_400_REASONING.md"
+  ],
+  "n": 38,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "pages/search.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 103,
+  "bytes": 2263,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "legaisee_diagnostic.phpbak",
+   "SYSTEM_LEGEND.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md",
+   "RUNBOOK-server-steps.md"
+  ],
+  "n": 60,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "pages/shell_template.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 200,
+  "bytes": 10835,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "pages/test/shell_module_test.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 293,
+  "bytes": 13622,
+  "storage": "JSON",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 2
+ },
+ {
+  "path": "parser.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 113,
+  "bytes": 2676,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "tree.txt",
+   "tree.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 6,
+  "dup": [],
+  "defs": 2
+ },
+ {
+  "path": "peek.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 3,
+  "bytes": 126,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "prospect.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "A1-RESCUED",
+  "lines": 659,
+  "bytes": 29959,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "response.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 48,
+  "bytes": 1219,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "tree.txt",
+   "tree.md",
+   "ProjectManager/governance/PROJECT_MANAGER_BIBLE/0999_SESSION_HANDOFF.md"
+  ],
+  "n": 75,
+  "dup": [
+   "api/v8/_response.php"
+  ],
+  "defs": 2
+ },
+ {
+  "path": "save_set.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "PROSE-ONLY",
+  "lines": 39,
+  "bytes": 1000,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 2,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "semantic_engine.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 59,
+  "bytes": 1234,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "tree.txt",
+   "tree.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 4,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "session.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 170,
+  "bytes": 3946,
+  "storage": "JSON",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "tree.txt",
+   "tree.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 77,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "temp_dashboard.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 284,
+  "bytes": 6683,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 3,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "test_db.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 9,
+  "bytes": 122,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "test_excavation_module.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 15,
+  "bytes": 475,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "test_extraction_fix.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "ZERO-REF",
+  "lines": 59,
+  "bytes": 2955,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "test_graph.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 14,
+  "bytes": 362,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 2,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "test_graph_fix.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "ZERO-REF",
+  "lines": 78,
+  "bytes": 3018,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "test_hierarchy_of_truth.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 96,
+  "bytes": 4128,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 4
+ },
+ {
+  "path": "test_kernel.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 13,
+  "bytes": 332,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "test_modules.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 39,
+  "bytes": 821,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "tree.txt",
+   "tree.md"
+  ],
+  "n": 3,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "test_ui.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 303,
+  "bytes": 6010,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 7
+ },
+ {
+  "path": "test_visual.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 178,
+  "bytes": 3861,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "tree.txt",
+   "tree.md"
+  ],
+  "n": 3,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "tools/build_cluster_summaries.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 124,
+  "bytes": 3600,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "tools/build_cluster_summaries_ai.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 116,
+  "bytes": 2862,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "tools/build_clusters.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 78,
+  "bytes": 1857,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "tools/build_relations.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 111,
+  "bytes": 2775,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "tools/detect_cluster_opportunities.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 136,
+  "bytes": 3777,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "tools/extract_cluster_insights.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 146,
+  "bytes": 4064,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "tools/name_clusters.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 109,
+  "bytes": 2588,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "ui/compare_engine.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 55,
+  "bytes": 1497,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 5
+ },
+ {
+  "path": "ui/components/card.php",
+  "status": "DEAD",
+  "verdict": "LIVE-CODE",
+  "lines": 29,
+  "bytes": 623,
+  "storage": "NONE",
+  "path_hits": [
+   "style_test_Colors.html"
+  ],
+  "prose_hits": [
+   "legaisee_diagnostic.phpbak",
+   "SYSTEM_LEGEND.md",
+   "legaisee_sqlite_viewer.phpbak",
+   "modules/dig_review_module.php.bak-20261027"
+  ],
+  "n": 33,
+  "dup": [
+   "components/card.php"
+  ],
+  "defs": 0
+ },
+ {
+  "path": "ui/components/ingest_exec snap.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 213,
+  "bytes": 4750,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [
+   "ui/components/ingestforshell.php"
+  ],
+  "defs": 0
+ },
+ {
+  "path": "ui/components/ingestforshell.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 213,
+  "bytes": 4750,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [
+   "ui/components/ingest_exec snap.php"
+  ],
+  "defs": 0
+ },
+ {
+  "path": "ui/file_explorer.php",
+  "status": "DEAD",
+  "verdict": "ZERO-REF",
+  "lines": 32,
+  "bytes": 833,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 1
+ },
+ {
+  "path": "ui/layout.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "A1-RESCUED",
+  "lines": 221,
+  "bytes": 4211,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "ui/ui_engine.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "A1-RESCUED",
+  "lines": 43,
+  "bytes": 1091,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "view_ingest.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 232,
+  "bytes": 4433,
+  "storage": "MYSQL",
+  "path_hits": [],
+  "prose_hits": [
+   "full_inventory3.txt",
+   "tree.txt",
+   "tree.md",
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 6,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "views/compare_view.php",
+  "status": "ORPHAN-WEB",
+  "verdict": "ZERO-REF",
+  "lines": 140,
+  "bytes": 3346,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 0,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "views/graph_view.php",
+  "status": "REFERENCED-DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 313,
+  "bytes": 9223,
+  "storage": "JSON",
+  "path_hits": [],
+  "prose_hits": [
+   "WORKORDER-JSON-SQLite-to-MySQL.md"
+  ],
+  "n": 1,
+  "dup": [],
+  "defs": 0
+ },
+ {
+  "path": "views/ingest_view.php",
+  "status": "DEAD",
+  "verdict": "PROSE-ONLY",
+  "lines": 12,
+  "bytes": 363,
+  "storage": "NONE",
+  "path_hits": [],
+  "prose_hits": [],
+  "n": 2,
+  "dup": [],
+  "defs": 0
+ }
+]

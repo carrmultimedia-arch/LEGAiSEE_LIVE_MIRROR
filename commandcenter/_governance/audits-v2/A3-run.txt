@@ -1,0 +1,298 @@
+D:\_Legaisee\LEGAiSEE_LIVE_MIRROR\commandcenter\_governance\audits-v2\a3_data.py:177: DeprecationWarning: 'maxsplit' is passed as positional argument
+  body = re.split(r'\bFROM\b', s, 1, flags=re.I)[0]
+==============================================================================
+SECTION 1 — SCHEMA (51 tables)
+==============================================================================
+engines: {'InnoDB': 20, 'MyISAM': 31}
+
+table                              engine     cols  stmts   rows  pk
+activity_log                       InnoDB        7      0      0  -
+artifacts                          MyISAM       10      0      0  -
+attachments                        InnoDB        9      0      0  -
+audit_logs                         InnoDB        5      0      0  -
+cases                              MyISAM        9      1      1  -
+chat_ingest                        InnoDB        6      0      0  -
+clients                            MyISAM        8      1      3  -
+clusters                           MyISAM        6      0      0  -
+conversations                      MyISAM        8      0      0  -
+documents                          InnoDB        6      1      1  -
+entities                           MyISAM        6      6   2433  -
+entity_aliases                     MyISAM        5      3   2495  -
+events                             MyISAM        5      0      0  -
+files                              MyISAM        6      1      2  -
+finding_sources                    InnoDB        7      0      0  -
+findings                           InnoDB        8      0      0  -
+folders                            MyISAM        5      1      5  -
+goal_proposals                     MyISAM        6      0      0  -
+intake_queue                       MyISAM       17      0      0  -
+memory_chunks                      MyISAM        7      0      0  -
+memory_domains                     MyISAM        5      1      3  -
+memory_ingest                      MyISAM       11     13     19  -
+memory_ingests                     MyISAM        7      0      0  -
+node_attributes                    InnoDB        6      0      0  -
+node_details                       MyISAM        5      0      0  -
+page                               MyISAM       14      1     16  -
+page_content                       MyISAM        4      3     16  -
+payments                           MyISAM       15      0      0  -
+permissions                        InnoDB        5      0      0  -
+pm_comments                        InnoDB        6      0      0  -
+pm_milestones                      InnoDB        8      0      0  -
+pm_notes                           InnoDB        6      0      0  -
+pm_projects                        InnoDB       11      1      1  -
+pm_task_ingests                    MyISAM        2      0      0  -
+pm_tasks                           InnoDB       11      1      6  -
+processing_queue                   MyISAM        7      0      0  -
+projects                           MyISAM        8      1      7  -
+prompts                            MyISAM        6      0      0  -
+prospect_ingests                   InnoDB        9      1     26  -
+relationships                      MyISAM       10     16   2721  -
+relationships_bak_20261027         MyISAM       10     16   2721  -
+reports                            MyISAM        4      0      0  -
+review_flags                       MyISAM        8      0      0  -
+role_permissions                   InnoDB        2      0      0  -
+roles                              InnoDB        5      0      0  -
+saved_views                        MyISAM        7      0      0  -
+task_sessions                      MyISAM        4      0      0  -
+tasks                              MyISAM        7      0      0  -
+tree_nodes                         InnoDB       11      1      9  -
+user_roles                         InnoDB        2      0      0  -
+users                              InnoDB        7      1      1  -
+
+total data rows in dump: 10486
+tables with NO rows (32): activity_log, artifacts, attachments, audit_logs, chat_ingest, clusters, conversations, events, finding_sources, findings, goal_proposals, intake_queue, memory_chunks, memory_ingests, node_attributes, node_details, payments, permissions, pm_comments, pm_milestones, pm_notes, pm_task_ingests, processing_queue, prompts, reports, review_flags, role_permissions, roles, saved_views, task_sessions, tasks, user_roles
+
+==============================================================================
+SECTION 2 — SQL IN REACHABLE CODE
+==============================================================================
+
+-- api/search_load.php
+   :98   SELECT title, source_type AS source, content FROM documents WHERE id = {$id}
+   :105  SELECT filename, filepath, filetype, filesize FROM files WHERE id = {$id}
+        !! select cols not in `files`: ['filename', 'filepath', 'filetype', 'filesize']
+   :112  SELECT name, type, confidence FROM entities WHERE id = {$id}
+        !! select cols not in `entities`: ['name', 'type']
+   :119  SELECT r.type, r.confidence, r.source_text, e1.name AS entity_a, e2.name AS entity_b FROM relationships r LEFT JOIN entities e1 ON e1.id = r.entity_a_…
+   :133  SELECT session_title AS session_label, source_ai AS platform, project_tag, word_count, created_at, raw_transcript AS raw_text FROM memory_ingest WHERE…
+
+-- engine/entity_extraction_engine.php
+   :184  SELECT id FROM entities WHERE normalized_hash = ?
+   :189  INSERT INTO entities (entity_type, canonical_name, normalized_hash, confidence, created_at) VALUES (?, ?, ?, ?, NOW())
+   :203  SELECT id FROM entity_aliases WHERE entity_id = ? AND alias = ?
+   :207  INSERT INTO entity_aliases (entity_id, alias, source_type, confidence) VALUES (?, ?, ?, ?)
+   :262  SELECT id FROM relationships WHERE from_entity_id = ? AND to_entity_id = ? AND relation_type = ?
+   :269  INSERT INTO relationships (from_entity, to_entity, relation_type, strength, context, from_entity_id, to_entity_id, created_at) VALUES (?, ?, ?, ?, ?, …
+
+-- lib/semantic_diff_engine.php
+   :124  SELECT id, title, ai_summary, ai_tags, related_ids, cluster_id, embedding FROM page WHERE id = :id LIMIT 1
+
+-- modules/anomaly_engine_module.php
+   :16   SELECT e.* FROM entities e LEFT JOIN relationships r ON e.id = r.from_entity_id OR e.id = r.to_entity_id WHERE r.id IS NULL LIMIT 50
+   :22   SELECT e.id, e.canonical_name, COUNT(r.id) AS degree FROM entities e LEFT JOIN relationships r ON e.id = r.from_entity_id OR e.id = r.to_entity_id GRO…
+   :29   SELECT * FROM relationships WHERE strength > 0.95 AND relation_type IN ('weak_signal','uncertain','inferred') ORDER BY strength DESC LIMIT 50
+   :36   SELECT e.id, e.canonical_name, COUNT(a.id) AS alias_count FROM entities e JOIN entity_aliases a ON e.id = a.entity_id GROUP BY e.id HAVING alias_count…
+   :42   SELECT r1.from_entity, r1.to_entity, r1.relation_type AS type_a, r2.relation_type AS type_b FROM relationships r1 JOIN relationships r2 ON r1.from_ent…
+
+-- modules/client_view_module.php
+   :10   SELECT * FROM tree_nodes WHERE node_id = ? AND node_type = 'client'
+   :15   SELECT * FROM cases WHERE node_id = ? ORDER BY created_at DESC LIMIT 1
+   :19   SELECT * FROM payments WHERE node_id = ? ORDER BY created_at DESC
+   :23   SELECT * FROM payments WHERE node_id = ? ORDER BY created_at DESC LIMIT 1
+   :27   SELECT * FROM processing_queue WHERE case_id = ? AND status = 'pending' ORDER BY id ASC LIMIT 1
+   :32   SELECT rf.id, rf.source_table, rf.source_id, rf.context FROM review_flags rf WHERE rf.status = 'confirmed' AND rf.context = :node_id ORDER BY rf.revie…
+   :49   SELECT canonical_name, entity_type FROM entities WHERE id = {$flag['source_id']}
+   :56   SELECT r.relation_type, e1.canonical_name AS entity_a, e2.canonical_name AS entity_b FROM relationships r LEFT JOIN entities e1 ON e1.id = r.from_enti…
+   :90   SELECT id, business_name, status, created_at FROM cases WHERE node_id = ?
+   :101  SELECT id, amount, status, created_at, paid_at FROM payments WHERE node_id = ?
+
+-- modules/clients_module.php
+   :14   SELECT id, client_uid, name, industry, city, state, status FROM clients ORDER BY id DESC LIMIT 20
+
+-- modules/cluster_module.php
+   :9    SELECT * FROM clusters WHERE id = ?
+   :13   SELECT * FROM page WHERE cluster_id = ?
+
+-- modules/cockpit_module.php
+   :23   SELECT COUNT(*) FROM clients
+   :24   SELECT COUNT(*) FROM cases
+   :28   SELECT * FROM processing_queue WHERE task_type = 'recommendation' AND status = 'pending' ORDER BY id DESC LIMIT 5
+   :37   SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'prospect_ingests' LIMIT 1
+        !! table `INFORMATION_SCHEMA` NOT IN SCHEMA
+   :39   SELECT prospect_name, ingest_number, authority_score, created_at FROM prospect_ingests ORDER BY id DESC LIMIT 5
+
+-- modules/dig_review_module.php
+   :59   UPDATE review_flags SET status = :status, operator_note = :note, reviewed_at = CURRENT_TIMESTAMP WHERE id = :id
+   :81   SELECT e.id FROM entities e LEFT JOIN review_flags rf ON rf.source_table = 'entities' AND rf.source_id = e.id WHERE rf.id IS NULL
+   :87   INSERT INTO review_flags (source_table, source_id, context, status) VALUES ('entities', :sid, (SELECT context FROM entities WHERE id = :sid2), 'pendin…
+        !! insert cols not in `entities`: ['source_table', 'source_id', 'context', 'status']
+   :98   SELECT r.id FROM relationships r LEFT JOIN review_flags rf ON rf.source_table = 'relationships' AND rf.source_id = r.id WHERE rf.id IS NULL
+   :104  INSERT INTO review_flags (source_table, source_id, context, status) VALUES ('relationships', :sid, (SELECT context FROM relationships WHERE id = :sid2…
+        !! insert cols not in `relationships`: ['source_table', 'source_id', 'status']
+   :226  SELECT rf.id, rf.source_table, rf.source_id, rf.status, rf.operator_note, rf.context, rf.reviewed_at, rf.created_at FROM review_flags rf {$where_sql} …
+   :254  SELECT canonical_name, entity_type, confidence FROM entities WHERE id = {$flag['source_id']}
+   :260  SELECT r.relation_type, r.strength, e1.canonical_name AS entity_a, e2.canonical_name AS entity_b FROM relationships r LEFT JOIN entities e1 ON e1.id =…
+   :273  SELECT title, source_type AS source FROM documents WHERE id = {$flag['source_id']}
+
+-- modules/entity_resolution_module.php
+   :25   SELECT * FROM entities WHERE id = ? LIMIT 1
+   :31   SELECT * FROM entities WHERE normalized_hash = ? OR canonical_name LIKE ? LIMIT 50
+   :58   SELECT * FROM entities ORDER BY created_at DESC LIMIT 500
+   :150  SELECT COUNT(*) FROM entities
+   :151  SELECT COUNT(*) FROM entity_aliases
+
+-- modules/graph_module.php
+   :34   SELECT id, canonical_name, entity_type FROM entities WHERE canonical_name = ? LIMIT 1
+   :64   SELECT to_entity_id, strength, relation_type FROM relationships WHERE from_entity_id = ? AND to_entity_id IS NOT NULL
+   :75   SELECT id FROM entities WHERE canonical_name = ? LIMIT 1
+   :114  SELECT COUNT(*) FROM entities
+   :115  SELECT COUNT(*) FROM relationships
+
+-- modules/ingest_module.php
+   :40   INSERT INTO memory_ingest (session_title, project_tag, source_ai, domain_id, project_id, raw_transcript, word_count, context, created_at, processed) V…
+   :103  INSERT INTO documents (title, content, source_type, metadata, created_at) VALUES (:t, :c, 'upload', :m, NOW())
+   :129  DELETE FROM memory_ingest WHERE id = {$del_id}
+   :142  SELECT COUNT(*) FROM memory_ingest
+   :143  SELECT COALESCE(SUM(word_count),0) FROM memory_ingest
+   :144  SELECT COUNT(*) FROM files
+   :145  SELECT COUNT(*) FROM documents
+   :151  SELECT id, name FROM projects ORDER BY name
+   :152  SELECT id, name FROM memory_domains ORDER BY name
+   :172  SELECT id, session_label, project_tag, platform, word_count, created_at FROM memory_ingest ORDER BY created_at DESC LIMIT 30
+        !! select cols not in `memory_ingest`: ['session_label', 'platform']
+
+-- modules/ingest_view_module.php
+   :12   SELECT id, session_title AS session_label, source_ai AS platform, created_at FROM memory_ingest ORDER BY id DESC LIMIT 20
+
+-- modules/insight_module.php
+   :41   INSERT INTO memory_ingest (session_title, project_tag, source_ai, domain_id, project_id, raw_transcript, word_count, context, created_at, processed) V…
+   :87   INSERT INTO documents (title, content, source_type, metadata, created_at) VALUES (:t, :c, 'upload', :m, NOW())
+   :104  DELETE FROM memory_ingest WHERE id = :id
+   :118  SELECT COUNT(*) FROM memory_ingest
+   :119  SELECT COALESCE(SUM(word_count),0) FROM memory_ingest
+   :120  SELECT COUNT(*) FROM files
+   :121  SELECT COUNT(*) FROM documents
+   :127  SELECT id, name FROM projects ORDER BY name
+   :128  SELECT id, name FROM memory_domains ORDER BY name
+   :135  SELECT id, session_title AS session_label, project_tag, source_ai AS platform, word_count, processed, created_at FROM memory_ingest ORDER BY created_a…
+
+-- modules/payment_module.php
+   :53   INSERT INTO payments (node_id, case_id, report_id, amount, currency, status, payment_method, tier) VALUES (:node_id, :case_id, :report_id, :amount, 'u…
+   :91   UPDATE payments SET stripe_checkout_session_id = :session_id WHERE id = :id
+   :122  SELECT * FROM payments WHERE id = :id AND status = 'pending'
+   :151  UPDATE payments SET stripe_checkout_session_id = :session_id WHERE id = :id
+   :180  SELECT * FROM payments WHERE stripe_checkout_session_id = :session_id
+   :185  UPDATE payments SET status = 'paid', stripe_payment_intent_id = :payment_intent_id, paid_at = CURRENT_TIMESTAMP WHERE id = :id
+   :214  SELECT * FROM payments WHERE id = :id
+   :262  UPDATE payments SET email_sent_client = 1 WHERE id = :id
+   :277  UPDATE payments SET email_sent_john = 1 WHERE id = :id
+
+-- modules/pm_module.php
+   :74   SELECT COUNT(*) FROM projects WHERE slug = :slug
+   :104  INSERT INTO projects (name, slug, description, status, created_at) VALUES (:name, :slug, :description, :status, NOW())
+   :126  UPDATE projects SET status = :status WHERE id = :id
+   :130  Update failed:
+        !! table `failed` NOT IN SCHEMA
+   :153  SELECT COUNT(*) FROM projects WHERE id = :id
+   :165  INSERT INTO pm_tasks (project_id, title, detail, status, priority, due_date, blocked_reason, created_at) VALUES (:project_id, :title, :detail, :status…
+   :184  INSERT INTO task_sessions (task_id, session_id, linked_at) VALUES (:task_id, :session_id, NOW())
+   :193  UPDATE memory_ingest SET processed = 1 WHERE id = :id
+   :216  INSERT INTO task_sessions (task_id, session_id, linked_at) VALUES (:task_id, :session_id, NOW())
+   :225  UPDATE memory_ingest SET processed = 1 WHERE id = :id
+   :239  DELETE FROM task_sessions WHERE link_id = :id
+   :258  SELECT COUNT(*) FROM projects WHERE id = :id
+   :265  UPDATE pm_tasks SET title = :title, detail = :detail, status = :status, priority = :priority, due_date = :due_date, project_id = :project_id, blocked_…
+   :284  Update failed:
+        !! table `failed` NOT IN SCHEMA
+   :296  UPDATE pm_tasks SET status = :status WHERE id = :id
+   :300  Update failed:
+        !! table `failed` NOT IN SCHEMA
+   :309  DELETE FROM pm_tasks WHERE id = :id
+   :322  SELECT id, name, status FROM projects ORDER BY name
+   :326  SELECT project_id, COUNT(*) AS c FROM pm_tasks GROUP BY project_id
+   :337  SELECT id, session_title, source_ai FROM memory_ingest WHERE processed = 0 ORDER BY created_at DESC LIMIT 20
+   :353  SELECT status, COUNT(*) AS c FROM pm_tasks
+   :370  SELECT t.id, t.title, t.detail, t.status, t.priority, t.due_date, t.project_id, t.blocked_reason, p.name AS project_name FROM pm_tasks t LEFT JOIN pro…
+   :386  SELECT ts.link_id, ts.task_id, ts.session_id, ts.linked_at, mi.session_title, mi.source_ai FROM task_sessions ts LEFT JOIN memory_ingest mi ON mi.id =…
+
+-- modules/predictive_link_module_v1.php
+   :24   SELECT * FROM entities
+   :30   SELECT * FROM relationships
+
+-- modules/report_module.php
+   :30   SELECT rf.source_table, rf.source_id, rf.context, rf.operator_note FROM review_flags rf WHERE rf.status = 'confirmed' AND rf.context = :client_id
+   :46   SELECT * FROM cases WHERE id = ?
+   :50   SELECT * FROM clients WHERE id = ?
+
+-- modules/search_module.php
+   :66   SELECT id, title, source_type AS source FROM documents WHERE title LIKE :q OR source_type LIKE :q OR content LIKE :q LIMIT 20
+   :83   SELECT id, filename, filetype FROM files WHERE filename LIKE :q LIMIT 20
+        !! select cols not in `files`: ['filename', 'filetype']
+   :99   SELECT id, name, type, confidence FROM entities WHERE name LIKE :q LIMIT 20
+        !! select cols not in `entities`: ['name', 'type']
+   :115  SELECT r.id, r.type, r.confidence, e1.name AS a, e2.name AS b FROM relationships r LEFT JOIN entities e1 ON e1.id = r.entity_a_id LEFT JOIN entities e…
+   :136  SELECT id, session_title AS session_label, project_tag, source_ai AS platform, word_count FROM memory_ingest WHERE session_title LIKE :q OR project_ta…
+
+-- modules/semantic_cluster_module.php
+   :24   SELECT * FROM entities
+   :31   SELECT * FROM relationships
+
+-- modules/view_module.php
+   :23   SELECT p.title, pc.content FROM page p JOIN page_content pc ON p.id = pc.page_id WHERE p.id = :id LIMIT 1
+   :38   SELECT id, title FROM page ORDER BY id DESC LIMIT 200
+
+-- prospect.php
+   :48   SELECT id, ingest_number, authority_score, signal_count, status, created_at, dossier_id FROM prospect_ingests WHERE prospect_key = :key ORDER BY inges…
+   :71   UPDATE prospect_ingests SET status = 'archived' WHERE prospect_key = :key AND status = 'current'
+   :79   SELECT COALESCE(MAX(ingest_number), 0) + 1 FROM prospect_ingests WHERE prospect_key = :key
+   :89   INSERT INTO prospect_ingests (prospect_key, prospect_name, ingest_number, dossier_id, authority_score, signal_count, status) VALUES (:key, :name, :num…
+
+==============================================================================
+SECTION 3 — MISMATCHES (11)
+==============================================================================
+api/search_load.php                            :105  SELECT-COL filename,filepath,filetype,filesize files
+api/search_load.php                            :112  SELECT-COL name,type                entities
+modules/cockpit_module.php                     :37   TABLE      INFORMATION_SCHEMA       
+modules/dig_review_module.php                  :87   INSERT-COL source_table,source_id,context,status entities
+modules/dig_review_module.php                  :104  INSERT-COL source_table,source_id,status relationships
+modules/ingest_module.php                      :172  SELECT-COL session_label,platform   memory_ingest
+modules/pm_module.php                          :130  TABLE      failed                   
+modules/pm_module.php                          :284  TABLE      failed                   
+modules/pm_module.php                          :300  TABLE      failed                   
+modules/search_module.php                      :83   SELECT-COL filename,filetype        files
+modules/search_module.php                      :99   SELECT-COL name,type                entities
+
+==============================================================================
+SECTION 4 — SQLITE-ISMS IN REACHABLE CODE (0)
+==============================================================================
+
+==============================================================================
+SECTION 5 — JSON READERS IN REACHABLE CODE (3)
+==============================================================================
+modules/dig_review_module.php                  :131  glob($clientsDir . '/*/cases/*/meta.json') as $metaFile) { $caseDir = dirname($metaFile); $caseId = base
+modules/ingest_module.php                      :159  glob($casesDir . '/*/meta.json') as $metaFile) { $meta = json_decode(file_get_contents($metaFile), true);
+modules/report_module.php                      :111  glob($clientsDir . '/*/cases/*/meta.json') as $metaFile) { $meta = json_decode(file_get_contents($metaFile), t
+
+==============================================================================
+SECTION 6 — TABLE -> LIVE READERS/WRITERS
+==============================================================================
+cases                          modules/client_view_module.php, modules/cockpit_module.php, modules/report_module.php
+clients                        modules/clients_module.php, modules/cockpit_module.php, modules/report_module.php
+clusters                       modules/cluster_module.php
+documents                      api/search_load.php, modules/dig_review_module.php, modules/ingest_module.php, modules/insight_module.php, modules/search_module.php
+entities                       api/search_load.php, engine/entity_extraction_engine.php, modules/anomaly_engine_module.php, modules/client_view_module.php, modules/dig_review_module.php, modules/entity_resolution_module.php, modules/graph_module.php, modules/predictive_link_module_v1.php, modules/search_module.php, modules/semantic_cluster_module.php
+entity_aliases                 engine/entity_extraction_engine.php, modules/anomaly_engine_module.php, modules/entity_resolution_module.php
+files                          api/search_load.php, modules/ingest_module.php, modules/insight_module.php, modules/search_module.php
+memory_domains                 modules/ingest_module.php, modules/insight_module.php
+memory_ingest                  api/search_load.php, modules/ingest_module.php, modules/ingest_view_module.php, modules/insight_module.php, modules/pm_module.php, modules/search_module.php
+page                           lib/semantic_diff_engine.php, modules/cluster_module.php, modules/view_module.php
+page_content                   modules/view_module.php
+payments                       modules/client_view_module.php, modules/payment_module.php
+pm_tasks                       modules/pm_module.php
+processing_queue               modules/client_view_module.php, modules/cockpit_module.php
+projects                       modules/ingest_module.php, modules/insight_module.php, modules/pm_module.php
+prospect_ingests               modules/cockpit_module.php, prospect.php
+relationships                  api/search_load.php, engine/entity_extraction_engine.php, modules/anomaly_engine_module.php, modules/client_view_module.php, modules/dig_review_module.php, modules/graph_module.php, modules/predictive_link_module_v1.php, modules/search_module.php, modules/semantic_cluster_module.php
+review_flags                   modules/client_view_module.php, modules/dig_review_module.php, modules/report_module.php
+task_sessions                  modules/pm_module.php
+tree_nodes                     modules/client_view_module.php
+
+json -> A3-data.json

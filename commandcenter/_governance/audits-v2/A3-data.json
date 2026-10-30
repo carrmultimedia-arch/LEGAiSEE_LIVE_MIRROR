@@ -1,0 +1,989 @@
+{
+ "tables": {
+  "activity_log": {
+   "engine": "InnoDB",
+   "columns": [
+    "id",
+    "user_id",
+    "action",
+    "entity_type",
+    "entity_id",
+    "details",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 30
+  },
+  "artifacts": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "uuid",
+    "entity_id",
+    "title",
+    "summary",
+    "signals",
+    "entities",
+    "confidence",
+    "view_type",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 46
+  },
+  "attachments": {
+   "engine": "InnoDB",
+   "columns": [
+    "id",
+    "entity_type",
+    "entity_id",
+    "filename",
+    "storage_path",
+    "mime_type",
+    "file_size",
+    "uploaded_by",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 65
+  },
+  "audit_logs": {
+   "engine": "InnoDB",
+   "columns": [
+    "id",
+    "user_id",
+    "action",
+    "details",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 83
+  },
+  "cases": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "business_name",
+    "city",
+    "industry",
+    "status",
+    "phase",
+    "processing_status",
+    "created_at",
+    "node_id"
+   ],
+   "pk": null,
+   "line": 97
+  },
+  "chat_ingest": {
+   "engine": "InnoDB",
+   "columns": [
+    "ingest_id",
+    "node_id",
+    "source",
+    "raw_text",
+    "extracted_json",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 122
+  },
+  "clients": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "client_uid",
+    "name",
+    "industry",
+    "city",
+    "state",
+    "status",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 137
+  },
+  "clusters": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "case_id",
+    "label",
+    "members",
+    "score",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 163
+  },
+  "conversations": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "domain_id",
+    "project_id",
+    "source_ai",
+    "session_title",
+    "raw_transcript",
+    "summary",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 178
+  },
+  "documents": {
+   "engine": "InnoDB",
+   "columns": [
+    "id",
+    "title",
+    "content",
+    "source_type",
+    "metadata",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 195
+  },
+  "entities": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "entity_type",
+    "canonical_name",
+    "normalized_hash",
+    "confidence",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 217
+  },
+  "entity_aliases": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "entity_id",
+    "alias",
+    "source_type",
+    "confidence"
+   ],
+   "pk": null,
+   "line": 2676
+  },
+  "events": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "type",
+    "payload",
+    "entity_id",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 5193
+  },
+  "files": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "folder_id",
+    "title",
+    "content",
+    "file_type",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 5207
+  },
+  "findings": {
+   "engine": "InnoDB",
+   "columns": [
+    "id",
+    "node_id",
+    "claim_text",
+    "channel",
+    "evidence_class",
+    "status",
+    "created_at",
+    "updated_at"
+   ],
+   "pk": null,
+   "line": 5230
+  },
+  "finding_sources": {
+   "engine": "InnoDB",
+   "columns": [
+    "id",
+    "finding_id",
+    "document_id",
+    "source_url",
+    "tier",
+    "notes",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 5247
+  },
+  "folders": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "name",
+    "parent_id",
+    "created_at",
+    "system_type"
+   ],
+   "pk": null,
+   "line": 5263
+  },
+  "goal_proposals": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "title",
+    "type",
+    "confidence",
+    "status",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 5288
+  },
+  "intake_queue": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "company_name",
+    "job_title",
+    "location",
+    "source",
+    "score",
+    "summary",
+    "salary",
+    "employment_type",
+    "apply_link",
+    "required_skills",
+    "why_match",
+    "notes",
+    "status",
+    "date_added",
+    "date_actioned",
+    "imported_application_id"
+   ],
+   "pk": null,
+   "line": 5303
+  },
+  "memory_chunks": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "conversation_id",
+    "chunk_index",
+    "chunk_type",
+    "content",
+    "keywords",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 5329
+  },
+  "memory_domains": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "slug",
+    "name",
+    "description",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 5345
+  },
+  "memory_ingest": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "domain_id",
+    "project_id",
+    "project_tag",
+    "source_ai",
+    "session_title",
+    "raw_transcript",
+    "word_count",
+    "context",
+    "created_at",
+    "processed"
+   ],
+   "pk": null,
+   "line": 5368
+  },
+  "memory_ingests": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "domain_id",
+    "project_id",
+    "source_ai",
+    "session_title",
+    "transcript",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 5425
+  },
+  "node_attributes": {
+   "engine": "InnoDB",
+   "columns": [
+    "node_id",
+    "status",
+    "priority",
+    "due_date",
+    "owner",
+    "updated_at"
+   ],
+   "pk": null,
+   "line": 5441
+  },
+  "node_details": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "node_id",
+    "attribute_key",
+    "attribute_value",
+    "updated_at"
+   ],
+   "pk": null,
+   "line": 5456
+  },
+  "page": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "title",
+    "project",
+    "platform",
+    "type",
+    "created",
+    "ai_summary",
+    "ai_tags",
+    "ai_score",
+    "related_ids",
+    "embedding",
+    "cluster_id",
+    "workspace_id",
+    "folder_id"
+   ],
+   "pk": null,
+   "line": 5470
+  },
+  "page_content": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "page_id",
+    "content",
+    "created"
+   ],
+   "pk": null,
+   "line": 5515
+  },
+  "payments": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "node_id",
+    "case_id",
+    "report_id",
+    "amount",
+    "currency",
+    "status",
+    "payment_method",
+    "tier",
+    "stripe_checkout_session_id",
+    "stripe_payment_intent_id",
+    "paid_at",
+    "email_sent_client",
+    "email_sent_john",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 5552
+  },
+  "permissions": {
+   "engine": "InnoDB",
+   "columns": [
+    "id",
+    "name",
+    "description",
+    "created_at",
+    "updated_at"
+   ],
+   "pk": null,
+   "line": 5576
+  },
+  "pm_comments": {
+   "engine": "InnoDB",
+   "columns": [
+    "id",
+    "task_id",
+    "user_id",
+    "body",
+    "created_at",
+    "updated_at"
+   ],
+   "pk": null,
+   "line": 5590
+  },
+  "pm_milestones": {
+   "engine": "InnoDB",
+   "columns": [
+    "id",
+    "project_id",
+    "name",
+    "description",
+    "status",
+    "due_date",
+    "completed_at",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 5605
+  },
+  "pm_notes": {
+   "engine": "InnoDB",
+   "columns": [
+    "id",
+    "project_id",
+    "user_id",
+    "body",
+    "created_at",
+    "updated_at"
+   ],
+   "pk": null,
+   "line": 5622
+  },
+  "pm_projects": {
+   "engine": "InnoDB",
+   "columns": [
+    "id",
+    "uuid",
+    "name",
+    "description",
+    "status",
+    "color",
+    "owner_id",
+    "start_date",
+    "due_date",
+    "created_at",
+    "updated_at"
+   ],
+   "pk": null,
+   "line": 5637
+  },
+  "pm_tasks": {
+   "engine": "InnoDB",
+   "columns": [
+    "id",
+    "project_id",
+    "title",
+    "detail",
+    "status",
+    "priority",
+    "due_date",
+    "blocked_reason",
+    "source_ingest_id",
+    "created_at",
+    "updated_at"
+   ],
+   "pk": null,
+   "line": 5664
+  },
+  "pm_task_ingests": {
+   "engine": "MyISAM",
+   "columns": [
+    "task_id",
+    "ingest_id"
+   ],
+   "pk": null,
+   "line": 5696
+  },
+  "processing_queue": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "case_id",
+    "task_id",
+    "task_type",
+    "status",
+    "created_at",
+    "node_id"
+   ],
+   "pk": null,
+   "line": 5707
+  },
+  "projects": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "domain_id",
+    "slug",
+    "name",
+    "description",
+    "status",
+    "created_at",
+    "updated_at"
+   ],
+   "pk": null,
+   "line": 5723
+  },
+  "prompts": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "project_id",
+    "prompt_type",
+    "title",
+    "content",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 5753
+  },
+  "prospect_ingests": {
+   "engine": "InnoDB",
+   "columns": [
+    "id",
+    "prospect_key",
+    "prospect_name",
+    "ingest_number",
+    "dossier_id",
+    "authority_score",
+    "signal_count",
+    "status",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 5768
+  },
+  "relationships": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "from_entity",
+    "to_entity",
+    "relation_type",
+    "strength",
+    "context",
+    "metadata",
+    "created_at",
+    "from_entity_id",
+    "to_entity_id"
+   ],
+   "pk": null,
+   "line": 5818
+  },
+  "relationships_bak_20261027": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "from_entity",
+    "to_entity",
+    "relation_type",
+    "strength",
+    "context",
+    "metadata",
+    "created_at",
+    "from_entity_id",
+    "to_entity_id"
+   ],
+   "pk": null,
+   "line": 8579
+  },
+  "reports": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "case_id",
+    "report",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 11340
+  },
+  "review_flags": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "source_table",
+    "source_id",
+    "context",
+    "status",
+    "operator_note",
+    "reviewed_at",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 11353
+  },
+  "roles": {
+   "engine": "InnoDB",
+   "columns": [
+    "id",
+    "name",
+    "description",
+    "created_at",
+    "updated_at"
+   ],
+   "pk": null,
+   "line": 11370
+  },
+  "role_permissions": {
+   "engine": "InnoDB",
+   "columns": [
+    "role_id",
+    "permission_id"
+   ],
+   "pk": null,
+   "line": 11384
+  },
+  "saved_views": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "name",
+    "project",
+    "platform",
+    "type",
+    "keyword",
+    "created"
+   ],
+   "pk": null,
+   "line": 11395
+  },
+  "tasks": {
+   "engine": "MyISAM",
+   "columns": [
+    "id",
+    "case_id",
+    "task_type",
+    "status",
+    "input_data",
+    "output_data",
+    "created_at"
+   ],
+   "pk": null,
+   "line": 11411
+  },
+  "task_sessions": {
+   "engine": "MyISAM",
+   "columns": [
+    "link_id",
+    "task_id",
+    "session_id",
+    "linked_at"
+   ],
+   "pk": null,
+   "line": 11427
+  },
+  "tree_nodes": {
+   "engine": "InnoDB",
+   "columns": [
+    "node_id",
+    "parent_id",
+    "name",
+    "node_type",
+    "status",
+    "sort_order",
+    "created_at",
+    "updated_at",
+    "created_by",
+    "source_type",
+    "source_reference"
+   ],
+   "pk": null,
+   "line": 11440
+  },
+  "users": {
+   "engine": "InnoDB",
+   "columns": [
+    "id",
+    "name",
+    "email",
+    "password_hash",
+    "active",
+    "created_at",
+    "updated_at"
+   ],
+   "pk": null,
+   "line": 11475
+  },
+  "user_roles": {
+   "engine": "InnoDB",
+   "columns": [
+    "user_id",
+    "role_id"
+   ],
+   "pk": null,
+   "line": 11498
+  }
+ },
+ "rows": {
+  "cases": 1,
+  "clients": 3,
+  "documents": 1,
+  "entities": 2433,
+  "entity_aliases": 2495,
+  "files": 2,
+  "folders": 5,
+  "memory_domains": 3,
+  "memory_ingest": 19,
+  "page": 16,
+  "page_content": 16,
+  "pm_projects": 1,
+  "pm_tasks": 6,
+  "projects": 7,
+  "prospect_ingests": 26,
+  "relationships": 2721,
+  "relationships_bak_20261027": 2721,
+  "tree_nodes": 9,
+  "users": 1
+ },
+ "stmts": {
+  "cases": 1,
+  "clients": 1,
+  "documents": 1,
+  "entities": 6,
+  "entity_aliases": 3,
+  "files": 1,
+  "folders": 1,
+  "memory_domains": 1,
+  "memory_ingest": 13,
+  "page": 1,
+  "page_content": 3,
+  "pm_projects": 1,
+  "pm_tasks": 1,
+  "projects": 1,
+  "prospect_ingests": 1,
+  "relationships": 16,
+  "relationships_bak_20261027": 16,
+  "tree_nodes": 1,
+  "users": 1
+ },
+ "problems": [
+  {
+   "file": "api/search_load.php",
+   "line": 105,
+   "kind": "SELECT-COL",
+   "name": "filename,filepath,filetype,filesize",
+   "table": "files",
+   "sql": "SELECT filename, filepath, filetype, filesize FROM files WHERE id = {$id}"
+  },
+  {
+   "file": "api/search_load.php",
+   "line": 112,
+   "kind": "SELECT-COL",
+   "name": "name,type",
+   "table": "entities",
+   "sql": "SELECT name, type, confidence FROM entities WHERE id = {$id}"
+  },
+  {
+   "file": "modules/cockpit_module.php",
+   "line": 37,
+   "kind": "TABLE",
+   "name": "INFORMATION_SCHEMA",
+   "sql": "SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = DATABASE() AND table_name = 'prospect_ingests' LIMIT 1"
+  },
+  {
+   "file": "modules/dig_review_module.php",
+   "line": 87,
+   "kind": "INSERT-COL",
+   "name": "source_table,source_id,context,status",
+   "table": "entities",
+   "sql": "INSERT INTO review_flags (source_table, source_id, context, status) VALUES ('entities', :sid, (SELECT context FROM entities WHERE id = :sid2"
+  },
+  {
+   "file": "modules/dig_review_module.php",
+   "line": 104,
+   "kind": "INSERT-COL",
+   "name": "source_table,source_id,status",
+   "table": "relationships",
+   "sql": "INSERT INTO review_flags (source_table, source_id, context, status) VALUES ('relationships', :sid, (SELECT context FROM relationships WHERE "
+  },
+  {
+   "file": "modules/ingest_module.php",
+   "line": 172,
+   "kind": "SELECT-COL",
+   "name": "session_label,platform",
+   "table": "memory_ingest",
+   "sql": "SELECT id, session_label, project_tag, platform, word_count, created_at FROM memory_ingest ORDER BY created_at DESC LIMIT 30"
+  },
+  {
+   "file": "modules/pm_module.php",
+   "line": 130,
+   "kind": "TABLE",
+   "name": "failed",
+   "sql": "Update failed:"
+  },
+  {
+   "file": "modules/pm_module.php",
+   "line": 284,
+   "kind": "TABLE",
+   "name": "failed",
+   "sql": "Update failed:"
+  },
+  {
+   "file": "modules/pm_module.php",
+   "line": 300,
+   "kind": "TABLE",
+   "name": "failed",
+   "sql": "Update failed:"
+  },
+  {
+   "file": "modules/search_module.php",
+   "line": 83,
+   "kind": "SELECT-COL",
+   "name": "filename,filetype",
+   "table": "files",
+   "sql": "SELECT id, filename, filetype FROM files WHERE filename LIKE :q LIMIT 20"
+  },
+  {
+   "file": "modules/search_module.php",
+   "line": 99,
+   "kind": "SELECT-COL",
+   "name": "name,type",
+   "table": "entities",
+   "sql": "SELECT id, name, type, confidence FROM entities WHERE name LIKE :q LIMIT 20"
+  }
+ ],
+ "sqlite": [],
+ "json_readers": [
+  [
+   "modules/dig_review_module.php",
+   131,
+   "glob($clientsDir . '/*/cases/*/meta.json') as $metaFile) { $caseDir = dirname($metaFile); $caseId = base"
+  ],
+  [
+   "modules/ingest_module.php",
+   159,
+   "glob($casesDir . '/*/meta.json') as $metaFile) { $meta = json_decode(file_get_contents($metaFile), true);"
+  ],
+  [
+   "modules/report_module.php",
+   111,
+   "glob($clientsDir . '/*/cases/*/meta.json') as $metaFile) { $meta = json_decode(file_get_contents($metaFile), t"
+  ]
+ ],
+ "live_tables": {
+  "documents": [
+   "api/search_load.php",
+   "modules/dig_review_module.php",
+   "modules/ingest_module.php",
+   "modules/insight_module.php",
+   "modules/search_module.php"
+  ],
+  "files": [
+   "api/search_load.php",
+   "modules/ingest_module.php",
+   "modules/insight_module.php",
+   "modules/search_module.php"
+  ],
+  "entities": [
+   "api/search_load.php",
+   "engine/entity_extraction_engine.php",
+   "modules/anomaly_engine_module.php",
+   "modules/client_view_module.php",
+   "modules/dig_review_module.php",
+   "modules/entity_resolution_module.php",
+   "modules/graph_module.php",
+   "modules/predictive_link_module_v1.php",
+   "modules/search_module.php",
+   "modules/semantic_cluster_module.php"
+  ],
+  "relationships": [
+   "api/search_load.php",
+   "engine/entity_extraction_engine.php",
+   "modules/anomaly_engine_module.php",
+   "modules/client_view_module.php",
+   "modules/dig_review_module.php",
+   "modules/graph_module.php",
+   "modules/predictive_link_module_v1.php",
+   "modules/search_module.php",
+   "modules/semantic_cluster_module.php"
+  ],
+  "memory_ingest": [
+   "api/search_load.php",
+   "modules/ingest_module.php",
+   "modules/ingest_view_module.php",
+   "modules/insight_module.php",
+   "modules/pm_module.php",
+   "modules/search_module.php"
+  ],
+  "entity_aliases": [
+   "engine/entity_extraction_engine.php",
+   "modules/anomaly_engine_module.php",
+   "modules/entity_resolution_module.php"
+  ],
+  "page": [
+   "lib/semantic_diff_engine.php",
+   "modules/cluster_module.php",
+   "modules/view_module.php"
+  ],
+  "tree_nodes": [
+   "modules/client_view_module.php"
+  ],
+  "cases": [
+   "modules/client_view_module.php",
+   "modules/cockpit_module.php",
+   "modules/report_module.php"
+  ],
+  "payments": [
+   "modules/client_view_module.php",
+   "modules/payment_module.php"
+  ],
+  "processing_queue": [
+   "modules/client_view_module.php",
+   "modules/cockpit_module.php"
+  ],
+  "review_flags": [
+   "modules/client_view_module.php",
+   "modules/dig_review_module.php",
+   "modules/report_module.php"
+  ],
+  "clients": [
+   "modules/clients_module.php",
+   "modules/cockpit_module.php",
+   "modules/report_module.php"
+  ],
+  "clusters": [
+   "modules/cluster_module.php"
+  ],
+  "INFORMATION_SCHEMA": [
+   "modules/cockpit_module.php"
+  ],
+  "prospect_ingests": [
+   "modules/cockpit_module.php",
+   "prospect.php"
+  ],
+  "projects": [
+   "modules/ingest_module.php",
+   "modules/insight_module.php",
+   "modules/pm_module.php"
+  ],
+  "memory_domains": [
+   "modules/ingest_module.php",
+   "modules/insight_module.php"
+  ],
+  "failed": [
+   "modules/pm_module.php"
+  ],
+  "pm_tasks": [
+   "modules/pm_module.php"
+  ],
+  "task_sessions": [
+   "modules/pm_module.php"
+  ],
+  "page_content": [
+   "modules/view_module.php"
+  ]
+ }
+}

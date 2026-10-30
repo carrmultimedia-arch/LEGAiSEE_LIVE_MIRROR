@@ -1,0 +1,732 @@
+{
+ "counts": {
+  "ARCHIVE": 225,
+  "KEEP": 60,
+  "FIX": 39,
+  "FINISH": 29
+ },
+ "by_build": {
+  "B01": {
+   "ARCHIVE": 35,
+   "KEEP": 6,
+   "FINISH": 1,
+   "FIX": 5
+  },
+  "B09": {
+   "ARCHIVE": 7,
+   "FIX": 3,
+   "KEEP": 3
+  },
+  "B07": {
+   "ARCHIVE": 84,
+   "KEEP": 10,
+   "FIX": 1
+  },
+  "B05": {
+   "KEEP": 4,
+   "FIX": 7,
+   "ARCHIVE": 2
+  },
+  "B02": {
+   "FIX": 5,
+   "ARCHIVE": 59,
+   "KEEP": 2
+  },
+  "B16": {
+   "ARCHIVE": 1,
+   "FIX": 6,
+   "KEEP": 2
+  },
+  "B06": {
+   "ARCHIVE": 9,
+   "KEEP": 1
+  },
+  "B04": {
+   "ARCHIVE": 21,
+   "KEEP": 4,
+   "FIX": 1
+  },
+  "B11": {
+   "ARCHIVE": 2,
+   "KEEP": 2,
+   "FIX": 2
+  },
+  "B03": {
+   "FINISH": 28,
+   "KEEP": 23,
+   "FIX": 6,
+   "ARCHIVE": 5
+  },
+  "B15": {
+   "FIX": 1
+  },
+  "B13": {
+   "KEEP": 3,
+   "FIX": 1
+  },
+  "B12": {
+   "FIX": 1
+  }
+ },
+ "p0": [
+  "A1-001",
+  "A1-002",
+  "A1-003",
+  "A1-004",
+  "A2-001",
+  "A2-002",
+  "A2-003",
+  "A2-004",
+  "A2-005",
+  "A2-006",
+  "A4-001",
+  "A4-002",
+  "A4-011",
+  "A4-012",
+  "A5-003"
+ ],
+ "p1": [
+  "A1-005",
+  "A1-006",
+  "A1-007",
+  "A1-008",
+  "A1-009",
+  "A2-007",
+  "A2-008",
+  "A2-009",
+  "A2-010",
+  "A2-011",
+  "A2-012",
+  "A2-013",
+  "A3-001",
+  "A3-002",
+  "A3-003",
+  "A3-004",
+  "A3-006",
+  "A3-009",
+  "A4-003",
+  "A4-004",
+  "A4-005",
+  "A4-006",
+  "A4-007",
+  "A4-008",
+  "A4-009",
+  "A4-010",
+  "A4-013",
+  "A4-014",
+  "A5-004",
+  "A5-005",
+  "A5-006",
+  "A5-008",
+  "A5-009",
+  "A6-003",
+  "A6-004",
+  "A6-005",
+  "A6-006",
+  "A6-007",
+  "A6-008",
+  "A6-009",
+  "A6-010",
+  "A6-011",
+  "A7-003",
+  "A7-004",
+  "A7-005",
+  "A7-006",
+  "A7-007",
+  "A7-008",
+  "A7-009",
+  "A7-011",
+  "A7-012",
+  "A7-013",
+  "A7-014",
+  "A8-002",
+  "A8-003",
+  "A8-004",
+  "A8-005",
+  "A8-011",
+  "A9-001",
+  "A9-002",
+  "A9-003",
+  "A9-007",
+  "A9-008",
+  "A9-010",
+  "A9-011"
+ ],
+ "total": 353,
+ "builds": [
+  [
+   "B01",
+   "Core Kernel",
+   "V1"
+  ],
+  [
+   "B02",
+   "Brain layer (LLM orchestration)",
+   "V2"
+  ],
+  [
+   "B03",
+   "Analysis & extraction engines",
+   "V1"
+  ],
+  [
+   "B04",
+   "UI system \u2014 Master OS shell",
+   "V1"
+  ],
+  [
+   "B05",
+   "Data layer (MySQL migration)",
+   "V1"
+  ],
+  [
+   "B06",
+   "Tools & automation",
+   "V2"
+  ],
+  [
+   "B07",
+   "Project manager",
+   "V2"
+  ],
+  [
+   "B08",
+   "Knowledge system (compounding memory)",
+   "V2"
+  ],
+  [
+   "B09",
+   "Client & case intake / shallow dig",
+   "V1"
+  ],
+  [
+   "B10",
+   "Full dig (40+ channels)",
+   "V2"
+  ],
+  [
+   "B11",
+   "Reports, vault & delivery",
+   "V1"
+  ],
+  [
+   "B12",
+   "Billing & third-party support",
+   "V1"
+  ],
+  [
+   "B13",
+   "Live client dashboard & good-morning logic",
+   "V1"
+  ],
+  [
+   "B14",
+   "Authority Marketing System",
+   "V2"
+  ],
+  [
+   "B15",
+   "Pipeline monitoring & system health",
+   "V2"
+  ],
+  [
+   "B16",
+   "Artifact library, search & file access",
+   "V1"
+  ],
+  [
+   "B17",
+   "Yearly review dossier",
+   "V2"
+  ],
+  [
+   "B18",
+   "Autonomous digs & self-building",
+   "V3"
+  ],
+  [
+   "B19",
+   "Legaisee voice interface",
+   "V3"
+  ],
+  [
+   "B20",
+   "CAMERA Authority System",
+   "V1 (add-on)"
+  ]
+ ],
+ "sev_text": {
+  "A1-001": [
+   "`shell.php:6-58`; `kernel/kernel_boot.php:12-13`",
+   "No authentication or authorization anywhere in the live spine; the early intercepts (`:14`/`:20`/`:26`) run before any identity check; sessions are started and never used for identity"
+  ],
+  "A1-002": [
+   "`.htaccess:1-8`",
+   "mod_security is switched **off** (`SecFilterEngine Off`, `SecRuleEngine Off`) \u2014 the request filter that would catch injection attempts is disabled at the root"
+  ],
+  "A1-003": [
+   "`.htaccess:11`",
+   "`<FilesMatch \"^(config\\.php|\\.env|\\.gitignore)$\">` denies only those three names; `config.local.php` (the file that actually holds the credentials, per `config.php:8`) and `.sftp.json`/`sftp.json` are **not** denied"
+  ],
+  "A1-004": [
+   "`modules/*.php:1` (29 files); `modules/vault_module.php:19`",
+   "29 of 35 registry modules have no `KERNEL_ROOT`/direct-access guard and `modules/` is web-addressable. `report_module.php` loads its own kernel (`:10`) and generates reports for an anonymous caller; `vault_module.php` reaches its download branch with `$db` null and serves any PDF under `data/clients`. Its containment check is a **prefix** test on `realpath()` (`:19`), so a sibling directory whose name starts with `clients` passes. Guarded ones: `ingest`, `search`, `files`, `pm`, `dig_review`, `insight`"
+  ],
+  "A1-005": [
+   "`modules/client_view_module.php:223`",
+   "`require __DIR__.'/../graph_view.php'` resolves to `commandcenter/graph_view.php`, which does not exist (the file is `views/graph_view.php`) \u2192 fatal \"failed to open stream\" on the client record branch"
+  ],
+  "A1-006": [
+   "`modules/utils/json_helpers.php:1`",
+   "File is 2 bytes of `{}`, not PHP, yet `alert_module.php:3` and `excavation_module.php:3` `require_once` it \u2014 literal `{}` is emitted into the page before any markup"
+  ],
+  "A1-007": [
+   "`modules/cases_module.php:6-7`, `predictive:11`, `decision:11`, `relations:11-12`, `dashboard:5-6`, `root_cause:5`, `executive:11-12`, `alert:5`, `recommendation:6`, `time_intelligence:5`",
+   "`load_json_dir()` is called but `modules/utils/bootstrap.php` is never included by those modules; it only works because `shell.php:7` loaded it into the same request"
+  ],
+  "A1-008": [
+   "`api/tree.php:124`",
+   "`WITH RECURSIVE descendants AS (\u2026)` \u2014 recursive CTEs need MySQL 8.0+; the dump is from `5.7.44-percona`, so the `move` action raises a syntax error"
+  ],
+  "A1-009": [
+   "`api.php:35`",
+   "The only `api/v8` dispatcher has zero execution references, so all 35 v8 handlers are unreachable through the one path that can reach them"
+  ],
+  "A1-010": [
+   "`kernel/kernel.php:19`",
+   "Legacy stub (`return true`) still required by a live module \u2014 an include that does nothing and hides the real dependency graph"
+  ],
+  "A1-011": [
+   "`modules/search_module.php:15`",
+   "Bare relative `require_once 'utils/bootstrap.php'` resolves only by PHP's calling-script-directory rule; it breaks the moment the file is moved or required from another directory"
+  ],
+  "A1-012": [
+   "`kernel/db.php:16`",
+   "`die(\"DB ERROR: \".$e->getMessage())` sends driver-level detail (host, user, SQLSTATE) to an anonymous visitor"
+  ],
+  "A1-013": [
+   "`ui/ui_bootstrap.php:3-6`",
+   "`legaisee_ui_bootstrap()` is never called (`kernel_assets()` in `kernel_boot.php:41` is unused) while `shell.php`'s `<head>` hardcodes the identical stylesheet link \u2014 two sources for one asset"
+  ],
+  "A2-001": [
+   "`.sftp.json:1`; `.vscode/sftp.json:1`",
+   "SFTP host, username and password sit in the webroot and are served as static files; `.htaccess:11` denies only three filenames and nothing in dot-directories"
+  ],
+  "A2-002": [
+   "`db-before-migration-2026-10-29.sql:1` (root of webroot)",
+   "The full 5,232,685-byte client database dump is downloadable over HTTP"
+  ],
+  "A2-003": [
+   "`legaisee.db:1`",
+   "57,344-byte legacy SQLite database downloadable over HTTP; `kernel/legaisee.db` is a 0-byte twin"
+  ],
+  "A2-004": [
+   "`config.local.php:3-6,12`",
+   "DB credentials and a live-pattern API key in a file the `.htaccess` deny list does not cover and `.gitignore` does not ignore"
+  ],
+  "A2-005": [
+   "`modules/vault_module.php:19,23`",
+   "Report download streams `$_GET['report_path']` via `readfile()`; containment is a `strpos() === 0` **prefix** test that a `clients\u2026`-prefixed sibling directory defeats; reached pre-auth from `shell.php:20` and also directly"
+  ],
+  "A2-006": [
+   "`api/file.php:15,24`",
+   "Returns the complete contents of any file in `normalized/` to an unauthenticated caller; `basename()` blocks traversal but there is no auth and no allow-list"
+  ],
+  "A2-007": [
+   "`shell.php:3-4` (+9 more files)",
+   "`error_reporting(E_ALL)` + `display_errors=1` print warnings, paths and SQL into the page; nothing in `.htaccess` countermands it"
+  ],
+  "A2-008": [
+   "`kernel/db.php:11-14`; `config.php:8`",
+   "If `config.local.php` is absent, `DB_HOST`/`DB_NAME`/`DB_USER`/`DB_PASS` are undefined \u2192 PHP `Error`, which `catch (PDOException)` cannot catch \u2192 uncaught fatal, printed in full because of A2-007"
+  ],
+  "A2-009": [
+   "`kernel/task_generator.php:3,19,29`",
+   "Requires a file that does not exist; uses `mysqli` `bind_param()` on a PDO handle; reads undefined `$pdo`; inserts `action`/`priority` columns absent from `tasks`"
+  ],
+  "A2-010": [
+   "`kernel/graph_engine.php:44-46`",
+   "Queries `page_relations`, absent from the schema; no `try`, so the function is fatal whenever called"
+  ],
+  "A2-011": [
+   "`kernel/system_health.php:50,91,38,185`",
+   "`sqlite_master` probe on MySQL aborts the DB block (status always ERROR); `array_column` on a name\u2192file map reports all 35 modules as orphans; `COMMANDCENTER_BOOTSTRAPPED` is defined nowhere; output is unauthenticated"
+  ],
+  "A2-012": [
+   "`kernel/guard.php:3,17`",
+   "The \"enforcer\" requires only the no-op `kernel.php`, so `kernel_db()` is undefined when the guard loads \u2014 the one file whose job is to guarantee the DB would itself crash"
+  ],
+  "A2-013": [
+   "`.gitignore:1-21`",
+   "Does not cover `config.local.php`, `.sftp.json`, `*.db`, `*.sql`, `data/`, `normalized/`, `_governance/`; covers only tooling and two temp caches"
+  ],
+  "A2-014": [
+   "`.git/index` (repo state)",
+   "The index is corrupt (`unknown index entry format 0x092e0000`) and a loose object is unreadable, so no tracking claim can be verified \u2014 including A0's C-02"
+  ],
+  "A3-001": [
+   "`modules/search_module.php:79`",
+   "File search queries `files.filename` / `files.filetype`; the table has `title`, `content`, `file_type`. Exception swallowed at `:90` \u2192 zero file results, no error shown"
+  ],
+  "A3-002": [
+   "`modules/search_module.php:94`",
+   "Entity search queries `entities.name` / `entities.type`; the table has `canonical_name`, `entity_type`. Swallowed \u2192 zero entity results"
+  ],
+  "A3-003": [
+   "`modules/search_module.php:108-113`",
+   "Relationship search queries `r.type`, `r.confidence`, `e1.name`, joins on `r.entity_a_id`/`entity_b_id` \u2014 none exist. Swallowed \u2192 zero relationship results, so 2,721 edges are unsearchable"
+  ],
+  "A3-004": [
+   "`api/search_load.php:103,110,117-123`",
+   "Same three wrong column sets on a live endpoint; caught by the `try` at `:92`, so the compare pane silently refuses to open files, entities and relationships"
+  ],
+  "A3-005": [
+   "schema (`findings`, `review_flags`, `clusters`, `tasks`, `payments`, `reports`)",
+   "32 of 51 tables empty; the entire review\u2192finding\u2192report\u2192invoice chain has never stored a row despite 2,721 extracted relationships"
+  ],
+  "A3-006": [
+   "`engine/entity_extraction_engine.php:262-263`",
+   "`from_entity`/`to_entity` truncated to 64 chars by `substr()` into `varchar(64)`; display names drift from `entities.canonical_name`"
+  ],
+  "A3-007": [
+   "`schema-source.sql:5818` (`metadata json`)",
+   "`relationships.metadata` is declared and never written by the only writer \u2014 2,721/2,721 NULL"
+  ],
+  "A3-008": [
+   "20 files (list \u00a74)",
+   "Routed modules read `data/*.json` while the record lives in MySQL; the JSON holds placeholder clients (*Acme*, *Bright Dental*, *Summit*) and MySQL holds real ones (*Brad Moore Builders*, *Carr Multimedia*, *Good Ol Rockin Therapy*)"
+  ],
+  "A3-009": [
+   "`data/cases/case_001.json:7`, `case_002.json:8`",
+   "Invalid JSON; `load_json_dir` requires `is_array` and drops them silently, so those cases vanish from every JSON-reading screen"
+  ],
+  "A3-010": [
+   "`relationships_bak_20261027`",
+   "Full 2,721-row duplicate of `relationships` inside the production schema; no code references it"
+  ],
+  "A3-011": [
+   "`memory_ingest` vs `memory_ingests`",
+   "Two near-identically named tables; 19 rows in `memory_ingest`, 0 in `memory_ingests`, and only the first is used"
+  ],
+  "A3-012": [
+   "`data/prospects/`",
+   "Nine 3,016-byte scrapes of the same prospect (Brad Moore Builders) written seconds apart; no dedupe key"
+  ],
+  "A4-001": [
+   "`modules/ingest_module.php:67,70-71,107`",
+   "Unsanitised `case_id` interpolated into filesystem paths; `:107` has no `is_dir` gate, giving a `file_put_contents` write primitive to any path ending `/network.json`"
+  ],
+  "A4-002": [
+   "`modules/ingest_module.php:64-66`",
+   "Upload accepts any extension, MIME type and size, into a web-served directory, behind no auth"
+  ],
+  "A4-003": [
+   "`modules/ingest_module.php:108-109`",
+   "Uploaded file's content is read into `$content` and discarded; the pipeline receives only `\"File uploaded: <name>\"`"
+  ],
+  "A4-004": [
+   "`modules/ingest_module.php:111`",
+   "`catch (Exception $e) {}` wraps the documents INSERT and pipeline, then reports success"
+  ],
+  "A4-005": [
+   "`modules/ingest_module.php:164-165`",
+   "Sessions tab selects `session_label`/`platform`; the table has `session_title`/`source_ai` \u2192 always empty"
+  ],
+  "A4-006": [
+   "`modules/ingest_module.php:36-45`",
+   "Pasted transcript is stored and never extracted; `processed` stays 0 and only `pm_module.php:184` ever changes it"
+  ],
+  "A4-007": [
+   "`modules/excavation_module.php:3`",
+   "Requiring the 2-byte `{}` stub makes `shell.php` return `{}` instead of the module's array \u2014 the Excavation screen renders `{}`"
+  ],
+  "A4-008": [
+   "`modules/excavation_module.php:39-97`",
+   "Extraction runs as a side effect of every GET page load, re-reading every client file (7.3 MB of JSON plus artifacts)"
+  ],
+  "A4-009": [
+   "`modules/excavation_module.php:263-276`",
+   "Persistence loop writes one `auto_case_<signal>_<time>.json` per artifact into the same directory/file, so each artifact overwrites the last; `@mkdir \u2026 0777`"
+  ],
+  "A4-010": [
+   "`engine/entity_extraction_engine.php:42`",
+   "Noise list blacklists `Brad, Moore, Builders, Perry, Drees, Journey, Hill, Country` \u2014 the primary client can never be extracted"
+  ],
+  "A4-011": [
+   "`modules/dig_review_module.php:53-63`",
+   "Confirming a flag updates `review_flags.status` only; nothing inserts into `findings`, so review never produces output"
+  ],
+  "A4-012": [
+   "`modules/dig_review_module.php:83-84`",
+   "Queue INSERT selects `context` from `entities`, which has no such column \u2192 the action throws and `review_flags` can never be populated"
+  ],
+  "A4-013": [
+   "`modules/entity_resolution_module.php:66-90`",
+   "`break 2` after the first candidate and no UPDATE anywhere: the scan suggests at most one merge and executes none"
+  ],
+  "A4-014": [
+   "`ingest.php:3,25-29` / `ingest2.php:3,25-29`",
+   "Hard-coded `$network_id`; only `network_id/type/strength` are posted, so `title`/`content` never leave the request; `http://` + Host header"
+  ],
+  "A4-015": [
+   "`create_session.php:34`; `session.php:11`",
+   "Base path `DOCUMENT_ROOT/legaisee/clients/` is not the app's `data/clients/`; no `legaisee/` directory exists; both files have zero live references"
+  ],
+  "A4-016": [
+   "`modules/insight_module.php:1-13,63-80`",
+   "Header names the wrong file; the module duplicates the ingest form and INSERT as a second writer for `memory_ingest`, without the case link"
+  ],
+  "A4-017": [
+   "`prospect.php:226-228`",
+   "Dossier written to `data/prospects/*.json` with `mkdir 0777` beside the MySQL `prospect_ingests` row \u2014 two stores for one record"
+  ],
+  "A5-003": [
+   "`api/brain_orchestrator.php:60-68`; `modules/brain_module.php:20-26`",
+   "`run_brain_on_file()` is reachable unauthenticated by direct URL and by `?module=brain` POST, so anyone can spend paid Claude credits on any file in `normalized/`"
+  ],
+  "A5-004": [
+   "`api/brain_synthesis.php:44,48,54`",
+   "`confidence` is a hard-coded 0/70/75 presented as a score; no cross-model agreement test exists"
+  ],
+  "A5-005": [
+   "`modules/cluster_module.php:18,20`",
+   "Reads `clusters.name` and `clusters.summary`; the table has `label`, `members`, `score` \u2014 heading degrades to \"Cluster\", summary to empty"
+  ],
+  "A5-006": [
+   "`modules/graph_module.php:114`",
+   "Shell mode returns two counts; the actual traversal (`:8`) is unreachable from the UI"
+  ],
+  "A5-007": [
+   "`root_cause:163-174`, `relations:184-213`, `predictive:149-172`, `decision:197-214`, `cross_case:151-175`, `time_intelligence:108-119`",
+   "Six modules end in `json_encode()` rendered inside `<pre>` \u2014 the operator reads raw JSON, not intelligence"
+  ],
+  "A5-008": [
+   "`semantic_cluster:223-225`, `predictive_link_v1:181-183`",
+   "Return bare arrays; `shell.php:78-80` collapses every nested array to \"N records\", discarding the computed result entirely"
+  ],
+  "A5-009": [
+   "`engine/plain_english_helper.php` (whole file)",
+   "Zero references; interpreters exist for 8 of these 12 modules and none is called"
+  ],
+  "A5-010": [
+   "`modules/recommendation_module.php:38-44`",
+   "Hard-coded fallback item (\"No Patterns Detected\", \"Run excavation pipeline\") renders as a real recommendation"
+  ],
+  "A5-011": [
+   "`api/model_router.php:27,91`",
+   "Model ids (`claude-sonnet-4-6`, `gpt-5`) cannot be verified offline; no prompt-size cap, so a large normalized file 400s or over-spends"
+  ],
+  "A5-012": [
+   "`modules/anomaly_engine_module.php:58-68`",
+   "Risk weights and thresholds are unexplained magic numbers; the score is reproducible but unvalidated"
+  ],
+  "A6-003": [
+   "`api/files_action.php:214`",
+   "Delete guard covers only `FM_ROOT` and `kernel/`; `config.php`, `db.php`, `data/`, `.git` are all removable"
+  ],
+  "A6-004": [
+   "`api/search_load.php:19-26`",
+   "Unauthenticated, id-enumerable read of any client document and any full transcript (`0`\u2013`n` over `mysql:memory_ingest:<id>`)"
+  ],
+  "A6-005": [
+   "`modules/search_module.php:79`",
+   "`files` search uses `filename`/`filetype`; real columns are `title`/`file_type` \u2192 always throws"
+  ],
+  "A6-006": [
+   "`modules/search_module.php:94`",
+   "`entities` search uses `name`/`type`; real columns `canonical_name`/`entity_type` \u2192 always throws"
+  ],
+  "A6-007": [
+   "`modules/search_module.php:111-113`; `api/search_load.php:121-122`",
+   "Relationship search joins on `entity_a_id`/`entity_b_id` and reads `r.type`/`e1.name`; all four are wrong"
+  ],
+  "A6-008": [
+   "`modules/search_module.php:75,90,105,125,142`",
+   "Five empty `catch (Exception $e) {}` turn every SQL failure into \"No results\""
+  ],
+  "A6-009": [
+   "`api/search_load.php:103,146`",
+   "`files` branch selects four non-existent columns; the catch returns `DB error: <SQLSTATE + message>` to the browser"
+  ],
+  "A6-010": [
+   "`modules/vault_module.php:14,85`",
+   "Link sends `report_id`, handler requires `report_path`; download is permanently 404 (or a silent page reload) over 6 real PDFs"
+  ],
+  "A6-011": [
+   "`modules/vault_module.php:121-131`",
+   "Payment POST omits `node_id`; `payment_module.php:37` requires it \u2192 always \"Missing required fields\""
+  ],
+  "A6-012": [
+   "`normalized/` (36 files, 9.0 MB)",
+   "Inside the webroot, no `.htaccess` rule; md5 names except two predictable ones"
+  ],
+  "A6-013": [
+   "`modules/vault_module.php:11`",
+   "`$db = $GLOBALS['pdo']` \u2014 never read; and undefined when the module is `require`d inside `renderModule()` (`shell.php:50`)"
+  ],
+  "A6-014": [
+   "`api/files_action.php:44,47`",
+   "`strpos($real, FM_ROOT) !== 0` has no trailing separator, so a sibling `commandcenter_x/` passes containment"
+  ],
+  "A6-015": [
+   "`modules/search_module.php:36-40`",
+   "Every query re-reads every entry in all four JSON dirs (19 cases, 14 clients, 27 prospects, 9 network = 69) with `file_get_contents` + `stripos`; no index, no FTS"
+  ],
+  "A6-016": [
+   "`modules/vault_module.php:16-19`",
+   "`$base_dir` is `false` if `data/clients` is missing, and `strpos($x, false)` is a type error"
+  ],
+  "A7-003": [
+   "`modules/report_module.php:32`",
+   "Findings filtered by `rf.context = client_id` with no case predicate \u2192 cross-case leakage into a case report"
+  ],
+  "A7-004": [
+   "`modules/report_module.php:204`",
+   "Report body prints `source_table` + `source_id`; `findings.claim_text` is never selected"
+  ],
+  "A7-005": [
+   "`modules/report_module.php:80-86`",
+   "No `INSERT INTO reports`; the `reports` table has 0 rows and no writer"
+  ],
+  "A7-006": [
+   "`modules/report_module.php:43-64`",
+   "`cases.name` doesn't exist (`business_name`); `clients.id` int vs `client_<n>` string \u2192 \"Untitled Case\" / \"Unknown Client\""
+  ],
+  "A7-007": [
+   "`modules/report_module.php:80-86`",
+   "`$client_id`/`$case_id` concatenated into a `mkdir` path unsanitised \u2192 `../` escapes `data/`"
+  ],
+  "A7-008": [
+   "`modules/report_module.php:89`",
+   "`header()` after `shell.php` output \u2192 ignored; PDF prefixed with page HTML"
+  ],
+  "A7-009": [
+   "`modules/report_module.php:37,60`",
+   "`die('\u2026' . $e->getMessage())` prints SQL errors to the browser"
+  ],
+  "A7-010": [
+   "`report:18-20`; `vault:19`; `payment:31-33`; `client_view:130`",
+   "No ownership validation anywhere \u2014 ids taken from the request"
+  ],
+  "A7-011": [
+   "`modules/payment_module.php:196-210`",
+   "`status` endpoint unauthenticated, returns the full payment row"
+  ],
+  "A7-012": [
+   "`modules/payment_module.php:79,80,143,144`",
+   "`'http://'` hardcoded in Stripe return URLs, plus unvalidated `HTTP_HOST`"
+  ],
+  "A7-013": [
+   "`modules/payment_module.php:193`",
+   "No event dedupe: every webhook delivery re-sends both emails"
+  ],
+  "A7-014": [
+   "`modules/payment_module.php:35` vs `:225-245`",
+   "`client_email` from checkout is discarded; receipts go only to `profile.json`, and the operator copy dies on undefined `JOHN_EMAIL`"
+  ],
+  "A7-015": [
+   "`report:32` vs `client_view:35`",
+   "The same column `rf.context` is compared to a `client_id` in one file and a `node_id` in the other \u2014 one column, two id spaces"
+  ],
+  "A7-016": [
+   "`modules/client_view_module.php:288`",
+   "Email tab hardcoded \"Email integration not yet connected\" while the payment module does send email"
+  ],
+  "A7-017": [
+   "`modules/payment_module.php:75`",
+   "`unit_amount' => $amount * 100` yields a float where Stripe requires an integer"
+  ],
+  "A7-018": [
+   "`modules/client_view_module.php:223`",
+   "Mutates `$_GET['case_id']` and `require`s `graph_view.php` mid-render"
+  ],
+  "A8-011": [
+   "`modules/pm_module.php:70,311,358`",
+   "Project CRUD targets `projects` (domain registry) while `pm_tasks.project_id` is documented against `pm_projects` \u2192 task parentage is two tables at once"
+  ],
+  "A8-002": [
+   "`ProjectManager/config.php:4`",
+   "`require '/home/carmulti/private/pm_db_credentials.php'` \u2014 absolute path outside the project; absent \u2192 the whole app fatals"
+  ],
+  "A8-003": [
+   "`ProjectManager/router.php:16-17`",
+   "No routes registered; `index.php` runs an empty application"
+  ],
+  "A8-004": [
+   "`ProjectManager/projects_dashboard.php:16-35`",
+   "No login system; auto-creates owner `John Carr / admin@legaisee.local` on first run"
+  ],
+  "A8-005": [
+   "`ProjectManager/project_board.php:69,268`",
+   "Kanban renders only 4 statuses; `Architecting`, `Building`, `Review` tasks never appear"
+  ],
+  "A8-006": [
+   "`modules/pm_module.php:256-268`",
+   "`UPDATE pm_tasks` never touches `updated_at`"
+  ],
+  "A8-007": [
+   "`modules/pm_module.php:106,123,297`",
+   "SQL exception text echoed into the operator flash"
+  ],
+  "A8-008": [
+   "`modules/pm_module.php:157` vs `:176`",
+   "`pm_tasks.source_ingest_id` exists but is never written; `task_sessions` duplicates the relationship"
+  ],
+  "A8-009": [
+   "`ProjectManager/database/schema.php`",
+   "Declares 13 tables; repositories query `project_members`, `labels`, `node_details` \u2014 none declared, and `project_members`/`labels` are absent from the live schema entirely"
+  ],
+  "A8-010": [
+   "`ProjectManager/api/**`",
+   "21 endpoint directories, no auth call, no router binding"
+  ],
+  "A9-001": [
+   "`shell.php:181-250`",
+   "`'status' => 'working'` hardcoded on all 34 sidebar entries; only `isset($registry[])` is checked, so BROKEN modules render as healthy"
+  ],
+  "A9-002": [
+   "`modules/intelligence_dashboard_module.php:21-95`",
+   "Entire screen is mock data \u2014 invented metrics, constant `confidence: 0.78`, and a message asserting the system is \"operational\""
+  ],
+  "A9-003": [
+   "`modules/brain_module.php:78-85`",
+   "Engine probe points at `system/` which does not exist; all five engines report `false` (they live in `engine/`, 37 files)"
+  ],
+  "A9-004": [
+   "`modules/brain_module.php:107,149`",
+   "Two literal ``` fences rendered as page text"
+  ],
+  "A9-005": [
+   "`modules/executive_dashboard_module.php:177`",
+   "`'engine_state' => 'ACTIVE'` is a literal, not a measurement"
+  ],
+  "A9-006": [
+   "`modules/cockpit_module.php:45,49`",
+   "Health rows stamped `'status' => 'OK'` before/independently of the query succeeding"
+  ],
+  "A9-007": [
+   "`shell.php:67-78`",
+   "`exec-panel` collapses every nested array to \"N records\", discarding computed output"
+  ],
+  "A9-008": [
+   "`shell.php:63-65` + six modules",
+   "`render_inspector` prints `json_encode` output in `<pre>` \u2014 six intelligence screens are JSON dumps by design"
+  ],
+  "A9-009": [
+   "`ui/global.css`",
+   "`fm-*` (0), `pm-*` (0), `ui-tabs` (0), `layout-grid-three-col` (0) \u2014 file manager and project board ship unstyled"
+  ],
+  "A9-010": [
+   "`modules/view_module.php:264` \u2192 `ui/ui_engine.php:25`",
+   "Module returns a complete `ui_page()`, nesting a second `<html>` document inside the shell"
+  ],
+  "A9-011": [
+   "`shell.php:3-4`",
+   "`display_errors=1` on an unauthenticated page; `catch (Throwable)` at `:80` prints exception messages into the UI"
+  ],
+  "A9-012": [
+   "`modules/`",
+   "3 of 38 files unregistered and unreachable, including the 374-line `governance_module.php`"
+  ]
+ }
+}

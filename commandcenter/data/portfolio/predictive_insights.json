@@ -1,0 +1,18 @@
+{
+    "distribution": {
+        "audience_performance": 13.33,
+        "risk_signals": 16.67,
+        "unclassified": 70
+    },
+    "forecasts": [
+        {
+            "type": "stable_portfolio_forecast",
+            "prediction": "No dominant pattern detected across portfolio",
+            "likelihood": "low",
+            "impact": "stable system state",
+            "action": "continue monitoring signals",
+            "confidence_score": 0,
+            "created_at": "2026-08-21T22:52:33-04:00"
+        }
+    ]
+}

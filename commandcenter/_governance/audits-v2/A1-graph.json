@@ -1,0 +1,5116 @@
+{
+ "counts": {
+  "php_files": 346,
+  "reachable": 62,
+  "unreachable": 286,
+  "registry_modules": 35,
+  "modules_present": 35
+ },
+ "registry": {
+  "alert": "alert_module.php",
+  "anomaly_engine": "anomaly_engine_module.php",
+  "brain": "brain_module.php",
+  "cases": "cases_module.php",
+  "clients": "clients_module.php",
+  "client_view": "client_view_module.php",
+  "cluster": "cluster_module.php",
+  "cockpit": "cockpit_module.php",
+  "compare": "compare_module.php",
+  "cross_case_engine": "cross_case_engine.php",
+  "dashboard": "dashboard_module.php",
+  "decision": "decision_module.php",
+  "entity_resolution": "entity_resolution_module.php",
+  "excavation": "excavation_module.php",
+  "executive": "executive_dashboard_module.php",
+  "files": "files_module.php",
+  "graph": "graph_module.php",
+  "insight": "insight_module.php",
+  "ingest": "ingest_module.php",
+  "ingest_view": "ingest_view_module.php",
+  "intelligence_dashboard": "intelligence_dashboard_module.php",
+  "pm": "pm_module.php",
+  "predictive": "predictive_module.php",
+  "predictive_link_module_v1": "predictive_link_module_v1.php",
+  "recommendation": "recommendation_module.php",
+  "relations": "relations_module.php",
+  "report": "report_module.php",
+  "root_cause": "root_cause_graph_module.php",
+  "search": "search_module.php",
+  "semantic_cluster": "semantic_cluster_module.php",
+  "time_intelligence": "time_intelligence_module.php",
+  "vault": "vault_module.php",
+  "view": "view_module.php",
+  "payment": "payment_module.php",
+  "dig_review": "dig_review_module.php"
+ },
+ "seeds": [
+  "shell.php",
+  "modules/alert_module.php",
+  "modules/anomaly_engine_module.php",
+  "modules/brain_module.php",
+  "modules/cases_module.php",
+  "modules/clients_module.php",
+  "modules/client_view_module.php",
+  "modules/cluster_module.php",
+  "modules/cockpit_module.php",
+  "modules/compare_module.php",
+  "modules/cross_case_engine.php",
+  "modules/dashboard_module.php",
+  "modules/decision_module.php",
+  "modules/entity_resolution_module.php",
+  "modules/excavation_module.php",
+  "modules/executive_dashboard_module.php",
+  "modules/files_module.php",
+  "modules/graph_module.php",
+  "modules/insight_module.php",
+  "modules/ingest_module.php",
+  "modules/ingest_view_module.php",
+  "modules/intelligence_dashboard_module.php",
+  "modules/pm_module.php",
+  "modules/predictive_module.php",
+  "modules/predictive_link_module_v1.php",
+  "modules/recommendation_module.php",
+  "modules/relations_module.php",
+  "modules/report_module.php",
+  "modules/root_cause_graph_module.php",
+  "modules/search_module.php",
+  "modules/semantic_cluster_module.php",
+  "modules/time_intelligence_module.php",
+  "modules/vault_module.php",
+  "modules/view_module.php",
+  "modules/payment_module.php",
+  "modules/dig_review_module.php"
+ ],
+ "reachable": [
+  "api/brain_orchestrator.php",
+  "api/brain_synthesis.php",
+  "api/files_action.php",
+  "api/model_router.php",
+  "api/search_load.php",
+  "config.local.php",
+  "config.php",
+  "db.php",
+  "engine/entity_extraction_engine.php",
+  "kernel/db.php",
+  "kernel/ingestion_pipeline.php",
+  "kernel/kernel.php",
+  "kernel/kernel_boot.php",
+  "kernel/kernel_paths.php",
+  "kernel/module_registry.php",
+  "kernel/nav_engine.php",
+  "lib/dompdf/autoload.inc.php",
+  "lib/semantic_diff_engine.php",
+  "lib/vendor/autoload.php",
+  "modules/alert_module.php",
+  "modules/anomaly_engine_module.php",
+  "modules/brain_module.php",
+  "modules/cases_module.php",
+  "modules/client_view_module.php",
+  "modules/clients_module.php",
+  "modules/cluster_module.php",
+  "modules/cockpit_module.php",
+  "modules/compare_module.php",
+  "modules/cross_case_engine.php",
+  "modules/dashboard_module.php",
+  "modules/decision_module.php",
+  "modules/dig_review_module.php",
+  "modules/entity_resolution_module.php",
+  "modules/excavation_module.php",
+  "modules/executive_dashboard_module.php",
+  "modules/files_module.php",
+  "modules/graph_module.php",
+  "modules/ingest_module.php",
+  "modules/ingest_view_module.php",
+  "modules/insight_module.php",
+  "modules/intelligence_dashboard_module.php",
+  "modules/payment_module.php",
+  "modules/pm_module.php",
+  "modules/predictive_link_module_v1.php",
+  "modules/predictive_module.php",
+  "modules/recommendation_module.php",
+  "modules/relations_module.php",
+  "modules/report_module.php",
+  "modules/root_cause_graph_module.php",
+  "modules/search_module.php",
+  "modules/semantic_cluster_module.php",
+  "modules/time_intelligence_module.php",
+  "modules/utils/bootstrap.php",
+  "modules/utils/json_helpers.php",
+  "modules/utils/uic_v1.php",
+  "modules/vault_module.php",
+  "modules/view_module.php",
+  "prospect.php",
+  "shell.php",
+  "ui/layout.php",
+  "ui/ui_bootstrap.php",
+  "ui/ui_engine.php"
+ ],
+ "unreachable": [
+  "Color_Creator.php",
+  "ExcavationCommand/dashboard.php",
+  "ExcavationCommand/planner.php",
+  "ExcavationCommand/system_index.php",
+  "ProjectManager/api/auth/login.php",
+  "ProjectManager/api/auth/logout.php",
+  "ProjectManager/api/auth/status.php",
+  "ProjectManager/api/clients/index.php",
+  "ProjectManager/api/comments/index.php",
+  "ProjectManager/api/labels/index.php",
+  "ProjectManager/api/milestones/index.php",
+  "ProjectManager/api/permissions/index.php",
+  "ProjectManager/api/permissions/roles.php",
+  "ProjectManager/api/projects/index.php",
+  "ProjectManager/api/projects/members.php",
+  "ProjectManager/api/tasks/index.php",
+  "ProjectManager/api/users/index.php",
+  "ProjectManager/api/users/show.php",
+  "ProjectManager/app/Controllers/AuthController.php",
+  "ProjectManager/app/Controllers/ClientController.php",
+  "ProjectManager/app/Controllers/CommentController.php",
+  "ProjectManager/app/Controllers/LabelController.php",
+  "ProjectManager/app/Controllers/MilestoneController.php",
+  "ProjectManager/app/Controllers/ProjectController.php",
+  "ProjectManager/app/Controllers/ProjectMemberController.php",
+  "ProjectManager/app/Controllers/TaskController.php",
+  "ProjectManager/app/Controllers/UserController.php",
+  "ProjectManager/app/Core/Application.php",
+  "ProjectManager/app/Core/Container.php",
+  "ProjectManager/app/Core/Database.php",
+  "ProjectManager/app/Core/Dispatcher.php",
+  "ProjectManager/app/Core/ExceptionHandler.php",
+  "ProjectManager/app/Core/Request.php",
+  "ProjectManager/app/Core/Response.php",
+  "ProjectManager/app/Core/Router.php",
+  "ProjectManager/app/Models/ActivityLog.php",
+  "ProjectManager/app/Models/Attachment.php",
+  "ProjectManager/app/Models/Client.php",
+  "ProjectManager/app/Models/Comment.php",
+  "ProjectManager/app/Models/Label.php",
+  "ProjectManager/app/Models/Milestone.php",
+  "ProjectManager/app/Models/Permission.php",
+  "ProjectManager/app/Models/Project.php",
+  "ProjectManager/app/Models/ProjectMember.php",
+  "ProjectManager/app/Models/Role.php",
+  "ProjectManager/app/Models/Task.php",
+  "ProjectManager/app/Models/User.php",
+  "ProjectManager/app/Policies/DocumentPolicy.php",
+  "ProjectManager/app/Policies/PermissionPolicy.php",
+  "ProjectManager/app/Policies/ProjectPolicy.php",
+  "ProjectManager/app/Policies/RolePolicy.php",
+  "ProjectManager/app/Policies/TaskPolicy.php",
+  "ProjectManager/app/Policies/UserPolicy.php",
+  "ProjectManager/app/Repositories/ActivityLogRepository.php",
+  "ProjectManager/app/Repositories/AttachmentRepository.php",
+  "ProjectManager/app/Repositories/ClientRepository.php",
+  "ProjectManager/app/Repositories/CommentRepository.php",
+  "ProjectManager/app/Repositories/LabelRepository.php",
+  "ProjectManager/app/Repositories/MilestoneRepository.php",
+  "ProjectManager/app/Repositories/PermissionRepository.php",
+  "ProjectManager/app/Repositories/ProjectMemberRepository.php",
+  "ProjectManager/app/Repositories/ProjectRepository.php",
+  "ProjectManager/app/Repositories/RoleRepository.php",
+  "ProjectManager/app/Repositories/TaskRepository.php",
+  "ProjectManager/app/Repositories/UserRepository.php",
+  "ProjectManager/app/Services/AuthorizationService.php",
+  "ProjectManager/bootstrap.php",
+  "ProjectManager/config.php",
+  "ProjectManager/database/connection.php",
+  "ProjectManager/database/migration.php",
+  "ProjectManager/database/migrations/001_create_users_table.php",
+  "ProjectManager/database/migrations/002_create_roles_table.php",
+  "ProjectManager/database/migrations/003_create_permissions_table.php",
+  "ProjectManager/database/migrations/004_create_role_permissions_table.php",
+  "ProjectManager/database/migrations/005_create_user_roles_table.php",
+  "ProjectManager/database/migrations/006_create_attachments_table.php",
+  "ProjectManager/database/migrations/007_create_activity_log_table.php",
+  "ProjectManager/database/migrations/008_create_audit_tables.php",
+  "ProjectManager/database/migrations/009_create_projects_table.php",
+  "ProjectManager/database/migrations/010_create_pm_tasks_table.php",
+  "ProjectManager/database/migrations/011_create_pm_milestones_table.php",
+  "ProjectManager/database/migrations/012_create_pm_comments_table.php",
+  "ProjectManager/database/migrations/013_create_pm_notes_table.php",
+  "ProjectManager/database/schema.php",
+  "ProjectManager/index.php",
+  "ProjectManager/permissions.php",
+  "ProjectManager/project_board.php",
+  "ProjectManager/projects_dashboard.php",
+  "ProjectManager/router.php",
+  "ProjectManager/tests/Auth/AuthenticationTest.php",
+  "ProjectManager/tests/Core/BootstrapTest.php",
+  "ProjectManager/tests/Core/ExceptionTest.php",
+  "ProjectManager/tests/Core/RequestTest.php",
+  "ProjectManager/tests/Core/ResponseTest.php",
+  "ProjectManager/tests/Core/RouterTest.php",
+  "ProjectManager/tests/Permissions/AuthorizationTest.php",
+  "ProjectManager/tests/Permissions/PermissionTest.php",
+  "ProjectManager/tests/Permissions/RoleTest.php",
+  "api.php",
+  "api/agency_create.php",
+  "api/agency_dashboard.php",
+  "api/agency_dispatch.php",
+  "api/agency_synthesis.php",
+  "api/agent_spawn.php",
+  "api/agent_tick.php",
+  "api/anomaly_detector.php",
+  "api/brain_commit.php",
+  "api/brain_dossier.php",
+  "api/brain_memory_graph.php",
+  "api/brain_start.php",
+  "api/brain_state.php",
+  "api/brain_stream.php",
+  "api/brain_stream_v4.php",
+  "api/case_agent.php",
+  "api/case_create.php",
+  "api/case_memory.php",
+  "api/case_scheduler.php",
+  "api/case_tick.php",
+  "api/dossier.php",
+  "api/file.php",
+  "api/file_tree.php",
+  "api/graph_synthesizer.php",
+  "api/intel_cache.php",
+  "api/network_boot.php",
+  "api/network_tick.php",
+  "api/node_builder.php",
+  "api/tree.php",
+  "api/v8/_response.php",
+  "api/v8/agent.php",
+  "api/v8/alerts.php",
+  "api/v8/autonomous_engine.php",
+  "api/v8/build_edges.php",
+  "api/v8/build_graph.php",
+  "api/v8/cases.php",
+  "api/v8/cluster_insights.php",
+  "api/v8/compare_networks.php",
+  "api/v8/compressor.php",
+  "api/v8/create_network.php",
+  "api/v8/dashboard.php",
+  "api/v8/debug_tasks.php",
+  "api/v8/dossier.php",
+  "api/v8/dossier_v2.php",
+  "api/v8/event_emit.php",
+  "api/v8/feedback.php",
+  "api/v8/forecast.php",
+  "api/v8/generate_tasks.php",
+  "api/v8/get_cases.php",
+  "api/v8/get_clients.php",
+  "api/v8/graph_ranker.php",
+  "api/v8/insights.php",
+  "api/v8/investigator.php",
+  "api/v8/learn.php",
+  "api/v8/memory_store.php",
+  "api/v8/memory_weight.php",
+  "api/v8/mesh.php",
+  "api/v8/network_add_node.php",
+  "api/v8/patterns.php",
+  "api/v8/predictor.php",
+  "api/v8/recommendations.php",
+  "api/v8/run_worker.php",
+  "api/v8/summary.php",
+  "api/v8/widget_registry.php",
+  "bootstrap.php",
+  "cli/chain_evolver.php",
+  "cli/chain_generator.php",
+  "cli/worker.php",
+  "cluster_engine.php",
+  "components/card.php",
+  "components/compare.php",
+  "components/ui_card.php",
+  "components/ui_folder_tree.php",
+  "components/ui_tag.php",
+  "create_findings_tables.php",
+  "create_review_flags.php",
+  "create_session.php",
+  "create_test_data.php",
+  "database/migrations/010_create_tree_nodes_table.php",
+  "database/migrations/010_create_tree_nodes_tablebk.php",
+  "db_verify.php",
+  "diagnostics2.php",
+  "embed_generate.php",
+  "engine/case_manager.php",
+  "engine/client_manager.php",
+  "engine/cross_case_engine.php",
+  "engine/cross_case_learning_compiler.php",
+  "engine/dashboard_engine.php",
+  "engine/decision_engine_v2.php",
+  "engine/decision_governor.php",
+  "engine/execution_feedback_engine.php",
+  "engine/execution_router.php",
+  "engine/executive_dashboard_engine.php",
+  "engine/goal_alignment.php",
+  "engine/goal_arbitration_engine.php",
+  "engine/goal_conflict_resolver.php",
+  "engine/goal_engine.php",
+  "engine/goal_generator.php",
+  "engine/governance_policy_engine.php",
+  "engine/graph_data.php",
+  "engine/graph_engine.php",
+  "engine/graph_mutation_engine.php",
+  "engine/hierarchy_of_truth_engine.php",
+  "engine/insight_mutator.php",
+  "engine/long_horizon_planner.php",
+  "engine/memory_evolution_engine.php",
+  "engine/pattern_stability.php",
+  "engine/pipeline_adapters.php",
+  "engine/plain_english_helper.php",
+  "engine/policy_enforcement_engine.php",
+  "engine/portfolio_engine.php",
+  "engine/predictive_intelligence_engine.php",
+  "engine/reasoning_engine.php",
+  "engine/recommendation_engine.php",
+  "engine/semantic_cluster_engine.php",
+  "engine/system_behavior_spec.php",
+  "engine/system_insight_engine.php",
+  "engine/system_recommendation_engine.php",
+  "engine/temporal_memory_engine.php",
+  "export_report.php",
+  "ingest.php",
+  "ingest2.php",
+  "intelligence.php",
+  "kernel/bootstrap.php",
+  "kernel/cluster_intelligence.php",
+  "kernel/engine_bindings.php",
+  "kernel/folder_engine.php",
+  "kernel/graph_auto_builder.php",
+  "kernel/graph_engine.php",
+  "kernel/guard.php",
+  "kernel/kernel_contract.php",
+  "kernel/model/page_model.php",
+  "kernel/module_contract.php",
+  "kernel/system_health.php",
+  "kernel/task_generator.php",
+  "legaisee_prospects.php",
+  "lib/legaisee_model.php",
+  "load_module.php",
+  "load_sets.php",
+  "modules/001_create_tree_nodes.php",
+  "modules/build_dossier.php",
+  "modules/governance_module.php",
+  "modules/project_manager/project_manager.php",
+  "modules/utils/debug_helpers.php",
+  "modules/utils/file_helpers.php",
+  "modules/utils/uic_v2.php",
+  "pages/goals.php",
+  "pages/home.php",
+  "pages/logs.php",
+  "pages/network_view.php",
+  "pages/networks.php",
+  "pages/reasoning.php",
+  "pages/search.php",
+  "pages/shell_template.php",
+  "pages/test/shell_module_test.php",
+  "parser.php",
+  "peek.php",
+  "response.php",
+  "save_set.php",
+  "semantic_engine.php",
+  "session.php",
+  "temp_dashboard.php",
+  "test_db.php",
+  "test_excavation_module.php",
+  "test_extraction_fix.php",
+  "test_graph.php",
+  "test_graph_fix.php",
+  "test_hierarchy_of_truth.php",
+  "test_kernel.php",
+  "test_modules.php",
+  "test_ui.php",
+  "test_visual.php",
+  "tools/build_cluster_summaries.php",
+  "tools/build_cluster_summaries_ai.php",
+  "tools/build_clusters.php",
+  "tools/build_relations.php",
+  "tools/detect_cluster_opportunities.php",
+  "tools/extract_cluster_insights.php",
+  "tools/name_clusters.php",
+  "ui/compare_engine.php",
+  "ui/components/card.php",
+  "ui/components/ingest_exec snap.php",
+  "ui/components/ingestforshell.php",
+  "ui/file_explorer.php",
+  "view_ingest.php",
+  "views/compare_view.php",
+  "views/graph_view.php",
+  "views/ingest_view.php"
+ ],
+ "graph": {
+  "view_ingest.php": [
+   {
+    "line": 11,
+    "expr": "__DIR__ . '/kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   }
+  ],
+  "session.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "test_visual.php": [],
+  "export_report.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . \"/db.php\"",
+    "target": "db.php",
+    "exists": true
+   },
+   {
+    "line": 4,
+    "expr": "__DIR__ . \"/lib/dompdf/autoload.inc.php\"",
+    "target": "lib/dompdf/autoload.inc.php",
+    "exists": true
+   },
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "db.php": [
+   {
+    "line": 2,
+    "expr": "__DIR__ . '/kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   }
+  ],
+  "test_modules.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/kernel/kernel_boot.php'",
+    "target": "kernel/kernel_boot.php",
+    "exists": true
+   },
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/kernel/kernel_contract.php'",
+    "target": "kernel/kernel_contract.php",
+    "exists": true
+   },
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/kernel/module_contract.php'",
+    "target": "kernel/module_contract.php",
+    "exists": true
+   },
+   {
+    "line": 13,
+    "expr": "__DIR__ . '/kernel/module_registry.php'",
+    "target": "kernel/module_registry.php",
+    "exists": true
+   }
+  ],
+  "ingest2.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "shell.php": [
+   {
+    "line": 6,
+    "expr": "__DIR__ . '/kernel/kernel_boot.php'",
+    "target": "kernel/kernel_boot.php",
+    "exists": true
+   },
+   {
+    "line": 7,
+    "expr": "__DIR__ . '/modules/utils/bootstrap.php'",
+    "target": "modules/utils/bootstrap.php",
+    "exists": true
+   },
+   {
+    "line": 8,
+    "expr": "__DIR__ . '/modules/utils/uic_v1.php'",
+    "target": "modules/utils/uic_v1.php",
+    "exists": true
+   },
+   {
+    "line": 18,
+    "expr": "__DIR__ . '/modules/report_module.php'",
+    "target": "modules/report_module.php",
+    "exists": true
+   },
+   {
+    "line": 25,
+    "expr": "__DIR__ . '/modules/vault_module.php'",
+    "target": "modules/vault_module.php",
+    "exists": true
+   },
+   {
+    "line": 32,
+    "expr": "__DIR__ . '/modules/brain_module.php'",
+    "target": "modules/brain_module.php",
+    "exists": true
+   },
+   {
+    "line": 38,
+    "expr": "__DIR__ . '/kernel/module_registry.php'",
+    "target": "kernel/module_registry.php",
+    "exists": true
+   }
+  ],
+  "legaisee_prospects.php": [],
+  "semantic_engine.php": [
+   {
+    "line": 2,
+    "expr": "\"db.php\"",
+    "target": "db.php",
+    "exists": true
+   },
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "diagnostics2.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   }
+  ],
+  "response.php": [],
+  "test_excavation_module.php": [
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/kernel/kernel_boot.php'",
+    "target": "kernel/kernel_boot.php",
+    "exists": true
+   },
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/modules/utils/bootstrap.php'",
+    "target": "modules/utils/bootstrap.php",
+    "exists": true
+   },
+   {
+    "line": 10,
+    "expr": "__DIR__ . '/modules/excavation_module.php'",
+    "target": "modules/excavation_module.php",
+    "exists": true
+   }
+  ],
+  "load_sets.php": [
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "load_module.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/kernel/module_registry.php'",
+    "target": "kernel/module_registry.php",
+    "exists": true
+   }
+  ],
+  "bootstrap.php": [],
+  "prospect.php": [
+   {
+    "line": 6,
+    "expr": "__DIR__ . '/kernel/kernel_boot.php'",
+    "target": "kernel/kernel_boot.php",
+    "exists": true
+   },
+   {
+    "line": 7,
+    "expr": "__DIR__ . '/engine/entity_extraction_engine.php'",
+    "target": "engine/entity_extraction_engine.php",
+    "exists": true
+   }
+  ],
+  "cluster_engine.php": [],
+  "test_graph.php": [],
+  "config.local.php": [],
+  "create_test_data.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/engine/client_manager.php'",
+    "target": "engine/client_manager.php",
+    "exists": true
+   },
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/engine/case_manager.php'",
+    "target": "engine/case_manager.php",
+    "exists": true
+   }
+  ],
+  "embed_generate.php": [
+   {
+    "line": 2,
+    "expr": "\"db.php\"",
+    "target": "db.php",
+    "exists": true
+   },
+   {
+    "line": 9,
+    "expr": "'/home/carrmulti/private/openai_key.php'",
+    "target": "D:/home/carrmulti/private/openai_key.php",
+    "exists": false
+   }
+  ],
+  "peek.php": [],
+  "intelligence.php": [
+   {
+    "line": 12,
+    "expr": "__DIR__ . '/lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "db_verify.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   }
+  ],
+  "parser.php": [
+   {
+    "line": 16,
+    "expr": "__DIR__ . '/lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "config.php": [
+   {
+    "line": 11,
+    "expr": "__DIR__ . '/config.local.php'",
+    "target": "config.local.php",
+    "exists": true
+   }
+  ],
+  "temp_dashboard.php": [
+   {
+    "line": 11,
+    "expr": "__DIR__ . '/kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   }
+  ],
+  "test_hierarchy_of_truth.php": [
+   {
+    "line": 17,
+    "expr": "__DIR__ . '/engine/hierarchy_of_truth_engine.php'",
+    "target": "engine/hierarchy_of_truth_engine.php",
+    "exists": true
+   }
+  ],
+  "test_db.php": [
+   {
+    "line": 3,
+    "expr": "\"db.php\"",
+    "target": "db.php",
+    "exists": true
+   }
+  ],
+  "ingest.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "save_set.php": [
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "test_ui.php": [],
+  "create_session.php": [],
+  "create_review_flags.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   }
+  ],
+  "create_findings_tables.php": [
+   {
+    "line": 26,
+    "expr": "__DIR__ . '/kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   }
+  ],
+  "test_kernel.php": [
+   {
+    "line": 2,
+    "expr": "__DIR__ . \"/kernel/kernel.php\"",
+    "target": "kernel/kernel.php",
+    "exists": true
+   }
+  ],
+  "Color_Creator.php": [],
+  "api.php": [
+   {
+    "line": 7,
+    "expr": "__DIR__ . '/kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   }
+  ],
+  "test_extraction_fix.php": [
+   {
+    "line": 11,
+    "expr": "__DIR__ . '/kernel/kernel_boot.php'",
+    "target": "kernel/kernel_boot.php",
+    "exists": true
+   },
+   {
+    "line": 12,
+    "expr": "__DIR__ . '/engine/entity_extraction_engine.php'",
+    "target": "engine/entity_extraction_engine.php",
+    "exists": true
+   }
+  ],
+  "test_graph_fix.php": [
+   {
+    "line": 13,
+    "expr": "__DIR__ . '/kernel/kernel_boot.php'",
+    "target": "kernel/kernel_boot.php",
+    "exists": true
+   },
+   {
+    "line": 14,
+    "expr": "__DIR__ . '/modules/graph_module.php'",
+    "target": "modules/graph_module.php",
+    "exists": true
+   }
+  ],
+  "modules/cross_case_engine.php": [],
+  "modules/compare_module.php": [],
+  "modules/payment_module.php": [
+   {
+    "line": 10,
+    "expr": "__DIR__ . '/../kernel/kernel_boot.php'",
+    "target": "kernel/kernel_boot.php",
+    "exists": true
+   },
+   {
+    "line": 11,
+    "expr": "__DIR__ . '/../config.php'",
+    "target": "config.php",
+    "exists": true
+   },
+   {
+    "line": 12,
+    "expr": "__DIR__ . '/../lib/vendor/autoload.php'",
+    "target": "lib/vendor/autoload.php",
+    "exists": true
+   }
+  ],
+  "modules/excavation_module.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/utils/json_helpers.php'",
+    "target": "modules/utils/json_helpers.php",
+    "exists": true
+   },
+   {
+    "line": 26,
+    "expr": "__DIR__ . '/../engine/entity_extraction_engine.php'",
+    "target": "engine/entity_extraction_engine.php",
+    "exists": true
+   },
+   {
+    "line": 27,
+    "expr": "__DIR__ . '/../kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   }
+  ],
+  "modules/entity_resolution_module.php": [
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/../kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   }
+  ],
+  "modules/clients_module.php": [
+   {
+    "line": 8,
+    "expr": "__DIR__ . '/../kernel/kernel_boot.php'",
+    "target": "kernel/kernel_boot.php",
+    "exists": true
+   }
+  ],
+  "modules/cases_module.php": [
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/utils/bootstrap.php'",
+    "target": "modules/utils/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "modules/predictive_module.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/utils/bootstrap.php'",
+    "target": "modules/utils/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "modules/vault_module.php": [
+   {
+    "line": 10,
+    "expr": "__DIR__ . '/../db.php'",
+    "target": "db.php",
+    "exists": true
+   }
+  ],
+  "modules/dig_review_module.php": [
+   {
+    "line": 22,
+    "expr": "__DIR__ . '/../kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   }
+  ],
+  "modules/decision_module.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/utils/bootstrap.php'",
+    "target": "modules/utils/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "modules/relations_module.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/utils/bootstrap.php'",
+    "target": "modules/utils/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "modules/dashboard_module.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/utils/bootstrap.php'",
+    "target": "modules/utils/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "modules/ingest_module.php": [
+   {
+    "line": 110,
+    "expr": "__DIR__ . '/../kernel/ingestion_pipeline.php'",
+    "target": "kernel/ingestion_pipeline.php",
+    "exists": true
+   }
+  ],
+  "modules/pm_module.php": [],
+  "modules/cluster_module.php": [
+   {
+    "line": 2,
+    "expr": "__DIR__ . '/../kernel/kernel_boot.php'",
+    "target": "kernel/kernel_boot.php",
+    "exists": true
+   }
+  ],
+  "modules/root_cause_graph_module.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/utils/bootstrap.php'",
+    "target": "modules/utils/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "modules/search_module.php": [
+   {
+    "line": 15,
+    "expr": "'utils/bootstrap.php'",
+    "target": "modules/utils/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "modules/ingest_view_module.php": [],
+  "modules/graph_module.php": [],
+  "modules/cockpit_module.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   }
+  ],
+  "modules/view_module.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../kernel/kernel_boot.php'",
+    "target": "kernel/kernel_boot.php",
+    "exists": true
+   },
+   {
+    "line": 6,
+    "expr": "__DIR__ . '/../ui/ui_engine.php'",
+    "target": "ui/ui_engine.php",
+    "exists": true
+   },
+   {
+    "line": 7,
+    "expr": "__DIR__ . '/../kernel/nav_engine.php'",
+    "target": "kernel/nav_engine.php",
+    "exists": true
+   },
+   {
+    "line": 8,
+    "expr": "__DIR__ . '/../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   },
+   {
+    "line": 9,
+    "expr": "__DIR__ . '/../kernel/kernel.php'",
+    "target": "kernel/kernel.php",
+    "exists": true
+   }
+  ],
+  "modules/governance_module.php": [
+   {
+    "line": 9,
+    "expr": "__DIR__ . '/utils/bootstrap.php'",
+    "target": "modules/utils/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "modules/executive_dashboard_module.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/utils/bootstrap.php'",
+    "target": "modules/utils/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "modules/brain_module.php": [
+   {
+    "line": 24,
+    "expr": "__DIR__ . '/../api/brain_orchestrator.php'",
+    "target": "api/brain_orchestrator.php",
+    "exists": true
+   },
+   {
+    "line": 33,
+    "expr": "__DIR__ . '/../kernel/module_registry.php'",
+    "target": "kernel/module_registry.php",
+    "exists": true
+   }
+  ],
+  "modules/alert_module.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/utils/json_helpers.php'",
+    "target": "modules/utils/json_helpers.php",
+    "exists": true
+   }
+  ],
+  "modules/report_module.php": [
+   {
+    "line": 10,
+    "expr": "__DIR__ . '/../kernel/kernel_boot.php'",
+    "target": "kernel/kernel_boot.php",
+    "exists": true
+   },
+   {
+    "line": 11,
+    "expr": "__DIR__ . '/../lib/dompdf/autoload.inc.php'",
+    "target": "lib/dompdf/autoload.inc.php",
+    "exists": true
+   }
+  ],
+  "modules/files_module.php": [],
+  "modules/semantic_cluster_module.php": [
+   {
+    "line": 11,
+    "expr": "__DIR__ . '/../db.php'",
+    "target": "db.php",
+    "exists": true
+   }
+  ],
+  "modules/recommendation_module.php": [
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/utils/bootstrap.php'",
+    "target": "modules/utils/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "modules/client_view_module.php": [
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/../kernel/kernel_boot.php'",
+    "target": "kernel/kernel_boot.php",
+    "exists": true
+   },
+   {
+    "line": 234,
+    "expr": "__DIR__ . '/../graph_view.php'",
+    "target": "graph_view.php",
+    "exists": false
+   }
+  ],
+  "modules/001_create_tree_nodes.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   }
+  ],
+  "modules/time_intelligence_module.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/utils/bootstrap.php'",
+    "target": "modules/utils/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "modules/intelligence_dashboard_module.php": [
+   {
+    "line": 12,
+    "expr": "__DIR__ . '/utils/uic_v1.php'",
+    "target": "modules/utils/uic_v1.php",
+    "exists": true
+   }
+  ],
+  "modules/build_dossier.php": [
+   {
+    "line": 11,
+    "expr": "__DIR__ . '/../kernel/kernel_boot.php'",
+    "target": "kernel/kernel_boot.php",
+    "exists": true
+   }
+  ],
+  "modules/anomaly_engine_module.php": [],
+  "modules/insight_module.php": [],
+  "modules/predictive_link_module_v1.php": [
+   {
+    "line": 12,
+    "expr": "__DIR__ . '/utils/bootstrap.php'",
+    "target": "modules/utils/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "modules/project_manager/project_manager.php": [],
+  "modules/utils/uic_v2.php": [],
+  "modules/utils/uic_v1.php": [],
+  "modules/utils/bootstrap.php": [],
+  "modules/utils/json_helpers.php": [],
+  "modules/utils/debug_helpers.php": [],
+  "modules/utils/file_helpers.php": [],
+  "pages/networks.php": [],
+  "pages/home.php": [],
+  "pages/reasoning.php": [],
+  "pages/search.php": [],
+  "pages/goals.php": [],
+  "pages/shell_template.php": [
+   {
+    "line": 7,
+    "expr": "__DIR__ . '/kernel/kernel_boot.php'",
+    "target": "pages/kernel/kernel_boot.php",
+    "exists": false
+   },
+   {
+    "line": 10,
+    "expr": "__DIR__ . '/modules/utils/bootstrap.php'",
+    "target": "pages/modules/utils/bootstrap.php",
+    "exists": false
+   },
+   {
+    "line": 12,
+    "expr": "__DIR__ . '/modules/utils/uic_v1.php'",
+    "target": "pages/modules/utils/uic_v1.php",
+    "exists": false
+   }
+  ],
+  "pages/network_view.php": [],
+  "pages/logs.php": [],
+  "pages/test/shell_module_test.php": [
+   {
+    "line": 7,
+    "expr": "__DIR__ . '/kernel/kernel_boot.php'",
+    "target": "pages/test/kernel/kernel_boot.php",
+    "exists": false
+   },
+   {
+    "line": 10,
+    "expr": "__DIR__ . '/modules/utils/bootstrap.php'",
+    "target": "pages/test/modules/utils/bootstrap.php",
+    "exists": false
+   },
+   {
+    "line": 12,
+    "expr": "__DIR__ . '/modules/utils/uic_v1.php'",
+    "target": "pages/test/modules/utils/uic_v1.php",
+    "exists": false
+   },
+   {
+    "line": 229,
+    "expr": "__DIR__ . '/../kernel/module_registry.php'",
+    "target": "pages/kernel/module_registry.php",
+    "exists": false
+   }
+  ],
+  "ProjectManager/project_board.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/bootstrap.php'",
+    "target": "ProjectManager/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/index.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/router.php'",
+    "target": "ProjectManager/router.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/bootstrap.php": [],
+  "ProjectManager/projects_dashboard.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/bootstrap.php'",
+    "target": "ProjectManager/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/config.php": [
+   {
+    "line": 4,
+    "expr": "'/home/carrmulti/private/pm_db_credentials.php'",
+    "target": "D:/home/carrmulti/private/pm_db_credentials.php",
+    "exists": false
+   }
+  ],
+  "ProjectManager/router.php": [
+   {
+    "line": 7,
+    "expr": "__DIR__ . '/bootstrap.php'",
+    "target": "ProjectManager/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/permissions.php": [],
+  "ProjectManager/app/Services/AuthorizationService.php": [],
+  "ProjectManager/app/Repositories/PermissionRepository.php": [],
+  "ProjectManager/app/Repositories/UserRepository.php": [],
+  "ProjectManager/app/Repositories/RoleRepository.php": [],
+  "ProjectManager/app/Repositories/MilestoneRepository.php": [],
+  "ProjectManager/app/Repositories/CommentRepository.php": [],
+  "ProjectManager/app/Repositories/AttachmentRepository.php": [],
+  "ProjectManager/app/Repositories/ProjectRepository.php": [],
+  "ProjectManager/app/Repositories/TaskRepository.php": [],
+  "ProjectManager/app/Repositories/ClientRepository.php": [],
+  "ProjectManager/app/Repositories/ActivityLogRepository.php": [],
+  "ProjectManager/app/Repositories/LabelRepository.php": [],
+  "ProjectManager/app/Repositories/ProjectMemberRepository.php": [],
+  "ProjectManager/app/Policies/TaskPolicy.php": [],
+  "ProjectManager/app/Policies/ProjectPolicy.php": [],
+  "ProjectManager/app/Policies/RolePolicy.php": [],
+  "ProjectManager/app/Policies/PermissionPolicy.php": [],
+  "ProjectManager/app/Policies/UserPolicy.php": [],
+  "ProjectManager/app/Policies/DocumentPolicy.php": [],
+  "ProjectManager/app/Models/Label.php": [],
+  "ProjectManager/app/Models/Comment.php": [],
+  "ProjectManager/app/Models/Role.php": [],
+  "ProjectManager/app/Models/Permission.php": [],
+  "ProjectManager/app/Models/Client.php": [],
+  "ProjectManager/app/Models/User.php": [],
+  "ProjectManager/app/Models/ActivityLog.php": [],
+  "ProjectManager/app/Models/Project.php": [],
+  "ProjectManager/app/Models/Milestone.php": [],
+  "ProjectManager/app/Models/ProjectMember.php": [],
+  "ProjectManager/app/Models/Attachment.php": [],
+  "ProjectManager/app/Models/Task.php": [],
+  "ProjectManager/app/Controllers/AuthController.php": [],
+  "ProjectManager/app/Controllers/LabelController.php": [],
+  "ProjectManager/app/Controllers/UserController.php": [],
+  "ProjectManager/app/Controllers/ClientController.php": [],
+  "ProjectManager/app/Controllers/CommentController.php": [],
+  "ProjectManager/app/Controllers/ProjectController.php": [],
+  "ProjectManager/app/Controllers/MilestoneController.php": [],
+  "ProjectManager/app/Controllers/ProjectMemberController.php": [],
+  "ProjectManager/app/Controllers/TaskController.php": [],
+  "ProjectManager/app/Core/Container.php": [],
+  "ProjectManager/app/Core/Router.php": [],
+  "ProjectManager/app/Core/Request.php": [],
+  "ProjectManager/app/Core/Application.php": [],
+  "ProjectManager/app/Core/ExceptionHandler.php": [],
+  "ProjectManager/app/Core/Response.php": [],
+  "ProjectManager/app/Core/Dispatcher.php": [],
+  "ProjectManager/app/Core/Database.php": [],
+  "ProjectManager/api/tasks/index.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../../bootstrap.php'",
+    "target": "ProjectManager/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/api/projects/members.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../../bootstrap.php'",
+    "target": "ProjectManager/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/api/projects/index.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../../bootstrap.php'",
+    "target": "ProjectManager/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/api/comments/index.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../../bootstrap.php'",
+    "target": "ProjectManager/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/api/permissions/roles.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../../bootstrap.php'",
+    "target": "ProjectManager/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/api/permissions/index.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../../bootstrap.php'",
+    "target": "ProjectManager/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/api/auth/logout.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../../bootstrap.php'",
+    "target": "ProjectManager/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/api/auth/login.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../../bootstrap.php'",
+    "target": "ProjectManager/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/api/auth/status.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../../bootstrap.php'",
+    "target": "ProjectManager/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/api/clients/index.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../../bootstrap.php'",
+    "target": "ProjectManager/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/api/labels/index.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../../bootstrap.php'",
+    "target": "ProjectManager/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/api/milestones/index.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../../bootstrap.php'",
+    "target": "ProjectManager/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/api/users/index.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../../bootstrap.php'",
+    "target": "ProjectManager/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/api/users/show.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../../bootstrap.php'",
+    "target": "ProjectManager/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/database/schema.php": [],
+  "ProjectManager/database/connection.php": [],
+  "ProjectManager/database/migration.php": [
+   {
+    "line": 5,
+    "expr": "dirname(__DIR__) . '/bootstrap.php'",
+    "target": "ProjectManager/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/database/migrations/002_create_roles_table.php": [],
+  "ProjectManager/database/migrations/007_create_activity_log_table.php": [],
+  "ProjectManager/database/migrations/011_create_pm_milestones_table.php": [],
+  "ProjectManager/database/migrations/008_create_audit_tables.php": [],
+  "ProjectManager/database/migrations/013_create_pm_notes_table.php": [],
+  "ProjectManager/database/migrations/005_create_user_roles_table.php": [],
+  "ProjectManager/database/migrations/009_create_projects_table.php": [],
+  "ProjectManager/database/migrations/010_create_pm_tasks_table.php": [],
+  "ProjectManager/database/migrations/004_create_role_permissions_table.php": [],
+  "ProjectManager/database/migrations/003_create_permissions_table.php": [],
+  "ProjectManager/database/migrations/001_create_users_table.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../connection.php'",
+    "target": "ProjectManager/database/connection.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/database/migrations/006_create_attachments_table.php": [],
+  "ProjectManager/database/migrations/012_create_pm_comments_table.php": [],
+  "ProjectManager/tests/Auth/AuthenticationTest.php": [],
+  "ProjectManager/tests/Permissions/PermissionTest.php": [],
+  "ProjectManager/tests/Permissions/RoleTest.php": [],
+  "ProjectManager/tests/Permissions/AuthorizationTest.php": [],
+  "ProjectManager/tests/Core/RequestTest.php": [],
+  "ProjectManager/tests/Core/ResponseTest.php": [],
+  "ProjectManager/tests/Core/RouterTest.php": [],
+  "ProjectManager/tests/Core/BootstrapTest.php": [
+   {
+    "line": 11,
+    "expr": "__DIR__ . '/../../bootstrap.php'",
+    "target": "ProjectManager/bootstrap.php",
+    "exists": true
+   },
+   {
+    "line": 29,
+    "expr": "__DIR__ . '/../../bootstrap.php'",
+    "target": "ProjectManager/bootstrap.php",
+    "exists": true
+   }
+  ],
+  "ProjectManager/tests/Core/ExceptionTest.php": [],
+  "api/agency_synthesis.php": [],
+  "api/brain_state.php": [],
+  "api/intel_cache.php": [],
+  "api/network_boot.php": [],
+  "api/node_builder.php": [],
+  "api/brain_start.php": [],
+  "api/agency_dispatch.php": [],
+  "api/agent_spawn.php": [],
+  "api/case_tick.php": [],
+  "api/agency_create.php": [],
+  "api/file.php": [],
+  "api/network_tick.php": [],
+  "api/tree.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   }
+  ],
+  "api/case_agent.php": [],
+  "api/case_create.php": [],
+  "api/file_tree.php": [],
+  "api/brain_commit.php": [],
+  "api/agent_tick.php": [],
+  "api/brain_memory_graph.php": [],
+  "api/files_action.php": [
+   {
+    "line": 23,
+    "expr": "__DIR__ . '/../kernel/kernel_boot.php'",
+    "target": "kernel/kernel_boot.php",
+    "exists": true
+   }
+  ],
+  "api/brain_stream.php": [],
+  "api/brain_synthesis.php": [],
+  "api/anomaly_detector.php": [],
+  "api/graph_synthesizer.php": [],
+  "api/brain_orchestrator.php": [
+   {
+    "line": 20,
+    "expr": "__DIR__ . '/../config.php'",
+    "target": "config.php",
+    "exists": true
+   },
+   {
+    "line": 21,
+    "expr": "__DIR__ . '/model_router.php'",
+    "target": "api/model_router.php",
+    "exists": true
+   },
+   {
+    "line": 22,
+    "expr": "__DIR__ . '/brain_synthesis.php'",
+    "target": "api/brain_synthesis.php",
+    "exists": true
+   }
+  ],
+  "api/brain_dossier.php": [],
+  "api/agency_dashboard.php": [],
+  "api/model_router.php": [],
+  "api/case_scheduler.php": [],
+  "api/search_load.php": [
+   {
+    "line": 15,
+    "expr": "__DIR__ . '/../kernel/kernel_boot.php'",
+    "target": "kernel/kernel_boot.php",
+    "exists": true
+   }
+  ],
+  "api/dossier.php": [],
+  "api/case_memory.php": [],
+  "api/brain_stream_v4.php": [],
+  "api/v8/build_edges.php": [
+   {
+    "line": 6,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/network_add_node.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../../kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   },
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/../../response.php'",
+    "target": "response.php",
+    "exists": true
+   }
+  ],
+  "api/v8/_response.php": [],
+  "api/v8/generate_tasks.php": [
+   {
+    "line": 7,
+    "expr": "__DIR__ . '/../db.php'",
+    "target": "api/db.php",
+    "exists": false
+   }
+  ],
+  "api/v8/memory_weight.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/create_network.php": [
+   {
+    "line": 7,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/learn.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/feedback.php": [
+   {
+    "line": 11,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/forecast.php": [
+   {
+    "line": 8,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/predictor.php": [
+   {
+    "line": 11,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/event_emit.php": [
+   {
+    "line": 14,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/debug_tasks.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../../db.php'",
+    "target": "db.php",
+    "exists": true
+   }
+  ],
+  "api/v8/memory_store.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/run_worker.php": [],
+  "api/v8/recommendations.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../../engine/recommendation_engine.php'",
+    "target": "engine/recommendation_engine.php",
+    "exists": true
+   },
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/../../response.php'",
+    "target": "response.php",
+    "exists": true
+   }
+  ],
+  "api/v8/cases.php": [
+   {
+    "line": 6,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/mesh.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/dossier_v2.php": [
+   {
+    "line": 6,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/cluster_insights.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../../engine/semantic_cluster_engine.php'",
+    "target": "engine/semantic_cluster_engine.php",
+    "exists": true
+   },
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/../../kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   },
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../../response.php'",
+    "target": "response.php",
+    "exists": true
+   }
+  ],
+  "api/v8/compare_networks.php": [
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/get_cases.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../../kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   },
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/../../response.php'",
+    "target": "response.php",
+    "exists": true
+   }
+  ],
+  "api/v8/get_clients.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../../kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   },
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/../../response.php'",
+    "target": "response.php",
+    "exists": true
+   }
+  ],
+  "api/v8/dashboard.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../../engine/dashboard_engine.php'",
+    "target": "engine/dashboard_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/build_graph.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../../engine/graph_engine.php'",
+    "target": "engine/graph_engine.php",
+    "exists": true
+   },
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/../../response.php'",
+    "target": "response.php",
+    "exists": true
+   }
+  ],
+  "api/v8/autonomous_engine.php": [
+   {
+    "line": 6,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/patterns.php": [
+   {
+    "line": 6,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/compressor.php": [
+   {
+    "line": 7,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/alerts.php": [
+   {
+    "line": 6,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/insights.php": [
+   {
+    "line": 6,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/widget_registry.php": [],
+  "api/v8/investigator.php": [
+   {
+    "line": 7,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/dossier.php": [],
+  "api/v8/summary.php": [
+   {
+    "line": 6,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/agent.php": [
+   {
+    "line": 6,
+    "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'",
+    "target": "lib/semantic_diff_engine.php",
+    "exists": true
+   }
+  ],
+  "api/v8/graph_ranker.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../../kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   },
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/../../response.php'",
+    "target": "response.php",
+    "exists": true
+   }
+  ],
+  "views/graph_view.php": [
+   {
+    "line": 2,
+    "expr": "__DIR__ . '/../kernel/kernel_boot.php'",
+    "target": "kernel/kernel_boot.php",
+    "exists": true
+   }
+  ],
+  "views/compare_view.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../kernel/kernel_boot.php'",
+    "target": "kernel/kernel_boot.php",
+    "exists": true
+   },
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/../lib/legaisee_model.php'",
+    "target": "lib/legaisee_model.php",
+    "exists": true
+   },
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../kernel/nav_engine.php'",
+    "target": "kernel/nav_engine.php",
+    "exists": true
+   }
+  ],
+  "views/ingest_view.php": [],
+  "ExcavationCommand/system_index.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../db.php'",
+    "target": "db.php",
+    "exists": true
+   }
+  ],
+  "ExcavationCommand/dashboard.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../db.php'",
+    "target": "db.php",
+    "exists": true
+   },
+   {
+    "line": 8,
+    "expr": "__DIR__ . '/system_index.php'",
+    "target": "ExcavationCommand/system_index.php",
+    "exists": true
+   }
+  ],
+  "ExcavationCommand/planner.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../db.php'",
+    "target": "db.php",
+    "exists": true
+   }
+  ],
+  "cli/chain_evolver.php": [],
+  "cli/chain_generator.php": [],
+  "cli/worker.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../engine/cluster_engine.php'",
+    "target": "engine/cluster_engine.php",
+    "exists": false
+   },
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/../engine/reasoning_engine.php'",
+    "target": "engine/reasoning_engine.php",
+    "exists": true
+   },
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/../engine/recommendation_engine.php'",
+    "target": "engine/recommendation_engine.php",
+    "exists": true
+   },
+   {
+    "line": 6,
+    "expr": "__DIR__ . '/../engine/pipeline_adapters.php'",
+    "target": "engine/pipeline_adapters.php",
+    "exists": true
+   },
+   {
+    "line": 7,
+    "expr": "__DIR__ . '/../engine/system_insight_engine.php'",
+    "target": "engine/system_insight_engine.php",
+    "exists": true
+   },
+   {
+    "line": 8,
+    "expr": "__DIR__ . '/../engine/predictive_intelligence_engine.php'",
+    "target": "engine/predictive_intelligence_engine.php",
+    "exists": true
+   },
+   {
+    "line": 12,
+    "expr": "__DIR__ . '/../engine/predictive_intelligence_engine.php'",
+    "target": "engine/predictive_intelligence_engine.php",
+    "exists": true
+   }
+  ],
+  "kernel/ingestion_pipeline.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../db.php'",
+    "target": "db.php",
+    "exists": true
+   }
+  ],
+  "kernel/system_health.php": [
+   {
+    "line": 19,
+    "expr": "__DIR__ . '/kernel_boot.php'",
+    "target": "kernel/kernel_boot.php",
+    "exists": true
+   },
+   {
+    "line": 86,
+    "expr": "__DIR__ . \"/module_registry.php\"",
+    "target": "kernel/module_registry.php",
+    "exists": true
+   }
+  ],
+  "kernel/engine_bindings.php": [],
+  "kernel/db.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../config.php'",
+    "target": "config.php",
+    "exists": true
+   }
+  ],
+  "kernel/kernel_paths.php": [],
+  "kernel/folder_engine.php": [],
+  "kernel/kernel.php": [],
+  "kernel/bootstrap.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../db.php'",
+    "target": "db.php",
+    "exists": true
+   }
+  ],
+  "kernel/cluster_intelligence.php": [],
+  "kernel/graph_engine.php": [],
+  "kernel/guard.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . \"/kernel.php\"",
+    "target": "kernel/kernel.php",
+    "exists": true
+   }
+  ],
+  "kernel/graph_auto_builder.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../db.php'",
+    "target": "db.php",
+    "exists": true
+   }
+  ],
+  "kernel/nav_engine.php": [],
+  "kernel/task_generator.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/recommendation_engine.php'",
+    "target": "kernel/recommendation_engine.php",
+    "exists": false
+   },
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/../db.php'",
+    "target": "db.php",
+    "exists": true
+   }
+  ],
+  "kernel/kernel_contract.php": [],
+  "kernel/module_registry.php": [],
+  "kernel/module_contract.php": [],
+  "kernel/kernel_boot.php": [
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   },
+   {
+    "line": 6,
+    "expr": "__DIR__ . '/kernel_paths.php'",
+    "target": "kernel/kernel_paths.php",
+    "exists": true
+   },
+   {
+    "line": 9,
+    "expr": "__DIR__ . '/../ui/ui_bootstrap.php'",
+    "target": "ui/ui_bootstrap.php",
+    "exists": true
+   }
+  ],
+  "kernel/model/page_model.php": [],
+  "engine/cross_case_engine.php": [],
+  "engine/portfolio_engine.php": [],
+  "engine/goal_engine.php": [
+   {
+    "line": 34,
+    "expr": "__DIR__ . '/goal_arbitration_engine.php'",
+    "target": "engine/goal_arbitration_engine.php",
+    "exists": true
+   },
+   {
+    "line": 35,
+    "expr": "__DIR__ . '/goal_conflict_resolver.php'",
+    "target": "engine/goal_conflict_resolver.php",
+    "exists": true
+   }
+  ],
+  "engine/insight_mutator.php": [],
+  "engine/recommendation_engine.php": [],
+  "engine/decision_engine_v2.php": [
+   {
+    "line": 15,
+    "expr": "__DIR__ . '/system_insight_engine.php'",
+    "target": "engine/system_insight_engine.php",
+    "exists": true
+   }
+  ],
+  "engine/governance_policy_engine.php": [],
+  "engine/execution_router.php": [],
+  "engine/execution_feedback_engine.php": [],
+  "engine/goal_arbitration_engine.php": [],
+  "engine/system_insight_engine.php": [
+   {
+    "line": 14,
+    "expr": "__DIR__ . '/cross_case_engine.php'",
+    "target": "engine/cross_case_engine.php",
+    "exists": true
+   }
+  ],
+  "engine/goal_generator.php": [],
+  "engine/plain_english_helper.php": [],
+  "engine/graph_data.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . \"/../bootstrap.php\"",
+    "target": "bootstrap.php",
+    "exists": true
+   }
+  ],
+  "engine/system_recommendation_engine.php": [],
+  "engine/decision_governor.php": [],
+  "engine/client_manager.php": [],
+  "engine/dashboard_engine.php": [],
+  "engine/executive_dashboard_engine.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/semantic_cluster_engine.php'",
+    "target": "engine/semantic_cluster_engine.php",
+    "exists": true
+   },
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/memory_evolution_engine.php'",
+    "target": "engine/memory_evolution_engine.php",
+    "exists": true
+   },
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/system_insight_engine.php'",
+    "target": "engine/system_insight_engine.php",
+    "exists": true
+   },
+   {
+    "line": 6,
+    "expr": "__DIR__ . '/cross_case_engine.php'",
+    "target": "engine/cross_case_engine.php",
+    "exists": true
+   },
+   {
+    "line": 7,
+    "expr": "__DIR__ . '/portfolio_engine.php'",
+    "target": "engine/portfolio_engine.php",
+    "exists": true
+   }
+  ],
+  "engine/graph_engine.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   }
+  ],
+  "engine/long_horizon_planner.php": [],
+  "engine/hierarchy_of_truth_engine.php": [
+   {
+    "line": 52,
+    "expr": "__DIR__ . '/../kernel/kernel_boot.php'",
+    "target": "kernel/kernel_boot.php",
+    "exists": true
+   }
+  ],
+  "engine/entity_extraction_engine.php": [
+   {
+    "line": 13,
+    "expr": "__DIR__ . '/../kernel/kernel_boot.php'",
+    "target": "kernel/kernel_boot.php",
+    "exists": true
+   }
+  ],
+  "engine/goal_conflict_resolver.php": [],
+  "engine/pattern_stability.php": [],
+  "engine/goal_alignment.php": [],
+  "engine/reasoning_engine.php": [],
+  "engine/semantic_cluster_engine.php": [],
+  "engine/system_behavior_spec.php": [],
+  "engine/memory_evolution_engine.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/portfolio_engine.php'",
+    "target": "engine/portfolio_engine.php",
+    "exists": true
+   }
+  ],
+  "engine/temporal_memory_engine.php": [],
+  "engine/pipeline_adapters.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../cluster_engine.php'",
+    "target": "cluster_engine.php",
+    "exists": true
+   },
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/reasoning_engine.php'",
+    "target": "engine/reasoning_engine.php",
+    "exists": true
+   },
+   {
+    "line": 5,
+    "expr": "__DIR__ . '/recommendation_engine.php'",
+    "target": "engine/recommendation_engine.php",
+    "exists": true
+   },
+   {
+    "line": 54,
+    "expr": "__DIR__ . '/recommendation_engine.php'",
+    "target": "engine/recommendation_engine.php",
+    "exists": true
+   }
+  ],
+  "engine/policy_enforcement_engine.php": [],
+  "engine/graph_mutation_engine.php": [],
+  "engine/case_manager.php": [],
+  "engine/cross_case_learning_compiler.php": [],
+  "engine/predictive_intelligence_engine.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/portfolio_engine.php'",
+    "target": "engine/portfolio_engine.php",
+    "exists": true
+   },
+   {
+    "line": 4,
+    "expr": "__DIR__ . '/semantic_cluster_engine.php'",
+    "target": "engine/semantic_cluster_engine.php",
+    "exists": true
+   }
+  ],
+  "lib/semantic_diff_engine.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../kernel/db.php'",
+    "target": "kernel/db.php",
+    "exists": true
+   }
+  ],
+  "lib/legaisee_model.php": [
+   {
+    "line": 8,
+    "expr": "__DIR__ . '/../db.php'",
+    "target": "db.php",
+    "exists": true
+   }
+  ],
+  "components/ui_tag.php": [],
+  "components/card.php": [],
+  "components/ui_folder_tree.php": [],
+  "components/ui_card.php": [],
+  "components/compare.php": [],
+  "tools/build_cluster_summaries.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . \"/../db.php\"",
+    "target": "db.php",
+    "exists": true
+   }
+  ],
+  "tools/extract_cluster_insights.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . \"/../db.php\"",
+    "target": "db.php",
+    "exists": true
+   }
+  ],
+  "tools/detect_cluster_opportunities.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . \"/../db.php\"",
+    "target": "db.php",
+    "exists": true
+   }
+  ],
+  "tools/build_clusters.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . \"/../db.php\"",
+    "target": "db.php",
+    "exists": true
+   }
+  ],
+  "tools/name_clusters.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . \"/../db.php\"",
+    "target": "db.php",
+    "exists": true
+   }
+  ],
+  "tools/build_cluster_summaries_ai.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . \"/../db.php\"",
+    "target": "db.php",
+    "exists": true
+   },
+   {
+    "line": 4,
+    "expr": "__DIR__ . \"/../config.php\"",
+    "target": "config.php",
+    "exists": true
+   }
+  ],
+  "tools/build_relations.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . \"/../db.php\"",
+    "target": "db.php",
+    "exists": true
+   }
+  ],
+  "database/migrations/010_create_tree_nodes_table.php": [],
+  "database/migrations/010_create_tree_nodes_tablebk.php": [],
+  "ui/compare_engine.php": [],
+  "ui/ui_bootstrap.php": [],
+  "ui/ui_engine.php": [
+   {
+    "line": 28,
+    "expr": "__DIR__ . '/layout.php'",
+    "target": "ui/layout.php",
+    "exists": true
+   }
+  ],
+  "ui/file_explorer.php": [
+   {
+    "line": 3,
+    "expr": "__DIR__ . '/../kernel/folder_engine.php'",
+    "target": "kernel/folder_engine.php",
+    "exists": true
+   }
+  ],
+  "ui/layout.php": [],
+  "ui/components/ingest_exec snap.php": [],
+  "ui/components/card.php": [],
+  "ui/components/ingestforshell.php": []
+ },
+ "dynamic_requires": {
+  "test_modules.php": [
+   {
+    "line": 30,
+    "stmt": "require $path;"
+   }
+  ],
+  "shell.php": [
+   {
+    "line": 58,
+    "stmt": "require $file;"
+   }
+  ],
+  "load_module.php": [
+   {
+    "line": 29,
+    "stmt": "require $file;"
+   }
+  ],
+  "api.php": [
+   {
+    "line": 35,
+    "stmt": "include __DIR__ . \"/api/v8/\" . $file;"
+   }
+  ],
+  "pages/shell_template.php": [
+   {
+    "line": 27,
+    "stmt": "require $file;"
+   }
+  ],
+  "pages/test/shell_module_test.php": [
+   {
+    "line": 27,
+    "stmt": "require $file;"
+   }
+  ],
+  "ProjectManager/bootstrap.php": [
+   {
+    "line": 7,
+    "stmt": "require BASE_PATH . '/config.php';"
+   },
+   {
+    "line": 15,
+    "stmt": "require_once $file;"
+   },
+   {
+    "line": 43,
+    "stmt": "require_once $file;"
+   }
+  ],
+  "ProjectManager/database/connection.php": [
+   {
+    "line": 26,
+    "stmt": "require $configFile;"
+   }
+  ],
+  "ProjectManager/database/migration.php": [
+   {
+    "line": 62,
+    "stmt": "require $file;"
+   }
+  ],
+  "engine/policy_enforcement_engine.php": [
+   {
+    "line": 135,
+    "stmt": "require risk validation before execution\",\n            \"applies_to\" => $appliesTo\n        ];"
+   }
+  ],
+  "tools/build_cluster_summaries.php": [
+   {
+    "line": 88,
+    "stmt": "include \" . implode(\", \", $topWords);"
+   }
+  ],
+  "tools/extract_cluster_insights.php": [
+   {
+    "line": 86,
+    "stmt": "include: \" . implode(\", \", $topWords);"
+   }
+  ]
+ },
+ "browser_refs": {
+  "view_ingest.php": [
+   {
+    "line": 11,
+    "url": "/kernel/db.php",
+    "kind": "require-str",
+    "ctx": "============================================ */ require_once __DIR__ ."
+   },
+   {
+    "line": 137,
+    "url": "temp_dashboard.php",
+    "kind": "href",
+    "ctx": " #333; font-size: 10px; margin-right: 6px; } </style> </head> <a href="
+   },
+   {
+    "line": 155,
+    "url": "view_ingest.php",
+    "kind": "href",
+    "ctx": "shboard </a> <body> <?php if ($single): ?> <div class=\"card\"> <a href="
+   }
+  ],
+  "session.php": [
+   {
+    "line": 5,
+    "url": "/lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "? null; $session_id = $_GET['session'] ?? null; require_once __DIR__ ."
+   }
+  ],
+  "export_report.php": [
+   {
+    "line": 3,
+    "url": "/db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   },
+   {
+    "line": 4,
+    "url": "/lib/dompdf/autoload.inc.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ . \"/db.php\"; require_once __DIR__ ."
+   },
+   {
+    "line": 5,
+    "url": "/lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "_once __DIR__ . \"/lib/dompdf/autoload.inc.php\"; require_once __DIR__ ."
+   }
+  ],
+  "db.php": [
+   {
+    "line": 2,
+    "url": "/kernel/db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "test_modules.php": [
+   {
+    "line": 3,
+    "url": "/kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   },
+   {
+    "line": 4,
+    "url": "/kernel/kernel_contract.php",
+    "kind": "require-str",
+    "ctx": "quire_once __DIR__ . '/kernel/kernel_boot.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 5,
+    "url": "/kernel/module_contract.php",
+    "kind": "require-str",
+    "ctx": "e_once __DIR__ . '/kernel/kernel_contract.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 13,
+    "url": "/kernel/module_registry.php",
+    "kind": "require-str",
+    "ctx": "o = kernel_db(); $GLOBALS['pdo'] = $pdo; $registry = require __DIR__ ."
+   }
+  ],
+  "ingest2.php": [
+   {
+    "line": 5,
+    "url": "/lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "); $network_id = \"net_69eee12e374d30_99173905\"; require_once __DIR__ ."
+   },
+   {
+    "line": 23,
+    "url": "/commandcenter/api/v8/network_add_node.php",
+    "kind": "other",
+    "ctx": "nal'; /* SEND TO NETWORK */ $url = \"http://\" . $_SERVER['HTTP_HOST'] ."
+   }
+  ],
+  "shell.php": [
+   {
+    "line": 6,
+    "url": "/kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "reporting(E_ALL); ini_set('display_errors', 1); require_once __DIR__ ."
+   },
+   {
+    "line": 7,
+    "url": "/modules/utils/bootstrap.php",
+    "kind": "require-str",
+    "ctx": "quire_once __DIR__ . '/kernel/kernel_boot.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 8,
+    "url": "/modules/utils/uic_v1.php",
+    "kind": "require-str",
+    "ctx": "_once __DIR__ . '/modules/utils/bootstrap.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 15,
+    "url": "/modules/report_module.php",
+    "kind": "require-str",
+    "ctx": " === 'report' && isset($_POST['generate_report'])) { require __DIR__ ."
+   },
+   {
+    "line": 21,
+    "url": "/modules/vault_module.php",
+    "kind": "action",
+    "ctx": "_GET['action']) && $_GET['action'] === 'download') { require __DIR__ ."
+   },
+   {
+    "line": 27,
+    "url": "/modules/brain_module.php",
+    "kind": "action",
+    "ctx": "ain_action']) && $_POST['brain_action'] === 'run') { require __DIR__ ."
+   },
+   {
+    "line": 32,
+    "url": "/kernel/module_registry.php",
+    "kind": "require-str",
+    "ctx": "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 $registry = require __DIR__ ."
+   },
+   {
+    "line": 251,
+    "url": "/commandcenter/prospect.php",
+    "kind": "other",
+    "ctx": "ospect Dig is a standalone workaround \u2014 links out $standaloneLinks = ["
+   },
+   {
+    "line": 274,
+    "url": "/commandcenter/shell.php",
+    "kind": "href",
+    "ctx": "nks\"> <?php foreach ($navLinks as $mod => $label): $href ="
+   },
+   {
+    "line": 305,
+    "url": "/commandcenter/shell.php?",
+    "kind": "href",
+    "ctx": "$href = ($isWorking && $isRegistered) ?"
+   },
+   {
+    "line": 320,
+    "url": "/commandcenter/shell.php",
+    "kind": "href",
+    "ctx": "<div class=\"module-view-header\"> <a class=\"module-back\" href="
+   }
+  ],
+  "semantic_engine.php": [
+   {
+    "line": 2,
+    "url": "db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once"
+   },
+   {
+    "line": 3,
+    "url": "/lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once \"db.php\"; require_once __DIR__ ."
+   }
+  ],
+  "diagnostics2.php": [
+   {
+    "line": 3,
+    "url": "/kernel/db.php",
+    "kind": "require-str",
+    "ctx": "<?php header('Content-Type: text/plain'); require_once __DIR__ ."
+   }
+  ],
+  "test_excavation_module.php": [
+   {
+    "line": 3,
+    "url": "/kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "st excavation_module.php against WO-C test case require_once __DIR__ ."
+   },
+   {
+    "line": 4,
+    "url": "/modules/utils/bootstrap.php",
+    "kind": "require-str",
+    "ctx": "quire_once __DIR__ . '/kernel/kernel_boot.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 9,
+    "url": "/modules/excavation_module.php",
+    "kind": "require-str",
+    "ctx": " echo \"=============================\\n\\n\"; $result = require __DIR__ ."
+   }
+  ],
+  "load_sets.php": [
+   {
+    "line": 4,
+    "url": "/lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "<?php $dir = __DIR__ . \"/sets/\"; require_once __DIR__ ."
+   }
+  ],
+  "load_module.php": [
+   {
+    "line": 5,
+    "url": "/kernel/module_registry.php",
+    "kind": "require-str",
+    "ctx": "eader('Content-Type: application/json'); $registry = require __DIR__ ."
+   }
+  ],
+  "prospect.php": [
+   {
+    "line": 6,
+    "url": "/kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "reporting(E_ALL); ini_set('display_errors', 1); require_once __DIR__ ."
+   },
+   {
+    "line": 7,
+    "url": "/engine/entity_extraction_engine.php",
+    "kind": "require-str",
+    "ctx": "quire_once __DIR__ . '/kernel/kernel_boot.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 500,
+    "url": "/commandcenter/shell.php",
+    "kind": "href",
+    "ctx": "s Archaeology Operating System</div> </div> <nav class=\"nav\"> <a href="
+   },
+   {
+    "line": 501,
+    "url": "/commandcenter/prospect.php",
+    "kind": "href",
+    "ctx": "v class=\"nav\"> <a href=\"/commandcenter/shell.php\">\u2190 Lobby</a> <a href="
+   },
+   {
+    "line": 518,
+    "url": "/commandcenter/prospect.php",
+    "kind": "action",
+    "ctx": "></div> <?php endif; ?> <div class=\"card\"> <form method=\"POST\" action="
+   },
+   {
+    "line": 650,
+    "url": "/commandcenter/prospect.php",
+    "kind": "href",
+    "ctx": "nclick=\"window.print()\" class=\"btn\">Print / Save PDF</button> <a href="
+   }
+  ],
+  "test_graph.php": [
+   {
+    "line": 3,
+    "url": "/data/graph_data.php",
+    "kind": "other",
+    "ctx": "<?php $file = __DIR__ ."
+   },
+   {
+    "line": 9,
+    "url": "http://localhost/commandcenter/data/graph_data.php",
+    "kind": "other",
+    "ctx": ") { die(\"GRAPH API MISSING\"); } $data = json_decode(file_get_contents("
+   }
+  ],
+  "create_test_data.php": [
+   {
+    "line": 3,
+    "url": "/engine/client_manager.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   },
+   {
+    "line": 4,
+    "url": "/engine/case_manager.php",
+    "kind": "require-str",
+    "ctx": "re_once __DIR__ . '/engine/client_manager.php'; require_once __DIR__ ."
+   }
+  ],
+  "embed_generate.php": [
+   {
+    "line": 2,
+    "url": "db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once"
+   },
+   {
+    "line": 9,
+    "url": "/home/carrmulti/private/openai_key.php",
+    "kind": "require-str",
+    "ctx": "========================================= */ $OPENAI_API_KEY = require"
+   }
+  ],
+  "peek.php": [
+   {
+    "line": 2,
+    "url": "/modules/insight_module.php",
+    "kind": "other",
+    "ctx": "<?php $file = __DIR__ ."
+   }
+  ],
+  "intelligence.php": [
+   {
+    "line": 12,
+    "url": "/lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "============================================ */ require_once __DIR__ ."
+   }
+  ],
+  "db_verify.php": [
+   {
+    "line": 3,
+    "url": "/kernel/db.php",
+    "kind": "require-str",
+    "ctx": "<?php header('Content-Type: text/plain'); require_once __DIR__ ."
+   }
+  ],
+  "parser.php": [
+   {
+    "line": 13,
+    "url": "/lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": " \"md\") { return file_get_contents($filePath); } require_once __DIR__ ."
+   }
+  ],
+  "config.php": [
+   {
+    "line": 9,
+    "url": "/config.local.php",
+    "kind": "other",
+    "ctx": "d). */ // Load local overrides if they exist if (file_exists(__DIR__ ."
+   },
+   {
+    "line": 10,
+    "url": "/config.local.php",
+    "kind": "require-str",
+    "ctx": " (file_exists(__DIR__ . '/config.local.php')) { require_once __DIR__ ."
+   }
+  ],
+  "temp_dashboard.php": [
+   {
+    "line": 11,
+    "url": "/kernel/db.php",
+    "kind": "require-str",
+    "ctx": "============================================ */ require_once __DIR__ ."
+   },
+   {
+    "line": 193,
+    "url": "view_ingest.php",
+    "kind": "href",
+    "ctx": "iv> </div> <!-- NEW BUTTON --> <div style=\"margin-top:15px;\"> <a href="
+   }
+  ],
+  "test_hierarchy_of_truth.php": [
+   {
+    "line": 17,
+    "url": "/engine/hierarchy_of_truth_engine.php",
+    "kind": "require-str",
+    "ctx": "-------- */ header('Content-Type: text/plain'); require_once __DIR__ ."
+   }
+  ],
+  "test_db.php": [
+   {
+    "line": 3,
+    "url": "db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once"
+   }
+  ],
+  "ingest.php": [
+   {
+    "line": 5,
+    "url": "/lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "); $network_id = \"net_69eee12e374d30_99173905\"; require_once __DIR__ ."
+   },
+   {
+    "line": 23,
+    "url": "/commandcenter/api/v8/network_add_node.php",
+    "kind": "other",
+    "ctx": "nal'; /* SEND TO NETWORK */ $url = \"http://\" . $_SERVER['HTTP_HOST'] ."
+   }
+  ],
+  "save_set.php": [
+   {
+    "line": 4,
+    "url": "/lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "decode(file_get_contents(\"php://input\"), true); require_once __DIR__ ."
+   }
+  ],
+  "create_session.php": [
+   {
+    "line": 70,
+    "url": "session.php?session=",
+    "kind": "other",
+    "ctx": "cess\", \"session_id\" => $session_id, \"client\" => $client, \"redirect\" =>"
+   }
+  ],
+  "create_review_flags.php": [
+   {
+    "line": 3,
+    "url": "/kernel/db.php",
+    "kind": "require-str",
+    "ctx": "<?php header('Content-Type: text/plain'); require_once __DIR__ ."
+   }
+  ],
+  "create_findings_tables.php": [
+   {
+    "line": 26,
+    "url": "/kernel/db.php",
+    "kind": "require-str",
+    "ctx": "EXISTS). */ header('Content-Type: text/plain'); require_once __DIR__ ."
+   }
+  ],
+  "test_kernel.php": [
+   {
+    "line": 2,
+    "url": "/kernel/kernel.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "api.php": [
+   {
+    "line": 7,
+    "url": "/kernel/db.php",
+    "kind": "require-str",
+    "ctx": "ror_reporting(0); ini_set('display_errors', 0); require_once __DIR__ ."
+   },
+   {
+    "line": 60,
+    "url": "build_graph.php",
+    "kind": "action",
+    "ctx": "============ */ switch($action){ case \"build_graph\": $result = legacy("
+   },
+   {
+    "line": 65,
+    "url": "cluster_insights.php",
+    "kind": "other",
+    "ctx": "$result, \"Graph executed\"); break; case \"clusters\": $result = legacy("
+   },
+   {
+    "line": 70,
+    "url": "insights_generate.php",
+    "kind": "other",
+    "ctx": "ult, \"Clusters generated\"); break; case \"insights\": $result = legacy("
+   },
+   {
+    "line": 75,
+    "url": "recommendations_generate.php",
+    "kind": "other",
+    "ctx": "nsights generated\"); break; case \"recommendations\": $result = legacy("
+   },
+   {
+    "line": 80,
+    "url": "generate_tasks.php",
+    "kind": "other",
+    "ctx": "\"Recommendations generated\"); break; case \"tasks\": $result = legacy("
+   },
+   {
+    "line": 90,
+    "url": "network_add_node.php",
+    "kind": "other",
+    "ctx": "respond(\"error\", [], \"Missing content\"); } $result = legacy("
+   }
+  ],
+  "test_extraction_fix.php": [
+   {
+    "line": 8,
+    "url": "/kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "y'] ?? ''))) { http_response_code(404); exit; } require_once __DIR__ ."
+   },
+   {
+    "line": 9,
+    "url": "/engine/entity_extraction_engine.php",
+    "kind": "require-str",
+    "ctx": "quire_once __DIR__ . '/kernel/kernel_boot.php'; require_once __DIR__ ."
+   }
+  ],
+  "test_graph_fix.php": [
+   {
+    "line": 9,
+    "url": "/kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "y'] ?? ''))) { http_response_code(404); exit; } require_once __DIR__ ."
+   },
+   {
+    "line": 10,
+    "url": "/modules/graph_module.php",
+    "kind": "require-str",
+    "ctx": "quire_once __DIR__ . '/kernel/kernel_boot.php'; require_once __DIR__ ."
+   }
+  ],
+  "modules/payment_module.php": [
+   {
+    "line": 10,
+    "url": "/../kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "rs email notifications on successful payment */ require_once __DIR__ ."
+   },
+   {
+    "line": 11,
+    "url": "/../config.php",
+    "kind": "require-str",
+    "ctx": "re_once __DIR__ . '/../kernel/kernel_boot.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 12,
+    "url": "/../lib/vendor/autoload.php",
+    "kind": "require-str",
+    "ctx": ".php'; require_once __DIR__ . '/../config.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 79,
+    "url": "/commandcenter/shell.php?module=payment&action=success&payment_id=",
+    "kind": "other",
+    "ctx": "de' => 'payment', 'success_url' => 'http://' . $_SERVER['HTTP_HOST'] ."
+   },
+   {
+    "line": 80,
+    "url": "/commandcenter/shell.php?module=payment&action=cancel&payment_id=",
+    "kind": "other",
+    "ctx": "d=' . $payment_id, 'cancel_url' => 'http://' . $_SERVER['HTTP_HOST'] ."
+   },
+   {
+    "line": 143,
+    "url": "/commandcenter/shell.php?module=payment&action=success&payment_id=",
+    "kind": "other",
+    "ctx": "de' => 'payment', 'success_url' => 'http://' . $_SERVER['HTTP_HOST'] ."
+   },
+   {
+    "line": 144,
+    "url": "/commandcenter/shell.php?module=client_view&id=",
+    "kind": "other",
+    "ctx": "d=' . $payment_id, 'cancel_url' => 'http://' . $_SERVER['HTTP_HOST'] ."
+   }
+  ],
+  "modules/excavation_module.php": [
+   {
+    "line": 3,
+    "url": "/utils/json_helpers.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   },
+   {
+    "line": 26,
+    "url": "/../engine/entity_extraction_engine.php",
+    "kind": "require-str",
+    "ctx": "dir($clientsRoot) ? scandir($clientsRoot) : []; require_once __DIR__ ."
+   },
+   {
+    "line": 27,
+    "url": "/../kernel/db.php",
+    "kind": "action",
+    "ctx": "__ . '/../engine/entity_extraction_engine.php'; require_once __DIR__ ."
+   }
+  ],
+  "modules/entity_resolution_module.php": [
+   {
+    "line": 4,
+    "url": "/../kernel/db.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   }
+  ],
+  "modules/clients_module.php": [
+   {
+    "line": 8,
+    "url": "/../kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "============================================ */ require_once __DIR__ ."
+   },
+   {
+    "line": 65,
+    "url": "/commandcenter/shell.php?module=client_view&id=",
+    "kind": "other",
+    "ctx": "*/ $items = []; foreach ($clients as $client) { $items[] = [ 'link' =>"
+   }
+  ],
+  "modules/cases_module.php": [
+   {
+    "line": 4,
+    "url": "/utils/bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   }
+  ],
+  "modules/predictive_module.php": [
+   {
+    "line": 3,
+    "url": "/utils/bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "modules/vault_module.php": [
+   {
+    "line": 10,
+    "url": "/../db.php",
+    "kind": "require-str",
+    "ctx": "t_module.php (generates reports stored here) */ require_once __DIR__ ."
+   }
+  ],
+  "modules/dig_review_module.php": [
+   {
+    "line": 22,
+    "url": "/../kernel/db.php",
+    "kind": "require-str",
+    "ctx": "OOT')) { die('Direct access not permitted.'); } require_once __DIR__ ."
+   }
+  ],
+  "modules/decision_module.php": [
+   {
+    "line": 3,
+    "url": "/utils/bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "modules/relations_module.php": [
+   {
+    "line": 3,
+    "url": "/utils/bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "modules/dashboard_module.php": [
+   {
+    "line": 3,
+    "url": "/utils/bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "modules/ingest_module.php": [
+   {
+    "line": 106,
+    "url": "/../kernel/ingestion_pipeline.php",
+    "kind": "require-str",
+    "ctx": "peline if ($case_id) { require_once __DIR__ ."
+   }
+  ],
+  "modules/cluster_module.php": [
+   {
+    "line": 2,
+    "url": "/../kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "modules/root_cause_graph_module.php": [
+   {
+    "line": 3,
+    "url": "/utils/bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "modules/search_module.php": [
+   {
+    "line": 15,
+    "url": "utils/bootstrap.php",
+    "kind": "require-str",
+    "ctx": "('KERNEL_ROOT')) { die('Direct access not permitted.'); } require_once"
+   },
+   {
+    "line": 237,
+    "url": "/commandcenter/api/search_load.php?ref=",
+    "kind": "other",
+    "ctx": "hp wraps modules in a buffer that blocks JSON responses var LOAD_URL ="
+   }
+  ],
+  "modules/cockpit_module.php": [
+   {
+    "line": 5,
+    "url": "/../kernel/db.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   }
+  ],
+  "modules/view_module.php": [
+   {
+    "line": 3,
+    "url": "/../kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   },
+   {
+    "line": 6,
+    "url": "/../ui/ui_engine.php",
+    "kind": "require-str",
+    "ctx": "el/kernel_boot.php'; kernel_validate_runtime(); require_once __DIR__ ."
+   },
+   {
+    "line": 7,
+    "url": "/../kernel/nav_engine.php",
+    "kind": "require-str",
+    "ctx": " require_once __DIR__ . '/../ui/ui_engine.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 8,
+    "url": "/../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "ire_once __DIR__ . '/../kernel/nav_engine.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 9,
+    "url": "/../kernel/kernel.php",
+    "kind": "require-str",
+    "ctx": "e __DIR__ . '/../lib/semantic_diff_engine.php'; require_once __DIR__ ."
+   }
+  ],
+  "modules/governance_module.php": [
+   {
+    "line": 6,
+    "url": "/utils/bootstrap.php",
+    "kind": "require-str",
+    "ctx": "_operations/ text files, renders operational UI require_once __DIR__ ."
+   },
+   {
+    "line": 137,
+    "url": "https://legaisee.com/commandcenter/shell.php",
+    "kind": "other",
+    "ctx": "-d H:i', filemtime($f))]; } } $health = []; $urls = [ 'Grand Lobby' =>"
+   },
+   {
+    "line": 138,
+    "url": "https://legaisee.com/commandcenter/shell.php?module=dashboard",
+    "kind": "other",
+    "ctx": "bby' => 'https://legaisee.com/commandcenter/shell.php', 'Dashboard' =>"
+   },
+   {
+    "line": 139,
+    "url": "https://legaisee.com/commandcenter/shell.php?module=brain",
+    "kind": "other",
+    "ctx": "s://legaisee.com/commandcenter/shell.php?module=dashboard', 'Brain' =>"
+   }
+  ],
+  "modules/executive_dashboard_module.php": [
+   {
+    "line": 3,
+    "url": "/utils/bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "modules/brain_module.php": [
+   {
+    "line": 23,
+    "url": "/../api/brain_orchestrator.php",
+    "kind": "require-str",
+    "ctx": "n') { header('Content-Type: application/json'); require_once __DIR__ ."
+   },
+   {
+    "line": 32,
+    "url": "/../kernel/module_registry.php",
+    "kind": "require-str",
+    "ctx": "null); echo json_encode($result); exit; } $modules = require __DIR__ ."
+   },
+   {
+    "line": 79,
+    "url": "/../system/cross_case_engine.php",
+    "kind": "other",
+    "ctx": "mory'), ], 'engines' => [ 'cross_case_engine' => file_exists(__DIR__ ."
+   },
+   {
+    "line": 80,
+    "url": "/../system/system_insight_engine.php",
+    "kind": "other",
+    "ctx": "tem/cross_case_engine.php'), 'insight_engine' => file_exists(__DIR__ ."
+   },
+   {
+    "line": 81,
+    "url": "/../system/decision_engine_v2.php",
+    "kind": "other",
+    "ctx": "ystem_insight_engine.php'), 'decision_engine' => file_exists(__DIR__ ."
+   },
+   {
+    "line": 82,
+    "url": "/../system/system_recommendation_engine.php",
+    "kind": "other",
+    "ctx": "sion_engine_v2.php'), 'recommendation_engine' => file_exists(__DIR__ ."
+   },
+   {
+    "line": 83,
+    "url": "/../system/policy_enforcement_engine.php",
+    "kind": "other",
+    "ctx": "_recommendation_engine.php'), 'policy_engine' => file_exists(__DIR__ ."
+   }
+  ],
+  "modules/alert_module.php": [
+   {
+    "line": 3,
+    "url": "/utils/json_helpers.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "modules/report_module.php": [
+   {
+    "line": 10,
+    "url": "/../kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "ig_review_module.php (for approved findings) */ require_once __DIR__ ."
+   },
+   {
+    "line": 11,
+    "url": "/../lib/dompdf/autoload.inc.php",
+    "kind": "require-str",
+    "ctx": "re_once __DIR__ . '/../kernel/kernel_boot.php'; require_once __DIR__ ."
+   }
+  ],
+  "modules/files_module.php": [
+   {
+    "line": 91,
+    "url": "/commandcenter/api/files_action.php",
+    "kind": "other",
+    "ctx": "</div> </div> </div> <script> (function () { 'use strict'; var API ="
+   }
+  ],
+  "modules/semantic_cluster_module.php": [
+   {
+    "line": 11,
+    "url": "/../db.php",
+    "kind": "require-str",
+    "ctx": "============================================ */ require_once __DIR__ ."
+   }
+  ],
+  "modules/recommendation_module.php": [
+   {
+    "line": 4,
+    "url": "/utils/bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   }
+  ],
+  "modules/client_view_module.php": [
+   {
+    "line": 4,
+    "url": "/../kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   },
+   {
+    "line": 223,
+    "url": "/../graph_view.php",
+    "kind": "require-str",
+    "ctx": ")): ?> <?php $_GET['case_id'] = $data['case']['id']; require __DIR__ ."
+   }
+  ],
+  "modules/001_create_tree_nodes.php": [
+   {
+    "line": 3,
+    "url": "/../kernel/db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "modules/time_intelligence_module.php": [
+   {
+    "line": 3,
+    "url": "/utils/bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "modules/intelligence_dashboard_module.php": [
+   {
+    "line": 12,
+    "url": "/utils/uic_v1.php",
+    "kind": "require-str",
+    "ctx": "er. * Outputs ONLY UIC-compliant structures. */ require_once __DIR__ ."
+   }
+  ],
+  "modules/build_dossier.php": [
+   {
+    "line": 11,
+    "url": "/../kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "mpiles memory_ingest records into a dossier. */ require_once __DIR__ ."
+   }
+  ],
+  "modules/predictive_link_module_v1.php": [
+   {
+    "line": 11,
+    "url": "/utils/bootstrap.php",
+    "kind": "other",
+    "ctx": "========================================= */ if (file_exists(__DIR__ ."
+   },
+   {
+    "line": 12,
+    "url": "/utils/bootstrap.php",
+    "kind": "require-str",
+    "ctx": "ile_exists(__DIR__ . '/utils/bootstrap.php')) { require_once __DIR__ ."
+   }
+  ],
+  "pages/shell_template.php": [
+   {
+    "line": 6,
+    "url": "/kernel/kernel_boot.php",
+    "kind": "other",
+    "ctx": "orting(E_ALL); ini_set('display_errors', 1); if (file_exists(__DIR__ ."
+   },
+   {
+    "line": 7,
+    "url": "/kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "_exists(__DIR__ . '/kernel/kernel_boot.php')) { require_once __DIR__ ."
+   },
+   {
+    "line": 9,
+    "url": "/modules/utils/bootstrap.php",
+    "kind": "other",
+    "ctx": "_once __DIR__ . '/kernel/kernel_boot.php'; } if (file_exists(__DIR__ ."
+   },
+   {
+    "line": 10,
+    "url": "/modules/utils/bootstrap.php",
+    "kind": "require-str",
+    "ctx": "ts(__DIR__ . '/modules/utils/bootstrap.php')) { require_once __DIR__ ."
+   },
+   {
+    "line": 12,
+    "url": "/modules/utils/uic_v1.php",
+    "kind": "require-str",
+    "ctx": "nce __DIR__ . '/modules/utils/bootstrap.php'; } require_once __DIR__ ."
+   },
+   {
+    "line": 16,
+    "url": "/modules/{$name}_module.php",
+    "kind": "other",
+    "ctx": " function renderModule($name) { static $loaded = []; $file = __DIR__ ."
+   },
+   {
+    "line": 169,
+    "url": "/commandcenter/shell.php",
+    "kind": "href",
+    "ctx": "s Archaeology Operating System</div> </div> <div class=\"nav\"> <a href="
+   },
+   {
+    "line": 170,
+    "url": "/commandcenter/ingest.php",
+    "kind": "href",
+    "ctx": "div class=\"nav\"> <a href=\"/commandcenter/shell.php\">Lobby</a> <a href="
+   }
+  ],
+  "pages/test/shell_module_test.php": [
+   {
+    "line": 6,
+    "url": "/kernel/kernel_boot.php",
+    "kind": "other",
+    "ctx": "orting(E_ALL); ini_set('display_errors', 1); if (file_exists(__DIR__ ."
+   },
+   {
+    "line": 7,
+    "url": "/kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "_exists(__DIR__ . '/kernel/kernel_boot.php')) { require_once __DIR__ ."
+   },
+   {
+    "line": 9,
+    "url": "/modules/utils/bootstrap.php",
+    "kind": "other",
+    "ctx": "_once __DIR__ . '/kernel/kernel_boot.php'; } if (file_exists(__DIR__ ."
+   },
+   {
+    "line": 10,
+    "url": "/modules/utils/bootstrap.php",
+    "kind": "require-str",
+    "ctx": "ts(__DIR__ . '/modules/utils/bootstrap.php')) { require_once __DIR__ ."
+   },
+   {
+    "line": 12,
+    "url": "/modules/utils/uic_v1.php",
+    "kind": "require-str",
+    "ctx": "nce __DIR__ . '/modules/utils/bootstrap.php'; } require_once __DIR__ ."
+   },
+   {
+    "line": 16,
+    "url": "/modules/{$name}_module.php",
+    "kind": "other",
+    "ctx": " function renderModule($name) { static $loaded = []; $file = __DIR__ ."
+   },
+   {
+    "line": 169,
+    "url": "/commandcenter/shell.php",
+    "kind": "href",
+    "ctx": "s Archaeology Operating System</div> </div> <div class=\"nav\"> <a href="
+   },
+   {
+    "line": 170,
+    "url": "/commandcenter/ingest.php",
+    "kind": "href",
+    "ctx": "div class=\"nav\"> <a href=\"/commandcenter/shell.php\">Lobby</a> <a href="
+   },
+   {
+    "line": 204,
+    "url": "/../kernel/module_registry.php",
+    "kind": "require-str",
+    "ctx": "-------------------------------------- */ $modules = require __DIR__ ."
+   },
+   {
+    "line": 250,
+    "url": "/../system/cross_case_engine.php",
+    "kind": "other",
+    "ctx": "mory'), ], 'engines' => [ 'cross_case_engine' => file_exists(__DIR__ ."
+   },
+   {
+    "line": 251,
+    "url": "/../system/system_insight_engine.php",
+    "kind": "other",
+    "ctx": "tem/cross_case_engine.php'), 'insight_engine' => file_exists(__DIR__ ."
+   },
+   {
+    "line": 252,
+    "url": "/../system/decision_engine_v2.php",
+    "kind": "other",
+    "ctx": "ystem_insight_engine.php'), 'decision_engine' => file_exists(__DIR__ ."
+   },
+   {
+    "line": 253,
+    "url": "/../system/system_recommendation_engine.php",
+    "kind": "other",
+    "ctx": "sion_engine_v2.php'), 'recommendation_engine' => file_exists(__DIR__ ."
+   },
+   {
+    "line": 254,
+    "url": "/../system/policy_enforcement_engine.php",
+    "kind": "other",
+    "ctx": "_recommendation_engine.php'), 'policy_engine' => file_exists(__DIR__ ."
+   }
+  ],
+  "ProjectManager/project_board.php": [
+   {
+    "line": 5,
+    "url": "/bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   },
+   {
+    "line": 22,
+    "url": "projects_dashboard.php",
+    "kind": "href",
+    "ctx": "$project) { http_response_code(404); echo \"Project not found. <a href="
+   },
+   {
+    "line": 95,
+    "url": "project_board.php?project_id={$projectId}&view={$view}",
+    "kind": "other",
+    "ctx": "iew_link(int $projectId, string $view, string $month): string { return"
+   },
+   {
+    "line": 242,
+    "url": "projects_dashboard.php",
+    "kind": "href",
+    "ctx": "low: ellipsis; white-space: nowrap; } </style> </head> <body> <a href="
+   }
+  ],
+  "ProjectManager/index.php": [
+   {
+    "line": 5,
+    "url": "/router.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   }
+  ],
+  "ProjectManager/bootstrap.php": [
+   {
+    "line": 7,
+    "url": "/config.php",
+    "kind": "require-str",
+    "ctx": "_types=1); define('BASE_PATH', __DIR__); $config = require BASE_PATH ."
+   },
+   {
+    "line": 12,
+    "url": "/database/connection.php",
+    "kind": "other",
+    "ctx": "id { if ($class === 'App\\\\Database\\\\Connection') { $file = BASE_PATH ."
+   },
+   {
+    "line": 40,
+    "url": ".php",
+    "kind": "other",
+    "ctx": "= $baseDirectory . $folder . '/' . implode('/', $parts) ."
+   }
+  ],
+  "ProjectManager/projects_dashboard.php": [
+   {
+    "line": 5,
+    "url": "/bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   }
+  ],
+  "ProjectManager/config.php": [
+   {
+    "line": 4,
+    "url": "/home/carrmulti/private/pm_db_credentials.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); $dbCredentials = require"
+   }
+  ],
+  "ProjectManager/router.php": [
+   {
+    "line": 7,
+    "url": "/bootstrap.php",
+    "kind": "require-str",
+    "ctx": "lare(strict_types=1); use App\\Core\\Application; require_once __DIR__ ."
+   }
+  ],
+  "ProjectManager/api/tasks/index.php": [
+   {
+    "line": 5,
+    "url": "/../../bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   }
+  ],
+  "ProjectManager/api/projects/members.php": [
+   {
+    "line": 5,
+    "url": "/../../bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   }
+  ],
+  "ProjectManager/api/projects/index.php": [
+   {
+    "line": 5,
+    "url": "/../../bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   }
+  ],
+  "ProjectManager/api/comments/index.php": [
+   {
+    "line": 5,
+    "url": "/../../bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   }
+  ],
+  "ProjectManager/api/permissions/roles.php": [
+   {
+    "line": 3,
+    "url": "/../../bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "ProjectManager/api/permissions/index.php": [
+   {
+    "line": 3,
+    "url": "/../../bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "ProjectManager/api/auth/logout.php": [
+   {
+    "line": 5,
+    "url": "/../../bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   }
+  ],
+  "ProjectManager/api/auth/login.php": [
+   {
+    "line": 5,
+    "url": "/../../bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   }
+  ],
+  "ProjectManager/api/auth/status.php": [
+   {
+    "line": 5,
+    "url": "/../../bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   }
+  ],
+  "ProjectManager/api/clients/index.php": [
+   {
+    "line": 5,
+    "url": "/../../bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   }
+  ],
+  "ProjectManager/api/labels/index.php": [
+   {
+    "line": 5,
+    "url": "/../../bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   }
+  ],
+  "ProjectManager/api/milestones/index.php": [
+   {
+    "line": 5,
+    "url": "/../../bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   }
+  ],
+  "ProjectManager/api/users/index.php": [
+   {
+    "line": 5,
+    "url": "/../../bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   }
+  ],
+  "ProjectManager/api/users/show.php": [
+   {
+    "line": 5,
+    "url": "/../../bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   }
+  ],
+  "ProjectManager/database/connection.php": [
+   {
+    "line": 18,
+    "url": "/../config.php",
+    "kind": "other",
+    "ctx": "PDO { if (self::$connection === null) { $configFile = __DIR__ ."
+   }
+  ],
+  "ProjectManager/database/migration.php": [
+   {
+    "line": 5,
+    "url": "/bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once dirname(__DIR__) ."
+   },
+   {
+    "line": 23,
+    "url": "/*.php",
+    "kind": "other",
+    "ctx": "ctory not found: {$migrationPath}\" ); } $files = glob($migrationPath ."
+   }
+  ],
+  "ProjectManager/database/migrations/001_create_users_table.php": [
+   {
+    "line": 5,
+    "url": "/../connection.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   }
+  ],
+  "ProjectManager/tests/Core/BootstrapTest.php": [
+   {
+    "line": 11,
+    "url": "/../../bootstrap.php",
+    "kind": "require-str",
+    "ctx": " testBootstrapLoadsConfiguration(): void { $config = require __DIR__ ."
+   },
+   {
+    "line": 29,
+    "url": "/../../bootstrap.php",
+    "kind": "require-str",
+    "ctx": "public function testBasePathIsDefined(): void { require_once __DIR__ ."
+   }
+  ],
+  "api/tree.php": [
+   {
+    "line": 3,
+    "url": "/../kernel/db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "api/files_action.php": [
+   {
+    "line": 23,
+    "url": "/../kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "er * upload \u2014 handle file upload (multipart) */ require_once __DIR__ ."
+   }
+  ],
+  "api/brain_orchestrator.php": [
+   {
+    "line": 20,
+    "url": "/../config.php",
+    "kind": "require-str",
+    "ctx": "efore * if hit directly as its own endpoint. */ require_once __DIR__ ."
+   },
+   {
+    "line": 21,
+    "url": "/model_router.php",
+    "kind": "require-str",
+    "ctx": "nt. */ require_once __DIR__ . '/../config.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 22,
+    "url": "/brain_synthesis.php",
+    "kind": "require-str",
+    "ctx": "p'; require_once __DIR__ . '/model_router.php'; require_once __DIR__ ."
+   }
+  ],
+  "api/search_load.php": [
+   {
+    "line": 15,
+    "url": "/../kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "ns: JSON \u2014 { \"label\": \"...\", \"text\": \"...\" } */ require_once __DIR__ ."
+   }
+  ],
+  "api/v8/build_edges.php": [
+   {
+    "line": 6,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "\"/../../data/network/\" . $network_id . \".json\"; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/network_add_node.php": [
+   {
+    "line": 3,
+    "url": "/../../kernel/db.php",
+    "kind": "require-str",
+    "ctx": "<?php session_start(); require_once __DIR__ ."
+   },
+   {
+    "line": 4,
+    "url": "/../../response.php",
+    "kind": "require-str",
+    "ctx": " require_once __DIR__ . '/../../kernel/db.php'; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/generate_tasks.php": [
+   {
+    "line": 7,
+    "url": "/../db.php",
+    "kind": "require-str",
+    "ctx": "ror_reporting(0); ini_set('display_errors', 0); require_once __DIR__ ."
+   }
+  ],
+  "api/v8/memory_weight.php": [
+   {
+    "line": 5,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "e = __DIR__ . \"/../../data/memory/memory.json\"; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/create_network.php": [
+   {
+    "line": 7,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "DIR__ . \"/../../data/network/\" . $id . \".json\"; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/learn.php": [
+   {
+    "line": 5,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": " $file = __DIR__ . \"/../../data/learning.json\"; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/feedback.php": [
+   {
+    "line": 11,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "n_encode([\"error\"=>\"missing pattern\"]); exit; } require_once __DIR__ ."
+   },
+   {
+    "line": 12,
+    "url": "http://localhost/commandcenter/api/v8/learn.php",
+    "kind": "other",
+    "ctx": "once __DIR__ . '/../../lib/semantic_diff_engine.php'; $ch = curl_init("
+   }
+  ],
+  "api/v8/forecast.php": [
+   {
+    "line": 8,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "\"/../../data/network/\" . $network_id . \".json\"; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/predictor.php": [
+   {
+    "line": 11,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "\"/../../data/network/\" . $network_id . \".json\"; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/event_emit.php": [
+   {
+    "line": 14,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "_DIR__ . \"/../../data/events/event_queue.json\"; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/debug_tasks.php": [
+   {
+    "line": 3,
+    "url": "/../../db.php",
+    "kind": "require-str",
+    "ctx": "<?php header('Content-Type: application/json'); require_once __DIR__ ."
+   }
+  ],
+  "api/v8/memory_store.php": [
+   {
+    "line": 5,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "ion/json'); $content = $_POST['content'] ?? ''; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/recommendations.php": [
+   {
+    "line": 3,
+    "url": "/../../engine/recommendation_engine.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   },
+   {
+    "line": 4,
+    "url": "/../../response.php",
+    "kind": "require-str",
+    "ctx": "__ . '/../../engine/recommendation_engine.php'; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/cases.php": [
+   {
+    "line": 6,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "\"/../../data/network/\" . $network_id . \".json\"; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/mesh.php": [
+   {
+    "line": 5,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "$networkDir = __DIR__ . \"/../../data/network/\"; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/dossier_v2.php": [
+   {
+    "line": 6,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "\"/../../data/network/\" . $network_id . \".json\"; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/cluster_insights.php": [
+   {
+    "line": 3,
+    "url": "/../../engine/semantic_cluster_engine.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   },
+   {
+    "line": 4,
+    "url": "/../../kernel/db.php",
+    "kind": "require-str",
+    "ctx": " . '/../../engine/semantic_cluster_engine.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 5,
+    "url": "/../../response.php",
+    "kind": "require-str",
+    "ctx": " require_once __DIR__ . '/../../kernel/db.php'; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/compare_networks.php": [
+   {
+    "line": 5,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "son'); $dir = __DIR__ . \"/../../data/network/\"; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/get_cases.php": [
+   {
+    "line": 3,
+    "url": "/../../kernel/db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   },
+   {
+    "line": 4,
+    "url": "/../../response.php",
+    "kind": "require-str",
+    "ctx": " require_once __DIR__ . '/../../kernel/db.php'; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/get_clients.php": [
+   {
+    "line": 3,
+    "url": "/../../kernel/db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   },
+   {
+    "line": 4,
+    "url": "/../../response.php",
+    "kind": "require-str",
+    "ctx": " require_once __DIR__ . '/../../kernel/db.php'; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/dashboard.php": [
+   {
+    "line": 3,
+    "url": "/../../engine/dashboard_engine.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "api/v8/build_graph.php": [
+   {
+    "line": 3,
+    "url": "/../../engine/graph_engine.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   },
+   {
+    "line": 4,
+    "url": "/../../response.php",
+    "kind": "require-str",
+    "ctx": "nce __DIR__ . '/../../engine/graph_engine.php'; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/autonomous_engine.php": [
+   {
+    "line": 6,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "\"/../../data/network/\" . $network_id . \".json\"; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/patterns.php": [
+   {
+    "line": 6,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "\"/../../data/network/\" . $network_id . \".json\"; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/compressor.php": [
+   {
+    "line": 7,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "\"/../../data/network/\" . $network_id . \".json\"; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/alerts.php": [
+   {
+    "line": 6,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "\"/../../data/network/\" . $network_id . \".json\"; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/insights.php": [
+   {
+    "line": 6,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "\"/../../data/network/\" . $network_id . \".json\"; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/investigator.php": [
+   {
+    "line": 7,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "\"/../../data/network/\" . $network_id . \".json\"; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/summary.php": [
+   {
+    "line": 6,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "\"/../../data/network/\" . $network_id . \".json\"; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/agent.php": [
+   {
+    "line": 6,
+    "url": "/../../lib/semantic_diff_engine.php",
+    "kind": "require-str",
+    "ctx": "\"/../../data/network/\" . $network_id . \".json\"; require_once __DIR__ ."
+   }
+  ],
+  "api/v8/graph_ranker.php": [
+   {
+    "line": 3,
+    "url": "/../../kernel/db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   },
+   {
+    "line": 4,
+    "url": "/../../response.php",
+    "kind": "require-str",
+    "ctx": " require_once __DIR__ . '/../../kernel/db.php'; require_once __DIR__ ."
+   }
+  ],
+  "views/graph_view.php": [
+   {
+    "line": 2,
+    "url": "/../kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "views/compare_view.php": [
+   {
+    "line": 3,
+    "url": "/../kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   },
+   {
+    "line": 4,
+    "url": "/../lib/legaisee_model.php",
+    "kind": "require-str",
+    "ctx": "re_once __DIR__ . '/../kernel/kernel_boot.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 5,
+    "url": "/../kernel/nav_engine.php",
+    "kind": "require-str",
+    "ctx": "re_once __DIR__ . '/../lib/legaisee_model.php'; require_once __DIR__ ."
+   }
+  ],
+  "ExcavationCommand/system_index.php": [
+   {
+    "line": 3,
+    "url": "/../db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "ExcavationCommand/dashboard.php": [
+   {
+    "line": 3,
+    "url": "/../db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   },
+   {
+    "line": 8,
+    "url": "/system_index.php",
+    "kind": "require-str",
+    "ctx": "x_cache.json'; if (!file_exists($index_file)) { require_once __DIR__ ."
+   }
+  ],
+  "ExcavationCommand/planner.php": [
+   {
+    "line": 3,
+    "url": "/../db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "cli/worker.php": [
+   {
+    "line": 3,
+    "url": "/../engine/cluster_engine.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   },
+   {
+    "line": 4,
+    "url": "/../engine/reasoning_engine.php",
+    "kind": "require-str",
+    "ctx": "once __DIR__ . '/../engine/cluster_engine.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 5,
+    "url": "/../engine/recommendation_engine.php",
+    "kind": "require-str",
+    "ctx": "ce __DIR__ . '/../engine/reasoning_engine.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 6,
+    "url": "/../engine/pipeline_adapters.php",
+    "kind": "require-str",
+    "ctx": "DIR__ . '/../engine/recommendation_engine.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 7,
+    "url": "/../engine/system_insight_engine.php",
+    "kind": "require-str",
+    "ctx": "e __DIR__ . '/../engine/pipeline_adapters.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 8,
+    "url": "/../engine/predictive_intelligence_engine.php",
+    "kind": "require-str",
+    "ctx": "DIR__ . '/../engine/system_insight_engine.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 12,
+    "url": "/../engine/predictive_intelligence_engine.php",
+    "kind": "require-str",
+    "ctx": "ights(); $base = __DIR__ . \"/../data/clients/\"; require_once __DIR__ ."
+   }
+  ],
+  "kernel/ingestion_pipeline.php": [
+   {
+    "line": 3,
+    "url": "/../db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "kernel/system_health.php": [
+   {
+    "line": 19,
+    "url": "/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "============================================ */ require_once __DIR__ ."
+   },
+   {
+    "line": 86,
+    "url": "/module_registry.php",
+    "kind": "require-str",
+    "ctx": "=============================== */ try { $registry = require __DIR__ ."
+   }
+  ],
+  "kernel/engine_bindings.php": [
+   {
+    "line": 7,
+    "url": "cross_case_engine.php",
+    "kind": "other",
+    "ctx": "<?php return [ 'brain' => [ 'engines' => ["
+   },
+   {
+    "line": 8,
+    "url": "system_insight_engine.php",
+    "kind": "other",
+    "ctx": "'brain' => [ 'engines' => [ 'cross_case_engine.php',"
+   },
+   {
+    "line": 9,
+    "url": "system_recommendation_engine.php",
+    "kind": "other",
+    "ctx": "'cross_case_engine.php', 'system_insight_engine.php',"
+   },
+   {
+    "line": 15,
+    "url": "cross_case_engine.php",
+    "kind": "other",
+    "ctx": "ndation_engine.php' ] ], 'cases' => [ 'engines' => ["
+   },
+   {
+    "line": 21,
+    "url": "cross_case_engine.php",
+    "kind": "other",
+    "ctx": "_case_engine.php' ] ], 'clients' => [ 'engines' => ["
+   },
+   {
+    "line": 27,
+    "url": "system_insight_engine.php",
+    "kind": "other",
+    "ctx": "_case_engine.php' ] ], 'insight' => [ 'engines' => ["
+   },
+   {
+    "line": 33,
+    "url": "decision_engine_v2.php",
+    "kind": "other",
+    "ctx": "ht_engine.php' ] ], 'predictive' => [ 'engines' => ["
+   },
+   {
+    "line": 39,
+    "url": "policy_enforcement_engine.php",
+    "kind": "other",
+    "ctx": "n_engine_v2.php' ] ], 'decision' => [ 'engines' => ["
+   },
+   {
+    "line": 40,
+    "url": "execution_router.php",
+    "kind": "other",
+    "ctx": "ion' => [ 'engines' => [ 'policy_enforcement_engine.php',"
+   }
+  ],
+  "kernel/db.php": [
+   {
+    "line": 3,
+    "url": "/../config.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "kernel/bootstrap.php": [
+   {
+    "line": 3,
+    "url": "/../db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "kernel/guard.php": [
+   {
+    "line": 3,
+    "url": "/kernel.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "kernel/graph_auto_builder.php": [
+   {
+    "line": 3,
+    "url": "/../db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "kernel/task_generator.php": [
+   {
+    "line": 3,
+    "url": "/recommendation_engine.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   },
+   {
+    "line": 4,
+    "url": "/../db.php",
+    "kind": "require-str",
+    "ctx": "re_once __DIR__ . '/recommendation_engine.php'; require_once __DIR__ ."
+   }
+  ],
+  "kernel/module_registry.php": [
+   {
+    "line": 6,
+    "url": "alert_module.php",
+    "kind": "other",
+    "ctx": "<?php return [ // CORE 'alert' =>"
+   },
+   {
+    "line": 7,
+    "url": "anomaly_engine_module.php",
+    "kind": "other",
+    "ctx": "CORE 'alert' => 'alert_module.php', 'anomaly_engine' =>"
+   },
+   {
+    "line": 8,
+    "url": "brain_module.php",
+    "kind": "other",
+    "ctx": "'anomaly_engine' => 'anomaly_engine_module.php', 'brain' =>"
+   },
+   {
+    "line": 9,
+    "url": "cases_module.php",
+    "kind": "other",
+    "ctx": "php', 'brain' => 'brain_module.php', 'cases' =>"
+   },
+   {
+    "line": 10,
+    "url": "clients_module.php",
+    "kind": "other",
+    "ctx": "php', 'cases' => 'cases_module.php', 'clients' =>"
+   },
+   {
+    "line": 11,
+    "url": "client_view_module.php",
+    "kind": "other",
+    "ctx": "', 'clients' => 'clients_module.php', 'client_view' =>"
+   },
+   {
+    "line": 12,
+    "url": "cluster_module.php",
+    "kind": "other",
+    "ctx": "'client_view' => 'client_view_module.php', 'cluster' =>"
+   },
+   {
+    "line": 13,
+    "url": "cockpit_module.php",
+    "kind": "other",
+    "ctx": "p', 'cluster' => 'cluster_module.php', 'cockpit' =>"
+   },
+   {
+    "line": 14,
+    "url": "compare_module.php",
+    "kind": "other",
+    "ctx": "p', 'cockpit' => 'cockpit_module.php', 'compare' =>"
+   },
+   {
+    "line": 15,
+    "url": "cross_case_engine.php",
+    "kind": "other",
+    "ctx": "p', 'compare' => 'compare_module.php', 'cross_case_engine' =>"
+   },
+   {
+    "line": 16,
+    "url": "dashboard_module.php",
+    "kind": "other",
+    "ctx": "'cross_case_engine' => 'cross_case_engine.php', 'dashboard' =>"
+   },
+   {
+    "line": 17,
+    "url": "decision_module.php",
+    "kind": "other",
+    "ctx": ", 'dashboard' => 'dashboard_module.php', 'decision' =>"
+   },
+   {
+    "line": 18,
+    "url": "entity_resolution_module.php",
+    "kind": "other",
+    "ctx": "', 'decision' => 'decision_module.php', 'entity_resolution' =>"
+   },
+   {
+    "line": 19,
+    "url": "excavation_module.php",
+    "kind": "other",
+    "ctx": "ntity_resolution' => 'entity_resolution_module.php', 'excavation' =>"
+   },
+   {
+    "line": 20,
+    "url": "executive_dashboard_module.php",
+    "kind": "other",
+    "ctx": "'excavation' => 'excavation_module.php', 'executive' =>"
+   },
+   {
+    "line": 21,
+    "url": "files_module.php",
+    "kind": "other",
+    "ctx": "cutive' => 'executive_dashboard_module.php', 'files' =>"
+   },
+   {
+    "line": 22,
+    "url": "graph_module.php",
+    "kind": "other",
+    "ctx": "php', 'files' => 'files_module.php', 'graph' =>"
+   },
+   {
+    "line": 23,
+    "url": "insight_module.php",
+    "kind": "other",
+    "ctx": "php', 'graph' => 'graph_module.php', 'insight' =>"
+   },
+   {
+    "line": 24,
+    "url": "ingest_module.php",
+    "kind": "other",
+    "ctx": "p', 'insight' => 'insight_module.php', 'ingest' =>"
+   },
+   {
+    "line": 25,
+    "url": "ingest_view_module.php",
+    "kind": "other",
+    "ctx": "hp', 'ingest' => 'ingest_module.php', 'ingest_view' =>"
+   },
+   {
+    "line": 26,
+    "url": "intelligence_dashboard_module.php",
+    "kind": "other",
+    "ctx": "'ingest_view' => 'ingest_view_module.php', 'intelligence_dashboard' =>"
+   },
+   {
+    "line": 27,
+    "url": "pm_module.php",
+    "kind": "other",
+    "ctx": "igence_dashboard' => 'intelligence_dashboard_module.php', 'pm' =>"
+   },
+   {
+    "line": 28,
+    "url": "predictive_module.php",
+    "kind": "other",
+    "ctx": "le.php', 'pm' => 'pm_module.php', 'predictive' =>"
+   },
+   {
+    "line": 29,
+    "url": "predictive_link_module_v1.php",
+    "kind": "other",
+    "ctx": "predictive' => 'predictive_module.php', 'predictive_link_module_v1' =>"
+   },
+   {
+    "line": 30,
+    "url": "recommendation_module.php",
+    "kind": "other",
+    "ctx": "ink_module_v1' => 'predictive_link_module_v1.php', 'recommendation' =>"
+   },
+   {
+    "line": 31,
+    "url": "relations_module.php",
+    "kind": "other",
+    "ctx": "'recommendation' => 'recommendation_module.php', 'relations' =>"
+   },
+   {
+    "line": 32,
+    "url": "report_module.php",
+    "kind": "other",
+    "ctx": ", 'relations' => 'relations_module.php', 'report' =>"
+   },
+   {
+    "line": 33,
+    "url": "root_cause_graph_module.php",
+    "kind": "other",
+    "ctx": "hp', 'report' => 'report_module.php', 'root_cause' =>"
+   },
+   {
+    "line": 34,
+    "url": "search_module.php",
+    "kind": "other",
+    "ctx": "root_cause' => 'root_cause_graph_module.php', 'search' =>"
+   },
+   {
+    "line": 35,
+    "url": "semantic_cluster_module.php",
+    "kind": "other",
+    "ctx": "hp', 'search' => 'search_module.php', 'semantic_cluster' =>"
+   },
+   {
+    "line": 36,
+    "url": "time_intelligence_module.php",
+    "kind": "other",
+    "ctx": "ntic_cluster' => 'semantic_cluster_module.php', 'time_intelligence' =>"
+   },
+   {
+    "line": 37,
+    "url": "vault_module.php",
+    "kind": "other",
+    "ctx": "ime_intelligence' => 'time_intelligence_module.php', 'vault' =>"
+   },
+   {
+    "line": 38,
+    "url": "view_module.php",
+    "kind": "other",
+    "ctx": "php', 'vault' => 'vault_module.php', 'view' =>"
+   },
+   {
+    "line": 39,
+    "url": "payment_module.php",
+    "kind": "other",
+    "ctx": ".php', 'view' => 'view_module.php', 'payment' =>"
+   },
+   {
+    "line": 40,
+    "url": "dig_review_module.php",
+    "kind": "other",
+    "ctx": "p', 'payment' => 'payment_module.php', 'dig_review' =>"
+   }
+  ],
+  "kernel/kernel_boot.php": [
+   {
+    "line": 4,
+    "url": "/db.php",
+    "kind": "require-str",
+    "ctx": "<?php declare(strict_types=1); require_once __DIR__ ."
+   },
+   {
+    "line": 6,
+    "url": "/kernel_paths.php",
+    "kind": "require-str",
+    "ctx": "ict_types=1); require_once __DIR__ . '/db.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 8,
+    "url": "/../ui/ui_bootstrap.php",
+    "kind": "require-str",
+    "ctx": " require_once __DIR__ . '/kernel_paths.php'; if (file_exists(__DIR__ ."
+   },
+   {
+    "line": 9,
+    "url": "/../ui/ui_bootstrap.php",
+    "kind": "require-str",
+    "ctx": "_exists(__DIR__ . '/../ui/ui_bootstrap.php')) { require_once __DIR__ ."
+   }
+  ],
+  "engine/goal_engine.php": [
+   {
+    "line": 34,
+    "url": "/goal_arbitration_engine.php",
+    "kind": "require-str",
+    "ctx": " => $row['current_value'] ]; } return $goals; } require_once __DIR__ ."
+   },
+   {
+    "line": 35,
+    "url": "/goal_conflict_resolver.php",
+    "kind": "require-str",
+    "ctx": "_once __DIR__ . '/goal_arbitration_engine.php'; require_once __DIR__ ."
+   }
+  ],
+  "engine/decision_engine_v2.php": [
+   {
+    "line": 15,
+    "url": "/system_insight_engine.php",
+    "kind": "require-str",
+    "ctx": "-------------------------------------------- */ require_once __DIR__ ."
+   }
+  ],
+  "engine/system_insight_engine.php": [
+   {
+    "line": 14,
+    "url": "/cross_case_engine.php",
+    "kind": "require-str",
+    "ctx": "-------------------------------------------- */ require_once __DIR__ ."
+   }
+  ],
+  "engine/plain_english_helper.php": [
+   {
+    "line": 10,
+    "url": "engine/plain_english_helper.php",
+    "kind": "require-str",
+    "ctx": "o sentences a client can read. * * Usage: * require_once KERNEL_ROOT ."
+   }
+  ],
+  "engine/graph_data.php": [
+   {
+    "line": 3,
+    "url": "/../bootstrap.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "engine/executive_dashboard_engine.php": [
+   {
+    "line": 3,
+    "url": "/semantic_cluster_engine.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   },
+   {
+    "line": 4,
+    "url": "/memory_evolution_engine.php",
+    "kind": "require-str",
+    "ctx": "_once __DIR__ . '/semantic_cluster_engine.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 5,
+    "url": "/system_insight_engine.php",
+    "kind": "require-str",
+    "ctx": "_once __DIR__ . '/memory_evolution_engine.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 6,
+    "url": "/cross_case_engine.php",
+    "kind": "require-str",
+    "ctx": "re_once __DIR__ . '/system_insight_engine.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 7,
+    "url": "/portfolio_engine.php",
+    "kind": "require-str",
+    "ctx": "equire_once __DIR__ . '/cross_case_engine.php'; require_once __DIR__ ."
+   }
+  ],
+  "engine/graph_engine.php": [
+   {
+    "line": 3,
+    "url": "/../kernel/db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "engine/hierarchy_of_truth_engine.php": [
+   {
+    "line": 52,
+    "url": "/../kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "-------------------------------------------- */ require_once __DIR__ ."
+   }
+  ],
+  "engine/entity_extraction_engine.php": [
+   {
+    "line": 13,
+    "url": "/../kernel/kernel_boot.php",
+    "kind": "require-str",
+    "ctx": "-------------------------------------------- */ require_once __DIR__ ."
+   }
+  ],
+  "engine/memory_evolution_engine.php": [
+   {
+    "line": 3,
+    "url": "/portfolio_engine.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "engine/pipeline_adapters.php": [
+   {
+    "line": 3,
+    "url": "/../cluster_engine.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   },
+   {
+    "line": 4,
+    "url": "/reasoning_engine.php",
+    "kind": "require-str",
+    "ctx": "equire_once __DIR__ . '/../cluster_engine.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 5,
+    "url": "/recommendation_engine.php",
+    "kind": "require-str",
+    "ctx": "require_once __DIR__ . '/reasoning_engine.php'; require_once __DIR__ ."
+   },
+   {
+    "line": 54,
+    "url": "/recommendation_engine.php",
+    "kind": "require-str",
+    "ctx": "*/ function generateRecommendationsPath($path){ require_once __DIR__ ."
+   }
+  ],
+  "engine/predictive_intelligence_engine.php": [
+   {
+    "line": 3,
+    "url": "/portfolio_engine.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   },
+   {
+    "line": 4,
+    "url": "/semantic_cluster_engine.php",
+    "kind": "require-str",
+    "ctx": "require_once __DIR__ . '/portfolio_engine.php'; require_once __DIR__ ."
+   }
+  ],
+  "lib/semantic_diff_engine.php": [
+   {
+    "line": 3,
+    "url": "/../kernel/db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "lib/legaisee_model.php": [
+   {
+    "line": 8,
+    "url": "/../db.php",
+    "kind": "require-str",
+    "ctx": ", clusters, relations, and workspace context */ require_once __DIR__ ."
+   },
+   {
+    "line": 280,
+    "url": "api/v8/predictor.php",
+    "kind": "other",
+    "ctx": "------------ */ function legaisee_search_intelligence($query) { $url ="
+   }
+  ],
+  "tools/build_cluster_summaries.php": [
+   {
+    "line": 3,
+    "url": "/../db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "tools/extract_cluster_insights.php": [
+   {
+    "line": 3,
+    "url": "/../db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "tools/detect_cluster_opportunities.php": [
+   {
+    "line": 3,
+    "url": "/../db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "tools/build_clusters.php": [
+   {
+    "line": 3,
+    "url": "/../db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "tools/name_clusters.php": [
+   {
+    "line": 3,
+    "url": "/../db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "tools/build_cluster_summaries_ai.php": [
+   {
+    "line": 3,
+    "url": "/../db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   },
+   {
+    "line": 4,
+    "url": "/../config.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ . \"/../db.php\"; require_once __DIR__ ."
+   }
+  ],
+  "tools/build_relations.php": [
+   {
+    "line": 3,
+    "url": "/../db.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ],
+  "ui/ui_engine.php": [
+   {
+    "line": 25,
+    "url": "/layout.php",
+    "kind": "require-str",
+    "ctx": "ob_start(); // Make $content available to layout.php require __DIR__ ."
+   }
+  ],
+  "ui/file_explorer.php": [
+   {
+    "line": 3,
+    "url": "/../kernel/folder_engine.php",
+    "kind": "require-str",
+    "ctx": "<?php require_once __DIR__ ."
+   }
+  ]
+ },
+ "config_rules": {
+  ".htaccess": [
+   {
+    "line": 11,
+    "text": "<FilesMatch \"^(config\\.php|\\.env|\\.gitignore)$\">"
+   },
+   {
+    "line": 12,
+    "text": "Order allow,deny"
+   },
+   {
+    "line": 13,
+    "text": "Deny from all"
+   }
+  ]
+ },
+ "verify": {
+  "engine/entity_extraction_engine.php": {
+   "exists": true,
+   "reachable": true,
+   "static_referrers": [
+    {
+     "from": "prospect.php",
+     "line": 7,
+     "expr": "__DIR__ . '/engine/entity_extraction_engine.php'"
+    },
+    {
+     "from": "test_extraction_fix.php",
+     "line": 12,
+     "expr": "__DIR__ . '/engine/entity_extraction_engine.php'"
+    },
+    {
+     "from": "modules/excavation_module.php",
+     "line": 26,
+     "expr": "__DIR__ . '/../engine/entity_extraction_engine.php'"
+    }
+   ],
+   "browser_referrers": [
+    {
+     "from": "prospect.php",
+     "line": 7,
+     "url": "/engine/entity_extraction_engine.php",
+     "kind": "require-str"
+    },
+    {
+     "from": "test_extraction_fix.php",
+     "line": 9,
+     "url": "/engine/entity_extraction_engine.php",
+     "kind": "require-str"
+    }
+   ]
+  },
+  "kernel/ingestion_pipeline.php": {
+   "exists": true,
+   "reachable": true,
+   "static_referrers": [
+    {
+     "from": "modules/ingest_module.php",
+     "line": 110,
+     "expr": "__DIR__ . '/../kernel/ingestion_pipeline.php'"
+    }
+   ],
+   "browser_referrers": []
+  },
+  "ui/ui_engine.php": {
+   "exists": true,
+   "reachable": true,
+   "static_referrers": [
+    {
+     "from": "modules/view_module.php",
+     "line": 6,
+     "expr": "__DIR__ . '/../ui/ui_engine.php'"
+    }
+   ],
+   "browser_referrers": []
+  },
+  "ui/layout.php": {
+   "exists": true,
+   "reachable": true,
+   "static_referrers": [
+    {
+     "from": "ui/ui_engine.php",
+     "line": 28,
+     "expr": "__DIR__ . '/layout.php'"
+    }
+   ],
+   "browser_referrers": []
+  },
+  "kernel/nav_engine.php": {
+   "exists": true,
+   "reachable": true,
+   "static_referrers": [
+    {
+     "from": "modules/view_module.php",
+     "line": 7,
+     "expr": "__DIR__ . '/../kernel/nav_engine.php'"
+    },
+    {
+     "from": "views/compare_view.php",
+     "line": 5,
+     "expr": "__DIR__ . '/../kernel/nav_engine.php'"
+    }
+   ],
+   "browser_referrers": []
+  },
+  "lib/semantic_diff_engine.php": {
+   "exists": true,
+   "reachable": true,
+   "static_referrers": [
+    {
+     "from": "session.php",
+     "line": 5,
+     "expr": "__DIR__ . '/lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "export_report.php",
+     "line": 5,
+     "expr": "__DIR__ . '/lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "ingest2.php",
+     "line": 5,
+     "expr": "__DIR__ . '/lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "semantic_engine.php",
+     "line": 3,
+     "expr": "__DIR__ . '/lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "load_sets.php",
+     "line": 4,
+     "expr": "__DIR__ . '/lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "intelligence.php",
+     "line": 12,
+     "expr": "__DIR__ . '/lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "parser.php",
+     "line": 16,
+     "expr": "__DIR__ . '/lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "ingest.php",
+     "line": 5,
+     "expr": "__DIR__ . '/lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "save_set.php",
+     "line": 4,
+     "expr": "__DIR__ . '/lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "modules/view_module.php",
+     "line": 8,
+     "expr": "__DIR__ . '/../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/build_edges.php",
+     "line": 6,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/memory_weight.php",
+     "line": 5,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/create_network.php",
+     "line": 7,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/learn.php",
+     "line": 5,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/feedback.php",
+     "line": 11,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/forecast.php",
+     "line": 8,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/predictor.php",
+     "line": 11,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/event_emit.php",
+     "line": 14,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/memory_store.php",
+     "line": 5,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/cases.php",
+     "line": 6,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/mesh.php",
+     "line": 5,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/dossier_v2.php",
+     "line": 6,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/compare_networks.php",
+     "line": 5,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/autonomous_engine.php",
+     "line": 6,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/patterns.php",
+     "line": 6,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/compressor.php",
+     "line": 7,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/alerts.php",
+     "line": 6,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/insights.php",
+     "line": 6,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/investigator.php",
+     "line": 7,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/summary.php",
+     "line": 6,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    },
+    {
+     "from": "api/v8/agent.php",
+     "line": 6,
+     "expr": "__DIR__ . '/../../lib/semantic_diff_engine.php'"
+    }
+   ],
+   "browser_referrers": [
+    {
+     "from": "session.php",
+     "line": 5,
+     "url": "/lib/semantic_diff_engine.php",
+     "kind": "require-str"
+    },
+    {
+     "from": "export_report.php",
+     "line": 5,
+     "url": "/lib/semantic_diff_engine.php",
+     "kind": "require-str"
+    },
+    {
+     "from": "ingest2.php",
+     "line": 5,
+     "url": "/lib/semantic_diff_engine.php",
+     "kind": "require-str"
+    },
+    {
+     "from": "semantic_engine.php",
+     "line": 3,
+     "url": "/lib/semantic_diff_engine.php",
+     "kind": "require-str"
+    },
+    {
+     "from": "load_sets.php",
+     "line": 4,
+     "url": "/lib/semantic_diff_engine.php",
+     "kind": "require-str"
+    },
+    {
+     "from": "intelligence.php",
+     "line": 12,
+     "url": "/lib/semantic_diff_engine.php",
+     "kind": "require-str"
+    },
+    {
+     "from": "parser.php",
+     "line": 13,
+     "url": "/lib/semantic_diff_engine.php",
+     "kind": "require-str"
+    },
+    {
+     "from": "ingest.php",
+     "line": 5,
+     "url": "/lib/semantic_diff_engine.php",
+     "kind": "require-str"
+    },
+    {
+     "from": "save_set.php",
+     "line": 4,
+     "url": "/lib/semantic_diff_engine.php",
+     "kind": "require-str"
+    }
+   ]
+  },
+  "prospect.php": {
+   "exists": true,
+   "reachable": true,
+   "static_referrers": [],
+   "browser_referrers": [
+    {
+     "from": "shell.php",
+     "line": 251,
+     "url": "/commandcenter/prospect.php",
+     "kind": "other"
+    },
+    {
+     "from": "prospect.php",
+     "line": 501,
+     "url": "/commandcenter/prospect.php",
+     "kind": "href"
+    },
+    {
+     "from": "prospect.php",
+     "line": 518,
+     "url": "/commandcenter/prospect.php",
+     "kind": "action"
+    },
+    {
+     "from": "prospect.php",
+     "line": 650,
+     "url": "/commandcenter/prospect.php",
+     "kind": "href"
+    }
+   ]
+  },
+  "api/tree.php": {
+   "exists": true,
+   "reachable": false,
+   "static_referrers": [],
+   "browser_referrers": []
+  },
+  "api/v8/network_add_node.php": {
+   "exists": true,
+   "reachable": false,
+   "static_referrers": [],
+   "browser_referrers": [
+    {
+     "from": "ingest2.php",
+     "line": 23,
+     "url": "/commandcenter/api/v8/network_add_node.php",
+     "kind": "other"
+    },
+    {
+     "from": "ingest.php",
+     "line": 23,
+     "url": "/commandcenter/api/v8/network_add_node.php",
+     "kind": "other"
+    }
+   ]
+  },
+  "engine/hierarchy_of_truth_engine.php": {
+   "exists": true,
+   "reachable": false,
+   "static_referrers": [
+    {
+     "from": "test_hierarchy_of_truth.php",
+     "line": 17,
+     "expr": "__DIR__ . '/engine/hierarchy_of_truth_engine.php'"
+    }
+   ],
+   "browser_referrers": [
+    {
+     "from": "test_hierarchy_of_truth.php",
+     "line": 17,
+     "url": "/engine/hierarchy_of_truth_engine.php",
+     "kind": "require-str"
+    }
+   ]
+  },
+  "engine/plain_english_helper.php": {
+   "exists": true,
+   "reachable": false,
+   "static_referrers": [],
+   "browser_referrers": [
+    {
+     "from": "engine/plain_english_helper.php",
+     "line": 10,
+     "url": "engine/plain_english_helper.php",
+     "kind": "require-str"
+    }
+   ]
+  }
+ }
+}

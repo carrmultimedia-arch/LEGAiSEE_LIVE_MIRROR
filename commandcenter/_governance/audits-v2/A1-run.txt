@@ -1,0 +1,175 @@
+================ A1 SUMMARY ================
+php files        : 346
+registry modules : 35 | present: 35
+reachable        : 62
+unreachable      : 286
+files with browser refs : 164
+files with dynamic require : 12
+
+--- registry modules: exists? includes? ---
+alert                      alert_module.php                   OK     modules/utils/json_helpers.php
+anomaly_engine             anomaly_engine_module.php          OK     -
+brain                      brain_module.php                   OK     api/brain_orchestrator.php, kernel/module_registry.php
+cases                      cases_module.php                   OK     modules/utils/bootstrap.php
+clients                    clients_module.php                 OK     kernel/kernel_boot.php
+client_view                client_view_module.php             OK     kernel/kernel_boot.php, graph_view.php
+cluster                    cluster_module.php                 OK     kernel/kernel_boot.php
+cockpit                    cockpit_module.php                 OK     kernel/db.php
+compare                    compare_module.php                 OK     -
+cross_case_engine          cross_case_engine.php              OK     -
+dashboard                  dashboard_module.php               OK     modules/utils/bootstrap.php
+decision                   decision_module.php                OK     modules/utils/bootstrap.php
+entity_resolution          entity_resolution_module.php       OK     kernel/db.php
+excavation                 excavation_module.php              OK     modules/utils/json_helpers.php, engine/entity_extraction_engine.php, kernel/db.php
+executive                  executive_dashboard_module.php     OK     modules/utils/bootstrap.php
+files                      files_module.php                   OK     -
+graph                      graph_module.php                   OK     -
+insight                    insight_module.php                 OK     -
+ingest                     ingest_module.php                  OK     kernel/ingestion_pipeline.php
+ingest_view                ingest_view_module.php             OK     -
+intelligence_dashboard     intelligence_dashboard_module.php  OK     modules/utils/uic_v1.php
+pm                         pm_module.php                      OK     -
+predictive                 predictive_module.php              OK     modules/utils/bootstrap.php
+predictive_link_module_v1  predictive_link_module_v1.php      OK     modules/utils/bootstrap.php
+recommendation             recommendation_module.php          OK     modules/utils/bootstrap.php
+relations                  relations_module.php               OK     modules/utils/bootstrap.php
+report                     report_module.php                  OK     kernel/kernel_boot.php, lib/dompdf/autoload.inc.php
+root_cause                 root_cause_graph_module.php        OK     modules/utils/bootstrap.php
+search                     search_module.php                  OK     modules/utils/bootstrap.php
+semantic_cluster           semantic_cluster_module.php        OK     db.php
+time_intelligence          time_intelligence_module.php       OK     modules/utils/bootstrap.php
+vault                      vault_module.php                   OK     db.php
+view                       view_module.php                    OK     kernel/kernel_boot.php, ui/ui_engine.php, kernel/nav_engine.php, lib/semantic_diff_engine.php, kernel/kernel.php
+payment                    payment_module.php                 OK     kernel/kernel_boot.php, config.php, lib/vendor/autoload.php
+dig_review                 dig_review_module.php              OK     kernel/db.php
+
+--- dynamic requires (need manual path resolution) ---
+ProjectManager/bootstrap.php                  :7    require BASE_PATH . '/config.php';
+ProjectManager/bootstrap.php                  :15   require_once $file;
+ProjectManager/bootstrap.php                  :43   require_once $file;
+ProjectManager/database/connection.php        :26   require $configFile;
+ProjectManager/database/migration.php         :62   require $file;
+api.php                                       :35   include __DIR__ . "/api/v8/" . $file;
+engine/policy_enforcement_engine.php          :135  require risk validation before execution",
+            "applies_to" => $appliesTo
+        ];
+load_module.php                               :29   require $file;
+pages/shell_template.php                      :27   require $file;
+pages/test/shell_module_test.php              :27   require $file;
+shell.php                                     :58   require $file;
+test_modules.php                              :30   require $path;
+tools/build_cluster_summaries.php             :88   include " . implode(", ", $topWords);
+tools/extract_cluster_insights.php            :86   include: " . implode(", ", $topWords);
+
+--- the 11 named targets ---
+engine/entity_extraction_engine.php            exists=True  reach=True  static=3 browser=2
+        <- prospect.php:7  [__DIR__ . '/engine/entity_extraction_engine.php']
+        <- test_extraction_fix.php:12  [__DIR__ . '/engine/entity_extraction_engine.php']
+        <- modules/excavation_module.php:26  [__DIR__ . '/../engine/entity_extraction_engine.php']
+        <- prospect.php:7  /engine/entity_extraction_engine.php (require-str)
+        <- test_extraction_fix.php:9  /engine/entity_extraction_engine.php (require-str)
+kernel/ingestion_pipeline.php                  exists=True  reach=True  static=1 browser=0
+        <- modules/ingest_module.php:110  [__DIR__ . '/../kernel/ingestion_pipeline.php']
+ui/ui_engine.php                               exists=True  reach=True  static=1 browser=0
+        <- modules/view_module.php:6  [__DIR__ . '/../ui/ui_engine.php']
+ui/layout.php                                  exists=True  reach=True  static=1 browser=0
+        <- ui/ui_engine.php:28  [__DIR__ . '/layout.php']
+kernel/nav_engine.php                          exists=True  reach=True  static=2 browser=0
+        <- modules/view_module.php:7  [__DIR__ . '/../kernel/nav_engine.php']
+        <- views/compare_view.php:5  [__DIR__ . '/../kernel/nav_engine.php']
+lib/semantic_diff_engine.php                   exists=True  reach=True  static=31 browser=9
+        <- session.php:5  [__DIR__ . '/lib/semantic_diff_engine.php']
+        <- export_report.php:5  [__DIR__ . '/lib/semantic_diff_engine.php']
+        <- ingest2.php:5  [__DIR__ . '/lib/semantic_diff_engine.php']
+        <- semantic_engine.php:3  [__DIR__ . '/lib/semantic_diff_engine.php']
+        <- load_sets.php:4  [__DIR__ . '/lib/semantic_diff_engine.php']
+        <- intelligence.php:12  [__DIR__ . '/lib/semantic_diff_engine.php']
+        <- session.php:5  /lib/semantic_diff_engine.php (require-str)
+        <- export_report.php:5  /lib/semantic_diff_engine.php (require-str)
+        <- ingest2.php:5  /lib/semantic_diff_engine.php (require-str)
+        <- semantic_engine.php:3  /lib/semantic_diff_engine.php (require-str)
+        <- load_sets.php:4  /lib/semantic_diff_engine.php (require-str)
+        <- intelligence.php:12  /lib/semantic_diff_engine.php (require-str)
+prospect.php                                   exists=True  reach=True  static=0 browser=4
+        <- shell.php:251  /commandcenter/prospect.php (other)
+        <- prospect.php:501  /commandcenter/prospect.php (href)
+        <- prospect.php:518  /commandcenter/prospect.php (action)
+        <- prospect.php:650  /commandcenter/prospect.php (href)
+api/tree.php                                   exists=True  reach=False static=0 browser=0
+api/v8/network_add_node.php                    exists=True  reach=False static=0 browser=2
+        <- ingest2.php:23  /commandcenter/api/v8/network_add_node.php (other)
+        <- ingest.php:23  /commandcenter/api/v8/network_add_node.php (other)
+engine/hierarchy_of_truth_engine.php           exists=True  reach=False static=1 browser=1
+        <- test_hierarchy_of_truth.php:17  [__DIR__ . '/engine/hierarchy_of_truth_engine.php']
+        <- test_hierarchy_of_truth.php:17  /engine/hierarchy_of_truth_engine.php (require-str)
+engine/plain_english_helper.php                exists=True  reach=False static=0 browser=1
+        <- engine/plain_english_helper.php:10  engine/plain_english_helper.php (require-str)
+
+--- unreachable php (first 60) ---
+    Color_Creator.php
+    ExcavationCommand/dashboard.php
+    ExcavationCommand/planner.php
+    ExcavationCommand/system_index.php
+    ProjectManager/api/auth/login.php
+    ProjectManager/api/auth/logout.php
+    ProjectManager/api/auth/status.php
+    ProjectManager/api/clients/index.php
+    ProjectManager/api/comments/index.php
+    ProjectManager/api/labels/index.php
+    ProjectManager/api/milestones/index.php
+    ProjectManager/api/permissions/index.php
+    ProjectManager/api/permissions/roles.php
+    ProjectManager/api/projects/index.php
+    ProjectManager/api/projects/members.php
+    ProjectManager/api/tasks/index.php
+    ProjectManager/api/users/index.php
+    ProjectManager/api/users/show.php
+    ProjectManager/app/Controllers/AuthController.php
+    ProjectManager/app/Controllers/ClientController.php
+    ProjectManager/app/Controllers/CommentController.php
+    ProjectManager/app/Controllers/LabelController.php
+    ProjectManager/app/Controllers/MilestoneController.php
+    ProjectManager/app/Controllers/ProjectController.php
+    ProjectManager/app/Controllers/ProjectMemberController.php
+    ProjectManager/app/Controllers/TaskController.php
+    ProjectManager/app/Controllers/UserController.php
+    ProjectManager/app/Core/Application.php
+    ProjectManager/app/Core/Container.php
+    ProjectManager/app/Core/Database.php
+    ProjectManager/app/Core/Dispatcher.php
+    ProjectManager/app/Core/ExceptionHandler.php
+    ProjectManager/app/Core/Request.php
+    ProjectManager/app/Core/Response.php
+    ProjectManager/app/Core/Router.php
+    ProjectManager/app/Models/ActivityLog.php
+    ProjectManager/app/Models/Attachment.php
+    ProjectManager/app/Models/Client.php
+    ProjectManager/app/Models/Comment.php
+    ProjectManager/app/Models/Label.php
+    ProjectManager/app/Models/Milestone.php
+    ProjectManager/app/Models/Permission.php
+    ProjectManager/app/Models/Project.php
+    ProjectManager/app/Models/ProjectMember.php
+    ProjectManager/app/Models/Role.php
+    ProjectManager/app/Models/Task.php
+    ProjectManager/app/Models/User.php
+    ProjectManager/app/Policies/DocumentPolicy.php
+    ProjectManager/app/Policies/PermissionPolicy.php
+    ProjectManager/app/Policies/ProjectPolicy.php
+    ProjectManager/app/Policies/RolePolicy.php
+    ProjectManager/app/Policies/TaskPolicy.php
+    ProjectManager/app/Policies/UserPolicy.php
+    ProjectManager/app/Repositories/ActivityLogRepository.php
+    ProjectManager/app/Repositories/AttachmentRepository.php
+    ProjectManager/app/Repositories/ClientRepository.php
+    ProjectManager/app/Repositories/CommentRepository.php
+    ProjectManager/app/Repositories/LabelRepository.php
+    ProjectManager/app/Repositories/MilestoneRepository.php
+    ProjectManager/app/Repositories/PermissionRepository.php
+
+--- .htaccess rules ---
+.htaccess 3 rule-ish lines
+   11   <FilesMatch "^(config\.php|\.env|\.gitignore)$">
+   12   Order allow,deny
+   13   Deny from all
+json -> D:\_Legaisee\LEGAiSEE_LIVE_MIRROR\commandcenter\_governance\audits-v2\A1-graph.json

@@ -1,0 +1,458 @@
+==== COUNTS ====
+{
+ "php_files": 346,
+ "reachable": 62,
+ "unreachable": 286,
+ "registry_modules": 35,
+ "modules_present": 35
+}
+
+==== REACHABLE (62) ====
+api/brain_orchestrator.php                         <- modules/brain_module.php
+api/brain_synthesis.php                            <- api/brain_orchestrator.php
+api/files_action.php                               <- modules/files_module.php
+api/model_router.php                               <- api/brain_orchestrator.php
+api/search_load.php                                <- modules/search_module.php
+config.local.php                                   <- config.php
+config.php                                         <- ProjectManager/bootstrap.php, api/brain_orchestrator.php, kernel/db.php, modules/payment_m
+db.php                                             <- embed_generate.php, export_report.php, semantic_engine.php
+engine/entity_extraction_engine.php                <- modules/excavation_module.php, prospect.php, test_extraction_fix.php
+kernel/db.php                                      <- db.php, diagnostics2.php, view_ingest.php
+kernel/ingestion_pipeline.php                      <- modules/ingest_module.php
+kernel/kernel.php                                  <- kernel/guard.php, modules/view_module.php, test_kernel.php
+kernel/kernel_boot.php                             <- shell.php, test_excavation_module.php, test_modules.php
+kernel/kernel_paths.php                            <- kernel/kernel_boot.php
+kernel/module_registry.php                         <- load_module.php, shell.php, test_modules.php
+kernel/nav_engine.php                              <- modules/view_module.php, views/compare_view.php
+lib/dompdf/autoload.inc.php                        <- export_report.php, modules/report_module.php
+lib/semantic_diff_engine.php                       <- export_report.php, ingest2.php, session.php
+lib/vendor/autoload.php                            <- modules/payment_module.php
+modules/alert_module.php                           <- SEED
+modules/anomaly_engine_module.php                  <- SEED
+modules/brain_module.php                           <- shell.php
+modules/cases_module.php                           <- SEED
+modules/client_view_module.php                     <- SEED
+modules/clients_module.php                         <- SEED
+modules/cluster_module.php                         <- SEED
+modules/cockpit_module.php                         <- SEED
+modules/compare_module.php                         <- SEED
+modules/cross_case_engine.php                      <- SEED
+modules/dashboard_module.php                       <- SEED
+modules/decision_module.php                        <- SEED
+modules/dig_review_module.php                      <- SEED
+modules/entity_resolution_module.php               <- SEED
+modules/excavation_module.php                      <- test_excavation_module.php
+modules/executive_dashboard_module.php             <- SEED
+modules/files_module.php                           <- SEED
+modules/graph_module.php                           <- test_graph_fix.php
+modules/ingest_module.php                          <- SEED
+modules/ingest_view_module.php                     <- SEED
+modules/insight_module.php                         <- peek.php
+modules/intelligence_dashboard_module.php          <- SEED
+modules/payment_module.php                         <- SEED
+modules/pm_module.php                              <- SEED
+modules/predictive_link_module_v1.php              <- SEED
+modules/predictive_module.php                      <- SEED
+modules/recommendation_module.php                  <- SEED
+modules/relations_module.php                       <- SEED
+modules/report_module.php                          <- shell.php
+modules/root_cause_graph_module.php                <- SEED
+modules/search_module.php                          <- SEED
+modules/semantic_cluster_module.php                <- SEED
+modules/time_intelligence_module.php               <- SEED
+modules/utils/bootstrap.php                        <- modules/cases_module.php, shell.php, test_excavation_module.php
+modules/utils/json_helpers.php                     <- modules/alert_module.php, modules/excavation_module.php
+modules/utils/uic_v1.php                           <- modules/intelligence_dashboard_module.php, pages/shell_template.php, shell.php
+modules/vault_module.php                           <- shell.php
+modules/view_module.php                            <- SEED
+prospect.php                                       <- prospect.php, shell.php
+shell.php                                          <- shell.php
+ui/layout.php                                      <- ui/ui_engine.php
+ui/ui_bootstrap.php                                <- kernel/kernel_boot.php
+ui/ui_engine.php                                   <- modules/view_module.php
+
+==== API ENDPOINTS (top level, 33) ====
+api/agency_create.php                  NO-REFERENCE       
+api/agency_dashboard.php               NO-REFERENCE       
+api/agency_dispatch.php                NO-REFERENCE       
+api/agency_synthesis.php               NO-REFERENCE       
+api/agent_spawn.php                    NO-REFERENCE       
+api/agent_tick.php                     NO-REFERENCE       
+api/anomaly_detector.php               NO-REFERENCE       
+api/brain_commit.php                   NO-REFERENCE       
+api/brain_dossier.php                  NO-REFERENCE       
+api/brain_memory_graph.php             NO-REFERENCE       
+api/brain_orchestrator.php             REACHABLE          modules/brain_module.php
+api/brain_start.php                    NO-REFERENCE       
+api/brain_state.php                    NO-REFERENCE       
+api/brain_stream.php                   NO-REFERENCE       
+api/brain_stream_v4.php                NO-REFERENCE       
+api/brain_synthesis.php                REACHABLE          api/brain_orchestrator.php
+api/case_agent.php                     NO-REFERENCE       
+api/case_create.php                    NO-REFERENCE       
+api/case_memory.php                    NO-REFERENCE       
+api/case_scheduler.php                 NO-REFERENCE       
+api/case_tick.php                      NO-REFERENCE       
+api/dossier.php                        NO-REFERENCE       
+api/file.php                           NO-REFERENCE       
+api/file_tree.php                      NO-REFERENCE       
+api/files_action.php                   REACHABLE          modules/files_module.php
+api/graph_synthesizer.php              NO-REFERENCE       
+api/intel_cache.php                    NO-REFERENCE       
+api/model_router.php                   REACHABLE          api/brain_orchestrator.php
+api/network_boot.php                   NO-REFERENCE       
+api/network_tick.php                   NO-REFERENCE       
+api/node_builder.php                   NO-REFERENCE       
+api/search_load.php                    REACHABLE          modules/search_module.php
+api/tree.php                           NO-REFERENCE       
+
+==== API/V8 (35) ====
+{'REACHABLE': 0, 'REFERRED-BY-DEAD': 2, 'NO-REFERENCE': 33}
+  api/v8/network_add_node.php              <- ingest.php, ingest2.php
+  api/v8/predictor.php                     <- lib/legaisee_model.php
+
+==== PER-MODULE OUTBOUND (includes + browser) ====
+alert                      modules/utils/json_helpers.php:3 OK; /utils/json_helpers.php:3 require-str
+anomaly_engine             (no requires, no URLs)
+brain                      api/brain_orchestrator.php:24 OK; kernel/module_registry.php:33 OK
+cases                      modules/utils/bootstrap.php:4 OK; /utils/bootstrap.php:4 require-str
+clients                    kernel/kernel_boot.php:8 OK; /commandcenter/shell.php?module=client_view&id=:65 other
+client_view                kernel/kernel_boot.php:4 OK; graph_view.php:234 MISSING
+cluster                    kernel/kernel_boot.php:2 OK
+cockpit                    kernel/db.php:5 OK
+compare                    (no requires, no URLs)
+cross_case_engine          (no requires, no URLs)
+dashboard                  modules/utils/bootstrap.php:3 OK; /utils/bootstrap.php:3 require-str
+decision                   modules/utils/bootstrap.php:3 OK; /utils/bootstrap.php:3 require-str
+entity_resolution          kernel/db.php:4 OK
+excavation                 modules/utils/json_helpers.php:3 OK; engine/entity_extraction_engine.php:26 OK; kernel/db.php:27 OK; /utils/json_helpers.php:3 require-str
+executive                  modules/utils/bootstrap.php:3 OK; /utils/bootstrap.php:3 require-str
+files                      /commandcenter/api/files_action.php:91 other
+graph                      (no requires, no URLs)
+insight                    (no requires, no URLs)
+ingest                     kernel/ingestion_pipeline.php:110 OK
+ingest_view                (no requires, no URLs)
+intelligence_dashboard     modules/utils/uic_v1.php:12 OK; /utils/uic_v1.php:12 require-str
+pm                         (no requires, no URLs)
+predictive                 modules/utils/bootstrap.php:3 OK; /utils/bootstrap.php:3 require-str
+predictive_link_module_v1  modules/utils/bootstrap.php:12 OK; /utils/bootstrap.php:11 other; /utils/bootstrap.php:12 require-str
+recommendation             modules/utils/bootstrap.php:4 OK; /utils/bootstrap.php:4 require-str
+relations                  modules/utils/bootstrap.php:3 OK; /utils/bootstrap.php:3 require-str
+report                     kernel/kernel_boot.php:10 OK; lib/dompdf/autoload.inc.php:11 OK
+root_cause                 modules/utils/bootstrap.php:3 OK; /utils/bootstrap.php:3 require-str
+search                     modules/utils/bootstrap.php:15 OK; utils/bootstrap.php:15 require-str; /commandcenter/api/search_load.php?ref=:237 other
+semantic_cluster           db.php:11 OK
+time_intelligence          modules/utils/bootstrap.php:3 OK; /utils/bootstrap.php:3 require-str
+vault                      db.php:10 OK
+view                       kernel/kernel_boot.php:3 OK; ui/ui_engine.php:6 OK; kernel/nav_engine.php:7 OK; lib/semantic_diff_engine.php:8 OK; kernel/kernel.php:9 OK
+payment                    kernel/kernel_boot.php:10 OK; config.php:11 OK; lib/vendor/autoload.php:12 OK; /commandcenter/shell.php?module=payment&action=success&payment_id=:79 other; /commandcenter/shell.php?module=payment&action=cancel&payment_id=:80 other; /commandcenter/shell.php?module=payment&action=success&payment_id=:143 other; /commandcenter/shell.php?module=client_view&id=:144 other
+dig_review                 kernel/db.php:22 OK
+
+==== CLI ====
+cli/chain_evolver.php          reach=False refs=[]
+cli/chain_generator.php        reach=False refs=[]
+cli/worker.php                 reach=False refs=[]
+cli/worker.php                 reach=False refs=[]
+cli/chain_evolver.php          reach=False refs=[]
+cli/chain_generator.php        reach=False refs=[]
+cli/worker.php                 reach=False refs=[]
+
+==== FILES V1 CALLED DEAD BUT REACHABLE NOW ====
+v1 statuses parsed: 347
+  engine/entity_extraction_engine.php              v1=REFERENCED-DEAD  reachable=YES
+  kernel/ingestion_pipeline.php                    v1=REFERENCED-DEAD  reachable=YES
+  kernel/kernel.php                                v1=REFERENCED-DEAD  reachable=YES
+  kernel/nav_engine.php                            v1=REFERENCED-DEAD  reachable=YES
+  lib/semantic_diff_engine.php                     v1=REFERENCED-DEAD  reachable=YES
+  modules/utils/json_helpers.php                   v1=REFERENCED-DEAD  reachable=YES
+  prospect.php                                     v1=REFERENCED-DEAD  reachable=YES
+  ui/layout.php                                    v1=REFERENCED-DEAD  reachable=YES
+  ui/ui_engine.php                                 v1=REFERENCED-DEAD  reachable=YES
+
+==== UNREACHABLE FIRST-PARTY, WITH INBOUND ====
+Color_Creator.php                                    NO-INBOUND         
+ExcavationCommand/dashboard.php                      NO-INBOUND         
+ExcavationCommand/planner.php                        NO-INBOUND         
+ExcavationCommand/system_index.php                   INBOUND-FROM-DEAD  ExcavationCommand/dashboard.php
+ProjectManager/api/auth/login.php                    NO-INBOUND         
+ProjectManager/api/auth/logout.php                   NO-INBOUND         
+ProjectManager/api/auth/status.php                   NO-INBOUND         
+ProjectManager/api/clients/index.php                 NO-INBOUND         
+ProjectManager/api/comments/index.php                NO-INBOUND         
+ProjectManager/api/labels/index.php                  NO-INBOUND         
+ProjectManager/api/milestones/index.php              NO-INBOUND         
+ProjectManager/api/permissions/index.php             NO-INBOUND         
+ProjectManager/api/permissions/roles.php             NO-INBOUND         
+ProjectManager/api/projects/index.php                NO-INBOUND         
+ProjectManager/api/projects/members.php              NO-INBOUND         
+ProjectManager/api/tasks/index.php                   NO-INBOUND         
+ProjectManager/api/users/index.php                   NO-INBOUND         
+ProjectManager/api/users/show.php                    NO-INBOUND         
+ProjectManager/app/Controllers/AuthController.php    NO-INBOUND         
+ProjectManager/app/Controllers/ClientController.php  NO-INBOUND         
+ProjectManager/app/Controllers/CommentController.php NO-INBOUND         
+ProjectManager/app/Controllers/LabelController.php   NO-INBOUND         
+ProjectManager/app/Controllers/MilestoneController.php NO-INBOUND         
+ProjectManager/app/Controllers/ProjectController.php NO-INBOUND         
+ProjectManager/app/Controllers/ProjectMemberController.php NO-INBOUND         
+ProjectManager/app/Controllers/TaskController.php    NO-INBOUND         
+ProjectManager/app/Controllers/UserController.php    NO-INBOUND         
+ProjectManager/app/Core/Application.php              NO-INBOUND         
+ProjectManager/app/Core/Container.php                NO-INBOUND         
+ProjectManager/app/Core/Database.php                 NO-INBOUND         
+ProjectManager/app/Core/Dispatcher.php               NO-INBOUND         
+ProjectManager/app/Core/ExceptionHandler.php         NO-INBOUND         
+ProjectManager/app/Core/Request.php                  NO-INBOUND         
+ProjectManager/app/Core/Response.php                 NO-INBOUND         
+ProjectManager/app/Core/Router.php                   NO-INBOUND         
+ProjectManager/app/Models/ActivityLog.php            NO-INBOUND         
+ProjectManager/app/Models/Attachment.php             NO-INBOUND         
+ProjectManager/app/Models/Client.php                 NO-INBOUND         
+ProjectManager/app/Models/Comment.php                NO-INBOUND         
+ProjectManager/app/Models/Label.php                  NO-INBOUND         
+ProjectManager/app/Models/Milestone.php              NO-INBOUND         
+ProjectManager/app/Models/Permission.php             NO-INBOUND         
+ProjectManager/app/Models/Project.php                NO-INBOUND         
+ProjectManager/app/Models/ProjectMember.php          NO-INBOUND         
+ProjectManager/app/Models/Role.php                   NO-INBOUND         
+ProjectManager/app/Models/Task.php                   NO-INBOUND         
+ProjectManager/app/Models/User.php                   NO-INBOUND         
+ProjectManager/app/Policies/DocumentPolicy.php       NO-INBOUND         
+ProjectManager/app/Policies/PermissionPolicy.php     NO-INBOUND         
+ProjectManager/app/Policies/ProjectPolicy.php        NO-INBOUND         
+ProjectManager/app/Policies/RolePolicy.php           NO-INBOUND         
+ProjectManager/app/Policies/TaskPolicy.php           NO-INBOUND         
+ProjectManager/app/Policies/UserPolicy.php           NO-INBOUND         
+ProjectManager/app/Repositories/ActivityLogRepository.php NO-INBOUND         
+ProjectManager/app/Repositories/AttachmentRepository.php NO-INBOUND         
+ProjectManager/app/Repositories/ClientRepository.php NO-INBOUND         
+ProjectManager/app/Repositories/CommentRepository.php NO-INBOUND         
+ProjectManager/app/Repositories/LabelRepository.php  NO-INBOUND         
+ProjectManager/app/Repositories/MilestoneRepository.php NO-INBOUND         
+ProjectManager/app/Repositories/PermissionRepository.php NO-INBOUND         
+ProjectManager/app/Repositories/ProjectMemberRepository.php NO-INBOUND         
+ProjectManager/app/Repositories/ProjectRepository.php NO-INBOUND         
+ProjectManager/app/Repositories/RoleRepository.php   NO-INBOUND         
+ProjectManager/app/Repositories/TaskRepository.php   NO-INBOUND         
+ProjectManager/app/Repositories/UserRepository.php   NO-INBOUND         
+ProjectManager/app/Services/AuthorizationService.php NO-INBOUND         
+ProjectManager/bootstrap.php                         INBOUND-FROM-DEAD  ProjectManager/api/auth/login.php, ProjectManager/api/auth/logout.php,
+ProjectManager/config.php                            NO-INBOUND         
+ProjectManager/database/connection.php               INBOUND-FROM-DEAD  ProjectManager/database/migrations/001_create_users_table.php
+ProjectManager/database/migration.php                NO-INBOUND         
+ProjectManager/database/migrations/001_create_users_table.php NO-INBOUND         
+ProjectManager/database/migrations/002_create_roles_table.php NO-INBOUND         
+ProjectManager/database/migrations/003_create_permissions_table.php NO-INBOUND         
+ProjectManager/database/migrations/004_create_role_permissions_table.php NO-INBOUND         
+ProjectManager/database/migrations/005_create_user_roles_table.php NO-INBOUND         
+ProjectManager/database/migrations/006_create_attachments_table.php NO-INBOUND         
+ProjectManager/database/migrations/007_create_activity_log_table.php NO-INBOUND         
+ProjectManager/database/migrations/008_create_audit_tables.php NO-INBOUND         
+ProjectManager/database/migrations/009_create_projects_table.php NO-INBOUND         
+ProjectManager/database/migrations/010_create_pm_tasks_table.php NO-INBOUND         
+ProjectManager/database/migrations/011_create_pm_milestones_table.php NO-INBOUND         
+ProjectManager/database/migrations/012_create_pm_comments_table.php NO-INBOUND         
+ProjectManager/database/migrations/013_create_pm_notes_table.php NO-INBOUND         
+ProjectManager/database/schema.php                   NO-INBOUND         
+ProjectManager/index.php                             NO-INBOUND         
+ProjectManager/permissions.php                       NO-INBOUND         
+ProjectManager/project_board.php                     NO-INBOUND         
+ProjectManager/projects_dashboard.php                NO-INBOUND         
+ProjectManager/router.php                            INBOUND-FROM-DEAD  ProjectManager/index.php
+ProjectManager/tests/Auth/AuthenticationTest.php     NO-INBOUND         
+ProjectManager/tests/Core/BootstrapTest.php          NO-INBOUND         
+ProjectManager/tests/Core/ExceptionTest.php          NO-INBOUND         
+ProjectManager/tests/Core/RequestTest.php            NO-INBOUND         
+ProjectManager/tests/Core/ResponseTest.php           NO-INBOUND         
+ProjectManager/tests/Core/RouterTest.php             NO-INBOUND         
+ProjectManager/tests/Permissions/AuthorizationTest.php NO-INBOUND         
+ProjectManager/tests/Permissions/PermissionTest.php  NO-INBOUND         
+ProjectManager/tests/Permissions/RoleTest.php        NO-INBOUND         
+api.php                                              NO-INBOUND         
+api/agency_create.php                                NO-INBOUND         
+api/agency_dashboard.php                             NO-INBOUND         
+api/agency_dispatch.php                              NO-INBOUND         
+api/agency_synthesis.php                             NO-INBOUND         
+api/agent_spawn.php                                  NO-INBOUND         
+api/agent_tick.php                                   NO-INBOUND         
+api/anomaly_detector.php                             NO-INBOUND         
+api/brain_commit.php                                 NO-INBOUND         
+api/brain_dossier.php                                NO-INBOUND         
+api/brain_memory_graph.php                           NO-INBOUND         
+api/brain_start.php                                  NO-INBOUND         
+api/brain_state.php                                  NO-INBOUND         
+api/brain_stream.php                                 NO-INBOUND         
+api/brain_stream_v4.php                              NO-INBOUND         
+api/case_agent.php                                   NO-INBOUND         
+api/case_create.php                                  NO-INBOUND         
+api/case_memory.php                                  NO-INBOUND         
+api/case_scheduler.php                               NO-INBOUND         
+api/case_tick.php                                    NO-INBOUND         
+api/dossier.php                                      NO-INBOUND         
+api/file.php                                         NO-INBOUND         
+api/file_tree.php                                    NO-INBOUND         
+api/graph_synthesizer.php                            NO-INBOUND         
+api/intel_cache.php                                  NO-INBOUND         
+api/network_boot.php                                 NO-INBOUND         
+api/network_tick.php                                 NO-INBOUND         
+api/node_builder.php                                 NO-INBOUND         
+api/tree.php                                         NO-INBOUND         
+api/v8/_response.php                                 NO-INBOUND         
+api/v8/agent.php                                     NO-INBOUND         
+api/v8/alerts.php                                    NO-INBOUND         
+api/v8/autonomous_engine.php                         NO-INBOUND         
+api/v8/build_edges.php                               NO-INBOUND         
+api/v8/build_graph.php                               NO-INBOUND         
+api/v8/cases.php                                     NO-INBOUND         
+api/v8/cluster_insights.php                          NO-INBOUND         
+api/v8/compare_networks.php                          NO-INBOUND         
+api/v8/compressor.php                                NO-INBOUND         
+api/v8/create_network.php                            NO-INBOUND         
+api/v8/dashboard.php                                 NO-INBOUND         
+api/v8/debug_tasks.php                               NO-INBOUND         
+api/v8/dossier.php                                   NO-INBOUND         
+api/v8/dossier_v2.php                                NO-INBOUND         
+api/v8/event_emit.php                                NO-INBOUND         
+api/v8/feedback.php                                  NO-INBOUND         
+api/v8/forecast.php                                  NO-INBOUND         
+api/v8/generate_tasks.php                            NO-INBOUND         
+api/v8/get_cases.php                                 NO-INBOUND         
+api/v8/get_clients.php                               NO-INBOUND         
+api/v8/graph_ranker.php                              NO-INBOUND         
+api/v8/insights.php                                  NO-INBOUND         
+api/v8/investigator.php                              NO-INBOUND         
+api/v8/learn.php                                     NO-INBOUND         
+api/v8/memory_store.php                              NO-INBOUND         
+api/v8/memory_weight.php                             NO-INBOUND         
+api/v8/mesh.php                                      NO-INBOUND         
+api/v8/network_add_node.php                          INBOUND-FROM-DEAD  ingest.php, ingest2.php
+api/v8/patterns.php                                  NO-INBOUND         
+api/v8/predictor.php                                 INBOUND-FROM-DEAD  lib/legaisee_model.php
+api/v8/recommendations.php                           NO-INBOUND         
+api/v8/run_worker.php                                NO-INBOUND         
+api/v8/summary.php                                   NO-INBOUND         
+api/v8/widget_registry.php                           NO-INBOUND         
+bootstrap.php                                        INBOUND-FROM-DEAD  ProjectManager/database/migration.php, ProjectManager/project_board.ph
+cli/chain_evolver.php                                NO-INBOUND         
+cli/chain_generator.php                              NO-INBOUND         
+cli/worker.php                                       NO-INBOUND         
+cluster_engine.php                                   INBOUND-FROM-DEAD  engine/pipeline_adapters.php
+components/card.php                                  NO-INBOUND         
+components/compare.php                               NO-INBOUND         
+components/ui_card.php                               NO-INBOUND         
+components/ui_folder_tree.php                        NO-INBOUND         
+components/ui_tag.php                                NO-INBOUND         
+create_findings_tables.php                           NO-INBOUND         
+create_review_flags.php                              NO-INBOUND         
+create_session.php                                   NO-INBOUND         
+create_test_data.php                                 NO-INBOUND         
+database/migrations/010_create_tree_nodes_table.php  NO-INBOUND         
+database/migrations/010_create_tree_nodes_tablebk.php NO-INBOUND         
+db_verify.php                                        NO-INBOUND         
+diagnostics2.php                                     NO-INBOUND         
+embed_generate.php                                   NO-INBOUND         
+engine/case_manager.php                              INBOUND-FROM-DEAD  create_test_data.php
+engine/client_manager.php                            INBOUND-FROM-DEAD  create_test_data.php
+engine/cross_case_engine.php                         INBOUND-FROM-DEAD  engine/executive_dashboard_engine.php, engine/system_insight_engine.ph
+engine/cross_case_learning_compiler.php              NO-INBOUND         
+engine/dashboard_engine.php                          INBOUND-FROM-DEAD  api/v8/dashboard.php
+engine/decision_engine_v2.php                        NO-INBOUND         
+engine/decision_governor.php                         NO-INBOUND         
+engine/execution_feedback_engine.php                 NO-INBOUND         
+engine/execution_router.php                          NO-INBOUND         
+engine/executive_dashboard_engine.php                NO-INBOUND         
+engine/goal_alignment.php                            NO-INBOUND         
+engine/goal_arbitration_engine.php                   INBOUND-FROM-DEAD  engine/goal_engine.php
+engine/goal_conflict_resolver.php                    INBOUND-FROM-DEAD  engine/goal_engine.php
+engine/goal_engine.php                               NO-INBOUND         
+engine/goal_generator.php                            NO-INBOUND         
+engine/governance_policy_engine.php                  NO-INBOUND         
+engine/graph_data.php                                NO-INBOUND         
+engine/graph_engine.php                              INBOUND-FROM-DEAD  api/v8/build_graph.php
+engine/graph_mutation_engine.php                     NO-INBOUND         
+engine/hierarchy_of_truth_engine.php                 INBOUND-FROM-DEAD  test_hierarchy_of_truth.php
+engine/insight_mutator.php                           NO-INBOUND         
+engine/long_horizon_planner.php                      NO-INBOUND         
+engine/memory_evolution_engine.php                   INBOUND-FROM-DEAD  engine/executive_dashboard_engine.php
+engine/pattern_stability.php                         NO-INBOUND         
+engine/pipeline_adapters.php                         INBOUND-FROM-DEAD  cli/worker.php
+engine/plain_english_helper.php                      INBOUND-FROM-DEAD  engine/plain_english_helper.php
+engine/policy_enforcement_engine.php                 NO-INBOUND         
+engine/portfolio_engine.php                          INBOUND-FROM-DEAD  engine/executive_dashboard_engine.php, engine/memory_evolution_engine.
+engine/predictive_intelligence_engine.php            INBOUND-FROM-DEAD  cli/worker.php
+engine/reasoning_engine.php                          INBOUND-FROM-DEAD  cli/worker.php, engine/pipeline_adapters.php
+engine/recommendation_engine.php                     INBOUND-FROM-DEAD  api/v8/recommendations.php, cli/worker.php, engine/pipeline_adapters.p
+engine/semantic_cluster_engine.php                   INBOUND-FROM-DEAD  api/v8/cluster_insights.php, engine/executive_dashboard_engine.php, en
+engine/system_behavior_spec.php                      NO-INBOUND         
+engine/system_insight_engine.php                     INBOUND-FROM-DEAD  cli/worker.php, engine/decision_engine_v2.php, engine/executive_dashbo
+engine/system_recommendation_engine.php              NO-INBOUND         
+engine/temporal_memory_engine.php                    NO-INBOUND         
+export_report.php                                    NO-INBOUND         
+ingest.php                                           INBOUND-FROM-DEAD  pages/shell_template.php, pages/test/shell_module_test.php
+ingest2.php                                          NO-INBOUND         
+intelligence.php                                     NO-INBOUND         
+kernel/bootstrap.php                                 NO-INBOUND         
+kernel/cluster_intelligence.php                      NO-INBOUND         
+kernel/engine_bindings.php                           NO-INBOUND         
+kernel/folder_engine.php                             INBOUND-FROM-DEAD  ui/file_explorer.php
+kernel/graph_auto_builder.php                        NO-INBOUND         
+kernel/graph_engine.php                              NO-INBOUND         
+kernel/guard.php                                     NO-INBOUND         
+kernel/kernel_contract.php                           INBOUND-FROM-DEAD  test_modules.php
+kernel/model/page_model.php                          NO-INBOUND         
+kernel/module_contract.php                           INBOUND-FROM-DEAD  test_modules.php
+kernel/system_health.php                             NO-INBOUND         
+kernel/task_generator.php                            NO-INBOUND         
+legaisee_prospects.php                               NO-INBOUND         
+lib/legaisee_model.php                               INBOUND-FROM-DEAD  views/compare_view.php
+load_module.php                                      NO-INBOUND         
+load_sets.php                                        NO-INBOUND         
+modules/001_create_tree_nodes.php                    NO-INBOUND         
+modules/build_dossier.php                            NO-INBOUND         
+modules/governance_module.php                        NO-INBOUND         
+modules/project_manager/project_manager.php          NO-INBOUND         
+modules/utils/debug_helpers.php                      NO-INBOUND         
+modules/utils/file_helpers.php                       NO-INBOUND         
+modules/utils/uic_v2.php                             NO-INBOUND         
+pages/goals.php                                      NO-INBOUND         
+pages/home.php                                       NO-INBOUND         
+pages/logs.php                                       NO-INBOUND         
+pages/network_view.php                               NO-INBOUND         
+pages/networks.php                                   NO-INBOUND         
+pages/reasoning.php                                  NO-INBOUND         
+pages/search.php                                     NO-INBOUND         
+pages/shell_template.php                             NO-INBOUND         
+pages/test/shell_module_test.php                     NO-INBOUND         
+parser.php                                           NO-INBOUND         
+peek.php                                             NO-INBOUND         
+response.php                                         INBOUND-FROM-DEAD  api/v8/build_graph.php, api/v8/cluster_insights.php, api/v8/get_cases.
+save_set.php                                         NO-INBOUND         
+semantic_engine.php                                  NO-INBOUND         
+session.php                                          INBOUND-FROM-DEAD  create_session.php
+temp_dashboard.php                                   INBOUND-FROM-DEAD  view_ingest.php
+test_db.php                                          NO-INBOUND         
+test_excavation_module.php                           NO-INBOUND         
+test_extraction_fix.php                              NO-INBOUND         
+test_graph.php                                       NO-INBOUND         
+test_graph_fix.php                                   NO-INBOUND         
+test_hierarchy_of_truth.php                          NO-INBOUND         
+test_kernel.php                                      NO-INBOUND         
+test_modules.php                                     NO-INBOUND         
+test_ui.php                                          NO-INBOUND         
+test_visual.php                                      NO-INBOUND         
+tools/build_cluster_summaries.php                    NO-INBOUND         
+tools/build_cluster_summaries_ai.php                 NO-INBOUND         
+tools/build_clusters.php                             NO-INBOUND         
+tools/build_relations.php                            NO-INBOUND         
+tools/detect_cluster_opportunities.php               NO-INBOUND         
+tools/extract_cluster_insights.php                   NO-INBOUND         
+tools/name_clusters.php                              NO-INBOUND         
+ui/compare_engine.php                                NO-INBOUND         
+ui/components/card.php                               NO-INBOUND         
+ui/components/ingest_exec snap.php                   NO-INBOUND         
+ui/components/ingestforshell.php                     NO-INBOUND         
+ui/file_explorer.php                                 NO-INBOUND         
+view_ingest.php                                      INBOUND-FROM-DEAD  temp_dashboard.php, view_ingest.php
+views/compare_view.php                               NO-INBOUND         
+views/graph_view.php                                 NO-INBOUND         
+views/ingest_view.php                                NO-INBOUND         
