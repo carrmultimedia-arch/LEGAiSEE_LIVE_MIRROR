@@ -1,0 +1,28 @@
+# ============================================================
+# Root ignore rules for the LEGAiSEE_LIVE_MIRROR working copy
+# ============================================================
+
+# ---- OS / editor junk ---------------------------------------
+Thumbs.db
+desktop.ini
+.DS_Store
+*.log
+
+# ---- Secrets: never commit ----------------------------------
+# VS Code SFTP extension stores the FTP password in .sftp.json
+.sftp.json
+sftp.json
+**/.sftp.json
+**/sftp.json
+.env
+**/.env
+*.pem
+id_rsa*
+
+# ---- Local agent state --------------------------------------
+/.freebuff/
+
+# ---- Database dumps and SQLite files hold client data -------
+*.db
+**/*.db
+commandcenter/*.sql
